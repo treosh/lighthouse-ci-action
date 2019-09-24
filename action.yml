@@ -1,16 +1,16 @@
 name: 'Lighthouse Actions'
 description: 'Run Lighthouse for the list of pages'
 inputs:
-  pages:
-    description: 'The list of pages'
+  url:
+    description: 'Page URL'
     required: true
     default: ''
 outputs:
-  results:
-    description: 'Lighthouse results paths'
+  result:
+    description: 'Lighthouse result'
 runs:
   using: 'node12'
-  main: 'dist/index.js'
+  main: 'src/index.js'
 branding:
   icon: 'activity'
   color: 'gray-dark'

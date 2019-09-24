@@ -1,0 +1,130 @@
+#!/usr/bin/env node
+
+"use strict";
+
+var common = _interopRequireWildcard(require("./common"));
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+/** A compiler for make-plural.js
+ *
+ *  Usage:
+ *    ./bin/make-plural                 // checks all locale rules
+ *    ./bin/make-plural [lc]            // prints the locale function for LC
+ *    ./bin/make-plural [lc] [n] [ord]  // prints the (ORD ? ordinal : plural) category for N in locale LC
+ */
+var argv = require('minimist')(process.argv.slice(2), {
+  default: {
+    locale: null,
+    value: null,
+    ordinal: null,
+    cardinal: null,
+    categories: false,
+    es6: false
+  },
+  alias: {
+    locale: 'l',
+    value: 'v',
+    ordinal: 'o',
+    cardinal: 'c',
+    es6: 'e'
+  },
+  string: ['locale', 'value'],
+  boolean: ['categories', 'es6']
+});
+
+var MakePlural = require('../make-plural').load(require('../data/plurals.json'), require('../data/ordinals.json'));
+
+var es6module = function es6module(value) {
+  return "\nexport default {\n".concat(value, "\n}");
+}; // UMD pattern adapted from https://github.com/umdjs/umd/blob/master/returnExports.js
+
+
+var umd = function umd(global, value) {
+  return "\n(function (root, ".concat(global, ") {\n  if (typeof define === 'function' && define.amd) {\n    define(").concat(global, ");\n  } else if (typeof exports === 'object') {\n    module.exports = ").concat(global, ";\n  } else {\n    root.").concat(global, " = ").concat(global, ";\n  }\n}(this, {\n").concat(value, "\n}));");
+};
+
+function mapForEachLanguage(cb, opt) {
+  var style = opt && !opt.cardinals ? 'ordinal' : 'cardinal';
+  var languages = [];
+
+  for (var lc in MakePlural.rules[style]) {
+    var key = /^[A-Z_$][0-9A-Z_$]*$/i.test(lc) && lc !== 'in' ? lc : JSON.stringify(lc);
+    var mp = new MakePlural(lc, opt).test();
+    languages.push(key + ': ' + cb(mp));
+  }
+
+  return languages;
+}
+
+function printPluralsModule(es6) {
+  var cp = common[MakePlural.ordinals ? 'combined' : 'cardinals'].plurals;
+  var plurals = mapForEachLanguage(function (mp) {
+    var fn = mp.toString();
+    cp.forEach(function (p, i) {
+      if (fn === p) fn = "_cp[".concat(i, "]");
+    });
+    return fn;
+  });
+
+  if (es6) {
+    console.log('const _cp = [\n' + cp.join(',\n') + '\n];');
+    console.log(es6module(plurals.join(',\n\n')));
+  } else {
+    console.log('var _cp = [\n' + cp.join(',\n') + '\n];');
+    console.log(umd('plurals', plurals.join(',\n\n')));
+  }
+}
+
+function printCategoriesModule(es6) {
+  var cc = common[MakePlural.ordinals ? 'combined' : 'cardinals'].categories;
+  var categories = mapForEachLanguage(function (mp) {
+    var cat = JSON.stringify(mp.categories).replace(/"(\w+)":/g, '$1:');
+    cc.forEach(function (c, i) {
+      if (cat === c) cat = "_cc[".concat(i, "]");
+    });
+    return cat;
+  });
+
+  if (es6) {
+    console.log('const _cc = [\n  ' + cc.join(',\n  ') + '\n];');
+    console.log(es6module(categories.join(',\n')));
+  } else {
+    console.log('var _cc = [\n  ' + cc.join(',\n  ') + '\n];');
+    console.log(umd('pluralCategories', categories.join(',\n')));
+  }
+}
+
+function truthy(v) {
+  if (v === '0' || v === 'false') return false;
+  return !!v;
+}
+
+argv._.forEach(function (a) {
+  if (argv.locale === null) argv.locale = a;else if (argv.value === null) argv.value = a;else if (argv.ordinal === null) argv.ordinal = a;
+});
+
+MakePlural.cardinals = argv.cardinal !== null ? truthy(argv.cardinal) : true;
+MakePlural.ordinals = argv.ordinal !== null ? truthy(argv.ordinal) : true;
+
+if (argv.locale) {
+  var mp = new MakePlural(argv.locale).test();
+
+  if (argv.categories) {
+    var cats = mp.categories.cardinal.concat(mp.categories.ordinal).filter(function (v, i, self) {
+      return self.indexOf(v) === i;
+    });
+    console.log(cats.join(', '));
+  } else if (argv.value !== null) {
+    console.log(mp(argv.value, truthy(argv.ordinal)));
+  } else {
+    console.log(mp.toString(argv.locale));
+  }
+} else {
+  if (argv.categories) {
+    printCategoriesModule(argv.es6);
+  } else {
+    printPluralsModule(argv.es6);
+  }
+}
+

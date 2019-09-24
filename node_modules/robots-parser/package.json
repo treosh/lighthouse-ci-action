@@ -1,0 +1,23 @@
+{
+  "name": "robots-parser",
+  "version": "2.1.1",
+  "description": "Robots.txt parser.",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "istanbul cover _mocha --print detail --report html --dir ./report/coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/samclarke/robots-parser.git"
+  },
+  "author": "Sam Clarke <sam@samclarke.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.1.2"
+  }
+}

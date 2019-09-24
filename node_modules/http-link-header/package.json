@@ -1,0 +1,36 @@
+{
+  "name": "http-link-header",
+  "version": "0.8.0",
+  "description": "Parse & format HTTP link headers according to RFC 5988",
+  "author": "Jonas Hermsmeier <jhermsmeier@gmail.com> (https://jhermsmeier.de)",
+  "license": "MIT",
+  "keywords": [
+    "rfc5988",
+    "rfc",
+    "5988",
+    "http",
+    "link",
+    "header"
+  ],
+  "main": "lib/link.js",
+  "dependencies": {},
+  "devDependencies": {
+    "matcha": "~0.7.0",
+    "mocha": "~3.2.0"
+  },
+  "homepage": "https://github.com/jhermsmeier/node-http-link-header",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jhermsmeier/node-http-link-header.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jhermsmeier/node-http-link-header/issues"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "benchmark": "matcha --reporter plain",
+    "test": "mocha --ui tdd"
+  }
+}

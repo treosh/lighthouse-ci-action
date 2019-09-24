@@ -8,13 +8,13 @@ jobs:
       - name: Home Page
         uses: ./
         with:
-          url: https://treo.sh/
+          url: https://alekseykulikov.com/
       - name: Home Page (Desktop)
         uses: ./
         with:
-          url: https://treo.sh/
+          url: https://alekseykulikov.com/
           device: desktop
       - name: Blog
         uses: ./
         with:
-          url: https://treo.sh/blog
+          url: https://alekseykulikov.com/blog

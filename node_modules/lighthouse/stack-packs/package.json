@@ -1,0 +1,19 @@
+{
+  "name": "@lighthouse/stack-packs",
+  "version": "1.0.0",
+  "description": "List of stackpacks used in Lighthouse",
+  "main": "./index.js",
+  "repository": "GoogleChrome/lighthouse-stack-packs",
+  "keywords": [
+    "google",
+    "chrome",
+    "devtools",
+    "lighthouse"
+  ],
+  "author": "The Chromium Authors",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/GoogleChrome/lighthouse-stack-packs/issues"
+  },
+  "types": "./stack-packs.d.ts"
+}

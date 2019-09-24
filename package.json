@@ -4,19 +4,16 @@
   "license": "MIT",
   "description": "Github actions integration for Lighthouse",
   "repository": "treosh/lighthouse-actions",
-  "engines": {
-    "node": "12"
-  },
   "scripts": {
     "test": "prettier -c src/** package.json README.md && tsc -p . && npm run build",
     "build": "ncc build src/index.js -o dist"
   },
   "dependencies": {
-    "@actions/core": "^1.1.1"
+    "@actions/core": "^1.1.1",
+    "lighthouse": "^5.4.0"
   },
   "devDependencies": {
     "@types/node": "^12.7.5",
-    "@zeit/ncc": "^0.20.5",
     "prettier": "^1.18.2",
     "typescript": "^3.6.3"
   }

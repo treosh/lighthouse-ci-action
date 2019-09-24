@@ -5,12 +5,8 @@ We'd love to accept your patches and contributions!
 
 ```bash
 # install deps
-npm install
+yarn install
 
 # ensure all tests pass
-npm test
-
-# build /dist for action distribution
-# more info: https://help.github.com/en/articles/creating-a-javascript-action#commit-and-push-your-action-to-github
-npm run build
+yarn test
 ```

@@ -1,0 +1,41 @@
+{
+  "name": "details-element-polyfill",
+  "version": "2.4.0",
+  "description": "HTML <details> element polyfill",
+  "main": "dist/details-element-polyfill.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "rollup --config rollup.config.test.js && karma start",
+    "build": "rollup --config rollup.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/javan/details-element-polyfill.git"
+  },
+  "keywords": [
+    "html",
+    "details",
+    "polyfill"
+  ],
+  "author": "Javan Makhmali",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/javan/details-element-polyfill/issues"
+  },
+  "homepage": "https://github.com/javan/details-element-polyfill#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "karma": "^4.2.0",
+    "karma-chrome-launcher": "^3.0.0",
+    "karma-qunit": "^4.0.0",
+    "karma-sauce-launcher": "^2.0.2",
+    "qunit": "^2.9.2",
+    "rollup": "^1.19.4",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-uglify": "^6.0.2"
+  }
+}

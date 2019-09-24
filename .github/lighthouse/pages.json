@@ -1,0 +1,27 @@
+{
+  "origin": "https://alekseykulikov.com",
+  "chromeFlags": "--window-size=412,660",
+  "budgetPath": ".github/lighthouse/budget.json",
+  "throttlingMethod": "devtools",
+  "config": {
+    "plugins": ["lighthouse-plugin-field-performance"],
+    "settings": {
+      "throttlingMethod": "devtools"
+    }
+  },
+  "pages": [
+    {
+      "name": "Home Page",
+      "path": "/"
+    },
+    {
+      "name": "Blog",
+      "path": "/blog"
+    },
+    {
+      "name": "Home Page (Desktop)",
+      "path": "/",
+      "configPath": ".github/lighthouse/desktop-config.js"
+    }
+  ]
+}

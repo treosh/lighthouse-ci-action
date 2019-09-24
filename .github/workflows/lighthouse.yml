@@ -1,0 +1,29 @@
+name: Run action locally
+on: push
+jobs:
+  run-lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Multiple URLs
+        uses: ./
+        with:
+          urls: |
+            https://alekseykulikov.com/
+            https://alekseykulikov.com/blog
+            https://alekseykulikov.com/not-found
+          throttlingMethod: devtools
+          budgetPath: .github/lighthouse/budget.json
+      - name: One URL with custom config and options
+        uses: ./
+        with:
+          url: 'https://alekseykulikov.com/'
+          throttlingMethod: devtools
+          configPath: .github/lighthouse/desktop-config.json
+          budgetPath: .github/lighthouse/budget.json
+          chromeFlags: '--window-size=1200,800'
+      - name: Upload artifacts
+        uses: actions/upload-artifact@master
+        with:
+          name: Lighthouse results
+          path: './results'

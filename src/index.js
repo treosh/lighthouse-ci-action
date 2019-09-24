@@ -2,7 +2,12 @@ const core = require('@actions/core')
 const lighthouse = require('lighthouse')
 const chromeLauncher = require('chrome-launcher')
 
+const noRun = true
+
 async function main() {
+  console.log('urls:', core.getInput('urls'))
+  console.log('url:', core.getInput('url'))
+  if (noRun) return
   let chrome = null
   const url = core.getInput('url')
   try {

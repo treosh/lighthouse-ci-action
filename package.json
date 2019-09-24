@@ -8,8 +8,7 @@
     "node": "12"
   },
   "scripts": {
-    "test": "prettier -c src/** package.json README.md && tsc -p . && npm run build",
-    "build": "ncc build src/index.js -o dist"
+    "test": "prettier -c src/** package.json README.md && tsc -p ."
   },
   "dependencies": {
     "@actions/core": "^1.1.1",

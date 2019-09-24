@@ -12,4 +12,6 @@ yarn test
 
 # run locally, use INPUT_* notation to pass arguments
 INPUT_URL="https://example.com/" node src/index.js
+INPUT_URLS="https://alekseykulikov.com/
+ https://alekseykulikov.com/blog" node src/index.js
 ```

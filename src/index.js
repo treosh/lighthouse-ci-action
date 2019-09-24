@@ -1,22 +1,36 @@
 const core = require('@actions/core')
 const lighthouse = require('lighthouse')
+const { getFilenamePrefix } = require('lighthouse/lighthouse-core/lib/file-namer')
 const chromeLauncher = require('chrome-launcher')
+const { ensureDir } = require('fs-extra')
+const { join } = require('path')
+const { writeFile } = require('fs').promises
 
-const noRun = true
+// audit urls with Lighthouse
 
 async function main() {
   const urls = getUrls()
-  console.log('urls: %s', urls)
-  if (noRun) return
+  const resultsPath = join(process.cwd(), 'results')
+  const flags = {
+    output: 'html',
+    logLevel: 'info'
+  }
+  console.log('audit urls: %s with flags: %j', urls, flags)
   let chrome = null
-  const url = core.getInput('url')
   try {
     chrome = await chromeLauncher.launch({
       port: 9222,
+      logLevel: 'info',
       chromeFlags: ['--headless', '--disable-gpu', '--no-sandbox', '--no-zygote']
     })
-    const { lhr } = await lighthouse(url, { port: chrome.port })
-    core.setOutput('result', JSON.stringify(lhr, null, '  '))
+    await ensureDir(resultsPath)
+    for (const url of urls) {
+      const { report, lhr } = await lighthouse(url, { ...flags, port: chrome.port })
+      const reportPath = join(resultsPath, getFilenamePrefix(lhr))
+      await writeFile(reportPath + '.html', report)
+      await writeFile(reportPath + '.json', JSON.stringify(lhr, null, '  '))
+    }
+    core.setOutput('resultsPath', resultsPath)
   } finally {
     if (chrome) await chrome.kill()
   }
@@ -32,7 +46,7 @@ main()
     }
   )
   .then(() => {
-    core.debug(`done in ${process.uptime()}s`)
+    console.log(`done in ${process.uptime()}s`)
     process.exit()
   })
 

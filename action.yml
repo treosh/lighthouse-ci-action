@@ -3,10 +3,11 @@ description: 'Run Lighthouse for the list of pages'
 inputs:
   url:
     description: 'Page URL'
-    required: true
+  urls:
+    description: 'List of URLs'
 outputs:
-  result:
-    description: 'Lighthouse result'
+  resultsPath:
+    description: 'Path to the folder with results'
 runs:
   using: 'node12'
   main: 'src/index.js'

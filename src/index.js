@@ -5,8 +5,8 @@ const chromeLauncher = require('chrome-launcher')
 const noRun = true
 
 async function main() {
-  console.log('urls:', core.getInput('urls'))
-  console.log('url:', core.getInput('url'))
+  const urls = getUrls()
+  console.log('urls: %s', urls)
   if (noRun) return
   let chrome = null
   const url = core.getInput('url')
@@ -35,3 +35,16 @@ main()
     core.debug(`done in ${process.uptime()}s`)
     process.exit()
   })
+
+/**
+ * Get urls from `url` or `urls`
+ *
+ * @return {string[]}
+ */
+
+function getUrls() {
+  const url = core.getInput('url')
+  if (url) return [url]
+  const urls = core.getInput('urls')
+  return urls.split('\n').map(url => url.trim())
+}

@@ -1,0 +1,11 @@
+name: 'Run action locally'
+on: [push]
+jobs:
+  run-lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1        
+      - name: Run Lighthouse
+        uses: ./
+        with:
+          pages: ['https://treo.sh/']

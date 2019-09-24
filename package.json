@@ -3,9 +3,18 @@
   "version": "1.0.0",
   "license": "MIT",
   "description": "Github actions integration for Lighthouse",
-  "repository": "treosh/uxm",
-  "main": "index.js",
+  "repository": "treosh/lighthouse-actions",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "prettier -c src/** package.json README.md && tsc -p . && npm run build",
+    "build": "ncc build src/index.js -o dist"
+  },
+  "dependencies": {
+    "@actions/core": "^1.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^12.7.5",
+    "@zeit/ncc": "^0.20.5",
+    "prettier": "^1.18.2",
+    "typescript": "^3.6.3"
   }
 }

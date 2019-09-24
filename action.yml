@@ -1,0 +1,13 @@
+name: 'Lighthouse Actions'
+description: 'Run Lighthouse for the list of pages'
+inputs:
+  pages: 
+    description: 'The list of pages'
+    required: true
+    default: []
+outputs:
+  results:
+    description: 'Lighthouse results paths'
+runs:
+  using: 'node10'
+  main: 'dist/index.js'

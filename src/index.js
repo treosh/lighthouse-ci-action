@@ -1,10 +1,20 @@
 const core = require('@actions/core')
-const lighthouse = require('lighthouse/lighthouse-core')
+const lighthouse = require('lighthouse')
+const chromeLauncher = require('chrome-launcher')
 
 async function main() {
+  let chrome = null
   const url = core.getInput('url')
-  const { lhr } = await lighthouse(url)
-  core.setOutput('result', JSON.stringify(lhr, null, '  '))
+  try {
+    chrome = await chromeLauncher.launch({
+      port: 9222,
+      chromeFlags: ['--headless', '--disable-gpu', '--no-sandbox', '--no-zygote']
+    })
+    const { lhr } = await lighthouse(url, { port: chrome.port })
+    core.setOutput('result', JSON.stringify(lhr, null, '  '))
+  } finally {
+    if (chrome) await chrome.kill()
+  }
 }
 
 // run `main()`

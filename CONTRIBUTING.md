@@ -9,4 +9,7 @@ yarn install
 
 # ensure all tests pass
 yarn test
+
+# run locally
+INPUT_URL="https://example.com/" node src/index.js
 ```

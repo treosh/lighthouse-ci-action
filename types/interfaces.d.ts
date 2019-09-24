@@ -1,1 +1,1 @@
-declare module 'lighthouse/lighthouse-core'
+declare module 'lighthouse'

@@ -4,7 +4,6 @@ inputs:
   url:
     description: 'Page URL'
     required: true
-    default: ''
 outputs:
   result:
     description: 'Lighthouse result'

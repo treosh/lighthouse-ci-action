@@ -12,6 +12,11 @@ yarn test
 
 # run locally, use INPUT_* notation to pass arguments
 INPUT_URL="https://example.com/" node src/index.js
+
+# run many urls
 INPUT_URLS="https://alekseykulikov.com/
  https://alekseykulikov.com/blog" node src/index.js
+
+# run with extra inputs
+INPUT_URL="https://example.com/" INPUT_THROTTLINGMETHOD="devtools" INPUT_ONLYCATEGORIES="perfomance,seo" INPUT_CHROMEFLAGS="--window-size=1200,800 --single-process" node src/index.js
 ```

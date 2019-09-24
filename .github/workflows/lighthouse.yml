@@ -12,18 +12,18 @@ jobs:
             https://alekseykulikov.com/
             https://alekseykulikov.com/blog
             https://alekseykulikov.com/not-found
-          throttlingMethod: devtools
           budgetPath: .github/lighthouse/budget.json
       - name: One URL with custom config and options
         uses: ./
         with:
           url: 'https://alekseykulikov.com/'
           throttlingMethod: devtools
+          onlyCategories: 'performance,seo'
           configPath: .github/lighthouse/desktop-config.json
-          budgetPath: .github/lighthouse/budget.json
           chromeFlags: '--window-size=1200,800'
+          budgetPath: .github/lighthouse/budget.json
       - name: Upload artifacts
         uses: actions/upload-artifact@master
         with:
-          name: Lighthouse results
+          name: lighthouse-results
           path: './results'

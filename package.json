@@ -1,0 +1,11 @@
+{
+  "name": "lighthouse-actions",
+  "version": "1.0.0",
+  "license": "MIT",
+  "description": "Github actions integration for Lighthouse",
+  "repository": "treosh/uxm",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

@@ -320,8 +320,7 @@ module.exports = require("path");
 const core = __webpack_require__(470)
 
 try {
-  const pages = core.getInput('pages')
-  console.log(pages)
+  console.log('url: %s, device: %s', core.getInput('url'), core.getInput('device') || 'mobile')
   /** @type {string[]} */
   const results = []
   core.setOutput('results', JSON.stringify(results))

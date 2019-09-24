@@ -4,6 +4,9 @@
   "license": "MIT",
   "description": "Github actions integration for Lighthouse",
   "repository": "treosh/lighthouse-actions",
+  "engines": {
+    "node": "12"
+  },
   "scripts": {
     "test": "prettier -c src/** package.json README.md && tsc -p . && npm run build",
     "build": "ncc build src/index.js -o dist"

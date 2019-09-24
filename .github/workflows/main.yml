@@ -5,8 +5,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: Run Lighthouse
+      - name: Home Page
         uses: ./
         with:
-          pages:
-            - https://treo.sh/
+          url: https://treo.sh/
+      - name: Home Page (Desktop)
+        uses: ./
+        with:
+          url: https://treo.sh/
+          device: desktop
+      - name: Blog
+        uses: ./
+        with:
+          url: https://treo.sh/blog

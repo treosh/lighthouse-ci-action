@@ -5,6 +5,7 @@ const chromeLauncher = require('chrome-launcher')
 const { ensureDir } = require('fs-extra')
 const { join } = require('path')
 const { writeFile } = require('fs').promises
+const { readFileSync } = require('fs')
 
 // audit urls with Lighthouse
 
@@ -19,10 +20,15 @@ async function main() {
     extends: 'lighthouse:default',
     settings: {
       throttlingMethod: core.getInput('throttlingMethod') || 'simulate',
-      onlyCategories: getOnlyCategories()
+      onlyCategories: getOnlyCategories(),
+      budgets: getBudgets()
     }
   }
-  console.log('audit urls: %s flags: %j config: %j', urls, flags, config)
+  core.startGroup('Lighthouse config')
+  console.log('urls: %s', urls)
+  console.log('config: %s', JSON.stringify(config, null, '  '))
+  core.endGroup()
+
   let chrome = null
   try {
     core.startGroup('Launch Chrome')
@@ -36,6 +42,9 @@ async function main() {
     chrome = await chromeLauncher.launch(chromeOpts)
     core.endGroup()
 
+    /** @type {string[]} */
+    const failedUrls = []
+
     await ensureDir(resultsPath)
     for (const url of urls) {
       core.startGroup(`Audit ${url}`)
@@ -43,9 +52,19 @@ async function main() {
       const reportPath = join(resultsPath, getFilenamePrefix(lhr))
       await writeFile(reportPath + '.html', report)
       await writeFile(reportPath + '.json', JSON.stringify(lhr, null, '  '))
+      // TODO: print table with result
       core.endGroup()
+      if (isOverBudget(lhr)) failedUrls.push(url)
     }
     core.setOutput('resultsPath', resultsPath)
+
+    // fail last
+    if (failedUrls.length) {
+      core.setFailed(
+        `Performance budget fails for ${failedUrls.length} URL${failedUrls.length === 1 ? '' : 's'}` +
+          ` (${failedUrls.join(', ')})`
+      )
+    }
   } finally {
     if (chrome) await chrome.kill()
   }
@@ -85,6 +104,13 @@ function getOnlyCategories() {
   return onlyCategories.split(',').map(category => category.trim())
 }
 
+/** @return {object | null} */
+function getBudgets() {
+  const budgetPath = core.getInput('budgetPath')
+  if (!budgetPath) return null
+  return JSON.parse(readFileSync(join(process.cwd(), budgetPath), 'utf8'))
+}
+
 /**
  * Parse flags: https://github.com/GoogleChrome/chrome-launcher/blob/master/docs/chrome-flags-for-tools.md
  * @return {string[]}
@@ -95,4 +121,18 @@ function getChromeFlags() {
   const chromeFlags = core.getInput('chromeFlags')
   if (chromeFlags) flags.push(...chromeFlags.split(' '))
   return flags
+}
+
+/**
+ * Check if the performance budget exceed,
+ * by looking at `sizeOverBudget` at `lhr.audits['performance-budget'].details.items`
+ *
+ * @param {object} lhr
+ * @return {boolean}
+ */
+
+function isOverBudget(lhr) {
+  const perfBudget = lhr.audits['performance-budget']
+  if (!perfBudget.details || !perfBudget.details.items) return false
+  return perfBudget.details.items.some(/** @param {object} item */ item => item.sizeOverBudget)
 }

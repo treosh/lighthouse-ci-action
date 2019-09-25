@@ -1,7 +1,0 @@
-# Meta viewport parser
-
-This library uses the algorithm described in the [W3C CSS Device Adaption specification](http://dev.w3.org/csswg/css-device-adapt/#viewport-meta) to parse the content of a meta viewport declaration.
-
-```html
-<meta name=viewport content="width=device-width">
-```

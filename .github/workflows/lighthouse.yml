@@ -7,20 +7,19 @@ jobs:
       - uses: actions/checkout@v1
       - name: Multiple URLs
         uses: ./
-        continue-on-error: true
         with:
           urls: |
             https://alekseykulikov.com/
             https://alekseykulikov.com/blog
             https://alekseykulikov.com/not-found
           budgetPath: .github/lighthouse/budget.json
+          extraHeaders: '{"x-github-action":"true"}'
       - name: One URL with custom config and options
         uses: ./
-        continue-on-error: true
         with:
           url: 'https://alekseykulikov.com/'
           chromeFlags: '--window-size=1200,800'
-          configPath: .github/lighthouse/desktop-config.json
+          configPath: .github/lighthouse/desktop-config.js
           throttlingMethod: devtools
           onlyCategories: 'performance,seo'
       - name: Upload artifacts

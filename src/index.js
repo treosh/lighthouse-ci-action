@@ -1,3 +1,4 @@
+const { mapKeys } = require('lodash')
 const core = require('@actions/core')
 const lighthouse = require('lighthouse')
 const { getFilenamePrefix } = require('lighthouse/lighthouse-core/lib/file-namer')
@@ -22,9 +23,10 @@ async function main() {
     ...baseConfig,
     settings: {
       ...baseSettings,
-      throttlingMethod: baseSettings.throttlingMethod || core.getInput('throttlingMethod') || 'simulate',
-      onlyCategories: baseSettings.onlyCategories || getOnlyCategories(),
-      budgets: baseSettings.budgets || getBudgets()
+      throttlingMethod: core.getInput('throttlingMethod') || baseSettings.throttlingMethod || 'simulate',
+      onlyCategories: getOnlyCategories() || baseSettings.onlyCategories,
+      budgets: getBudgets() || baseSettings.budgets,
+      extraHeaders: getExtraHeaders() || baseSettings.extraHeaders
     }
   }
   core.startGroup('Lighthouse config')
@@ -122,6 +124,22 @@ function getBudgets() {
   const budgetPath = core.getInput('budgetPath')
   if (!budgetPath) return null
   return JSON.parse(readFileSync(join(process.cwd(), budgetPath), 'utf8'))
+}
+
+/** @return {object | null} */
+function getExtraHeaders() {
+  const extraHeaders = core.getInput('extraHeaders')
+  if (!extraHeaders) return null
+  try {
+    return mapKeys(
+      JSON.parse(extraHeaders || '{}'),
+      /** @param {string} _val @param {string} key */ (_val, key) => key.toLowerCase()
+    )
+  } catch (err) {
+    console.error('Error at parsing extra headers:')
+    console.error(err)
+    return {}
+  }
 }
 
 /**

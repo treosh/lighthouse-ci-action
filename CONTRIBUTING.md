@@ -3,13 +3,19 @@
 First of all, thank you for your interest in `lighthouse-actions`!
 We'd love to accept your patches and contributions!
 
+### Setup
+
 ```bash
 # install deps
 yarn install
 
 # ensure all tests pass
 yarn test
+```
 
+### Local testing
+
+```bash
 # run locally, use INPUT_* notation to pass arguments
 INPUT_URL="https://example.com/" node src/index.js
 
@@ -23,5 +29,10 @@ INPUT_URL="https://example.com/" INPUT_THROTTLINGMETHOD="devtools" INPUT_ONLYCAT
 # fail with budget
 INPUT_URL="https://alekseykulikov.com/" INPUT_BUDGETPATH=".github/lighthouse/budget.json" node src/index.js
 
+# run with custom config
 INPUT_URL="https://example.com/" INPUT_THROTTLINGMETHOD="devtools" INPUT_CONFIGPATH=".github/lighthouse/desktop-config.js" node src/index.js
+
+# debug custom headers
+python script/simple-server.py # start basic server in a separate tab
+INPUT_URL="http://localhost:3000/" INPUT_EXTRAHEADERS="{\"Cookie\":\"monster=blue\",\"x-men\":\"wolverine\"}" node src/index.js # run and see headers output
 ```

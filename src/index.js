@@ -16,12 +16,15 @@ async function main() {
     output: 'html',
     logLevel: 'info'
   }
+  const baseConfig = getConfig()
+  const baseSettings = baseConfig.settings || {}
   const config = {
-    extends: 'lighthouse:default',
+    ...baseConfig,
     settings: {
-      throttlingMethod: core.getInput('throttlingMethod') || 'simulate',
-      onlyCategories: getOnlyCategories(),
-      budgets: getBudgets()
+      ...baseSettings,
+      throttlingMethod: baseSettings.throttlingMethod || core.getInput('throttlingMethod') || 'simulate',
+      onlyCategories: baseSettings.onlyCategories || getOnlyCategories(),
+      budgets: baseSettings.budgets || getBudgets()
     }
   }
   core.startGroup('Lighthouse config')
@@ -95,6 +98,16 @@ function getUrls() {
   if (url) return [url]
   const urls = core.getInput('urls')
   return urls.split('\n').map(url => url.trim())
+}
+
+/** @return {object} */
+function getConfig() {
+  const configPath = core.getInput('configPath')
+  if (configPath) return require(join(process.cwd(), configPath))
+  return {
+    extends: 'lighthouse:default',
+    settings: {}
+  }
 }
 
 /** @return {string[] | null} */

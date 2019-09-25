@@ -22,4 +22,6 @@ INPUT_URL="https://example.com/" INPUT_THROTTLINGMETHOD="devtools" INPUT_ONLYCAT
 
 # fail with budget
 INPUT_URL="https://alekseykulikov.com/" INPUT_BUDGETPATH=".github/lighthouse/budget.json" node src/index.js
+
+INPUT_URL="https://example.com/" INPUT_THROTTLINGMETHOD="devtools" INPUT_CONFIGPATH=".github/lighthouse/desktop-config.js" node src/index.js
 ```

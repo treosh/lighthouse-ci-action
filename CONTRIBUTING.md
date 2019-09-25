@@ -1,6 +1,6 @@
 # How to Contribute
 
-First of all, thank you for your interest in `lighthouse-actions`!
+First of all, thank you for your interest in `treosh/lighthouse-ci-action`!
 We'd love to accept your patches and contributions!
 
 ### Setup

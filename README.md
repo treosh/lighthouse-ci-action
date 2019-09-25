@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - uses: treosh/lighthouse-actions@master
+      - uses: treosh/lighthouse-ci-action@master
         with:
           urls: |
             https://example.com/
@@ -37,5 +37,4 @@ jobs:
 
 Sponsored by [Treo.sh - Page speed monitoring made easy](https://treo.sh).
 
-[![](https://travis-ci.org/treosh/lighthouse-plugin-field-performance.png)](https://travis-ci.org/treosh/lighthouse-plugin-field-performance)
 [![](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)

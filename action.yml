@@ -1,5 +1,5 @@
-name: 'Lighthouse Actions'
-description: 'Run Lighthouse for the list of pages'
+name: 'Lighthouse CI Action'
+description: 'Run Lighthouse in CI using Github Actions'
 inputs:
   url:
     description: 'Page URL'

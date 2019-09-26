@@ -5,9 +5,7 @@
 <img align="center" width="998" alt="Lighthouse CI Action" src="https://user-images.githubusercontent.com/158189/65678706-1a063580-e054-11e9-95dc-a1a9fe13bc6b.png">
 
 Audit many URLs using [Lighthouse](https://developers.google.com/web/tools/lighthouse),
-and test performance budget as a part of your CI pipeline.
-
-This is a [Github Action](https://github.com/features/actions) that simplify the process of configuring Lighthouse, managing results, and testing a performance budget.
+and test performance budget as a part of your CI pipeline. This [Github Action](https://github.com/features/actions) makes running Lighthouse in CI easy, free, and without dependencies.
 
 **Features**:
 
@@ -142,6 +140,33 @@ Learn more about the [budget.json spec](https://github.com/GoogleChrome/budget.j
 budgetPath: .github/lighthouse/budget.json
 ```
 
+### `configPath`
+
+Set a path to a custom [Lighthouse config](https://github.com/GoogleChrome/lighthouse/blob/master/docs/configuration.md) for a full control of Lighthouse enviroment.
+
+```yml
+configPath: ./desktop-config.js
+```
+
+`desktop-config.js`:
+
+```js
+module.exports = {
+  extends: 'lighthouse:default',
+  settings: {
+    emulatedFormFactor: 'desktop',
+    throttling: { rttMs: 40, throughputKbps: 10240, cpuSlowdownMultiplier: 1 },
+    audits: [
+      { path: 'metrics/first-contentful-paint', options: { scorePODR: 800, scoreMedian: 1600 } },
+      { path: 'metrics/first-meaningful-paint', options: { scorePODR: 800, scoreMedian: 1600 } },
+      { path: 'metrics/speed-index', options: { scorePODR: 1100, scoreMedian: 2300 } },
+      { path: 'metrics/interactive', options: { scorePODR: 2000, scoreMedian: 4500 } },
+      { path: 'metrics/first-cpu-idle', options: { scorePODR: 2000, scoreMedian: 4500 } }
+    ]
+  }
+}
+```
+
 ### `throttlingMethod`
 
 Set `devtools`, `simulate`, or `provided` to configure throttling.
@@ -175,34 +200,6 @@ Pass any HTTP header to the Chrome so you can audit authenticate pages or disabl
 
 ```yml
 extraHeaders '{"Cookie":"monster=blue","x-men":"wolverine"}'
-```
-
-### `configPath`
-
-If you need to enable a custom [Lighthouse configuration](https://github.com/GoogleChrome/lighthouse/blob/master/docs/configuration.md),
-pass valid Lighthouse config using `configPath`.
-
-```yml
-configPath: ./desktop-config.js
-```
-
-`desktop-config.js`:
-
-```js
-module.exports = {
-  extends: 'lighthouse:default',
-  settings: {
-    emulatedFormFactor: 'desktop',
-    throttling: { rttMs: 40, throughputKbps: 10240, cpuSlowdownMultiplier: 1 },
-    audits: [
-      { path: 'metrics/first-contentful-paint', options: { scorePODR: 800, scoreMedian: 1600 } },
-      { path: 'metrics/first-meaningful-paint', options: { scorePODR: 800, scoreMedian: 1600 } },
-      { path: 'metrics/speed-index', options: { scorePODR: 1100, scoreMedian: 2300 } },
-      { path: 'metrics/interactive', options: { scorePODR: 2000, scoreMedian: 4500 } },
-      { path: 'metrics/first-cpu-idle', options: { scorePODR: 2000, scoreMedian: 4500 } }
-    ]
-  }
-}
 ```
 
 ---

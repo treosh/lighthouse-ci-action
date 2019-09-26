@@ -1,0 +1,44 @@
+{
+  "name": "intl-messageformat-parser",
+  "version": "1.8.1",
+  "description": "Parses ICU Message strings into an AST via JavaScript.",
+  "main": "index.js",
+  "module": "src/parser.js",
+  "scripts": {
+    "clean": "rimraf dist lib",
+    "build": "./build.js",
+    "benchmark": "./test/benchmark.js",
+    "prepublish": "npm run build",
+    "test": "mocha --opts ../../mocha.opts tests/index.ts"
+  },
+  "contributors": [
+    "Eric Ferraiuolo <eferraiuolo@gmail.com>",
+    "Long Ho <holevietlong@gmail.com>",
+    "Ryuichi Okumura <okuryu@okuryu.com>",
+    "Seth Bertalotto <seth@bertalotto.net>",
+    "Song Seunggeun <giff.song@gmail.com>",
+    "Tobias Bieniek <tobias.bieniek@gmail.com>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/formatjs/formatjs.git"
+  },
+  "keywords": [
+    "i18n",
+    "intl",
+    "internationalization",
+    "localization",
+    "globalization",
+    "messageformat",
+    "parser",
+    "plural",
+    "icu"
+  ],
+  "author": "Eric Ferraiuolo <eferraiuolo@gmail.com>",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/formatjs/formatjs/issues"
+  },
+  "homepage": "https://github.com/formatjs/formatjs",
+  "gitHead": "60ddf374ed659ffe2f3807c3c7df411c80492761"
+}

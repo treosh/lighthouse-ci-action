@@ -1,0 +1,16 @@
+{
+  "name": "lookup-closest-locale",
+  "version": "6.0.4",
+  "description": "Lookup the closest locale from among object keys",
+  "author": "Andy VanWagoner <andy@vanwago.net>",
+  "homepage": "https://github.com/format-message/format-message/tree/master/packages/lookup-closest-locale",
+  "license": "MIT",
+  "repository": "format-message/format-message",
+  "bugs": "https://github.com/format-message/format-message/issues",
+  "keywords": [
+    "i18n",
+    "lookup",
+    "BCP47",
+    "language tag"
+  ]
+}

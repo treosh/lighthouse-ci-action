@@ -1,0 +1,44 @@
+{
+  "author": "Zach Carter <zach@carter.name> (http://zaa.ch)",
+  "name": "jsonlint-mod",
+  "description": "Validate JSON",
+  "keywords": [
+    "json",
+    "validation",
+    "lint",
+    "jsonlint"
+  ],
+  "version": "1.7.5",
+  "preferGlobal": true,
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/circlecell/jsonlint.git"
+  },
+  "bugs": {
+    "url": "http://github.com/circlecell/jsonlint/issues"
+  },
+  "main": "web/jsonlint.js",
+  "bin": {
+    "jsonlint": "lib/cli.js"
+  },
+  "engines": {
+    "node": ">= 0.6"
+  },
+  "dependencies": {
+    "JSV": "^4.0.2",
+    "chalk": "^2.4.2",
+    "underscore": "^1.9.1"
+  },
+  "devDependencies": {
+    "test": "*",
+    "jison": "*",
+    "uglify-js": "*"
+  },
+  "scripts": {
+    "test": "node test/all-tests.js",
+    "bundle": "node scripts/bundle > web/jsonlint.js",
+    "prepublish": "npm run bundle"
+  },
+  "homepage": "http://jsonlint.com",
+  "optionalDependencies": {}
+}

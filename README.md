@@ -4,13 +4,15 @@
 
 <img align="center" width="998" alt="Lighthouse CI Action" src="https://user-images.githubusercontent.com/158189/65678706-1a063580-e054-11e9-95dc-a1a9fe13bc6b.png">
 
-It's a [Github Action](https://github.com/features/actions),
-that simplify usage of [Lighthouse](https://developers.google.com/web/tools/lighthouse) in CI.
+Audit many URLs using [Lighthouse](https://developers.google.com/web/tools/lighthouse),
+and test performance budget as a part of your CI pipeline.
+
+This is a [Github Action](https://github.com/features/actions) that simplify the process of configuring Lighthouse, managing results, and testing a performance budget.
 
 **Features**:
 
 - ✅ Audit URLs using Lighthouse
-- 🎯 Setup performance budget as a part of CI process
+- 🎯 Test performance budget as a part of the build
 - ⚙️ Full control over Lighthouse config
 - 🔍 Detailed output for quick debug
 - 🚀 Fast (less than 3 seconds) action initialization
@@ -18,6 +20,7 @@ that simplify usage of [Lighthouse](https://developers.google.com/web/tools/ligh
 ## Usage
 
 Create `.github/workflows/main.yml` with the list of URLs to audit using lighthouse.
+The results will be stored as a build artifact.
 
 ```yml
 name: Lighthouse Audit
@@ -35,6 +38,11 @@ jobs:
             https://example.com/blog
             https://example.com/pricing
           budgetPath: ./budget.json
+      - name: Save results
+        uses: actions/upload-artifact@master
+        with:
+          name: lighthouse-results
+          path: './results'
 ```
 
 Set `budgetPath` if you need to ensure [performance budget](https://web.dev/use-lighthouse-for-performance-budgets) as a part of CI process.
@@ -59,7 +67,7 @@ Set `budgetPath` if you need to ensure [performance budget](https://web.dev/use-
 ]
 ```
 
-In a more realistic case, first, you will need to run tests and deploy the project on staging, than run Lighthouse audits on the live URLs to ensure the budget. The `.github/workflows/main.yml` config may look like this:
+In a more realistic case, first, you would need to run tests and deploy the project on staging. Than run Lighthouse audits on the live URLs to ensure the budget and collect artifacts. The `.github/workflows/main.yml` config may look like this:
 
 ```yml
 name: CI
@@ -113,9 +121,9 @@ Each URL is audited using the latest version of Lighthouse and Chrome preinstall
 
 ```yml
 urls: |
-https://example.com/
-https://example.com/blog
-https://example.com/pricing
+  https://example.com/
+  https://example.com/blog
+  https://example.com/pricing
 ```
 
 If you need to audit just one URL, use the `url` option:
@@ -130,6 +138,10 @@ Use a performance budget to keep your page size in check. `Lighthouse CI Action`
 
 Learn more about the [budget.json spec](https://github.com/GoogleChrome/budget.json) and [practical use of performance budgets](https://web.dev/use-lighthouse-for-performance-budgets).
 
+```yml
+budgetPath: .github/lighthouse/budget.json
+```
+
 ### `throttlingMethod`
 
 Set `devtools`, `simulate`, or `provided` to configure throttling.
@@ -140,7 +152,7 @@ throttlingMethod: devtools
 
 ### `onlyCategories`
 
-Specify Lighthouse categories to reduce the results output and run audits faster.
+Specify Lighthouse categories to limit the results output and run audits faster.
 
 ```yml
 onlyCategories: [performance]

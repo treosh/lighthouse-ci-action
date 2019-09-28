@@ -180,7 +180,7 @@ throttlingMethod: devtools
 Specify Lighthouse categories to limit the results output and run audits faster.
 
 ```yml
-onlyCategories: [performance]
+onlyCategories: ['performance']
 ```
 
 ### `chromeFlags`

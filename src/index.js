@@ -59,7 +59,10 @@ async function main() {
       await writeFile(reportPath + '.json', JSON.stringify(lhr, null, '  '))
       // TODO: print table with result
       core.endGroup()
-      if (isOverBudget(lhr)) failedUrls.push(url)
+      const perfBudget = lhr.audits['performance-budget']
+      if (perfBudget !== undefined) {
+        if (isOverBudget(lhr)) failedUrls.push(url)
+      }
     }
     core.setOutput('resultsPath', resultsPath)
 

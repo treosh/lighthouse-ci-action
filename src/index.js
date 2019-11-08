@@ -1,4 +1,3 @@
-const { mapKeys } = require('lodash')
 const core = require('@actions/core')
 const lighthouse = require('lighthouse')
 const { getFilenamePrefix } = require('lighthouse/lighthouse-core/lib/file-namer')
@@ -132,18 +131,19 @@ function getBudgets() {
 /** @return {object | null} */
 function getExtraHeaders() {
   const extraHeaders = core.getInput('extraHeaders')
-  if (!extraHeaders) return null
-  try {
-    return mapKeys(
-      JSON.parse(extraHeaders || '{}'),
-      /** @param {string} _val @param {string} key */ (_val, key) => key.toLowerCase()
-    )
-  } catch (err) {
-    console.error('Error at parsing extra headers:')
-    console.error(err)
-    return {}
+    try {
+      const headers = JSON.parse(extraHeaders || "{}");
+      
+      return Object.keys(headers).reduce( /** @param {any} obj @param {string} key */ (obj, key) => {
+        obj[key.toLowerCase()] = headers[key];
+        return obj;
+      }, {});
+    } catch (err) {
+      console.error("Error at parsing extra headers:");
+      console.error(err);
+      return {};
+    }
   }
-}
 
 /**
  * Parse flags: https://github.com/GoogleChrome/chrome-launcher/blob/master/docs/chrome-flags-for-tools.md

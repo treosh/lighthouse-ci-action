@@ -115,9 +115,9 @@ function getUrls() {
  */
 function interpolateProcessIntoURLs(urls) {
   return urls.map(url => {
-    if(!url.includes("$")) return url;
+    if (!url.includes('$')) return url
     Object.keys(process.env).forEach(key => {
-      if(url.includes(`${key}`)) {
+      if (url.includes(`${key}`)) {
         url = url.replace(`$${key}`, `${process.env[key]}`)
       }
     })

@@ -151,19 +151,22 @@ function getBudgets() {
 /** @return {object | null} */
 function getExtraHeaders() {
   const extraHeaders = core.getInput('extraHeaders')
-    try {
-      const headers = JSON.parse(extraHeaders || "{}");
-      
-      return Object.keys(headers).reduce( /** @param {any} obj @param {string} key */ (obj, key) => {
-        obj[key.toLowerCase()] = headers[key];
-        return obj;
-      }, {});
-    } catch (err) {
-      console.error("Error at parsing extra headers:");
-      console.error(err);
-      return {};
-    }
+  try {
+    const headers = JSON.parse(extraHeaders || '{}')
+
+    return Object.keys(headers).reduce(
+      /** @param {any} obj @param {string} key */ (obj, key) => {
+        obj[key.toLowerCase()] = headers[key]
+        return obj
+      },
+      {}
+    )
+  } catch (err) {
+    console.error('Error at parsing extra headers:')
+    console.error(err)
+    return {}
   }
+}
 
 /**
  * Parse flags: https://github.com/GoogleChrome/chrome-launcher/blob/master/docs/chrome-flags-for-tools.md

@@ -11,7 +11,9 @@ const { readFileSync } = require('fs')
 // audit urls with Lighthouse
 
 async function main() {
-  const urls = getUrls()
+  const unprocessedURLs = getUrls()
+  const urls = interpolateProcessIntoURLs(unprocessedURLs)
+
   const resultsPath = join(process.cwd(), 'results')
   const flags = {
     output: 'html',
@@ -103,6 +105,24 @@ function getUrls() {
   if (url) return [url]
   const urls = core.getInput('urls')
   return urls.split('\n').map(url => url.trim())
+}
+
+/**
+ * Takes a set of URL strings and interpolates
+ * any declared ENV vars into them
+ * @param {string[]} urls
+ * @return {string[]}
+ */
+function interpolateProcessIntoURLs(urls) {
+  return urls.map(url => {
+    if(!url.includes("$")) return url;
+    Object.keys(process.env).forEach(key => {
+      if(url.includes(`${key}`)) {
+        url = url.replace(`$${key}`, `${process.env[key]}`)
+      }
+    })
+    return url
+  })
 }
 
 /** @return {object} */

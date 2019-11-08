@@ -130,6 +130,19 @@ If you need to audit just one URL, use the `url` option:
 url: https://example.com/
 ```
 
+URLs support interpolation of process env vars, so you can write URLs like:
+
+```yml
+- name: Run Lighthouse and test budgets
+    uses: treosh/lighthouse-ci-action@v1
+    with:
+      urls: |
+        https://pr-$PR_NUMBER.staging-example.com/
+        https://pr-$PR_NUMBER.staging-example.com/blog
+      env:
+        PR_NUMBER: ${{ github.event.pull_request.number }}
+```
+
 ### `budgetPath`
 
 Use a performance budget to keep your page size in check. `Lighthouse CI Action` will fail the build if one of the URLs exceed the budget.
@@ -142,7 +155,7 @@ budgetPath: .github/lighthouse/budget.json
 
 ### `configPath`
 
-Set a path to a custom [Lighthouse config](https://github.com/GoogleChrome/lighthouse/blob/master/docs/configuration.md) for a full control of Lighthouse enviroment.
+Set a path to a custom [Lighthouse config](https://github.com/GoogleChrome/lighthouse/blob/master/docs/configuration.md) for a full control of Lighthouse environment.
 
 ```yml
 configPath: ./desktop-config.js

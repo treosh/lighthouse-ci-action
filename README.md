@@ -1,14 +1,5 @@
 # Lighthouse CI Action
 
-<!-- TODO(exterkamp): prior to merge replace
-
-https://github.com/exterkamp/lighthouse-ci-action/actions?workflow=LHCI-upload-to-private-server
-
--with->
-
-https://github.com/treosh/lighthouse-ci-action/actions?workflow=LHCI-upload-to-private-server
--->
-
 > Run Lighthouse in CI using Github Actions.
 
 <img align="center" width="998" alt="Lighthouse CI Action" src="https://user-images.githubusercontent.com/6392995/68525187-e8ec6800-0283-11ea-8e9e-195802366522.png">
@@ -71,7 +62,7 @@ Link to `temporary-public-storage`:
 > `temporary-public-storage` when a `lhci_server` is not specified, in order to
 > opt out, send the `disable_temporary_public_storage` parameter.
 
-[⚙️ See this workflow in use!](https://github.com/exterkamp/lighthouse-ci-action/actions?workflow=LHCI-multiple-urls)
+[⚙️ See this workflow in use!](https://github.com/treosh/lighthouse-ci-action/actions?workflow=LHCI-multiple-urls)
 
 ## Inputs
 
@@ -210,7 +201,7 @@ Make a `budget.json` file with [budgets syntax](https://web.dev/use-lighthouse-f
 
 <img align="center" width="998" alt="Lighthouse CI Action" src="https://user-images.githubusercontent.com/6392995/68525270-cc046480-0284-11ea-9477-af32fce1e5a2.png">
 
-[⚙️ See this workflow in use!](https://github.com/exterkamp/lighthouse-ci-action/actions?workflow=LHCI-assert-on-budget)
+[⚙️ See this workflow in use!](https://github.com/treosh/lighthouse-ci-action/actions?workflow=LHCI-assert-on-budget)
 
 ### Asserting Against LHCI lighthouserc
 
@@ -254,7 +245,7 @@ Make a `lighthouserc.json` file with [LHCI assertion syntax](https://github.com/
 
 <img align="center" width="998" alt="Lighthouse CI Action" src="https://user-images.githubusercontent.com/6392995/68525259-b42ce080-0284-11ea-9fe5-75fbe20853d9.png">
 
-[⚙️ See this workflow in use!](https://github.com/exterkamp/lighthouse-ci-action/actions?workflow=LHCI-assert-on-lighthouserc)
+[⚙️ See this workflow in use!](https://github.com/treosh/lighthouse-ci-action/actions?workflow=LHCI-assert-on-lighthouserc)
 
 ### Uploading to a LHCI Server
 
@@ -286,7 +277,7 @@ jobs:
 
 <img align="center" width="998" alt="Lighthouse CI Action" src="https://user-images.githubusercontent.com/6392995/68525219-4c769580-0284-11ea-8407-9f2ea89ae845.png">
 
-[⚙️ See this workflow in use!](https://github.com/exterkamp/lighthouse-ci-action/actions?workflow=LHCI-upload-to-private-server)
+[⚙️ See this workflow in use!](https://github.com/treosh/lighthouse-ci-action/actions?workflow=LHCI-upload-to-private-server)
 
 ### Using Custom Config & Chrome Flags
 
@@ -362,7 +353,7 @@ module.exports = {
 }
 ```
 
-[⚙️ See this workflow in use!](https://github.com/exterkamp/lighthouse-ci-action/actions?workflow=LHCI-hermetic-advanced)
+[⚙️ See this workflow in use!](https://github.com/treosh/lighthouse-ci-action/actions?workflow=LHCI-hermetic-advanced)
 
 ### Using a Static Dist Dir
 
@@ -391,7 +382,7 @@ against each of them. More details on this process are in the [Lighthouse CI doc
 
 <img align="center" width="998" alt="Lighthouse CI Action" src="https://user-images.githubusercontent.com/6392995/68525233-6b752780-0284-11ea-832c-e662a099e2ca.png">
 
-[⚙️ See this workflow in use!](https://github.com/exterkamp/lighthouse-ci-action/actions?workflow=LHCI-static-dist-dir)
+[⚙️ See this workflow in use!](https://github.com/treosh/lighthouse-ci-action/actions?workflow=LHCI-static-dist-dir)
 
 ---
 
@@ -401,5 +392,5 @@ Sponsored by [Treo.sh - Page speed monitoring made easy](https://treo.sh) and [G
 
 <!-- TODO(exterkamp): change back to main on PR -->
 
-[![](https://github.com/exterkamp/lighthouse-ci-action/workflows/CI/badge.svg)](https://github.com/exterkamp/lighthouse-ci-action/actions?workflow=CI)
+[![](https://github.com/exterkamp/lighthouse-ci-action/workflows/CI/badge.svg)](https://github.com/treosh/lighthouse-ci-action/actions?workflow=CI)
 [![](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)

@@ -12,8 +12,7 @@
   },
   "dependencies": {
     "@actions/core": "^1.1.1",
-    "@lhci/cli": "0.3.0-alpha.0",
-    "fs-extra": "^8.1.0"
+    "@lhci/cli": "0.3.0-alpha.0"
   },
   "devDependencies": {
     "@types/fs-extra": "^8.0.0",

@@ -1360,44 +1360,6 @@ lighthouse@5.5.0:
     yargs "3.32.0"
     yargs-parser "7.0.0"
 
-lighthouse@^5.4.0:
-  version "5.4.0"
-  resolved "https://registry.yarnpkg.com/lighthouse/-/lighthouse-5.4.0.tgz#e5896e86d7fa954658c31c3b4ccc34f094815ef2"
-  integrity sha512-zVRXTK6uTqYPGEJgcjFIfHzJGjtADMnsSfnFkOaKv6tCUdSyPT4Oo9h8sYanUy1ffxTBEZHQXyKxEfhMyw5bzA==
-  dependencies:
-    axe-core "3.3.0"
-    chrome-launcher "^0.11.2"
-    configstore "^3.1.1"
-    cssstyle "1.2.1"
-    details-element-polyfill "^2.4.0"
-    http-link-header "^0.8.0"
-    inquirer "^3.3.0"
-    intl "^1.2.5"
-    intl-messageformat "^4.4.0"
-    intl-pluralrules "^1.0.3"
-    jpeg-js "0.1.2"
-    js-library-detector "^5.4.0"
-    jsonld "^1.5.0"
-    jsonlint-mod "^1.7.5"
-    lighthouse-logger "^1.2.0"
-    lodash.isequal "^4.5.0"
-    lodash.set "^4.3.2"
-    lookup-closest-locale "6.0.4"
-    metaviewport-parser "0.2.0"
-    mkdirp "0.5.1"
-    open "^6.4.0"
-    parse-cache-control "1.0.1"
-    raven "^2.2.1"
-    rimraf "^2.6.1"
-    robots-parser "^2.0.1"
-    semver "^5.3.0"
-    speedline-core "1.4.2"
-    third-party-web "^0.8.2"
-    update-notifier "^2.5.0"
-    ws "3.3.2"
-    yargs "3.32.0"
-    yargs-parser "7.0.0"
-
 locate-path@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/locate-path/-/locate-path-3.0.0.tgz#dbec3b3ab759758071b58fe59fc41871af21400e"
@@ -1416,7 +1378,7 @@ lodash.set@^4.3.2:
   resolved "https://registry.yarnpkg.com/lodash.set/-/lodash.set-4.3.2.tgz#d8757b1da807dde24816b0d6a84bea1a76230b23"
   integrity sha1-2HV7HagH3eJIFrDWqEvqGnYjCyM=
 
-lodash@^4.17.12, lodash@^4.17.15, lodash@^4.3.0:
+lodash@^4.17.12, lodash@^4.3.0:
   version "4.17.15"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
   integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==

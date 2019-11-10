@@ -5,10 +5,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - name: Use node 12
+      - name: Use node 10
         uses: actions/setup-node@v1
         with:
-          node-version: '12.x'
+          node-version: '10.x'
       - name: Install and test
         run: |
           yarn install

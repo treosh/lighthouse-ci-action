@@ -5,13 +5,14 @@
   "description": "Run Lighthouse in CI using Github Actions",
   "repository": "treosh/lighthouse-ci-action",
   "engines": {
-    "node": "12"
+    "node": "10"
   },
   "scripts": {
     "test": "prettier -c src/** package.json README.md && tsc -p ."
   },
   "dependencies": {
     "@actions/core": "^1.1.1",
+    "@lhci/cli": "0.3.0-alpha.0",
     "fs-extra": "^8.1.0",
     "lighthouse": "^5.4.0",
     "lodash": "^4.17.15"

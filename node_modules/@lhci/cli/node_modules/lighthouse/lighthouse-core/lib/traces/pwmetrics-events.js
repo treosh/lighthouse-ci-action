@@ -1,0 +1,203 @@
+/**
+ * @license Copyright 2017 Google Inc. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ */
+'use strict';
+
+const log = require('lighthouse-logger');
+
+/** @typedef {import('../../audits/metrics.js').UberMetricsItem} UberMetricsItem */
+
+/**
+ * @param {LH.Audit.Results} auditResults
+ * @return {UberMetricsItem|undefined}
+ */
+function getUberMetrics(auditResults) {
+  const metricsAudit = auditResults.metrics;
+  if (!metricsAudit || !metricsAudit.details || !('items' in metricsAudit.details)) return;
+
+  return metricsAudit.details.items[0];
+}
+
+class Metrics {
+  /**
+   * @param {Array<LH.TraceEvent>} traceEvents
+   * @param {LH.Audit.Results} auditResults
+   */
+  constructor(traceEvents, auditResults) {
+    this._traceEvents = traceEvents;
+    this._auditResults = auditResults;
+  }
+
+  /**
+   * Returns simplified representation of all metrics
+   * @return {Array<{id: string, name: string, tsKey: keyof UberMetricsItem}>} metrics to consider
+   */
+  static get metricsDefinitions() {
+    return [
+      {
+        name: 'Navigation Start',
+        id: 'navstart',
+        tsKey: 'observedNavigationStartTs',
+      },
+      {
+        name: 'First Contentful Paint',
+        id: 'ttfcp',
+        tsKey: 'observedFirstContentfulPaintTs',
+      },
+      {
+        name: 'First Meaningful Paint',
+        id: 'ttfmp',
+        tsKey: 'observedFirstMeaningfulPaintTs',
+      },
+      {
+        name: 'Speed Index',
+        id: 'si',
+        tsKey: 'observedSpeedIndexTs',
+      },
+      {
+        name: 'First Visual Change',
+        id: 'fv',
+        tsKey: 'observedFirstVisualChangeTs',
+      },
+      {
+        name: 'Visually Complete 100%',
+        id: 'vc100',
+        tsKey: 'observedLastVisualChangeTs',
+      },
+      {
+        name: 'First CPU Idle',
+        id: 'ttfi',
+        tsKey: 'firstCPUIdleTs',
+      },
+      {
+        name: 'Interactive',
+        id: 'tti',
+        tsKey: 'interactiveTs',
+      },
+      {
+        name: 'End of Trace',
+        id: 'eot',
+        tsKey: 'observedTraceEndTs',
+      },
+      {
+        name: 'On Load',
+        id: 'onload',
+        tsKey: 'observedLoadTs',
+      },
+      {
+        name: 'DOM Content Loaded',
+        id: 'dcl',
+        tsKey: 'observedDomContentLoadedTs',
+      },
+    ];
+  }
+
+  /**
+   * Returns simplified representation of all metrics' timestamps from monotonic clock
+   * @return {Array<{ts: number, id: string, name: string}>} metrics to consider
+   */
+  gatherMetrics() {
+    const uberMetrics = getUberMetrics(this._auditResults);
+    if (!uberMetrics) {
+      return [];
+    }
+
+    /** @type {Array<{ts: number, id: string, name: string}>} */
+    const resolvedMetrics = [];
+    Metrics.metricsDefinitions.forEach(metric => {
+      // Skip if auditResults is missing a particular audit result
+      const ts = uberMetrics[metric.tsKey];
+      if (ts === undefined) {
+        log.error('pwmetrics-events', `${metric.name} timestamp not found`);
+        return;
+      }
+
+      resolvedMetrics.push({
+        id: metric.id,
+        name: metric.name,
+        ts,
+      });
+    });
+
+    return resolvedMetrics;
+  }
+
+  /**
+   * Get the full trace event for our navigationStart
+   * @param {Array<{ts: number, id: string, name: string}>} metrics
+   * @return {LH.TraceEvent|undefined}
+   */
+  getNavigationStartEvt(metrics) {
+    const navStartMetric = metrics.find(e => e.id === 'navstart');
+    if (!navStartMetric) return;
+    return this._traceEvents.find(
+      e => e.name === 'navigationStart' && e.ts === navStartMetric.ts
+    );
+  }
+
+  /**
+   * Constructs performance.measure trace events, which have start/end events as follows:
+   *     { "pid": 89922,"tid":1295,"ts":77176783452,"ph":"b","cat":"blink.user_timing","name":"innermeasure","args":{},"tts":1257886,"id":"0xe66c67"}
+   *     { "pid": 89922,"tid":1295,"ts":77176882592,"ph":"e","cat":"blink.user_timing","name":"innermeasure","args":{},"tts":1257898,"id":"0xe66c67"}
+   * @param {{ts: number, id: string, name: string}} metric
+   * @param {LH.TraceEvent} navigationStartEvt
+   * @return {Array<LH.TraceEvent>} Pair of trace events (start/end)
+   */
+  synthesizeEventPair(metric, navigationStartEvt) {
+    // We'll masquerade our fake events to look mostly like navigationStart
+    const eventBase = {
+      pid: navigationStartEvt.pid,
+      tid: navigationStartEvt.tid,
+      cat: 'blink.user_timing',
+      name: metric.name,
+      args: {},
+      // randomized id is same for the pair
+      id: `0x${((Math.random() * 1000000) | 0).toString(16)}`,
+    };
+    const fakeMeasureStartEvent = Object.assign({}, eventBase, {
+      ts: navigationStartEvt.ts,
+      ph: 'b',
+    });
+    const fakeMeasureEndEvent = Object.assign({}, eventBase, {
+      ts: metric.ts,
+      ph: 'e',
+    });
+    return /** @type {Array<LH.TraceEvent>} */ ([fakeMeasureStartEvent, fakeMeasureEndEvent]);
+  }
+
+  /**
+   * @return {Array<LH.TraceEvent>} User timing raw trace event pairs
+   */
+  generateFakeEvents() {
+    const metrics = this.gatherMetrics();
+    if (metrics.length === 0) {
+      log.error('metrics-events', 'Metrics collection had errors, not synthetizing trace events');
+      return [];
+    }
+
+    const navigationStartEvt = this.getNavigationStartEvt(metrics);
+    if (!navigationStartEvt) {
+      log.error('pwmetrics-events', 'Reference navigationStart not found');
+      return [];
+    }
+
+    /** @type {Array<LH.TraceEvent>} */
+    const fakeEvents = [];
+    metrics.forEach(metric => {
+      if (metric.id === 'navstart') {
+        return;
+      }
+      if (!metric.ts) {
+        log.error('pwmetrics-events', `(${metric.name}) missing timestamp. Skipping…`);
+        return;
+      }
+      log.verbose('pwmetrics-events', `Sythesizing trace events for ${metric.name}`);
+      fakeEvents.push(...this.synthesizeEventPair(metric, navigationStartEvt));
+    });
+    return fakeEvents;
+  }
+}
+
+module.exports = Metrics;

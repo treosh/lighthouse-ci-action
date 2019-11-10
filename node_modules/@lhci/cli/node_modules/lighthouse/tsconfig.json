@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "noEmit": true,
+    "module": "commonjs",
+    "target": "ES2017",
+    "allowJs": true,
+    "checkJs": true,
+    "strict": true,
+    // "listFiles": true,
+    // "noErrorTruncation": true,
+
+    "resolveJsonModule": true,
+    "diagnostics": true
+  },
+  "include": [
+    "lighthouse-cli/**/*.js",
+    "lighthouse-core/**/*.js",
+    "clients/**/*.js",
+    "build/**/*.js",
+    "./types/**/*.d.ts",
+    "eslint-local-rules.js",
+  ],
+  "exclude": [
+    "lighthouse-core/test/**/*.js",
+    "clients/test/**/*.js",
+    "lighthouse-cli/test/fixtures/**/*.js",
+  ]
+}

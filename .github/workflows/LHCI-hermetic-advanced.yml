@@ -1,0 +1,20 @@
+name: LHCI-hermetic-advanced
+on: push
+jobs:
+  # This is an advanced fully hermetic run of Lighthouse, using custom config.
+  hermetic-advanced:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Run Lighthouse on urls with lighthouserc
+        uses: ./
+        with:
+          urls: 'https://alekseykulikov.com/'
+          rc_path: '.github/lighthouse/lighthouserc_custom_config.json'
+          runs: 1
+          disable_temporary_public_storage: true
+      - name: Save .lighthouseci artifacts
+        uses: actions/upload-artifact@v1
+        with:
+          name: advanced-hermetic-artifacts
+          path: '.lighthouseci'

@@ -17,22 +17,28 @@ yarn test
 
 ```bash
 # run locally, use INPUT_* notation to pass arguments
-INPUT_URL="https://example.com/" node src/index.js
+INPUT_URLS="https://example.com/" node src/index.js
 
 # run many urls
 INPUT_URLS="https://alekseykulikov.com/
  https://alekseykulikov.com/blog" node src/index.js
 
-# run with extra inputs
-INPUT_URL="https://example.com/" INPUT_THROTTLINGMETHOD="devtools" INPUT_ONLYCATEGORIES="performance,seo" INPUT_CHROMEFLAGS="--window-size=1200,800 --single-process" node src/index.js
-
 # fail with budget
-INPUT_URL="https://alekseykulikov.com/" INPUT_BUDGETPATH=".github/lighthouse/budget.json" node src/index.js
+INPUT_URLS="https://alekseykulikov.com/" INPUT_BUDGET_PATH=".github/lighthouse/impossible_budget.json" INPUT_RUNS="1" node src/index.js
+
+# fail with assertions
+INPUT_URLS="https://alekseykulikov.com/" INPUT_RC_PATH=".github/lighthouse/lighthouserc_assertions.json" INPUT_RUNS="1" node src/index.js
 
 # run with custom config
-INPUT_URL="https://example.com/" INPUT_THROTTLINGMETHOD="devtools" INPUT_CONFIGPATH=".github/lighthouse/desktop-config.js" node src/index.js
+INPUT_URLS="https://alekseykulikov.com/" INPUT_RC_PATH=".github/lighthouse/lighthouserc_custom_config.json" INPUT_RUNS="1" node src/index.js
+
+# run with Chrome flags
+INPUT_URLS="https://alekseykulikov.com/" INPUT_RC_PATH=".github/lighthouse/lighthouserc_chrome_flags.json" INPUT_RUNS="1" node src/index.js
 
 # debug custom headers
 python script/simple-server.py # start basic server in a separate tab
-INPUT_URL="http://localhost:3000/" INPUT_EXTRAHEADERS="{\"Cookie\":\"monster=blue\",\"x-men\":\"wolverine\"}" node src/index.js # run and see headers output
+INPUT_URLS="https://alekseykulikov.com/" INPUT_RC_PATH=".github/lighthouse/lighthouserc_extra_headers.json" INPUT_RUNS="1" node src/index.js # run and see headers output
+
+# run with a static dist dir
+INPUT_STATIC_DIST_DIR="./dist" INPUT_RUNS="1" node src/index.js
 ```

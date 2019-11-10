@@ -1,0 +1,13 @@
+name: LHCI-static-dist-dir
+on: push
+jobs:
+  # This is a run that targets static files using static-dist-dir.
+  static-dist-dir:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Run Lighthouse against a static dist dir
+        uses: ./
+        with:
+          static_dist_dir: './dist'
+          runs: 1

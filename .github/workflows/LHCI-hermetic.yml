@@ -1,0 +1,18 @@
+name: LHCI-hermetic
+on: push
+jobs:
+  # This is a basic fully hermetic run of Lighthouse.
+  hermetic-basic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Run Lighthouse on urls
+        uses: ./
+        with:
+          urls: 'https://alekseykulikov.com/'
+          disable_temporary_public_storage: true
+      - name: Save .lighthouseci artifacts
+        uses: actions/upload-artifact@v1
+        with:
+          name: basic-hermetic-artifacts
+          path: '.lighthouseci'

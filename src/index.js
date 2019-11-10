@@ -1,172 +1,105 @@
-const { mapKeys } = require('lodash')
 const core = require('@actions/core')
-const lighthouse = require('lighthouse')
-const { getFilenamePrefix } = require('lighthouse/lighthouse-core/lib/file-namer')
-const chromeLauncher = require('chrome-launcher')
-const { ensureDir } = require('fs-extra')
-const { join } = require('path')
-const { writeFile } = require('fs').promises
-const { readFileSync } = require('fs')
+const childProcess = require('child_process')
+const lhciCliPath = require.resolve('@lhci/cli/src/cli.js')
+const input = require('./input.js')
 
-// audit urls with Lighthouse
-
+// audit urls with Lighthouse CI
 async function main() {
-  const urls = getUrls()
-  const resultsPath = join(process.cwd(), 'results')
-  const flags = {
-    output: 'html',
-    logLevel: 'info'
-  }
-  const baseConfig = getConfig()
-  const baseSettings = baseConfig.settings || {}
-  const config = {
-    ...baseConfig,
-    settings: {
-      ...baseSettings,
-      throttlingMethod: core.getInput('throttlingMethod') || baseSettings.throttlingMethod || 'simulate',
-      onlyCategories: getOnlyCategories() || baseSettings.onlyCategories,
-      budgets: getBudgets() || baseSettings.budgets,
-      extraHeaders: getExtraHeaders() || baseSettings.extraHeaders
+  core.startGroup('Action config')
+  console.log('Input args:', input)
+  core.endGroup() // Action config
+
+  /*******************************COLLECTING***********************************/
+  core.startGroup(`Collecting`)
+  let args = []
+
+  if (input.staticDistDir) {
+    args.push(`--static-dist-dir=${input.staticDistDir}`)
+  } else if (input.urls) {
+    for (const url of input.urls) {
+      args.push(`--url=${url}`)
     }
   }
-  core.startGroup('Lighthouse config')
-  console.log('urls: %s', urls)
-  console.log('config: %s', JSON.stringify(config, null, '  '))
-  core.endGroup()
+  // else LHCI will panic with a non-zero exit code...
 
-  let chrome = null
-  try {
-    core.startGroup('Launch Chrome')
-    /** @type {import('chrome-launcher').Options} */
-    const chromeOpts = {
-      port: 9222,
-      logLevel: 'info',
-      chromeFlags: getChromeFlags()
+  if (input.rcCollect) {
+    args.push(`--rc-file=${input.rcPath}`)
+    // This should only happen in local testing, when the default is not sent
+  } else if (input.numberOfRuns) {
+    args.push(`--numberOfRuns=${input.numberOfRuns}`)
+  }
+  // else, no args and will default to 3 in LHCI.
+
+  let status = await runChildCommand('collect', args)
+  if (status !== 0) {
+    throw new Error(`LHCI 'collect' has encountered a problem.`)
+  }
+  core.endGroup() // Collecting
+
+  /*******************************ASSERTING************************************/
+  if (input.budgetPath || input.rcAssert) {
+    core.startGroup(`Asserting`)
+    args = []
+
+    if (input.budgetPath) {
+      args.push(`--budgetsFile=${input.budgetPath}`)
+    } else {
+      // @ts-ignore checked this already
+      args.push(`--rc-file=${input.rcPath}`)
     }
-    console.log('Chrome launch options: %j', chromeOpts)
-    chrome = await chromeLauncher.launch(chromeOpts)
-    core.endGroup()
 
-    /** @type {string[]} */
-    const failedUrls = []
+    status = await runChildCommand('assert', args)
 
-    await ensureDir(resultsPath)
-    for (const url of urls) {
-      core.startGroup(`Audit ${url}`)
-      const { report, lhr } = await lighthouse(url, { ...flags, port: chrome.port }, config)
-      const reportPath = join(resultsPath, getFilenamePrefix(lhr))
-      await writeFile(reportPath + '.html', report)
-      await writeFile(reportPath + '.json', JSON.stringify(lhr, null, '  '))
-      // TODO: print table with result
-      core.endGroup()
-      const perfBudget = lhr.audits['performance-budget']
-      if (perfBudget !== undefined) {
-        if (isOverBudget(lhr)) failedUrls.push(url)
-      }
+    if (status !== 0) {
+      // TODO(exterkamp): Output what urls failed and record a nice rich error.
+      core.setFailed(`Assertions have failed.`)
+      // continue
     }
-    core.setOutput('resultsPath', resultsPath)
+    core.endGroup() // Asserting
+  }
+  /*******************************UPLOADING************************************/
+  if ((input.lhciServer && input.apiToken) || input.canUpload) {
+    core.startGroup(`Uploading`)
+    args = []
 
-    // fail last
-    if (failedUrls.length) {
-      core.setFailed(
-        `Performance budget fails for ${failedUrls.length} URL${failedUrls.length === 1 ? '' : 's'}` +
-          ` (${failedUrls.join(', ')})`
-      )
+    if (input.lhciServer) {
+      args.push('--target=lhci', `--serverBaseUrl=${input.lhciServer}`, `--token=${input.apiToken}`)
+    } else {
+      args.push('--target=temporary-public-storage')
     }
-  } finally {
-    if (chrome) await chrome.kill()
+
+    status = await runChildCommand('upload', args)
+
+    if (status !== 0) {
+      throw new Error(`LHCI 'upload' has encountered a problem.`)
+    }
+    core.endGroup() // Uploading
   }
 }
 
 // run `main()`
-
 main()
   .catch(
     /** @param {Error} err */ err => {
       core.setFailed(err.message)
-      process.exit(1)
     }
   )
   .then(() => {
     console.log(`done in ${process.uptime()}s`)
-    process.exit()
   })
 
 /**
- * Get urls from `url` or `urls`
+ * Run a child command synchronously.
  *
- * @return {string[]}
+ * @param {'collect'|'assert'|'upload'} command
+ * @param {string[]} [args]
+ * @return {number}
  */
+function runChildCommand(command, args = []) {
+  const combinedArgs = [lhciCliPath, command, ...args]
+  const { status = -1 } = childProcess.spawnSync(process.argv[0], combinedArgs, {
+    stdio: 'inherit'
+  })
 
-function getUrls() {
-  const url = core.getInput('url')
-  if (url) return [url]
-  const urls = core.getInput('urls')
-  return urls.split('\n').map(url => url.trim())
-}
-
-/** @return {object} */
-function getConfig() {
-  const configPath = core.getInput('configPath')
-  if (configPath) return require(join(process.cwd(), configPath))
-  return {
-    extends: 'lighthouse:default',
-    settings: {}
-  }
-}
-
-/** @return {string[] | null} */
-function getOnlyCategories() {
-  const onlyCategories = core.getInput('onlyCategories')
-  if (!onlyCategories) return null
-  return onlyCategories.split(',').map(category => category.trim())
-}
-
-/** @return {object | null} */
-function getBudgets() {
-  const budgetPath = core.getInput('budgetPath')
-  if (!budgetPath) return null
-  return JSON.parse(readFileSync(join(process.cwd(), budgetPath), 'utf8'))
-}
-
-/** @return {object | null} */
-function getExtraHeaders() {
-  const extraHeaders = core.getInput('extraHeaders')
-  if (!extraHeaders) return null
-  try {
-    return mapKeys(
-      JSON.parse(extraHeaders || '{}'),
-      /** @param {string} _val @param {string} key */ (_val, key) => key.toLowerCase()
-    )
-  } catch (err) {
-    console.error('Error at parsing extra headers:')
-    console.error(err)
-    return {}
-  }
-}
-
-/**
- * Parse flags: https://github.com/GoogleChrome/chrome-launcher/blob/master/docs/chrome-flags-for-tools.md
- * @return {string[]}
- */
-
-function getChromeFlags() {
-  const flags = ['--headless', '--disable-gpu', '--no-sandbox', '--no-zygote']
-  const chromeFlags = core.getInput('chromeFlags')
-  if (chromeFlags) flags.push(...chromeFlags.split(' '))
-  return flags
-}
-
-/**
- * Check if the performance budget exceed,
- * by looking at `sizeOverBudget` at `lhr.audits['performance-budget'].details.items`
- *
- * @param {object} lhr
- * @return {boolean}
- */
-
-function isOverBudget(lhr) {
-  const perfBudget = lhr.audits['performance-budget']
-  if (!perfBudget.details || !perfBudget.details.items) return false
-  return perfBudget.details.items.some(/** @param {object} item */ item => item.sizeOverBudget)
+  return status || 0
 }

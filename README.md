@@ -96,6 +96,8 @@ urls: |
 
 Specify the number of runs to do on each URL. Default: `1`.
 
+> Note: Asserting against a single run can lead to flaky VM's making flaky assertions.
+
 ```yml
 runs: 3
 ```
@@ -127,7 +129,7 @@ configPath: ./lighthouserc.json
 
 #### `temporaryPublicStorage`
 
-This will opt-in to the default upload to `temporary-public-storage`. You can
+This will opt-in to upload reports `temporary-public-storage`. You can
 find out more about `temporary-public-storage` in the [LHCI repo](https://github.com/GoogleChrome/lighthouse-ci/blob/master/docs/cli.md#upload).
 
 ```yml

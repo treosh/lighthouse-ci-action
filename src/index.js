@@ -31,7 +31,7 @@ async function main() {
     args.push(`--numberOfRuns=${input.numberOfRuns}`)
   }
   // else, no args and will default to 3 in LHCI.
-  console.log(args)
+
   let status = await runChildCommand('collect', args)
   if (status !== 0) {
     throw new Error(`LHCI 'collect' has encountered a problem.`)

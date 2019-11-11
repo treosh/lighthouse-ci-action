@@ -22,7 +22,8 @@ const UIStrings = {
   failureTitle: 'Minimize main-thread work',
   /** Description of a Lighthouse audit that tells the user *why* they should reduce JS execution times. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
   description: 'Consider reducing the time spent parsing, compiling and executing JS. ' +
-    'You may find delivering smaller JS payloads helps with this.',
+    'You may find delivering smaller JS payloads helps with this. ' +
+    '[Learn more](https://web.dev/mainthread-work-breakdown)',
   /** Label for the Main Thread Category column in data tables, rows will have a main thread Category and main thread Task Name. */
   columnCategory: 'Category',
 };

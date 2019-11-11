@@ -253,6 +253,10 @@ const ERRORS = {
     code: 'NO_FMP',
     message: UIStrings.badTraceRecording,
   },
+  NO_LCP: {
+    code: 'NO_LCP',
+    message: UIStrings.badTraceRecording,
+  },
 
   // TTI calculation failures
   FMP_TOO_LATE_FOR_FCPUI: {code: 'FMP_TOO_LATE_FOR_FCPUI', message: UIStrings.pageLoadTookTooLong},

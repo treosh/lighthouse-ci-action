@@ -18,7 +18,7 @@ const UIStrings = {
   /** Description of a Lighthouse audit that tells the user *why* they should use video instead of GIF format for delivering animated content. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
   description: 'Large GIFs are inefficient for delivering animated content. Consider using ' +
     'MPEG4/WebM videos for animations and PNG/WebP for static images instead of GIF to save ' +
-    'network bytes. [Learn more](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/replace-animated-gifs-with-video/)',
+    'network bytes. [Learn more](https://web.dev/efficient-animated-content)',
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);

@@ -15,7 +15,7 @@ const UIStrings = {
   title: 'Minify CSS',
   /** Description of a Lighthouse audit that tells the user *why* they should minify (remove whitespace) the page's CSS code. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
   description: 'Minifying CSS files can reduce network payload sizes. ' +
-    '[Learn more](https://developers.google.com/web/tools/lighthouse/audits/minify-css).',
+    '[Learn more](https://web.dev/unminified-css).',
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);

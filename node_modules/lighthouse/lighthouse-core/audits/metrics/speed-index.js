@@ -14,7 +14,7 @@ const UIStrings = {
   title: 'Speed Index',
   /** Description of the Speed Index metric, which summarizes how quickly the page looked visually complete. This is displayed within a tooltip when the user hovers on the metric name to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
   description: 'Speed Index shows how quickly the contents of a page are visibly populated. ' +
-      '[Learn more](https://developers.google.com/web/tools/lighthouse/audits/speed-index).',
+      '[Learn more](https://web.dev/speed-index).',
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);

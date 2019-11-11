@@ -38,7 +38,7 @@ class LanternFirstMeaningfulPaint extends LanternMetric {
     return LanternFirstContentfulPaint.getFirstPaintBasedGraph(
       dependencyGraph,
       fmp,
-      // See LanterFirstContentfulPaint's getOptimisticGraph implementation for a longer description
+      // See LanternFirstContentfulPaint's getOptimisticGraph implementation for a longer description
       // of why we exclude script initiated resources here.
       node => node.hasRenderBlockingPriority() && node.initiatorType !== 'script'
     );

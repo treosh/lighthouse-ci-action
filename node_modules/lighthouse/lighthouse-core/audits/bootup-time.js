@@ -20,7 +20,7 @@ const UIStrings = {
   /** Description of a Lighthouse audit that tells the user that they should reduce the amount of time spent executing javascript and one method of doing so. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
   description: 'Consider reducing the time spent parsing, compiling, and executing JS. ' +
     'You may find delivering smaller JS payloads helps with this. [Learn ' +
-    'more](https://developers.google.com/web/tools/lighthouse/audits/bootup).',
+    'more](https://web.dev/bootup-time).',
   /** Label for the total time column in a data table; entries will be the number of milliseconds spent executing per resource loaded by the page. */
   columnTotal: 'Total CPU Time',
   /** Label for a time column in a data table; entries will be the number of milliseconds spent evaluating script for every script loaded by the page. */

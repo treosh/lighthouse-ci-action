@@ -25,7 +25,7 @@ const UIStrings = {
   description:
   'Serve images that are appropriately-sized to save cellular data ' +
   'and improve load time. ' +
-  '[Learn more](https://developers.google.com/web/tools/lighthouse/audits/oversized-images).',
+  '[Learn more](https://web.dev/uses-responsive-images).',
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);

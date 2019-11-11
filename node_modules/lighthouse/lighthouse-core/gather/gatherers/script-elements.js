@@ -26,6 +26,7 @@ function collectAllScriptElements() {
     return {
       type: script.type || null,
       src: script.src || null,
+      id: script.id || null,
       async: script.async,
       defer: script.defer,
       source: /** @type {'head'|'body'} */ (script.closest('head') ? 'head' : 'body'),
@@ -81,6 +82,7 @@ class ScriptElements extends Gatherer {
             devtoolsNodePath: '',
             type: null,
             src: record.url,
+            id: null,
             async: false,
             defer: false,
             source: 'network',

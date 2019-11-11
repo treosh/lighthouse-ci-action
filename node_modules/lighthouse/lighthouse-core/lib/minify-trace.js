@@ -64,6 +64,8 @@ const traceEventsToKeepInProcess = new Set([
   'firstMeaningfulPaintCandidate',
   'loadEventEnd',
   'domContentLoadedEventEnd',
+  'largestContentfulPaint::Invalidate',
+  'largestContentfulPaint::Candidate',
 ]);
 
 /**

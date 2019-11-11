@@ -23,7 +23,7 @@ const UIStrings = {
   description:
     'Consider lazy-loading offscreen and hidden images after all critical resources have ' +
     'finished loading to lower time to interactive. ' +
-    '[Learn more](https://developers.google.com/web/tools/lighthouse/audits/offscreen-images).',
+    '[Learn more](https://web.dev/offscreen-images).',
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);

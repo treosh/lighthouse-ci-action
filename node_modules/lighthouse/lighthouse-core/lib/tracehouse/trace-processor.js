@@ -524,6 +524,28 @@ class TraceProcessor {
       firstMeaningfulPaint = lastCandidate;
     }
 
+    // LCP comes from the latest `largestContentfulPaint::Candidate`, but it can be invalidated
+    // by a `largestContentfulPaint::Invalidate` event. In the case that the last candidate is
+    // invalidated, the value will be undefined.
+    let largestContentfulPaint;
+    let lcpInvalidated = false;
+    // Iterate the events backwards.
+    for (let i = frameEvents.length - 1; i >= 0; i--) {
+      const e = frameEvents[i];
+      // If the event's timestamp is before the navigation start, stop.
+      if (e.ts <= navigationStart.ts) break;
+      // If the last lcp event in the trace is 'Invalidate', there is inconclusive data to determine LCP.
+      if (e.name === 'largestContentfulPaint::Invalidate') {
+        lcpInvalidated = true;
+        break;
+      }
+      // If not an lcp 'Candidate', keep iterating.
+      if (e.name !== 'largestContentfulPaint::Candidate') continue;
+      // Found the last LCP candidate in the trace, let's use it.
+      largestContentfulPaint = e;
+      break;
+    }
+
     const load = frameEvents.find(e => e.name === 'loadEventEnd' && e.ts > navigationStart.ts);
     const domContentLoaded = frameEvents.find(
       e => e.name === 'domContentLoadedEventEnd' && e.ts > navigationStart.ts
@@ -551,6 +573,7 @@ class TraceProcessor {
       firstPaint: getTimestamp(firstPaint),
       firstContentfulPaint: getTimestamp(firstContentfulPaint),
       firstMeaningfulPaint: getTimestamp(firstMeaningfulPaint),
+      largestContentfulPaint: getTimestamp(largestContentfulPaint),
       traceEnd: fakeEndOfTraceEvt.ts,
       load: getTimestamp(load),
       domContentLoaded: getTimestamp(domContentLoaded),
@@ -566,6 +589,7 @@ class TraceProcessor {
       firstPaint: maybeGetTiming(timestamps.firstPaint),
       firstContentfulPaint: maybeGetTiming(timestamps.firstContentfulPaint),
       firstMeaningfulPaint: maybeGetTiming(timestamps.firstMeaningfulPaint),
+      largestContentfulPaint: maybeGetTiming(timestamps.largestContentfulPaint),
       traceEnd: getTiming(timestamps.traceEnd),
       load: maybeGetTiming(timestamps.load),
       domContentLoaded: maybeGetTiming(timestamps.domContentLoaded),
@@ -581,9 +605,11 @@ class TraceProcessor {
       firstPaintEvt: firstPaint,
       firstContentfulPaintEvt: firstContentfulPaint,
       firstMeaningfulPaintEvt: firstMeaningfulPaint,
+      largestContentfulPaintEvt: largestContentfulPaint,
       loadEvt: load,
       domContentLoadedEvt: domContentLoaded,
       fmpFellBack,
+      lcpInvalidated,
     };
   }
 }

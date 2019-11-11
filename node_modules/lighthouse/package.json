@@ -1,6 +1,6 @@
 {
   "name": "lighthouse",
-  "version": "5.4.0",
+  "version": "5.5.0",
   "description": "Lighthouse",
   "main": "./lighthouse-core/index.js",
   "bin": {
@@ -49,6 +49,7 @@
     "deploy-viewer": "yarn build-viewer --deploy",
     "now-build": "node lighthouse-core/scripts/build-report-for-autodeployment.js",
     "bundlesize": "bundlesize",
+    "dogfood-lhci": "./lighthouse-core/scripts/dogfood-lhci.sh",
     "timing-trace": "node lighthouse-core/scripts/generate-timing-trace.js",
     "changelog": "conventional-changelog --config ./build/changelog-generator/index.js --infile changelog.md --same-file",
     "type-check": "tsc -p . && tsc -p lighthouse-viewer/",

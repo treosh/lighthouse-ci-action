@@ -19,7 +19,7 @@ const UIStrings = {
   title: 'Preload key requests',
   /** Description of a Lighthouse audit that tells the user *why* they should preload important network requests. The associated network requests are started halfway through pageload (or later) but should be started at the beginning. This is displayed after a user expands the section to see more. No character length limits. '<link rel=preload>' is the html code the user would include in their page and shouldn't be translated. 'Learn More' becomes link text to additional documentation. */
   description: 'Consider using `<link rel=preload>` to prioritize fetching resources that are ' +
-    'currently requested later in page load. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/preload).',
+    'currently requested later in page load. [Learn more](https://web.dev/uses-rel-preload).',
   /**
    * @description A warning message that is shown when the user tried to follow the advice of the audit, but it's not working as expected. Forgetting to set the `crossorigin` HTML attribute, or setting it to an incorrect value, on the link is a common mistake when adding preload links.
    * @example {https://example.com} preloadURL

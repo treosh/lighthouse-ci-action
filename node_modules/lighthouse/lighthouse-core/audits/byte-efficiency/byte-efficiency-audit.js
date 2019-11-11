@@ -93,8 +93,10 @@ class UnusedBytes extends Audit {
       // This was an asset that was inlined in a different resource type (e.g. HTML document).
       // Use the compression ratio of the resource to estimate the total transferred bytes.
       const transferSize = networkRecord.transferSize || 0;
-      const resourceSize = networkRecord.resourceSize;
-      const compressionRatio = resourceSize !== undefined ? (transferSize / resourceSize) : 1;
+      const resourceSize = networkRecord.resourceSize || 0;
+      // Get the compression ratio, if it's an invalid number, assume no compression.
+      const compressionRatio = Number.isFinite(resourceSize) && resourceSize > 0 ?
+        (transferSize / resourceSize) : 1;
       return Math.round(totalBytes * compressionRatio);
     }
   }

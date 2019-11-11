@@ -18,7 +18,7 @@ const UIStrings = {
   title: 'Efficiently encode images',
   /** Description of a Lighthouse audit that tells the user *why* they need to efficiently encode images. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
   description: 'Optimized images load faster and consume less cellular data. ' +
-  '[Learn more](https://developers.google.com/web/tools/lighthouse/audits/optimize-images).',
+  '[Learn more](https://web.dev/uses-optimized-images).',
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);

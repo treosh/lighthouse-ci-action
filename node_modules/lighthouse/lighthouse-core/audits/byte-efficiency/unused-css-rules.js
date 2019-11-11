@@ -14,7 +14,7 @@ const UIStrings = {
   /** Description of a Lighthouse audit that tells the user *why* they should defer loading any content in CSS that isn’t needed at page load. This is displayed after a user expands the section to see more. No word length limits. 'Learn More' becomes link text to additional documentation. */
   description: 'Remove dead rules from stylesheets and defer the loading of CSS not used for ' +
     'above-the-fold content to reduce unnecessary bytes consumed by network activity. ' +
-    '[Learn more](https://developers.google.com/web/tools/lighthouse/audits/unused-css).',
+    '[Learn more](https://web.dev/unused-css-rules).',
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);
@@ -47,6 +47,10 @@ class UnusedCSSRules extends ByteEfficiencyAudit {
    */
   static indexStylesheetsById(styles, networkRecords) {
     const indexedNetworkRecords = networkRecords
+        // Some phantom network records appear with a 0 resourceSize that aren't real.
+        // A network record that has no size data is just as good as no network record at all for our
+        // purposes, so we'll just filter them out. https://github.com/GoogleChrome/lighthouse/issues/9684#issuecomment-532381611
+        .filter(record => record.resourceSize > 0)
         .reduce((indexed, record) => {
           indexed[record.url] = record;
           return indexed;

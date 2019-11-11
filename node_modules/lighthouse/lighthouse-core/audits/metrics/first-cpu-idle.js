@@ -14,8 +14,7 @@ const UIStrings = {
   title: 'First CPU Idle',
   /** Description of the First CPU Idle metric, which marks the time at which the page has displayed content and the CPU is not busy executing the page's scripts. This is displayed within a tooltip when the user hovers on the metric name to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
   description: 'First CPU Idle marks the first time at which the page\'s main thread is ' +
-    'quiet enough to handle input. ' +
-    '[Learn more](https://developers.google.com/web/tools/lighthouse/audits/first-interactive).',
+    'quiet enough to handle input.  [Learn more](https://web.dev/first-cpu-idle).',
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);

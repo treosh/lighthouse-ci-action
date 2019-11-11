@@ -19,7 +19,7 @@
     diff?: Difference | null;
   }
 
-  export type ExpectedLHR = Pick<LH.Result, 'audits' | 'finalUrl' | 'requestedUrl' | 'runtimeError'>
+  export type ExpectedLHR = Pick<LH.Result, 'audits' | 'finalUrl' | 'requestedUrl' | 'runWarnings' | 'runtimeError'>
 
   export type ExpectedRunnerResult = {
     lhr: ExpectedLHR,

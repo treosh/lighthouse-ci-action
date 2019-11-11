@@ -16,7 +16,7 @@ const UIStrings = {
   failureTitle: 'Reduce server response times (TTFB)',
   /** Description of a Lighthouse audit that tells the user *why* they should reduce the amount of time it takes their server to start responding to requests. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
   description: 'Time To First Byte identifies the time at which your server sends a response.' +
-    ' [Learn more](https://developers.google.com/web/tools/lighthouse/audits/ttfb).',
+    ' [Learn more](https://web.dev/time-to-first-byte).',
   /** Used to summarize the total Time to First Byte duration for the primary HTML response. The `{timeInMs}` placeholder will be replaced with the time duration, shown in milliseconds (e.g. 210 ms) */
   displayValue: `Root document took {timeInMs, number, milliseconds}\xa0ms`,
 };

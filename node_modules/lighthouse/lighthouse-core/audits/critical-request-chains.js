@@ -17,7 +17,7 @@ const UIStrings = {
       'loaded with a high priority. Consider reducing ' +
       'the length of chains, reducing the download size of resources, or ' +
       'deferring the download of unnecessary resources to improve page load. ' +
-      '[Learn more](https://developers.google.com/web/tools/lighthouse/audits/critical-request-chains).',
+      '[Learn more](https://web.dev/critical-request-chains).',
   /** [ICU Syntax] Label for an audit identifying the number of sequences of dependent network requests used to load the page. */
   displayValue: `{itemCount, plural,
     =1 {1 chain found}

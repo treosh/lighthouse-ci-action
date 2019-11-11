@@ -23,7 +23,7 @@ const UIStrings = {
   description:
     'Leverage the font-display CSS feature to ensure text is user-visible while ' +
     'webfonts are loading. ' +
-    '[Learn more](https://developers.google.com/web/updates/2016/02/font-display).',
+    '[Learn more](https://web.dev/font-display).',
   /**
    * @description A warning message that is shown when Lighthouse couldn't automatically check some of the page's fonts and that the user will need to manually check it.
    * @example {https://font.cdn.com/} fontURL

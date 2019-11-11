@@ -107,9 +107,9 @@ const locales = {
   'tr': require('./locales/tr.json'),
   'uk': require('./locales/uk.json'),
   'vi': require('./locales/vi.json'),
-  'zh': require('./locales/zh.json'), // zh-CN identical, so it falls back into zh
-  'zh-HK': require('./locales/zh-HK.json'),
-  'zh-TW': require('./locales/zh-TW.json'),
+  'zh': require('./locales/zh.json'), // aka ZH-Hans, sometimes seen as zh-CN, zh-Hans-CN, Simplified Chinese
+  'zh-HK': require('./locales/zh-HK.json'), // aka zh-Hant-HK. Note: yue-Hant-HK is not supported.
+  'zh-TW': require('./locales/zh-TW.json'), // aka zh-Hant, zh-Hant-TW, Traditional Chinese
 };
 
 module.exports = locales;

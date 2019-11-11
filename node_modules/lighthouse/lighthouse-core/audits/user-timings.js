@@ -15,7 +15,7 @@ const UIStrings = {
   /** Description of a Lighthouse audit that tells the user they may want to use the User Timing API to help measure the performance of aspects of their page load and interaction. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
   description: 'Consider instrumenting your app with the User Timing API to measure your ' +
       'app\'s real-world performance during key user experiences. ' +
-      '[Learn more](https://developers.google.com/web/tools/lighthouse/audits/user-timing).',
+      '[Learn more](https://web.dev/user-timings).',
   /** [ICU Syntax] Label for an audit identifying the number of User Timing timestamps present in the page. */
   displayValue: `{itemCount, plural,
     =1 {1 user timing}

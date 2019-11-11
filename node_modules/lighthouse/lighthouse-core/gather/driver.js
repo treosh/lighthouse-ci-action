@@ -1364,7 +1364,7 @@ class Driver {
         resolve({traceEvents});
       });
 
-      return this.sendCommand('Tracing.end').catch(reject);
+      this.sendCommand('Tracing.end').catch(reject);
     });
   }
 

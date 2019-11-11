@@ -20,7 +20,7 @@ module.exports = function () {
     options = arguments[0]
   }
   options = options || {}
-  options.npmrc = options.npmrc || require('rc')('npm', {registry: 'https://registry.npmjs.org/'})
+  options.npmrc = options.npmrc || require('rc')('npm', { registry: 'https://registry.npmjs.org/' })
   checkUrl = checkUrl || options.npmrc.registry
   return getRegistryAuthInfo(checkUrl, options) || getLegacyAuthInfo(options.npmrc)
 }
@@ -58,7 +58,7 @@ function getLegacyAuthInfo (npmrc) {
 
   var token = replaceEnvironmentVariable(npmrc._auth)
 
-  return {token: token, type: 'Basic'}
+  return { token: token, type: 'Basic' }
 }
 
 function normalizePath (path) {
@@ -97,7 +97,7 @@ function getBearerToken (tok) {
   // check if bearer token is set as environment variable
   var token = replaceEnvironmentVariable(tok)
 
-  return {token: token, type: 'Bearer'}
+  return { token: token, type: 'Bearer' }
 }
 
 function getTokenForUsernameAndPassword (username, password) {

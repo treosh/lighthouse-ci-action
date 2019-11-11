@@ -14,7 +14,7 @@ const UIStrings = {
   title: 'Time to Interactive',
   /** Description of the Time to Interactive (TTI) metric, which evaluates when a page has completed its primary network activity and main thread work. This is displayed within a tooltip when the user hovers on the metric name to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
   description: 'Time to interactive is the amount of time it takes for the page to become fully ' +
-    'interactive. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/consistently-interactive).',
+    'interactive. [Learn more](https://web.dev/interactive).',
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);

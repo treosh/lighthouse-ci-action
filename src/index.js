@@ -49,7 +49,7 @@ async function main() {
       // @ts-ignore checked this already
       args.push(`--rc-file=${input.configPath}`)
     }
-    console.log(args)
+
     status = await runChildCommand('assert', args)
 
     if (status !== 0) {

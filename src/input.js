@@ -3,8 +3,8 @@ const { readFileSync } = require('fs')
 
 function getArgs() {
   // Make sure we don't have LHCI xor API token
-  const serverBaseUrl = getArg('upload.serverBaseUrl')
-  const token = getArg('upload.token')
+  const serverBaseUrl = getArg('serverBaseUrl')
+  const token = getArg('token')
   if (!!serverBaseUrl != !!token) {
     // Fail and exit
     core.setFailed(`Need both a LHCI base url and an API token`)

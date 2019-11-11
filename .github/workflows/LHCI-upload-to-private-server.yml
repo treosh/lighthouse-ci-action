@@ -10,7 +10,6 @@ jobs:
         uses: ./
         with:
           # TODO(treosh): enable with secrets pointing to your server
-          upload:
-            serverBaseUrl: ${{ secrets.LHCI_SERVER }}
-            token: ${{ secrets.LHCI_API_TOKEN }}
+          serverBaseUrl: ${{ secrets.LHCI_SERVER }}
+          token: ${{ secrets.LHCI_API_TOKEN }}
           urls: 'https://alekseykulikov.com/'

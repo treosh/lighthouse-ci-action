@@ -6,11 +6,10 @@ inputs:
   runs:
     description: 'Number of runs to do per URL'
     default: '1'
-  upload:
-    serverBaseUrl:
-      description: 'Address of a LHCI server'
-    token:
-      description: 'API token to push to LHCI server'
+  serverBaseUrl:
+    description: 'Address of a LHCI server'
+  token:
+    description: 'API token to push to LHCI server'
   budgetPath:
     description: 'Path to a Lighthouse budgets.json file'
   configPath:

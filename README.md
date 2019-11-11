@@ -352,7 +352,7 @@ module.exports = {
 
 > Use Case: Testing a very basic static site without having to deploy it.
 
-Create `.github/workflows/main.yml` and identify a `lighthouserc` file with a 
+Create `.github/workflows/main.yml` and identify a `lighthouserc` file with a
 `staticDistDir` config.
 
 ```yml

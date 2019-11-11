@@ -65,13 +65,13 @@ URLs support interpolation of process env vars, so you can write URLs like:
 
 ```yml
 - name: Run Lighthouse and test budgets
-    uses: treosh/lighthouse-ci-action@v1
-    with:
-      urls: |
-        https://pr-$PR_NUMBER.staging-example.com/
-        https://pr-$PR_NUMBER.staging-example.com/blog
-      env:
-        PR_NUMBER: ${{ github.event.pull_request.number }}
+  uses: treosh/lighthouse-ci-action@v1
+  with:
+    urls: |
+      https://pr-$PR_NUMBER.staging-example.com/
+      https://pr-$PR_NUMBER.staging-example.com/blog
+    env:
+      PR_NUMBER: ${{ github.event.pull_request.number }}
 ```
 
 [⚙️ See this workflow in use!](https://github.com/treosh/lighthouse-ci-action/actions?workflow=LHCI-multiple-urls)

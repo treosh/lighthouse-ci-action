@@ -1,20 +1,16 @@
+# This is a basic Lighthouse run over multiple URLs that uses temporary-public-storage.
 name: LHCI-multiple-urls
 on: push
 jobs:
-  # This is a basic Lighthouse run over multiple URLs that uses temporary-public-storage.
   multiple-urls:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: Run Lighthouse on urls
+      - name: Run Lighthouse on URLs and store results to temporary-public-storage.
         uses: ./
         with:
           urls: |
-            https://alekseykulikov.com/
             https://treo.sh/
-            https://google.com/
-            https://$ORIGIN.$TLD/$PATH
-        env:
-          ORIGIN: treo
-          TLD: sh
-          PATH: demo/
+            https://treo.sh/signup
+            https://treo.sh/demo
+          temporaryPublicStorage: true

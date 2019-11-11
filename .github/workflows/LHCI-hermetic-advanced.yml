@@ -1,7 +1,7 @@
+# This is an advanced fully hermetic run of Lighthouse, using custom config.
 name: LHCI-hermetic-advanced
 on: push
 jobs:
-  # This is an advanced fully hermetic run of Lighthouse, using custom config.
   hermetic-advanced:
     runs-on: ubuntu-latest
     steps:

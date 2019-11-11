@@ -2,7 +2,7 @@
 
 > Run Lighthouse in CI using Github Actions.
 
-<img align="center" width="998" alt="Lighthouse CI Action" src="https://user-images.githubusercontent.com/6392995/68525187-e8ec6800-0283-11ea-8e9e-195802366522.png">
+<img align="center" width="998" alt="Lighthouse CI Action" src="https://user-images.githubusercontent.com/6392995/68569713-a9548600-0413-11ea-94e2-ce8f07df0828.png">
 
 Audit URLs using [Lighthouse](https://developers.google.com/web/tools/lighthouse),
 and monitor performance with [Lighthouse CI](https://github.com/GoogleChrome/lighthouse-ci).

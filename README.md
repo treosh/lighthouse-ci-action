@@ -19,8 +19,6 @@ and monitor performance with [Lighthouse CI](https://github.com/GoogleChrome/lig
 
 ## Usage
 
-### Basic Action
-
 > Use Case: Run Lighthouse on each push to the repo and save the results in action artifacts.
 
 Create `.github/workflows/main.yml` with the list of URLs to audit using lighthouse.
@@ -39,15 +37,10 @@ jobs:
       - name: Audit URLs using Lighthouse
         uses: treosh/lighthouse-ci-action@v2
         with:
-          urls: 'https://example.com/'
-      # Note: Lighthouse-ci-actions overwrite .lighthouseci/ each run, therefore
-      # artifacts need to be saved after each run if using gh-actions artifacts.
-      - name: Save results
-        uses: actions/upload-artifact@v1
-        with:
-          name: lighthouse-results
-          # This will save the Lighthouse results as .json files
-          path: '.lighthouseci'
+          urls: |
+            https://example.com/
+            https://example.com/blog
+          temporaryPublicStorage: true
 ```
 
 > Note: to view the reports follow the `temporary-public-storage` link printed
@@ -60,6 +53,82 @@ Link to `temporary-public-storage`:
 > Note: By default this action will store `json` results to `.lighthouseci`,
 > setting `temporaryPublicStorage` will upload the LHRs to Lighthouse-ci's
 > `temporary-public-storage`.
+
+## Inputs
+
+#### `urls`
+
+Provide the list of URLs separated by a new line.
+Each URL is audited using the latest version of Lighthouse and Chrome preinstalled on the environment.
+
+```yml
+urls: |
+  https://example.com/
+  https://example.com/blog
+  https://example.com/pricing
+```
+
+#### `temporaryPublicStorage`
+
+This will opt-in to upload reports to LHCI's `temporary-public-storage`. You can find out more about `temporary-public-storage` in the [LHCI repo](https://github.com/GoogleChrome/lighthouse-ci/blob/master/docs/cli.md#upload).
+
+```yml
+temporaryPublicStorage: true
+```
+
+#### `runs`
+
+Specify the number of runs to do on each URL. Default: `1`.
+
+> Note: Asserting against a single run can lead to flaky performance assetions.
+> Use `1` only to ensure static audits like Lighthouse scores or page size.
+
+```yml
+runs: 3
+```
+
+#### `budgetPath`
+
+Use a performance budget to keep your page size in check. `Lighthouse CI Action` will fail the build if one of the URLs exceed the budget.
+
+Learn more about the [budget.json spec](https://github.com/GoogleChrome/budget.json) and [practical use of performance budgets](https://web.dev/use-lighthouse-for-performance-budgets).
+
+```yml
+budgetPath: ./budget.json
+```
+
+#### `configPath`
+
+Set a path to a custom [lighthouserc file](https://github.com/GoogleChrome/lighthouse-ci/blob/master/docs/cli.md#configuration) for full control of the Lighthouse enviroment and assertions.
+
+Use `lighthouserc` to configure the collection of data (via Lighthouse config and Chrome Flags), and CI assertions (via LHCI assertions).
+
+```yml
+configPath: ./lighthouserc.json
+```
+
+#### `upload`
+
+Upload Lighthouse results to a private [LHCI server](https://github.com/GoogleChrome/lighthouse-ci) by specifying both `upload.serverBaseUrl` and `upload.token`.
+
+> Note: Use [Github secrets](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets#creating-encrypted-secrets) to keep your server address hidden!
+
+> Note: This will replace uploading to `temporary-public-storage`.
+
+```yml
+upload.serverBaseUrl: ${{ secrets.LHCI_SERVER }}
+upload.token: ${{ secrets.LHCI_TOKEN }}
+```
+
+Specify an API token for the LHCI server. ([How to generate a token](https://github.com/GoogleChrome/lighthouse-ci/blob/master/docs/getting-started.md#historical-reports--diffing-lighthouse-ci-server))
+
+## Recipes
+
+https://github.com/treosh/lighthouse-ci-action/tree/master/.github/workflows
+Have an unlisted example? Please, submit a PR.
+
+<details>
+  <summary>Use enviroment variable for URLs</summary>
 
 URLs support interpolation of process env vars, so you can write URLs like:
 
@@ -76,91 +145,10 @@ URLs support interpolation of process env vars, so you can write URLs like:
 
 [⚙️ See this workflow in use!](https://github.com/treosh/lighthouse-ci-action/actions?workflow=LHCI-multiple-urls)
 
-## Inputs
+</details>
 
-#### `urls`
-
-Provide the list of URLs separated by a new line.
-Each URL is audited using the latest version of Lighthouse and Chrome preinstalled on user machine.
-
-> Note: Either a list of urls, or a `staticDistDir` in the `lighthouserc` file is required.
-
-```yml
-urls: |
-  https://example.com/
-  https://example.com/blog
-  https://example.com/pricing
-```
-
-#### `runs`
-
-Specify the number of runs to do on each URL. Default: `1`.
-
-> Note: Asserting against a single run can lead to flaky VM's making flaky assertions.
-
-```yml
-runs: 3
-```
-
-#### `budgetPath`
-
-Use a performance budget to keep your page size in check. `Lighthouse CI Action` will fail the build if one of the URLs exceed the budget.
-
-Learn more about the [budget.json spec](https://github.com/GoogleChrome/budget.json) and [practical use of performance budgets](https://web.dev/use-lighthouse-for-performance-budgets).
-
-```yml
-budgetPath: .github/lighthouse/budget.json
-```
-
-#### `configPath`
-
-Set a path to a custom [lighthouserc file](https://github.com/GoogleChrome/lighthouse-ci/blob/master/docs/cli.md#configuration) for full control of the Lighthouse enviroment.
-
-This `lighthouserc` file can be used to contorl the collection of data (via Lighthouse config, and
-Chrome Flags), and CI assertions (via LHCI assertions).
-
-> Note: `lighthouserc` files normally also control the "upload" step. However, this method
-> is incompatible with github secrets and would expose all LHCI server addresses
-> and tokens; use `serverBaseUrl` and `token` parameters instead.
-
-```yml
-configPath: ./lighthouserc.json
-```
-
-#### `temporaryPublicStorage`
-
-This will opt-in to upload reports `temporary-public-storage`. You can
-find out more about `temporary-public-storage` in the [LHCI repo](https://github.com/GoogleChrome/lighthouse-ci/blob/master/docs/cli.md#upload).
-
-```yml
-temporaryPublicStorage: 'any value'
-```
-
-#### `serverBaseUrl`
-
-Specify a [LHCI server](https://github.com/GoogleChrome/lighthouse-ci) address to send Lighthouse Results to.
-
-> Note: This will replace uploading to `temporary-public-storage`.
-
-> Note: Use [Github secrets](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets#creating-encrypted-secrets) to keep your server address hidden!
-
-```yml
-serverBaseUrl: ${{ secrets.LHCI_SERVER }}
-```
-
-#### `token`
-
-Specify an API token for the LHCI server. ([How to generate a token](https://github.com/GoogleChrome/lighthouse-ci/blob/master/docs/getting-started.md#historical-reports--diffing-lighthouse-ci-server))
-
-> Note: use [Github secrets](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets#creating-encrypted-secrets) to keep your server address hidden!
-
-```yml
-token: ${{ secrets.LHCI_API_TOKEN }}
-```
-
-## Advanced Recipes
-
-### Asserting Against Performance budgets.json
+<details>
+ <summary>Asserting against performance budgets.json</summary>
 
 > Use Case: Run Lighthouse and validate against a budget.
 
@@ -212,7 +200,10 @@ Make a `budget.json` file with [budgets syntax](https://web.dev/use-lighthouse-f
 
 [⚙️ See this workflow in use!](https://github.com/treosh/lighthouse-ci-action/actions?workflow=LHCI-assert-on-budget)
 
-### Asserting Against LHCI lighthouserc
+</details>
+
+<details>
+ <summary>Asserting against LHCI lighthouserc</summary>
 
 > Use Case: Run Lighthouse and validate against LHCI assertions.
 
@@ -256,7 +247,10 @@ Make a `lighthouserc.json` file with [LHCI assertion syntax](https://github.com/
 
 [⚙️ See this workflow in use!](https://github.com/treosh/lighthouse-ci-action/actions?workflow=LHCI-assert-on-lighthouserc)
 
-### Uploading to a LHCI Server
+</details>
+
+<details>
+ <summary>Uploading to a LHCI Server</summary>
 
 > Use Case: Providing data to a hosted LHCI server.
 
@@ -287,7 +281,10 @@ jobs:
 
 [⚙️ See this workflow in use!](https://github.com/treosh/lighthouse-ci-action/actions?workflow=LHCI-upload-to-private-server)
 
-### Using Custom Config & Chrome Flags
+</details>
+
+<details>
+ <summary>Using custom config and Chrome flags</summary>
 
 > Use Case: Running Lighthouse with highly custom Lighthouse runtime or custom Chrome flags.
 
@@ -363,7 +360,10 @@ module.exports = {
 
 [⚙️ See this workflow in use!](https://github.com/treosh/lighthouse-ci-action/actions?workflow=LHCI-hermetic-advanced)
 
-### Using a Static Dist Dir
+</details>
+
+<details>
+ <summary>Using a static dist dir</summary>
 
 > Use Case: Testing a very basic static site without having to deploy it.
 
@@ -403,6 +403,8 @@ against each of them. More details on this process are in the [Lighthouse CI doc
 <img align="center" width="998" alt="Lighthouse CI Action" src="https://user-images.githubusercontent.com/6392995/68525233-6b752780-0284-11ea-832c-e662a099e2ca.png">
 
 [⚙️ See this workflow in use!](https://github.com/treosh/lighthouse-ci-action/actions?workflow=LHCI-static-dist-dir)
+
+</details>
 
 ---
 

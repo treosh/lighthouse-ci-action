@@ -106,10 +106,8 @@ function getList(arg, separator = '\n') {
  * @return {string[]}
  */
 function interpolateProcessIntoURLs(urls) {
-  console.log(process.env)
   return urls.map(url => {
     if (!url.includes('$')) return url
-    console.log(process.env)
     Object.keys(process.env).forEach(key => {
       if (url.includes(`${key}`)) {
         url = url.replace(`$${key}`, `${process.env[key]}`)

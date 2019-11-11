@@ -1,7 +1,7 @@
 # Lighthouse CI Action
 
-Audit URLs using [Lighthouse](https://developers.google.com/web/tools/lighthouse),
-and monitor performance with [Lighthouse CI](https://github.com/GoogleChrome/lighthouse-ci).
+> Audit URLs using [Lighthouse](https://developers.google.com/web/tools/lighthouse)
+> and monitor performance with [Lighthouse CI](https://github.com/GoogleChrome/lighthouse-ci).
 
 **Features**:
 
@@ -13,7 +13,7 @@ and monitor performance with [Lighthouse CI](https://github.com/GoogleChrome/lig
 - 💾 Upload data to LHCI server
 - 🚀 Fast action initialization
 
-<img align="center" width="998" alt="Lighthouse CI Action" src="https://user-images.githubusercontent.com/6392995/68569713-a9548600-0413-11ea-94e2-ce8f07df0828.png">
+<img align="center" width="1046" alt="Lighthouse CI Action" src="https://user-images.githubusercontent.com/158189/68597493-58896f80-049d-11ea-97a2-5c4e7eb4285c.png">
 
 ## Examples
 
@@ -47,7 +47,7 @@ jobs:
 
 **Advanced example**: run Lighthouse audit for each unique deployment, test performance budgets, and save results to the [public storage](https://github.com/GoogleChrome/lighthouse-ci/blob/master/docs/cli.md#upload) for a quick debugging.
 
-URLs support interpolation of process env vars, so you can write URLs like:
+URLs support interpolation of process env vars so that you can write URLs like:
 
 ```yml
 - name: Run Lighthouse and test budgets
@@ -64,7 +64,7 @@ URLs support interpolation of process env vars, so you can write URLs like:
 
 [⚙️ See this workflow in use](https://github.com/treosh/lighthouse-ci-action/actions?workflow=LHCI-multiple-urls)
 
-> **Note**: to view the reports download the `json` files from the artifacts and open them with the [Lighthouse Viewer App](https://googlechrome.github.io/lighthouse/viewer/) or follow the `temporary-public-storage` link printed in the action.
+> **Note**: to view the reports download the JSON files from the artifacts and open them with the [Lighthouse Viewer App](https://googlechrome.github.io/lighthouse/viewer/) or follow the `temporary-public-storage` link printed in the action.
 
 ## Inputs
 
@@ -92,7 +92,7 @@ temporaryPublicStorage: true
 
 Specify the number of runs to do on each URL.
 
-> **Note**: Asserting against a single run can lead to flaky performance assetions.
+> **Note**: Asserting against a single run can lead to flaky performance assertions.
 > Use `1` only to ensure static audits like Lighthouse scores or page size.
 
 ```yml
@@ -101,7 +101,7 @@ runs: 3
 
 #### `budgetPath`
 
-Use a performance budget to keep your page size in check. `Lighthouse CI Action` will fail the build if one of the URLs exceed the budget.
+Use a performance budget to keep your page size in check. `Lighthouse CI Action` will fail the build if one of the URLs exceeds the budget.
 
 Learn more about the [budget.json spec](https://github.com/GoogleChrome/budget.json) and [practical use of performance budgets](https://web.dev/use-lighthouse-for-performance-budgets).
 
@@ -111,7 +111,7 @@ budgetPath: ./budget.json
 
 #### `configPath`
 
-Set a path to a custom [lighthouserc file](https://github.com/GoogleChrome/lighthouse-ci/blob/master/docs/cli.md#configuration) for full control of the Lighthouse enviroment and assertions.
+Set a path to a custom [lighthouserc file](https://github.com/GoogleChrome/lighthouse-ci/blob/master/docs/cli.md#configuration) for full control of the Lighthouse environment and assertions.
 
 Use `lighthouserc` to configure the collection of data (via Lighthouse config and Chrome Flags), and CI assertions (via LHCI assertions).
 
@@ -386,7 +386,7 @@ against each of them. More details on this process are in the [Lighthouse CI doc
 
 </details>
 
-Explore more workflows in the [public examples](./.github/workflows).
+Explore more workflows in [public examples](./.github/workflows).
 Submit a pull request with a new one if they don't cover your use case.
 
 ---

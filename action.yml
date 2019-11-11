@@ -1,10 +1,21 @@
 name: 'Lighthouse CI Action'
 description: 'Run Lighthouse in CI using Github Actions'
 inputs:
-  url:
-    description: 'Page URL'
   urls:
-    description: 'List of URLs'
+    description: 'List of URL(s) to analyze'
+  runs:
+    description: 'Number of runs to do per URL'
+    default: '1'
+  serverBaseUrl:
+    description: 'Address of a LHCI server'
+  token:
+    description: 'API token to push to LHCI server'
+  budgetPath:
+    description: 'Path to a Lighthouse budgets.json file'
+  configPath:
+    description: 'Path to a LHCI lighthouserc.json file'
+  temporaryPublicStorage:
+    descripton: 'Opt-in to saving LHRs to Lighthouse public-temporary-storage'
 outputs:
   resultsPath:
     description: 'Path to the folder with results'

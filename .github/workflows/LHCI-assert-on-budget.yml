@@ -1,0 +1,13 @@
+name: LHCI-assert-on-budget
+on: push
+jobs:
+  # This pass/fails a build with a budgets.json. 
+  assert-on-budget:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Run Lighthouse on urls and validate with budgets.json
+        uses: ./
+        with:
+          urls: 'https://alekseykulikov.com/'
+          budgetPath: '.github/lighthouse/passable_budget.json'

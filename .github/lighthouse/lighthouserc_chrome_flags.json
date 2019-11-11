@@ -1,0 +1,9 @@
+{
+  "ci": {
+    "collect": {
+      "settings": {
+        "chromeFlags": ["--disable-gpu", "--no-sandbox", "--no-zygote"]
+      }
+    }
+  }
+}

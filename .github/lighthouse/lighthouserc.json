@@ -1,0 +1,17 @@
+{
+  "ci": {
+    "assert": {
+      "preset": "lighthouse:recommended",
+      "assertions": {
+        "render-blocking-resources": ["warn", {"maxLength": 0}]
+      }
+    },
+    "collect": {
+      "settings": {
+        "chromeFlags": ["--disable-gpu", "--no-sandbox", "--no-zygote"],
+        "configPath": ".github/lighthouse/desktop-config.js",
+        "extraHeaders": "{\"Cookie\":\"monster=blue\",\"x-men\":\"wolverine\"}"
+      }
+    }
+  }
+}

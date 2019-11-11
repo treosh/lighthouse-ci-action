@@ -1,0 +1,15 @@
+name: LHCI-upload-to-private-server
+on: push
+jobs:
+  # This will run Lighthouse on urls, then upload the results to an lhci server.
+  populate-ci-server-data:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Run Lighthouse on urls and upload data to private lhci server
+        uses: ./
+        with:
+          # TODO(treosh): enable with secrets pointing to your server
+          # serverBaseUrl: ${{ secrets.LHCI_SERVER }}
+          # token: ${{ secrets.LHCI_API_TOKEN }}
+          urls: 'https://alekseykulikov.com/'

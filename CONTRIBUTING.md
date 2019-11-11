@@ -39,6 +39,10 @@ INPUT_URLS="https://alekseykulikov.com/" INPUT_CONFIGPATH=".github/lighthouse/li
 python script/simple-server.py # start basic server in a separate tab
 INPUT_URLS="http://localhost:3000/" INPUT_CONFIGPATH=".github/lighthouse/lighthouserc_extra_headers.json" INPUT_RUNS="1" node src/index.js # run and see headers output
 
+# run locally, with env var interpolation
+python script/simple-server.py # start basic server in a separate tab
+PAGE="src/" INPUT_URLS="http://localhost:3000/\$PAGE" INPUT_RUNS="1" node src/index.js
+
 # run with a static dist dir
 INPUT_CONFIGPATH=".github/lighthouse/lighthouserc_static_dist_dir.json" INPUT_RUNS="1" node src/index.js
 ```

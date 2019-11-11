@@ -35,8 +35,10 @@ function getArgs() {
     }
   }
 
+  // Get and interpolate URLs
+  const urls = interpolateProcessIntoURLs(getList('urls'))
+
   // Make sure we have either urls or a static-dist-dir
-  const urls = getList('urls')
   if (!urls && !staticDistDir) {
     // Fail and exit
     core.setFailed(`Need either 'urls' in action parameters or a 'static_dist_dir' in lighthouserc file`)
@@ -88,12 +90,33 @@ function getIntArg(arg) {
  * Wrapper for core.getInput for a list input.
  *
  * @param {string} arg
- * @return {string[] | undefined}
+ * @return {string[]}
  */
 function getList(arg, separator = '\n') {
   const input = getArg(arg)
-  if (!input) return undefined
+  if (!input) return []
   return input.split(separator).map(url => url.trim())
+}
+
+/**
+ * Takes a set of URL strings and interpolates
+ * any declared ENV vars into them
+ *
+ * @param {string[]} urls
+ * @return {string[]}
+ */
+function interpolateProcessIntoURLs(urls) {
+  console.log(process.env)
+  return urls.map(url => {
+    if (!url.includes('$')) return url
+    console.log(process.env)
+    Object.keys(process.env).forEach(key => {
+      if (url.includes(`${key}`)) {
+        url = url.replace(`$${key}`, `${process.env[key]}`)
+      }
+    })
+    return url
+  })
 }
 
 module.exports = getArgs()

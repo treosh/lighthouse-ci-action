@@ -9,5 +9,4 @@ jobs:
       - name: Run Lighthouse against a static dist dir
         uses: ./
         with:
-          static_dist_dir: './dist'
-          runs: 1
+          configPath: '.github/lighthouse/lighthouserc_static_dist_dir.json'

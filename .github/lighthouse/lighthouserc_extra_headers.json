@@ -1,7 +1,6 @@
 {
   "ci": {
     "collect": {
-      "numberOfRuns": 1,
       "settings": {
         "extraHeaders": "{\"Cookie\":\"monster=blue\",\"x-men\":\"wolverine\"}"
       }

@@ -3,21 +3,20 @@ description: 'Run Lighthouse in CI using Github Actions'
 inputs:
   urls:
     description: 'List of URL(s) to analyze'
-  static_dist_dir:
-    description: 'A build directory where your HTML files to run Lighthouse on are located.'
   runs:
     description: 'Number of runs to do per URL'
-    default: '3'
-  lhci_server:
-    description: 'Address of a LHCI server'
-  api_token:
-    description: 'API token to push to LHCI server'
-  budget_path:
+    default: '1'
+  upload:
+    serverBaseUrl:
+      description: 'Address of a LHCI server'
+    token:
+      description: 'API token to push to LHCI server'
+  budgetPath:
     description: 'Path to a Lighthouse budgets.json file'
-  rc_path:
+  configPath:
     description: 'Path to a LHCI lighthouserc.json file'
-  disable_temporary_public_storage:
-    descripton: 'Opt out of saving LHRs to Lighthouse public-temporary-storage'
+  temporaryPublicStorage:
+    descripton: 'Opt-in to saving LHRs to Lighthouse public-temporary-storage'
 outputs:
   resultsPath:
     description: 'Path to the folder with results'

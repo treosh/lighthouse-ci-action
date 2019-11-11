@@ -10,7 +10,6 @@ jobs:
         uses: ./
         with:
           urls: 'https://alekseykulikov.com/'
-          disable_temporary_public_storage: true
       - name: Save .lighthouseci artifacts
         uses: actions/upload-artifact@v1
         with:

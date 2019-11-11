@@ -1,7 +1,6 @@
 {
   "ci": {
     "collect": {
-      "numberOfRuns": 1,
       "settings": {
         "configPath": ".github/lighthouse/desktop-config.js"
       }

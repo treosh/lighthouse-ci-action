@@ -37,7 +37,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Audit URLs using Lighthouse
-        uses: treosh/lighthouse-ci-action@v1
+        uses: treosh/lighthouse-ci-action@v2
         with:
           urls: 'https://example.com/'
       # Note: Lighthouse-ci-actions overwrite .lighthouseci/ each run, therefore
@@ -65,7 +65,7 @@ URLs support interpolation of process env vars, so you can write URLs like:
 
 ```yml
 - name: Run Lighthouse and test budgets
-  uses: treosh/lighthouse-ci-action@v1
+  uses: treosh/lighthouse-ci-action@v2
   with:
     urls: |
       https://pr-$PR_NUMBER.staging-example.com/
@@ -178,7 +178,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Run Lighthouse on urls and validate with budgets.json
-        uses: treosh/lighthouse-ci-action@v1
+        uses: treosh/lighthouse-ci-action@v2
         with:
           urls: 'https://example.com/'
           budgetPath: './budgets.json'
@@ -230,7 +230,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Run Lighthouse on urls and validate with lighthouserc
-        uses: treosh/lighthouse-ci-action@v1
+        uses: treosh/lighthouse-ci-action@v2
         with:
           urls: 'https://example.com/'
           configPath: './lighthouserc.json'
@@ -276,7 +276,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Run Lighthouse on urls and upload data to private lhci server
-        uses: treosh/lighthouse-ci-action@v1
+        uses: treosh/lighthouse-ci-action@v2
         with:
           urls: 'https://example.com/'
           serverBaseUrl: ${{ secrets.LHCI_SERVER }}
@@ -305,7 +305,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Run Lighthouse on urls with lighthouserc
-        uses: treosh/lighthouse-ci-action@v1
+        uses: treosh/lighthouse-ci-action@v2
         with:
           urls: 'https://example.com/'
           configPath: './lighthouserc.json'
@@ -379,7 +379,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Run Lighthouse against a static dist dir
-        uses: treosh/lighthouse-ci-action@v1
+        uses: treosh/lighthouse-ci-action@v2
         with:
           configPath: './lighthouserc.json'
 ```
@@ -408,7 +408,7 @@ against each of them. More details on this process are in the [Lighthouse CI doc
 
 ## Credits
 
-Sponsored by [Treo.sh - Page speed monitoring made easy](https://treo.sh) and [Google](https://google.com/).
+Sponsored by [Treo](https://treo.sh) and [Google](https://google.com/).
 
 [![](https://github.com/exterkamp/lighthouse-ci-action/workflows/CI/badge.svg)](https://github.com/treosh/lighthouse-ci-action/actions?workflow=CI)
 [![](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)

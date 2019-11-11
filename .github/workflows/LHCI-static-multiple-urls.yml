@@ -13,3 +13,8 @@ jobs:
             https://alekseykulikov.com/
             https://treo.sh/
             https://google.com/
+            https://$ORIGIN.$TLD/$PATH
+        env:
+          ORIGIN: treo
+          TLD: sh
+          PATH: demo/

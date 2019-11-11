@@ -58,7 +58,7 @@ Link to `temporary-public-storage`:
 <img align="center" width="998" alt="Lighthouse CI Action" src="https://user-images.githubusercontent.com/6392995/68536792-76c06580-030d-11ea-8e19-c467e374434e.png">
 
 > Note: By default this action will store `json` results to `.lighthouseci`,
-> setting `temporaryPublicStorage` will upload the LHRs to Lighthouse-ci's 
+> setting `temporaryPublicStorage` will upload the LHRs to Lighthouse-ci's
 > `temporary-public-storage`.
 
 URLs support interpolation of process env vars, so you can write URLs like:

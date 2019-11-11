@@ -46,7 +46,7 @@ function getArgs() {
   }
 
   // Warn if specifying both
-  if (urls && staticDistDir) {
+  if (urls.length > 0 && staticDistDir) {
     core.warning(
       `Setting both 'url' and 'static_dist_dir' will ignore urls in 'url' since 'static_dist_dir' has higher priority`
     )

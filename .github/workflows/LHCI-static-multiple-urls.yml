@@ -13,8 +13,8 @@ jobs:
             https://alekseykulikov.com/
             https://treo.sh/
             https://google.com/
-            https://$ORIGIN.$TLD/$PATH
+            https://$URL_DOMAIN/$URL_PATH
+          temporaryPublicStorage: true
         env:
-          ORIGIN: treo
-          TLD: sh
-          PATH: demo/
+          URL_DOMAIN: treo.sh
+          URL_PATH: demo/

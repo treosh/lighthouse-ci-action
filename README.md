@@ -239,7 +239,7 @@ Make a `lighthouserc.json` file with [LHCI assertion syntax](https://github.com/
 Create `.github/workflows/main.yml` with the list of URLs to audit using lighthouse,
 and identify a `serverBaseUrl` to upload to and an `token` to use.
 
-> **Note**: use [Github secrets](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets#creating-encrypted-secrets) to keep your server address hidden!
+> **Note**: use [GitHub secrets](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets#creating-encrypted-secrets) to keep your server address hidden!
 
 #### main.yml
 

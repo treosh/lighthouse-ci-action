@@ -23,7 +23,7 @@ async function main() {
   // else LHCI will panic with a non-zero exit code...
 
   if (input.rcCollect) {
-    args.push(`--rc-file=${input.configPath}`)
+    args.push(`--config=${input.configPath}`)
     // This should only happen in local testing, when the default is not sent
   }
   // Command line args should override config files
@@ -47,7 +47,7 @@ async function main() {
       args.push(`--budgetsFile=${input.budgetPath}`)
     } else {
       // @ts-ignore checked this already
-      args.push(`--rc-file=${input.configPath}`)
+      args.push(`--config=${input.configPath}`)
     }
 
     status = await runChildCommand('assert', args)

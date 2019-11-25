@@ -2,7 +2,7 @@
 // to NODE_PATH. This supports lighthouse plugins - all the workspace needs to do it
 // `npm install` the plugin. The copy of lighthouse within this action will be used.
 
-const nodePathDelim = require('is-windows') ? ';' : ':';
+const nodePathDelim = require('is-windows')() ? ';' : ':';
 const nodePathParts = [
   ...process.env.NODE_PATH.split(nodePathDelim),
   `${__dirname}/../node_modules`,

@@ -62,7 +62,7 @@ URLs support interpolation of process env vars so that you can write URLs like:
       PR_NUMBER: ${{ github.event.pull_request.number }}
 ```
 
-[⚙️ See this workflow in use](https://github.com/treosh/lighthouse-ci-action/actions?workflow=LHCI-multiple-urls)
+[⚙️ See this workflow in use](https://github.com/treosh/lighthouse-ci-action/actions?workflow=LHCI-urls-interpolation)
 
 > **Note**: to view the reports download the JSON files from the artifacts and open them with the [Lighthouse Viewer App](https://googlechrome.github.io/lighthouse/viewer/) or follow the `temporary-public-storage` link printed in the action.
 
@@ -88,7 +88,7 @@ All results are private by default. Use this option to upload reports to LHCI's 
 temporaryPublicStorage: true
 ```
 
-[⚙️ See an example workflow in use](https://github.com/treosh/lighthouse-ci-action/actions?workflow=LHCI-temporary-storage)
+[⚙️ See an example workflow with this option](https://github.com/treosh/lighthouse-ci-action/actions?workflow=LHCI-temporary-storage)
 
 #### `runs` (default: 1)
 
@@ -111,6 +111,8 @@ Learn more about the [budget.json spec](https://github.com/GoogleChrome/budget.j
 budgetPath: ./budget.json
 ```
 
+[⚙️ See an example workflow with this option](https://github.com/treosh/lighthouse-ci-action/actions?workflow=LHCI-assert-on-budget)
+
 #### `configPath`
 
 Set a path to a custom [lighthouserc file](https://github.com/GoogleChrome/lighthouse-ci/blob/master/docs/cli.md#configuration) for full control of the Lighthouse environment and assertions.
@@ -120,6 +122,8 @@ Use `lighthouserc` to configure the collection of data (via Lighthouse config an
 ```yml
 configPath: ./lighthouserc.json
 ```
+
+[⚙️ See an example workflow with this option](https://github.com/treosh/lighthouse-ci-action/actions?workflow=LHCI-assert-on-lighthouserc)
 
 #### `upload`
 
@@ -135,7 +139,7 @@ upload.token: ${{ secrets.LHCI_TOKEN }}
 
 Specify an API token for the LHCI server. [Learn how to generate a token](https://github.com/GoogleChrome/lighthouse-ci/blob/master/docs/getting-started.md#historical-reports--diffing-lighthouse-ci-server).
 
-[⚙️ See an example workflow in use](https://github.com/treosh/lighthouse-ci-action/actions?workflow=LHCI-upload-to-private-server)
+[⚙️ See an example workflow with this option](https://github.com/treosh/lighthouse-ci-action/actions?workflow=LHCI-upload-to-private-server)
 
 ## Recipes
 
@@ -224,7 +228,7 @@ Make a `lighthouserc.json` file with [LHCI assertion syntax](https://github.com/
   "ci": {
     "assert": {
       "assertions": {
-        "first-contentful-paint": ["error", { "minScore": 0.8 }]
+        "first-contentful-paint": ["error", { "minScore": 0.6 }]
       }
     }
   }
@@ -342,7 +346,7 @@ module.exports = {
 }
 ```
 
-[⚙️ See this workflow in use](https://github.com/treosh/lighthouse-ci-action/actions?workflow=LHCI-hermetic-advanced)
+[⚙️ See this workflow in use](https://github.com/treosh/lighthouse-ci-action/actions?workflow=LHCI-advanced-config)
 
 </details>
 
@@ -365,6 +369,7 @@ jobs:
       - name: Run Lighthouse against a static dist dir
         uses: treosh/lighthouse-ci-action@v2
         with:
+          # no urls needed, since it uses local folder to scan .html files
           configPath: './lighthouserc.json'
 ```
 

@@ -9,5 +9,5 @@ jobs:
       - name: Run Lighthouse on urls and validate with budgets.json
         uses: ./
         with:
-          urls: 'https://alekseykulikov.com/'
+          urls: 'https://treo.sh/'
           budgetPath: '.github/lighthouse/budget.json'

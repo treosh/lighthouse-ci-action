@@ -4,19 +4,19 @@
     "resourceSizes": [
       {
         "resourceType": "document",
-        "budget": 14
+        "budget": 60
       },
       {
         "resourceType": "script",
-        "budget": 12
+        "budget": 40
       },
       {
         "resourceType": "stylesheet",
-        "budget": 5
+        "budget": 10
       },
       {
         "resourceType": "total",
-        "budget": 300
+        "budget": 600
       }
     ]
   }

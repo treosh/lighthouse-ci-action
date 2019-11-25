@@ -11,5 +11,6 @@ jobs:
         with:
           urls: |
             https://treo.sh/
-          upload.serverBaseUrl: ${{ secrets.LHCI_SERVER }}
-          upload.token: ${{ secrets.LHCI_TOKEN }}
+          # FIXME:
+          # upload.serverBaseUrl: ${{ secrets.LHCI_SERVER }}
+          # upload.token: ${{ secrets.LHCI_TOKEN }}

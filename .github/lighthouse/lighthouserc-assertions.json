@@ -3,7 +3,7 @@
     "assert": {
       "preset": "lighthouse:recommended",
       "assertions": {
-        "first-contentful-paint": ["error", { "minScore": 0.6 }]
+        "render-blocking-resources": ["warn", { "numericValue": 0 }]
       }
     }
   }

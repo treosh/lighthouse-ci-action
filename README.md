@@ -34,8 +34,8 @@ jobs:
         uses: treosh/lighthouse-ci-action@v2
         with:
           urls: |
-            https://example.com/
-            https://example.com/blog
+            https://treo.sh/
+            https://treo.sh/demo
       - name: Save results
         uses: actions/upload-artifact@v1
         with:
@@ -215,7 +215,7 @@ jobs:
       - name: Run Lighthouse on urls and validate with lighthouserc
         uses: treosh/lighthouse-ci-action@v2
         with:
-          urls: 'https://example.com/'
+          urls: 'https://exterkamp.codes/'
           configPath: './lighthouserc.json'
 ```
 

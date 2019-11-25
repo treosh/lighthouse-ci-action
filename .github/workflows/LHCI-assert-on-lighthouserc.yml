@@ -9,6 +9,6 @@ jobs:
       - name: Run Lighthouse on urls and validate with lighthouserc
         uses: ./
         with:
-          urls: 'https://example.com/'
+          urls: 'https://exterkamp.codes/'
           runs: 3
           configPath: '.github/lighthouse/lighthouserc-assertions.json'

@@ -10,8 +10,8 @@ jobs:
         uses: ./
         with:
           urls: |
-            https://example.com/
-            https://example.com/blog
+            https://treo.sh/
+            https://treo.sh/demo
       - name: Save results
         uses: actions/upload-artifact@v1
         with:

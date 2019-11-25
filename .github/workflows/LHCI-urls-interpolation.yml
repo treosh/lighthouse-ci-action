@@ -8,9 +8,9 @@ jobs:
       - uses: actions/checkout@v1
       - name: Run Lighthouse on multiple URLs and interpolate env variables.
         uses: ./
+        env:
+          URL_DOMAIN: 'treo.sh'
         with:
           urls: |
-            https://$DOMAIN/
-            https://$DOMAIN/demo
-          env:
-            DOMAIN: treo.sh
+            https://$URL_DOMAIN/
+            https://$URL_DOMAIN/demo

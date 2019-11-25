@@ -2,13 +2,11 @@ console.log('NODE_PATH', process.env.NODE_PATH);
 console.log('GITHUB_REPOSITORY', process.env.GITHUB_REPOSITORY);
 console.log('GITHUB_WORKSPACE', process.env.GITHUB_WORKSPACE);
 
-
 let newNodePath = process.env.NODE_PATH ? `${process.env.NODE_PATH}:` : '';
 newNodePath += `${__dirname}/../node_modules:${process.env.GITHUB_WORKSPACE}/node_modules`;
 process.env.NODE_PATH = newNodePath;
 
 console.log('NODE_PATH', process.env.NODE_PATH);
-
 
 const core = require('@actions/core')
 const childProcess = require('child_process')

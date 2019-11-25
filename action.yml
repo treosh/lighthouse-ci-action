@@ -22,7 +22,7 @@ outputs:
 runs:
   using: 'node12'
   main: 'src/index.js'
-  env:
+  env: |
     NODE_PATH: 'node_modules:$GITHUB_REPOSITORY/node_modules'
 branding:
   icon: 'activity'

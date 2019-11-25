@@ -12,7 +12,8 @@
   },
   "dependencies": {
     "@actions/core": "^1.2.0",
-    "@lhci/cli": "0.3.4"
+    "@lhci/cli": "0.3.4",
+    "is-windows": "^1.0.2"
   },
   "devDependencies": {
     "@types/node": "10",

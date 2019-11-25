@@ -1,9 +1,14 @@
 // Append the node_modules of the github workspace and the node_modules of this action
 // to NODE_PATH. This supports lighthouse plugins - all the workspace needs to do it
 // `npm install` the plugin. The copy of lighthouse within this action will be used.
-let newNodePath = process.env.NODE_PATH ? `${process.env.NODE_PATH}:` : '';
-newNodePath += `${__dirname}/../node_modules:${process.env.GITHUB_WORKSPACE}/node_modules`;
-process.env.NODE_PATH = newNodePath;
+
+const nodePathDelim = require('is-windows') ? ';' : ':';
+const nodePathParts = [
+  ...process.env.NODE_PATH.split(nodePathDelim),
+  `${__dirname}/../node_modules`,
+  `${process.env.GITHUB_WORKSPACE}/node_modules`,
+];
+process.env.NODE_PATH = nodePathParts.join(nodePathDelim);
 
 const core = require('@actions/core')
 const childProcess = require('child_process')

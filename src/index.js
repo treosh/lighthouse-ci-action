@@ -1,4 +1,9 @@
 console.log('NODE_PATH', process.env.NODE_PATH);
+console.log('GITHUB_REPOSITORY', process.env.GITHUB_REPOSITORY);
+process.env.NODE_PATH += `node_modules:${process.env.GITHUB_REPOSITORY}/node_modules`;
+console.log('NODE_PATH', process.env.NODE_PATH);
+
+
 const core = require('@actions/core')
 const childProcess = require('child_process')
 const lhciCliPath = require.resolve('@lhci/cli/src/cli.js')

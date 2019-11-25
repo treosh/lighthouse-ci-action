@@ -1,2 +1,3 @@
 results/
 .lighthouseci/
+node_modules/.yarn-integrity

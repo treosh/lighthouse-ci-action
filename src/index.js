@@ -15,7 +15,6 @@ const childProcess = require('child_process')
 const lhciCliPath = require.resolve('@lhci/cli/src/cli.js')
 const input = require('./input.js')
 
-
 // audit urls with Lighthouse CI
 async function main() {
   core.startGroup('Action config')

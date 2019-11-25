@@ -6,11 +6,13 @@
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@actions/core/-/core-1.2.0.tgz#aa5f52b26c362c821d41557e599371a42f6c0b3d"
 
-"@lhci/cli@0.3.3":
-  version "0.3.3"
-  resolved "https://registry.yarnpkg.com/@lhci/cli/-/cli-0.3.3.tgz#2b52a8465ee2b6271b613a14fc2dbf3c8df6f471"
+"@lhci/cli@0.3.4":
+  version "0.3.4"
+  resolved "https://registry.yarnpkg.com/@lhci/cli/-/cli-0.3.4.tgz#7789d1a58d5d6e45ee49e07acecaebb0b01f4a17"
+  integrity sha512-2KF+JLpytRRovUOqq+S/P6eEcQcfh02NZyf01yagnIH2p6jIlZgklaD13sQJ1LstiTut9iXOiaLi51IdxpEqXA==
   dependencies:
-    "@lhci/utils" "0.3.3"
+    "@lhci/utils" "0.3.4"
+    chrome-launcher "^0.12.0"
     compression "^1.7.4"
     express "^4.17.1"
     inquirer "^6.3.1"
@@ -21,9 +23,10 @@
     yargs "^12.0.5"
     yargs-parser "^11.1.1"
 
-"@lhci/utils@0.3.3":
-  version "0.3.3"
-  resolved "https://registry.yarnpkg.com/@lhci/utils/-/utils-0.3.3.tgz#3f412e5205cb59283dbcd542ecb335a8944d5c1d"
+"@lhci/utils@0.3.4":
+  version "0.3.4"
+  resolved "https://registry.yarnpkg.com/@lhci/utils/-/utils-0.3.4.tgz#06635b05dee9d6913994a9a2f3c7e486cda6d63b"
+  integrity sha512-ngZtSe4KzW4dh9lj/4oqwX0x+KeUvPhjkvsqWTMEzQgth2iEvjfOfY7HGNpHiIuvSzg7zVGY9UNzt5XJOq7PEQ==
   dependencies:
     isomorphic-fetch "^2.2.1"
     tree-kill "^1.2.1"
@@ -258,6 +261,17 @@ charenc@~0.0.1:
 chrome-launcher@^0.11.2:
   version "0.11.2"
   resolved "https://registry.yarnpkg.com/chrome-launcher/-/chrome-launcher-0.11.2.tgz#c9a248dbccd3a08565553acf61adff879bcc982c"
+  dependencies:
+    "@types/node" "*"
+    is-wsl "^2.1.0"
+    lighthouse-logger "^1.0.0"
+    mkdirp "0.5.1"
+    rimraf "^2.6.1"
+
+chrome-launcher@^0.12.0:
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/chrome-launcher/-/chrome-launcher-0.12.0.tgz#08db81ef0f7b283c331df2c350e780c38bd0ce3a"
+  integrity sha512-rBUP4tvWToiileDi3UR0SbWKoUoDCYTRmVND2sdoBL1xANBgVz8V9h1yQluj3MEQaBJg0fRw7hW82uOPrJus7A==
   dependencies:
     "@types/node" "*"
     is-wsl "^2.1.0"

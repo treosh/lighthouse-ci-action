@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@actions/core": "^1.2.0",
-    "@lhci/cli": "0.3.3"
+    "@lhci/cli": "0.3.4"
   },
   "devDependencies": {
     "@types/node": "10",

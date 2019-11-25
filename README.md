@@ -43,7 +43,7 @@ jobs:
           path: '.lighthouseci' # This will save the Lighthouse results as .json files
 ```
 
-[⚙️ See this workflow in use](https://github.com/treosh/lighthouse-ci-action/actions?workflow=LHCI-hermetic)
+[⚙️ See this workflow in use](https://github.com/treosh/lighthouse-ci-action/actions?workflow=LHCI-upload-artifact)
 
 **Advanced example**: run Lighthouse audit for each unique deployment, test performance budgets, and save results to the [public storage](https://github.com/GoogleChrome/lighthouse-ci/blob/master/docs/cli.md#upload) for a quick debugging.
 
@@ -87,6 +87,8 @@ All results are private by default. Use this option to upload reports to LHCI's 
 ```yml
 temporaryPublicStorage: true
 ```
+
+[⚙️ See an example workflow in use](https://github.com/treosh/lighthouse-ci-action/actions?workflow=LHCI-temporary-storage)
 
 #### `runs` (default: 1)
 
@@ -132,6 +134,8 @@ upload.token: ${{ secrets.LHCI_TOKEN }}
 ```
 
 Specify an API token for the LHCI server. [Learn how to generate a token](https://github.com/GoogleChrome/lighthouse-ci/blob/master/docs/getting-started.md#historical-reports--diffing-lighthouse-ci-server).
+
+[⚙️ See an example workflow in use](https://github.com/treosh/lighthouse-ci-action/actions?workflow=LHCI-upload-to-private-server)
 
 ## Recipes
 

@@ -1,6 +1,12 @@
 console.log('NODE_PATH', process.env.NODE_PATH);
 console.log('GITHUB_REPOSITORY', process.env.GITHUB_REPOSITORY);
-process.env.NODE_PATH += `node_modules:${process.env.GITHUB_REPOSITORY}/node_modules`;
+console.log('GITHUB_WORKSPACE', process.env.GITHUB_WORKSPACE);
+
+
+let newNodePath = process.env.NODE_PATH ? `${process.env.NODE_PATH}:` : '';
+newNodePath += `node_modules:${process.env.GITHUB_WORKSPACE}/node_modules`;
+process.env.NODE_PATH = newNodePath;
+
 console.log('NODE_PATH', process.env.NODE_PATH);
 
 

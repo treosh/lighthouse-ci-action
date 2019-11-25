@@ -4,7 +4,7 @@ console.log('GITHUB_WORKSPACE', process.env.GITHUB_WORKSPACE);
 
 
 let newNodePath = process.env.NODE_PATH ? `${process.env.NODE_PATH}:` : '';
-newNodePath += `node_modules:${process.env.GITHUB_WORKSPACE}/node_modules`;
+newNodePath += `${__dirname}/../node_modules:${process.env.GITHUB_WORKSPACE}/node_modules`;
 process.env.NODE_PATH = newNodePath;
 
 console.log('NODE_PATH', process.env.NODE_PATH);

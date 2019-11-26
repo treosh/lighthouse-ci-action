@@ -1,5 +1,5 @@
 name: 'Lighthouse CI Action'
-description: 'Run Lighthouse in CI using Github Actions'
+description: 'Audit URLs using Lighthouse and test performance with Lighthouse CI.'
 inputs:
   urls:
     description: 'List of URL(s) to analyze'

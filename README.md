@@ -1,17 +1,16 @@
 # Lighthouse CI Action
 
 > Audit URLs using [Lighthouse](https://developers.google.com/web/tools/lighthouse)
-> and monitor performance with [Lighthouse CI](https://github.com/GoogleChrome/lighthouse-ci).
+> and test performance with [Lighthouse CI](https://github.com/GoogleChrome/lighthouse-ci).
 
 **Features**:
 
 - ✅ Audit URLs using Lighthouse
-- 🎯 Test performance with Lighthouse CI (LHCI) assertions
-- 💵 Test performance with Lighthouse budgets
+- 🎯 Test performance with Lighthouse CI (LHCI) assertions or performance budgets.
+- 🚀 Fast action initialization
 - ⚙️ Full control over Lighthouse & Lighthouse CI config
 - 🔍 Detailed output for quick debug
 - 💾 Upload data to LHCI server
-- 🚀 Fast action initialization
 
 <img align="center" width="1046" alt="Lighthouse CI Action" src="https://user-images.githubusercontent.com/158189/68597493-58896f80-049d-11ea-97a2-5c4e7eb4285c.png">
 

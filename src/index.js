@@ -1,5 +1,5 @@
 // Append the node_modules of the github workspace and the node_modules of this action
-// to NODE_PATH. This supports lighthouse plugins - all the workspace needs to do it
+// to NODE_PATH. This supports lighthouse plugins - all the workspace needs to do is
 // `npm install` the plugin. The copy of lighthouse within this action will be used.
 
 const nodePathDelim = require('is-windows')() ? ';' : ':';

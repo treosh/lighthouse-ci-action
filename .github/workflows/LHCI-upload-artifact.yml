@@ -1,7 +1,7 @@
-name: LHCI-hermetic
+# This is a basic fully hermetic run of Lighthouse, that saves results as run artifacts.
+name: LHCI-upload-artifact
 on: push
 jobs:
-  # This is a basic fully hermetic run of Lighthouse.
   hermetic-basic:
     runs-on: ubuntu-latest
     steps:
@@ -9,9 +9,11 @@ jobs:
       - name: Run Lighthouse on urls
         uses: ./
         with:
-          urls: 'https://alekseykulikov.com/'
-      - name: Save .lighthouseci artifacts
+          urls: |
+            https://treo.sh/
+            https://treo.sh/demo
+      - name: Save results
         uses: actions/upload-artifact@v1
         with:
-          name: basic-hermetic-artifacts
+          name: lighthouse-results
           path: '.lighthouseci'

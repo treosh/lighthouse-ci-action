@@ -1,5 +1,5 @@
 # This is a basic Lighthouse run over multiple URLs that uses temporary-public-storage.
-name: LHCI-multiple-urls
+name: LHCI-temporary-storage
 on: push
 jobs:
   multiple-urls:

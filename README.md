@@ -34,8 +34,8 @@ jobs:
         uses: treosh/lighthouse-ci-action@v2
         with:
           urls: |
-            https://example.com/
-            https://example.com/blog
+            https://treo.sh/
+            https://treo.sh/demo
       - name: Save results
         uses: actions/upload-artifact@v1
         with:
@@ -43,7 +43,7 @@ jobs:
           path: '.lighthouseci' # This will save the Lighthouse results as .json files
 ```
 
-[⚙️ See this workflow in use](https://github.com/treosh/lighthouse-ci-action/actions?workflow=LHCI-hermetic)
+[⚙️ See this workflow in use](https://github.com/treosh/lighthouse-ci-action/actions?workflow=LHCI-upload-artifact)
 
 **Advanced example**: run Lighthouse audit for each unique deployment, test performance budgets, and save results to the [public storage](https://github.com/GoogleChrome/lighthouse-ci/blob/master/docs/cli.md#upload) for a quick debugging.
 
@@ -62,7 +62,7 @@ URLs support interpolation of process env vars so that you can write URLs like:
       PR_NUMBER: ${{ github.event.pull_request.number }}
 ```
 
-[⚙️ See this workflow in use](https://github.com/treosh/lighthouse-ci-action/actions?workflow=LHCI-multiple-urls)
+[⚙️ See this workflow in use](https://github.com/treosh/lighthouse-ci-action/actions?workflow=LHCI-urls-interpolation)
 
 > **Note**: to view the reports download the JSON files from the artifacts and open them with the [Lighthouse Viewer App](https://googlechrome.github.io/lighthouse/viewer/) or follow the `temporary-public-storage` link printed in the action.
 
@@ -207,7 +207,7 @@ jobs:
       - name: Run Lighthouse on urls and validate with lighthouserc
         uses: treosh/lighthouse-ci-action@v2
         with:
-          urls: 'https://example.com/'
+          urls: 'https://exterkamp.codes/'
           configPath: './lighthouserc.json'
 ```
 
@@ -220,7 +220,7 @@ Make a `lighthouserc.json` file with [LHCI assertion syntax](https://github.com/
   "ci": {
     "assert": {
       "assertions": {
-        "first-contentful-paint": ["error", { "minScore": 0.8 }]
+        "first-contentful-paint": ["error", { "minScore": 0.6 }]
       }
     }
   }
@@ -338,7 +338,7 @@ module.exports = {
 }
 ```
 
-[⚙️ See this workflow in use](https://github.com/treosh/lighthouse-ci-action/actions?workflow=LHCI-hermetic-advanced)
+[⚙️ See this workflow in use](https://github.com/treosh/lighthouse-ci-action/actions?workflow=LHCI-advanced-config)
 
 </details>
 
@@ -361,6 +361,7 @@ jobs:
       - name: Run Lighthouse against a static dist dir
         uses: treosh/lighthouse-ci-action@v2
         with:
+          # no urls needed, since it uses local folder to scan .html files
           configPath: './lighthouserc.json'
 ```
 

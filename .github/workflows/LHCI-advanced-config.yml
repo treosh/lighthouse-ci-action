@@ -1,5 +1,5 @@
 # This is an advanced fully hermetic run of Lighthouse, using custom config.
-name: LHCI-hermetic-advanced
+name: LHCI-advanced-config
 on: push
 jobs:
   hermetic-advanced:
@@ -9,8 +9,8 @@ jobs:
       - name: Run Lighthouse on urls with lighthouserc
         uses: ./
         with:
-          urls: 'https://alekseykulikov.com/'
-          configPath: '.github/lighthouse/lighthouserc_custom_config.json'
+          urls: 'https://example.com/'
+          configPath: '.github/lighthouse/lighthouserc-custom-config.json'
       - name: Save .lighthouseci artifacts
         uses: actions/upload-artifact@v1
         with:

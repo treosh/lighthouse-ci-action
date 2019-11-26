@@ -9,4 +9,5 @@ jobs:
       - name: Run Lighthouse against a static dist dir
         uses: ./
         with:
-          configPath: '.github/lighthouse/lighthouserc_static_dist_dir.json'
+          # no urls needed, since it uses local folder to scan .html files
+          configPath: '.github/lighthouse/lighthouserc-static-dist-dir.json'

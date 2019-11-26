@@ -1,0 +1,16 @@
+# Interpolate URLs with env variables.
+name: LHCI-urls-interpolation
+on: push
+jobs:
+  multiple-urls:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Run Lighthouse on multiple URLs and interpolate env variables.
+        uses: ./
+        env:
+          URL_DOMAIN: 'treo.sh'
+        with:
+          urls: |
+            https://$URL_DOMAIN/
+            https://$URL_DOMAIN/demo

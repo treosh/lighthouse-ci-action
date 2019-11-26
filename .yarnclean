@@ -49,5 +49,4 @@ wercker.yml
 
 # misc
 *.md
-*.ts
 LICENSE

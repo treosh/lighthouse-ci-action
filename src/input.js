@@ -57,6 +57,7 @@ function getArgs() {
     staticDistDir,
     canUpload: getArg('temporaryPublicStorage') ? true : false,
     budgetPath: getArg('budgetPath'),
+    slackWebhookUrl: getArg('slackWebhookUrl'),
     numberOfRuns: getIntArg('runs'),
     serverBaseUrl,
     token,
@@ -92,7 +93,7 @@ function getIntArg(arg) {
  * @param {string} arg
  * @return {string[]}
  */
-function getList(arg, separator = '\n') {
+function getList(arg, separator = ',') {
   const input = getArg(arg)
   if (!input) return []
   return input.split(separator).map(url => url.trim())

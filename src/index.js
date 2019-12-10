@@ -2,6 +2,7 @@ const core = require('@actions/core')
 const childProcess = require('child_process')
 const lhciCliPath = require.resolve('@lhci/cli/src/cli.js')
 const input = require('./input.js')
+const output = require('./output.js')
 
 // audit urls with Lighthouse CI
 async function main() {
@@ -57,8 +58,20 @@ async function main() {
       core.setFailed(`Assertions have failed.`)
       // continue
     }
+
+    const slackWebhookUrl = input.slackWebhookUrl
+
+    if (slackWebhookUrl) {
+      await output.run({
+        type: 'slack',
+        slackWebhookUrl,
+        status
+      })
+    }
+
     core.endGroup() // Asserting
   }
+
   /*******************************UPLOADING************************************/
   if ((input.serverBaseUrl && input.token) || input.canUpload) {
     core.startGroup(`Uploading`)

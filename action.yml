@@ -12,6 +12,8 @@ inputs:
     description: 'Path to a LHCI lighthouserc.json file'
   temporaryPublicStorage:
     descripton: 'Opt-in to saving LHRs to Lighthouse public-temporary-storage'
+  slackWebhookUrl:
+    description: 'Slack webhook url to post message about status'
   upload.serverBaseUrl:
     description: 'Address of a LHCI server'
   upload.token:

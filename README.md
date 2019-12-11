@@ -386,6 +386,64 @@ against each of them. More details on this process are in the [Lighthouse CI doc
 
 </details>
 
+<details>
+ <summary>Use a Lighthouse plugin.</summary><br>
+
+#### main.yml
+
+```yml
+name: Lighthouse Audit
+on: push
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1 # checkout your own repo
+      - run: npm install # install your own dependencies
+      - name: Audit URLs using Lighthouse
+        uses: treosh/lighthouse-ci-action@v2
+        with:
+          urls: |
+            https://www.example.com/
+          configPath: ./lighthouserc.json
+      - name: Save results
+        uses: actions/upload-artifact@v1
+        with:
+          name: lighthouse-results
+          path: '.lighthouseci' # This will save the Lighthouse results as .json files
+```
+
+#### lighthouserc.json
+
+```json
+{
+  "ci": {
+    "collect": {
+      "settings": {
+        "plugins": [
+          "lighthouse-plugin-social-sharing"
+        ]
+      }
+    }
+  }
+}
+```
+
+#### package.json
+
+```json
+{
+  "name": "lighthouse-plugin-sample-project",
+  "devDependencies": {
+    "lighthouse-plugin-social-sharing": "0.0.1"
+  }
+}
+```
+
+[⚙️ See this example](https://github.com/connorjclark/lighthouse-plugin-sample-project)
+
+</details>
+
 Explore more workflows in [public examples](./.github/workflows).
 Submit a pull request with a new one if they don't cover your use case.
 

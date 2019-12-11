@@ -440,10 +440,6 @@ jobs:
 }
 ```
 
-Inside your `staticDistDir` there should be html files that make up your site.
-LHCI will run a simple static webserver to host the files, then run an audit
-against each of them. More details on this process are in the [Lighthouse CI docs](https://github.com/GoogleChrome/lighthouse-ci/blob/master/docs/getting-started.md#run-lighthouse-ci).
-
 [⚙️ See this example](https://github.com/connorjclark/lighthouse-plugin-sample-project)
 
 </details>

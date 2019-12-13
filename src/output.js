@@ -39,7 +39,7 @@ async function slackNotification({ status, slackWebhookUrl }) {
       res => ({
         title: `${res.auditId}.${res.auditProperty}`,
         value: `${res.auditTitle} \n _Expected ${res.expected} ${
-          res.operator === '<=' ? ' less then' : ' mode than'
+          res.operator === '<=' ? ' less then' : ' greater than'
         } actual ${res.actual}_`,
         type: 'mrkdwn',
         url: res.url

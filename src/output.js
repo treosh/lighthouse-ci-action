@@ -2,7 +2,7 @@ const { IncomingWebhook } = require('@slack/webhook')
 const { readFileSync } = require('fs')
 
 /**
- * @param {{type: string, status: number, slackWebhookUrl: string}} params
+ * @param {{type: 'github' | 'slack', status: number, slackWebhookUrl: string}} params
  */
 async function run({ type, ...args }) {
   try {

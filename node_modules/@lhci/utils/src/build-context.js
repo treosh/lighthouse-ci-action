@@ -32,6 +32,24 @@ function runCommandsUntilFirstSuccess(commands) {
   return result;
 }
 
+/** @return {string|undefined} */
+function getGitRemote() {
+  const envHash = getEnvVarIfSet([
+    // Manual override
+    'LHCI_BUILD_CONTEXT__GIT_REMOTE',
+  ]);
+  if (envHash) return envHash;
+
+  const result = childProcess.spawnSync('git', ['remote', '-v'], {encoding: 'utf8'});
+  if (result.status !== 0) return undefined;
+
+  const originLine = result.stdout.split('\n').find(l => l.startsWith('origin'));
+  if (!originLine) return undefined;
+  const matches = originLine.match(/^origin\s+(\S+)\s+/);
+  if (!matches) return undefined;
+  return matches[1];
+}
+
 /**
  * @return {string}
  */
@@ -62,6 +80,12 @@ function getCurrentHash() {
  * @return {string}
  */
 function getCommitTime(hash) {
+  const envHash = getEnvVarIfSet([
+    // Manual override
+    'LHCI_BUILD_CONTEXT__COMMIT_TIME',
+  ]);
+  if (envHash) return envHash;
+
   const result = childProcess.spawnSync('git', ['log', '-n1', '--pretty=%cI', hash], {
     encoding: 'utf8',
   });
@@ -138,6 +162,12 @@ function getExternalBuildUrl() {
  * @return {string}
  */
 function getCommitMessage(hash = 'HEAD') {
+  const envHash = getEnvVarIfSet([
+    // Manual override
+    'LHCI_BUILD_CONTEXT__COMMIT_MESSAGE',
+  ]);
+  if (envHash) return envHash;
+
   const result = childProcess.spawnSync('git', ['log', '--format=%s', '-n', '1', hash], {
     encoding: 'utf8',
   });
@@ -153,6 +183,12 @@ function getCommitMessage(hash = 'HEAD') {
  * @return {string}
  */
 function getAuthor(hash = 'HEAD') {
+  const envHash = getEnvVarIfSet([
+    // Manual override
+    'LHCI_BUILD_CONTEXT__AUTHOR',
+  ]);
+  if (envHash) return envHash;
+
   const result = childProcess.spawnSync('git', ['log', '--format=%aN <%aE>', '-n', '1', hash], {
     encoding: 'utf8',
   });
@@ -168,6 +204,12 @@ function getAuthor(hash = 'HEAD') {
  * @return {string}
  */
 function getAvatarUrl(hash = 'HEAD') {
+  const envHash = getEnvVarIfSet([
+    // Manual override
+    'LHCI_BUILD_CONTEXT__AVATAR_URL',
+  ]);
+  if (envHash) return envHash;
+
   const result = childProcess.spawnSync('git', ['log', '--format=%aE', '-n', '1', hash], {
     encoding: 'utf8',
   });
@@ -216,6 +258,12 @@ function getAncestorHashForBranch(hash = 'HEAD') {
  * @return {string}
  */
 function getAncestorHash(hash = 'HEAD') {
+  const envHash = getEnvVarIfSet([
+    // Manual override
+    'LHCI_BUILD_CONTEXT__ANCESTOR_HASH',
+  ]);
+  if (envHash) return envHash;
+
   return getCurrentBranch() === 'master'
     ? getAncestorHashForMaster(hash)
     : getAncestorHashForBranch(hash);
@@ -237,6 +285,12 @@ function getGitHubRepoSlug() {
   if (process.env.CIRCLE_PROJECT_USERNAME && process.env.CIRCLE_PROJECT_REPONAME) {
     return `${process.env.CIRCLE_PROJECT_USERNAME}/${process.env.CIRCLE_PROJECT_REPONAME}`;
   }
+
+  const remote = getGitRemote();
+  if (remote && remote.includes('github.com')) {
+    const remoteMatch = remote.match(/github\.com.([^/]+\/.+)\.git/);
+    if (remoteMatch) return remoteMatch[1];
+  }
 }
 
 module.exports = {
@@ -250,5 +304,6 @@ module.exports = {
   getAncestorHash,
   getAncestorHashForMaster,
   getAncestorHashForBranch,
+  getGitRemote,
   getGitHubRepoSlug,
 };

@@ -420,9 +420,7 @@ jobs:
   "ci": {
     "collect": {
       "settings": {
-        "plugins": [
-          "lighthouse-plugin-social-sharing"
-        ]
+        "plugins": ["lighthouse-plugin-social-sharing"]
       }
     }
   }

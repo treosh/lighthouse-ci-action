@@ -1,16 +1,16 @@
+const { groupBy } = require('lodash')
 const { IncomingWebhook } = require('@slack/webhook')
 const { readFileSync } = require('fs')
 
 /**
- * @param {{type: 'github' | 'slack', status: number, slackWebhookUrl: string}} params
+ * @param {{type: 'slack', status: number, slackWebhookUrl: string}} params
  */
 async function run({ type, ...args }) {
   try {
-    if (type === 'github') {
-      // tbd
-      // await githubCheck(args)
-    } else if (type === 'slack') {
+    if (type === 'slack') {
       await slackNotification(args)
+    } else {
+      console.log('Unknown output type: ', type)
     }
   } catch (e) {
     throw e
@@ -34,22 +34,21 @@ async function slackNotification({ status, slackWebhookUrl }) {
     const results = groupedResult.map(
       /**
        * @param {{auditId: string, auditProperty: string, auditTitle: string, expected: string, operator: string, actual: string, url: string}} res
-       * @return {{title?: string, type: string, value: string, url: string}}
+       * @return {{title: string, value: string}}
        */
       res => ({
         title: `${res.auditId}.${res.auditProperty}`,
         value: `${res.auditTitle} \n _Expected ${res.expected} ${
           res.operator === '<=' ? ' less then' : ' greater than'
-        } actual ${res.actual}_`,
-        type: 'mrkdwn',
-        url: res.url
+        } actual ${res.actual}_`
       })
     )
 
     const fields = results.slice(0, 2)
     fields.length > 0 &&
       fields.push({
-        title: '...'
+        title: '...',
+        value: ''
       })
 
     return {
@@ -74,21 +73,6 @@ async function slackNotification({ status, slackWebhookUrl }) {
       }
     ]
   })
-}
-
-/**
- *
- * @param {Array<any>} items
- * @param {String} key
- */
-function groupBy(items, key) {
-  return items.reduce(
-    (result, item) => ({
-      ...result,
-      [item[key]]: [...(result[item[key]] || []), item]
-    }),
-    {}
-  )
 }
 
 module.exports = {

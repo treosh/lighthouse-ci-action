@@ -12,3 +12,4 @@ jobs:
           urls: 'https://alekseykulikov.com/'
           budgetPath: '.github/lighthouse/passable_budget.json'
           slackWebhookUrl: ${{ secrets.SLACK_WEBHOOK_URL }}
+          logLevel: 'error'

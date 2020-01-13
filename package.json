@@ -14,9 +14,11 @@
     "@actions/core": "^1.2.0",
     "@actions/github": "^1.1.0",
     "@lhci/cli": "0.3.4",
-    "@slack/webhook": "^5.0.2"
+    "@slack/webhook": "^5.0.2",
+    "lodash": "^4.17.15"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.149",
     "@types/node": "10",
     "prettier": "^1.19.1",
     "typescript": "^3.7.2"

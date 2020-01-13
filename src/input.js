@@ -52,12 +52,15 @@ function getArgs() {
     )
   }
 
+  const logLevel = getArg('logLevel')
+
   return {
     urls,
     staticDistDir,
     canUpload: getArg('temporaryPublicStorage') ? true : false,
     budgetPath: getArg('budgetPath'),
     slackWebhookUrl: getArg('slackWebhookUrl'),
+    logLevel: logLevel ? logLevel : 'info',
     numberOfRuns: getIntArg('runs'),
     serverBaseUrl,
     token,

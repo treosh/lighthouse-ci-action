@@ -60,8 +60,11 @@ async function main() {
     }
 
     const slackWebhookUrl = input.slackWebhookUrl
+    console.log('input.logLevel')
+    console.log(input.logLevel)
+    const shouldRunOutput = input.logLevel === 'info' || (input.logLevel === 'error' && status)
 
-    if (slackWebhookUrl) {
+    if (slackWebhookUrl && shouldRunOutput) {
       await output.run({
         type: 'slack',
         slackWebhookUrl,

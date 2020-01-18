@@ -1,9 +1,18 @@
-const { groupBy } = require('lodash')
+const { groupBy, find, get } = require('lodash')
 const { IncomingWebhook } = require('@slack/webhook')
-const { readFileSync } = require('fs')
+const github = require('@actions/github')
+const { readFileSync, readdirSync } = require('fs')
+const { join } = require('path')
+
+/** @type {string} */
+const homeDir = get(process.env, 'HOME', '')
+/** @type {string} */
+const githubRepo = get(process.env, 'GITHUB_REPOSITORY', '')
+/** @type {string} */
+const githubSHA = get(process.env, 'GITHUB_SHA', '')
 
 /**
- * @param {{type: 'slack', status: number, slackWebhookUrl: string}} params
+ * @param {{type: 'slack', status: number, slackWebhookUrl: string, githubToken: string, staticDistDir: string}} params
  */
 async function run({ type, ...args }) {
   try {
@@ -18,16 +27,17 @@ async function run({ type, ...args }) {
 }
 
 /**
- * @param {{status: number, slackWebhookUrl: string}} params
+ * @param {{status: number, slackWebhookUrl: string, githubToken: string, staticDistDir: string}} params
  * @return {Promise<*>}
  */
-async function slackNotification({ status, slackWebhookUrl }) {
+async function slackNotification({ status, slackWebhookUrl, githubToken, staticDistDir = '.lighthouseci' }) {
   const conclusion = status === 0 ? 'success' : 'failure'
   const webhook = new IncomingWebhook(slackWebhookUrl)
   const color = status === 0 ? 'good' : 'danger'
+  const staticDistDirPath = join(homeDir, staticDistDir)
+  const LHRNameFromPath = getLHRNameFromPath(staticDistDirPath)
 
-  /** @type {Buffer} */
-  const assertionResults = readFileSync(`${process.cwd()}/.lighthouseci/assertion-results.json`)
+  const assertionResults = readFileSync(join(staticDistDirPath, 'assertion-results.json'))
   const groupedResults = groupBy(JSON.parse(assertionResults.toString()), 'url')
 
   const attachments = Object.values(groupedResults).map(groupedResult => {
@@ -58,21 +68,62 @@ async function slackNotification({ status, slackWebhookUrl }) {
     }
   })
 
+  const octokit = new github.GitHub(githubToken)
+  const [pulls, gist] = await Promise.all([
+    octokit.pulls.list({
+      owner: githubRepo.split('/')[0],
+      repo: githubRepo.split('/')[1]
+    }),
+    octokit.gists.create({
+      files: {
+        [LHRNameFromPath]: {
+          content: readFileSync(join(staticDistDirPath, LHRNameFromPath)).toString()
+        }
+      }
+    })
+  ])
+  const gistId = get(gist, ['data', 'files', LHRNameFromPath, 'raw_url'], '').split('/')[4]
+  const pullRequest = find(get(pulls, 'data', []), ['head.sha', githubSHA])
+  const pullRequestUrl = get(pullRequest, 'html_url', '')
+  const shaURL = ['https://github.com/', githubRepo, 'commit', githubSHA].join('/')
+  const changesTitle = pullRequestUrl
+    ? `Pull Request ${conclusion} - <${pullRequestUrl}|View on GitHub>`
+    : `Changes ${conclusion} - <${shaURL}| View SHA Changes>`
+
   return webhook.send({
     attachments: [
       {
-        pretext: 'GitHub Actions / LH Report',
-        title: `Pull Request ${conclusion} - <https://github.com/treosh/lighthouse-ci-action/|View on GitHub>`,
+        pretext: 'GitHub Actions / Lighthouse Report',
+        title: changesTitle,
         color
       },
       ...attachments,
       {
         title: `View Details`,
-        title_link: 'https://github.com/paulirish/lighthouse-ci-action/pull/2/checks?check_run_id=310929699',
+        title_link: `https://googlechrome.github.io/lighthouse/viewer/?gist=${gistId}`,
         color
       }
     ]
   })
+}
+
+/**
+ * @param {string} path
+ * @return {string}
+ */
+function getLHRNameFromPath(path = '') {
+  let dir = readdirSync(path)
+  return (
+    dir.find(
+      /**
+       * @param {string} fileName
+       * @return { RegExpMatchArray | null }
+       */
+      (fileName = '') => {
+        return fileName.match(/lhr-\d+\.json/g)
+      }
+    ) || ''
+  )
 }
 
 module.exports = {

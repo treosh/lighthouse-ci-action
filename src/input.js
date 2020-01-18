@@ -62,6 +62,7 @@ function getArgs() {
     slackWebhookUrl: getArg('slackWebhookUrl'),
     logLevel: logLevel ? logLevel : 'info',
     numberOfRuns: getIntArg('runs'),
+    githubToken: getArg('githubToken'),
     serverBaseUrl,
     token,
     rcCollect,

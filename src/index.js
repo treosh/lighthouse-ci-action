@@ -59,23 +59,23 @@ async function main() {
       // continue
     }
 
-    const slackWebhookUrl = input.slackWebhookUrl
-    console.log('input.logLevel')
-    console.log(input.logLevel)
-    const shouldRunOutput = input.logLevel === 'info' || (input.logLevel === 'error' && status)
-
-    if (slackWebhookUrl && shouldRunOutput) {
-      await output.run({
-        type: 'slack',
-        slackWebhookUrl,
-        status
-      })
-    }
-
     core.endGroup() // Asserting
   }
 
   /*******************************UPLOADING************************************/
+  const { slackWebhookUrl, githubToken } = input
+  const shouldRunOutput = input.logLevel === 'info' || (input.logLevel === 'error' && status)
+
+  if (slackWebhookUrl && githubToken && shouldRunOutput) {
+    await output.run({
+      type: 'slack',
+      slackWebhookUrl,
+      status,
+      githubToken,
+      staticDistDir: input.staticDistDir
+    })
+  }
+
   if ((input.serverBaseUrl && input.token) || input.canUpload) {
     core.startGroup(`Uploading`)
     args = []

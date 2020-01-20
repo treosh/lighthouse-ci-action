@@ -12,6 +12,8 @@ declare module '@octokit/rest' {
     }
     gists: {
       create: { (params?: any): Promise<any> }
+      update: { (params?: any): Promise<any> }
+      list: { (params?: any): Promise<any> }
     }
   }
   export = Octokit;

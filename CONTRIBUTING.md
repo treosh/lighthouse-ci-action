@@ -42,4 +42,8 @@ PAGE="src/" INPUT_URLS="http://localhost:3000/\$PAGE" INPUT_RUNS="1" node src/in
 
 # run with a static dist dir
 INPUT_CONFIGPATH=".github/lighthouse/lighthouserc-static-dist-dir.json" INPUT_RUNS="1" node src/index.js
+
+# run with Slack integration
+# some of env variables mocked from GitHub ENV - https://help.github.com/en/actions/automating-your-workflow-with-github-actions/using-environment-variables
+INPUT_URLS="https://alekseykulikov.com/" INPUT_BUDGETPATH=".github/lighthouse/budget.json" INPUT_RUNS="1" INPUT_SLACKWEBHOOKURL="custom-webhook-url" INPUT_GITHUBTOKEN="github-token" GITHUB_REPOSITORY="treosh/lighthouse-ci-action" GITHUB_SHA="githib-pr-head-sha" HOME="home-dir" node src/index.js
 ```

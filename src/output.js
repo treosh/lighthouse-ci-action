@@ -1,4 +1,4 @@
-const { groupBy, find, get } = require('lodash')
+const { groupBy, find, get, findLast } = require('lodash')
 const { IncomingWebhook } = require('@slack/webhook')
 const github = require('@actions/github')
 const { readFileSync, readdirSync } = require('fs')
@@ -68,21 +68,32 @@ async function slackNotification({ status, slackWebhookUrl, githubToken, staticD
     }
   })
 
+  const gistName = `lhci-action-lhr-${githubRepo.split('/').join('-')}.json`
   const octokit = new github.GitHub(githubToken)
+  const gists = await octokit.gists.list()
+  const existingGist = findLast(gists.data, gist => Object.keys(gist.files).filter(filename => filename === gistName))
+  /** @type {{gist_id?: string, files: {[p: string]: {content: string}}}} */
+  const gistParams = {
+    files: {
+      [gistName]: {
+        content: readFileSync(join(staticDistDirPath, LHRNameFromPath)).toString()
+      }
+    }
+  }
+  existingGist && (gistParams['gist_id'] = get(existingGist, 'id'))
+  /** @type {'update' | 'create'} */
+  const gistAction = existingGist ? 'update' : 'create'
+
   const [pulls, gist] = await Promise.all([
     octokit.pulls.list({
       owner: githubRepo.split('/')[0],
       repo: githubRepo.split('/')[1]
     }),
-    octokit.gists.create({
-      files: {
-        [LHRNameFromPath]: {
-          content: readFileSync(join(staticDistDirPath, LHRNameFromPath)).toString()
-        }
-      }
-    })
+    octokit.gists[gistAction](gistParams)
   ])
-  const gistId = get(gist, ['data', 'files', LHRNameFromPath, 'raw_url'], '').split('/')[4]
+
+  const gistId = get(gist, 'data.id', '').split('/')
+  const gistSHA = get(gist, ['data', 'history', 0, 'version'], '')
   const pullRequest = find(get(pulls, 'data', []), ['head.sha', githubSHA])
   const pullRequestUrl = get(pullRequest, 'html_url', '')
   const shaURL = ['https://github.com/', githubRepo, 'commit', githubSHA].join('/')
@@ -100,7 +111,7 @@ async function slackNotification({ status, slackWebhookUrl, githubToken, staticD
       ...attachments,
       {
         title: `View Details`,
-        title_link: `https://googlechrome.github.io/lighthouse/viewer/?gist=${gistId}`,
+        title_link: `https://googlechrome.github.io/lighthouse/viewer/?gist=${gistId}/${gistSHA}`,
         color
       }
     ]

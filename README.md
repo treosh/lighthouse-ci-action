@@ -11,6 +11,7 @@
 - ⚙️ Full control over Lighthouse & Lighthouse CI config
 - 🔍 Detailed output for quick debug
 - 💾 Upload data to LHCI server
+- 🔔 Slack notifications
 
 <img align="center" width="1046" alt="Lighthouse CI Action" src="https://user-images.githubusercontent.com/158189/68597493-58896f80-049d-11ea-97a2-5c4e7eb4285c.png">
 

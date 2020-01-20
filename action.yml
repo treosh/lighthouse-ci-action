@@ -13,7 +13,12 @@ inputs:
   temporaryPublicStorage:
     descripton: 'Opt-in to saving LHRs to Lighthouse public-temporary-storage'
   slackWebhookUrl:
-	    description: 'Slack webhook url to post run results to slack'
+    description: 'Slack webhook url to post run results to slack'
+  logLevel:
+    description: 'Log info'
+    default: 'info'
+  githubToken:
+    description: 'GitHub access token'
   upload.serverBaseUrl:
     description: 'Address of a LHCI server'
   upload.token:

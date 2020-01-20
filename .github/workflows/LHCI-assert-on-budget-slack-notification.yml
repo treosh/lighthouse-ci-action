@@ -10,6 +10,7 @@ jobs:
         uses: ./
         with:
           urls: 'https://alekseykulikov.com/'
-          budgetPath: '.github/lighthouse/passable_budget.json'
+          budgetPath: '.github/lighthouse/budget.json'
           slackWebhookUrl: ${{ secrets.SLACK_WEBHOOK_URL }}
+          githubToken: ${{ secrets.SLACK_WEBHOOK_URL }}
           logLevel: 'error'

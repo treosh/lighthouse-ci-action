@@ -57,8 +57,8 @@ URLs support interpolation of process env vars so that you can write URLs like:
       https://pr-$PR_NUMBER.staging-example.com/blog
     budgetPath: ./budgets.json
     temporaryPublicStorage: true
-    env:
-      PR_NUMBER: ${{ github.event.pull_request.number }}
+  env:
+    PR_NUMBER: ${{ github.event.pull_request.number }}
 ```
 
 [⚙️ See this workflow in use](https://github.com/treosh/lighthouse-ci-action/actions?workflow=LHCI-urls-interpolation)

@@ -15,6 +15,10 @@ declare module '@octokit/rest' {
       update: { (params?: any): Promise<any> }
       list: { (params?: any): Promise<any> }
     }
+    checks: {
+      create: { (params?: any): Promise<any> }
+      createSuite: { (params?: any): Promise<any> }
+    }
   }
   export = Octokit;
 }

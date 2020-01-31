@@ -63,6 +63,8 @@ function getArgs() {
     logLevel: logLevel ? logLevel : 'info',
     numberOfRuns: getIntArg('runs'),
     githubToken: getArg('githubToken'),
+    githubNotification: getArg('githubNotification') ? true : false,
+    slackNotification: getArg('slackNotification') ? true : false,
     serverBaseUrl,
     token,
     rcCollect,

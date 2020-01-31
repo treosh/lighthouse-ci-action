@@ -10,18 +10,25 @@ const homeDir = get(process.env, 'HOME', '')
 const githubRepo = get(process.env, 'GITHUB_REPOSITORY', '')
 /** @type {string} */
 const githubSHA = get(process.env, 'GITHUB_SHA', '')
+/** @type {string} */
+const reportTitle = 'GitHub Actions / Lighthouse Report'
 
 /**
- * @param {{type: 'slack', status: number, slackWebhookUrl: string, githubToken: string, staticDistDir: string}} params
+ * @param {{type: 'slack' | 'github', status: number, slackWebhookUrl?: string, githubToken: string, staticDistDir?: string}} params
  */
 async function run({ type, ...args }) {
   try {
     if (type === 'slack') {
+      console.log('Running Slack notification');
       await slackNotification(args)
+    } else if (type === 'github') {
+      console.log('Running Github notification');
+      await githubNotification(args)
     } else {
       console.log('Unknown output type: ', type)
     }
   } catch (e) {
+    console.log(e)
     throw e
   }
 }
@@ -116,6 +123,36 @@ async function slackNotification({ status, slackWebhookUrl, githubToken, staticD
       }
     ]
   })
+}
+
+/**
+ * Experimental
+ * @param {{status: number, githubToken: string}} params
+ * @return {Promise<*>}
+ */
+async function githubNotification({ status, githubToken }) {
+  const conclusion = status === 0 ? 'success' : 'failure'
+  const octokit = new github.GitHub(githubToken)
+
+  const checkBody = {
+    owner: githubRepo.split('/')[0],
+    repo: githubRepo.split('/')[1],
+    head_sha: githubSHA,
+    name: reportTitle,
+    status: 'completed',
+    conclusion,
+    output: {
+      title: `Changes ${conclusion}`,
+      summary: `${conclusion} - TBD`
+    }
+  }
+
+  await octokit.checks.createSuite({
+    owner: githubRepo.split('/')[0],
+    repo: githubRepo.split('/')[1],
+    head_sha: githubSHA
+  })
+  await octokit.checks.create(checkBody)
 }
 
 /**

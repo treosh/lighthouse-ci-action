@@ -63,16 +63,24 @@ async function main() {
   }
 
   /*******************************UPLOADING************************************/
-  const { slackWebhookUrl, githubToken } = input
+  const { slackWebhookUrl, githubToken, githubNotification, slackNotification } = input
   const shouldRunOutput = input.logLevel === 'info' || (input.logLevel === 'error' && status)
 
-  if (slackWebhookUrl && githubToken && shouldRunOutput) {
+  if (slackWebhookUrl && githubToken && shouldRunOutput && slackNotification) {
     await output.run({
       type: 'slack',
       slackWebhookUrl,
       status,
       githubToken,
       staticDistDir: input.staticDistDir
+    })
+  }
+
+  if (githubNotification && githubToken && shouldRunOutput) {
+    await output.run({
+      type: 'github',
+      status,
+      githubToken
     })
   }
 

@@ -3,7 +3,7 @@ const { IncomingWebhook } = require('@slack/webhook')
 const github = require('@actions/github')
 const { readFile, readdirSync } = require('fs')
 const { promisify } = require('util')
-const { join, resolve } = require('path')
+const { join } = require('path')
 const input = require('./input')
 
 const pReadFile = promisify(readFile)
@@ -155,7 +155,7 @@ async function githubNotification({ status, githubToken = '', changesURL, gist, 
  * @return {string}
  */
 function getStaticDistDirPath({ staticDistDir }) {
-  return resolve(process.cwd(), staticDistDir)
+  return join(process.cwd(), staticDistDir)
 }
 
 /**

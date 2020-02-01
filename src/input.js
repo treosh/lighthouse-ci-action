@@ -1,3 +1,4 @@
+const { isEmpty } = require('lodash')
 const core = require('@actions/core')
 const { readFileSync } = require('fs')
 
@@ -63,7 +64,7 @@ function getArgs() {
     logLevel: logLevel ? logLevel : 'info',
     numberOfRuns: getIntArg('runs'),
     githubToken: getArg('githubToken'),
-    githubNotification: getArg('githubNotification') ? true : false,
+    githubNotification: isEmpty(getArg('githubNotification')) ? true : Boolean(getArg('githubNotification')),
     slackNotification: getArg('slackNotification') ? true : false,
     serverBaseUrl,
     token,

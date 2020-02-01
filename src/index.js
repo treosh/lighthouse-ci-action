@@ -7,6 +7,7 @@ const output = require('./output.js')
 // audit urls with Lighthouse CI
 async function main() {
   core.startGroup('Action config')
+  // @todo hide tokes from log (just leave 3 start and 3 end symbols)
   console.log('Input args:', input)
   core.endGroup() // Action config
 
@@ -63,26 +64,7 @@ async function main() {
   }
 
   /*******************************UPLOADING************************************/
-  const { slackWebhookUrl, githubToken, githubNotification, slackNotification } = input
-  const shouldRunOutput = input.logLevel === 'info' || (input.logLevel === 'error' && status)
-
-  if (slackWebhookUrl && githubToken && shouldRunOutput && slackNotification) {
-    await output.run({
-      type: 'slack',
-      slackWebhookUrl,
-      status,
-      githubToken,
-      staticDistDir: input.staticDistDir
-    })
-  }
-
-  if (githubNotification && githubToken && shouldRunOutput) {
-    await output.run({
-      type: 'github',
-      status,
-      githubToken
-    })
-  }
+  await output.run({ status })
 
   if ((input.serverBaseUrl && input.token) || input.canUpload) {
     core.startGroup(`Uploading`)

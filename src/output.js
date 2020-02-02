@@ -154,7 +154,10 @@ async function githubNotification({ status, githubToken = '', changesURL, gist, 
  * @return {Promise<*>}
  */
 async function getGroupedAssertionResultsByURL() {
-  if (!existsSync(lhAssertResultsPath)) return []
+  if (!existsSync(lhAssertResultsPath)) {
+    console.log(`No LH Assert results in ${lhAssertResultsPath}`)
+    return []
+  }
 
   const assertionResultsBuffer = await pReadFile(lhAssertResultsPath)
   /** @type {[LHResult]} **/
@@ -269,9 +272,13 @@ function formatAssertResults({ groupedResults, status }) {
  * @return {{summary: string, title: string}}
  */
 function getSummaryMarkdownOutput({ status, changesURL, groupedResults, gist }) {
+  const conclusion = status === 0 ? 'success' : 'failure'
   const title = changesURL.pullRequest
-    ? `Pull Request - [View on GitHub](${changesURL.pullRequest})`
-    : `Changes - [View SHA Changes](${changesURL.sha})`
+    ? `Pull Request ${conclusion} - [View on GitHub](${changesURL.pullRequest})`
+    : `Changes ${conclusion} - [View SHA Changes](${changesURL.sha})`
+  const changesLink = changesURL.pullRequest
+    ? `[View on GitHub](${changesURL.pullRequest})`
+    : `View SHA Changes](${changesURL.sha})`
   const summaryResults = formatAssertResults({ groupedResults, status })
   /**
    * @param {{ title: string, value: string }[]} fields
@@ -292,6 +299,7 @@ function getSummaryMarkdownOutput({ status, changesURL, groupedResults, gist }) 
   const detailsTemplate = `${reportURL ? `\n[View Detailed Lighthouse Report](${reportURL})` : '\n'}`
 
   const summary = `
+${changesLink}\n
 ${summaryResultsTempalte(summaryResults)}
 ${detailsTemplate}
 `

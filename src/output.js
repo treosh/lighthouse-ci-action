@@ -1,9 +1,9 @@
 const { groupBy, find, get, findLast, isEmpty } = require('lodash')
 const { IncomingWebhook } = require('@slack/webhook')
 const github = require('@actions/github')
-const { readFile, readdirSync } = require('fs')
+const { readFile, readdirSync, existsSync } = require('fs')
 const { promisify } = require('util')
-const { join, resolve } = require('path')
+const { join } = require('path')
 const input = require('./input')
 
 const pReadFile = promisify(readFile)
@@ -32,10 +32,10 @@ const pReadFile = promisify(readFile)
 
 /** @type {string} */
 const githubRepo = get(process.env, 'GITHUB_REPOSITORY', '')
-/** @type {string} */
 const githubSHA = get(process.env, 'GITHUB_SHA', '')
-/** @type {string} */
 const reportTitle = 'Lighthouse Report'
+const resultsDirPath = join(process.cwd(), '.lighthouseci')
+const lhAssertResultsPath = join(resultsDirPath, 'assertion-results.json')
 
 /**
  * @param {{ status: number }} params
@@ -45,7 +45,6 @@ async function run({ status }) {
     const {
       slackWebhookUrl,
       githubToken,
-      staticDistDir = '.lighthouseci',
       githubNotification: githubNotificationEnabled,
       slackNotification: slackNotificationEnabled
     } = input
@@ -62,10 +61,10 @@ async function run({ status }) {
      * @type {[ LHResultsByURL, ChangesURL, Gist ]}
      */
     const [groupedResults, changesURL, gist] = await Promise.all([
-      getGroupedAssertionResultsByURL({ staticDistDir }),
+      getGroupedAssertionResultsByURL(),
       getChangesUrl({ githubToken }),
       // keep uploading as part of Promise all instead of separate request
-      uploadResultsToGist({ githubToken, staticDistDir })
+      uploadResultsToGist({ githubToken })
     ])
 
     const slackData = { status, slackWebhookUrl, changesURL, gist, groupedResults }
@@ -151,37 +150,28 @@ async function githubNotification({ status, githubToken = '', changesURL, gist, 
 }
 
 /**
- * @param {{staticDistDir: string}} params
- * @return {string}
- */
-function getStaticDistDirPath({ staticDistDir }) {
-  return resolve(process.cwd(), staticDistDir)
-}
-
-/**
- * @param {{staticDistDir: string}} params
  * @return {Promise<*>}
  */
-async function getGroupedAssertionResultsByURL({ staticDistDir }) {
-  const staticDistDirPath = getStaticDistDirPath({ staticDistDir })
-  const assertionResultsBuffer = await pReadFile(join(staticDistDirPath, 'assertion-results.json'))
+async function getGroupedAssertionResultsByURL() {
+  if (!existsSync(lhAssertResultsPath)) return []
+
+  const assertionResultsBuffer = await pReadFile(lhAssertResultsPath)
   /** @type {[LHResult]} **/
   const assertionResults = JSON.parse(assertionResultsBuffer.toString())
   return groupBy(assertionResults, 'url')
 }
 
 /**
- * @param {{ githubToken?: string, staticDistDir: string }} params
+ * @param {{ githubToken?: string }} params
  * @return {Promise<Gist>}
  */
-async function uploadResultsToGist({ githubToken, staticDistDir }) {
+async function uploadResultsToGist({ githubToken }) {
   if (!githubToken) {
     return {}
   }
 
-  const staticDistDirPath = getStaticDistDirPath({ staticDistDir })
-  const LHRNameFromPath = getLHRNameFromPath(staticDistDirPath)
-  const results = await pReadFile(join(staticDistDirPath, LHRNameFromPath))
+  const LHRNameFromPath = getLHRNameFromPath(resultsDirPath)
+  const results = await pReadFile(join(resultsDirPath, LHRNameFromPath))
 
   const gistName = `lhci-action-lhr-${githubRepo.split('/').join('-')}.json`
   const octokit = new github.GitHub(githubToken)

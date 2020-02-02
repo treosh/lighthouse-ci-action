@@ -273,9 +273,7 @@ function formatAssertResults({ groupedResults, status }) {
  */
 function getSummaryMarkdownOutput({ status, changesURL, groupedResults, gist }) {
   const conclusion = status === 0 ? 'success' : 'failure'
-  const title = changesURL.pullRequest
-    ? `Pull Request ${conclusion}`
-    : `Changes ${conclusion}`
+  const title = changesURL.pullRequest ? `Pull Request ${conclusion}` : `Changes ${conclusion}`
   const changesLink = changesURL.pullRequest
     ? `[View on GitHub](${changesURL.pullRequest})`
     : `[View SHA Changes](${changesURL.sha})`
@@ -285,7 +283,7 @@ function getSummaryMarkdownOutput({ status, changesURL, groupedResults, gist }) 
    * @return {string}
    */
   const fieldsTemplate = fields => {
-    return fields.map(field => `------\n**${field.title}**\n${field.value}`.trim()).join('\n')
+    return fields.map(field => `---\n**${field.title}**\n${field.value}`.trim()).join('\n')
   }
   /**
    *
@@ -293,7 +291,7 @@ function getSummaryMarkdownOutput({ status, changesURL, groupedResults, gist }) 
    * @return {string}
    */
   const summaryResultsTempalte = summaryResults => {
-    return summaryResults.map(result => `${result.text}\n${fieldsTemplate(result.fields)}`.trim()).join('\n')
+    return summaryResults.map(result => `####${result.text}\n${fieldsTemplate(result.fields)}`.trim()).join('\n')
   }
   const reportURL = getLHReportURL(gist)
   const detailsTemplate = `${reportURL ? `\n[View Detailed Lighthouse Report](${reportURL})` : '\n'}`

@@ -283,7 +283,7 @@ function getSummaryMarkdownOutput({ status, changesURL, groupedResults, gist }) 
    * @return {string}
    */
   const fieldsTemplate = fields => {
-    return fields.map(field => `---\n**${field.title}**\n${field.value}`.trim()).join('\n')
+    return fields.map(field => `**${field.title}**\n${field.value}`.trim()).join('\n')
   }
   /**
    *

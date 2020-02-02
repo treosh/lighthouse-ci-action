@@ -293,7 +293,7 @@ function getSummaryMarkdownOutput({ status, changesURL, groupedResults, gist }) 
    * @return {string}
    */
   const summaryResultsTempalte = summaryResults => {
-    return summaryResults.map(result => `###${result.text}\n${fieldsTemplate(result.fields)}`.trim()).join('\n')
+    return summaryResults.map(result => `${result.text}\n${fieldsTemplate(result.fields)}`.trim()).join('\n')
   }
   const reportURL = getLHReportURL(gist)
   const detailsTemplate = `${reportURL ? `\n[View Detailed Lighthouse Report](${reportURL})` : '\n'}`

@@ -31,8 +31,6 @@ const pReadFile = promisify(readFile)
  */
 
 /** @type {string} */
-const workspaceDir = get(process.env, 'GITHUB_WORKSPACE', '')
-/** @type {string} */
 const githubRepo = get(process.env, 'GITHUB_REPOSITORY', '')
 /** @type {string} */
 const githubSHA = get(process.env, 'GITHUB_SHA', '')
@@ -157,7 +155,7 @@ async function githubNotification({ status, githubToken = '', changesURL, gist, 
  * @return {string}
  */
 function getStaticDistDirPath({ staticDistDir }) {
-  return resolve(workspaceDir, '../', staticDistDir)
+  return resolve(process.cwd(), staticDistDir)
 }
 
 /**

@@ -44,7 +44,8 @@ async function run({ status }) {
   try {
     const {
       slackWebhookUrl,
-      githubToken,
+      applicationGithubToken,
+      personalGithubToken,
       githubNotification: githubNotificationEnabled,
       slackNotification: slackNotificationEnabled
     } = input
@@ -55,20 +56,20 @@ async function run({ status }) {
     }
 
     const slackEnabled = slackNotificationEnabled && slackWebhookUrl
-    const githubEnabled = githubNotificationEnabled && githubToken
+    const githubEnabled = githubNotificationEnabled && applicationGithubToken
 
     /**
      * @type {[ LHResultsByURL, ChangesURL, Gist ]}
      */
     const [groupedResults, changesURL, gist] = await Promise.all([
       getGroupedAssertionResultsByURL(),
-      getChangesUrl({ githubToken }),
+      getChangesUrl({ githubToken: personalGithubToken }),
       // keep uploading as part of Promise all instead of separate request
-      uploadResultsToGist({ githubToken })
+      uploadResultsToGist({ githubToken: personalGithubToken })
     ])
 
     const slackData = { status, slackWebhookUrl, changesURL, gist, groupedResults }
-    const githubData = { status, githubToken, changesURL, gist, groupedResults }
+    const githubData = { status, githubToken: applicationGithubToken, changesURL, gist, groupedResults }
 
     if (githubEnabled && slackEnabled) {
       await Promise.all([slackNotification(slackData), githubNotification(githubData)])

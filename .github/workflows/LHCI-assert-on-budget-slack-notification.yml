@@ -15,4 +15,3 @@ jobs:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           logLevel: 'error'
           slackNotification: 1
-          githubNotification: 0

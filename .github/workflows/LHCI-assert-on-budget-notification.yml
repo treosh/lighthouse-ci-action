@@ -12,8 +12,8 @@ jobs:
           urls: 'https://alekseykulikov.com/'
           budgetPath: '.github/lighthouse/budget.json'
           slackWebhookUrl: ${{ secrets.SLACK_WEBHOOK_URL }}
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          applicationGithubToken: ${{ secrets.GITHUB_TOKEN }}
+          personalGithubToken: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
           logLevel: 'error'
           slackNotification: 1
-          # Example, github notification enabled by default
           githubNotification: 1

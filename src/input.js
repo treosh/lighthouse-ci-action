@@ -32,8 +32,8 @@ function getArgs() {
     // Check if we have a static-dist-dir
     if (rcCollect) {
           
-      if ('urls' in rcFileObj.ci.collect) {
-        urls =  rcFileObj.ci.collect.urls
+      if ('url' in rcFileObj.ci.collect) {
+        urls =  rcFileObj.ci.collect.url
       }
 
       if ('staticDistDir' in rcFileObj.ci.collect) {

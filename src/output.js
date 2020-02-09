@@ -1,4 +1,4 @@
-const { groupBy, find, get, findLast, isEmpty, head } = require('lodash')
+const { groupBy, find, get, isEmpty, head } = require('lodash')
 const { IncomingWebhook } = require('@slack/webhook')
 const github = require('@actions/github')
 const { readFile, readdirSync, existsSync } = require('fs')
@@ -178,38 +178,40 @@ function uploadResultsToGist({ githubToken }) {
  * @return {Promise<Gist>}
  */
 async function uploadResultToGist({ githubToken, resultPath }) {
-    if (!githubToken || !resultPath) {
-      return {}
-    }
+  if (!githubToken || !resultPath) {
+    return {}
+  }
 
-    const resultsBuffer = await pReadFile(join(resultsDirPath, resultPath))
-    const results = JSON.parse(resultsBuffer.toString())
-    const url = get(results, 'requestedUrl', '')
-    const urlPrefixName = url.replace(/(^\w+:|^)\/\//, '')
+  const resultsBuffer = await pReadFile(join(resultsDirPath, resultPath))
+  const results = JSON.parse(resultsBuffer.toString())
+  const url = get(results, 'requestedUrl', '')
+  const urlPrefixName = url.replace(/(^\w+:|^)\/\//, '')
 
-    const gistName = `lhci-action-lhr-${githubRepo.split('/').join('-')}-${urlPrefixName.split('/').join('-')}.json`
-    const octokit = new github.GitHub(githubToken)
-    const gists = await octokit.gists.list()
-    const existingGist = findLast(gists.data, gist => Object.keys(gist.files).filter(filename => filename === gistName))
-
-    /** @type {{gist_id?: string, files: {[p: string]: {content: string}}}} */
-    const gistParams = {
-      files: {
-        [gistName]: {
-          content: resultsBuffer.toString()
-        }
+  const gistName = `lhci-action-lhr-${githubRepo.split('/').join('-')}-${urlPrefixName.split('/').join('-')}.json`
+  const octokit = new github.GitHub(githubToken)
+  const gists = await octokit.gists.list()
+  const existingGist = find(
+    gists.data,
+    gist => Object.keys(gist.files).filter(filename => filename === gistName).length
+  )
+  /** @type {{gist_id?: string, files: {[p: string]: {content: string}}}} */
+  const gistParams = {
+    files: {
+      [gistName]: {
+        content: resultsBuffer.toString()
       }
     }
-    existingGist && (gistParams['gist_id'] = get(existingGist, 'id'))
-    /** @type {'update' | 'create'} */
-    const gistAction = existingGist ? 'update' : 'create'
-    const gist = await octokit.gists[gistAction](gistParams)
+  }
+  existingGist && (gistParams['gist_id'] = get(existingGist, 'id'))
+  /** @type {'update' | 'create'} */
+  const gistAction = existingGist ? 'update' : 'create'
+  const gist = await octokit.gists[gistAction](gistParams)
 
-    return {
-      url,
-      id: get(gist, 'data.id', '').split('/'),
-      sha: get(gist, ['data', 'history', 0, 'version'], '')
-    }
+  return {
+    url,
+    id: get(gist, 'data.id', '').split('/'),
+    sha: get(gist, ['data', 'history', 0, 'version'], '')
+  }
 }
 
 /**

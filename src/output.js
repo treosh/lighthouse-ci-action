@@ -186,8 +186,10 @@ async function uploadResultToGist({ githubToken, resultPath }) {
   const results = JSON.parse(resultsBuffer.toString())
   const url = get(results, 'requestedUrl', '')
   const urlPrefixName = url.replace(/(^\w+:|^)\/\//, '')
-
-  const gistName = `lhci-action-lhr-${githubRepo.split('/').join('-')}-${urlPrefixName.split('/').join('-')}.json`
+  const gistName = `lhci-action-lhr-${githubRepo.split('/').join('-')}-${urlPrefixName
+    .split('/')
+    .filter(Boolean)
+    .join('-')}.json`
   const octokit = new github.GitHub(githubToken)
   const gists = await octokit.gists.list()
   const existingGist = find(

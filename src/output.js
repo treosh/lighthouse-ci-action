@@ -1,4 +1,4 @@
-const { groupBy, find, get, findLast, isEmpty } = require('lodash')
+const { groupBy, find, get, findLast, isEmpty, head } = require('lodash')
 const { IncomingWebhook } = require('@slack/webhook')
 const github = require('@actions/github')
 const { readFile, readdirSync, existsSync } = require('fs')
@@ -16,6 +16,7 @@ const pReadFile = promisify(readFile)
  * @typedef {Object} Gist
  * @property {string} [id]
  * @property {string} [sha]
+ * @property {string} [url]
  *
  * @typedef {Object} LHResult
  * @property {string} auditId
@@ -59,17 +60,17 @@ async function run({ status }) {
     const githubEnabled = githubNotificationEnabled && applicationGithubToken
 
     /**
-     * @type {[ LHResultsByURL, ChangesURL, Gist ]}
+     * @type {[ LHResultsByURL, ChangesURL, Gist[] ]}
      */
-    const [groupedResults, changesURL, gist] = await Promise.all([
+    const [groupedResults, changesURL, gists] = await Promise.all([
       getGroupedAssertionResultsByURL(),
       getChangesUrl({ githubToken: personalGithubToken }),
       // keep uploading as part of Promise all instead of separate request
       uploadResultsToGist({ githubToken: personalGithubToken })
     ])
 
-    const slackData = { status, slackWebhookUrl, changesURL, gist, groupedResults }
-    const githubData = { status, githubToken: applicationGithubToken, changesURL, gist, groupedResults }
+    const slackData = { status, slackWebhookUrl, changesURL, gists, groupedResults }
+    const githubData = { status, githubToken: applicationGithubToken, changesURL, gists, groupedResults }
 
     if (githubEnabled && slackEnabled) {
       await Promise.all([slackNotification(slackData), githubNotification(githubData)])
@@ -87,10 +88,10 @@ async function run({ status }) {
 }
 
 /**
- * @param {{status: number, slackWebhookUrl?: string, changesURL: ChangesURL, gist: Gist, groupedResults: LHResultsByURL }} params
+ * @param {{status: number, slackWebhookUrl?: string, changesURL: ChangesURL, gists: Gist[], groupedResults: LHResultsByURL }} params
  * @return {Promise<*>}
  */
-async function slackNotification({ status, slackWebhookUrl = '', changesURL, groupedResults, gist }) {
+async function slackNotification({ status, slackWebhookUrl = '', changesURL, groupedResults, gists }) {
   console.log('Running Slack notification')
 
   const webhook = new IncomingWebhook(slackWebhookUrl)
@@ -99,16 +100,7 @@ async function slackNotification({ status, slackWebhookUrl = '', changesURL, gro
   const changesTitle = changesURL.pullRequest
     ? `Pull Request ${conclusion} - <${changesURL.pullRequest} | View on GitHub>`
     : `Changes ${conclusion} - <${changesURL.sha} | View SHA Changes>`
-  const attachments = formatAssertResults({ groupedResults, status })
-  const reportURL = getLHReportURL(gist)
-  const reportUrlAttachment = reportURL
-    ? {
-        title: `View Detailed Lighthouse Report`,
-        title_link: reportURL,
-        color
-      }
-    : {}
-
+  const attachments = formatAssertResults({ groupedResults, status, gists })
   return webhook.send({
     attachments: [
       {
@@ -116,17 +108,16 @@ async function slackNotification({ status, slackWebhookUrl = '', changesURL, gro
         title: changesTitle,
         color
       },
-      ...attachments,
-      { ...reportUrlAttachment }
+      ...attachments
     ]
   })
 }
 
 /**
- * @param {{status: number, githubToken?: string, changesURL: ChangesURL, gist: Gist, groupedResults: LHResultsByURL }} params
+ * @param {{status: number, githubToken?: string, changesURL: ChangesURL, gists: Gist[], groupedResults: LHResultsByURL }} params
  * @return {Promise<*>}
  */
-async function githubNotification({ status, githubToken = '', changesURL, gist, groupedResults }) {
+async function githubNotification({ status, githubToken = '', changesURL, gists, groupedResults }) {
   console.log('Running Github notification')
 
   const conclusion = status === 0 ? 'success' : 'failure'
@@ -138,7 +129,7 @@ async function githubNotification({ status, githubToken = '', changesURL, gist, 
     name: reportTitle,
     status: 'completed',
     conclusion,
-    output: getSummaryMarkdownOutput({ status, changesURL, groupedResults, gist })
+    output: getSummaryMarkdownOutput({ status, changesURL, groupedResults, gists })
   }
 
   await octokit.checks.createSuite({
@@ -167,38 +158,58 @@ async function getGroupedAssertionResultsByURL() {
 
 /**
  * @param {{ githubToken?: string }} params
+ * @return {Promise<Gist[]>}
+ */
+function uploadResultsToGist({ githubToken }) {
+  if (!githubToken) {
+    return Promise.resolve([{}])
+  }
+
+  const LHRNamesFromPath = getLHRNameFromPath(resultsDirPath)
+  return Promise.all(
+    LHRNamesFromPath.map(
+      async LHRNameFromPath => await uploadResultToGist({ githubToken, resultPath: LHRNameFromPath })
+    )
+  )
+}
+
+/**
+ * @param {{ githubToken?: string, resultPath: string }} params
  * @return {Promise<Gist>}
  */
-async function uploadResultsToGist({ githubToken }) {
-  if (!githubToken) {
-    return {}
-  }
+async function uploadResultToGist({ githubToken, resultPath }) {
+    if (!githubToken || !resultPath) {
+      return {}
+    }
 
-  const LHRNameFromPath = getLHRNameFromPath(resultsDirPath)
-  const results = await pReadFile(join(resultsDirPath, LHRNameFromPath))
+    const resultsBuffer = await pReadFile(join(resultsDirPath, resultPath))
+    const results = JSON.parse(resultsBuffer.toString())
+    const url = get(results, 'requestedUrl', '')
+    const urlPrefixName = url.replace(/(^\w+:|^)\/\//, '')
 
-  const gistName = `lhci-action-lhr-${githubRepo.split('/').join('-')}.json`
-  const octokit = new github.GitHub(githubToken)
-  const gists = await octokit.gists.list()
-  const existingGist = findLast(gists.data, gist => Object.keys(gist.files).filter(filename => filename === gistName))
+    const gistName = `lhci-action-lhr-${githubRepo.split('/').join('-')}-${urlPrefixName.split('/').join('-')}.json`
+    const octokit = new github.GitHub(githubToken)
+    const gists = await octokit.gists.list()
+    const existingGist = findLast(gists.data, gist => Object.keys(gist.files).filter(filename => filename === gistName))
 
-  /** @type {{gist_id?: string, files: {[p: string]: {content: string}}}} */
-  const gistParams = {
-    files: {
-      [gistName]: {
-        content: results.toString()
+    /** @type {{gist_id?: string, files: {[p: string]: {content: string}}}} */
+    const gistParams = {
+      files: {
+        [gistName]: {
+          content: resultsBuffer.toString()
+        }
       }
     }
-  }
-  existingGist && (gistParams['gist_id'] = get(existingGist, 'id'))
-  /** @type {'update' | 'create'} */
-  const gistAction = existingGist ? 'update' : 'create'
-  const gist = await octokit.gists[gistAction](gistParams)
+    existingGist && (gistParams['gist_id'] = get(existingGist, 'id'))
+    /** @type {'update' | 'create'} */
+    const gistAction = existingGist ? 'update' : 'create'
+    const gist = await octokit.gists[gistAction](gistParams)
 
-  return {
-    id: get(gist, 'data.id', '').split('/'),
-    sha: get(gist, ['data', 'history', 0, 'version'], '')
-  }
+    return {
+      url,
+      id: get(gist, 'data.id', '').split('/'),
+      sha: get(gist, ['data', 'history', 0, 'version'], '')
+    }
 }
 
 /**
@@ -231,13 +242,16 @@ async function getChangesUrl({ githubToken }) {
 }
 
 /**
- * @param {{ groupedResults: LHResultsByURL, status: number }} params
+ * @param {{ groupedResults: LHResultsByURL, gists: Gist[], status: number }} params
  * @return {{color: *, text: string, fields: *}[]}
  */
-function formatAssertResults({ groupedResults, status }) {
+function formatAssertResults({ groupedResults, status, gists }) {
   const color = status === 0 ? 'good' : 'danger'
 
-  return Object.values(groupedResults).map(groupedResult => {
+  return Object.values(groupedResults).reduce((acc, groupedResult) => {
+    const resultUrl = get(head(groupedResult), 'url', '')
+    const gist = find(gists, ({ url }) => url === resultUrl) || {}
+
     const results = groupedResult.map(
       /**
        * @param {LHResult} res
@@ -259,31 +273,58 @@ function formatAssertResults({ groupedResults, status }) {
         value: ''
       })
 
-    return {
-      text: `${groupedResult.length + 1} result(s) for ${groupedResult[0].url}`,
+    const reportURL = getLHReportURL(gist)
+    const reportUrlField = reportURL
+      ? {
+          title: `View Detailed Lighthouse Report`,
+          title_link: reportURL,
+          color
+        }
+      : {}
+
+    acc.push({
+      text: `${groupedResult.length + 1} result(s) for ${resultUrl}`,
       color,
       fields
-    }
-  })
+    })
+    acc.push(reportUrlField)
+    return acc
+  }, [])
 }
 
 /**
- * @param {{ status: number, changesURL: ChangesURL, gist: Gist, groupedResults: LHResultsByURL }} params
+ * @param {{ status: number, changesURL: ChangesURL, gists: Gist[], groupedResults: LHResultsByURL }} params
  * @return {{summary: string, title: string}}
  */
-function getSummaryMarkdownOutput({ status, changesURL, groupedResults, gist }) {
+function getSummaryMarkdownOutput({ status, changesURL, groupedResults, gists }) {
   const conclusion = status === 0 ? 'success' : 'failure'
   const title = changesURL.pullRequest ? `Pull Request ${conclusion}` : `Changes ${conclusion}`
   const changesLink = changesURL.pullRequest
     ? `[View on GitHub](${changesURL.pullRequest})`
     : `[View SHA Changes](${changesURL.sha})`
-  const summaryResults = formatAssertResults({ groupedResults, status })
+  const summaryResults = formatAssertResults({ groupedResults, gists, status })
+
   /**
-   * @param {{ title: string, value: string }[]} fields
+   * @param {{ fields?: { title: string, value: string}[], title_link?: string, title?: string }} params
    * @return {string}
    */
-  const fieldsTemplate = fields => {
-    return fields.map(field => `**${field.title}**\n${field.value}`.trim()).join('\n')
+  const fieldsTemplate = ({ fields, title_link, title }) => {
+    if (fields) {
+      return fields.map(field => `**${field.title}**\n${field.value}`.trim()).join('\n')
+    }
+
+    if (title_link) {
+      return `[${title}](${title_link})`
+    }
+
+    return '\n'
+  }
+  /**
+   * @param {{ text?: string }} params
+   * @return {string}
+   */
+  const resultTitle = ({ text }) => {
+    return text ? `### ${text}` : ''
   }
   /**
    *
@@ -291,15 +332,12 @@ function getSummaryMarkdownOutput({ status, changesURL, groupedResults, gist }) 
    * @return {string}
    */
   const summaryResultsTempalte = summaryResults => {
-    return summaryResults.map(result => `### ${result.text}\n${fieldsTemplate(result.fields)}`.trim()).join('\n')
+    return summaryResults.map(result => `${resultTitle(result)}\n${fieldsTemplate(result)}`.trim()).join('\n')
   }
-  const reportURL = getLHReportURL(gist)
-  const detailsTemplate = `${reportURL ? `\n[View Detailed Lighthouse Report](${reportURL})` : '\n'}`
 
   const summary = `
 ${changesLink}\n
 ${summaryResultsTempalte(summaryResults)}
-${detailsTemplate}
 `
   return {
     title,
@@ -317,20 +355,31 @@ function getLHReportURL(gist) {
 
 /**
  * @param {string} path
- * @return {string}
+ * @return {string[]}
  */
 function getLHRNameFromPath(path = '') {
   let dir = readdirSync(path)
   return (
-    dir.find(
-      /**
-       * @param {string} fileName
-       * @return { RegExpMatchArray | null }
-       */
-      (fileName = '') => {
-        return fileName.match(/lhr-\d+\.json/g)
-      }
-    ) || ''
+    dir
+      .filter(
+        /**
+         * @param {string} fileName
+         * @return { boolean }
+         */
+        (fileName = '') => {
+          return !!fileName.match(/lhr-\d+\.json/g)
+        }
+      )
+      .map(
+        /**
+         * @param {string} fileName
+         * @return { string }
+         */
+        (fileName = '') => {
+          const match = fileName.match(/lhr-\d+\.json/g)
+          return match ? match[0] : ''
+        }
+      ) || ['']
   )
 }
 

@@ -12,7 +12,7 @@
 - 🔍 Detailed output for quick debug
 - 💾 Upload data to LHCI server
 - 🔔 Slack notification
-- 😻 GitHub notification  
+- 😻 GitHub notification
 
 <img align="center" width="1046" alt="Lighthouse CI Action" src="https://user-images.githubusercontent.com/158189/68597493-58896f80-049d-11ea-97a2-5c4e7eb4285c.png">
 
@@ -144,8 +144,7 @@ Specify an API token for the LHCI server. [Learn how to generate a token](https:
 githubNotification: 1
 ```
 
-> **Note**: Requires to use `applicationGithubToken`
-> **Note**: Optional to use `personalGithubToken`
+> **Note**: Requires to use `applicationGithubToken` > **Note**: Optional to use `personalGithubToken`
 
 #### `applicationGithubToken`
 
@@ -168,12 +167,11 @@ personalGithubToken: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
 
 ### slackNotification
 
-Notification in [Slack](https://slack.com/intl/en-ua/) channel. 
+Notification in [Slack](https://slack.com/intl/en-ua/) channel.
 
 ![image](https://user-images.githubusercontent.com/54980164/74110899-ef4af280-4b98-11ea-9b0c-34e0cbdc7a6b.png)
 
-> **Note**: Requires to use `slackWebhookUrl`
-> **Note**: Optional to use `personalGithubToken`
+> **Note**: Requires to use `slackWebhookUrl` > **Note**: Optional to use `personalGithubToken`
 
 ```yml
 slackNotification: 1
@@ -182,7 +180,7 @@ slackNotification: 1
 ### slackWebhookUrl
 
 Visit Slack Incoming Webhooks [docs](https://api.slack.com/messaging/webhooks#create_a_webhook) and follow step provided there.
-Then copy `webhookUrl` value and set it up via  [Github secrets](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets#creating-encrypted-secrets) to keep your url hidden!
+Then copy `webhookUrl` value and set it up via [Github secrets](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets#creating-encrypted-secrets) to keep your url hidden!
 
 ```yml
 slackWebhookUrl: ${{ secrets.SLACK_WEBHOOK_URL }}

@@ -100,7 +100,7 @@ function getIntArg(arg) {
  * @param {string} arg
  * @return {string[]}
  */
-function getList(arg, separator = ',') {
+function getList(arg, separator = '\n') {
   const input = getArg(arg)
   if (!input) return []
   return input.split(separator).map(url => url.trim())

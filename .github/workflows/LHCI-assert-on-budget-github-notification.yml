@@ -11,7 +11,7 @@ jobs:
         with:
           urls: 'https://alekseykulikov.com/'
           budgetPath: '.github/lighthouse/budget.json'
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          applicationGithubToken: ${{ secrets.GITHUB_TOKEN }}
           personalGithubToken: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
           logLevel: 'info'
           githubNotification: 1

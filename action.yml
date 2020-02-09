@@ -17,8 +17,14 @@ inputs:
   logLevel:
     description: 'Level of logging info to print to console'
     default: 'info'
-  githubToken:
+  applicationGithubToken:
+    description: 'GitHub Application access token for '
+  personalGithubToken:
     description: 'GitHub access token'
+  githubNotification:
+    description: 'Github notification feature flag'
+  slackNotification:
+    description: 'Slack notification feature flag'
   upload.serverBaseUrl:
     description: 'Address of a LHCI server'
   upload.token:

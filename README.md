@@ -59,8 +59,8 @@ URLs support interpolation of process env vars so that you can write URLs like:
       https://pr-$PR_NUMBER.staging-example.com/blog
     budgetPath: ./budgets.json
     temporaryPublicStorage: true
-    env:
-      PR_NUMBER: ${{ github.event.pull_request.number }}
+  env:
+    PR_NUMBER: ${{ github.event.pull_request.number }}
 ```
 
 [⚙️ See this workflow in use](https://github.com/treosh/lighthouse-ci-action/actions?workflow=LHCI-urls-interpolation)
@@ -503,6 +503,62 @@ against each of them. More details on this process are in the [Lighthouse CI doc
 <img align="center" width="998" alt="Lighthouse CI Action" src="https://user-images.githubusercontent.com/6392995/68525233-6b752780-0284-11ea-832c-e662a099e2ca.png">
 
 [⚙️ See this workflow in use](https://github.com/treosh/lighthouse-ci-action/actions?workflow=LHCI-static-dist-dir)
+
+</details>
+
+<details>
+ <summary>Use a Lighthouse plugin.</summary><br>
+
+#### main.yml
+
+```yml
+name: Lighthouse Audit
+on: push
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1 # checkout your own repo
+      - run: npm install # install your own dependencies
+      - name: Audit URLs using Lighthouse
+        uses: treosh/lighthouse-ci-action@v2
+        with:
+          urls: |
+            https://www.example.com/
+          configPath: ./lighthouserc.json
+      - name: Save results
+        uses: actions/upload-artifact@v1
+        with:
+          name: lighthouse-results
+          path: '.lighthouseci' # This will save the Lighthouse results as .json files
+```
+
+#### lighthouserc.json
+
+```json
+{
+  "ci": {
+    "collect": {
+      "settings": {
+        "plugins": ["lighthouse-plugin-social-sharing"]
+      }
+    }
+  }
+}
+```
+
+#### package.json
+
+```json
+{
+  "name": "lighthouse-plugin-sample-project",
+  "devDependencies": {
+    "lighthouse-plugin-social-sharing": "0.0.1"
+  }
+}
+```
+
+[⚙️ See this example](https://github.com/connorjclark/lighthouse-plugin-sample-project)
 
 </details>
 

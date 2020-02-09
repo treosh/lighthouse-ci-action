@@ -1,4 +1,7 @@
 node_modules/**/*.ts
 results/
 .lighthouseci/
+
+node_modules/.yarn-integrity
+node_modules/**/.DS_Store
 .config/

@@ -16,5 +16,5 @@ jobs:
           personalGithubToken: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
           logLevel: 'error'
           notifications: |
-            'slack'
-            'github'
+            slack
+            github

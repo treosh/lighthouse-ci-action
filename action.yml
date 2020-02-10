@@ -22,9 +22,7 @@ inputs:
   personalGithubToken:
     description: 'GitHub access token'
   notifications:
-    description: 'Github notification feature flag'
-  slackNotification:
-    description: 'Slack notification feature flag'
+    description: 'Slack/Github notification feature flag'
   upload.serverBaseUrl:
     description: 'Address of a LHCI server'
   upload.token:

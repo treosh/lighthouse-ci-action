@@ -164,8 +164,8 @@ In case using both notifications:
 
 ```yaml
 notifications: |
-  'slack'
-  'github'
+  slack
+  github
 ```
 
 [Read more](#recipes) about detailed configuration.
@@ -289,8 +289,8 @@ jobs:
           personalGithubToken: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
           logLevel: 'error'
           notifications: |
-            'slack'
-            'github'
+            slack
+            github
 ```
 
 Make a `budget.json` file with [budgets syntax](https://web.dev/use-lighthouse-for-performance-budgets/).

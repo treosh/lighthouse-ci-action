@@ -21,7 +21,7 @@ inputs:
     description: 'GitHub Application access token for '
   personalGithubToken:
     description: 'GitHub access token'
-  githubNotification:
+  notifications:
     description: 'Github notification feature flag'
   slackNotification:
     description: 'Slack notification feature flag'

@@ -6,13 +6,21 @@
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@actions/core/-/core-1.2.0.tgz#aa5f52b26c362c821d41557e599371a42f6c0b3d"
 
-"@actions/github@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@actions/github/-/github-1.1.0.tgz#06f34e6b0cf07eb2b3641de3e680dbfae6bcd400"
-  integrity sha512-cHf6PyoNMdei13jEdGPhKprIMFmjVVW/dnM5/9QmQDJ1ZTaGVyezUSCUIC/ySNLRvDUpeFwPYMdThSEJldSbUw==
+"@actions/github@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@actions/github/-/github-2.1.0.tgz#ca36cfb146b4c8955f3d5f88d8dde5f89194de21"
+  integrity sha512-G4ncMlh4pLLAvNgHUYUtpWQ1zPf/VYqmRH9oshxLabdaOOnp7i1hgSgzr2xne2YUaSND3uqemd3YYTIsm2f/KQ==
   dependencies:
-    "@octokit/graphql" "^2.0.1"
+    "@actions/http-client" "^1.0.3"
+    "@octokit/graphql" "^4.3.1"
     "@octokit/rest" "^16.15.0"
+
+"@actions/http-client@^1.0.3":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@actions/http-client/-/http-client-1.0.6.tgz#6f9267ca50e1d74d8581f4a894a943cd4c97b49a"
+  integrity sha512-LGmio4w98UyGX33b/W6V6Nx/sQHRXZ859YlMkn36wPsXPB82u8xTVlA/Dq2DXrm6lEq9RVmisRJa1c+HETAIJA==
+  dependencies:
+    tunnel "0.0.6"
 
 "@lhci/cli@0.3.7":
   version "0.3.7"
@@ -56,13 +64,14 @@
     is-plain-object "^3.0.0"
     universal-user-agent "^4.0.0"
 
-"@octokit/graphql@^2.0.1":
-  version "2.1.3"
-  resolved "https://registry.yarnpkg.com/@octokit/graphql/-/graphql-2.1.3.tgz#60c058a0ed5fa242eca6f938908d95fd1a2f4b92"
-  integrity sha512-XoXJqL2ondwdnMIW3wtqJWEwcBfKk37jO/rYkoxNPEVeLBDGsGO1TCWggrAlq3keGt/O+C/7VepXnukUxwt5vA==
+"@octokit/graphql@^4.3.1":
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/@octokit/graphql/-/graphql-4.3.1.tgz#9ee840e04ed2906c7d6763807632de84cdecf418"
+  integrity sha512-hCdTjfvrK+ilU2keAdqNBWOk+gm1kai1ZcdjRfB30oA3/T6n53UVJb7w0L5cR3/rhU91xT3HSqCd+qbvH06yxA==
   dependencies:
-    "@octokit/request" "^5.0.0"
-    universal-user-agent "^2.0.3"
+    "@octokit/request" "^5.3.0"
+    "@octokit/types" "^2.0.0"
+    universal-user-agent "^4.0.0"
 
 "@octokit/plugin-paginate-rest@^1.1.1":
   version "1.1.2"
@@ -93,7 +102,7 @@
     deprecation "^2.0.0"
     once "^1.4.0"
 
-"@octokit/request@^5.0.0", "@octokit/request@^5.2.0":
+"@octokit/request@^5.2.0", "@octokit/request@^5.3.0":
   version "5.3.1"
   resolved "https://registry.yarnpkg.com/@octokit/request/-/request-5.3.1.tgz#3a1ace45e6f88b1be4749c5da963b3a3b4a2f120"
   integrity sha512-5/X0AL1ZgoU32fAepTfEoggFinO3rxsMLtzhlUX+RctLrusn/CApJuGFCd0v7GMFhF+8UiCsTTfsu7Fh1HnEJg==
@@ -1645,7 +1654,7 @@ os-locale@^3.0.0:
     lcid "^2.0.0"
     mem "^4.0.0"
 
-os-name@^3.0.0, os-name@^3.1.0:
+os-name@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/os-name/-/os-name-3.1.0.tgz#dec19d966296e1cd62d701a5a66ee1ddeae70801"
   integrity sha512-h8L+8aNjNcMpo/mAIBPn5PXCM16iyPGjHNWo6U1YO8sJTMHtEtyczI6QJnLoplswm6goopQkqc7OAnjhWcugVg==
@@ -2160,6 +2169,11 @@ tunnel-agent@^0.6.0:
   dependencies:
     safe-buffer "^5.0.1"
 
+tunnel@0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/tunnel/-/tunnel-0.0.6.tgz#72f1314b34a5b192db012324df2cc587ca47f92c"
+  integrity sha512-1h/Lnq9yajKY2PEbBadPXj3VxsDDu844OnaAo52UVmIzIvwwtBPIuNvkjuzBlTWpfJyUbG3ez0KSBibQkj4ojg==
+
 tweetnacl@^0.14.3, tweetnacl@~0.14.0:
   version "0.14.5"
   resolved "https://registry.yarnpkg.com/tweetnacl/-/tweetnacl-0.14.5.tgz#5ae68177f192d4456269d108afa93ff8743f4f64"
@@ -2193,13 +2207,6 @@ unique-string@^1.0.0:
   resolved "https://registry.yarnpkg.com/unique-string/-/unique-string-1.0.0.tgz#9e1057cca851abb93398f8b33ae187b99caec11a"
   dependencies:
     crypto-random-string "^1.0.0"
-
-universal-user-agent@^2.0.3:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/universal-user-agent/-/universal-user-agent-2.1.0.tgz#5abfbcc036a1ba490cb941f8fd68c46d3669e8e4"
-  integrity sha512-8itiX7G05Tu3mGDTdNY2fB4KJ8MgZLS54RdG6PkkfwMAavrXu1mV/lls/GABx9O3Rw4PnTtasxrvbMQoBYY92Q==
-  dependencies:
-    os-name "^3.0.0"
 
 universal-user-agent@^4.0.0:
   version "4.0.0"

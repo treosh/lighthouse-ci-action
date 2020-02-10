@@ -41,23 +41,17 @@ const lhAssertResultsPath = join(resultsDirPath, 'assertion-results.json')
 /**
  * @param {{ status: number }} params
  */
-async function run({ status }) {
+async function sendNotifications({ status }) {
   try {
-    const {
-      slackWebhookUrl,
-      applicationGithubToken,
-      personalGithubToken,
-      githubNotification: githubNotificationEnabled,
-      slackNotification: slackNotificationEnabled
-    } = input
+    const { slackWebhookUrl, applicationGithubToken, personalGithubToken, notifications } = input
     const shouldRunOutput = input.logLevel === 'info' || (input.logLevel === 'error' && status)
 
     if (!shouldRunOutput) {
       return Promise.resolve()
     }
 
-    const slackEnabled = slackNotificationEnabled && slackWebhookUrl
-    const githubEnabled = githubNotificationEnabled && applicationGithubToken
+    const slackEnabled = notifications.includes('slack') && slackWebhookUrl
+    const githubEnabled = notifications.includes('github') && applicationGithubToken
 
     /**
      * @type {[ LHResultsByURL, ChangesURL, Gist[] ]}
@@ -72,14 +66,22 @@ async function run({ status }) {
     const slackData = { status, slackWebhookUrl, changesURL, gists, groupedResults }
     const githubData = { status, githubToken: applicationGithubToken, changesURL, gists, groupedResults }
 
-    if (githubEnabled && slackEnabled) {
-      await Promise.all([slackNotification(slackData), githubNotification(githubData)])
-    } else if (githubEnabled) {
-      await githubNotification(githubData)
-    } else if (slackEnabled) {
-      await slackNotification(slackData)
-    } else {
-      // @todo log notification and link to doc?
+    if (githubEnabled) {
+      try {
+        await githubNotification(githubData)
+        console.log('Github notification successfully sent')
+      } catch (e) {
+        console.log('Failed to send Github notification', e)
+      }
+    }
+
+    if (slackEnabled) {
+      try {
+        await slackNotification(slackData)
+        console.log('Slack notification successfully sent')
+      } catch (e) {
+        console.log('Failed to send Slack notification', e)
+      }
     }
   } catch (e) {
     console.log(e)
@@ -184,7 +186,7 @@ async function uploadResultToGist({ githubToken, resultPath }) {
 
   const resultsBuffer = await pReadFile(join(resultsDirPath, resultPath))
   const results = JSON.parse(resultsBuffer.toString())
-  const url = get(results, 'requestedUrl', '')
+  const url = get(results, 'finalUrl', '')
   const urlPrefixName = url.replace(/(^\w+:|^)\/\//, '')
   const gistName = `lhci-action-lhr-${githubRepo.split('/').join('-')}-${urlPrefixName
     .split('/')
@@ -388,5 +390,5 @@ function getLHRNameFromPath(path = '') {
 }
 
 module.exports = {
-  run
+  sendNotifications
 }

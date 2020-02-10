@@ -14,7 +14,7 @@
     "@actions/core": "^1.2.0",
     "@lhci/cli": "0.3.7",
     "is-windows": "^1.0.2",
-    "@actions/github": "^1.1.0",
+    "@actions/github": "^2.1.0",
     "@slack/webhook": "^5.0.2",
     "lodash": "^4.17.15"
   },

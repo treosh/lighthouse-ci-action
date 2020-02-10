@@ -19,7 +19,6 @@ const output = require('./output.js')
 // audit urls with Lighthouse CI
 async function main() {
   core.startGroup('Action config')
-  // @todo hide tokes from log (just leave 3 start and 3 end symbols)
   console.log('Input args:', input)
   core.endGroup() // Action config
 
@@ -76,7 +75,7 @@ async function main() {
   }
 
   /*******************************UPLOADING************************************/
-  await output.run({ status })
+  await output.sendNotifications({ status })
 
   if ((input.serverBaseUrl && input.token) || input.canUpload) {
     core.startGroup(`Uploading`)

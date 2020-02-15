@@ -114,13 +114,12 @@ function getList(arg, separator = '\n') {
  * @return {string[]}
  */
 function interpolateProcessIntoURLs(urls) {
-  const ref = get(context, 'ref');
+  const ref = get(context, 'ref', '').split('/')[2];
   if (ref) {
+    console.log('Using netlify site')
     const netlifySite = getArg('netlifySite')
     urls = [`https://${ref}-${netlifySite}`]
   }
-  console.log(ref)
-  console.log('Using netlify site')
   console.log(urls)
   return urls.map(url => {
     if (!url.includes('$')) return url
@@ -132,16 +131,5 @@ function interpolateProcessIntoURLs(urls) {
     return url
   })
 }
-
-/**
- * @param {string } githubRef
- * @return {string}
- */
-const parsePullRequestId = githubRef => {
-  const result = /refs\/pull\/(\d+)\/merge/g.exec(githubRef);
-  if (!result) return '';
-  const [, pullRequestId] = result;
-  return pullRequestId;
-};
 
 module.exports = getArgs()

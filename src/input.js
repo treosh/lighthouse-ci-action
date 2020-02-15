@@ -1,5 +1,6 @@
 const core = require('@actions/core')
-const { isEmpty } = require('lodash')
+const { get } = require('lodash')
+const { context } = require('@actions/github')
 const { readFileSync } = require('fs')
 
 function getArgs() {
@@ -113,14 +114,13 @@ function getList(arg, separator = '\n') {
  * @return {string[]}
  */
 function interpolateProcessIntoURLs(urls) {
-  const pullRequestId = parsePullRequestId(process.env.GITHUB_REF);
-  if (pullRequestId) {
+  const ref = get(context, 'ref');
+  if (ref) {
     const netlifySite = getArg('netlifySite')
-    urls = [`https://deploy-preview-${pullRequestId}--${netlifySite}`]
+    urls = [`https://${ref}-${netlifySite}`]
   }
-  console.log(pullRequestId)
+  console.log(ref)
   console.log('Using netlify site')
-  console.log('process.env.GITHUB_REF', process.env.GITHUB_REF)
   console.log(urls)
   return urls.map(url => {
     if (!url.includes('$')) return url

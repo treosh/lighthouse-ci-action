@@ -122,7 +122,9 @@ function interpolateProcessIntoURLs(urls) {
     return url
   })
 
-  const branch = get(context, 'ref', '').split('/')[2]
+  const ref = get(context, 'ref', '')
+  // get PR ref or branch ref
+  const branch = get(context, 'payload.pull_request.head.ref', ref).split('/')[2]
   const netlifySite = getArg('netlifySite')
   if (branch && netlifySite) {
     const origin = `https://${branch}--${netlifySite}`

@@ -1,4 +1,5 @@
 const core = require('@actions/core')
+const { isEmpty } = require('lodash')
 const { readFileSync } = require('fs')
 
 function getArgs() {
@@ -112,6 +113,15 @@ function getList(arg, separator = '\n') {
  * @return {string[]}
  */
 function interpolateProcessIntoURLs(urls) {
+  const pullRequestId = parsePullRequestId(process.env.GITHUB_REF);
+  if (pullRequestId) {
+    const netlifySite = getArg('netlifySite')
+    urls = [`https://deploy-preview-${pullRequestId}--${netlifySite}`]
+  }
+  console.log(pullRequestId)
+  console.log('Using netlify site')
+  console.log('process.env.GITHUB_REF', process.env.GITHUB_REF)
+  console.log(urls)
   return urls.map(url => {
     if (!url.includes('$')) return url
     Object.keys(process.env).forEach(key => {
@@ -122,5 +132,16 @@ function interpolateProcessIntoURLs(urls) {
     return url
   })
 }
+
+/**
+ * @param {string } githubRef
+ * @return {string}
+ */
+const parsePullRequestId = githubRef => {
+  const result = /refs\/pull\/(\d+)\/merge/g.exec(githubRef);
+  if (!result) return '';
+  const [, pullRequestId] = result;
+  return pullRequestId;
+};
 
 module.exports = getArgs()

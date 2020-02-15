@@ -2,6 +2,7 @@ const core = require('@actions/core')
 const { get } = require('lodash')
 const { context } = require('@actions/github')
 const { readFileSync } = require('fs')
+const { parse: urlParse, URL } = require('url')
 
 function getArgs() {
   // Make sure we don't have LHCI xor API token
@@ -107,21 +108,11 @@ function getList(arg, separator = '\n') {
 }
 
 /**
- * Takes a set of URL strings and interpolates
- * any declared ENV vars into them
- *
  * @param {string[]} urls
  * @return {string[]}
  */
 function interpolateProcessIntoURLs(urls) {
-  const ref = get(context, 'ref', '').split('/')[2];
-  if (ref) {
-    console.log('Using netlify site')
-    const netlifySite = getArg('netlifySite')
-    urls = [`https://${ref}-${netlifySite}`]
-  }
-  console.log(urls)
-  return urls.map(url => {
+  urls = urls.map(url => {
     if (!url.includes('$')) return url
     Object.keys(process.env).forEach(key => {
       if (url.includes(`${key}`)) {
@@ -130,6 +121,25 @@ function interpolateProcessIntoURLs(urls) {
     })
     return url
   })
+
+  const branch = get(context, 'ref', '').split('/')[2]
+  const netlifySite = getArg('netlifySite')
+  if (branch && netlifySite) {
+    const origin = `https://${branch}--${netlifySite}`
+    return urls.map(
+      /**
+       * @param {string} url
+       * @return {module:url.URL}
+       */
+      url => {
+        let { path } = urlParse(url)
+        path = path || ''
+        return new URL(origin, path)
+      }
+    )
+  }
+  console.log(urls)
+  return urls
 }
 
 module.exports = getArgs()

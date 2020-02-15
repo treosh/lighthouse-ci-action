@@ -1,8 +1,8 @@
 const core = require('@actions/core')
-const { get } = require('lodash')
+const { get, trim } = require('lodash')
 const { context } = require('@actions/github')
 const { readFileSync } = require('fs')
-const { parse: urlParse, URL } = require('url')
+const { parse: urlParse } = require('url')
 
 function getArgs() {
   // Make sure we don't have LHCI xor API token
@@ -129,16 +129,15 @@ function interpolateProcessIntoURLs(urls) {
     return urls.map(
       /**
        * @param {string} url
-       * @return {module:url.URL}
+       * @return {string}
        */
       url => {
         let { path } = urlParse(url)
         path = path || ''
-        return new URL(origin, path)
+        return `${trim(origin, '/')}/${trim(path, '/')}`
       }
     )
   }
-  console.log(urls)
   return urls
 }
 

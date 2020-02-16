@@ -130,7 +130,7 @@ function interpolateProcessIntoURLs(urls) {
     origin = `https://${ref}--${netlifySite}`
   }
 
-  if (isNumber(ref)) {
+  if (isNumber(Number.parseInt(ref))) {
     origin = `https://deploy-preview-${ref}--${netlifySite}`
   }
 

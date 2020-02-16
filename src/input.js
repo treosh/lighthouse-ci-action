@@ -1,5 +1,5 @@
 const core = require('@actions/core')
-const { get, trim } = require('lodash')
+const { get, trim, isNumber } = require('lodash')
 const { context } = require('@actions/github')
 const { readFileSync } = require('fs')
 const { parse: urlParse } = require('url')
@@ -122,19 +122,16 @@ function interpolateProcessIntoURLs(urls) {
     return url
   })
 
-  const branch = get(context, 'ref', '').split('/')[2]
-  const refNumber = get(context, 'event.payload.pull_request.head.ref', '').split('/')[2]
+  const ref = get(context, 'ref', '').split('/')[2]
   const netlifySite = getArg('netlifySite')
   let origin = ''
 
-  console.log(get(context, 'event.payload.pull_request.head.ref'));
-
-  if (branch) {
-    origin = `https://${branch}--${netlifySite}`
+  if (ref) {
+    origin = `https://${ref}--${netlifySite}`
   }
 
-  if (refNumber) {
-    origin = `https://deploy-preview-${refNumber}--${netlifySite}`
+  if (isNumber(ref)) {
+    origin = `https://deploy-preview-${ref}--${netlifySite}`
   }
 
   if (origin && netlifySite) {

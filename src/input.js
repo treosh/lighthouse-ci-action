@@ -122,14 +122,20 @@ function interpolateProcessIntoURLs(urls) {
     return url
   })
 
-  const ref = get(context, 'ref', '')
-  // get PR ref or branch ref
-  console.log(get(context, 'event.payload.pull_request.head.ref'));
-  console.log(ref);
-  const branch = get(context, 'event.payload.pull_request.head.ref', ref).split('/')[2]
+  const branch = get(context, 'ref', '').split('/')[2]
+  const refNumber = get(context, 'event.payload.pull_request.head.ref', '').split('/')[2]
   const netlifySite = getArg('netlifySite')
-  if (branch && netlifySite) {
-    const origin = `https://${branch}--${netlifySite}`
+  let origin = ''
+
+  if (branch) {
+    origin = `https://${branch}--${netlifySite}`
+  }
+
+  if (refNumber) {
+    origin = `https://deploy-preview-${refNumber}--${netlifySite}`
+  }
+
+  if (origin && netlifySite) {
     return urls.map(
       /**
        * @param {string} url

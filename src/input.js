@@ -127,6 +127,8 @@ function interpolateProcessIntoURLs(urls) {
   const netlifySite = getArg('netlifySite')
   let origin = ''
 
+  console.log(get(context, 'event.payload.pull_request.head.ref'));
+
   if (branch) {
     origin = `https://${branch}--${netlifySite}`
   }

@@ -34,7 +34,7 @@ const pReadFile = promisify(readFile)
 /** @type {string} */
 const githubRepo = get(process.env, 'GITHUB_REPOSITORY', '')
 const githubSHA = get(process.env, 'GITHUB_SHA', '')
-const reportTitle = 'Lighthouse Report'
+const reportTitle = 'Lighthouse CI Action'
 const resultsDirPath = join(process.cwd(), '.lighthouseci')
 const lhAssertResultsPath = join(resultsDirPath, 'assertion-results.json')
 
@@ -43,15 +43,15 @@ const lhAssertResultsPath = join(resultsDirPath, 'assertion-results.json')
  */
 async function sendNotifications({ status }) {
   try {
-    const { slackWebhookUrl, applicationGithubToken, personalGithubToken, notifications } = input
+    const { slackWebhookUrl, applicationGithubToken, personalGithubToken } = input
     const shouldRunOutput = input.logLevel === 'info' || (input.logLevel === 'error' && status)
 
     if (!shouldRunOutput) {
       return Promise.resolve()
     }
 
-    const slackEnabled = notifications.includes('slack') && slackWebhookUrl
-    const githubEnabled = notifications.includes('github') && applicationGithubToken
+    const slackEnabled = slackWebhookUrl
+    const githubEnabled = applicationGithubToken
 
     /**
      * @type {[ LHResultsByURL, ChangesURL, Gist[] ]}
@@ -96,17 +96,20 @@ async function sendNotifications({ status }) {
 async function slackNotification({ status, slackWebhookUrl = '', changesURL, groupedResults, gists }) {
   console.log('Running Slack notification')
 
-  const webhook = new IncomingWebhook(slackWebhookUrl)
+  const webhook = new IncomingWebhook(slackWebhookUrl, {
+    icon_url: 'https://user-images.githubusercontent.com/54980164/75099367-8bc5b980-55c9-11ea-9e10-2a6ee69e8e70.png'
+  })
   const color = status === 0 ? 'good' : 'danger'
   const conclusion = status === 0 ? 'success' : 'failure'
   const changesTitle = changesURL.pullRequest
     ? `Pull Request ${conclusion} - <${changesURL.pullRequest} | View on GitHub>`
     : `Changes ${conclusion} - <${changesURL.sha} | View SHA Changes>`
   const attachments = formatAssertResults({ groupedResults, status, gists })
+
   return webhook.send({
     attachments: [
       {
-        pretext: `GitHub Actions / ${reportTitle}`,
+        pretext: reportTitle,
         title: changesTitle,
         color
       },
@@ -258,26 +261,22 @@ function formatAssertResults({ groupedResults, status, gists }) {
     const resultUrl = get(head(groupedResult), 'url', '')
     const gist = find(gists, ({ url }) => url === resultUrl) || {}
 
-    const results = groupedResult.map(
+    const fields = groupedResult.map(
       /**
        * @param {LHResult} res
        * @todo typedef for return object
        * @return {{title: string, value: string}}
        */
-      res => ({
-        title: `${res.auditId}.${res.auditProperty}`,
-        value: `${res.auditTitle} \n _Expected ${res.expected} ${
-          res.operator === '<=' ? ' less then' : ' greater than'
-        } actual ${res.actual}_`
-      })
+      res => {
+        const title = res.auditProperty ? `${res.auditId}.${res.auditProperty}` : res.auditId
+        return {
+          title,
+          value: `${res.auditTitle} \n _Expected ${res.expected} ${
+            res.operator === '<=' ? ' less then' : ' greater than'
+          } actual ${res.actual}_`
+        }
+      }
     )
-
-    const fields = results.slice(0, 2)
-    fields.length > 0 &&
-      fields.push({
-        title: '...',
-        value: ''
-      })
 
     const reportURL = getLHReportURL(gist)
     const reportUrlField = reportURL
@@ -289,7 +288,7 @@ function formatAssertResults({ groupedResults, status, gists }) {
       : {}
 
     acc.push({
-      text: `${groupedResult.length + 1} result(s) for ${resultUrl}`,
+      text: `${groupedResult.length} result(s) for ${resultUrl}`,
       color,
       fields
     })
@@ -316,7 +315,20 @@ function getSummaryMarkdownOutput({ status, changesURL, groupedResults, gists })
    */
   const fieldsTemplate = ({ fields, title_link, title }) => {
     if (fields) {
-      return fields.map(field => `**${field.title}**\n${field.value}`.trim()).join('\n')
+      let details = ''
+      if (fields.length > 2) {
+        const detailsFields = [...fields]
+        // make only 2 first results visible
+        fields = fields.slice(0, 2)
+        // move other results to markdown details section
+        detailsFields.splice(0, 2)
+        details = fieldsDetailsTemplate(detailsFields)
+      }
+
+      return fields
+        .map(field => `**${field.title}**\n${field.value}`.trim())
+        .join('\n')
+        .concat(details)
     }
 
     if (title_link) {
@@ -325,6 +337,7 @@ function getSummaryMarkdownOutput({ status, changesURL, groupedResults, gists })
 
     return '\n'
   }
+
   /**
    * @param {{ text?: string }} params
    * @return {string}
@@ -332,18 +345,34 @@ function getSummaryMarkdownOutput({ status, changesURL, groupedResults, gists })
   const resultTitle = ({ text }) => {
     return text ? `### ${text}` : ''
   }
+
+  /**
+   * @param {{ title: string, value: string}[] } fields
+   * @return {string}
+   */
+  const fieldsDetailsTemplate = fields => {
+    return `
+      <details> 
+        <summary>View more...</summary>
+        ${fields.map(field => `**${field.title}**\n${field.value}`.trim()).join('\n')}
+      </details>
+    `
+      .trim()
+      .concat('\n')
+  }
+
   /**
    *
    * @param {{ text: string, fields: { title: string, value: string}[] }[]} summaryResults
    * @return {string}
    */
-  const summaryResultsTempalte = summaryResults => {
+  const summaryResultsTemplate = summaryResults => {
     return summaryResults.map(result => `${resultTitle(result)}\n${fieldsTemplate(result)}`.trim()).join('\n')
   }
 
   const summary = `
 ${changesLink}\n
-${summaryResultsTempalte(summaryResults)}
+${summaryResultsTemplate(summaryResults)}
 `
   return {
     title,

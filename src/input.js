@@ -64,7 +64,6 @@ function getArgs() {
     numberOfRuns: getIntArg('runs'),
     applicationGithubToken: getArg('applicationGithubToken'),
     personalGithubToken: getArg('personalGithubToken'),
-    notifications: getList('notifications'),
     serverBaseUrl,
     token,
     rcCollect,

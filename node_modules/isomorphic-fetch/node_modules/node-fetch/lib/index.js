@@ -2,31 +2,29 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
-
-var Stream = _interopDefault(require('stream'));
-var http = _interopDefault(require('http'));
-var Url = _interopDefault(require('url'));
-var https = _interopDefault(require('https'));
-var zlib = _interopDefault(require('zlib'));
-
 // Based on https://github.com/tmpvar/jsdom/blob/aa85b2abf07766ff7bf5c1f6daafb3726f2f2db5/lib/jsdom/living/blob.js
-
-// fix for "Readable" isn't a named export issue
-const Readable = Stream.Readable;
+// (MIT licensed)
 
 const BUFFER = Symbol('buffer');
 const TYPE = Symbol('type');
+const CLOSED = Symbol('closed');
 
 class Blob {
 	constructor() {
+		Object.defineProperty(this, Symbol.toStringTag, {
+			value: 'Blob',
+			writable: false,
+			enumerable: false,
+			configurable: true
+		});
+
+		this[CLOSED] = false;
 		this[TYPE] = '';
 
 		const blobParts = arguments[0];
 		const options = arguments[1];
 
 		const buffers = [];
-		let size = 0;
 
 		if (blobParts) {
 			const a = blobParts;
@@ -45,7 +43,6 @@ class Blob {
 				} else {
 					buffer = Buffer.from(typeof element === 'string' ? element : String(element));
 				}
-				size += buffer.length;
 				buffers.push(buffer);
 			}
 		}
@@ -58,28 +55,13 @@ class Blob {
 		}
 	}
 	get size() {
-		return this[BUFFER].length;
+		return this[CLOSED] ? 0 : this[BUFFER].length;
 	}
 	get type() {
 		return this[TYPE];
 	}
-	text() {
-		return Promise.resolve(this[BUFFER].toString());
-	}
-	arrayBuffer() {
-		const buf = this[BUFFER];
-		const ab = buf.buffer.slice(buf.byteOffset, buf.byteOffset + buf.byteLength);
-		return Promise.resolve(ab);
-	}
-	stream() {
-		const readable = new Readable();
-		readable._read = function () {};
-		readable.push(this[BUFFER]);
-		readable.push(null);
-		return readable;
-	}
-	toString() {
-		return '[object Blob]';
+	get isClosed() {
+		return this[CLOSED];
 	}
 	slice() {
 		const size = this.size;
@@ -107,18 +89,16 @@ class Blob {
 		const slicedBuffer = buffer.slice(relativeStart, relativeStart + span);
 		const blob = new Blob([], { type: arguments[2] });
 		blob[BUFFER] = slicedBuffer;
+		blob[CLOSED] = this[CLOSED];
 		return blob;
+	}
+	close() {
+		this[CLOSED] = true;
 	}
 }
 
-Object.defineProperties(Blob.prototype, {
-	size: { enumerable: true },
-	type: { enumerable: true },
-	slice: { enumerable: true }
-});
-
 Object.defineProperty(Blob.prototype, Symbol.toStringTag, {
-	value: 'Blob',
+	value: 'BlobPrototype',
 	writable: false,
 	enumerable: false,
 	configurable: true
@@ -157,28 +137,36 @@ FetchError.prototype = Object.create(Error.prototype);
 FetchError.prototype.constructor = FetchError;
 FetchError.prototype.name = 'FetchError';
 
+/**
+ * body.js
+ *
+ * Body interface provides common methods for Request and Response
+ */
+
+const Stream = require('stream');
+
+var _require$1 = require('stream');
+
+const PassThrough$1 = _require$1.PassThrough;
+
+
+const DISTURBED = Symbol('disturbed');
+
 let convert;
 try {
 	convert = require('encoding').convert;
 } catch (e) {}
 
-const INTERNALS = Symbol('Body internals');
-
-// fix an issue where "PassThrough" isn't a named export for node <10
-const PassThrough = Stream.PassThrough;
-
 /**
- * Body mixin
+ * Body class
  *
- * Ref: https://fetch.spec.whatwg.org/#body
+ * Cannot use ES6 class because Body must be called with .call().
  *
  * @param   Stream  body  Readable stream
  * @param   Object  opts  Response options
  * @return  Void
  */
 function Body(body) {
-	var _this = this;
-
 	var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
 	    _ref$size = _ref.size;
 
@@ -189,43 +177,30 @@ function Body(body) {
 	if (body == null) {
 		// body is undefined or null
 		body = null;
+	} else if (typeof body === 'string') {
+		// body is string
 	} else if (isURLSearchParams(body)) {
 		// body is a URLSearchParams
-		body = Buffer.from(body.toString());
-	} else if (isBlob(body)) ; else if (Buffer.isBuffer(body)) ; else if (Object.prototype.toString.call(body) === '[object ArrayBuffer]') {
-		// body is ArrayBuffer
-		body = Buffer.from(body);
-	} else if (ArrayBuffer.isView(body)) {
-		// body is ArrayBufferView
-		body = Buffer.from(body.buffer, body.byteOffset, body.byteLength);
-	} else if (body instanceof Stream) ; else {
+	} else if (body instanceof Blob) {
+		// body is blob
+	} else if (Buffer.isBuffer(body)) {
+		// body is buffer
+	} else if (body instanceof Stream) {
+		// body is stream
+	} else {
 		// none of the above
-		// coerce to string then buffer
-		body = Buffer.from(String(body));
+		// coerce to string
+		body = String(body);
 	}
-	this[INTERNALS] = {
-		body,
-		disturbed: false,
-		error: null
-	};
+	this.body = body;
+	this[DISTURBED] = false;
 	this.size = size;
 	this.timeout = timeout;
-
-	if (body instanceof Stream) {
-		body.on('error', function (err) {
-			const error = err.name === 'AbortError' ? err : new FetchError(`Invalid response body while trying to fetch ${_this.url}: ${err.message}`, 'system', err);
-			_this[INTERNALS].error = error;
-		});
-	}
 }
 
 Body.prototype = {
-	get body() {
-		return this[INTERNALS].body;
-	},
-
 	get bodyUsed() {
-		return this[INTERNALS].disturbed;
+		return this[DISTURBED];
 	},
 
 	/**
@@ -263,13 +238,13 @@ Body.prototype = {
   * @return  Promise
   */
 	json() {
-		var _this2 = this;
+		var _this = this;
 
 		return consumeBody.call(this).then(function (buffer) {
 			try {
 				return JSON.parse(buffer.toString());
 			} catch (err) {
-				return Body.Promise.reject(new FetchError(`invalid json response body at ${_this2.url} reason: ${err.message}`, 'invalid-json'));
+				return Body.Promise.reject(new FetchError(`invalid json response body at ${_this.url} reason: ${err.message}`, 'invalid-json'));
 			}
 		});
 	},
@@ -301,23 +276,14 @@ Body.prototype = {
   * @return  Promise
   */
 	textConverted() {
-		var _this3 = this;
+		var _this2 = this;
 
 		return consumeBody.call(this).then(function (buffer) {
-			return convertBody(buffer, _this3.headers);
+			return convertBody(buffer, _this2.headers);
 		});
 	}
-};
 
-// In browsers, all properties are enumerable.
-Object.defineProperties(Body.prototype, {
-	body: { enumerable: true },
-	bodyUsed: { enumerable: true },
-	arrayBuffer: { enumerable: true },
-	blob: { enumerable: true },
-	json: { enumerable: true },
-	text: { enumerable: true }
-});
+};
 
 Body.mixIn = function (proto) {
 	for (const name of Object.getOwnPropertyNames(Body.prototype)) {
@@ -330,44 +296,41 @@ Body.mixIn = function (proto) {
 };
 
 /**
- * Consume and convert an entire Body to a Buffer.
- *
- * Ref: https://fetch.spec.whatwg.org/#concept-body-consume-body
+ * Decode buffers into utf-8 string
  *
  * @return  Promise
  */
-function consumeBody() {
-	var _this4 = this;
+function consumeBody(body) {
+	var _this3 = this;
 
-	if (this[INTERNALS].disturbed) {
-		return Body.Promise.reject(new TypeError(`body used already for: ${this.url}`));
+	if (this[DISTURBED]) {
+		return Body.Promise.reject(new Error(`body used already for: ${this.url}`));
 	}
 
-	this[INTERNALS].disturbed = true;
-
-	if (this[INTERNALS].error) {
-		return Body.Promise.reject(this[INTERNALS].error);
-	}
-
-	let body = this.body;
+	this[DISTURBED] = true;
 
 	// body is null
-	if (body === null) {
+	if (this.body === null) {
 		return Body.Promise.resolve(Buffer.alloc(0));
 	}
 
+	// body is string
+	if (typeof this.body === 'string') {
+		return Body.Promise.resolve(Buffer.from(this.body));
+	}
+
 	// body is blob
-	if (isBlob(body)) {
-		body = body.stream();
+	if (this.body instanceof Blob) {
+		return Body.Promise.resolve(this.body[BUFFER]);
 	}
 
 	// body is buffer
-	if (Buffer.isBuffer(body)) {
-		return Body.Promise.resolve(body);
+	if (Buffer.isBuffer(this.body)) {
+		return Body.Promise.resolve(this.body);
 	}
 
 	// istanbul ignore if: should never happen
-	if (!(body instanceof Stream)) {
+	if (!(this.body instanceof Stream)) {
 		return Body.Promise.resolve(Buffer.alloc(0));
 	}
 
@@ -381,33 +344,26 @@ function consumeBody() {
 		let resTimeout;
 
 		// allow timeout on slow response body
-		if (_this4.timeout) {
+		if (_this3.timeout) {
 			resTimeout = setTimeout(function () {
 				abort = true;
-				reject(new FetchError(`Response timeout while trying to fetch ${_this4.url} (over ${_this4.timeout}ms)`, 'body-timeout'));
-			}, _this4.timeout);
+				reject(new FetchError(`Response timeout while trying to fetch ${_this3.url} (over ${_this3.timeout}ms)`, 'body-timeout'));
+			}, _this3.timeout);
 		}
 
-		// handle stream errors
-		body.on('error', function (err) {
-			if (err.name === 'AbortError') {
-				// if the request was aborted, reject with this Error
-				abort = true;
-				reject(err);
-			} else {
-				// other errors, such as incorrect content-encoding
-				reject(new FetchError(`Invalid response body while trying to fetch ${_this4.url}: ${err.message}`, 'system', err));
-			}
+		// handle stream error, such as incorrect content-encoding
+		_this3.body.on('error', function (err) {
+			reject(new FetchError(`Invalid response body while trying to fetch ${_this3.url}: ${err.message}`, 'system', err));
 		});
 
-		body.on('data', function (chunk) {
+		_this3.body.on('data', function (chunk) {
 			if (abort || chunk === null) {
 				return;
 			}
 
-			if (_this4.size && accumBytes + chunk.length > _this4.size) {
+			if (_this3.size && accumBytes + chunk.length > _this3.size) {
 				abort = true;
-				reject(new FetchError(`content size at ${_this4.url} over limit: ${_this4.size}`, 'max-size'));
+				reject(new FetchError(`content size at ${_this3.url} over limit: ${_this3.size}`, 'max-size'));
 				return;
 			}
 
@@ -415,19 +371,13 @@ function consumeBody() {
 			accum.push(chunk);
 		});
 
-		body.on('end', function () {
+		_this3.body.on('end', function () {
 			if (abort) {
 				return;
 			}
 
 			clearTimeout(resTimeout);
-
-			try {
-				resolve(Buffer.concat(accum, accumBytes));
-			} catch (err) {
-				// handle streams that have accumulated too much data (issue #414)
-				reject(new FetchError(`Could not create Buffer from response body for ${_this4.url}: ${err.message}`, 'system', err));
-			}
+			resolve(Buffer.concat(accum));
 		});
 	});
 }
@@ -509,15 +459,6 @@ function isURLSearchParams(obj) {
 }
 
 /**
- * Check if `obj` is a W3C `Blob` object (which `File` inherits from)
- * @param  {*} obj
- * @return {boolean}
- */
-function isBlob(obj) {
-	return typeof obj === 'object' && typeof obj.arrayBuffer === 'function' && typeof obj.type === 'string' && typeof obj.stream === 'function' && typeof obj.constructor === 'function' && typeof obj.constructor.name === 'string' && /^(Blob|File)$/.test(obj.constructor.name) && /^(Blob|File)$/.test(obj[Symbol.toStringTag]);
-}
-
-/**
  * Clone body given Res/Req instance
  *
  * @param   Mixed  instance  Response or Request instance
@@ -536,12 +477,12 @@ function clone(instance) {
 	// note: we can't clone the form-data object without having it as a dependency
 	if (body instanceof Stream && typeof body.getBoundary !== 'function') {
 		// tee instance body
-		p1 = new PassThrough();
-		p2 = new PassThrough();
+		p1 = new PassThrough$1();
+		p2 = new PassThrough$1();
 		body.pipe(p1);
 		body.pipe(p2);
 		// set instance body to teed body and return the other teed body
-		instance[INTERNALS].body = p1;
+		instance.body = p1;
 		body = p2;
 	}
 
@@ -553,11 +494,16 @@ function clone(instance) {
  * specified in the specification:
  * https://fetch.spec.whatwg.org/#concept-bodyinit-extract
  *
- * This function assumes that instance.body is present.
+ * This function assumes that instance.body is present and non-null.
  *
- * @param   Mixed  instance  Any options.body input
+ * @param   Mixed  instance  Response or Request instance
  */
-function extractContentType(body) {
+function extractContentType(instance) {
+	const body = instance.body;
+
+	// istanbul ignore if: Currently, because of a guard in Request, body
+	// can never be null. Included here for completeness.
+
 	if (body === null) {
 		// body is null
 		return null;
@@ -567,48 +513,38 @@ function extractContentType(body) {
 	} else if (isURLSearchParams(body)) {
 		// body is a URLSearchParams
 		return 'application/x-www-form-urlencoded;charset=UTF-8';
-	} else if (isBlob(body)) {
+	} else if (body instanceof Blob) {
 		// body is blob
 		return body.type || null;
 	} else if (Buffer.isBuffer(body)) {
 		// body is buffer
 		return null;
-	} else if (Object.prototype.toString.call(body) === '[object ArrayBuffer]') {
-		// body is ArrayBuffer
-		return null;
-	} else if (ArrayBuffer.isView(body)) {
-		// body is ArrayBufferView
-		return null;
 	} else if (typeof body.getBoundary === 'function') {
 		// detect form data input from form-data module
 		return `multipart/form-data;boundary=${body.getBoundary()}`;
-	} else if (body instanceof Stream) {
+	} else {
 		// body is stream
 		// can't really do much about this
 		return null;
-	} else {
-		// Body constructor defaults other things to string
-		return 'text/plain;charset=UTF-8';
 	}
 }
 
-/**
- * The Fetch Standard treats this as if "total bytes" is a property on the body.
- * For us, we have to explicitly get it with a function.
- *
- * ref: https://fetch.spec.whatwg.org/#concept-body-total-bytes
- *
- * @param   Body    instance   Instance of Body
- * @return  Number?            Number of bytes, or null if not possible
- */
 function getTotalBytes(instance) {
 	const body = instance.body;
 
+	// istanbul ignore if: included for completion
 
 	if (body === null) {
 		// body is null
 		return 0;
-	} else if (isBlob(body)) {
+	} else if (typeof body === 'string') {
+		// body is string
+		return Buffer.byteLength(body);
+	} else if (isURLSearchParams(body)) {
+		// body is URLSearchParams
+		return Buffer.byteLength(String(body));
+	} else if (body instanceof Blob) {
+		// body is blob
 		return body.size;
 	} else if (Buffer.isBuffer(body)) {
 		// body is buffer
@@ -623,16 +559,11 @@ function getTotalBytes(instance) {
 		return null;
 	} else {
 		// body is stream
+		// can't really do much about this
 		return null;
 	}
 }
 
-/**
- * Write a Body to a Node.js WritableStream (e.g. http.Request) object.
- *
- * @param   Body    instance   Instance of Body
- * @return  Void
- */
 function writeToStream(dest, instance) {
 	const body = instance.body;
 
@@ -640,8 +571,18 @@ function writeToStream(dest, instance) {
 	if (body === null) {
 		// body is null
 		dest.end();
-	} else if (isBlob(body)) {
-		body.stream().pipe(dest);
+	} else if (typeof body === 'string') {
+		// body is string
+		dest.write(body);
+		dest.end();
+	} else if (isURLSearchParams(body)) {
+		// body is URLSearchParams
+		dest.write(Buffer.from(String(body)));
+		dest.end();
+	} else if (body instanceof Blob) {
+		// body is blob
+		dest.write(body[BUFFER]);
+		dest.end();
 	} else if (Buffer.isBuffer(body)) {
 		// body is buffer
 		dest.write(body);
@@ -656,44 +597,114 @@ function writeToStream(dest, instance) {
 Body.Promise = global.Promise;
 
 /**
+ * A set of utilities borrowed from Node.js' _http_common.js
+ */
+
+/**
+ * Verifies that the given val is a valid HTTP token
+ * per the rules defined in RFC 7230
+ * See https://tools.ietf.org/html/rfc7230#section-3.2.6
+ *
+ * Allowed characters in an HTTP token:
+ * ^_`a-z  94-122
+ * A-Z     65-90
+ * -       45
+ * 0-9     48-57
+ * !       33
+ * #$%&'   35-39
+ * *+      42-43
+ * .       46
+ * |       124
+ * ~       126
+ *
+ * This implementation of checkIsHttpToken() loops over the string instead of
+ * using a regular expression since the former is up to 180% faster with v8 4.9
+ * depending on the string length (the shorter the string, the larger the
+ * performance difference)
+ *
+ * Additionally, checkIsHttpToken() is currently designed to be inlinable by v8,
+ * so take care when making changes to the implementation so that the source
+ * code size does not exceed v8's default max_inlined_source_size setting.
+ **/
+/* istanbul ignore next */
+function isValidTokenChar(ch) {
+  if (ch >= 94 && ch <= 122) return true;
+  if (ch >= 65 && ch <= 90) return true;
+  if (ch === 45) return true;
+  if (ch >= 48 && ch <= 57) return true;
+  if (ch === 34 || ch === 40 || ch === 41 || ch === 44) return false;
+  if (ch >= 33 && ch <= 46) return true;
+  if (ch === 124 || ch === 126) return true;
+  return false;
+}
+/* istanbul ignore next */
+function checkIsHttpToken(val) {
+  if (typeof val !== 'string' || val.length === 0) return false;
+  if (!isValidTokenChar(val.charCodeAt(0))) return false;
+  const len = val.length;
+  if (len > 1) {
+    if (!isValidTokenChar(val.charCodeAt(1))) return false;
+    if (len > 2) {
+      if (!isValidTokenChar(val.charCodeAt(2))) return false;
+      if (len > 3) {
+        if (!isValidTokenChar(val.charCodeAt(3))) return false;
+        for (var i = 4; i < len; i++) {
+          if (!isValidTokenChar(val.charCodeAt(i))) return false;
+        }
+      }
+    }
+  }
+  return true;
+}
+/**
+ * True if val contains an invalid field-vchar
+ *  field-value    = *( field-content / obs-fold )
+ *  field-content  = field-vchar [ 1*( SP / HTAB ) field-vchar ]
+ *  field-vchar    = VCHAR / obs-text
+ *
+ * checkInvalidHeaderChar() is currently designed to be inlinable by v8,
+ * so take care when making changes to the implementation so that the source
+ * code size does not exceed v8's default max_inlined_source_size setting.
+ **/
+/* istanbul ignore next */
+function checkInvalidHeaderChar(val) {
+  val += '';
+  if (val.length < 1) return false;
+  var c = val.charCodeAt(0);
+  if (c <= 31 && c !== 9 || c > 255 || c === 127) return true;
+  if (val.length < 2) return false;
+  c = val.charCodeAt(1);
+  if (c <= 31 && c !== 9 || c > 255 || c === 127) return true;
+  if (val.length < 3) return false;
+  c = val.charCodeAt(2);
+  if (c <= 31 && c !== 9 || c > 255 || c === 127) return true;
+  for (var i = 3; i < val.length; ++i) {
+    c = val.charCodeAt(i);
+    if (c <= 31 && c !== 9 || c > 255 || c === 127) return true;
+  }
+  return false;
+}
+
+/**
  * headers.js
  *
  * Headers class offers convenient helpers
  */
 
-const invalidTokenRegex = /[^\^_`a-zA-Z\-0-9!#$%&'*+.|~]/;
-const invalidHeaderCharRegex = /[^\t\x20-\x7e\x80-\xff]/;
-
-function validateName(name) {
-	name = `${name}`;
-	if (invalidTokenRegex.test(name) || name === '') {
+function sanitizeName(name) {
+	name += '';
+	if (!checkIsHttpToken(name)) {
 		throw new TypeError(`${name} is not a legal HTTP header name`);
 	}
+	return name.toLowerCase();
 }
 
-function validateValue(value) {
-	value = `${value}`;
-	if (invalidHeaderCharRegex.test(value)) {
+function sanitizeValue(value) {
+	value += '';
+	if (checkInvalidHeaderChar(value)) {
 		throw new TypeError(`${value} is not a legal HTTP header value`);
 	}
-}
-
-/**
- * Find the key in the map object given a header name.
- *
- * Returns undefined if not found.
- *
- * @param   String  name  Header name
- * @return  String|Undefined
- */
-function find(map, name) {
-	name = name.toLowerCase();
-	for (const key in map) {
-		if (key.toLowerCase() === name) {
-			return key;
-		}
-	}
-	return undefined;
+	return value;
 }
 
 const MAP = Symbol('map');
@@ -724,7 +735,9 @@ class Headers {
 
 		// We don't worry about converting prop to ByteString here as append()
 		// will handle it.
-		if (init == null) ; else if (typeof init === 'object') {
+		if (init == null) {
+			// no op
+		} else if (typeof init === 'object') {
 			const method = init[Symbol.iterator];
 			if (method != null) {
 				if (typeof method !== 'function') {
@@ -757,23 +770,28 @@ class Headers {
 		} else {
 			throw new TypeError('Provided initializer must be an object');
 		}
+
+		Object.defineProperty(this, Symbol.toStringTag, {
+			value: 'Headers',
+			writable: false,
+			enumerable: false,
+			configurable: true
+		});
 	}
 
 	/**
-  * Return combined header value given name
+  * Return first header value given name
   *
   * @param   String  name  Header name
   * @return  Mixed
   */
 	get(name) {
-		name = `${name}`;
-		validateName(name);
-		const key = find(this[MAP], name);
-		if (key === undefined) {
+		const list = this[MAP][sanitizeName(name)];
+		if (!list) {
 			return null;
 		}
 
-		return this[MAP][key].join(', ');
+		return list.join(', ');
 	}
 
 	/**
@@ -786,7 +804,7 @@ class Headers {
 	forEach(callback) {
 		let thisArg = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : undefined;
 
-		let pairs = getHeaders(this);
+		let pairs = getHeaderPairs(this);
 		let i = 0;
 		while (i < pairs.length) {
 			var _pairs$i = pairs[i];
@@ -794,7 +812,7 @@ class Headers {
 			      value = _pairs$i[1];
 
 			callback.call(thisArg, value, name, this);
-			pairs = getHeaders(this);
+			pairs = getHeaderPairs(this);
 			i++;
 		}
 	}
@@ -807,12 +825,7 @@ class Headers {
   * @return  Void
   */
 	set(name, value) {
-		name = `${name}`;
-		value = `${value}`;
-		validateName(name);
-		validateValue(value);
-		const key = find(this[MAP], name);
-		this[MAP][key !== undefined ? key : name] = [value];
+		this[MAP][sanitizeName(name)] = [sanitizeValue(value)];
 	}
 
 	/**
@@ -823,16 +836,12 @@ class Headers {
   * @return  Void
   */
 	append(name, value) {
-		name = `${name}`;
-		value = `${value}`;
-		validateName(name);
-		validateValue(value);
-		const key = find(this[MAP], name);
-		if (key !== undefined) {
-			this[MAP][key].push(value);
-		} else {
-			this[MAP][name] = [value];
+		if (!this.has(name)) {
+			this.set(name, value);
+			return;
 		}
+
+		this[MAP][sanitizeName(name)].push(sanitizeValue(value));
 	}
 
 	/**
@@ -842,9 +851,7 @@ class Headers {
   * @return  Boolean
   */
 	has(name) {
-		name = `${name}`;
-		validateName(name);
-		return find(this[MAP], name) !== undefined;
+		return !!this[MAP][sanitizeName(name)];
 	}
 
 	/**
@@ -854,12 +861,7 @@ class Headers {
   * @return  Void
   */
 	delete(name) {
-		name = `${name}`;
-		validateName(name);
-		const key = find(this[MAP], name);
-		if (key !== undefined) {
-			delete this[MAP][key];
-		}
+		delete this[MAP][sanitizeName(name)];
 	}
 
 	/**
@@ -903,34 +905,18 @@ class Headers {
 Headers.prototype.entries = Headers.prototype[Symbol.iterator];
 
 Object.defineProperty(Headers.prototype, Symbol.toStringTag, {
-	value: 'Headers',
+	value: 'HeadersPrototype',
 	writable: false,
 	enumerable: false,
 	configurable: true
 });
 
-Object.defineProperties(Headers.prototype, {
-	get: { enumerable: true },
-	forEach: { enumerable: true },
-	set: { enumerable: true },
-	append: { enumerable: true },
-	has: { enumerable: true },
-	delete: { enumerable: true },
-	keys: { enumerable: true },
-	values: { enumerable: true },
-	entries: { enumerable: true }
-});
-
-function getHeaders(headers) {
-	let kind = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'key+value';
-
+function getHeaderPairs(headers, kind) {
 	const keys = Object.keys(headers[MAP]).sort();
 	return keys.map(kind === 'key' ? function (k) {
-		return k.toLowerCase();
-	} : kind === 'value' ? function (k) {
-		return headers[MAP][k].join(', ');
+		return [k];
 	} : function (k) {
-		return [k.toLowerCase(), headers[MAP][k].join(', ')];
+		return [k, headers.get(k)];
 	});
 }
 
@@ -958,7 +944,7 @@ const HeadersIteratorPrototype = Object.setPrototypeOf({
 		      kind = _INTERNAL.kind,
 		      index = _INTERNAL.index;
 
-		const values = getHeaders(target, kind);
+		const values = getHeaderPairs(target, kind);
 		const len = values.length;
 		if (index >= len) {
 			return {
@@ -967,10 +953,20 @@ const HeadersIteratorPrototype = Object.setPrototypeOf({
 			};
 		}
 
+		const pair = values[index];
 		this[INTERNAL].index = index + 1;
 
+		let result;
+		if (kind === 'key') {
+			result = pair[0];
+		} else if (kind === 'value') {
+			result = pair[1];
+		} else {
+			result = pair;
+		}
+
 		return {
-			value: values[index],
+			value: result,
 			done: false
 		};
 	}
@@ -984,59 +980,14 @@ Object.defineProperty(HeadersIteratorPrototype, Symbol.toStringTag, {
 });
 
 /**
- * Export the Headers object in a form that Node.js can consume.
+ * response.js
  *
- * @param   Headers  headers
- * @return  Object
+ * Response class provides content decoding
  */
-function exportNodeCompatibleHeaders(headers) {
-	const obj = Object.assign({ __proto__: null }, headers[MAP]);
 
-	// http.request() only supports string as Host header. This hack makes
-	// specifying custom Host header possible.
-	const hostHeaderKey = find(headers[MAP], 'Host');
-	if (hostHeaderKey !== undefined) {
-		obj[hostHeaderKey] = obj[hostHeaderKey][0];
-	}
+var _require$2 = require('http');
 
-	return obj;
-}
-
-/**
- * Create a Headers object from an object of headers, ignoring those that do
- * not conform to HTTP grammar productions.
- *
- * @param   Object  obj  Object of headers
- * @return  Headers
- */
-function createHeadersLenient(obj) {
-	const headers = new Headers();
-	for (const name of Object.keys(obj)) {
-		if (invalidTokenRegex.test(name)) {
-			continue;
-		}
-		if (Array.isArray(obj[name])) {
-			for (const val of obj[name]) {
-				if (invalidHeaderCharRegex.test(val)) {
-					continue;
-				}
-				if (headers[MAP][name] === undefined) {
-					headers[MAP][name] = [val];
-				} else {
-					headers[MAP][name].push(val);
-				}
-			}
-		} else if (!invalidHeaderCharRegex.test(obj[name])) {
-			headers[MAP][name] = [obj[name]];
-		}
-	}
-	return headers;
-}
-
-const INTERNALS$1 = Symbol('Response internals');
-
-// fix an issue where "STATUS_CODES" aren't a named export for node <10
-const STATUS_CODES = http.STATUS_CODES;
+const STATUS_CODES = _require$2.STATUS_CODES;
 
 /**
  * Response class
@@ -1045,6 +996,7 @@ const STATUS_CODES = http.STATUS_CODES;
  * @param   Object  opts  Response options
  * @return  Void
  */
+
 class Response {
 	constructor() {
 		let body = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
@@ -1052,50 +1004,25 @@ class Response {
 
 		Body.call(this, body, opts);
 
-		const status = opts.status || 200;
-		const headers = new Headers(opts.headers);
+		this.url = opts.url;
+		this.status = opts.status || 200;
+		this.statusText = opts.statusText || STATUS_CODES[this.status];
 
-		if (body != null && !headers.has('Content-Type')) {
-			const contentType = extractContentType(body);
-			if (contentType) {
-				headers.append('Content-Type', contentType);
-			}
-		}
+		this.headers = new Headers(opts.headers);
 
-		this[INTERNALS$1] = {
-			url: opts.url,
-			status,
-			statusText: opts.statusText || STATUS_CODES[status],
-			headers,
-			counter: opts.counter
-		};
-	}
-
-	get url() {
-		return this[INTERNALS$1].url || '';
-	}
-
-	get status() {
-		return this[INTERNALS$1].status;
+		Object.defineProperty(this, Symbol.toStringTag, {
+			value: 'Response',
+			writable: false,
+			enumerable: false,
+			configurable: true
+		});
 	}
 
 	/**
   * Convenience property representing if the request ended normally
   */
 	get ok() {
-		return this[INTERNALS$1].status >= 200 && this[INTERNALS$1].status < 300;
-	}
-
-	get redirected() {
-		return this[INTERNALS$1].counter > 0;
-	}
-
-	get statusText() {
-		return this[INTERNALS$1].statusText;
-	}
-
-	get headers() {
-		return this[INTERNALS$1].headers;
+		return this.status >= 200 && this.status < 300;
 	}
 
 	/**
@@ -1104,58 +1031,39 @@ class Response {
   * @return  Response
   */
 	clone() {
+
 		return new Response(clone(this), {
 			url: this.url,
 			status: this.status,
 			statusText: this.statusText,
 			headers: this.headers,
-			ok: this.ok,
-			redirected: this.redirected
+			ok: this.ok
 		});
 	}
 }
 
 Body.mixIn(Response.prototype);
 
-Object.defineProperties(Response.prototype, {
-	url: { enumerable: true },
-	status: { enumerable: true },
-	ok: { enumerable: true },
-	redirected: { enumerable: true },
-	statusText: { enumerable: true },
-	headers: { enumerable: true },
-	clone: { enumerable: true }
-});
-
 Object.defineProperty(Response.prototype, Symbol.toStringTag, {
-	value: 'Response',
+	value: 'ResponsePrototype',
 	writable: false,
 	enumerable: false,
 	configurable: true
 });
 
-const INTERNALS$2 = Symbol('Request internals');
-
-// fix an issue where "format", "parse" aren't a named export for node <10
-const parse_url = Url.parse;
-const format_url = Url.format;
-
-const streamDestructionSupported = 'destroy' in Stream.Readable.prototype;
-
 /**
- * Check if a value is an instance of Request.
+ * request.js
  *
- * @param   Mixed   input
- * @return  Boolean
+ * Request class contains server only options
  */
-function isRequest(input) {
-	return typeof input === 'object' && typeof input[INTERNALS$2] === 'object';
-}
 
-function isAbortSignal(signal) {
-	const proto = signal && typeof signal === 'object' && Object.getPrototypeOf(signal);
-	return !!(proto && proto.constructor.name === 'AbortSignal');
-}
+var _require$3 = require('url');
+
+const format_url = _require$3.format;
+const parse_url = _require$3.parse;
+
+
+const PARSED_URL = Symbol('url');
 
 /**
  * Request class
@@ -1171,7 +1079,7 @@ class Request {
 		let parsedURL;
 
 		// normalize input
-		if (!isRequest(input)) {
+		if (!(input instanceof Request)) {
 			if (input && input.href) {
 				// in order to support Node.js' Url objects; though WHATWG's URL objects
 				// will fall into this branch also (since their `toString()` will return
@@ -1187,68 +1095,47 @@ class Request {
 		}
 
 		let method = init.method || input.method || 'GET';
-		method = method.toUpperCase();
 
-		if ((init.body != null || isRequest(input) && input.body !== null) && (method === 'GET' || method === 'HEAD')) {
+		if ((init.body != null || input instanceof Request && input.body !== null) && (method === 'GET' || method === 'HEAD')) {
 			throw new TypeError('Request with GET/HEAD method cannot have body');
 		}
 
-		let inputBody = init.body != null ? init.body : isRequest(input) && input.body !== null ? clone(input) : null;
+		let inputBody = init.body != null ? init.body : input instanceof Request && input.body !== null ? clone(input) : null;
 
 		Body.call(this, inputBody, {
 			timeout: init.timeout || input.timeout || 0,
 			size: init.size || input.size || 0
 		});
 
-		const headers = new Headers(init.headers || input.headers || {});
+		// fetch spec options
+		this.method = method.toUpperCase();
+		this.redirect = init.redirect || input.redirect || 'follow';
+		this.headers = new Headers(init.headers || input.headers || {});
 
-		if (inputBody != null && !headers.has('Content-Type')) {
-			const contentType = extractContentType(inputBody);
-			if (contentType) {
-				headers.append('Content-Type', contentType);
+		if (init.body != null) {
+			const contentType = extractContentType(this);
+			if (contentType !== null && !this.headers.has('Content-Type')) {
+				this.headers.append('Content-Type', contentType);
 			}
 		}
 
-		let signal = isRequest(input) ? input.signal : null;
-		if ('signal' in init) signal = init.signal;
-
-		if (signal != null && !isAbortSignal(signal)) {
-			throw new TypeError('Expected signal to be an instanceof AbortSignal');
-		}
-
-		this[INTERNALS$2] = {
-			method,
-			redirect: init.redirect || input.redirect || 'follow',
-			headers,
-			parsedURL,
-			signal
-		};
-
-		// node-fetch-only options
+		// server only options
 		this.follow = init.follow !== undefined ? init.follow : input.follow !== undefined ? input.follow : 20;
 		this.compress = init.compress !== undefined ? init.compress : input.compress !== undefined ? input.compress : true;
 		this.counter = init.counter || input.counter || 0;
 		this.agent = init.agent || input.agent;
-	}
 
-	get method() {
-		return this[INTERNALS$2].method;
+		this[PARSED_URL] = parsedURL;
+		Object.defineProperty(this, Symbol.toStringTag, {
+			value: 'Request',
+			writable: false,
+			enumerable: false,
+			configurable: true
+		});
 	}
 
 	get url() {
-		return format_url(this[INTERNALS$2].parsedURL);
-	}
-
-	get headers() {
-		return this[INTERNALS$2].headers;
-	}
-
-	get redirect() {
-		return this[INTERNALS$2].redirect;
-	}
-
-	get signal() {
-		return this[INTERNALS$2].signal;
+		return format_url(this[PARSED_URL]);
 	}
 
 	/**
@@ -1264,32 +1151,17 @@ class Request {
 Body.mixIn(Request.prototype);
 
 Object.defineProperty(Request.prototype, Symbol.toStringTag, {
-	value: 'Request',
+	value: 'RequestPrototype',
 	writable: false,
 	enumerable: false,
 	configurable: true
 });
 
-Object.defineProperties(Request.prototype, {
-	method: { enumerable: true },
-	url: { enumerable: true },
-	headers: { enumerable: true },
-	redirect: { enumerable: true },
-	clone: { enumerable: true },
-	signal: { enumerable: true }
-});
-
-/**
- * Convert a Request to Node.js http request options.
- *
- * @param   Request  A Request instance
- * @return  Object   The options object to be passed to http.request
- */
 function getNodeRequestOptions(request) {
-	const parsedURL = request[INTERNALS$2].parsedURL;
-	const headers = new Headers(request[INTERNALS$2].headers);
+	const parsedURL = request[PARSED_URL];
+	const headers = new Headers(request.headers);
 
-	// fetch step 1.3
+	// fetch step 3
 	if (!headers.has('Accept')) {
 		headers.set('Accept', '*/*');
 	}
@@ -1303,11 +1175,7 @@ function getNodeRequestOptions(request) {
 		throw new TypeError('Only HTTP(S) protocols are supported');
 	}
 
-	if (request.signal && request.body instanceof Stream.Readable && !streamDestructionSupported) {
-		throw new Error('Cancellation of streamed requests with AbortSignal is not supported in node < 8');
-	}
-
-	// HTTP-network-or-cache fetch steps 2.4-2.7
+	// HTTP-network-or-cache fetch steps 5-9
 	let contentLengthValue = null;
 	if (request.body == null && /^(POST|PUT)$/i.test(request.method)) {
 		contentLengthValue = '0';
@@ -1322,64 +1190,47 @@ function getNodeRequestOptions(request) {
 		headers.set('Content-Length', contentLengthValue);
 	}
 
-	// HTTP-network-or-cache fetch step 2.11
+	// HTTP-network-or-cache fetch step 12
 	if (!headers.has('User-Agent')) {
 		headers.set('User-Agent', 'node-fetch/1.0 (+https://github.com/bitinn/node-fetch)');
 	}
 
-	// HTTP-network-or-cache fetch step 2.15
-	if (request.compress && !headers.has('Accept-Encoding')) {
+	// HTTP-network-or-cache fetch step 16
+	if (request.compress) {
 		headers.set('Accept-Encoding', 'gzip,deflate');
 	}
-
-	let agent = request.agent;
-	if (typeof agent === 'function') {
-		agent = agent(parsedURL);
-	}
-
-	if (!headers.has('Connection') && !agent) {
+	if (!headers.has('Connection') && !request.agent) {
 		headers.set('Connection', 'close');
 	}
 
-	// HTTP-network fetch step 4.2
+	// HTTP-network fetch step 4
 	// chunked encoding is handled by Node.js
 
 	return Object.assign({}, parsedURL, {
 		method: request.method,
-		headers: exportNodeCompatibleHeaders(headers),
-		agent
+		headers: headers.raw(),
+		agent: request.agent
 	});
 }
 
 /**
- * abort-error.js
+ * index.js
  *
- * AbortError interface for cancelled requests
+ * a request API compatible with window.fetch
  */
 
-/**
- * Create AbortError instance
- *
- * @param   String      message      Error message for human
- * @return  AbortError
- */
-function AbortError(message) {
-  Error.call(this, message);
+const http = require('http');
+const https = require('https');
 
-  this.type = 'aborted';
-  this.message = message;
+var _require = require('stream');
 
-  // hide custom error implementation details from end-users
-  Error.captureStackTrace(this, this.constructor);
-}
+const PassThrough = _require.PassThrough;
 
-AbortError.prototype = Object.create(Error.prototype);
-AbortError.prototype.constructor = AbortError;
-AbortError.prototype.name = 'AbortError';
+var _require2 = require('url');
 
-// fix an issue where "PassThrough", "resolve" aren't a named export for node <10
-const PassThrough$1 = Stream.PassThrough;
-const resolve_url = Url.resolve;
+const resolve_url = _require2.resolve;
+
+const zlib = require('zlib');
 
 /**
  * Fetch function
@@ -1404,157 +1255,93 @@ function fetch(url, opts) {
 		const options = getNodeRequestOptions(request);
 
 		const send = (options.protocol === 'https:' ? https : http).request;
-		const signal = request.signal;
 
-		let response = null;
-
-		const abort = function abort() {
-			let error = new AbortError('The user aborted a request.');
-			reject(error);
-			if (request.body && request.body instanceof Stream.Readable) {
-				request.body.destroy(error);
-			}
-			if (!response || !response.body) return;
-			response.body.emit('error', error);
-		};
-
-		if (signal && signal.aborted) {
-			abort();
-			return;
+		// http.request only support string as host header, this hack make custom host header possible
+		if (options.headers.host) {
+			options.headers.host = options.headers.host[0];
 		}
-
-		const abortAndFinalize = function abortAndFinalize() {
-			abort();
-			finalize();
-		};
 
 		// send request
 		const req = send(options);
 		let reqTimeout;
 
-		if (signal) {
-			signal.addEventListener('abort', abortAndFinalize);
-		}
-
-		function finalize() {
-			req.abort();
-			if (signal) signal.removeEventListener('abort', abortAndFinalize);
-			clearTimeout(reqTimeout);
-		}
-
 		if (request.timeout) {
 			req.once('socket', function (socket) {
 				reqTimeout = setTimeout(function () {
+					req.abort();
 					reject(new FetchError(`network timeout at: ${request.url}`, 'request-timeout'));
-					finalize();
 				}, request.timeout);
 			});
 		}
 
 		req.on('error', function (err) {
+			clearTimeout(reqTimeout);
 			reject(new FetchError(`request to ${request.url} failed, reason: ${err.message}`, 'system', err));
-			finalize();
 		});
 
 		req.on('response', function (res) {
 			clearTimeout(reqTimeout);
 
-			const headers = createHeadersLenient(res.headers);
-
-			// HTTP fetch step 5
-			if (fetch.isRedirect(res.statusCode)) {
-				// HTTP fetch step 5.2
-				const location = headers.get('Location');
-
-				// HTTP fetch step 5.3
-				const locationURL = location === null ? null : resolve_url(request.url, location);
-
-				// HTTP fetch step 5.5
-				switch (request.redirect) {
-					case 'error':
-						reject(new FetchError(`redirect mode is set to error: ${request.url}`, 'no-redirect'));
-						finalize();
-						return;
-					case 'manual':
-						// node-fetch-specific step: make manual redirect a bit easier to use by setting the Location header value to the resolved URL.
-						if (locationURL !== null) {
-							// handle corrupted header
-							try {
-								headers.set('Location', locationURL);
-							} catch (err) {
-								// istanbul ignore next: nodejs server prevent invalid response headers, we can't test this through normal request
-								reject(err);
-							}
-						}
-						break;
-					case 'follow':
-						// HTTP-redirect fetch step 2
-						if (locationURL === null) {
-							break;
-						}
-
-						// HTTP-redirect fetch step 5
-						if (request.counter >= request.follow) {
-							reject(new FetchError(`maximum redirect reached at: ${request.url}`, 'max-redirect'));
-							finalize();
-							return;
-						}
-
-						// HTTP-redirect fetch step 6 (counter increment)
-						// Create a new Request object.
-						const requestOpts = {
-							headers: new Headers(request.headers),
-							follow: request.follow,
-							counter: request.counter + 1,
-							agent: request.agent,
-							compress: request.compress,
-							method: request.method,
-							body: request.body,
-							signal: request.signal,
-							timeout: request.timeout
-						};
-
-						// HTTP-redirect fetch step 9
-						if (res.statusCode !== 303 && request.body && getTotalBytes(request) === null) {
-							reject(new FetchError('Cannot follow redirect with body being a readable stream', 'unsupported-redirect'));
-							finalize();
-							return;
-						}
-
-						// HTTP-redirect fetch step 11
-						if (res.statusCode === 303 || (res.statusCode === 301 || res.statusCode === 302) && request.method === 'POST') {
-							requestOpts.method = 'GET';
-							requestOpts.body = undefined;
-							requestOpts.headers.delete('content-length');
-						}
-
-						// HTTP-redirect fetch step 15
-						resolve(fetch(new Request(locationURL, requestOpts)));
-						finalize();
-						return;
+			// handle redirect
+			if (fetch.isRedirect(res.statusCode) && request.redirect !== 'manual') {
+				if (request.redirect === 'error') {
+					reject(new FetchError(`redirect mode is set to error: ${request.url}`, 'no-redirect'));
+					return;
 				}
+
+				if (request.counter >= request.follow) {
+					reject(new FetchError(`maximum redirect reached at: ${request.url}`, 'max-redirect'));
+					return;
+				}
+
+				if (!res.headers.location) {
+					reject(new FetchError(`redirect location header missing at: ${request.url}`, 'invalid-redirect'));
+					return;
+				}
+
+				// per fetch spec, for POST request with 301/302 response, or any request with 303 response, use GET when following redirect
+				if (res.statusCode === 303 || (res.statusCode === 301 || res.statusCode === 302) && request.method === 'POST') {
+					request.method = 'GET';
+					request.body = null;
+					request.headers.delete('content-length');
+				}
+
+				request.counter++;
+
+				resolve(fetch(resolve_url(request.url, res.headers.location), request));
+				return;
+			}
+
+			// normalize location header for manual redirect mode
+			const headers = new Headers();
+			for (const name of Object.keys(res.headers)) {
+				if (Array.isArray(res.headers[name])) {
+					for (const val of res.headers[name]) {
+						headers.append(name, val);
+					}
+				} else {
+					headers.append(name, res.headers[name]);
+				}
+			}
+			if (request.redirect === 'manual' && headers.has('location')) {
+				headers.set('location', resolve_url(request.url, headers.get('location')));
 			}
 
 			// prepare response
-			res.once('end', function () {
-				if (signal) signal.removeEventListener('abort', abortAndFinalize);
-			});
-			let body = res.pipe(new PassThrough$1());
-
+			let body = res.pipe(new PassThrough());
 			const response_options = {
 				url: request.url,
 				status: res.statusCode,
 				statusText: res.statusMessage,
 				headers: headers,
 				size: request.size,
-				timeout: request.timeout,
-				counter: request.counter
+				timeout: request.timeout
 			};
 
-			// HTTP-network fetch step 12.1.1.3
+			// HTTP-network fetch step 16.1.2
 			const codings = headers.get('Content-Encoding');
 
-			// HTTP-network fetch step 12.1.1.4: handle content codings
+			// HTTP-network fetch step 16.1.3: handle content codings
 
 			// in following scenarios we ignore compression support
 			// 1. compression support is disabled
@@ -1563,8 +1350,7 @@ function fetch(url, opts) {
 			// 4. no content response (204)
 			// 5. content not modified response (304)
 			if (!request.compress || request.method === 'HEAD' || codings === null || res.statusCode === 204 || res.statusCode === 304) {
-				response = new Response(body, response_options);
-				resolve(response);
+				resolve(new Response(body, response_options));
 				return;
 			}
 
@@ -1581,8 +1367,7 @@ function fetch(url, opts) {
 			// for gzip
 			if (codings == 'gzip' || codings == 'x-gzip') {
 				body = body.pipe(zlib.createGunzip(zlibOptions));
-				response = new Response(body, response_options);
-				resolve(response);
+				resolve(new Response(body, response_options));
 				return;
 			}
 
@@ -1590,7 +1375,7 @@ function fetch(url, opts) {
 			if (codings == 'deflate' || codings == 'x-deflate') {
 				// handle the infamous raw deflate response from old servers
 				// a hack for old IIS and Apache servers
-				const raw = res.pipe(new PassThrough$1());
+				const raw = res.pipe(new PassThrough());
 				raw.once('data', function (chunk) {
 					// see http://stackoverflow.com/questions/37519828
 					if ((chunk[0] & 0x0F) === 0x08) {
@@ -1598,28 +1383,19 @@ function fetch(url, opts) {
 					} else {
 						body = body.pipe(zlib.createInflateRaw());
 					}
-					response = new Response(body, response_options);
-					resolve(response);
+					resolve(new Response(body, response_options));
 				});
 				return;
 			}
 
-			// for br
-			if (codings == 'br' && typeof zlib.createBrotliDecompress === 'function') {
-				body = body.pipe(zlib.createBrotliDecompress());
-				response = new Response(body, response_options);
-				resolve(response);
-				return;
-			}
-
 			// otherwise, use response as-is
-			response = new Response(body, response_options);
-			resolve(response);
+			resolve(new Response(body, response_options));
 		});
 
 		writeToStream(req, request);
 	});
 }
+
 /**
  * Redirect code matching
  *
@@ -1634,8 +1410,6 @@ fetch.isRedirect = function (code) {
 fetch.Promise = global.Promise;
 
 module.exports = exports = fetch;
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = exports;
 exports.Headers = Headers;
 exports.Request = Request;
 exports.Response = Response;

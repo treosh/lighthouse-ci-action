@@ -11,6 +11,7 @@ const nodePathParts = [
 process.env.NODE_PATH = nodePathParts.join(nodePathDelim)
 
 const core = require('@actions/core')
+const fetch = require('node-fetch')
 const childProcess = require('child_process')
 const lhciCliPath = require.resolve('@lhci/cli/src/cli.js')
 const input = require('./input.js')
@@ -18,7 +19,7 @@ const output = require('./output.js')
 
 // audit urls with Lighthouse CI
 async function main() {
-  let status;
+  let status
   core.startGroup('Action config')
   console.log('Input args:', input)
   core.endGroup() // Action config
@@ -26,10 +27,10 @@ async function main() {
   /*******************************WARMING UP***********************************/
   if (input.netlifySite) {
     core.startGroup('Warming up')
-    const retryNumber = 5;
-    let runs = 0;
+    const retryNumber = 5
+    let runs = 0
     const sleep = async () => {
-      return new Promise(r => setTimeout(r, 60000));
+      return new Promise(r => setTimeout(r, 60000))
     }
     /**
      * @return {Promise<number>}
@@ -37,40 +38,42 @@ async function main() {
     const resolveNetlifyBuildURL = async () => {
       runs = runs + 1
       try {
-        const res = await Promise.race(input.urls.map(async url => {
-          console.log(`Pinging Netlify site ${url}`)
-          return await fetch(url, {
-            mode: 'cors',
-            cache: 'no-cache'
+        const res = await Promise.race(
+          input.urls.map(async url => {
+            console.log(`Pinging Netlify site ${url}`)
+            return await fetch(url, {
+              mode: 'cors',
+              cache: 'no-cache'
+            })
           })
-        }))
+        )
         if (res.status === 200) {
           console.log('Netlify site finished build, continue audit...')
-          return Promise.resolve(0);
+          return Promise.resolve(0)
         } else if (runs > retryNumber) {
           console.log('No 200 response from Netlify')
-          return Promise.resolve(1);
+          return Promise.resolve(1)
         }
         console.log('Waiting for build to be done')
-        await sleep();
+        await sleep()
         console.log(`Retry ping Netlify`)
-        return await resolveNetlifyBuildURL();
+        return await resolveNetlifyBuildURL()
       } catch (e) {
         if (runs > retryNumber) {
           console.log('Resolve Netlify site error', e)
-          return Promise.resolve(1);
+          return Promise.resolve(1)
         }
         console.log('Waiting for build to be done')
-        await sleep();
+        await sleep()
         console.log(`Retry ping Netlify`)
-        return await resolveNetlifyBuildURL();
+        return await resolveNetlifyBuildURL()
       }
-    };
+    }
 
-    status = await resolveNetlifyBuildURL();
+    status = await resolveNetlifyBuildURL()
 
     if (status !== 0) {
-      throw new Error('Can\'t reach Netlify site');
+      throw new Error("Can't reach Netlify site")
     }
 
     core.endGroup() // Action config

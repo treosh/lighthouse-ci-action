@@ -12,16 +12,18 @@
   },
   "dependencies": {
     "@actions/core": "^1.2.0",
-    "@lhci/cli": "0.3.7",
-    "is-windows": "^1.0.2",
     "@actions/github": "^2.1.0",
+    "@lhci/cli": "0.3.7",
     "@slack/webhook": "^5.0.2",
-    "lodash": "^4.17.15"
+    "is-windows": "^1.0.2",
+    "lodash": "^4.17.15",
+    "node-fetch": "^2.6.0"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.149",
     "@types/is-windows": "^1.0.0",
+    "@types/lodash": "^4.14.149",
     "@types/node": "12",
+    "@types/node-fetch": "^2.5.4",
     "prettier": "^1.19.1",
     "typescript": "^3.7.3"
   }

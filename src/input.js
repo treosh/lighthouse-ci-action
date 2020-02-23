@@ -67,6 +67,7 @@ function getArgs() {
     numberOfRuns: getIntArg('runs'),
     applicationGithubToken: getArg('applicationGithubToken'),
     personalGithubToken: getArg('personalGithubToken'),
+    netlifySite: getArg('netlifySite'),
     serverBaseUrl,
     token,
     rcCollect,

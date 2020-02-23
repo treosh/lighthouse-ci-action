@@ -18,9 +18,63 @@ const output = require('./output.js')
 
 // audit urls with Lighthouse CI
 async function main() {
+  let status;
   core.startGroup('Action config')
   console.log('Input args:', input)
   core.endGroup() // Action config
+
+  /*******************************WARMING UP***********************************/
+  if (input.netlifySite) {
+    core.startGroup('Warming up')
+    const retryNumber = 5;
+    let runs = 0;
+    const sleep = async () => {
+      return new Promise(r => setTimeout(r, 60000));
+    }
+    /**
+     * @return {Promise<number>}
+     */
+    const resolveNetlifyBuildURL = async () => {
+      runs = runs + 1
+      try {
+        const res = await Promise.race(input.urls.map(async url => {
+          console.log(`Pinging Netlify site ${url}`)
+          return await fetch(url, {
+            mode: 'cors',
+            cache: 'no-cache'
+          })
+        }))
+        if (res.status === 200) {
+          console.log('Netlify site finished build, continue audit...')
+          return Promise.resolve(0);
+        } else if (runs > retryNumber) {
+          console.log('No 200 response from Netlify')
+          return Promise.resolve(1);
+        }
+        console.log('Waiting for build to be done')
+        await sleep();
+        console.log(`Retry ping Netlify`)
+        return await resolveNetlifyBuildURL();
+      } catch (e) {
+        if (runs > retryNumber) {
+          console.log('Resolve Netlify site error', e)
+          return Promise.resolve(1);
+        }
+        console.log('Waiting for build to be done')
+        await sleep();
+        console.log(`Retry ping Netlify`)
+        return await resolveNetlifyBuildURL();
+      }
+    };
+
+    status = await resolveNetlifyBuildURL();
+
+    if (status !== 0) {
+      throw new Error('Can\'t reach Netlify site');
+    }
+
+    core.endGroup() // Action config
+  }
 
   /*******************************COLLECTING***********************************/
   core.startGroup(`Collecting`)
@@ -45,7 +99,7 @@ async function main() {
   }
   // else, no args and will default to 3 in LHCI.
 
-  let status = await runChildCommand('collect', args)
+  status = await runChildCommand('collect', args)
   if (status !== 0) {
     throw new Error(`LHCI 'collect' has encountered a problem.`)
   }

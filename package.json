@@ -13,9 +13,13 @@
   "dependencies": {
     "@actions/core": "^1.2.0",
     "@lhci/cli": "0.3.7",
-    "is-windows": "^1.0.2"
+    "is-windows": "^1.0.2",
+    "@actions/github": "^2.1.0",
+    "@slack/webhook": "^5.0.2",
+    "lodash": "^4.17.15"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.149",
     "@types/is-windows": "^1.0.0",
     "@types/node": "12",
     "prettier": "^1.19.1",

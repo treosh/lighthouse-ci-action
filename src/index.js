@@ -14,6 +14,7 @@ const core = require('@actions/core')
 const childProcess = require('child_process')
 const lhciCliPath = require.resolve('@lhci/cli/src/cli.js')
 const input = require('./input.js')
+const output = require('./output.js')
 
 // audit urls with Lighthouse CI
 async function main() {
@@ -69,9 +70,13 @@ async function main() {
       core.setFailed(`Assertions have failed.`)
       // continue
     }
+
     core.endGroup() // Asserting
   }
+
   /*******************************UPLOADING************************************/
+  await output.sendNotifications({ status })
+
   if ((input.serverBaseUrl && input.token) || input.canUpload) {
     core.startGroup(`Uploading`)
     args = []

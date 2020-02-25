@@ -42,4 +42,11 @@ PAGE="src/" INPUT_URLS="http://localhost:3000/\$PAGE" INPUT_RUNS="1" node src/in
 
 # run with a static dist dir
 INPUT_CONFIGPATH=".github/lighthouse/lighthouserc-static-dist-dir.json" INPUT_RUNS="1" node src/index.js
+
+# run with Slack integration
+# some of env variables mocked from GitHub ENV - https://help.github.com/en/actions/automating-your-workflow-with-github-actions/using-environment-variables
+INPUT_URLS="https://alekseykulikov.com/" INPUT_BUDGETPATH=".github/lighthouse/impossible-budget.json" INPUT_RUNS="1" INPUT_SLACKWEBHOOKURL="custom-webhook-url" INPUT_PERSONALGITHUBTOKEN="github-token" INPUT_APPLICATIONGITHUBTOKEN="github-token" INPUT_NOTIFICATIONS='slack' GITHUB_REPOSITORY="repo-name" GITHUB_SHA="githib-pr-head-sha" node src/index.js
+INPUT_URLS="https://alekseykulikov.com/" INPUT_BUDGETPATH=".github/lighthouse/impossible-budget.json" INPUT_RUNS="1" INPUT_SLACKWEBHOOKURL="custom-webhook-url" INPUT_PERSONALGITHUBTOKEN="github-github" INPUT_APPLICATIONGITHUBTOKEN="github-token" INPUT_NOTIFICATIONS='slack' GITHUB_REPOSITORY="repo-name" GITHUB_SHA="githib-pr-head-sha" node src/index.js
+
+> INPUT_APPLICATIONGITHUBTOKEN requers setup a Github Application etc.
 ```

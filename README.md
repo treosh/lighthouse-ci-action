@@ -134,42 +134,6 @@ upload.token: ${{ secrets.LHCI_TOKEN }}
 
 Specify an API token for the LHCI server. [Learn how to generate a token](https://github.com/GoogleChrome/lighthouse-ci/blob/master/docs/getting-started.md#historical-reports--diffing-lighthouse-ci-server).
 
-#### `notifications` (value: ['github', 'slack'])
-
-#### `Github`
-
-[Github check suite](https://developer.github.com/v3/checks/suites/) run for the Action.
-
-![image](https://user-images.githubusercontent.com/54980164/74110640-e8bb7b80-4b96-11ea-8f8c-8e4ae728b212.png)
-
-```yml
-notifications: 'github'
-```
-
-> **Note**: Requires to use `applicationGithubToken` > **Note**: Optional to use `personalGithubToken`
-
-#### `Slack`
-
-Notification in [Slack](https://slack.com/intl/en-ua/) channel.
-
-![image](https://user-images.githubusercontent.com/54980164/74110899-ef4af280-4b98-11ea-9b0c-34e0cbdc7a6b.png)
-
-> **Note**: Requires to use `slackWebhookUrl` > **Note**: Optional to use `personalGithubToken`
-
-```yml
-notifications: 'slack'
-```
-
-In case using both notifications:
-
-```yaml
-notifications: |
-  slack
-  github
-```
-
-[Read more](#recipes) about detailed configuration.
-
 #### `applicationGithubToken`
 
 Token to allow runs Github check suite. By default for Action environment it's allowed via `${{ secrets.GITHUB_TOKEN }}` without any additional setup.
@@ -191,12 +155,15 @@ personalGithubToken: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
 
 ### slackWebhookUrl
 
+Allows to send notification in [Slack](https://slack.com/intl/en-ua/) channel.
 Visit Slack Incoming Webhooks [docs](https://api.slack.com/messaging/webhooks#create_a_webhook) and follow step provided there.
 Then copy `webhookUrl` value and set it up via [Github secrets](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets#creating-encrypted-secrets) to keep your url hidden!
 
 ```yml
 slackWebhookUrl: ${{ secrets.SLACK_WEBHOOK_URL }}
 ```
+
+[Read more](#recipes) about detailed configuration.
 
 ### logLevel (default: 'info')
 
@@ -288,9 +255,6 @@ jobs:
           applicationGithubToken: ${{ secrets.GITHUB_TOKEN }}
           personalGithubToken: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
           logLevel: 'error'
-          notifications: |
-            slack
-            github
 ```
 
 Make a `budget.json` file with [budgets syntax](https://web.dev/use-lighthouse-for-performance-budgets/).

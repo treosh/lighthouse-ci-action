@@ -14,4 +14,3 @@ jobs:
           slackWebhookUrl: ${{ secrets.SLACK_WEBHOOK_URL }}
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           logLevel: 'error'
-          notifications: 'slack'

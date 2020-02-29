@@ -13,7 +13,7 @@
 - 💾 Upload data to LHCI server
 - 🔔 Slack notification
 - 😻 GitHub notification
-- 🛳️ Automatic check of Netlify preview urls   
+- 🛳️ Automatic check of Netlify preview urls
 
 <img align="center" width="1046" alt="Lighthouse CI Action" src="https://user-images.githubusercontent.com/158189/68597493-58896f80-049d-11ea-97a2-5c4e7eb4285c.png">
 
@@ -177,8 +177,8 @@ logLevel: 'error'
 
 ### netlifySite
 
-Netlify site name. 
-It enables run LHCI check against [Netlify deploy preview](https://www.netlify.com/blog/2016/07/20/introducing-deploy-previews-in-netlify/) to make sure your changes are not gonna slow down production.  
+Netlify site name.
+It enables run LHCI check against [Netlify deploy preview](https://www.netlify.com/blog/2016/07/20/introducing-deploy-previews-in-netlify/) to make sure your changes are not gonna slow down production.
 
 ```yml
 netlifySite: 'practical-allen-be16f3.netlify.com'

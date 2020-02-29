@@ -185,7 +185,7 @@ netlifySite: 'practical-allen-be16f3.netlify.com'
 ```
 
 > Before start checking, action ping Netlify preview each minute to make sure site was deployed.
-> In case site wasn't deployed in 5 minutes it fails. 
+> In case site wasn't deployed in 5 minutes it fails.
 
 [Read more](#recipes) about detailed configuration.
 

@@ -11,7 +11,7 @@ const nodePathParts = [
 process.env.NODE_PATH = nodePathParts.join(nodePathDelim)
 
 const core = require('@actions/core')
-const fetch = require('node-fetch')
+const fetch = require('node-fetch').default
 const childProcess = require('child_process')
 const lhciCliPath = require.resolve('@lhci/cli/src/cli.js')
 const input = require('./input.js')
@@ -41,10 +41,7 @@ async function main() {
         const res = await Promise.race(
           input.urls.map(async url => {
             console.log(`Pinging Netlify site ${url}`)
-            return await fetch(url, {
-              mode: 'cors',
-              cache: 'no-cache'
-            })
+            return fetch(url)
           })
         )
         if (res.status === 200) {

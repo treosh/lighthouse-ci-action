@@ -13,6 +13,7 @@
 - 💾 Upload data to LHCI server
 - 🔔 Slack notification
 - 😻 GitHub notification
+- 🛳️ Automatic check of Netlify preview urls   
 
 <img align="center" width="1046" alt="Lighthouse CI Action" src="https://user-images.githubusercontent.com/158189/68597493-58896f80-049d-11ea-97a2-5c4e7eb4285c.png">
 
@@ -174,6 +175,17 @@ Use `error` value to send notifications only for failed CI checks.
 logLevel: 'error'
 ```
 
+### netlifySite
+
+Netlify site name. 
+It enables run LHCI check against [Netlify deploy preview](https://www.netlify.com/blog/2016/07/20/introducing-deploy-previews-in-netlify/) to make sure your changes are not gonna slow down production.  
+
+```yml
+netlifySite: 'practical-allen-be16f3.netlify.com'
+```
+
+[Read more](#recipes) about detailed configuration.
+
 ## Recipes
 
 <details>
@@ -250,6 +262,64 @@ jobs:
         uses: ./
         with:
           urls: 'https://alekseykulikov.com/'
+          budgetPath: '.github/lighthouse/budget.json'
+          slackWebhookUrl: ${{ secrets.SLACK_WEBHOOK_URL }}
+          applicationGithubToken: ${{ secrets.GITHUB_TOKEN }}
+          personalGithubToken: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
+          logLevel: 'error'
+```
+
+Make a `budget.json` file with [budgets syntax](https://web.dev/use-lighthouse-for-performance-budgets/).
+
+> **Note**: Under the hood, this will be transformed into LHCI assertions.
+
+#### budgets.json
+
+```json
+[
+  {
+    "path": "/*",
+    "resourceSizes": [
+      {
+        "resourceType": "document",
+        "budget": 18
+      },
+      {
+        "resourceType": "total",
+        "budget": 200
+      }
+    ]
+  }
+]
+```
+
+</details>
+
+<details>
+ <summary>Run LHCI against Netlify preview site</summary><br>
+
+Create `.github/workflows/main.yml` with the list of URLs, enable notifications to audit
+and identify a budget with `budgetPath`.
+
+#### main.yml
+
+```yml
+name: LHCI-assert-netlify-on-budget-notification
+on: pull_request
+jobs:
+  # This pass/fails a build with a budgets.json.
+  assert-on-budget:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Run Lighthouse on Netlify urls and validate with budgets.json
+        uses: ./
+        with:
+          urls: |
+            https://practical-allen-be16f3.netlify.com
+            https://practical-allen-be16f3.netlify.com/products/
+            https://practical-allen-be16f3.netlify.com/contact/
+          netlifySite: 'practical-allen-be16f3.netlify.com'
           budgetPath: '.github/lighthouse/budget.json'
           slackWebhookUrl: ${{ secrets.SLACK_WEBHOOK_URL }}
           applicationGithubToken: ${{ secrets.GITHUB_TOKEN }}

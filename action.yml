@@ -21,6 +21,8 @@ inputs:
     description: 'GitHub Application access token for '
   personalGithubToken:
     description: 'GitHub access token'
+  netlifySite:
+    description: 'Netlify site name'
   upload.serverBaseUrl:
     description: 'Address of a LHCI server'
   upload.token:

@@ -181,7 +181,7 @@ Netlify site name.
 It enables run LHCI check against [Netlify deploy preview](https://www.netlify.com/blog/2016/07/20/introducing-deploy-previews-in-netlify/) to make sure your changes are not gonna slow down production.
 
 ```yml
-netlifySite: 'practical-allen-be16f3.netlify.com'
+netlifySite: 'your-netlify-preview-url.netlify.com'
 ```
 
 > Before start checking, action ping Netlify preview each minute to make sure site was deployed.

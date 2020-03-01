@@ -36,7 +36,7 @@ async function main() {
      * @return {Promise<number>}
      */
     const resolveNetlifyBuildURL = async () => {
-      runs = runs + 1
+      runs += 1
       try {
         const res = await Promise.race(
           input.urls.map(async url => {

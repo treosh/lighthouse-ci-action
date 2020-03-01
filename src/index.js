@@ -17,6 +17,8 @@ const lhciCliPath = require.resolve('@lhci/cli/src/cli.js')
 const input = require('./input.js')
 const output = require('./output.js')
 
+const netlifyBuildWaitingTime = 60000
+
 // audit urls with Lighthouse CI
 async function main() {
   let status
@@ -24,13 +26,15 @@ async function main() {
   console.log('Input args:', input)
   core.endGroup() // Action config
 
-  /*******************************WARMING UP***********************************/
+  /*******************************WAITING FOR PRECONDITIONS***********************************/
   if (input.netlifySite) {
-    core.startGroup('Warming up')
+    core.startGroup('Waiting for Netlify site')
     const retryNumber = 5
     let runs = 0
-    const sleep = async () => {
-      return new Promise(r => setTimeout(r, 60000))
+    const waitingSeconds = parseInt((netlifyBuildWaitingTime / 1000).toString())
+    const waitForNetlifyBuild = async () => {
+      console.log(`Waiting additional ${waitingSeconds} seconds for Netlify build to be done.`)
+      return new Promise(r => setTimeout(r, netlifyBuildWaitingTime))
     }
     /**
      * @return {Promise<number>}
@@ -51,18 +55,14 @@ async function main() {
           console.log('No 200 response from Netlify')
           return Promise.resolve(1)
         }
-        console.log('Waiting additional 60 seconds for Netlify build to be done.')
-        await sleep()
-        console.log(`Retry ping Netlify`)
+        await waitForNetlifyBuild()
         return await resolveNetlifyBuildURL()
       } catch (e) {
         if (runs > retryNumber) {
           console.log('Resolve Netlify site error', e)
           return Promise.resolve(1)
         }
-        console.log('Waiting for build to be done')
-        await sleep()
-        console.log(`Retry ping Netlify`)
+        await waitForNetlifyBuild()
         return await resolveNetlifyBuildURL()
       }
     }
@@ -70,7 +70,7 @@ async function main() {
     status = await resolveNetlifyBuildURL()
 
     if (status !== 0) {
-      throw new Error("Could not reach Netlify site within 5 minutes.")
+      throw new Error('Could not reach Netlify site within 5 minutes.')
     }
 
     core.endGroup() // Action config

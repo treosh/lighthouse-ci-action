@@ -177,7 +177,10 @@ logLevel: 'error'
 
 ### netlifySite
 
-Netlify site name.
+Name of the site defined in Netlify console.
+
+> Users can specify their custom domains, so Netlif site name can be different from URL origin.
+
 It enables run LHCI check against [Netlify deploy preview](https://www.netlify.com/blog/2016/07/20/introducing-deploy-previews-in-netlify/) to make sure your changes are not gonna slow down production.
 
 ```yml
@@ -322,7 +325,7 @@ jobs:
             https://your-netlify-preview-url.netlify.com
             https://your-netlify-preview-url.netlify.com/products/
             https://your-netlify-preview-url.netlify.com/contact/
-          netlifySite: 'your-netlify-preview-url.netlify.com' 
+          netlifySite: 'your-netlify-preview-url.netlify.com'
             https://practical-allen-be16f3.netlify.com/products/
             https://practical-allen-be16f3.netlify.com/contact/
           netlifySite: 'practical-allen-be16f3.netlify.com'

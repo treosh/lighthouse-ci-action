@@ -70,7 +70,7 @@ async function main() {
     status = await resolveNetlifyBuildURL()
 
     if (status !== 0) {
-      throw new Error("Can't reach Netlify site")
+      throw new Error("Could not reach Netlify site within 5 minutes.")
     }
 
     core.endGroup() // Action config

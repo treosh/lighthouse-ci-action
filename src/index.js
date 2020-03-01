@@ -52,7 +52,7 @@ async function main() {
           console.log('Netlify site finished build, continue audit...')
           return Promise.resolve(0)
         } else if (runs > retryNumber) {
-          console.log('No 200 response from Netlify')
+          console.log('No HTTP 200 OK from Netlify within 5 minute timeout.')
           return Promise.resolve(1)
         }
         await waitForNetlifyBuild()

@@ -326,9 +326,6 @@ jobs:
             https://your-netlify-preview-url.netlify.com/products/
             https://your-netlify-preview-url.netlify.com/contact/
           netlifySite: 'your-netlify-preview-url.netlify.com'
-            https://practical-allen-be16f3.netlify.com/products/
-            https://practical-allen-be16f3.netlify.com/contact/
-          netlifySite: 'practical-allen-be16f3.netlify.com'
           budgetPath: '.github/lighthouse/budget.json'
           slackWebhookUrl: ${{ secrets.SLACK_WEBHOOK_URL }}
           applicationGithubToken: ${{ secrets.GITHUB_TOKEN }}

@@ -51,7 +51,7 @@ async function main() {
           console.log('No 200 response from Netlify')
           return Promise.resolve(1)
         }
-        console.log('Waiting for build to be done')
+        console.log('Waiting additional 60 seconds for Netlify build to be done.')
         await sleep()
         console.log(`Retry ping Netlify`)
         return await resolveNetlifyBuildURL()

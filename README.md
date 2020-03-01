@@ -319,7 +319,10 @@ jobs:
         uses: ./
         with:
           urls: |
-            https://practical-allen-be16f3.netlify.com
+            https://your-netlify-preview-url.netlify.com
+            https://your-netlify-preview-url.netlify.com/products/
+            https://your-netlify-preview-url.netlify.com/contact/
+          netlifySite: 'your-netlify-preview-url.netlify.com' 
             https://practical-allen-be16f3.netlify.com/products/
             https://practical-allen-be16f3.netlify.com/contact/
           netlifySite: 'practical-allen-be16f3.netlify.com'

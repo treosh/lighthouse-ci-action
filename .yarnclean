@@ -36,20 +36,26 @@ circle.yml
 codeship-services.yml
 codeship-steps.yml
 wercker.yml
+tsconfig.json
+bower.json
+yarn.lock
 .tern-project
 .gitattributes
 .editorconfig
 .*ignore
 .eslintrc
+.eslintrc.json
 .jshintrc
 .flowconfig
 .documentup.json
 .yarn-metadata.json
+.codecov.yml
 .travis.yml
 
 # misc
 *.md
 LICENSE
+AUTHORS
 **/.DS_Store
 **/*.map
 .config/

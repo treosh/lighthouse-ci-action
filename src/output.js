@@ -125,15 +125,14 @@ async function slackNotification({ status, slackWebhookUrl = '', changesURL, gro
 async function githubNotification({ status, githubToken = '', changesURL, gists, groupedResults }) {
   console.log('Running Github notification')
 
-  const conclusion = status === 0 ? 'success' : 'failure'
   const octokit = new github.GitHub(githubToken)
   const checkBody = {
     owner: githubRepo.split('/')[0],
     repo: githubRepo.split('/')[1],
     head_sha: githubSHA,
     name: reportTitle,
-    status: 'completed',
-    conclusion,
+    status: /** @type {'completed'} */ ('completed'),
+    conclusion: /** @type {'success' | 'failure'} */ (status === 0 ? 'success' : 'failure'),
     output: getSummaryMarkdownOutput({ status, changesURL, groupedResults, gists })
   }
 
@@ -201,7 +200,6 @@ async function uploadResultToGist({ githubToken, resultPath }) {
     gists.data,
     gist => Object.keys(gist.files).filter(filename => filename === gistName).length
   )
-  /** @type {{gist_id?: string, files: {[p: string]: {content: string}}}} */
   const gistParams = {
     files: {
       [gistName]: {
@@ -209,10 +207,9 @@ async function uploadResultToGist({ githubToken, resultPath }) {
       }
     }
   }
-  existingGist && (gistParams['gist_id'] = get(existingGist, 'id'))
-  /** @type {'update' | 'create'} */
-  const gistAction = existingGist ? 'update' : 'create'
-  const gist = await octokit.gists[gistAction](gistParams)
+  const gist = await (existingGist
+    ? octokit.gists.update({ ...gistParams, gist_id: get(existingGist, 'id') })
+    : octokit.gists.create(gistParams))
 
   return {
     url,

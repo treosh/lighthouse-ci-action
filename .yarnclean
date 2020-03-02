@@ -50,3 +50,7 @@ wercker.yml
 # misc
 *.md
 LICENSE
+**/.DS_Store
+**/*.map
+.config/
+Library

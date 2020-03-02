@@ -6,13 +6,12 @@
 **Features**:
 
 - ✅ Audit URLs using Lighthouse
-- 🎯 Test performance with Lighthouse CI (LHCI) assertions or performance budgets.
-- 🚀 Fast action initialization
-- ⚙️ Full control over Lighthouse & Lighthouse CI config
-- 🔍 Detailed output for quick debug
-- 💾 Upload data to LHCI server
-- 🔔 Slack notification
-- 😻 GitHub notification
+- 🎯 Test performance with Lighthouse CI (LHCI) assertions or performance budgets
+- 💾 Upload results to LHCI server, Github Gist, or Temporary Public Storage
+- ⚙️ Full control over Lighthouse CI config
+- 🔔 Receive Slack notifications
+- 😻 Use GitHub to see failed checks
+- 🚀 Fast action initialization (less than 1 second)
 
 <img align="center" width="1046" alt="Lighthouse CI Action" src="https://user-images.githubusercontent.com/158189/68597493-58896f80-049d-11ea-97a2-5c4e7eb4285c.png">
 

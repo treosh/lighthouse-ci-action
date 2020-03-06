@@ -13,5 +13,5 @@
     "noUnusedParameters": true,
     "esModuleInterop": true
   },
-  "include": ["src", "types"]
+  "include": ["src"]
 }

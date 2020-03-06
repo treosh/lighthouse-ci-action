@@ -164,15 +164,6 @@ slackWebhookUrl: ${{ secrets.SLACK_WEBHOOK_URL }}
 
 [Read more](#recipes) about detailed configuration.
 
-### logLevel (default: 'info')
-
-Notifications (Github/Slack) log level. By default all notifications will be send.
-Use `error` value to send notifications only for failed CI checks.
-
-```yml
-logLevel: 'error'
-```
-
 ## Recipes
 
 <details>
@@ -253,7 +244,6 @@ jobs:
           slackWebhookUrl: ${{ secrets.SLACK_WEBHOOK_URL }}
           applicationGithubToken: ${{ secrets.GITHUB_TOKEN }}
           personalGithubToken: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
-          logLevel: 'error'
 ```
 
 Make a `budget.json` file with [budgets syntax](https://web.dev/use-lighthouse-for-performance-budgets/).

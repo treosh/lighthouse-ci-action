@@ -44,9 +44,8 @@ const lhAssertResultsPath = join(resultsDirPath, 'assertion-results.json')
 async function sendNotifications({ status }) {
   try {
     const { slackWebhookUrl, applicationGithubToken, personalGithubToken } = input
-    const shouldRunOutput = input.logLevel === 'info' || (input.logLevel === 'error' && status)
 
-    if (!shouldRunOutput) {
+    if (!status) {
       return Promise.resolve()
     }
 

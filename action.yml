@@ -14,9 +14,6 @@ inputs:
     descripton: 'Opt-in to saving LHRs to Lighthouse public-temporary-storage'
   slackWebhookUrl:
     description: 'Slack webhook url to post run results to slack'
-  logLevel:
-    description: 'Level of logging info to print to console'
-    default: 'info'
   applicationGithubToken:
     description: 'GitHub Application access token for '
   personalGithubToken:

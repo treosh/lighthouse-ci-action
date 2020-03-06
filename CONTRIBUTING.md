@@ -41,7 +41,7 @@ python script/simple-server.py # start basic server in a separate tab
 PAGE="src/" INPUT_URLS="http://localhost:3000/\$PAGE" INPUT_RUNS="1" node src/index.js
 
 # run with a static dist dir
-INPUT_CONFIGPATH=".github/lighthouse/lighthouserc-static-dist-dir.json" INPUT_RUNS="1" node src/index.js
+INPUT_CONFIGPATH=".github/lighthouse/lighthouserc-static-dist-dir.yml" INPUT_RUNS="1" node src/index.js
 
 # run with Slack integration
 # some of env variables mocked from GitHub ENV - https://help.github.com/en/actions/automating-your-workflow-with-github-actions/using-environment-variables

@@ -1,5 +1,5 @@
 const core = require('@actions/core')
-const { readFileSync } = require('fs')
+const { loadRcFile } = require('@lhci/utils/src/lighthouserc')
 
 function getArgs() {
   // Make sure we don't have LHCI xor API token
@@ -19,9 +19,8 @@ function getArgs() {
   // Inspect lighthouserc file for malformations
   const configPath = getArg('configPath')
   if (configPath) {
-    const contents = readFileSync(configPath, 'utf8')
-    const rcFileObj = JSON.parse(contents)
-    if (!('ci' in rcFileObj)) {
+    const rcFileObj = loadRcFile(configPath)
+    if (!rcFileObj.ci) {
       // Fail and exit
       core.setFailed(`Config missing top level 'ci' property`)
       process.exit(1)
@@ -30,10 +29,9 @@ function getArgs() {
     rcAssert = 'assert' in rcFileObj.ci
 
     // Check if we have a static-dist-dir
-    if (rcCollect) {
-          
+    if (rcFileObj.ci.collect) {
       if ('url' in rcFileObj.ci.collect) {
-        urls =  rcFileObj.ci.collect.url
+        urls = rcFileObj.ci.collect.url
       }
 
       if ('staticDistDir' in rcFileObj.ci.collect) {

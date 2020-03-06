@@ -1,7 +1,0 @@
-{
-  "ci": {
-    "collect": {
-      "staticDistDir": "./script/static-website"
-    }
-  }
-}

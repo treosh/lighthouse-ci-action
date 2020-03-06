@@ -14,6 +14,8 @@ function getArgs() {
   let rcCollect = false
   let rcAssert = false
   let staticDistDir = undefined
+  let urls = undefined
+
   // Inspect lighthouserc file for malformations
   const configPath = getArg('configPath')
   if (configPath) {
@@ -29,6 +31,11 @@ function getArgs() {
 
     // Check if we have a static-dist-dir
     if (rcCollect) {
+          
+      if ('url' in rcFileObj.ci.collect) {
+        urls =  rcFileObj.ci.collect.url
+      }
+
       if ('staticDistDir' in rcFileObj.ci.collect) {
         staticDistDir = rcFileObj.ci.collect.staticDistDir
       }
@@ -36,7 +43,7 @@ function getArgs() {
   }
 
   // Get and interpolate URLs
-  const urls = interpolateProcessIntoURLs(getList('urls'))
+  urls = urls || interpolateProcessIntoURLs(getList('urls'))
 
   // Make sure we have either urls or a static-dist-dir
   if (!urls && !staticDistDir) {

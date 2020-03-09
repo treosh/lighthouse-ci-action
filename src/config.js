@@ -1,23 +1,23 @@
 const core = require('@actions/core')
-const { loadRcFile } = require('@lhci/utils/src/lighthouserc.js')
+const { loadRcFile } = require('@lhci/utils/src/lighthouserc')
+const { get } = require('lodash')
 
-exports.getInputArgs = function getInputArgs() {
+exports.getInput = function getInputArgs() {
+  const uploadServerBaseUrl = core.getInput('upload.serverBaseUrl')
+  const uploadToken = core.getInput('upload.token')
+
   // Make sure we don't have LHCI xor API token
-  const uploadServerBaseUrl = getArg('upload.serverBaseUrl')
-  const uploadToken = getArg('upload.token')
   if (!!uploadServerBaseUrl != !!uploadToken) {
     // Fail and exit
     core.setFailed(`Need both a LHCI server url and an API token`)
     process.exit(1)
   }
 
-  let rcCollect = false
-  let rcAssert = false
-  let staticDistDir = undefined
-  let urls = undefined
+  let staticDistDir = null
+  let urls = null
 
   // Inspect lighthouserc file for malformations
-  const configPath = getArg('configPath')
+  const configPath = core.getInput('configPath')
   if (configPath) {
     const rcFileObj = loadRcFile(configPath)
     if (!rcFileObj.ci) {
@@ -25,23 +25,21 @@ exports.getInputArgs = function getInputArgs() {
       core.setFailed(`Config missing top level 'ci' property`)
       process.exit(1)
     }
-    rcCollect = 'collect' in rcFileObj.ci
-    rcAssert = 'assert' in rcFileObj.ci
 
     // Check if we have a static-dist-dir
     if (rcFileObj.ci.collect) {
-      if ('url' in rcFileObj.ci.collect) {
+      if (rcFileObj.ci.collect.url) {
         urls = rcFileObj.ci.collect.url
       }
 
-      if ('staticDistDir' in rcFileObj.ci.collect) {
+      if (rcFileObj.ci.collect.staticDistDir) {
         staticDistDir = rcFileObj.ci.collect.staticDistDir
       }
     }
   }
 
   // Get and interpolate URLs
-  urls = urls || interpolateProcessIntoURLs(getList('urls'))
+  urls = urls || interpolateProcessIntoUrls(getList('urls'))
 
   // Make sure we have either urls or a static-dist-dir
   if (!urls && !staticDistDir) {
@@ -58,50 +56,44 @@ exports.getInputArgs = function getInputArgs() {
   }
 
   return {
+    // collect
     urls,
+    runs: parseInt(core.getInput('runs'), 10) || 1,
     staticDistDir,
-    temporaryPublicStorage: getArg('temporaryPublicStorage') === 'true' ? true : false,
-    budgetPath: getArg('budgetPath'),
-    configPath,
-    slackWebhookUrl: getArg('slackWebhookUrl'),
-    runs: getIntArg('runs'),
-    githubToken: getArg('githubToken'),
-    gistUploadToken: getArg('gistUploadToken'),
+    // upload
+    gistUploadToken: core.getInput('gistUploadToken') || null,
+    temporaryPublicStorage: core.getInput('temporaryPublicStorage') === 'true' ? true : false,
     uploadServerBaseUrl,
     uploadToken,
-    rcCollect,
-    rcAssert
+    uploadArtifacts: core.getInput('upload.artifacts') !== 'false' ? true : false,
+    // assert
+    budgetPath: core.getInput('budgetPath') || null,
+    configPath,
+    slackWebhookUrl: core.getInput('slackWebhookUrl') || null,
+    githubToken: core.getInput('githubToken') || null
   }
 }
 
 /**
- * Wrapper for core.getInput.
+ * Check if the file under `configPath` has `assert` params set.
  *
- * @param {string} arg
- * @return {string | undefined}
+ * @param {string} configPath
  */
-function getArg(arg) {
-  return core.getInput(arg) || undefined
-}
 
-/**
- * Wrapper for core.getInput for a numeric input.
- *
- * @param {string} arg
- * @return {number | undefined}
- */
-function getIntArg(arg) {
-  return parseInt(core.getInput(arg)) || undefined
+exports.hasAssertConfig = function hasAssertConfig(configPath) {
+  if (!configPath) return false
+  const rcFileObj = loadRcFile(configPath)
+  return Boolean(get(rcFileObj, 'ci.assert'))
 }
 
 /**
  * Wrapper for core.getInput for a list input.
  *
  * @param {string} arg
- * @return {string[]}
  */
+
 function getList(arg, separator = '\n') {
-  const input = getArg(arg)
+  const input = core.getInput(arg)
   if (!input) return []
   return input.split(separator).map(url => url.trim())
 }
@@ -111,9 +103,9 @@ function getList(arg, separator = '\n') {
  * any declared ENV vars into them
  *
  * @param {string[]} urls
- * @return {string[]}
  */
-function interpolateProcessIntoURLs(urls) {
+
+function interpolateProcessIntoUrls(urls) {
   return urls.map(url => {
     if (!url.includes('$')) return url
     Object.keys(process.env).forEach(key => {

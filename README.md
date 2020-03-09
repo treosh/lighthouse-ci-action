@@ -17,10 +17,10 @@
 
 ## Examples
 
-**Basic example**: run Lighthouse on each push to the repo and save results as action artifacts.
+Run Lighthouse on each push to the repo and attach results to the action.
 
 Create `.github/workflows/main.yml` with the list of URLs to audit using Lighthouse.
-The results will be stored as a build artifact:
+Provide `githubToken` and `temporaryPublicStorage` to automatically attach results to the action for quick debuging.
 
 ```yml
 name: Lighthouse
@@ -34,13 +34,10 @@ jobs:
         uses: treosh/lighthouse-ci-action@v2
         with:
           urls: |
-            https://treo.sh/
-            https://treo.sh/demo
-      - name: Save results
-        uses: actions/upload-artifact@v1
-        with:
-          name: lighthouse-results
-          path: '.lighthouseci' # This will save the Lighthouse results as .json files
+            https://example.com/
+            https://example.com/blog
+          temporaryPublicStorage: true # (optional) save Lighthouse results for a quick preview
+          githubToken: ${{ secrets.GITHUB_TOKEN }} # set action status with details about runs
 ```
 
 [⚙️ See this workflow in use](https://github.com/treosh/lighthouse-ci-action/actions?workflow=LHCI-upload-artifact)
@@ -151,6 +148,13 @@ This will replace uploading to `temporary-public-storage`.
 ```yml
 upload.serverBaseUrl: ${{ secrets.LHCI_SERVER }}
 upload.token: ${{ secrets.LHCI_TOKEN }}
+```
+
+By default, the action automatically upload Lighthouse results as an artifact.
+Set `upload.artifacts: false` to disable this behavior, for example, in case of using an LHCI Server.
+
+```yml
+upload.artifacts: false
 ```
 
 #### `gistUploadToken`

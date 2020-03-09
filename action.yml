@@ -5,7 +5,7 @@ inputs:
     description: 'List of URL(s) to analyze'
   runs:
     description: 'Number of runs to do per URL'
-    default: '1'
+    default: 1
   budgetPath:
     description: 'Path to a Lighthouse budgets.json file'
   configPath:
@@ -19,9 +19,12 @@ inputs:
     description: 'Shared github token to create a debug check'
   gistUploadToken:
     description: 'GitHub access token to upload results to Gist'
-  upload.serverBaseUrl:
+  serverBaseUrl:
     description: 'Address of a LHCI server'
-  upload.token:
+  uploadArtifacts:
+    description: 'Opt-out of saving Lighthouse results as an action artifacts'
+    default: true
+  serverToken:
     description: 'API token to push to LHCI server'
 outputs:
   resultsPath:

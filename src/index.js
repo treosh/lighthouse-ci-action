@@ -44,15 +44,15 @@ async function main() {
   core.endGroup() // Collecting
 
   /******************************* 2. UPLOAD ************************************/
-  if (input.uploadServerBaseUrl || input.temporaryPublicStorage || input.gistUploadToken) {
+  if (input.serverToken || input.temporaryPublicStorage || input.gistUploadToken) {
     core.startGroup(`Uploading`)
 
-    if (input.uploadServerBaseUrl) {
+    if (input.serverToken) {
       const uploadStatus = await exec(lhciCliPath, [
         'upload',
         '--target=lhci',
-        `--serverBaseUrl=${input.uploadServerBaseUrl}`,
-        `--token=${input.uploadToken}`
+        `--serverBaseUrl=${input.serverToken}`,
+        `--token=${input.serverToken}`
       ])
       if (uploadStatus !== 0) throw new Error(`LHCI 'upload' failed to upload to LHCI server.`)
     }

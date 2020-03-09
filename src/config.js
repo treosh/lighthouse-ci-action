@@ -3,11 +3,12 @@ const { loadRcFile } = require('@lhci/utils/src/lighthouserc')
 const { get } = require('lodash')
 
 exports.getInput = function getInputArgs() {
-  const uploadServerBaseUrl = core.getInput('upload.serverBaseUrl')
-  const uploadToken = core.getInput('upload.token')
+  // fallback to upload.serverBaseUrl + upload.token for previous API support
+  const serverBaseUrl = core.getInput('serverBaseUrl') || core.getInput('upload.serverBaseUrl')
+  const serverToken = core.getInput('serverToken') || core.getInput('upload.token')
 
   // Make sure we don't have LHCI xor API token
-  if (!!uploadServerBaseUrl != !!uploadToken) {
+  if (!!serverBaseUrl != !!serverToken) {
     // Fail and exit
     core.setFailed(`Need both a LHCI server url and an API token`)
     process.exit(1)
@@ -63,9 +64,9 @@ exports.getInput = function getInputArgs() {
     // upload
     gistUploadToken: core.getInput('gistUploadToken') || null,
     temporaryPublicStorage: core.getInput('temporaryPublicStorage') === 'true' ? true : false,
-    uploadServerBaseUrl,
-    uploadToken,
-    uploadArtifacts: core.getInput('upload.artifacts') !== 'false' ? true : false,
+    serverBaseUrl,
+    serverToken,
+    uploadArtifacts: core.getInput('uploadArtifacts') !== 'false' ? true : false,
     // assert
     budgetPath: core.getInput('budgetPath') || null,
     configPath,

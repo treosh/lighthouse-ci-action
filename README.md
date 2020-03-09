@@ -40,8 +40,6 @@ jobs:
           githubToken: ${{ secrets.GITHUB_TOKEN }} # set action status with details about runs
 ```
 
-[⚙️ See this workflow in use](https://github.com/treosh/lighthouse-ci-action/actions?workflow=LHCI-upload-artifact)
-
 **Advanced example**: run Lighthouse audit for each unique deployment, test performance budgets, and save results to the [public storage](https://github.com/GoogleChrome/lighthouse-ci/blob/master/docs/cli.md#upload) for a quick debugging.
 
 URLs support interpolation of process env vars so that you can write URLs like:
@@ -82,7 +80,7 @@ urls: |
 Upload reports to the [_temporary public storage_](https://github.com/GoogleChrome/lighthouse-ci/blob/master/docs/getting-started.md#collect-lighthouse-results).
 
 > **Note**: As the name implies, this is temporary and public storage. If you're uncomfortable with the idea of your Lighthouse reports being stored
-> on a public URL on Google Cloud, use a private [LHCI server](#upload) or [Gist](). Reports are automatically deleted 7 days after upload.
+> on a public URL on Google Cloud, use a private [LHCI server](#serverBaseUrl) or [Gist](#gistUploadToken). Reports are automatically deleted 7 days after upload.
 
 ```yml
 temporaryPublicStorage: true
@@ -138,23 +136,25 @@ Use `lighthouserc` to configure the collection of data (via Lighthouse config an
 configPath: ./lighthouserc.json
 ```
 
-#### `upload`
+#### `uploadArtifacts` (default: true)
 
-Upload Lighthouse results to a private [LHCI server](https://github.com/GoogleChrome/lighthouse-ci) by specifying both `upload.serverBaseUrl` and `upload.token`.
+By default, action automatically uploads Lighthouse results as an artifact.
+Use `uploadArtifacts: false` to disable this behavior, for example, in case of using an LHCI Server.
+
+```yml
+uploadArtifacts: false
+```
+
+#### `serverBaseUrl`
+
+Upload Lighthouse results to a private [LHCI server](https://github.com/GoogleChrome/lighthouse-ci) by specifying both `serverBaseUrl` and `serverToken`.
 This will replace uploading to `temporary-public-storage`.
 
 > **Note**: Use [Github secrets](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets#creating-encrypted-secrets) to keep your server address hidden!
 
 ```yml
-upload.serverBaseUrl: ${{ secrets.LHCI_SERVER }}
-upload.token: ${{ secrets.LHCI_TOKEN }}
-```
-
-By default, the action automatically upload Lighthouse results as an artifact.
-Set `upload.artifacts: false` to disable this behavior, for example, in case of using an LHCI Server.
-
-```yml
-upload.artifacts: false
+serverBaseUrl: ${{ secrets.LHCI_SERVER_BASE_URL }}
+serverToken: ${{ secrets.LHCI_SERVER_TOKEN }}
 ```
 
 #### `gistUploadToken`
@@ -345,8 +345,9 @@ jobs:
         uses: treosh/lighthouse-ci-action@v2
         with:
           urls: 'https://example.com/'
-          upload.serverBaseUrl: ${{ secrets.LHCI_SERVER }}
-          upload.token: ${{ secrets.LHCI_API_TOKEN }}
+          serverBaseUrl: ${{ secrets.LHCI_SERVER_BASE_URL }}
+          serverToken: ${{ secrets.LHCI_SERVER_TOKEN }}
+          uploadArtifacts: false # don't store artifacts as a part of action
 ```
 
 <img align="center" width="998" alt="Lighthouse CI Action" src="https://user-images.githubusercontent.com/6392995/68525219-4c769580-0284-11ea-8407-9f2ea89ae845.png">
@@ -478,7 +479,7 @@ against each of them. More details on this process are in the [Lighthouse CI doc
 </details>
 
 <details>
- <summary>Use a Lighthouse plugin.</summary><br>
+ <summary>Use with a Lighthouse plugin.</summary><br>
 
 #### main.yml
 
@@ -497,11 +498,6 @@ jobs:
           urls: |
             https://www.example.com/
           configPath: ./lighthouserc.json
-      - name: Save results
-        uses: actions/upload-artifact@v1
-        with:
-          name: lighthouse-results
-          path: '.lighthouseci' # This will save the Lighthouse results as .json files
 ```
 
 #### lighthouserc.json

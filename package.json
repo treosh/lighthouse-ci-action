@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@actions/core": "^1.2.3",
+    "@actions/exec": "^1.0.3",
     "@actions/github": "^2.1.1",
     "@lhci/cli": "0.3.9",
     "@slack/webhook": "^5.0.2",

@@ -68,7 +68,7 @@ URLs support interpolation of process env vars so that you can write URLs like:
 
 ## Inputs
 
-#### `urls` (required)
+#### `urls`
 
 Provide the list of URLs separated by a new line.
 Each URL is audited using the latest version of Lighthouse and Chrome preinstalled on the environment.

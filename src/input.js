@@ -1,11 +1,11 @@
 const core = require('@actions/core')
-const { loadRcFile } = require('@lhci/utils/src/lighthouserc')
+const { loadRcFile } = require('@lhci/utils/src/lighthouserc.js')
 
-function getArgs() {
+exports.getInputArgs = function getInputArgs() {
   // Make sure we don't have LHCI xor API token
-  const serverBaseUrl = getArg('upload.serverBaseUrl')
-  const token = getArg('upload.token')
-  if (!!serverBaseUrl != !!token) {
+  const uploadServerBaseUrl = getArg('upload.serverBaseUrl')
+  const uploadToken = getArg('upload.token')
+  if (!!uploadServerBaseUrl != !!uploadToken) {
     // Fail and exit
     core.setFailed(`Need both a LHCI server url and an API token`)
     process.exit(1)
@@ -57,23 +57,20 @@ function getArgs() {
     )
   }
 
-  const logLevel = getArg('logLevel')
-
   return {
     urls,
     staticDistDir,
-    canUpload: getArg('temporaryPublicStorage') ? true : false,
+    temporaryPublicStorage: getArg('temporaryPublicStorage') === 'true' ? true : false,
     budgetPath: getArg('budgetPath'),
+    configPath,
     slackWebhookUrl: getArg('slackWebhookUrl'),
-    logLevel: logLevel ? logLevel : 'info',
-    numberOfRuns: getIntArg('runs'),
+    runs: getIntArg('runs'),
     githubToken: getArg('githubToken'),
     gistUploadToken: getArg('gistUploadToken'),
-    serverBaseUrl,
-    token,
+    uploadServerBaseUrl,
+    uploadToken,
     rcCollect,
-    rcAssert,
-    configPath
+    rcAssert
   }
 }
 
@@ -127,5 +124,3 @@ function interpolateProcessIntoURLs(urls) {
     return url
   })
 }
-
-module.exports = getArgs()

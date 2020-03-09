@@ -11,13 +11,14 @@ inputs:
   configPath:
     description: 'Path to a LHCI lighthouserc.json file'
   temporaryPublicStorage:
-    descripton: 'Opt-in to saving LHRs to Lighthouse public-temporary-storage'
+    descripton: 'Opt-in to saving Lighthouse results to temporary public storage'
+    default: false
   slackWebhookUrl:
-    description: 'Slack webhook url to post run results to slack'
-  applicationGithubToken:
-    description: 'GitHub Application access token for '
-  personalGithubToken:
-    description: 'GitHub access token'
+    description: 'Slack webhook url to send failed results to Slack'
+  githubToken:
+    description: 'Shared github token to create a debug check'
+  gistUploadToken:
+    description: 'GitHub access token to upload results to Gist'
   upload.serverBaseUrl:
     description: 'Address of a LHCI server'
   upload.token:

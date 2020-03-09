@@ -43,27 +43,27 @@ const lhAssertResultsPath = join(resultsDirPath, 'assertion-results.json')
  */
 async function sendNotifications({ status }) {
   try {
-    const { slackWebhookUrl, applicationGithubToken, personalGithubToken } = input
+    const { slackWebhookUrl, githubToken, gistUploadToken } = input
 
     if (!status) {
       return Promise.resolve()
     }
 
     const slackEnabled = slackWebhookUrl
-    const githubEnabled = applicationGithubToken
+    const githubEnabled = githubToken
 
     /**
      * @type {[ LHResultsByURL, ChangesURL, Gist[] ]}
      */
     const [groupedResults, changesURL, gists] = await Promise.all([
       getGroupedAssertionResultsByURL(),
-      getChangesUrl({ githubToken: personalGithubToken }),
+      getChangesUrl({ githubToken: gistUploadToken }),
       // keep uploading as part of Promise all instead of separate request
-      uploadResultsToGist({ githubToken: personalGithubToken })
+      uploadResultsToGist({ githubToken: gistUploadToken })
     ])
 
     const slackData = { status, slackWebhookUrl, changesURL, gists, groupedResults }
-    const githubData = { status, githubToken: applicationGithubToken, changesURL, gists, groupedResults }
+    const githubData = { status, githubToken: githubToken, changesURL, gists, groupedResults }
 
     if (githubEnabled) {
       try {

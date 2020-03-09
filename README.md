@@ -82,10 +82,32 @@ urls: |
 
 #### `temporaryPublicStorage` (default: false)
 
-All results are private by default. Use this option to upload reports to LHCI's `temporary-public-storage`. You can find out more about `temporary-public-storage` in the [LHCI repo](https://github.com/GoogleChrome/lighthouse-ci/blob/master/docs/cli.md#upload).
+Upload reports to the [_temporary public storage_](https://github.com/GoogleChrome/lighthouse-ci/blob/master/docs/getting-started.md#collect-lighthouse-results).
+
+> **Note**: As the name implies, this is temporary and public storage. If you're uncomfortable with the idea of your Lighthouse reports being stored
+> on a public URL on Google Cloud, use a private [LHCI server](#upload) or [Gist](). Reports are automatically deleted 7 days after upload.
 
 ```yml
 temporaryPublicStorage: true
+```
+
+#### `githubToken`
+
+Token to allow runs Github check suite.
+By default for Action environment it's allowed via `${{ secrets.GITHUB_TOKEN }}` without any additional setup.
+
+```yml
+githubToken: ${{ secrets.GITHUB_TOKEN }}
+```
+
+### slackWebhookUrl
+
+Allows to send notification in [Slack](https://slack.com/intl/en-ua/) channel.
+Visit Slack Incoming Webhooks [docs](https://api.slack.com/messaging/webhooks#create_a_webhook) and follow step provided there.
+Then copy `webhookUrl` value and set it up via [Github secrets](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets#creating-encrypted-secrets) to keep your url hidden!
+
+```yml
+slackWebhookUrl: ${{ secrets.SLACK_WEBHOOK_URL }}
 ```
 
 #### `runs` (default: 1)
@@ -93,7 +115,7 @@ temporaryPublicStorage: true
 Specify the number of runs to do on each URL.
 
 > **Note**: Asserting against a single run can lead to flaky performance assertions.
-> Use `1` only to ensure static audits like Lighthouse scores or page size.
+> Use `1` only to ensure static audits like Lighthouse scores, page size, or performance budgets.
 
 ```yml
 runs: 3
@@ -131,38 +153,18 @@ upload.serverBaseUrl: ${{ secrets.LHCI_SERVER }}
 upload.token: ${{ secrets.LHCI_TOKEN }}
 ```
 
+#### `gistUploadToken`
+
 Specify an API token for the LHCI server. [Learn how to generate a token](https://github.com/GoogleChrome/lighthouse-ci/blob/master/docs/getting-started.md#historical-reports--diffing-lighthouse-ci-server).
-
-#### `applicationGithubToken`
-
-Token to allow runs Github check suite. By default for Action environment it's allowed via `${{ secrets.GITHUB_TOKEN }}` without any additional setup.
-
-```yml
-applicationGithubToken: ${{ secrets.GITHUB_TOKEN }}
-```
-
-#### `personalGithubToken`
 
 Personal Github token to allow Action upload results to your secret [gist](https://help.github.com/en/enterprise/2.13/user/articles/about-gists) and provide report link directly in notification.
 Action will upload results to your gist, get gist id and compose url report using [Lighthouse Report Viewer](https://googlechrome.github.io/lighthouse/viewer/).
 
 ```yml
-personalGithubToken: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
+gistUploadToken: ${{ secrets.GIST_UPLOAD_TOKEN }}
 ```
 
 > **Note**: Use [Github secrets](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets#creating-encrypted-secrets) to keep your token hidden!
-
-### slackWebhookUrl
-
-Allows to send notification in [Slack](https://slack.com/intl/en-ua/) channel.
-Visit Slack Incoming Webhooks [docs](https://api.slack.com/messaging/webhooks#create_a_webhook) and follow step provided there.
-Then copy `webhookUrl` value and set it up via [Github secrets](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets#creating-encrypted-secrets) to keep your url hidden!
-
-```yml
-slackWebhookUrl: ${{ secrets.SLACK_WEBHOOK_URL }}
-```
-
-[Read more](#recipes) about detailed configuration.
 
 ## Recipes
 
@@ -242,8 +244,8 @@ jobs:
           urls: 'https://alekseykulikov.com/'
           budgetPath: '.github/lighthouse/budget.json'
           slackWebhookUrl: ${{ secrets.SLACK_WEBHOOK_URL }}
-          applicationGithubToken: ${{ secrets.GITHUB_TOKEN }}
-          personalGithubToken: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          gistUploadToken: ${{ secrets.GIST_UPLOAD_TOKEN }}
 ```
 
 Make a `budget.json` file with [budgets syntax](https://web.dev/use-lighthouse-for-performance-budgets/).

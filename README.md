@@ -159,17 +159,6 @@ serverBaseUrl: ${{ secrets.LHCI_SERVER_BASE_URL }}
 serverToken: ${{ secrets.LHCI_SERVER_TOKEN }}
 ```
 
-#### `gistUploadToken`
-
-Specify an API token for the LHCI server. [Learn how to generate a token](https://github.com/GoogleChrome/lighthouse-ci/blob/master/docs/getting-started.md#historical-reports--diffing-lighthouse-ci-server).
-
-Personal Github token to allow Action upload results to your secret [gist](https://help.github.com/en/enterprise/2.13/user/articles/about-gists) and provide report link directly in notification.
-Action will upload results to your gist, get gist id and compose url report using [Lighthouse Report Viewer](https://googlechrome.github.io/lighthouse/viewer/).
-
-```yml
-gistUploadToken: ${{ secrets.GIST_UPLOAD_TOKEN }}
-```
-
 > **Note**: Use [Github secrets](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets#creating-encrypted-secrets) to keep your token hidden!
 
 ## Recipes

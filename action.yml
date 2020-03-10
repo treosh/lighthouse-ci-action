@@ -17,8 +17,6 @@ inputs:
     description: 'Slack webhook url to send failed results to Slack'
   githubToken:
     description: 'Shared github token to create a debug check'
-  gistUploadToken:
-    description: 'GitHub access token to upload results to Gist'
   serverBaseUrl:
     description: 'Address of a LHCI server'
   uploadArtifacts:

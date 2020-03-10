@@ -62,7 +62,6 @@ exports.getInput = function getInputArgs() {
     runs: parseInt(core.getInput('runs'), 10) || 1,
     staticDistDir,
     // upload
-    gistUploadToken: core.getInput('gistUploadToken') || null,
     temporaryPublicStorage: core.getInput('temporaryPublicStorage') === 'true' ? true : false,
     serverBaseUrl,
     serverToken,
@@ -70,6 +69,7 @@ exports.getInput = function getInputArgs() {
     // assert
     budgetPath: core.getInput('budgetPath') || null,
     configPath,
+    // notify
     slackWebhookUrl: core.getInput('slackWebhookUrl') || null,
     githubToken: core.getInput('githubToken') || null
   }

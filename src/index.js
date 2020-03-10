@@ -4,17 +4,21 @@ const { join } = require('path')
 const { exec } = require('@actions/exec')
 const lhciCliPath = require.resolve('@lhci/cli/src/cli')
 const { getInput, hasAssertConfig } = require('./config')
-const { uploadArtifacts } = require('./utils/upload-artifacts')
+const { uploadArtifacts } = require('./utils/artifacts')
+const { createGithubCheck } = require('./utils/github')
+const { sendSlackNotification } = require('./utils/slack')
 
 /**
  * Audit urls with Lighthouse CI in 3 stages:
  * 1. collect (using lhci collect or the custom PSI runner, store results as artifacts)
- * 2. upload (upload results to LHCI Server, Temporary Public Storage, or Github Gist for more convinient preview)
- * 3. assert (assert results and send notification if the build failed)
+ * 2. assert (assert results using budgets or LHCI assertions)
+ * 3. upload (upload results to LHCI Server, Temporary Public Storage)
+ * 4. notify (create github check or send slack notification)
  */
 
 async function main() {
   core.startGroup('Action config')
+  const resultsPath = join(process.cwd(), '.lighthouserc')
   const input = getInput()
   core.info(`Input args: ${JSON.stringify(input, null, '  ')}`)
   core.endGroup() // Action config
@@ -37,43 +41,13 @@ async function main() {
   const collectStatus = await exec(lhciCliPath, collectArgs)
   if (collectStatus !== 0) throw new Error(`LHCI 'collect' has encountered a problem.`)
 
-  const resultsPath = join(process.cwd(), '.lighthouserc')
-  core.setOutput('resultsPath', resultsPath)
+  // upload artifacts as soon as collected
   if (input.uploadArtifacts) await uploadArtifacts(resultsPath)
 
   core.endGroup() // Collecting
 
-  /******************************* 2. UPLOAD ************************************/
-  if (input.serverToken || input.temporaryPublicStorage || input.gistUploadToken) {
-    core.startGroup(`Uploading`)
-
-    if (input.serverToken) {
-      const uploadStatus = await exec(lhciCliPath, [
-        'upload',
-        '--target=lhci',
-        `--serverBaseUrl=${input.serverToken}`,
-        `--token=${input.serverToken}`
-      ])
-      if (uploadStatus !== 0) throw new Error(`LHCI 'upload' failed to upload to LHCI server.`)
-    }
-
-    if (input.gistUploadToken) {
-      const uploadStatus = await exec(lhciCliPath, [
-        'upload',
-        '--target=temporary-public-storage',
-        '--uploadUrlMap=true'
-      ])
-      if (uploadStatus !== 0) throw new Error(`LHCI 'upload' failed to upload to temporary public storage.`)
-    }
-
-    if (input.gistUploadToken) {
-      // TODO(alekseykulikov): upload to gists
-    }
-
-    core.endGroup() // Uploading
-  }
-
-  /******************************* 3. ASSERT ************************************/
+  /******************************* 2. ASSERT ************************************/
+  let isAssertFailed = false
   if (input.budgetPath || hasAssertConfig(input.configPath)) {
     core.startGroup(`Asserting`)
     const assertArgs = ['assert']
@@ -85,16 +59,53 @@ async function main() {
     }
 
     const assertStatus = await exec(lhciCliPath, assertArgs)
-    if (assertStatus !== 0) {
-      // TODO(exterkamp): Output what urls failed and record a nice rich error.
-      core.setFailed(`Assertions have failed.`)
-    }
-
-    if ((input.githubToken || input.slackWebhookUrl) && assertStatus !== 0) {
-      // TODO(alekseykulikov): handle notifications
-    }
-
+    isAssertFailed = assertStatus !== 0
     core.endGroup() // Asserting
+  }
+
+  /******************************* 3. UPLOAD ************************************/
+  if (input.serverToken || input.temporaryPublicStorage) {
+    core.startGroup(`Uploading`)
+    const uploadParams = ['upload']
+    if (input.githubToken) uploadParams.push(`--githubToken=${input.githubToken}`)
+
+    if (input.serverToken) {
+      uploadParams.push('--target=lhci', `--serverBaseUrl=${input.serverToken}`, `--token=${input.serverToken}`)
+    } else if (input.temporaryPublicStorage) {
+      uploadParams.push('--target=temporary-public-storage', '--uploadUrlMap=true')
+    }
+
+    const uploadStatus = await exec(lhciCliPath, uploadParams)
+    if (uploadStatus !== 0) throw new Error(`LHCI 'upload' failed to upload to LHCI server.`)
+
+    core.endGroup() // Uploading
+  }
+
+  /******************************* 4. NOTIFY ************************************/
+  if (input.githubToken || input.slackWebhookUrl) {
+    core.startGroup(`Notifying`)
+    if (input.githubToken) {
+      await createGithubCheck({
+        githubToken: input.githubToken,
+        isSuccess: !isAssertFailed
+      })
+    }
+
+    // send slack notification only on error
+    if (input.slackWebhookUrl && isAssertFailed) {
+      await sendSlackNotification({
+        slackWebhookUrl: input.slackWebhookUrl,
+        isSuccess: !isAssertFailed,
+        resultsPath
+      })
+    }
+
+    core.endGroup() // Notifying
+  }
+
+  // set failing exit code for the action
+  if (isAssertFailed) {
+    core.setFailed(`Assertions have failed.`)
   }
 }
 

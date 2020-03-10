@@ -58,7 +58,11 @@ async function main() {
     }
 
     if (input.gistUploadToken) {
-      const uploadStatus = await exec(lhciCliPath, ['upload', '--target=temporary-public-storage'])
+      const uploadStatus = await exec(lhciCliPath, [
+        'upload',
+        '--target=temporary-public-storage',
+        '--uploadUrlMap=true'
+      ])
       if (uploadStatus !== 0) throw new Error(`LHCI 'upload' failed to upload to temporary public storage.`)
     }
 

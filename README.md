@@ -17,13 +17,12 @@
 
 ## Examples
 
-Run Lighthouse on each push to the repo and attach results to the action.
+**Basic example**: run Lighthouse on each push to the repo and save results as action artifacts.
 
 Create `.github/workflows/main.yml` with the list of URLs to audit using Lighthouse.
-Provide `githubToken` and `temporaryPublicStorage` to automatically attach results to the action for quick debuging.
 
 ```yml
-name: Lighthouse
+name: Lighthouse CI
 on: push
 jobs:
   lighthouse:
@@ -36,30 +35,34 @@ jobs:
           urls: |
             https://example.com/
             https://example.com/blog
-          temporaryPublicStorage: true # (optional) save Lighthouse results for a quick preview
-          githubToken: ${{ secrets.GITHUB_TOKEN }} # set action status with details about runs
+          uploadArtifacts: true # save results as artifacts
 ```
 
-**Advanced example**: run Lighthouse audit for each unique deployment, test performance budgets, and save results to the [public storage](https://github.com/GoogleChrome/lighthouse-ci/blob/master/docs/cli.md#upload) for a quick debugging.
+**Advanced example**: run Lighthouse audit for each commit, test performance budgets, and get a detailed error report with results saved in the [public storage](https://github.com/GoogleChrome/lighthouse-ci/blob/master/docs/cli.md#upload) for a quick debugging.
 
-URLs support interpolation of process env vars so that you can write URLs like:
+URLs support interpolation of process env variables so that you can write URLs like:
 
 ```yml
-- name: Run Lighthouse and test budgets
-  uses: treosh/lighthouse-ci-action@v2
-  with:
-    urls: |
-      https://pr-$PR_NUMBER.staging-example.com/
-      https://pr-$PR_NUMBER.staging-example.com/blog
-    budgetPath: ./budgets.json
-    temporaryPublicStorage: true
-  env:
-    PR_NUMBER: ${{ github.event.pull_request.number }}
+name: Lighthouse CI
+on: push
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Run Lighthouse and test budgets
+        uses: treosh/lighthouse-ci-action@v2
+        with:
+          urls: |
+            https://pr-$PR_NUMBER.staging-example.com/
+            https://pr-$PR_NUMBER.staging-example.com/blog
+          budgetPath: ./budgets.json
+          temporaryPublicStorage: true
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          slackWebhookUrl: ${{ secrets.SLACK_WEBHOOK_URL }}
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
 ```
-
-[⚙️ See this workflow in use](https://github.com/treosh/lighthouse-ci-action/actions?workflow=LHCI-urls-interpolation)
-
-> **Note**: to view the reports download the JSON files from the artifacts and open them with the [Lighthouse Viewer App](https://googlechrome.github.io/lighthouse/viewer/) or follow the `temporary-public-storage` link printed in the action.
 
 ## Inputs
 
@@ -93,6 +96,14 @@ By default for Action environment it's allowed via `${{ secrets.GITHUB_TOKEN }}`
 
 ```yml
 githubToken: ${{ secrets.GITHUB_TOKEN }}
+```
+
+#### `uploadArtifacts` (default: false)
+
+Upload Lighthouse results as [action artifacts](https://help.github.com/en/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts) to persist results. It's a shortuct to using [`actions/upload-artifact`](https://github.com/actions/upload-artifact).
+
+```yml
+uploadArtifacts: true
 ```
 
 ### slackWebhookUrl
@@ -134,15 +145,6 @@ Use `lighthouserc` to configure the collection of data (via Lighthouse config an
 
 ```yml
 configPath: ./lighthouserc.json
-```
-
-#### `uploadArtifacts` (default: true)
-
-By default, action automatically uploads Lighthouse results as an artifact.
-Use `uploadArtifacts: false` to disable this behavior, for example, in case of using an LHCI Server.
-
-```yml
-uploadArtifacts: false
 ```
 
 #### `serverBaseUrl`

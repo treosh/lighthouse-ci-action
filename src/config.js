@@ -66,7 +66,7 @@ exports.getInput = function getInputArgs() {
     temporaryPublicStorage: core.getInput('temporaryPublicStorage') === 'true' ? true : false,
     serverBaseUrl,
     serverToken,
-    uploadArtifacts: core.getInput('uploadArtifacts') !== 'false' ? true : false,
+    uploadArtifacts: core.getInput('uploadArtifacts') === 'true' ? true : false,
     // assert
     budgetPath: core.getInput('budgetPath') || null,
     configPath,

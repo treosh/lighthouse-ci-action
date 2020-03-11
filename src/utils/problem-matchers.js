@@ -1,5 +1,5 @@
-const { getAssertionsByUrl } = require('./lhci-helpers')
 const { join } = require('path')
+const { getAssertionsByUrl } = require('./lhci-helpers')
 
 /**
  * Problem matchers allow to add anotatsion to Action output:
@@ -14,17 +14,16 @@ const { join } = require('path')
  * @param {string} resultsPath
  */
 
-exports.enableProblemMatcher = function enableProblemMatcher(resultsPath) {
-  const lhciPath = join(process.cwd(), '.github/lhci.json')
-  console.log(`::add-matcher::${lhciPath}`)
+exports.runProblemMatchers = function enableProblemMatcher(resultsPath) {
+  console.log(`::add-matcher::${join(process.cwd(), '.github/matchers.json')}`)
   const assertionsByUrl = getAssertionsByUrl(resultsPath)
   Object.values(assertionsByUrl).forEach(assertions => {
     assertions.forEach(a => {
       const message =
         `\`${a.auditId}\` ${a.level === 'error' ? 'failure' : 'warning'} for \`${a.name}\` assertion, ` +
         `expected **${a.operator} ${a.expected}**, but found **${a.actual}**.`
-      console.log('%s – %s – %s – %s', a.url, a.level, a.auditId, message)
+      console.log(`${a.url}|${a.level}|${a.auditId}|${message}`)
     })
   })
-  console.log('::remove-matcher owner=lhci::')
+  console.log('::remove-matcher owner=lighthouse-ci-action::')
 }

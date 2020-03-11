@@ -1,10 +1,10 @@
 {
   "problemMatcher": [
     {
-      "owner": "lhci",
+      "owner": "lighthouse-ci-action",
       "pattern": [
         {
-          "regexp": "^(.*)\\s–\\s(error|warning)\\s–\\s(.*)\\s–\\s(.*)$",
+          "regexp": "^(?:\\s+)?(.*)\\|(error|warning)\\|(.*)\\|(.*)$",
           "file": 1,
           "code": 2,
           "severity": 3,

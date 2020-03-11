@@ -7,7 +7,7 @@ const { getInput, hasAssertConfig } = require('./config')
 const { uploadArtifacts } = require('./utils/artifacts')
 const { sendGithubComment } = require('./utils/github')
 const { sendSlackNotification } = require('./utils/slack')
-const { enableProblemMatcher } = require('./utils/problem-matchers')
+const { runProblemMatchers } = require('./utils/problem-matchers')
 
 /**
  * Audit urls with Lighthouse CI in 3 stages:
@@ -86,7 +86,7 @@ async function main() {
   if (input.uploadArtifacts) await uploadArtifacts(resultsPath)
 
   // annotate assertions
-  if (isAssertFailed) enableProblemMatcher(resultsPath)
+  if (isAssertFailed) runProblemMatchers(resultsPath)
 
   // send gtihub message
   if (input.githubToken && isAssertFailed) {

@@ -10,7 +10,13 @@ exports.getInput = function getInputArgs() {
   // Make sure we don't have LHCI xor API token
   if (!!serverBaseUrl != !!serverToken) {
     // Fail and exit
-    core.setFailed(`Need both a LHCI server url and an API token`)
+    core.setFailed(`Need both a LHCI server url and an API token.`)
+    process.exit(1)
+  }
+
+  const temporaryPublicStorage = core.getInput('temporaryPublicStorage') === 'true' ? true : false
+  if (serverBaseUrl && temporaryPublicStorage) {
+    core.setFailed(`Both LHCI server and Temporary storage are set, choose one upload method.`)
     process.exit(1)
   }
 
@@ -61,11 +67,11 @@ exports.getInput = function getInputArgs() {
     urls,
     runs: parseInt(core.getInput('runs'), 10) || 1,
     staticDistDir,
+    uploadArtifacts: core.getInput('uploadArtifacts') === 'true' ? true : false,
     // upload
-    temporaryPublicStorage: core.getInput('temporaryPublicStorage') === 'true' ? true : false,
     serverBaseUrl,
     serverToken,
-    uploadArtifacts: core.getInput('uploadArtifacts') === 'true' ? true : false,
+    temporaryPublicStorage,
     // assert
     budgetPath: core.getInput('budgetPath') || null,
     configPath,

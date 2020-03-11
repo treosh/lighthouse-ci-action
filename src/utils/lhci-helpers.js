@@ -1,4 +1,4 @@
-const { groupBy, fromPairs } = require('lodash')
+const { groupBy, fromPairs, mapValues, orderBy } = require('lodash')
 const { join } = require('path')
 const fs = require('fs')
 
@@ -14,7 +14,7 @@ exports.getLinksByUrl = function getLinksByUrl(resultsPath) {
 }
 
 /**
- * Get assertions grouped by url.
+ * Get assertions grouped by url and sorted with error first.
  *
  * @typedef {{ name: string, expected: number, actual: number, values: number[], operator: string, passed: boolean,
  *             auditId: string, level: 'warn' | 'error', url: string, auditTitle: string, auditDocumentationLink: string }} LHCIAssertion
@@ -26,7 +26,9 @@ exports.getLinksByUrl = function getLinksByUrl(resultsPath) {
 exports.getAssertionsByUrl = function getAssertionsByUrl(resultsPath) {
   /** @type {LHCIAssertion[]} **/
   const assertionResults = JSON.parse(fs.readFileSync(join(resultsPath, 'assertion-results.json'), 'utf8'))
-  return groupBy(assertionResults, 'url')
+  return mapValues(groupBy(assertionResults, 'url'), assertions => {
+    return orderBy(assertions, a => (a.level === 'error' ? 0 : 1) + a.auditId)
+  })
 }
 
 /**

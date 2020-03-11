@@ -1,4 +1,3 @@
-const { orderBy } = require('lodash')
 const github = require('@actions/github')
 const core = require('@actions/core')
 const { getLinksByUrl, getAssertionsByUrl } = require('./lhci-helpers')
@@ -57,8 +56,7 @@ function generateWelcomeMessage(resultsPath) {
 
   const assertionTexts = Object.entries(assertionsByUrl).map(([url, assertions]) => {
     const link = linksByUrl[url]
-    const sortedAssertions = orderBy(assertions, a => (a.level === 'error' ? 0 : 1))
-    const assertionsText = sortedAssertions.map(a => {
+    const assertionsText = assertions.map(a => {
       const emoji = a.level === 'error' ? '❌' : '⚠️'
       return (
         `${emoji} \`${a.auditId}\` ${a.level === 'error' ? 'failure' : 'warning'} for \`${a.name}\` assertion – ` +

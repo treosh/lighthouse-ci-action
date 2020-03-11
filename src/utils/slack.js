@@ -1,4 +1,4 @@
-const { flatten, orderBy } = require('lodash')
+const { flatten } = require('lodash')
 const { IncomingWebhook } = require('@slack/webhook')
 const core = require('@actions/core')
 const { getLinksByUrl, getAssertionsByUrl } = require('./lhci-helpers')
@@ -69,7 +69,6 @@ function generateAssertionBlocks(resultsPath) {
   return flatten(
     Object.entries(assertionsByUrl).map(([url, assertions]) => {
       const link = linksByUrl[url]
-      const sortedAssertions = orderBy(assertions, a => (a.level === 'error' ? 0 : 1))
       return [
         { type: 'divider' },
         {
@@ -84,7 +83,7 @@ function generateAssertionBlocks(resultsPath) {
               }
             : {})
         },
-        ...sortedAssertions.map(a => {
+        ...assertions.map(a => {
           const text =
             `*${a.auditId}* ${a.level === 'error' ? 'failure' : 'warning'} for *${a.name}* assertion\n` +
             `${a.auditTitle} <${a.auditDocumentationLink} | [...]>\n` +

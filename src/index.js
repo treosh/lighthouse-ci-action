@@ -7,6 +7,7 @@ const { getInput, hasAssertConfig } = require('./config')
 const { uploadArtifacts } = require('./utils/artifacts')
 const { sendGithubComment } = require('./utils/github')
 const { sendSlackNotification } = require('./utils/slack')
+const { enableProblemMatcher } = require('./utils/problem-matchers')
 
 /**
  * Audit urls with Lighthouse CI in 3 stages:
@@ -58,8 +59,11 @@ async function main() {
       assertArgs.push(`--config=${input.configPath}`)
     }
 
+    // run lhci with problem matcher
+    // https://github.com/actions/toolkit/blob/master/docs/commands.md#problem-matchers
     const assertStatus = await exec(lhciCliPath, assertArgs)
     isAssertFailed = assertStatus !== 0
+    if (isAssertFailed) enableProblemMatcher(resultsPath)
     core.endGroup() // Asserting
   }
 

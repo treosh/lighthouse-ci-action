@@ -1,0 +1,16 @@
+{
+  "problemMatcher": [
+    {
+      "owner": "lhci",
+      "pattern": [
+        {
+          "regexp": "^(.*)\\s–\\s(error|warning)\\s–\\s(.*)\\s–\\s(.*)$",
+          "file": 1,
+          "code": 2,
+          "severity": 3,
+          "message": 4
+        }
+      ]
+    }
+  ]
+}

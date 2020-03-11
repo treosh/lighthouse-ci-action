@@ -5,7 +5,7 @@ const { exec } = require('@actions/exec')
 const lhciCliPath = require.resolve('@lhci/cli/src/cli')
 const { getInput, hasAssertConfig } = require('./config')
 const { uploadArtifacts } = require('./utils/artifacts')
-const { createGithubCheck } = require('./utils/github')
+const { sendGithubComment } = require('./utils/github')
 const { sendSlackNotification } = require('./utils/slack')
 
 /**
@@ -67,7 +67,6 @@ async function main() {
   if (input.serverToken || input.temporaryPublicStorage) {
     core.startGroup(`Uploading`)
     const uploadParams = ['upload']
-    if (input.githubToken) uploadParams.push(`--githubToken=${input.githubToken}`)
 
     if (input.serverToken) {
       uploadParams.push('--target=lhci', `--serverBaseUrl=${input.serverToken}`, `--token=${input.serverToken}`)
@@ -82,22 +81,15 @@ async function main() {
   }
 
   /******************************* 4. NOTIFY ************************************/
-  if (input.githubToken || input.slackWebhookUrl) {
+  if ((input.githubToken || input.slackWebhookUrl) && isAssertFailed) {
     core.startGroup(`Notifying`)
     if (input.githubToken) {
-      await createGithubCheck({
-        githubToken: input.githubToken,
-        isSuccess: !isAssertFailed
-      })
+      await sendGithubComment({ githubToken: input.githubToken, resultsPath })
     }
 
     // send slack notification only on error
-    if (input.slackWebhookUrl && isAssertFailed) {
-      await sendSlackNotification({
-        slackWebhookUrl: input.slackWebhookUrl,
-        isSuccess: !isAssertFailed,
-        resultsPath
-      })
+    if (input.slackWebhookUrl) {
+      await sendSlackNotification({ slackWebhookUrl: input.slackWebhookUrl, resultsPath })
     }
 
     core.endGroup() // Notifying

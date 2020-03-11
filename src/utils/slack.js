@@ -6,27 +6,24 @@ const { getLinksByUrl, getAssertionsByUrl } = require('./lhci-helpers')
 /**
  * Send Slack Notification as an incoming webhook.
  *
- * @param {{ slackWebhookUrl: string, resultsPath: string, isSuccess: boolean }} params
+ * @param {{ slackWebhookUrl: string, resultsPath: string }} params
  */
 
-exports.sendSlackNotification = function sendSlackNotification({ slackWebhookUrl, isSuccess, resultsPath }) {
-  if (isSuccess) return // ignore success checks for now
+exports.sendSlackNotification = function sendSlackNotification({ slackWebhookUrl, resultsPath }) {
   core.info('Send Slack notification')
-  const params = {
-    blocks: [
-      {
-        type: 'section',
-        text: { type: 'mrkdwn', text: generateIntro(resultsPath) }
-      },
-      ...generateAssertionBlocks(resultsPath)
-    ]
-  }
-  core.info(JSON.stringify(params, null, '  '))
 
   const webhook = new IncomingWebhook(slackWebhookUrl, {
     username: 'Lighthouse CI Action',
     icon_emoji: ':small_red_triangle:'
   })
+  const params = {
+    blocks: [
+      { type: 'section', text: { type: 'mrkdwn', text: generateIntro(resultsPath) } },
+      ...generateAssertionBlocks(resultsPath)
+    ]
+  }
+
+  core.info(JSON.stringify(params, null, '  '))
   return webhook.send(params)
 }
 

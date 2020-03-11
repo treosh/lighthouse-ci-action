@@ -20,10 +20,9 @@
 **Basic example**: run Lighthouse on each push to the repo and save results as action artifacts.
 
 Create `.github/workflows/main.yml` with the list of URLs to audit using Lighthouse.
-The results will be stored as a build artifact:
 
 ```yml
-name: Lighthouse
+name: Lighthouse CI
 on: push
 jobs:
   lighthouse:
@@ -34,41 +33,40 @@ jobs:
         uses: treosh/lighthouse-ci-action@v2
         with:
           urls: |
-            https://treo.sh/
-            https://treo.sh/demo
-      - name: Save results
-        uses: actions/upload-artifact@v1
-        with:
-          name: lighthouse-results
-          path: '.lighthouseci' # This will save the Lighthouse results as .json files
+            https://example.com/
+            https://example.com/blog
+          uploadArtifacts: true # save results as artifacts
 ```
 
-[⚙️ See this workflow in use](https://github.com/treosh/lighthouse-ci-action/actions?workflow=LHCI-upload-artifact)
+**Advanced example**: run Lighthouse audit for each commit, test performance budgets, and get a detailed error report with results saved in the [public storage](https://github.com/GoogleChrome/lighthouse-ci/blob/master/docs/cli.md#upload) for a quick debugging.
 
-**Advanced example**: run Lighthouse audit for each unique deployment, test performance budgets, and save results to the [public storage](https://github.com/GoogleChrome/lighthouse-ci/blob/master/docs/cli.md#upload) for a quick debugging.
-
-URLs support interpolation of process env vars so that you can write URLs like:
+URLs support interpolation of process env variables so that you can write URLs like:
 
 ```yml
-- name: Run Lighthouse and test budgets
-  uses: treosh/lighthouse-ci-action@v2
-  with:
-    urls: |
-      https://pr-$PR_NUMBER.staging-example.com/
-      https://pr-$PR_NUMBER.staging-example.com/blog
-    budgetPath: ./budgets.json
-    temporaryPublicStorage: true
-  env:
-    PR_NUMBER: ${{ github.event.pull_request.number }}
+name: Lighthouse CI
+on: push
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Run Lighthouse and test budgets
+        uses: treosh/lighthouse-ci-action@v2
+        with:
+          urls: |
+            https://pr-$PR_NUMBER.staging-example.com/
+            https://pr-$PR_NUMBER.staging-example.com/blog
+          budgetPath: ./budgets.json
+          temporaryPublicStorage: true
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          slackWebhookUrl: ${{ secrets.SLACK_WEBHOOK_URL }}
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
 ```
-
-[⚙️ See this workflow in use](https://github.com/treosh/lighthouse-ci-action/actions?workflow=LHCI-urls-interpolation)
-
-> **Note**: to view the reports download the JSON files from the artifacts and open them with the [Lighthouse Viewer App](https://googlechrome.github.io/lighthouse/viewer/) or follow the `temporary-public-storage` link printed in the action.
 
 ## Inputs
 
-#### `urls` (required)
+#### `urls`
 
 Provide the list of URLs separated by a new line.
 Each URL is audited using the latest version of Lighthouse and Chrome preinstalled on the environment.
@@ -82,10 +80,40 @@ urls: |
 
 #### `temporaryPublicStorage` (default: false)
 
-All results are private by default. Use this option to upload reports to LHCI's `temporary-public-storage`. You can find out more about `temporary-public-storage` in the [LHCI repo](https://github.com/GoogleChrome/lighthouse-ci/blob/master/docs/cli.md#upload).
+Upload reports to the [_temporary public storage_](https://github.com/GoogleChrome/lighthouse-ci/blob/master/docs/getting-started.md#collect-lighthouse-results).
+
+> **Note**: As the name implies, this is temporary and public storage. If you're uncomfortable with the idea of your Lighthouse reports being stored
+> on a public URL on Google Cloud, use a private [LHCI server](#serverBaseUrl) or [Gist](#gistUploadToken). Reports are automatically deleted 7 days after upload.
 
 ```yml
 temporaryPublicStorage: true
+```
+
+#### `githubToken`
+
+Token to allow runs Github check suite.
+By default for Action environment it's allowed via `${{ secrets.GITHUB_TOKEN }}` without any additional setup.
+
+```yml
+githubToken: ${{ secrets.GITHUB_TOKEN }}
+```
+
+#### `uploadArtifacts` (default: false)
+
+Upload Lighthouse results as [action artifacts](https://help.github.com/en/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts) to persist results. It's a shortuct to using [`actions/upload-artifact`](https://github.com/actions/upload-artifact).
+
+```yml
+uploadArtifacts: true
+```
+
+### slackWebhookUrl
+
+Allows to send notification in [Slack](https://slack.com/intl/en-ua/) channel.
+Visit Slack Incoming Webhooks [docs](https://api.slack.com/messaging/webhooks#create_a_webhook) and follow step provided there.
+Then copy `webhookUrl` value and set it up via [Github secrets](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets#creating-encrypted-secrets) to keep your url hidden!
+
+```yml
+slackWebhookUrl: ${{ secrets.SLACK_WEBHOOK_URL }}
 ```
 
 #### `runs` (default: 1)
@@ -93,7 +121,7 @@ temporaryPublicStorage: true
 Specify the number of runs to do on each URL.
 
 > **Note**: Asserting against a single run can lead to flaky performance assertions.
-> Use `1` only to ensure static audits like Lighthouse scores or page size.
+> Use `1` only to ensure static audits like Lighthouse scores, page size, or performance budgets.
 
 ```yml
 runs: 3
@@ -119,59 +147,19 @@ Use `lighthouserc` to configure the collection of data (via Lighthouse config an
 configPath: ./lighthouserc.json
 ```
 
-#### `upload`
+#### `serverBaseUrl`
 
-Upload Lighthouse results to a private [LHCI server](https://github.com/GoogleChrome/lighthouse-ci) by specifying both `upload.serverBaseUrl` and `upload.token`.
+Upload Lighthouse results to a private [LHCI server](https://github.com/GoogleChrome/lighthouse-ci) by specifying both `serverBaseUrl` and `serverToken`.
 This will replace uploading to `temporary-public-storage`.
 
 > **Note**: Use [Github secrets](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets#creating-encrypted-secrets) to keep your server address hidden!
 
 ```yml
-upload.serverBaseUrl: ${{ secrets.LHCI_SERVER }}
-upload.token: ${{ secrets.LHCI_TOKEN }}
-```
-
-Specify an API token for the LHCI server. [Learn how to generate a token](https://github.com/GoogleChrome/lighthouse-ci/blob/master/docs/getting-started.md#historical-reports--diffing-lighthouse-ci-server).
-
-#### `applicationGithubToken`
-
-Token to allow runs Github check suite. By default for Action environment it's allowed via `${{ secrets.GITHUB_TOKEN }}` without any additional setup.
-
-```yml
-applicationGithubToken: ${{ secrets.GITHUB_TOKEN }}
-```
-
-#### `personalGithubToken`
-
-Personal Github token to allow Action upload results to your secret [gist](https://help.github.com/en/enterprise/2.13/user/articles/about-gists) and provide report link directly in notification.
-Action will upload results to your gist, get gist id and compose url report using [Lighthouse Report Viewer](https://googlechrome.github.io/lighthouse/viewer/).
-
-```yml
-personalGithubToken: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
+serverBaseUrl: ${{ secrets.LHCI_SERVER_BASE_URL }}
+serverToken: ${{ secrets.LHCI_SERVER_TOKEN }}
 ```
 
 > **Note**: Use [Github secrets](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets#creating-encrypted-secrets) to keep your token hidden!
-
-### slackWebhookUrl
-
-Allows to send notification in [Slack](https://slack.com/intl/en-ua/) channel.
-Visit Slack Incoming Webhooks [docs](https://api.slack.com/messaging/webhooks#create_a_webhook) and follow step provided there.
-Then copy `webhookUrl` value and set it up via [Github secrets](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets#creating-encrypted-secrets) to keep your url hidden!
-
-```yml
-slackWebhookUrl: ${{ secrets.SLACK_WEBHOOK_URL }}
-```
-
-[Read more](#recipes) about detailed configuration.
-
-### logLevel (default: 'info')
-
-Notifications (Github/Slack) log level. By default all notifications will be send.
-Use `error` value to send notifications only for failed CI checks.
-
-```yml
-logLevel: 'error'
-```
 
 ## Recipes
 
@@ -251,9 +239,8 @@ jobs:
           urls: 'https://alekseykulikov.com/'
           budgetPath: '.github/lighthouse/budget.json'
           slackWebhookUrl: ${{ secrets.SLACK_WEBHOOK_URL }}
-          applicationGithubToken: ${{ secrets.GITHUB_TOKEN }}
-          personalGithubToken: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
-          logLevel: 'error'
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          gistUploadToken: ${{ secrets.GIST_UPLOAD_TOKEN }}
 ```
 
 Make a `budget.json` file with [budgets syntax](https://web.dev/use-lighthouse-for-performance-budgets/).
@@ -349,8 +336,9 @@ jobs:
         uses: treosh/lighthouse-ci-action@v2
         with:
           urls: 'https://example.com/'
-          upload.serverBaseUrl: ${{ secrets.LHCI_SERVER }}
-          upload.token: ${{ secrets.LHCI_API_TOKEN }}
+          serverBaseUrl: ${{ secrets.LHCI_SERVER_BASE_URL }}
+          serverToken: ${{ secrets.LHCI_SERVER_TOKEN }}
+          uploadArtifacts: false # don't store artifacts as a part of action
 ```
 
 <img align="center" width="998" alt="Lighthouse CI Action" src="https://user-images.githubusercontent.com/6392995/68525219-4c769580-0284-11ea-8407-9f2ea89ae845.png">
@@ -482,7 +470,7 @@ against each of them. More details on this process are in the [Lighthouse CI doc
 </details>
 
 <details>
- <summary>Use a Lighthouse plugin.</summary><br>
+ <summary>Use with a Lighthouse plugin.</summary><br>
 
 #### main.yml
 
@@ -501,11 +489,6 @@ jobs:
           urls: |
             https://www.example.com/
           configPath: ./lighthouserc.json
-      - name: Save results
-        uses: actions/upload-artifact@v1
-        with:
-          name: lighthouse-results
-          path: '.lighthouseci' # This will save the Lighthouse results as .json files
 ```
 
 #### lighthouserc.json

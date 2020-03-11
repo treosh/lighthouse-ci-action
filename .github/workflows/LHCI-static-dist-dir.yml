@@ -10,4 +10,4 @@ jobs:
         uses: ./
         with:
           # no urls needed, since it uses local folder to scan .html files
-          configPath: '.github/lighthouse/lighthouserc-static-dist-dir.json'
+          configPath: '.github/lighthouse/lighthouserc-static-dist-dir.yml'

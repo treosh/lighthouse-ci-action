@@ -5,25 +5,24 @@ inputs:
     description: 'List of URL(s) to analyze'
   runs:
     description: 'Number of runs to do per URL'
-    default: '1'
+    default: 1
   budgetPath:
     description: 'Path to a Lighthouse budgets.json file'
   configPath:
     description: 'Path to a LHCI lighthouserc.json file'
   temporaryPublicStorage:
-    descripton: 'Opt-in to saving LHRs to Lighthouse public-temporary-storage'
+    descripton: 'Opt-in to saving Lighthouse results to temporary public storage'
+    default: false
   slackWebhookUrl:
-    description: 'Slack webhook url to post run results to slack'
-  logLevel:
-    description: 'Level of logging info to print to console'
-    default: 'info'
-  applicationGithubToken:
-    description: 'GitHub Application access token for '
-  personalGithubToken:
-    description: 'GitHub access token'
-  upload.serverBaseUrl:
+    description: 'Slack webhook url to send failed results to Slack'
+  githubToken:
+    description: 'Shared github token to create a debug check'
+  serverBaseUrl:
     description: 'Address of a LHCI server'
-  upload.token:
+  uploadArtifacts:
+    description: 'Opt-out of saving Lighthouse results as an action artifacts'
+    default: true
+  serverToken:
     description: 'API token to push to LHCI server'
 outputs:
   resultsPath:
@@ -32,5 +31,5 @@ runs:
   using: 'node12'
   main: 'src/index.js'
 branding:
-  icon: 'activity'
+  icon: 'bar-chart-2'
   color: 'gray-dark'

@@ -1,113 +1,116 @@
-// Append the node_modules of the github workspace and the node_modules of this action
-// to NODE_PATH. This supports lighthouse plugins - all the workspace needs to do is
-// `npm install` the plugin. The copy of lighthouse within this action will be used.
-
-const nodePathDelim = require('is-windows')() ? ';' : ':'
-const nodePathParts = [
-  ...(process.env.NODE_PATH || '').split(nodePathDelim),
-  `${__dirname}/../node_modules`,
-  `${process.env.GITHUB_WORKSPACE}/node_modules`
-]
-process.env.NODE_PATH = nodePathParts.join(nodePathDelim)
-
+require('./utils/support-lh-plugins') // add automatic support for LH Plugins env
 const core = require('@actions/core')
+const { join } = require('path')
 const childProcess = require('child_process')
-const lhciCliPath = require.resolve('@lhci/cli/src/cli.js')
-const input = require('./input.js')
-const output = require('./output.js')
+const lhciCliPath = require.resolve('@lhci/cli/src/cli')
+const { getInput, hasAssertConfig } = require('./config')
+const { uploadArtifacts } = require('./utils/artifacts')
+const { sendGithubComment } = require('./utils/github')
+const { sendSlackNotification } = require('./utils/slack')
+const { runProblemMatchers } = require('./utils/problem-matchers')
 
-// audit urls with Lighthouse CI
+/**
+ * Audit urls with Lighthouse CI in 3 stages:
+ * 1. collect (using lhci collect or the custom PSI runner, store results as artifacts)
+ * 2. assert (assert results using budgets or LHCI assertions)
+ * 3. upload (upload results to LHCI Server, Temporary Public Storage)
+ * 4. notify (create github check or send slack notification)
+ */
+
 async function main() {
   core.startGroup('Action config')
-  console.log('Input args:', input)
+  const resultsPath = join(process.cwd(), '.lighthouseci')
+  const input = getInput()
+  core.info(`Input args: ${JSON.stringify(input, null, '  ')}`)
   core.endGroup() // Action config
 
-  /*******************************COLLECTING***********************************/
+  /******************************* 1. COLLECT ***********************************/
   core.startGroup(`Collecting`)
-  let args = []
+  const collectArgs = [`--numberOfRuns=${input.runs}`]
 
   if (input.staticDistDir) {
-    args.push(`--static-dist-dir=${input.staticDistDir}`)
+    collectArgs.push(`--static-dist-dir=${input.staticDistDir}`)
   } else if (input.urls) {
     for (const url of input.urls) {
-      args.push(`--url=${url}`)
+      collectArgs.push(`--url=${url}`)
     }
+  } else {
+    // LHCI will panic with a non-zero exit code...
   }
-  // else LHCI will panic with a non-zero exit code...
+  if (input.configPath) collectArgs.push(`--config=${input.configPath}`)
 
-  if (input.rcCollect) {
-    args.push(`--config=${input.configPath}`)
-    // This should only happen in local testing, when the default is not sent
-  }
-  // Command line args should override config files
-  if (input.numberOfRuns) {
-    args.push(`--numberOfRuns=${input.numberOfRuns}`)
-  }
-  // else, no args and will default to 3 in LHCI.
+  const collectStatus = exec('collect', collectArgs)
+  if (collectStatus !== 0) throw new Error(`LHCI 'collect' has encountered a problem.`)
 
-  let status = await runChildCommand('collect', args)
-  if (status !== 0) {
-    throw new Error(`LHCI 'collect' has encountered a problem.`)
-  }
   core.endGroup() // Collecting
 
-  /*******************************ASSERTING************************************/
-  if (input.budgetPath || input.rcAssert) {
+  /******************************* 2. ASSERT ************************************/
+  let isAssertFailed = false
+  if (input.budgetPath || hasAssertConfig(input.configPath)) {
     core.startGroup(`Asserting`)
-    args = []
+    const assertArgs = []
 
     if (input.budgetPath) {
-      args.push(`--budgetsFile=${input.budgetPath}`)
+      assertArgs.push(`--budgetsFile=${input.budgetPath}`)
     } else {
-      // @ts-ignore checked this already
-      args.push(`--config=${input.configPath}`)
+      assertArgs.push(`--config=${input.configPath}`)
     }
 
-    status = await runChildCommand('assert', args)
-
-    if (status !== 0) {
-      // TODO(exterkamp): Output what urls failed and record a nice rich error.
-      core.setFailed(`Assertions have failed.`)
-      // continue
-    }
-
+    // run lhci with problem matcher
+    // https://github.com/actions/toolkit/blob/master/docs/commands.md#problem-matchers
+    const assertStatus = exec('assert', assertArgs)
+    isAssertFailed = assertStatus !== 0
     core.endGroup() // Asserting
   }
 
-  /*******************************UPLOADING************************************/
-  await output.sendNotifications({ status })
-
-  if ((input.serverBaseUrl && input.token) || input.canUpload) {
+  /******************************* 3. UPLOAD ************************************/
+  if (input.serverToken || input.temporaryPublicStorage) {
     core.startGroup(`Uploading`)
-    args = []
+    const uploadParams = []
 
-    if (input.serverBaseUrl) {
-      args.push('--target=lhci', `--serverBaseUrl=${input.serverBaseUrl}`, `--token=${input.token}`)
-    } else {
-      args.push('--target=temporary-public-storage')
+    if (input.serverToken) {
+      uploadParams.push('--target=lhci', `--serverBaseUrl=${input.serverToken}`, `--token=${input.serverToken}`)
+    } else if (input.temporaryPublicStorage) {
+      uploadParams.push('--target=temporary-public-storage', '--uploadUrlMap=true')
     }
 
-    status = await runChildCommand('upload', args)
+    const uploadStatus = exec('upload', uploadParams)
+    if (uploadStatus !== 0) throw new Error(`LHCI 'upload' failed to upload to LHCI server.`)
 
-    if (status !== 0) {
-      throw new Error(`LHCI 'upload' has encountered a problem.`)
-    }
     core.endGroup() // Uploading
   }
-  // set results path
-  core.setOutput('resultsPath', '.lighthouserc')
+
+  /******************************* 4. NOTIFY ************************************/
+  core.startGroup(`Notifying`)
+  // upload artifacts as soon as collected
+  if (input.uploadArtifacts) await uploadArtifacts(resultsPath)
+
+  // annotate assertions
+  if (isAssertFailed) runProblemMatchers(resultsPath)
+
+  // send gtihub message
+  if (input.githubToken && isAssertFailed) {
+    await sendGithubComment({ githubToken: input.githubToken, resultsPath })
+  }
+
+  // send slack notification only on error
+  if (input.slackWebhookUrl && isAssertFailed) {
+    await sendSlackNotification({ slackWebhookUrl: input.slackWebhookUrl, resultsPath })
+  }
+
+  // set failing exit code for the action
+  if (isAssertFailed) {
+    core.setFailed(`Assertions have failed.`)
+  }
+
+  core.endGroup() // Notifying
 }
 
 // run `main()`
+
 main()
-  .catch(
-    /** @param {Error} err */ err => {
-      core.setFailed(err.message)
-    }
-  )
-  .then(() => {
-    console.log(`done in ${process.uptime()}s`)
-  })
+  .catch(err => core.setFailed(err.message))
+  .then(() => core.debug(`done in ${process.uptime()}s`))
 
 /**
  * Run a child command synchronously.
@@ -116,11 +119,9 @@ main()
  * @param {string[]} [args]
  * @return {number}
  */
-function runChildCommand(command, args = []) {
-  const combinedArgs = [lhciCliPath, command, ...args]
-  const { status = -1 } = childProcess.spawnSync(process.argv[0], combinedArgs, {
-    stdio: 'inherit'
-  })
 
+function exec(command, args = []) {
+  const combinedArgs = [lhciCliPath, command, ...args]
+  const { status = -1 } = childProcess.spawnSync(process.argv[0], combinedArgs, { stdio: 'inherit' })
   return status || 0
 }

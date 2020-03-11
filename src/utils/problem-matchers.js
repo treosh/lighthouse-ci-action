@@ -1,5 +1,5 @@
 const { getAssertionsByUrl } = require('./lhci-helpers')
-const core = require('@actions/core')
+const { join } = require('path')
 
 /**
  * Problem matchers allow to add anotatsion to Action output:
@@ -15,8 +15,8 @@ const core = require('@actions/core')
  */
 
 exports.enableProblemMatcher = function enableProblemMatcher(resultsPath) {
-  core.startGroup(`Annotating`)
-  console.log('::add-matcher::lhci.json')
+  const lhciPath = join(process.cwd(), '.github/lhci.json')
+  console.log(`::add-matcher::${lhciPath}`)
   const assertionsByUrl = getAssertionsByUrl(resultsPath)
   Object.values(assertionsByUrl).forEach(assertions => {
     assertions.forEach(a => {
@@ -27,5 +27,4 @@ exports.enableProblemMatcher = function enableProblemMatcher(resultsPath) {
     })
   })
   console.log('::remove-matcher owner=lhci::')
-  core.endGroup()
 }

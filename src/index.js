@@ -42,9 +42,6 @@ async function main() {
   const collectStatus = exec('collect', collectArgs)
   if (collectStatus !== 0) throw new Error(`LHCI 'collect' has encountered a problem.`)
 
-  // upload artifacts as soon as collected
-  if (input.uploadArtifacts) await uploadArtifacts(resultsPath)
-
   core.endGroup() // Collecting
 
   /******************************* 2. ASSERT ************************************/
@@ -66,9 +63,6 @@ async function main() {
     core.endGroup() // Asserting
   }
 
-  // annotate assertions
-  if (isAssertFailed) enableProblemMatcher(resultsPath)
-
   /******************************* 3. UPLOAD ************************************/
   if (input.serverToken || input.temporaryPublicStorage) {
     core.startGroup(`Uploading`)
@@ -87,24 +81,29 @@ async function main() {
   }
 
   /******************************* 4. NOTIFY ************************************/
-  if ((input.githubToken || input.slackWebhookUrl) && isAssertFailed) {
-    core.startGroup(`Notifying`)
-    if (input.githubToken) {
-      await sendGithubComment({ githubToken: input.githubToken, resultsPath })
-    }
+  core.startGroup(`Notifying`)
+  // upload artifacts as soon as collected
+  if (input.uploadArtifacts) await uploadArtifacts(resultsPath)
 
-    // send slack notification only on error
-    if (input.slackWebhookUrl) {
-      await sendSlackNotification({ slackWebhookUrl: input.slackWebhookUrl, resultsPath })
-    }
+  // annotate assertions
+  if (isAssertFailed) enableProblemMatcher(resultsPath)
 
-    core.endGroup() // Notifying
+  // send gtihub message
+  if (input.githubToken && isAssertFailed) {
+    await sendGithubComment({ githubToken: input.githubToken, resultsPath })
+  }
+
+  // send slack notification only on error
+  if (input.slackWebhookUrl && isAssertFailed) {
+    await sendSlackNotification({ slackWebhookUrl: input.slackWebhookUrl, resultsPath })
   }
 
   // set failing exit code for the action
   if (isAssertFailed) {
     core.setFailed(`Assertions have failed.`)
   }
+
+  core.endGroup() // Notifying
 }
 
 // run `main()`

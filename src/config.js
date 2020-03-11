@@ -67,7 +67,6 @@ exports.getInput = function getInputArgs() {
     urls,
     runs: parseInt(core.getInput('runs'), 10) || 1,
     staticDistDir,
-    uploadArtifacts: core.getInput('uploadArtifacts') === 'true' ? true : false,
     // upload
     serverBaseUrl,
     serverToken,
@@ -76,6 +75,7 @@ exports.getInput = function getInputArgs() {
     budgetPath: core.getInput('budgetPath') || null,
     configPath,
     // notify
+    uploadArtifacts: core.getInput('uploadArtifacts') === 'true' ? true : false,
     slackWebhookUrl: core.getInput('slackWebhookUrl') || null,
     githubToken: core.getInput('githubToken') || null
   }

@@ -31,5 +31,5 @@ runs:
   using: 'node12'
   main: 'src/index.js'
 branding:
-  icon: 'activity'
+  icon: 'bar-chart-2'
   color: 'gray-dark'

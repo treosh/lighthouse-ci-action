@@ -1,7 +1,7 @@
 require('./utils/support-lh-plugins') // add automatic support for LH Plugins env
 const core = require('@actions/core')
 const { join } = require('path')
-const { exec } = require('@actions/exec')
+const childProcess = require('child_process')
 const lhciCliPath = require.resolve('@lhci/cli/src/cli')
 const { getInput, hasAssertConfig } = require('./config')
 const { uploadArtifacts } = require('./utils/artifacts')
@@ -19,14 +19,14 @@ const { enableProblemMatcher } = require('./utils/problem-matchers')
 
 async function main() {
   core.startGroup('Action config')
-  const resultsPath = join(process.cwd(), '.lighthouserc')
+  const resultsPath = join(process.cwd(), '.lighthouseci')
   const input = getInput()
   core.info(`Input args: ${JSON.stringify(input, null, '  ')}`)
   core.endGroup() // Action config
 
   /******************************* 1. COLLECT ***********************************/
   core.startGroup(`Collecting`)
-  const collectArgs = ['collect', `--numberOfRuns=${input.runs}`]
+  const collectArgs = [`--numberOfRuns=${input.runs}`]
 
   if (input.staticDistDir) {
     collectArgs.push(`--static-dist-dir=${input.staticDistDir}`)
@@ -39,7 +39,7 @@ async function main() {
   }
   if (input.configPath) collectArgs.push(`--config=${input.configPath}`)
 
-  const collectStatus = await exec(lhciCliPath, collectArgs)
+  const collectStatus = exec('collect', collectArgs)
   if (collectStatus !== 0) throw new Error(`LHCI 'collect' has encountered a problem.`)
 
   // upload artifacts as soon as collected
@@ -51,7 +51,7 @@ async function main() {
   let isAssertFailed = false
   if (input.budgetPath || hasAssertConfig(input.configPath)) {
     core.startGroup(`Asserting`)
-    const assertArgs = ['assert']
+    const assertArgs = []
 
     if (input.budgetPath) {
       assertArgs.push(`--budgetsFile=${input.budgetPath}`)
@@ -61,16 +61,18 @@ async function main() {
 
     // run lhci with problem matcher
     // https://github.com/actions/toolkit/blob/master/docs/commands.md#problem-matchers
-    const assertStatus = await exec(lhciCliPath, assertArgs)
+    const assertStatus = exec('assert', assertArgs)
     isAssertFailed = assertStatus !== 0
-    if (isAssertFailed) enableProblemMatcher(resultsPath)
     core.endGroup() // Asserting
   }
+
+  // annotate assertions
+  if (isAssertFailed) enableProblemMatcher(resultsPath)
 
   /******************************* 3. UPLOAD ************************************/
   if (input.serverToken || input.temporaryPublicStorage) {
     core.startGroup(`Uploading`)
-    const uploadParams = ['upload']
+    const uploadParams = []
 
     if (input.serverToken) {
       uploadParams.push('--target=lhci', `--serverBaseUrl=${input.serverToken}`, `--token=${input.serverToken}`)
@@ -78,7 +80,7 @@ async function main() {
       uploadParams.push('--target=temporary-public-storage', '--uploadUrlMap=true')
     }
 
-    const uploadStatus = await exec(lhciCliPath, uploadParams)
+    const uploadStatus = exec('upload', uploadParams)
     if (uploadStatus !== 0) throw new Error(`LHCI 'upload' failed to upload to LHCI server.`)
 
     core.endGroup() // Uploading
@@ -110,3 +112,17 @@ async function main() {
 main()
   .catch(err => core.setFailed(err.message))
   .then(() => core.debug(`done in ${process.uptime()}s`))
+
+/**
+ * Run a child command synchronously.
+ *
+ * @param {'collect'|'assert'|'upload'} command
+ * @param {string[]} [args]
+ * @return {number}
+ */
+
+function exec(command, args = []) {
+  const combinedArgs = [lhciCliPath, command, ...args]
+  const { status = -1 } = childProcess.spawnSync(process.argv[0], combinedArgs, { stdio: 'inherit' })
+  return status || 0
+}

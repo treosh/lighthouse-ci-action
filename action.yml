@@ -14,8 +14,6 @@ inputs:
   runs:
     description: 'Number of runs to do per URL'
     default: 1
-  slackWebhookUrl:
-    description: 'Slack webhook url to send failed results to Slack'
   serverBaseUrl:
     description: 'Address of a LHCI server'
   serverToken:

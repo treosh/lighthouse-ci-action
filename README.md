@@ -7,9 +7,8 @@
 
 - ✅ Audit URLs using Lighthouse
 - 🎯 Test performance with Lighthouse CI (LHCI) assertions or performance budgets
-- 💾 Upload results to LHCI server, Github Gist, or Temporary Public Storage
+- 💾 Upload results to LHCI server or Temporary Public Storage
 - ⚙️ Full control over Lighthouse CI config
-- 🔔 Receive Slack notifications
 - 😻 Use GitHub to see failed checks
 - 🚀 Fast action initialization (less than 1 second)
 
@@ -58,7 +57,6 @@ jobs:
             https://pr-$PR_NUMBER.staging-example.com/blog
           budgetPath: ./budgets.json
           temporaryPublicStorage: true
-          slackWebhookUrl: ${{ secrets.SLACK_WEBHOOK_URL }}
         env:
           PR_NUMBER: ${{ github.event.pull_request.number }}
 ```
@@ -94,16 +92,6 @@ Upload reports to the [_temporary public storage_](https://github.com/GoogleChro
 
 ```yml
 temporaryPublicStorage: true
-```
-
-### slackWebhookUrl
-
-Allows to send notification in [Slack](https://slack.com/intl/en-ua/) channel.
-Visit Slack Incoming Webhooks [docs](https://api.slack.com/messaging/webhooks#create_a_webhook) and follow step provided there.
-Then copy `webhookUrl` value and set it up via [Github secrets](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets#creating-encrypted-secrets) to keep your url hidden!
-
-```yml
-slackWebhookUrl: ${{ secrets.SLACK_WEBHOOK_URL }}
 ```
 
 #### `runs` (default: 1)
@@ -203,57 +191,6 @@ Make a `budget.json` file with [budgets syntax](https://web.dev/use-lighthouse-f
 <img align="center" width="998" alt="Lighthouse CI Action" src="https://user-images.githubusercontent.com/6392995/68525270-cc046480-0284-11ea-9477-af32fce1e5a2.png">
 
 [⚙️ See this workflow in use](https://github.com/treosh/lighthouse-ci-action/actions?workflow=LHCI-assert-on-budget)
-
-</details>
-
-<details>
- <summary>Notify in Slack/Github for assertion results</summary><br>
-
-Create `.github/workflows/main.yml` with the list of URLs, enable notifications to audit
-and identify a budget with `budgetPath`.
-
-#### main.yml
-
-```yml
-name: Lighthouse
-on: push
-jobs:
-  # This pass/fails a build with a budgets.json.
-  assert-on-budget:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - name: Run Lighthouse on urls and validate with budgets.json
-        uses: ./
-        with:
-          urls: 'https://alekseykulikov.com/'
-          budgetPath: '.github/lighthouse/budget.json'
-          slackWebhookUrl: ${{ secrets.SLACK_WEBHOOK_URL }}
-```
-
-Make a `budget.json` file with [budgets syntax](https://web.dev/use-lighthouse-for-performance-budgets/).
-
-> **Note**: Under the hood, this will be transformed into LHCI assertions.
-
-#### budgets.json
-
-```json
-[
-  {
-    "path": "/*",
-    "resourceSizes": [
-      {
-        "resourceType": "document",
-        "budget": 18
-      },
-      {
-        "resourceType": "total",
-        "budget": 200
-      }
-    ]
-  }
-]
-```
 
 </details>
 

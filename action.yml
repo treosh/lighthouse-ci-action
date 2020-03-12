@@ -9,10 +9,8 @@ inputs:
     description: 'Path to a LHCI lighthouserc.json file'
   uploadArtifacts:
     description: 'Opt-out of saving Lighthouse results as an action artifacts'
-    default: true
   temporaryPublicStorage:
     descripton: 'Opt-in to saving Lighthouse results to temporary public storage'
-    default: false
   runs:
     description: 'Number of runs to do per URL'
     default: 1

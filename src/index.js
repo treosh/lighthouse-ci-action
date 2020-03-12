@@ -1,12 +1,12 @@
 require('./utils/support-lh-plugins') // add automatic support for LH Plugins env
 const core = require('@actions/core')
 const { join } = require('path')
+const childProcess = require('child_process')
 const lhciCliPath = require.resolve('@lhci/cli/src/cli')
 const { getInput, hasAssertConfig } = require('./config')
 const { uploadArtifacts } = require('./utils/artifacts')
 const { sendSlackNotification } = require('./utils/slack')
 const { setFailedAnnotations } = require('./utils/annotations')
-const spawn = require('util').promisify(require('child_process').spawn)
 
 /**
  * Audit urls with Lighthouse CI in 3 stages:
@@ -38,7 +38,7 @@ async function main() {
   }
   if (input.configPath) collectArgs.push(`--config=${input.configPath}`)
 
-  const collectStatus = await exec('collect', collectArgs)
+  const collectStatus = runChildCommand('collect', collectArgs)
   if (collectStatus !== 0) throw new Error(`LHCI 'collect' has encountered a problem.`)
 
   core.endGroup() // Collecting
@@ -57,7 +57,7 @@ async function main() {
 
     // run lhci with problem matcher
     // https://github.com/actions/toolkit/blob/master/docs/commands.md#problem-matchers
-    const assertStatus = await exec('assert', assertArgs)
+    const assertStatus = runChildCommand('assert', assertArgs)
     isAssertFailed = assertStatus !== 0
     core.endGroup() // Asserting
   }
@@ -73,7 +73,7 @@ async function main() {
       uploadParams.push('--target=temporary-public-storage', '--uploadUrlMap=true')
     }
 
-    const uploadStatus = await exec('upload', uploadParams)
+    const uploadStatus = runChildCommand('upload', uploadParams)
     if (uploadStatus !== 0) throw new Error(`LHCI 'upload' failed to upload to LHCI server.`)
 
     core.endGroup() // Uploading
@@ -111,11 +111,13 @@ main()
  *
  * @param {'collect'|'assert'|'upload'} command
  * @param {string[]} [args]
- * @return {Promise<number>}
+ * @return {number}
  */
 
-async function exec(command, args = []) {
+function runChildCommand(command, args = []) {
   const combinedArgs = [lhciCliPath, command, ...args]
-  const { status = -1 } = await spawn(process.argv[0], combinedArgs, { stdio: 'inherit' })
+  const { status = -1 } = childProcess.spawnSync(process.argv[0], combinedArgs, {
+    stdio: 'inherit'
+  })
   return status || 0
 }

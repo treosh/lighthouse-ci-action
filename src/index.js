@@ -13,7 +13,7 @@ const { setFailedAnnotations } = require('./utils/annotations')
  * 1. collect (using lhci collect or the custom PSI runner, store results as artifacts)
  * 2. assert (assert results using budgets or LHCI assertions)
  * 3. upload (upload results to LHCI Server, Temporary Public Storage)
- * 4. notify (create github check or send slack notification)
+ * 4. notify (create annotations and send slack notification)
  */
 
 async function main() {

@@ -12,3 +12,4 @@ jobs:
           urls: 'https://treo.sh/'
           budgetPath: '.github/lighthouse/budget.json'
           uploadArtifacts: true
+          temporaryPublicStorage: true

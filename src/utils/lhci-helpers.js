@@ -1,6 +1,7 @@
 const { groupBy, mapValues, orderBy } = require('lodash')
 const { join } = require('path')
 const fs = require('fs').promises
+const { existsSync } = require('fs')
 
 /**
  * Get links by url.
@@ -9,7 +10,9 @@ const fs = require('fs').promises
  */
 
 exports.getLinksByUrl = async function getLinksByUrl(resultsPath) {
-  return JSON.parse(await fs.readFile(join(resultsPath, 'links.json'), 'utf8'))
+  const linksPath = join(resultsPath, 'links.json')
+  if (!existsSync(linksPath)) return {}
+  return JSON.parse(await fs.readFile(linksPath, 'utf8'))
 }
 
 /**

@@ -9,22 +9,20 @@ const { getLinksByUrl, getAssertionsByUrl } = require('./lhci-helpers')
  * @param {{ slackWebhookUrl: string, resultsPath: string }} params
  */
 
-exports.sendSlackNotification = function sendSlackNotification({ slackWebhookUrl, resultsPath }) {
+exports.sendSlackNotification = async function sendSlackNotification({ slackWebhookUrl, resultsPath }) {
   core.info('Send Slack notification')
 
+  const assertionBlocks = await generateAssertionBlocks(resultsPath)
   const webhook = new IncomingWebhook(slackWebhookUrl, {
     username: 'Lighthouse CI Action',
     icon_emoji: ':small_red_triangle:'
   })
   const params = {
-    blocks: [
-      { type: 'section', text: { type: 'mrkdwn', text: generateIntro(resultsPath) } },
-      ...generateAssertionBlocks(resultsPath)
-    ]
+    blocks: [{ type: 'section', text: { type: 'mrkdwn', text: generateIntro(resultsPath) } }, ...assertionBlocks]
   }
 
   core.info(JSON.stringify(params, null, '  '))
-  return webhook.send(params)
+  await webhook.send(params)
 }
 
 /**
@@ -62,9 +60,9 @@ const warnImgurl = 'https://user-images.githubusercontent.com/158189/76411224-a3
  * @param {string} resultsPath
  */
 
-function generateAssertionBlocks(resultsPath) {
-  const linksByUrl = getLinksByUrl(resultsPath)
-  const assertionsByUrl = getAssertionsByUrl(resultsPath)
+async function generateAssertionBlocks(resultsPath) {
+  const linksByUrl = await getLinksByUrl(resultsPath)
+  const assertionsByUrl = await getAssertionsByUrl(resultsPath)
 
   return flatten(
     Object.entries(assertionsByUrl).map(([url, assertions]) => {

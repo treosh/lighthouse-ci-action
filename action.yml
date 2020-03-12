@@ -3,25 +3,23 @@ description: 'Audit URLs using Lighthouse and test performance with Lighthouse C
 inputs:
   urls:
     description: 'List of URL(s) to analyze'
-  runs:
-    description: 'Number of runs to do per URL'
-    default: 1
   budgetPath:
     description: 'Path to a Lighthouse budgets.json file'
   configPath:
     description: 'Path to a LHCI lighthouserc.json file'
-  temporaryPublicStorage:
-    descripton: 'Opt-in to saving Lighthouse results to temporary public storage'
-    default: false
-  slackWebhookUrl:
-    description: 'Slack webhook url to send failed results to Slack'
-  githubToken:
-    description: 'Shared github token to create a debug check'
-  serverBaseUrl:
-    description: 'Address of a LHCI server'
   uploadArtifacts:
     description: 'Opt-out of saving Lighthouse results as an action artifacts'
     default: true
+  temporaryPublicStorage:
+    descripton: 'Opt-in to saving Lighthouse results to temporary public storage'
+    default: false
+  runs:
+    description: 'Number of runs to do per URL'
+    default: 1
+  slackWebhookUrl:
+    description: 'Slack webhook url to send failed results to Slack'
+  serverBaseUrl:
+    description: 'Address of a LHCI server'
   serverToken:
     description: 'API token to push to LHCI server'
 outputs:

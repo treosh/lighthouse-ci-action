@@ -1,11 +1,12 @@
 const artifact = require('@actions/artifact')
-const fs = require('fs')
+const fs = require('fs').promises
 const { join } = require('path')
 
-/** @param {string} rootDirectory */
-exports.uploadArtifacts = function uploadArtifacts(rootDirectory) {
+/** @param {string} resultsPath */
+exports.uploadArtifacts = async function uploadArtifacts(resultsPath) {
   const artifactClient = artifact.create()
   const artifactName = 'lighthouse-results'
-  const files = fs.readdirSync(rootDirectory).map(fileName => join(rootDirectory, fileName))
-  return artifactClient.uploadArtifact(artifactName, files, rootDirectory, { continueOnError: true })
+  const fileNames = await fs.readdir(resultsPath)
+  const files = fileNames.map(fileName => join(resultsPath, fileName))
+  return artifactClient.uploadArtifact(artifactName, files, resultsPath, { continueOnError: true })
 }

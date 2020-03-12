@@ -13,4 +13,3 @@ jobs:
             https://treo.sh/
           serverBaseUrl: ${{ secrets.LHCI_SERVER_BASE_URL }}
           serverToken: ${{ secrets.LHCI_SERVER_TOKEN }}
-          uploadArtifacts: false

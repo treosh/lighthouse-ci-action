@@ -43,13 +43,8 @@ PAGE="src/" INPUT_URLS="http://localhost:3000/\$PAGE" INPUT_RUNS="1" node src/in
 # run with a static dist dir
 INPUT_CONFIGPATH=".github/lighthouse/lighthouserc-static-dist-dir.yml" INPUT_RUNS="1" node src/index.js
 
-# run with Slack integration
-# some of env variables mocked from GitHub ENV - https://help.github.com/en/actions/automating-your-workflow-with-github-actions/using-environment-variables
-INPUT_URLS="https://alekseykulikov.com/" INPUT_BUDGETPATH=".github/lighthouse/impossible-budget.json" INPUT_RUNS="1" INPUT_SLACKWEBHOOKURL="custom-webhook-url" INPUT_GISTUPLOADTOKEN="github-token" INPUT_GITHUBTOKEN="github-token" INPUT_NOTIFICATIONS='slack' GITHUB_REPOSITORY="repo-name" GITHUB_SHA="githib-pr-head-sha" node src/index.js
-INPUT_URLS="https://alekseykulikov.com/" INPUT_BUDGETPATH=".github/lighthouse/impossible-budget.json" INPUT_RUNS="1" INPUT_SLACKWEBHOOKURL="custom-webhook-url" INPUT_GISTUPLOADTOKEN="github-github" INPUT_GITHUBTOKEN="github-token" INPUT_NOTIFICATIONS='slack' GITHUB_REPOSITORY="repo-name" GITHUB_SHA="githib-pr-head-sha" node src/index.js
-
-# Test problem matchers
-GITHUB_WORKFLOW=LHCI-assert-on-budget node -e "require('./src/utils/problem-matchers').runProblemMatchers('.lighthouseci')"
+# test annotations (requires .lighthouseci folder after manual run)
+node -e "require('./src/utils/annotations').setFailedAnnotations('.lighthouseci')"
 ```
 
 ### Slack notification

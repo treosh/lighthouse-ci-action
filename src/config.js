@@ -76,8 +76,7 @@ exports.getInput = function getInputArgs() {
     configPath,
     // notify
     uploadArtifacts: core.getInput('uploadArtifacts') === 'true' ? true : false,
-    slackWebhookUrl: core.getInput('slackWebhookUrl') || null,
-    githubToken: core.getInput('githubToken') || null
+    slackWebhookUrl: core.getInput('slackWebhookUrl') || null
   }
 }
 

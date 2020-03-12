@@ -1,13 +1,12 @@
 require('./utils/support-lh-plugins') // add automatic support for LH Plugins env
 const core = require('@actions/core')
 const { join } = require('path')
-const childProcess = require('child_process')
 const lhciCliPath = require.resolve('@lhci/cli/src/cli')
 const { getInput, hasAssertConfig } = require('./config')
 const { uploadArtifacts } = require('./utils/artifacts')
-const { sendGithubComment } = require('./utils/github')
 const { sendSlackNotification } = require('./utils/slack')
-const { runProblemMatchers } = require('./utils/problem-matchers')
+const { setFailedAnnotations } = require('./utils/annotations')
+const spawn = require('util').promisify(require('child_process').spawn)
 
 /**
  * Audit urls with Lighthouse CI in 3 stages:
@@ -39,7 +38,7 @@ async function main() {
   }
   if (input.configPath) collectArgs.push(`--config=${input.configPath}`)
 
-  const collectStatus = exec('collect', collectArgs)
+  const collectStatus = await exec('collect', collectArgs)
   if (collectStatus !== 0) throw new Error(`LHCI 'collect' has encountered a problem.`)
 
   core.endGroup() // Collecting
@@ -58,7 +57,7 @@ async function main() {
 
     // run lhci with problem matcher
     // https://github.com/actions/toolkit/blob/master/docs/commands.md#problem-matchers
-    const assertStatus = exec('assert', assertArgs)
+    const assertStatus = await exec('assert', assertArgs)
     isAssertFailed = assertStatus !== 0
     core.endGroup() // Asserting
   }
@@ -74,7 +73,7 @@ async function main() {
       uploadParams.push('--target=temporary-public-storage', '--uploadUrlMap=true')
     }
 
-    const uploadStatus = exec('upload', uploadParams)
+    const uploadStatus = await exec('upload', uploadParams)
     if (uploadStatus !== 0) throw new Error(`LHCI 'upload' failed to upload to LHCI server.`)
 
     core.endGroup() // Uploading
@@ -82,26 +81,20 @@ async function main() {
 
   /******************************* 4. NOTIFY ************************************/
   core.startGroup(`Notifying`)
+
   // upload artifacts as soon as collected
-  if (input.uploadArtifacts) await uploadArtifacts(resultsPath)
-
-  // annotate assertions
-  if (isAssertFailed) runProblemMatchers(resultsPath)
-
-  // send gtihub message
-  if (input.githubToken && isAssertFailed) {
-    await sendGithubComment({ githubToken: input.githubToken, resultsPath })
+  if (input.uploadArtifacts) {
+    await uploadArtifacts(resultsPath)
   }
 
-  // send slack notification only on error
+  // send slack notification on error
   if (input.slackWebhookUrl && isAssertFailed) {
     await sendSlackNotification({ slackWebhookUrl: input.slackWebhookUrl, resultsPath })
   }
 
-  // set failing exit code for the action
+  // set failing exit code for the action, and set annotations
   if (isAssertFailed) {
-    core.setFailed(`Assertions have failed.\nNew line starts.`)
-    core.setFailed(`And failed again.\nSome **bold** \`code\`\n.`)
+    await setFailedAnnotations(resultsPath)
   }
 
   core.endGroup() // Notifying
@@ -118,11 +111,11 @@ main()
  *
  * @param {'collect'|'assert'|'upload'} command
  * @param {string[]} [args]
- * @return {number}
+ * @return {Promise<number>}
  */
 
-function exec(command, args = []) {
+async function exec(command, args = []) {
   const combinedArgs = [lhciCliPath, command, ...args]
-  const { status = -1 } = childProcess.spawnSync(process.argv[0], combinedArgs, { stdio: 'inherit' })
+  const { status = -1 } = await spawn(process.argv[0], combinedArgs, { stdio: 'inherit' })
   return status || 0
 }

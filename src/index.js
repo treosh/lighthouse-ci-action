@@ -5,7 +5,6 @@ const childProcess = require('child_process')
 const lhciCliPath = require.resolve('@lhci/cli/src/cli')
 const { getInput, hasAssertConfig } = require('./config')
 const { uploadArtifacts } = require('./utils/artifacts')
-const { sendSlackNotification } = require('./utils/slack')
 const { setFailedAnnotations } = require('./utils/annotations')
 
 /**
@@ -13,7 +12,7 @@ const { setFailedAnnotations } = require('./utils/annotations')
  * 1. collect (using lhci collect or the custom PSI runner, store results as artifacts)
  * 2. assert (assert results using budgets or LHCI assertions)
  * 3. upload (upload results to LHCI Server, Temporary Public Storage)
- * 4. notify (create annotations and send slack notification)
+ * 4. notify (create annotations and upload artifacts)
  */
 
 async function main() {
@@ -33,9 +32,9 @@ async function main() {
     for (const url of input.urls) {
       collectArgs.push(`--url=${url}`)
     }
-  } else {
-    // LHCI will panic with a non-zero exit code...
   }
+  // else LHCI will panic with a non-zero exit code...
+
   if (input.configPath) collectArgs.push(`--config=${input.configPath}`)
 
   const collectStatus = runChildCommand('collect', collectArgs)
@@ -85,11 +84,6 @@ async function main() {
   // upload artifacts as soon as collected
   if (input.uploadArtifacts) {
     await uploadArtifacts(resultsPath)
-  }
-
-  // send slack notification on error
-  if (input.slackWebhookUrl && isAssertFailed) {
-    await sendSlackNotification({ slackWebhookUrl: input.slackWebhookUrl, resultsPath })
   }
 
   // set failing exit code for the action, and set annotations

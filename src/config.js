@@ -75,8 +75,7 @@ exports.getInput = function getInputArgs() {
     budgetPath: core.getInput('budgetPath') || '',
     configPath,
     // notify
-    uploadArtifacts: core.getInput('uploadArtifacts') === 'true' ? true : false,
-    slackWebhookUrl: core.getInput('slackWebhookUrl') || ''
+    uploadArtifacts: core.getInput('uploadArtifacts') === 'true' ? true : false
   }
 }
 

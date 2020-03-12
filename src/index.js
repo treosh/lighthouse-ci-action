@@ -100,7 +100,8 @@ async function main() {
 
   // set failing exit code for the action
   if (isAssertFailed) {
-    core.setFailed(`Assertions have failed.`)
+    core.setFailed(`Assertions have failed.\nNew line starts.`)
+    core.setFailed(`And failed again.\nSome **bold** \`code\`.`)
   }
 
   core.endGroup() // Notifying

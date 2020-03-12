@@ -23,8 +23,8 @@ exports.runProblemMatchers = function enableProblemMatcher(resultsPath) {
       const line = 1
       const severity = a.level === 'error' ? 'error' : 'warning'
       const message =
-        `${a.url} -> \`${a.auditId}\` ${a.level === 'error' ? 'failure' : 'warning'} for \`${a.name}\` assertion, ` +
-        `expected **${a.operator} ${a.expected}**, but found **${a.actual}**.`
+        `${a.url} – \`${a.auditId}\` ${a.level === 'error' ? 'failure' : 'warning'} for \`${a.name}\` assertion, ` +
+        `expected ${a.operator} ${a.expected}, but found ${a.actual}.`
       console.log(`${file}|${line}|${severity}|${message}`)
     })
   })

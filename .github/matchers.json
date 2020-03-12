@@ -4,9 +4,9 @@
       "owner": "lighthouse-ci-action",
       "pattern": [
         {
-          "regexp": "^(?:\\s+)?(.*)\\|(error|warning)\\|(.*)\\|(.*)$",
+          "regexp": "^\\s*(.*)\\|(\\d*)\\|(error|warning)\\|(.*)$",
           "file": 1,
-          "code": 2,
+          "line": 2,
           "severity": 3,
           "message": 4
         }

@@ -4,15 +4,15 @@
     "resourceSizes": [
       {
         "resourceType": "document",
-        "budget": 60
+        "budget": 20
       },
       {
         "resourceType": "script",
-        "budget": 100
+        "budget": 50
       },
       {
         "resourceType": "stylesheet",
-        "budget": 10
+        "budget": 20
       },
       {
         "resourceType": "total",

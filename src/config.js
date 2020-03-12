@@ -72,12 +72,11 @@ exports.getInput = function getInputArgs() {
     serverToken,
     temporaryPublicStorage,
     // assert
-    budgetPath: core.getInput('budgetPath') || null,
+    budgetPath: core.getInput('budgetPath') || '',
     configPath,
     // notify
     uploadArtifacts: core.getInput('uploadArtifacts') === 'true' ? true : false,
-    slackWebhookUrl: core.getInput('slackWebhookUrl') || null,
-    githubToken: core.getInput('githubToken') || null
+    slackWebhookUrl: core.getInput('slackWebhookUrl') || ''
   }
 }
 

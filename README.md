@@ -58,7 +58,6 @@ jobs:
             https://pr-$PR_NUMBER.staging-example.com/blog
           budgetPath: ./budgets.json
           temporaryPublicStorage: true
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
           slackWebhookUrl: ${{ secrets.SLACK_WEBHOOK_URL }}
         env:
           PR_NUMBER: ${{ github.event.pull_request.number }}
@@ -78,6 +77,14 @@ urls: |
   https://example.com/pricing
 ```
 
+#### `uploadArtifacts` (default: false)
+
+Upload Lighthouse results as [action artifacts](https://help.github.com/en/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts) to persist results. It's a shortuct to using [`actions/upload-artifact`](https://github.com/actions/upload-artifact).
+
+```yml
+uploadArtifacts: true
+```
+
 #### `temporaryPublicStorage` (default: false)
 
 Upload reports to the [_temporary public storage_](https://github.com/GoogleChrome/lighthouse-ci/blob/master/docs/getting-started.md#collect-lighthouse-results).
@@ -87,23 +94,6 @@ Upload reports to the [_temporary public storage_](https://github.com/GoogleChro
 
 ```yml
 temporaryPublicStorage: true
-```
-
-#### `githubToken`
-
-Token to allow runs Github check suite.
-By default for Action environment it's allowed via `${{ secrets.GITHUB_TOKEN }}` without any additional setup.
-
-```yml
-githubToken: ${{ secrets.GITHUB_TOKEN }}
-```
-
-#### `uploadArtifacts` (default: false)
-
-Upload Lighthouse results as [action artifacts](https://help.github.com/en/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts) to persist results. It's a shortuct to using [`actions/upload-artifact`](https://github.com/actions/upload-artifact).
-
-```yml
-uploadArtifacts: true
 ```
 
 ### slackWebhookUrl
@@ -239,8 +229,6 @@ jobs:
           urls: 'https://alekseykulikov.com/'
           budgetPath: '.github/lighthouse/budget.json'
           slackWebhookUrl: ${{ secrets.SLACK_WEBHOOK_URL }}
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
-          gistUploadToken: ${{ secrets.GIST_UPLOAD_TOKEN }}
 ```
 
 Make a `budget.json` file with [budgets syntax](https://web.dev/use-lighthouse-for-performance-budgets/).

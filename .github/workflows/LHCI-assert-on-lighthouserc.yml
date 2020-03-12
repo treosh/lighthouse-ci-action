@@ -12,3 +12,4 @@ jobs:
           urls: 'https://exterkamp.codes/'
           runs: 3
           configPath: '.github/lighthouse/lighthouserc-assertions.json'
+          uploadArtifacts: true

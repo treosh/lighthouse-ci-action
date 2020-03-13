@@ -67,14 +67,13 @@ exports.getInput = function getInputArgs() {
     urls,
     runs: parseInt(core.getInput('runs'), 10) || 1,
     staticDistDir,
+    // assert
+    budgetPath: core.getInput('budgetPath') || '',
+    configPath,
     // upload
     serverBaseUrl,
     serverToken,
     temporaryPublicStorage,
-    // assert
-    budgetPath: core.getInput('budgetPath') || '',
-    configPath,
-    // notify
     uploadArtifacts: core.getInput('uploadArtifacts') === 'true' ? true : false
   }
 }

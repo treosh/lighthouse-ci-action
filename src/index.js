@@ -12,7 +12,6 @@ const { setFailedAnnotations } = require('./utils/annotations')
  * 1. collect (using lhci collect or the custom PSI runner, store results as artifacts)
  * 2. assert (assert results using budgets or LHCI assertions)
  * 3. upload (upload results to LHCI Server, Temporary Public Storage)
- * 4. notify (create annotations and upload artifacts)
  */
 
 async function main() {
@@ -62,36 +61,34 @@ async function main() {
   }
 
   /******************************* 3. UPLOAD ************************************/
-  if (input.serverToken || input.temporaryPublicStorage) {
+  if (input.serverToken || input.temporaryPublicStorage || input.uploadArtifacts) {
     core.startGroup(`Uploading`)
-    const uploadParams = []
 
-    if (input.serverToken) {
-      uploadParams.push('--target=lhci', `--serverBaseUrl=${input.serverToken}`, `--token=${input.serverToken}`)
-    } else if (input.temporaryPublicStorage) {
-      uploadParams.push('--target=temporary-public-storage', '--uploadUrlMap=true')
+    if (input.serverToken || input.temporaryPublicStorage) {
+      const uploadParams = []
+
+      if (input.serverToken) {
+        uploadParams.push('--target=lhci', `--serverBaseUrl=${input.serverToken}`, `--token=${input.serverToken}`)
+      } else if (input.temporaryPublicStorage) {
+        uploadParams.push('--target=temporary-public-storage', '--uploadUrlMap=true')
+      }
+
+      const uploadStatus = runChildCommand('upload', uploadParams)
+      if (uploadStatus !== 0) throw new Error(`LHCI 'upload' failed to upload to LHCI server.`)
     }
 
-    const uploadStatus = runChildCommand('upload', uploadParams)
-    if (uploadStatus !== 0) throw new Error(`LHCI 'upload' failed to upload to LHCI server.`)
+    // upload artifacts as soon as collected
+    if (input.uploadArtifacts) {
+      await uploadArtifacts(resultsPath)
+    }
 
     core.endGroup() // Uploading
-  }
-
-  /******************************* 4. NOTIFY ************************************/
-  core.startGroup(`Notifying`)
-
-  // upload artifacts as soon as collected
-  if (input.uploadArtifacts) {
-    await uploadArtifacts(resultsPath)
   }
 
   // set failing exit code for the action, and set annotations
   if (isAssertFailed) {
     await setFailedAnnotations(resultsPath)
   }
-
-  core.endGroup() // Notifying
 }
 
 // run `main()`

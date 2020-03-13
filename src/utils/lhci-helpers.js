@@ -19,7 +19,7 @@ exports.getLinksByUrl = async function getLinksByUrl(resultsPath) {
  * Get assertions grouped by url and sorted with error first.
  *
  * @typedef {{ name: string, expected: number, actual: number, values: number[], operator: string, passed: boolean,
- *             auditId: string, level: 'warn' | 'error', url: string, auditTitle: string, auditDocumentationLink: string }} LHCIAssertion
+ *             auditId: string, auditProperty: string, level: 'warn' | 'error', url: string, auditTitle: string, auditDocumentationLink: string }} LHCIAssertion
  *
  * @param {string} resultsPath
  */

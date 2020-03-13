@@ -25,10 +25,12 @@ exports.setFailedAnnotations = async function setFailedAnnotations(resultsPath) 
   Object.entries(assertionsByUrl).forEach(([url, assertions]) => {
     const link = linksByUrl[url]
     const assertionsText = assertions.map(a => {
-      const emoji = a.level === 'error' ? '❌' : '⚠️'
+      const emoji = a.level === 'error' ? '🔴' : '🟡'
       return (
-        `${emoji} \`${a.auditId}\` ${a.level === 'error' ? 'failure' : 'warning'} for \`${a.name}\` assertion` +
-        ` (${a.auditTitle}: ${a.auditDocumentationLink})\n` +
+        `${emoji} \`${a.auditId}.${a.auditProperty}\` ${a.level === 'error' ? 'failure' : 'warning'} for \`${
+          a.name
+        }\` assertion` +
+        `${a.auditTitle ? ` (${a.auditTitle}: ${a.auditDocumentationLink})` : ''}\n` +
         `Expected ${a.operator} ${a.expected}, but found ${a.actual}`
       )
     })

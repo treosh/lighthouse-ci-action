@@ -24,10 +24,10 @@ INPUT_URLS="https://example.com/
  https://example.com/blog" node src/index.js
 
 # run with performance budget
-INPUT_URLS="https://treo.sh/" INPUT_BUDGETPATH=".github/lighthouse/budget.json" node src/index.js
+INPUT_URLS="https://treo.sh/" INPUT_BUDGETPATH=".github/lighthouse/budget.json" INPUT_TEMPORARYPUBLICSTORAGE=true node src/index.js
 
 # fail with assertions, custom config, or chrome flags
-INPUT_URLS="https://example.com/" INPUT_CONFIGPATH=".github/lighthouse/lighthouserc-assertions.json" node src/index.js
+INPUT_URLS="https://exterkamp.codes/" INPUT_RUNS=3 INPUT_CONFIGPATH=".github/lighthouse/lighthouserc-assertions.json" INPUT_UPLOADARTIFACTS=true node src/index.js
 
 # debug custom headers
 python script/simple-server.py # start basic server in a separate tab
@@ -40,6 +40,6 @@ PAGE="src/" INPUT_URLS="http://localhost:3000/\$PAGE" node src/index.js
 # run with a static dist dir
 INPUT_CONFIGPATH=".github/lighthouse/lighthouserc-static-dist-dir.yml" node src/index.js
 
-# test annotations (requires .lighthouseci folder after manual run)
+# test annotations (requires .lighthouseci folder after manual run with some failed audits)
 node -e "require('./src/utils/annotations').setFailedAnnotations('.lighthouseci')"
 ```

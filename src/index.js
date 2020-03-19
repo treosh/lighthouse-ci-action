@@ -42,7 +42,7 @@ async function main() {
   core.endGroup() // Collecting
 
   /******************************* 2. ASSERT ************************************/
-  let isAssertFailed = false
+  let hasAssertFailed = false
   if (input.budgetPath || hasAssertConfig(input.configPath)) {
     core.startGroup(`Asserting`)
     const assertArgs = []
@@ -56,7 +56,7 @@ async function main() {
     // run lhci with problem matcher
     // https://github.com/actions/toolkit/blob/master/docs/commands.md#problem-matchers
     const assertStatus = runChildCommand('assert', assertArgs)
-    isAssertFailed = assertStatus !== 0
+    hasAssertFailed = assertStatus !== 0
     core.endGroup() // Asserting
   }
 
@@ -91,7 +91,7 @@ async function main() {
   }
 
   // set failing exit code for the action, and set annotations
-  if (isAssertFailed) {
+  if (hasAssertFailed) {
     await setFailedAnnotations(resultsPath)
   }
 }

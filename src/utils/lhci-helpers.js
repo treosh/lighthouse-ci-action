@@ -4,7 +4,8 @@ const fs = require('fs').promises
 const { existsSync } = require('fs')
 
 /**
- * Get links by url.
+ * Reads links.json file as LHCI upload artifacts
+ * and returns the content of that file.
  *
  * @param {string} resultsPath
  */

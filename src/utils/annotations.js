@@ -4,7 +4,7 @@ const { getLinksByUrl, getAssertionsByUrl } = require('./lhci-helpers')
 /**
  * Set annotations for each failed URL.
  * 
- * Example text output (no markdown support for now):
+ * Example text output (no markdown support, https://{link to gh-issue where this is being fixed/issue in this repo}):
 
 2 results for https://treo.sh/
 Report: https://storage.googleapis.com/lighthouse-infrastructure.appspot.com/reports/1583834596726-91444.report.html

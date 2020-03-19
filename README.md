@@ -77,7 +77,7 @@ urls: |
 
 #### `uploadArtifacts` (default: false)
 
-Upload Lighthouse results as [action artifacts](https://help.github.com/en/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts) to persist results. It's a shortuct to using [`actions/upload-artifact`](https://github.com/actions/upload-artifact).
+Upload Lighthouse results as [action artifacts](https://help.github.com/en/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts) to persist results. Equivalent to using [`actions/upload-artifact`](https://github.com/actions/upload-artifact) to save the artifacts with additional action steps.
 
 ```yml
 uploadArtifacts: true

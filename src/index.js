@@ -68,7 +68,7 @@ async function main() {
       const uploadParams = []
 
       if (input.serverToken) {
-        uploadParams.push('--target=lhci', `--serverBaseUrl=${input.serverToken}`, `--token=${input.serverToken}`)
+        uploadParams.push('--target=lhci', `--serverBaseUrl=${input.serverBaseUrl}`, `--token=${input.serverToken}`)
       } else if (input.temporaryPublicStorage) {
         uploadParams.push('--target=temporary-public-storage', '--uploadUrlMap=true')
       }

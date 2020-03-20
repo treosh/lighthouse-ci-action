@@ -64,6 +64,11 @@ async function main() {
   if (input.serverToken || input.temporaryPublicStorage || input.uploadArtifacts) {
     core.startGroup(`Uploading`)
 
+    // upload artifacts as soon as collected
+    if (input.uploadArtifacts) {
+      await uploadArtifacts(resultsPath)
+    }
+
     if (input.serverToken || input.temporaryPublicStorage) {
       const uploadParams = []
 
@@ -75,16 +80,11 @@ async function main() {
           '--ignoreDuplicateBuildFailure' // ignore failure on the same commit rerun
         )
       } else if (input.temporaryPublicStorage) {
-        uploadParams.push('--target=temporary-public-storage', '--uploadUrlMap=true')
+        uploadParams.push('--target=temporary-public-storage')
       }
 
       const uploadStatus = runChildCommand('upload', uploadParams)
       if (uploadStatus !== 0) throw new Error(`LHCI 'upload' failed to upload to LHCI server.`)
-    }
-
-    // upload artifacts as soon as collected
-    if (input.uploadArtifacts) {
-      await uploadArtifacts(resultsPath)
     }
 
     core.endGroup() // Uploading

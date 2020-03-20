@@ -8,7 +8,7 @@ node_modules/**/*.d.ts
 
 # dev dependencies
 node_modules/.yarn-integrity
-node_modules/.bin
+.bin/
 node_modules/@types/
 node_modules/prettier/
 node_modules/typescript/

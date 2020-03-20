@@ -34,30 +34,33 @@
   dependencies:
     tunnel "0.0.6"
 
-"@lhci/cli@0.3.11":
-  version "0.3.11"
-  resolved "https://registry.yarnpkg.com/@lhci/cli/-/cli-0.3.11.tgz#82071ea13fec14aacbdc9594180b659594cd9913"
-  integrity sha512-BSrNJNS2Wkca4WE1DpgzuVFraJQrFDASbg9tSYJl47xSucrHSdaoBaKk1rLvEcWfLEA/anhnYM/adstgZc9rkQ==
+"@lhci/cli@0.3.12":
+  version "0.3.12"
+  resolved "https://registry.yarnpkg.com/@lhci/cli/-/cli-0.3.12.tgz#9dad46504df5e83d2f86c1376aef355abcd7e04f"
+  integrity sha512-OBp4YNPZehqVesr9Mh7uSGTEDH+Wjw5Q9/CT+No8cb5aHJZfm6NngFrZVVgmhNvC/S0DC3FPq1LOBjIsBhF9Ig==
   dependencies:
-    "@lhci/utils" "0.3.11"
+    "@lhci/utils" "0.3.12"
     chrome-launcher "^0.12.0"
     compression "^1.7.4"
     express "^4.17.1"
     inquirer "^6.3.1"
+    isomorphic-fetch "^2.2.1"
     lighthouse "5.5.0"
+    lighthouse-logger "1.2.0"
     open "^6.4.0"
     tmp "^0.1.0"
     update-notifier "^3.0.1"
     yargs "^12.0.5"
     yargs-parser "^11.1.1"
 
-"@lhci/utils@0.3.11", "@lhci/utils@^0.3.11":
-  version "0.3.11"
-  resolved "https://registry.yarnpkg.com/@lhci/utils/-/utils-0.3.11.tgz#cc2983e87af1c19e20f9325990637a40f72cbf50"
-  integrity sha512-tyVywm0SmR6Zr7qw3wrHVNRgksWtE4YnOhHT8cK1wVnHcY48Xob/3D3wL8r0gdvBqjDD160vtwREcptskFP/Sg==
+"@lhci/utils@0.3.12", "@lhci/utils@^0.3.12":
+  version "0.3.12"
+  resolved "https://registry.yarnpkg.com/@lhci/utils/-/utils-0.3.12.tgz#f5b1047108f9d862904f16c882b6d6cc4d71b648"
+  integrity sha512-e6Qo6pX2eLU8Cg0HA0WQNHCFZmzsLLFe5S7w4BMZnOFlzptLB8+aPOJqBEpmGqLhufLjXJY+ubc9mLvpLLM4NA==
   dependencies:
     isomorphic-fetch "^2.2.1"
     js-yaml "^3.13.1"
+    lighthouse "5.5.0"
     tree-kill "^1.2.1"
 
 "@octokit/auth-token@^2.4.0":
@@ -1328,7 +1331,7 @@ lcid@^2.0.0:
   dependencies:
     invert-kv "^2.0.0"
 
-lighthouse-logger@^1.0.0, lighthouse-logger@^1.2.0:
+lighthouse-logger@1.2.0, lighthouse-logger@^1.0.0, lighthouse-logger@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/lighthouse-logger/-/lighthouse-logger-1.2.0.tgz#b76d56935e9c137e86a04741f6bb9b2776e886ca"
   dependencies:

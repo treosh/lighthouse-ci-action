@@ -1,0 +1,13 @@
+{
+  "ci": {
+    "assert": {
+      "preset": "lighthouse:recommended"
+    },
+    "collect": {
+      "puppeteerScript": ".github/lighthouse/puppeteer-script.js",
+      "settings": {
+        "disableStorageReset": true
+      }
+    }
+  }
+}

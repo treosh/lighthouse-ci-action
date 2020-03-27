@@ -45,9 +45,6 @@ exports.getInput = function getInputArgs() {
     }
   }
 
-  const puppeteerScript = core.getInput('puppeteerScript');
-  const disableStorageReset = core.getInput('disableStorageReset') === 'true' ? true : false
-
   // Get and interpolate URLs
   urls = urls || interpolateProcessIntoUrls(getList('urls'))
 
@@ -70,8 +67,6 @@ exports.getInput = function getInputArgs() {
     urls,
     runs: parseInt(core.getInput('runs'), 10) || 1,
     staticDistDir,
-    puppeteerScript,
-    disableStorageReset,
     // assert
     budgetPath: core.getInput('budgetPath') || '',
     configPath,

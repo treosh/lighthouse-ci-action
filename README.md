@@ -378,19 +378,6 @@ serverToken: ${{ secrets.LHCI_SERVER_TOKEN }}
 
 > **Note**: Use [Github secrets](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets#creating-encrypted-secrets) to keep your token hidden!
 
-
-#### `puppeteerScript`
-
-Set a path to custom [puppeteer-script](https://github.com/GoogleChrome/lighthouse-ci/blob/master/docs/cli.md#using-puppeteer-scripts) which allows you to set script, which will be evaluated before data collection. Usefull for authorization handling.
-
-```yml
-puppeteerScript: .github/lighthouse/puppeteer-script.js
-```
-
-#### `disableStorageReset`
-
-Disable clearing browser cache and other storage APIs before a run. Usefull, when you are using `puppeteerScript` and credentials are being stored in localStorage.
-
 ---
 
 ## Credits

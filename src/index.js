@@ -36,10 +36,6 @@ async function main() {
 
   if (input.configPath) collectArgs.push(`--config=${input.configPath}`)
 
-  if (input.puppeteerScript) collectArgs.push(`--puppeteerScript=${input.puppeteerScript}`)
-
-  if (input.disableStorageReset) collectArgs.push('--settings.disableStorageReset')
-
   const collectStatus = runChildCommand('collect', collectArgs)
   if (collectStatus !== 0) throw new Error(`LHCI 'collect' has encountered a problem.`)
 

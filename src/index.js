@@ -36,6 +36,10 @@ async function main() {
 
   if (input.configPath) collectArgs.push(`--config=${input.configPath}`)
 
+  if (input.puppeteerScript) collectArgs.push(`--puppeteerScript=${input.puppeteerScript}`)
+
+  if (input.disableStorageReset) collectArgs.push('--settings.disableStorageReset')
+
   const collectStatus = runChildCommand('collect', collectArgs)
   if (collectStatus !== 0) throw new Error(`LHCI 'collect' has encountered a problem.`)
 
@@ -105,6 +109,19 @@ main()
 /**
  * Run a child command synchronously.
  *
+ * @param {string[]} commandWithArgs
+ * @return {number}
+ */
+function runCommand(commandWithArgs) {
+  const { status = -1 } = childProcess.spawnSync(process.argv[0], commandWithArgs, {
+    stdio: 'inherit'
+  })
+  return status || 0
+}
+
+/**
+ * Run a child command synchronously.
+ *
  * @param {'collect'|'assert'|'upload'} command
  * @param {string[]} [args]
  * @return {number}
@@ -112,8 +129,5 @@ main()
 
 function runChildCommand(command, args = []) {
   const combinedArgs = [lhciCliPath, command, ...args]
-  const { status = -1 } = childProcess.spawnSync(process.argv[0], combinedArgs, {
-    stdio: 'inherit'
-  })
-  return status || 0
+  return runCommand(combinedArgs)
 }

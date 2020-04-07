@@ -55,13 +55,6 @@ exports.getInput = function getInputArgs() {
     process.exit(1)
   }
 
-  // Warn if specifying both
-  if (urls.length > 0 && staticDistDir) {
-    core.warning(
-      `Setting both 'url' and 'static_dist_dir' will ignore urls in 'url' since 'static_dist_dir' has higher priority`
-    )
-  }
-
   return {
     // collect
     urls,

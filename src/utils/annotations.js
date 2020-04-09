@@ -25,7 +25,7 @@ exports.setFailedAnnotations = async function setFailedAnnotations(resultsPath) 
   Object.entries(assertionsByUrl).forEach(([url, assertions]) => {
     const link = linksByUrl[url]
     const assertionsText = assertions.map(a => {
-      const emoji = a.level === 'error' ? '🔴' : '🟡'
+      const emoji = a.level === 'error' ? '❌' : '⚠️'
       return (
         `${emoji} \`${a.auditId}.${a.auditProperty}\` ${a.level === 'error' ? 'failure' : 'warning'} for \`${
           a.name

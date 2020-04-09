@@ -5,7 +5,7 @@ jobs:
   static-dist-dir:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - name: Run Lighthouse against a static dist dir
         uses: ./
         with:

@@ -214,8 +214,8 @@ module.exports = {
   extends: 'lighthouse:default',
   settings: {
     emulatedFormFactor: 'desktop',
-    audits: [{ path: 'metrics/first-contentful-paint', options: { scorePODR: 800, scoreMedian: 1600 } }]
-  }
+    audits: [{ path: 'metrics/first-contentful-paint', options: { scorePODR: 800, scoreMedian: 1600 } }],
+  },
 }
 ```
 
@@ -327,7 +327,7 @@ uploadArtifacts: true
 Upload reports to the [_temporary public storage_](https://github.com/GoogleChrome/lighthouse-ci/blob/master/docs/getting-started.md#collect-lighthouse-results).
 
 > **Note**: As the name implies, this is temporary and public storage. If you're uncomfortable with the idea of your Lighthouse reports being stored
-> on a public URL on Google Cloud, use a private [LHCI server](#serverBaseUrl) or [Gist](#gistUploadToken). Reports are automatically deleted 7 days after upload.
+> on a public URL on Google Cloud, use a private [LHCI server](#serverBaseUrl). Reports are automatically deleted 7 days after upload.
 
 ```yml
 temporaryPublicStorage: true

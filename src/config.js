@@ -67,7 +67,7 @@ exports.getInput = function getInputArgs() {
     serverBaseUrl,
     serverToken,
     temporaryPublicStorage,
-    uploadArtifacts: core.getInput('uploadArtifacts') === 'true' ? true : false
+    uploadArtifacts: core.getInput('uploadArtifacts') === 'true' ? true : false,
   }
 }
 
@@ -92,7 +92,7 @@ exports.hasAssertConfig = function hasAssertConfig(configPath) {
 function getList(arg, separator = '\n') {
   const input = core.getInput(arg)
   if (!input) return []
-  return input.split(separator).map(url => url.trim())
+  return input.split(separator).map((url) => url.trim())
 }
 
 /**
@@ -103,9 +103,9 @@ function getList(arg, separator = '\n') {
  */
 
 function interpolateProcessIntoUrls(urls) {
-  return urls.map(url => {
+  return urls.map((url) => {
     if (!url.includes('$')) return url
-    Object.keys(process.env).forEach(key => {
+    Object.keys(process.env).forEach((key) => {
       if (url.includes(`${key}`)) {
         url = url.replace(`$${key}`, `${process.env[key]}`)
       }

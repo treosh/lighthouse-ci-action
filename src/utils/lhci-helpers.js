@@ -28,7 +28,7 @@ exports.getLinksByUrl = async function getLinksByUrl(resultsPath) {
 exports.getAssertionsByUrl = async function getAssertionsByUrl(resultsPath) {
   /** @type {LHCIAssertion[]} **/
   const assertionResults = JSON.parse(await fs.readFile(join(resultsPath, 'assertion-results.json'), 'utf8'))
-  return mapValues(groupBy(assertionResults, 'url'), assertions => {
-    return orderBy(assertions, a => (a.level === 'error' ? 0 : 1) + a.auditId)
+  return mapValues(groupBy(assertionResults, 'url'), (assertions) => {
+    return orderBy(assertions, (a) => (a.level === 'error' ? 0 : 1) + a.auditId)
   })
 }

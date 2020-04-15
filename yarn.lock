@@ -2,13 +2,13 @@
 # yarn lockfile v1
 
 
-"@actions/artifact@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@actions/artifact/-/artifact-0.2.0.tgz#e389e95751ef879b5756c7a0853e54a0cd6d78a2"
-  integrity sha512-JR+Y8u4xLR16Oi1qQy4nAdEjfgdZL7sgtMO2Ni020dAV0ji7E71NibCpp3Pfm5GXzvdDQ0FZ6XwUoyS1RPXL9g==
+"@actions/artifact@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@actions/artifact/-/artifact-0.3.0.tgz#a324d0e1e0b86f5c4354241720b93d1dddb1209b"
+  integrity sha512-t35sO6q2nVEb0Y/4GOKK7XlBo1qqnKlapMry46OFjFelsGmAgHMGMBq16s4Q0XCJrvToAhiRUcf3wZ8xyByDuw==
   dependencies:
     "@actions/core" "^1.2.1"
-    "@actions/http-client" "^1.0.6"
+    "@actions/http-client" "^1.0.7"
     "@types/tmp" "^0.1.0"
     tmp "^0.1.0"
     tmp-promise "^2.0.2"
@@ -27,10 +27,17 @@
     "@octokit/graphql" "^4.3.1"
     "@octokit/rest" "^16.43.1"
 
-"@actions/http-client@^1.0.3", "@actions/http-client@^1.0.6":
+"@actions/http-client@^1.0.3":
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/@actions/http-client/-/http-client-1.0.6.tgz#6f9267ca50e1d74d8581f4a894a943cd4c97b49a"
   integrity sha512-LGmio4w98UyGX33b/W6V6Nx/sQHRXZ859YlMkn36wPsXPB82u8xTVlA/Dq2DXrm6lEq9RVmisRJa1c+HETAIJA==
+  dependencies:
+    tunnel "0.0.6"
+
+"@actions/http-client@^1.0.7":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@actions/http-client/-/http-client-1.0.7.tgz#157515a4d7f92aac5b27ee616600e3f8a50870c2"
+  integrity sha512-PY3ys/XH5WMekkHyZhYSa/scYvlE5T/TV/T++vABHuY5ZRgtiBZkn2L2tV5Pv/xDCl59lSZb9WwRuWExDyAsSg==
   dependencies:
     tunnel "0.0.6"
 
@@ -1739,9 +1746,10 @@ prepend-http@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/prepend-http/-/prepend-http-2.0.0.tgz#e92434bfa5ea8c19f41cdfd401d741a3c819d897"
 
-prettier@^1.19.1:
-  version "1.19.1"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.19.1.tgz#f7d7f5ff8a9cd872a7be4ca142095956a60797cb"
+prettier@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.0.4.tgz#2d1bae173e355996ee355ec9830a7a1ee05457ef"
+  integrity sha512-SVJIQ51spzFDvh4fIbCLvciiDMCrRhlN3mbZvv/+ycjvmF5E73bKdGfU8QDLNmjYJf+lsGnDBC4UUnvTe5OO0w==
 
 proxy-addr@~2.0.5:
   version "2.0.5"

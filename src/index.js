@@ -99,7 +99,7 @@ async function main() {
 // run `main()`
 
 main()
-  .catch(err => core.setFailed(err.message))
+  .catch((err) => core.setFailed(err.message))
   .then(() => core.debug(`done in ${process.uptime()}s`))
 
 /**
@@ -113,7 +113,7 @@ main()
 function runChildCommand(command, args = []) {
   const combinedArgs = [lhciCliPath, command, ...args]
   const { status = -1 } = childProcess.spawnSync(process.argv[0], combinedArgs, {
-    stdio: 'inherit'
+    stdio: 'inherit',
   })
   return status || 0
 }

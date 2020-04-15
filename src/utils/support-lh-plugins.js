@@ -8,6 +8,6 @@ const nodePathDelim = require('is-windows')() ? ';' : ':'
 const nodePathParts = [
   ...(process.env.NODE_PATH || '').split(nodePathDelim),
   `${__dirname}/../node_modules`,
-  `${process.env.GITHUB_WORKSPACE}/node_modules`
+  `${process.env.GITHUB_WORKSPACE}/node_modules`,
 ]
 process.env.NODE_PATH = nodePathParts.join(nodePathDelim)

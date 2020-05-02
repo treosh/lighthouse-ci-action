@@ -57,6 +57,7 @@ async function main() {
     // https://github.com/actions/toolkit/blob/master/docs/commands.md#problem-matchers
     const assertStatus = runChildCommand('assert', assertArgs)
     hasAssertFailed = assertStatus !== 0
+    console.log(assertStatus);
     core.endGroup() // Asserting
   }
 

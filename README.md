@@ -356,7 +356,7 @@ runs: 3
 
 #### `configPath`
 
-Set a path to a custom [lighthouserc file](https://github.com/GoogleChrome/lighthouse-ci/blob/master/docs/cli.md#configuration) for full control of the Lighthouse environment and assertions.
+Set a path to a custom [lighthouserc file](https://github.com/GoogleChrome/lighthouse-ci/blob/master/docs/configuration.md) for full control of the Lighthouse environment and assertions.
 
 Use `lighthouserc` to configure the collection of data (via Lighthouse config and Chrome Flags), and CI assertions (via LHCI assertions).
 

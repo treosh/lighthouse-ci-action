@@ -1,5 +1,5 @@
 /**
- * @license Copyright 2016 Google Inc. All Rights Reserved.
+ * @license Copyright 2016 The Lighthouse Authors. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
  */
@@ -95,19 +95,19 @@ class ServiceWorker extends Audit {
   /**
    * Returns a failure message if there is no start_url or if the start_url isn't
    * contolled by the scopeUrl.
-   * @param {LH.Artifacts['WebAppManifest']} manifest
+   * @param {LH.Artifacts['WebAppManifest']} WebAppManifest
    * @param {string} scopeUrl
    * @return {string|undefined}
    */
-  static checkStartUrl(manifest, scopeUrl) {
-    if (!manifest) {
+  static checkStartUrl(WebAppManifest, scopeUrl) {
+    if (!WebAppManifest) {
       return str_(UIStrings.explanationNoManifest);
     }
-    if (!manifest.value) {
+    if (!WebAppManifest.value) {
       return str_(UIStrings.explanationBadManifest);
     }
 
-    const startUrl = manifest.value.start_url.value;
+    const startUrl = WebAppManifest.value.start_url.value;
     if (!startUrl.startsWith(scopeUrl)) {
       return str_(UIStrings.explanationBadStartUrl, {startUrl, scopeUrl});
     }

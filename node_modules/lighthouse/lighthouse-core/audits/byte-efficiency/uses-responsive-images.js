@@ -1,5 +1,5 @@
 /**
- * @license Copyright 2017 Google Inc. All Rights Reserved.
+ * @license Copyright 2017 The Lighthouse Authors. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
  */
@@ -48,27 +48,41 @@ class UsesResponsiveImages extends ByteEfficiencyAudit {
 
   /**
    * @param {LH.Artifacts.ImageElement} image
-   * @param {number} DPR devicePixelRatio
+   * @param {LH.Artifacts.ViewportDimensions} ViewportDimensions
    * @return {null|Error|LH.Audit.ByteEfficiencyItem};
    */
-  static computeWaste(image, DPR) {
+  static computeWaste(image, ViewportDimensions) {
     // Nothing can be done without network info.
     if (!image.resourceSize) {
       return null;
     }
 
+    let usedPixels = image.displayedWidth * image.displayedHeight *
+      Math.pow(ViewportDimensions.devicePixelRatio, 2);
+    // If the image has 0 dimensions, it's probably hidden/offscreen, so we'll be as forgiving as possible
+    // and assume it's the size of two viewports. See https://github.com/GoogleChrome/lighthouse/issues/7236
+    if (!usedPixels) {
+      const viewportWidth = ViewportDimensions.innerWidth;
+      const viewportHeight = ViewportDimensions.innerHeight * 2;
+      const imageAspectRatio = image.naturalWidth / image.naturalHeight;
+      const viewportAspectRatio = viewportWidth / viewportHeight;
+      let usedViewportWidth = viewportWidth;
+      let usedViewportHeight = viewportHeight;
+      if (imageAspectRatio > viewportAspectRatio) {
+        usedViewportHeight = viewportWidth / imageAspectRatio;
+      } else {
+        usedViewportWidth = viewportHeight * imageAspectRatio;
+      }
+
+      usedPixels = usedViewportWidth * usedViewportHeight *
+        Math.pow(ViewportDimensions.devicePixelRatio, 2);
+    }
+
     const url = URL.elideDataURI(image.src);
     const actualPixels = image.naturalWidth * image.naturalHeight;
-    const usedPixels = image.displayedWidth * image.displayedHeight * Math.pow(DPR, 2);
     const wastedRatio = 1 - (usedPixels / actualPixels);
     const totalBytes = image.resourceSize;
     const wastedBytes = Math.round(totalBytes * wastedRatio);
-
-    // If the image has 0 dimensions, it's probably hidden/offscreen, so let the offscreen-images
-    // audit handle it instead.
-    if (!usedPixels) {
-      return null;
-    }
 
     if (!Number.isFinite(wastedRatio)) {
       return new Error(`Invalid image sizing information ${url}`);
@@ -88,7 +102,7 @@ class UsesResponsiveImages extends ByteEfficiencyAudit {
    */
   static audit_(artifacts) {
     const images = artifacts.ImageElements;
-    const DPR = artifacts.ViewportDimensions.devicePixelRatio;
+    const ViewportDimensions = artifacts.ViewportDimensions;
 
     /** @type {string[]} */
     const warnings = [];
@@ -103,7 +117,7 @@ class UsesResponsiveImages extends ByteEfficiencyAudit {
         continue;
       }
 
-      const processed = UsesResponsiveImages.computeWaste(image, DPR);
+      const processed = UsesResponsiveImages.computeWaste(image, ViewportDimensions);
       if (!processed) continue;
 
       if (processed instanceof Error) {
@@ -126,7 +140,7 @@ class UsesResponsiveImages extends ByteEfficiencyAudit {
     const headings = [
       {key: 'url', valueType: 'thumbnail', label: ''},
       {key: 'url', valueType: 'url', label: str_(i18n.UIStrings.columnURL)},
-      {key: 'totalBytes', valueType: 'bytes', label: str_(i18n.UIStrings.columnSize)},
+      {key: 'totalBytes', valueType: 'bytes', label: str_(i18n.UIStrings.columnResourceSize)},
       {key: 'wastedBytes', valueType: 'bytes', label: str_(i18n.UIStrings.columnWastedBytes)},
     ];
 

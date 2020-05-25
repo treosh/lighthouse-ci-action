@@ -1,5 +1,5 @@
 /**
- * @license Copyright 2019 Google Inc. All Rights Reserved.
+ * @license Copyright 2019 The Lighthouse Authors. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
  */
@@ -37,6 +37,12 @@ function collectAnchorElements() {
   return anchorElements.map(node => {
     // @ts-ignore - put into scope via stringification
     const outerHTML = getOuterHTMLSnippet(node); // eslint-disable-line no-undef
+    // @ts-ignore - put into scope via stringification
+    const nodePath = getNodePath(node); // eslint-disable-line no-undef
+    // @ts-ignore - getNodeSelector put into scope via stringification
+    const selector = getNodeSelector(node); // eslint-disable-line no-undef
+    // @ts-ignore - getNodeLabel put into scope via stringification
+    const nodeLabel = getNodeLabel(node); // eslint-disable-line no-undef
 
     if (node instanceof HTMLAnchorElement) {
       return {
@@ -44,6 +50,9 @@ function collectAnchorElements() {
         text: node.innerText, // we don't want to return hidden text, so use innerText
         rel: node.rel,
         target: node.target,
+        devtoolsNodePath: nodePath,
+        selector,
+        nodeLabel,
         outerHTML,
       };
     }
@@ -53,6 +62,9 @@ function collectAnchorElements() {
       text: node.textContent || '',
       rel: '',
       target: node.target.baseVal || '',
+      devtoolsNodePath: nodePath,
+      selector,
+      nodeLabel,
       outerHTML,
     };
   });
@@ -68,6 +80,9 @@ class AnchorElements extends Gatherer {
     const expression = `(() => {
       ${pageFunctions.getOuterHTMLSnippetString};
       ${pageFunctions.getElementsInDocumentString};
+      ${pageFunctions.getNodePathString};
+      ${pageFunctions.getNodeSelectorString};
+      ${pageFunctions.getNodeLabelString};
 
       return (${collectAnchorElements})();
     })()`;

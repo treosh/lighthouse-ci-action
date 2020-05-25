@@ -1,6 +1,7 @@
 const core = require('@actions/core')
 const { loadRcFile } = require('@lhci/utils/src/lighthouserc')
 const { get } = require('lodash')
+const { resolve } = require('path')
 
 exports.getInput = function getInputArgs() {
   // fallback to upload.serverBaseUrl + upload.token for previous API support
@@ -22,9 +23,10 @@ exports.getInput = function getInputArgs() {
 
   let staticDistDir = null
   let urls = null
+  let numberOfRuns = null
 
   // Inspect lighthouserc file for malformations
-  const configPath = core.getInput('configPath')
+  const configPath = core.getInput('configPath') ? resolve(core.getInput('configPath')) : null
   if (configPath) {
     const rcFileObj = loadRcFile(configPath)
     if (!rcFileObj.ci) {
@@ -42,6 +44,10 @@ exports.getInput = function getInputArgs() {
       if (rcFileObj.ci.collect.staticDistDir) {
         staticDistDir = rcFileObj.ci.collect.staticDistDir
       }
+
+      if (rcFileObj.ci.collect.numberOfRuns) {
+        numberOfRuns = rcFileObj.ci.collect.numberOfRuns
+      }
     }
   }
 
@@ -58,7 +64,7 @@ exports.getInput = function getInputArgs() {
   return {
     // collect
     urls,
-    runs: parseInt(core.getInput('runs'), 10) || 1,
+    runs: core.getInput('runs') ? parseInt(core.getInput('runs'), 10) : numberOfRuns || 1, // `runs`, check config, and fallback to 1
     staticDistDir,
     // assert
     budgetPath: core.getInput('budgetPath') || '',
@@ -74,7 +80,7 @@ exports.getInput = function getInputArgs() {
 /**
  * Check if the file under `configPath` has `assert` params set.
  *
- * @param {string} configPath
+ * @param {string | null} configPath
  */
 
 exports.hasAssertConfig = function hasAssertConfig(configPath) {

@@ -1,5 +1,5 @@
 /**
- * @license Copyright 2019 Google Inc. All Rights Reserved.
+ * @license Copyright 2019 The Lighthouse Authors. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
  */
@@ -138,8 +138,16 @@ function requireAudits(audits, configDir) {
       const coreAudit = coreList.find(a => a === auditPathJs);
       let requirePath = `../audits/${audit.path}`;
       if (!coreAudit) {
-        // Otherwise, attempt to find it elsewhere. This throws if not found.
-        requirePath = resolveModule(audit.path, configDir, 'audit');
+        // TODO: refactor and delete `global.isDevtools`.
+        if (global.isDevtools) {
+          // This is for pubads bundling.
+          requirePath = audit.path;
+        } else {
+          // Otherwise, attempt to find it elsewhere. This throws if not found.
+          const absolutePath = resolveModule(audit.path, configDir, 'audit');
+          // Use a relative path so bundler can easily expose it.
+          requirePath = path.relative(__dirname, absolutePath);
+        }
       }
       implementation = /** @type {typeof Audit} */ (require(requirePath));
     }
@@ -183,13 +191,14 @@ function resolveModule(moduleIdentifier, configDir, category) {
     return require.resolve(cwdPath);
   } catch (e) {}
 
-  const errorString =
-    'Unable to locate ' +
-    (category ? `${category}: ` : '') +
-    `${moduleIdentifier} (tried to require() from '${__dirname}' and load from '${cwdPath}'`;
+  const errorString = 'Unable to locate ' + (category ? `${category}: ` : '') +
+    `\`${moduleIdentifier}\`.
+     Tried to require() from these locations:
+       ${__dirname}
+       ${cwdPath}`;
 
   if (!configDir) {
-    throw new Error(errorString + ')');
+    throw new Error(errorString);
   }
 
   // Finally, try looking up relative to the config file path. Just like the
@@ -200,7 +209,8 @@ function resolveModule(moduleIdentifier, configDir, category) {
     return require.resolve(relativePath);
   } catch (requireError) {}
 
-  throw new Error(errorString + ` and '${relativePath}')`);
+  throw new Error(errorString + `
+       ${relativePath}`);
 }
 
 module.exports = {

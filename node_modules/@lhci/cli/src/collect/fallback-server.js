@@ -6,9 +6,18 @@
 'use strict';
 
 const fs = require('fs');
+const path = require('path');
 const express = require('express');
 const compression = require('compression');
 const createHttpServer = require('http').createServer;
+
+const IGNORED_FOLDERS_FOR_AUTOFIND = new Set([
+  'node_modules',
+  'bower_components',
+  'jspm_packages',
+  'web_modules',
+  'tmp',
+]);
 
 class FallbackServer {
   /**
@@ -54,13 +63,50 @@ class FallbackServer {
   async close() {
     if (!this._server) return;
     const server = this._server;
-    return new Promise((resolve, reject) => server.close(err => (err ? reject(err) : resolve())));
+    return new Promise((resolve, reject) =>
+      server.close(
+        /** @param {Error|undefined} err */
+        err => (err ? reject(err) : resolve())
+      )
+    );
   }
 
   /** @return {string[]} */
   getAvailableUrls() {
-    const htmlFiles = fs.readdirSync(this._pathToBuildDir).filter(file => file.endsWith('.html'));
-    return htmlFiles.map(file => `http://localhost:${this._port}/${file}`);
+    const htmlFiles = FallbackServer.readHtmlFilesInDirectory(this._pathToBuildDir, 2);
+    return htmlFiles.map(({file}) => `http://localhost:${this._port}/${file}`);
+  }
+
+  /**
+   * @param {string} directory
+   * @param {number} depth
+   * @return {Array<{file: string, depth: number}>}
+   */
+  static readHtmlFilesInDirectory(directory, depth) {
+    const filesAndFolders = fs.readdirSync(directory);
+    const htmlFiles = filesAndFolders
+      .filter(file => file.endsWith('.html'))
+      .map(file => ({file, depth: 0}));
+    if (depth === 0) return htmlFiles;
+
+    for (const fileOrFolder of filesAndFolders) {
+      // Don't recurse into hidden folders, things that look like files, or dependency folders
+      if (fileOrFolder.includes('.')) continue;
+      if (IGNORED_FOLDERS_FOR_AUTOFIND.has(fileOrFolder)) continue;
+
+      try {
+        const fullPath = path.join(directory, fileOrFolder);
+        if (!fs.statSync(fullPath).isDirectory()) continue;
+
+        htmlFiles.push(
+          ...FallbackServer.readHtmlFilesInDirectory(fullPath, depth - 1).map(({file, depth}) => {
+            return {file: `${fileOrFolder}/${file}`, depth: depth + 1};
+          })
+        );
+      } catch (err) {}
+    }
+
+    return htmlFiles;
   }
 }
 

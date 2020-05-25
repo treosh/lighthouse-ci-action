@@ -5,7 +5,7 @@
  */
 'use strict';
 
-const ChromeLauncher = require('chrome-launcher').Launcher;
+const {canAccessPath, determineChromePath} = require('../utils.js');
 const ApiClient = require('@lhci/utils/src/api-client.js');
 const {loadAndParseRcFile, resolveRcFilePath} = require('@lhci/utils/src/lighthouserc.js');
 const {
@@ -15,10 +15,14 @@ const {
   getGitHubRepoSlug,
 } = require('@lhci/utils/src/build-context.js');
 const {loadSavedLHRs} = require('@lhci/utils/src/saved-reports.js');
+const pkg = require('../../package.json');
 
 const PASS_ICON = '✅';
 const WARN_ICON = '⚠️ ';
 const FAIL_ICON = '❌';
+
+/** @param {LHCI.YargsOptions} options @return {ApiClient} */
+const getApiClient = options => new ApiClient({...options, rootURL: options.serverBaseUrl || ''});
 
 /**
  * @param {import('yargs').Argv} yargs
@@ -59,7 +63,10 @@ const checks = [
     label: 'Chrome installation found',
     failureLabel: 'Chrome installation not found',
     shouldTest: () => true,
-    test: () => ChromeLauncher.getInstallations().length > 0,
+    test: opts => {
+      if (opts.chromePath) return canAccessPath(opts.chromePath);
+      return canAccessPath(determineChromePath(opts) || '');
+    },
   },
   {
     id: 'githubToken',
@@ -83,8 +90,16 @@ const checks = [
     failureLabel: 'LHCI server not reachable',
     // the test only makes sense if they've configured an LHCI server
     shouldTest: opts => Boolean(opts.serverBaseUrl && opts.token),
-    test: async ({serverBaseUrl = ''}) =>
-      (await new ApiClient({rootURL: serverBaseUrl}).getVersion()).length > 0,
+    test: async opts => (await getApiClient(opts).getVersion()).length > 0,
+  },
+  {
+    id: 'lhciServer',
+    label: 'LHCI server API-compatible',
+    failureLabel: 'LHCI server not API-compatible',
+    // the test only makes sense if they've configured an LHCI server
+    shouldTest: opts => Boolean(opts.serverBaseUrl && opts.token),
+    test: async opts =>
+      ApiClient.isApiVersionCompatible(pkg.version, await getApiClient(opts).getVersion()),
   },
   {
     id: 'lhciServer',
@@ -92,9 +107,9 @@ const checks = [
     failureLabel: 'LHCI server token invalid',
     // the test only makes sense if they've configured an LHCI server
     shouldTest: opts => Boolean(opts.serverBaseUrl && opts.token),
-    test: async ({serverBaseUrl = '', token = ''}) => {
-      const client = new ApiClient({rootURL: serverBaseUrl});
-      const project = await client.findProjectByToken(token);
+    test: async opts => {
+      const client = getApiClient(opts);
+      const project = await client.findProjectByToken(opts.token || '');
       return Boolean(project);
     },
   },
@@ -104,9 +119,9 @@ const checks = [
     failureLabel: 'LHCI server non-unique build for this hash',
     // the test only makes sense if they've configured an LHCI server
     shouldTest: opts => Boolean(opts.serverBaseUrl && opts.token),
-    test: async ({serverBaseUrl = '', token = ''}) => {
-      const client = new ApiClient({rootURL: serverBaseUrl});
-      const project = await client.findProjectByToken(token);
+    test: async opts => {
+      const client = getApiClient(opts);
+      const project = await client.findProjectByToken(opts.token || '');
       if (!project) return true;
       const builds = await client.getBuilds(project.id, {
         branch: getCurrentBranch(),

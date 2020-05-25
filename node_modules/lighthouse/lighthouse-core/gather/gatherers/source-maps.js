@@ -1,5 +1,5 @@
 /**
- * @license Copyright 2019 Google Inc. All Rights Reserved.
+ * @license Copyright 2019 The Lighthouse Authors. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
  */
@@ -9,25 +9,6 @@
 
 const Gatherer = require('./gatherer.js');
 const URL = require('../../lib/url-shim.js');
-
-/**
- * This function fetches source maps; it is careful not to parse the response as JSON, as it will
- * just need to be serialized again over the protocol, and source maps can
- * be huge.
- *
- * @param {string} url
- * @return {Promise<string>}
- */
-/* istanbul ignore next */
-async function fetchSourceMap(url) {
-  // eslint-disable-next-line no-undef
-  const response = await fetch(url);
-  if (response.ok) {
-    return response.text();
-  } else {
-    throw new Error(`Received status code ${response.status} for ${url}`);
-  }
-}
 
 /**
  * @fileoverview Gets JavaScript source maps.
@@ -45,11 +26,9 @@ class SourceMaps extends Gatherer {
    * @param {string} sourceMapUrl
    * @return {Promise<LH.Artifacts.RawSourceMap>}
    */
-  async fetchSourceMapInPage(driver, sourceMapUrl) {
-    driver.setNextProtocolTimeout(1500);
+  async fetchSourceMap(driver, sourceMapUrl) {
     /** @type {string} */
-    const sourceMapJson =
-      await driver.evaluateAsync(`(${fetchSourceMap})(${JSON.stringify(sourceMapUrl)})`);
+    const sourceMapJson = await driver.fetcher.fetchResource(sourceMapUrl, {timeout: 1500});
     return JSON.parse(sourceMapJson);
   }
 
@@ -124,7 +103,10 @@ class SourceMaps extends Gatherer {
     try {
       const map = isSourceMapADataUri ?
           this.parseSourceMapFromDataUrl(rawSourceMapUrl) :
-          await this.fetchSourceMapInPage(driver, rawSourceMapUrl);
+          await this.fetchSourceMap(driver, rawSourceMapUrl);
+      if (map.sections) {
+        map.sections = map.sections.filter(section => section.map);
+      }
       return {
         scriptUrl,
         sourceMapUrl,
@@ -149,9 +131,9 @@ class SourceMaps extends Gatherer {
     driver.off('Debugger.scriptParsed', this.onScriptParsed);
     await driver.sendCommand('Debugger.disable');
 
+    await driver.fetcher.enableRequestInterception();
     const eventProcessPromises = this._scriptParsedEvents
       .map((event) => this._retrieveMapFromScriptParsedEvent(driver, event));
-
     return Promise.all(eventProcessPromises);
   }
 }

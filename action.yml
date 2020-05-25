@@ -1,5 +1,5 @@
 name: 'Lighthouse CI Action'
-description: 'Audit URLs using Lighthouse and test performance with Lighthouse CI.'
+description: 'Audit URLs using Lighthouse and test performance with Lighthouse CI'
 inputs:
   urls:
     description: 'List of URL(s) to analyze'
@@ -13,14 +13,17 @@ inputs:
     descripton: 'Opt-in to saving Lighthouse results to temporary public storage'
   runs:
     description: 'Number of runs to do per URL'
-    default: 1
   serverBaseUrl:
     description: 'Address of a LHCI server'
   serverToken:
     description: 'API token to push to LHCI server'
 outputs:
   resultsPath:
-    description: 'Path to the folder with results'
+    description: 'Path to the folder with LHCI results'
+  links:
+    description: 'Links to compare/result UI for each URL (content of links.json)'
+  assertionResults:
+    description: 'Assertion results (content of assertion-results.json)'
 runs:
   using: 'node12'
   main: 'src/index.js'

@@ -1,5 +1,5 @@
 /**
- * @license Copyright 2016 Google Inc. All Rights Reserved.
+ * @license Copyright 2016 The Lighthouse Authors. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
  */
@@ -248,14 +248,14 @@ class Runner {
     // Members of LH.Audit.Context that are shared across all audits.
     const sharedAuditContext = {
       settings,
-      LighthouseRunWarnings: runWarnings,
       computedCache: new Map(),
     };
 
     // Run each audit sequentially
     const auditResults = [];
     for (const auditDefn of audits) {
-      const auditResult = await Runner._runAudit(auditDefn, artifacts, sharedAuditContext);
+      const auditResult = await Runner._runAudit(auditDefn, artifacts, sharedAuditContext,
+          runWarnings);
       auditResults.push(auditResult);
     }
 
@@ -268,11 +268,12 @@ class Runner {
    * Otherwise returns error audit result.
    * @param {LH.Config.AuditDefn} auditDefn
    * @param {LH.Artifacts} artifacts
-   * @param {Pick<LH.Audit.Context, 'settings'|'LighthouseRunWarnings'|'computedCache'>} sharedAuditContext
+   * @param {Pick<LH.Audit.Context, 'settings'|'computedCache'>} sharedAuditContext
+   * @param {Array<string>} runWarnings
    * @return {Promise<LH.Audit.Result>}
    * @private
    */
-  static async _runAudit(auditDefn, artifacts, sharedAuditContext) {
+  static async _runAudit(auditDefn, artifacts, sharedAuditContext, runWarnings) {
     const audit = auditDefn.implementation;
     const status = {
       msg: `Auditing: ${i18n.getFormatted(audit.meta.title, 'en-US')}`,
@@ -328,17 +329,21 @@ class Runner {
         ...sharedAuditContext,
       };
 
-      // Only pass the declared `requiredArtifacts` to the audit
+      // Only pass the declared required and optional artifacts to the audit
       // The type is masquerading as `LH.Artifacts` but will only contain a subset of the keys
       // to prevent consumers from unnecessary type assertions.
-      const requiredArtifacts = audit.meta.requiredArtifacts
-        .reduce((requiredArtifacts, artifactName) => {
-          const requiredArtifact = artifacts[artifactName];
+      const requestedArtifacts = audit.meta.requiredArtifacts
+        .concat(audit.meta.__internalOptionalArtifacts || []);
+      const narrowedArtifacts = requestedArtifacts
+        .reduce((narrowedArtifacts, artifactName) => {
+          const requestedArtifact = artifacts[artifactName];
           // @ts-ignore tsc can't yet express that artifactName is only a single type in each iteration, not a union of types.
-          requiredArtifacts[artifactName] = requiredArtifact;
-          return requiredArtifacts;
+          narrowedArtifacts[artifactName] = requestedArtifact;
+          return narrowedArtifacts;
         }, /** @type {LH.Artifacts} */ ({}));
-      const product = await audit.audit(requiredArtifacts, auditContext);
+      const product = await audit.audit(narrowedArtifacts, auditContext);
+      runWarnings.push(...product.runWarnings || []);
+
       auditResult = Audit.generateAuditResult(audit, product);
     } catch (err) {
       // Log error if it hasn't already been logged above.

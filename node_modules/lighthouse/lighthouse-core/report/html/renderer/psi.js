@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright 2018 Google Inc. All Rights Reserved.
+ * Copyright 2018 The Lighthouse Authors. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,9 +48,9 @@ function prepareLabData(LHResult, document) {
   if (!reportLHR.categoryGroups) throw new Error(`No category groups found.`);
 
   // Use custom title and description.
-  reportLHR.categoryGroups.metrics.title = lhResult.i18n.rendererFormattedStrings.labDataTitle;
+  reportLHR.categoryGroups.metrics.title = Util.i18n.strings.labDataTitle;
   reportLHR.categoryGroups.metrics.description =
-      lhResult.i18n.rendererFormattedStrings.lsPerformanceCategoryDescription;
+      Util.i18n.strings.lsPerformanceCategoryDescription;
 
   const perfRenderer = new PerformanceCategoryRenderer(dom, new DetailsRenderer(dom));
   // PSI environment string will ensure the categoryHeader and permalink elements are excluded

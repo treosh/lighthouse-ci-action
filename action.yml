@@ -13,7 +13,6 @@ inputs:
     descripton: 'Opt-in to saving Lighthouse results to temporary public storage'
   runs:
     description: 'Number of runs to do per URL'
-    default: 1
   serverBaseUrl:
     description: 'Address of a LHCI server'
   serverToken:

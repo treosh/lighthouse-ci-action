@@ -1,5 +1,8 @@
 {
   "ci": {
+    "collect": {
+      "numberOfRuns": 5
+    },
     "assert": {
       "preset": "lighthouse:recommended",
       "assertions": {

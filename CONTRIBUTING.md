@@ -27,7 +27,7 @@ INPUT_URLS="https://example.com/
 INPUT_URLS="https://treo.sh/" INPUT_BUDGETPATH=".github/lighthouse/budget.json" INPUT_TEMPORARYPUBLICSTORAGE=true node src/index.js
 
 # fail with assertions, custom config, or chrome flags
-INPUT_URLS="https://exterkamp.codes/" INPUT_RUNS=3 INPUT_CONFIGPATH=".github/lighthouse/lighthouserc-assertions.json" INPUT_UPLOADARTIFACTS=true node src/index.js
+INPUT_URLS="https://exterkamp.codes/" INPUT_CONFIGPATH=".github/lighthouse/lighthouserc-assertions.json" INPUT_UPLOADARTIFACTS=true node src/index.js
 
 # debug custom headers
 python script/simple-server.py # start basic server in a separate tab

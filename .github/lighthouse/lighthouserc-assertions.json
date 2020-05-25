@@ -6,7 +6,9 @@
     "assert": {
       "preset": "lighthouse:recommended",
       "assertions": {
-        "render-blocking-resources": ["warn", { "numericValue": 0 }]
+        "render-blocking-resources": ["warn", { "numericValue": 0 }],
+        "uses-rel-preconnect": ["warn", { "numericValue": 0 }],
+        "maskable-icon": ["warn", { "minScore": 0.9 }]
       }
     }
   }

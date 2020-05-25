@@ -1,40 +1,45 @@
 {
-  "name": "is-wsl",
-  "version": "1.1.0",
-  "description": "Check if the process is running inside Windows Subsystem for Linux (Bash on Windows)",
-  "license": "MIT",
-  "repository": "sindresorhus/is-wsl",
-  "author": {
-    "name": "Sindre Sorhus",
-    "email": "sindresorhus@gmail.com",
-    "url": "sindresorhus.com"
-  },
-  "engines": {
-    "node": ">=4"
-  },
-  "scripts": {
-    "test": "xo && ava"
-  },
-  "files": [
-    "index.js"
-  ],
-  "keywords": [
-    "check",
-    "wsl",
-    "windows",
-    "subsystem",
-    "linux",
-    "detect",
-    "bash",
-    "process",
-    "console",
-    "terminal",
-    "is"
-  ],
-  "devDependencies": {
-    "ava": "*",
-    "clear-require": "^2.0.0",
-    "proxyquire": "^1.7.11",
-    "xo": "*"
-  }
+	"name": "is-wsl",
+	"version": "2.2.0",
+	"description": "Check if the process is running inside Windows Subsystem for Linux (Bash on Windows)",
+	"license": "MIT",
+	"repository": "sindresorhus/is-wsl",
+	"author": {
+		"name": "Sindre Sorhus",
+		"email": "sindresorhus@gmail.com",
+		"url": "sindresorhus.com"
+	},
+	"engines": {
+		"node": ">=8"
+	},
+	"scripts": {
+		"test": "xo && ava && tsd"
+	},
+	"files": [
+		"index.js",
+		"index.d.ts"
+	],
+	"keywords": [
+		"check",
+		"wsl",
+		"windows",
+		"subsystem",
+		"linux",
+		"detect",
+		"bash",
+		"process",
+		"console",
+		"terminal",
+		"is"
+	],
+	"dependencies": {
+		"is-docker": "^2.0.0"
+	},
+	"devDependencies": {
+		"ava": "^1.4.1",
+		"clear-module": "^3.2.0",
+		"proxyquire": "^2.1.0",
+		"tsd": "^0.7.2",
+		"xo": "^0.24.0"
+	}
 }

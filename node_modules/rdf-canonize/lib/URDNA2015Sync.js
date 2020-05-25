@@ -349,8 +349,9 @@ module.exports = class URDNA2015Sync {
           // is greater than or equal to the length of chosen path and
           // path is lexicographically greater than chosen path, then
           // skip to the next permutation.
-          if(chosenPath.length !== 0 &&
-            path.length >= chosenPath.length && path > chosenPath) {
+          // Note: Comparing path length to chosen path length can be optimized
+          // away; only compare lexicographically.
+          if(chosenPath.length !== 0 && path > chosenPath) {
             nextPermutation = true;
             break;
           }
@@ -383,8 +384,9 @@ module.exports = class URDNA2015Sync {
           // is greater than or equal to the length of chosen path and
           // path is lexicographically greater than chosen path, then
           // skip to the next permutation.
-          if(chosenPath.length !== 0 &&
-            path.length >= chosenPath.length && path > chosenPath) {
+          // Note: Comparing path length to chosen path length can be optimized
+          // away; only compare lexicographically.
+          if(chosenPath.length !== 0 && path > chosenPath) {
             nextPermutation = true;
             break;
           }

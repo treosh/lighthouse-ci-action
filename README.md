@@ -369,8 +369,6 @@ configPath: ./lighthouserc.json
 Upload Lighthouse results to a private [LHCI server](https://github.com/GoogleChrome/lighthouse-ci) by specifying both `serverBaseUrl` and `serverToken`.
 This will replace uploading to `temporary-public-storage`.
 
-> **Note**: Use [Github secrets](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets#creating-encrypted-secrets) to keep your server address hidden!
-
 ```yml
 serverBaseUrl: ${{ secrets.LHCI_SERVER_BASE_URL }}
 serverToken: ${{ secrets.LHCI_SERVER_TOKEN }}

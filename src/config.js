@@ -80,7 +80,7 @@ exports.getInput = function getInputArgs() {
 /**
  * Check if the file under `configPath` has `assert` params set.
  *
- * @param {string} configPath
+ * @param {string | null} configPath
  */
 
 exports.hasAssertConfig = function hasAssertConfig(configPath) {

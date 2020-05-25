@@ -1,5 +1,5 @@
 /**
- * @license Copyright 2019 Google Inc. All Rights Reserved.
+ * @license Copyright 2019 The Lighthouse Authors. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
  */
@@ -85,7 +85,7 @@ class Budget {
     // Assume resourceType is an allowed string, throw if not.
     if (!validResourceTypes.includes(/** @type {LH.Budget.ResourceType} */ (resourceType))) {
       throw new Error(`Invalid resource type: ${resourceType}. \n` +
-        `Valid resource types are: ${ validResourceTypes.join(', ') }`);
+        `Valid resource types are: ${validResourceTypes.join(', ') }`);
     }
     if (!isNumber(budget)) {
       throw new Error(`Invalid budget: ${budget}`);
@@ -130,6 +130,26 @@ class Budget {
       this.throwInvalidPathError(path, `'$' character should only occur at end of path.`);
     }
     return path;
+  }
+
+  /**
+   * Returns the budget that applies to a given URL.
+   * If multiple budgets match based on thier 'path' property,
+   * then the last-listed of those budgets is returned.
+   * @param {Immutable<Array<LH.Budget>>|null} budgets
+   * @param {string} url
+   * @return {Immutable<LH.Budget> | undefined} budget
+   */
+  static getMatchingBudget(budgets, url) {
+    if (budgets === null) return;
+
+    // Applies the LAST matching budget.
+    for (let i = budgets.length - 1; i >= 0; i--) {
+      const budget = budgets[i];
+      if (this.urlMatchesPattern(url, budget.path)) {
+        return budget;
+      }
+    }
   }
 
   /**
@@ -193,7 +213,7 @@ class Budget {
    * @return {LH.Budget.TimingBudget}
    */
   static validateTimingBudget(timingBudget) {
-    const {metric, budget, tolerance, ...invalidRest} = timingBudget;
+    const {metric, budget, ...invalidRest} = timingBudget;
     Budget.assertNoExcessProperties(invalidRest, 'Timing Budget');
 
     /** @type {Array<LH.Budget.TimingMetric>} */
@@ -203,6 +223,11 @@ class Budget {
       'interactive',
       'first-meaningful-paint',
       'max-potential-fid',
+      'estimated-input-latency',
+      'total-blocking-time',
+      'speed-index',
+      'largest-contentful-paint',
+      'cumulative-layout-shift',
     ];
     // Assume metric is an allowed string, throw if not.
     if (!validTimingMetrics.includes(/** @type {LH.Budget.TimingMetric} */ (metric))) {
@@ -212,14 +237,45 @@ class Budget {
     if (!isNumber(budget)) {
       throw new Error(`Invalid budget: ${budget}`);
     }
-    if (typeof tolerance !== 'undefined' && !isNumber(tolerance)) {
-      throw new Error(`Invalid tolerance: ${tolerance}`);
-    }
     return {
       metric: /** @type {LH.Budget.TimingMetric} */ (metric),
       budget,
-      tolerance,
     };
+  }
+
+  /**
+   * @param {string} hostname
+   * @return {string}
+   */
+  static validateHostname(hostname) {
+    const errMsg = `${hostname} is not a valid hostname.`;
+    if (hostname.length === 0) {
+      throw new Error(errMsg);
+    }
+    if (hostname.includes('/')) {
+      throw new Error(errMsg);
+    }
+    if (hostname.includes(':')) {
+      throw new Error(errMsg);
+    }
+    if (hostname.includes('*')) {
+      if (!hostname.startsWith('*.') || hostname.lastIndexOf('*') > 0) {
+        throw new Error(errMsg);
+      }
+    }
+    return hostname;
+  }
+
+  /**
+   * @param {unknown} hostnames
+   * @return {undefined|Array<string>}
+   */
+  static validateHostnames(hostnames) {
+    if (Array.isArray(hostnames) && hostnames.every(host => typeof host === 'string')) {
+      return hostnames.map(Budget.validateHostname);
+    } else if (hostnames !== undefined) {
+      throw new Error(`firstPartyHostnames should be defined as an array of strings.`);
+    }
   }
 
   /**
@@ -239,10 +295,19 @@ class Budget {
       /** @type {LH.Budget} */
       const budget = {};
 
-      const {path, resourceSizes, resourceCounts, timings, ...invalidRest} = b;
+      const {path, options, resourceSizes, resourceCounts, timings, ...invalidRest} = b;
       Budget.assertNoExcessProperties(invalidRest, 'Budget');
 
       budget.path = Budget.validatePath(path);
+
+      if (isObjectOfUnknownProperties(options)) {
+        const {firstPartyHostnames, ...invalidRest} = options;
+        Budget.assertNoExcessProperties(invalidRest, 'Options property');
+        budget.options = {};
+        budget.options.firstPartyHostnames = Budget.validateHostnames(firstPartyHostnames);
+      } else if (options !== undefined) {
+        throw new Error(`Invalid options property in budget at index ${index}`);
+      }
 
       if (isArrayOfUnknownObjects(resourceSizes)) {
         budget.resourceSizes = resourceSizes.map(Budget.validateResourceBudget);

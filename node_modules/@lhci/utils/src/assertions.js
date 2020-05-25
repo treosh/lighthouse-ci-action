@@ -168,7 +168,7 @@ function getStandardAssertionResults(possibleAuditResults, options) {
     );
   }
 
-  const realMinScore = minScore === undefined && !hadManualAssertion ? 1 : minScore;
+  const realMinScore = minScore === undefined && !hadManualAssertion ? 0.9 : minScore;
   if (realMinScore !== undefined) {
     results.push(...getAssertionResult(auditResults, aggregationMethod, 'minScore', realMinScore));
   }
@@ -209,6 +209,7 @@ function getBudgetAssertionResults(auditResults) {
   const resultsKeys = new Set();
 
   for (const auditResult of auditResults) {
+    if (!auditResult) continue;
     if (!auditResult.details || !auditResult.details.items) continue;
 
     for (const budgetRow of auditResult.details.items) {
@@ -216,7 +217,7 @@ function getBudgetAssertionResults(auditResults) {
       const countKey = `${budgetRow.resourceType}.count`;
 
       if (budgetRow.sizeOverBudget && !resultsKeys.has(sizeKey)) {
-        const actual = budgetRow.size;
+        const actual = budgetRow.size || budgetRow.transferSize;
         const expected = actual - budgetRow.sizeOverBudget;
         results.push(...getAssertionResultsForBudgetRow(sizeKey, actual, expected));
         resultsKeys.add(sizeKey);
@@ -301,15 +302,35 @@ function getAssertionResultsForAudit(auditId, auditProperty, auditResults, asser
 
     const psuedoAuditResults = auditResults.map(result => {
       if (!result || !result.details || !result.details.items) return;
-      const itemKey = auditProperty[1] === 'count' ? 'requestCount' : 'size';
       const item = result.details.items.find(item => item.resourceType === auditProperty[0]);
       if (!item) return;
+
+      const primaryItemKey = auditProperty[1] === 'size' ? 'size' : 'requestCount';
+      const backupItemKey = auditProperty[1] === 'size' ? 'transferSize' : '';
+      const itemKey = primaryItemKey in item ? primaryItemKey : backupItemKey;
+      if (!(itemKey in item)) return;
       return {...result, numericValue: item[itemKey]};
     });
 
     return getStandardAssertionResults(psuedoAuditResults, assertionOptions).map(result => ({
       ...result,
       auditProperty: auditProperty.join('.'),
+    }));
+  } else if (auditId === 'user-timings' && auditProperty) {
+    const userTimingName = _.kebabCase(auditProperty.join('-'), {alphanumericOnly: true});
+    const psuedoAuditResults = auditResults.map(result => {
+      if (!result || !result.details || !result.details.items) return;
+      const item = result.details.items.find(
+        item => _.kebabCase(item.name, {alphanumericOnly: true}) === userTimingName
+      );
+      if (!item) return;
+      const numericValue = Number.isFinite(item.duration) ? item.duration : item.startTime;
+      return {...result, numericValue};
+    });
+
+    return getStandardAssertionResults(psuedoAuditResults, assertionOptions).map(result => ({
+      ...result,
+      auditProperty: userTimingName,
     }));
   } else {
     return getStandardAssertionResults(auditResults, assertionOptions);
@@ -342,7 +363,7 @@ function resolveAssertionOptionsAndLhrs(baseOptions, unfilteredLhrs) {
     lhrs.map(lhr => /** @type {[LH.Result, LH.Result]} */ ([lhr, lhr])),
   ]);
 
-  const auditsToAssert = [...new Set(Object.keys(assertions).map(_.kebabCase))].map(
+  const auditsToAssert = [...new Set(Object.keys(assertions).map(key => _.kebabCase(key)))].map(
     assertionKey => {
       const [auditId, ...rest] = assertionKey.split(/\.|:/g).filter(Boolean);
       const auditInstances = lhrs.map(lhr => lhr.audits[auditId]).filter(Boolean);

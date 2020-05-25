@@ -1,5 +1,5 @@
 /**
- * @license Copyright 2019 Google Inc. All Rights Reserved.
+ * @license Copyright 2019 The Lighthouse Authors. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
  */
@@ -22,12 +22,12 @@ const i18n = require('./i18n.js');
     "lighthouse-core/audits/metrics/first-contentful-paint.js | title": [
       "audits[first-contentful-paint].title"
     ],
-    "lighthouse-core/audits/time-to-first-byte.js | displayValue": [
+    "lighthouse-core/audits/server-response-time.js | displayValue": [
       {
         "values": {
           "timeInMs": 570.5630000000001
         },
-        "path": "audits[time-to-first-byte].displayValue"
+        "path": "audits[server-response-time].displayValue"
       }
     ],
     "lighthouse-core/lib/i18n/i18n.js | columnTimeSpent": [

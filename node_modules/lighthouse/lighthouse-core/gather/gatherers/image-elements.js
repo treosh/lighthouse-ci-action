@@ -1,5 +1,5 @@
 /**
- * @license Copyright 2017 Google Inc. All Rights Reserved.
+ * @license Copyright 2017 The Lighthouse Authors. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
  */
@@ -51,11 +51,18 @@ function getHTMLImages(allElements) {
       naturalWidth: element.naturalWidth,
       naturalHeight: element.naturalHeight,
       isCss: false,
+      // @ts-ignore: loading attribute not yet added to HTMLImageElement definition.
+      loading: element.loading,
       resourceSize: 0, // this will get overwritten below
       isPicture: !!element.parentElement && element.parentElement.tagName === 'PICTURE',
       usesObjectFit: ['cover', 'contain', 'scale-down', 'none'].includes(
         computedStyle.getPropertyValue('object-fit')
       ),
+      usesPixelArtScaling: ['pixelated', 'crisp-edges'].includes(
+        computedStyle.getPropertyValue('image-rendering')
+      ),
+      // https://html.spec.whatwg.org/multipage/images.html#pixel-density-descriptor
+      usesSrcSetDensityDescriptor: / \d+(\.\d+)?x/.test(element.srcset),
     };
   });
 }
@@ -93,6 +100,10 @@ function getCSSImages(allElements) {
       isCss: true,
       isPicture: false,
       usesObjectFit: false,
+      usesPixelArtScaling: ['pixelated', 'crisp-edges'].includes(
+        style.getPropertyValue('image-rendering')
+      ),
+      usesSrcSetDensityDescriptor: false,
       resourceSize: 0, // this will get overwritten below
     });
   }
@@ -130,6 +141,12 @@ function determineNaturalSize(url) {
 }
 
 class ImageElements extends Gatherer {
+  constructor() {
+    super();
+    /** @type {Map<string, {naturalWidth: number, naturalHeight: number}>} */
+    this._naturalSizeCache = new Map();
+  }
+
   /**
    * @param {Driver} driver
    * @param {LH.Artifacts.ImageElement} element
@@ -137,11 +154,16 @@ class ImageElements extends Gatherer {
    */
   async fetchElementWithSizeInformation(driver, element) {
     const url = JSON.stringify(element.src);
+    if (this._naturalSizeCache.has(url)) {
+      return Object.assign(element, this._naturalSizeCache.get(url));
+    }
+
     try {
       // We don't want this to take forever, 250ms should be enough for images that are cached
       driver.setNextProtocolTimeout(250);
       /** @type {{naturalWidth: number, naturalHeight: number}} */
       const size = await driver.evaluateAsync(`(${determineNaturalSize.toString()})(${url})`);
+      this._naturalSizeCache.set(url, size);
       return Object.assign(element, size);
     } catch (_) {
       // determineNaturalSize fails on invalid images, which we treat as non-visible

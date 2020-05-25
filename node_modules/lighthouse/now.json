@@ -9,5 +9,6 @@
   ],
   "github": {
     "silent": true
-  }
+  },
+  "trailingSlash": true
 }

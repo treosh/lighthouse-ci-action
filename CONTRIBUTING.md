@@ -43,3 +43,14 @@ INPUT_CONFIGPATH=".github/lighthouse/lighthouserc-static-dist-dir.yml" node src/
 # test annotations (requires .lighthouseci folder after manual run with some failed audits)
 node -e "require('./src/utils/annotations').setFailedAnnotations('.lighthouseci')"
 ```
+
+## Versioning
+
+Based on semver and https://github.com/actions/toolkit/blob/master/docs/action-versioning.md#versioning
+
+Update tag:
+
+```bash
+git tag -fa v3 -m "Update v3 tag"
+git push origin v3 --force
+```

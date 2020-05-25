@@ -5,7 +5,7 @@ const childProcess = require('child_process')
 const lhciCliPath = require.resolve('@lhci/cli/src/cli')
 const { getInput, hasAssertConfig } = require('./config')
 const { uploadArtifacts } = require('./utils/artifacts')
-const { setFailedAnnotations } = require('./utils/annotations')
+const { setAnnotations } = require('./utils/annotations')
 
 /**
  * Audit urls with Lighthouse CI in 3 stages:
@@ -42,7 +42,6 @@ async function main() {
   core.endGroup() // Collecting
 
   /******************************* 2. ASSERT ************************************/
-  let hasAssertFailed = false
   if (input.budgetPath || hasAssertConfig(input.configPath)) {
     core.startGroup(`Asserting`)
     const assertArgs = []
@@ -55,8 +54,7 @@ async function main() {
 
     // run lhci with problem matcher
     // https://github.com/actions/toolkit/blob/master/docs/commands.md#problem-matchers
-    const assertStatus = runChildCommand('assert', assertArgs)
-    hasAssertFailed = assertStatus !== 0
+    runChildCommand('assert', assertArgs)
     core.endGroup() // Asserting
   }
 
@@ -90,10 +88,8 @@ async function main() {
     core.endGroup() // Uploading
   }
 
-  // set failing exit code for the action, and set annotations
-  if (hasAssertFailed) {
-    await setFailedAnnotations(resultsPath)
-  }
+  // await setOutput(resultsPath)
+  await setAnnotations(resultsPath) // set failing error/warning annotations
 }
 
 // run `main()`

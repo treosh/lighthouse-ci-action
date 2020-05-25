@@ -1,29 +1,37 @@
+const { groupBy, mapValues, orderBy } = require('lodash')
 const core = require('@actions/core')
-const { getLinksByUrl, getAssertionsByUrl } = require('./lhci-helpers')
+const { getLinks, getAssertionResults } = require('./lhci-helpers')
 
 /**
  * Set annotations for each failed URL.
  * 
- * Example text output (no markdown support, https://{link to gh-issue where this is being fixed/issue in this repo}):
+ * Example text output (no markdown support, https://github.com/treosh/lighthouse-ci-action/actions/runs/114711383):
 
-2 results for https://treo.sh/
-Report: https://storage.googleapis.com/lighthouse-infrastructure.appspot.com/reports/1583834596726-91444.report.html
+3 results for https://exterkamp.codes/
 
-❌ `offscreen-images` failure for `maxLength` assertion (defer offscreen images: https://web.dev/offscreen-images)
+❌ `maskable-icon` failure for `minScore` assertion (Manifest doesn't have a maskable icon: https://web.dev/maskable-icon-audit/)
+Expected >= 0.9, but found 0
+
+⚠️ `render-blocking-resources` warning for `maxLength` assertion (Eliminate render-blocking resources: https://web.dev/render-blocking-resources)
 Expected <= 0, but found 1
 
-⚠️ `mainthread-work-breakdown` warning for `minScore` assertion (minimize main-thread work: https://web.dev/mainthread-work-breakdown)
-Expected >= 0.9, but found 0.83
+⚠️ `uses-long-cache-ttl` warning for `maxLength` assertion (Uses efficient cache policy on static assets: https://web.dev/uses-long-cache-ttl)
+Expected <= 0, but found 1
  
  * @param {string} resultsPath
  */
 
-exports.setFailedAnnotations = async function setFailedAnnotations(resultsPath) {
-  const linksByUrl = await getLinksByUrl(resultsPath)
-  const assertionsByUrl = await getAssertionsByUrl(resultsPath)
+exports.setAnnotations = async function setAnnotations(resultsPath) {
+  const links = await getLinks(resultsPath)
+  const assertionResults = await getAssertionResults(resultsPath)
+  if (!assertionResults || !links) return
 
-  Object.entries(assertionsByUrl).forEach(([url, assertions]) => {
-    const link = linksByUrl[url]
+  const assertionResultsByUrl = mapValues(groupBy(assertionResults, 'url'), (assertions) => {
+    return orderBy(assertions, (a) => (a.level === 'error' ? 0 : 1) + a.auditId)
+  })
+
+  Object.entries(assertionResultsByUrl).forEach(([url, assertions]) => {
+    const link = links[url]
     const assertionsText = assertions.map((a) => {
       const emoji = a.level === 'error' ? '❌' : '⚠️'
       return (
@@ -37,6 +45,12 @@ exports.setFailedAnnotations = async function setFailedAnnotations(resultsPath) 
       `${assertions.length} result${assertions.length === 1 ? '' : 's'} for ${url}\n` +
       `${link ? `Report: ${link}\n` : ''}\n` +
       assertionsText.join('\n\n')
-    core.setFailed(text)
+
+    const hasFailed = assertions.some((a) => a.level === 'error')
+    if (hasFailed) {
+      core.setFailed(text)
+    } else {
+      core.warning(text)
+    }
   })
 }

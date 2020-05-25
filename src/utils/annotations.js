@@ -24,14 +24,14 @@ Expected <= 0, but found 1
 exports.setAnnotations = async function setAnnotations(resultsPath) {
   const links = await getLinks(resultsPath)
   const assertionResults = await getAssertionResults(resultsPath)
-  if (!assertionResults || !links) return
+  if (!assertionResults) return
 
   const assertionResultsByUrl = mapValues(groupBy(assertionResults, 'url'), (assertions) => {
     return orderBy(assertions, (a) => (a.level === 'error' ? 0 : 1) + a.auditId)
   })
 
   Object.entries(assertionResultsByUrl).forEach(([url, assertions]) => {
-    const link = links[url]
+    const link = (links || {})[url]
     const assertionsText = assertions.map((a) => {
       const emoji = a.level === 'error' ? '❌' : '⚠️'
       return (

@@ -1,6 +1,7 @@
 const core = require('@actions/core')
 const { loadRcFile } = require('@lhci/utils/src/lighthouserc')
 const { get } = require('lodash')
+const { resolve } = require('path')
 
 exports.getInput = function getInputArgs() {
   // fallback to upload.serverBaseUrl + upload.token for previous API support
@@ -25,7 +26,7 @@ exports.getInput = function getInputArgs() {
   let numberOfRuns = null
 
   // Inspect lighthouserc file for malformations
-  const configPath = core.getInput('configPath')
+  const configPath = core.getInput('configPath') ? resolve(core.getInput('configPath')) : null
   if (configPath) {
     const rcFileObj = loadRcFile(configPath)
     if (!rcFileObj.ci) {

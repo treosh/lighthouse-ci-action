@@ -34,7 +34,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Audit URLs using Lighthouse
-        uses: treosh/lighthouse-ci-action@v2
+        uses: treosh/lighthouse-ci-action@v3
         with:
           urls: |
             https://example.com/
@@ -85,7 +85,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Run Lighthouse on urls and validate with lighthouserc
-        uses: treosh/lighthouse-ci-action@v2
+        uses: treosh/lighthouse-ci-action@v3
         with:
           urls: 'https://exterkamp.codes/'
           configPath: './lighthouserc.json'
@@ -132,7 +132,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Run Lighthouse on urls and upload data to private lhci server
-        uses: treosh/lighthouse-ci-action@v2
+        uses: treosh/lighthouse-ci-action@v3
         with:
           urls: 'https://example.com/'
           serverBaseUrl: ${{ secrets.LHCI_SERVER_URL }}
@@ -163,7 +163,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Run Lighthouse on urls with lighthouserc
-        uses: treosh/lighthouse-ci-action@v2
+        uses: treosh/lighthouse-ci-action@v3
         with:
           urls: 'https://example.com/'
           configPath: './lighthouserc.json'
@@ -240,7 +240,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Run Lighthouse against a static dist dir
-        uses: treosh/lighthouse-ci-action@v2
+        uses: treosh/lighthouse-ci-action@v3
         with:
           # no urls needed, since it uses local folder to scan .html files
           configPath: './lighthouserc.json'
@@ -282,7 +282,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Run Lighthouse and test budgets
-        uses: treosh/lighthouse-ci-action@v2
+        uses: treosh/lighthouse-ci-action@v3
         with:
           urls: |
             https://pr-$PR_NUMBER.staging-example.com/

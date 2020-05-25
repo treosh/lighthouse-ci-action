@@ -6,6 +6,7 @@ const lhciCliPath = require.resolve('@lhci/cli/src/cli')
 const { getInput, hasAssertConfig } = require('./config')
 const { uploadArtifacts } = require('./utils/artifacts')
 const { setAnnotations } = require('./utils/annotations')
+const { setOutput } = require('./utils/output')
 
 /**
  * Audit urls with Lighthouse CI in 3 stages:
@@ -88,7 +89,7 @@ async function main() {
     core.endGroup() // Uploading
   }
 
-  // await setOutput(resultsPath)
+  await setOutput(resultsPath)
   await setAnnotations(resultsPath) // set failing error/warning annotations
 }
 

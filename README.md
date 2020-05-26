@@ -298,10 +298,11 @@ jobs:
 </details>
 
 <details>
-  <summary>Use Action with Netlify Preview</summary>
+  <summary>Integrate Lighthouse CI with Netlify</summary>
 
-Action should wait for Netlify to finish building preview version and then use built version of the site to check perforamnce.
-Hence, recipe is a composition of 2 actions: [Wait for Netlify Action](https://github.com/JakePartusch/wait-for-netlify-action) and Lighthouse CI Action.
+It waits for Netlify to finish building a preview and then uses a built version to check performance.
+Hence, recipe is a composition of 2 actions: [Wait for Netlify Action](https://github.com/JakePartusch/wait-for-netlify-action)
+and Lighthouse CI Action.
 
 ```yml
 name: Lighthouse CI for Netlify sites
@@ -316,7 +317,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
-      - name: Intsall
+      - name: Install
         run: |
           yarn
       - name: Build
@@ -326,7 +327,7 @@ jobs:
         uses: jakepartusch/wait-for-netlify-action@v1
         id: waitFor200
         with:
-          site_name: "gallant-panini-bc8593"
+          site_name: 'gallant-panini-bc8593'
       - name: Audit URLs using Lighthouse
         uses: treosh/lighthouse-ci-action@v3
         with:
@@ -337,6 +338,8 @@ jobs:
           uploadArtifacts: true # save results as an action artifacts
           temporaryPublicStorage: true # upload lighthouse report to the temporary storage
 ```
+
+[⚙️ See this workflow in use](https://github.com/denar90/lightouse-ci-netlify-preact/actions/runs/115659149)
 
 </details>
 

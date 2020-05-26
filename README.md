@@ -297,6 +297,49 @@ jobs:
 
 </details>
 
+<details>
+  <summary>Use Action with Netlify Preview</summary>
+
+Action should wait for Netlify to finish building preview version and then use built version of the site to check perforamnce.
+Hence, recipe is a composition of 2 actions: [Wait for Netlify Action](https://github.com/JakePartusch/wait-for-netlify-action) and Lighthouse CI Action.
+
+```yml
+name: Lighthouse CI for Netlify sites
+on: pull_request
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: Intsall
+        run: |
+          yarn
+      - name: Build
+        run: |
+          yarn run build
+      - name: Waiting for 200 from the Netlify Preview
+        uses: jakepartusch/wait-for-netlify-action@v1
+        id: waitFor200
+        with:
+          site_name: "gallant-panini-bc8593"
+      - name: Audit URLs using Lighthouse
+        uses: treosh/lighthouse-ci-action@v3
+        with:
+          urls: |
+            ${{ steps.waitFor200.outputs.url }}
+            ${{ steps.waitFor200.outputs.url }}/products/
+          budgetPath: ./budget.json # test performance budgets
+          uploadArtifacts: true # save results as an action artifacts
+          temporaryPublicStorage: true # upload lighthouse report to the temporary storage
+```
+
+</details>
+
 Explore more workflows in [public examples](./.github/workflows).
 Submit a pull request with a new one if they don't cover your use case.
 

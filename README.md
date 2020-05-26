@@ -137,7 +137,6 @@ jobs:
           urls: 'https://example.com/'
           serverBaseUrl: ${{ secrets.LHCI_SERVER_URL }}
           serverToken: ${{ secrets.LHCI_SERVER_TOKEN }}
-          uploadArtifacts: false # don't store artifacts as a part of action
 ```
 
 <img align="center" width="925" alt="Lighthouse CI Action: Upload results to a private server" src="https://user-images.githubusercontent.com/158189/77117096-98ef9000-6a31-11ea-97f3-dee71caf32ca.png">
@@ -288,26 +287,23 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
-      - name: Install
+      - name: Install & Build
         run: |
-          yarn
-      - name: Build
-        run: |
-          yarn run build
-      - name: Waiting for 200 from the Netlify Preview
+          yarn install
+          yarn build
+      - name: Wait for the Netlify Preview
         uses: jakepartusch/wait-for-netlify-action@v1
-        id: waitFor200
+        id: netlify
         with:
           site_name: 'gallant-panini-bc8593'
       - name: Audit URLs using Lighthouse
         uses: treosh/lighthouse-ci-action@v3
         with:
           urls: |
-            ${{ steps.waitFor200.outputs.url }}
-            ${{ steps.waitFor200.outputs.url }}/products/
-          budgetPath: ./budget.json # test performance budgets
-          uploadArtifacts: true # save results as an action artifacts
-          temporaryPublicStorage: true # upload lighthouse report to the temporary storage
+            ${{ steps.netlify.outputs.url }}
+            ${{ steps.netlify.outputs.url }}/products/
+          budgetPath: ./budget.json
+          uploadArtifacts: true
 ```
 
 [⚙️ See this workflow in use](https://github.com/denar90/lightouse-ci-netlify-preact/actions/runs/115659149)

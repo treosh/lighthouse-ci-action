@@ -297,6 +297,61 @@ jobs:
 
 </details>
 
+<details>
+ <summary>Use with a Lighthouse plugin.</summary><br>
+
+Combine the [field performance](https://github.com/treosh/lighthouse-plugin-field-performance) plugin with Github Actions.
+
+#### main.yml
+
+```yml
+name: Lighthouse CI with a plugin
+on: push
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm install # install dependencies, that includes Lighthouse plugins
+      - name: Audit URLs with Field Performance Plugin
+        uses: treosh/lighthouse-ci-action@v3
+        with:
+          urls: |
+            https://www.example.com/
+          configPath: '.lighthouserc.json'
+          temporaryPublicStorage: true
+```
+
+#### lighthouserc.json
+
+```json
+{
+  "ci": {
+    "collect": {
+      "settings": {
+        "plugins": ["lighthouse-plugin-field-performance"]
+      }
+    }
+  }
+}
+```
+
+Add a plugin as a dependency, so it's installed locally:
+
+#### package.json
+
+```json
+{
+  "devDependencies": {
+    "lighthouse-plugin-field-performance": "^2.0.1"
+  }
+}
+```
+
+[⚙️ See this workflow in use](https://github.com/treosh/lighthouse-ci-action/actions?workflow=LHCI-lighthouse-plugin)
+
+</details>
+
 Explore more workflows in [public examples](./.github/workflows).
 Submit a pull request with a new one if they don't cover your use case.
 

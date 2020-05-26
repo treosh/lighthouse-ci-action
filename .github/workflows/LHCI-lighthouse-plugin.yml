@@ -1,0 +1,15 @@
+name: LHCI-lighthouse-plugin
+on: push
+jobs:
+  lighthouse-plugin:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2 # checkout your own repo
+      - run: npm install lighthouse-plugin-field-performance # or just `npm install` to install dependencies from package.json
+      - name: Audit URLs with Field Performance Plugin
+        uses: ./
+        with:
+          urls: |
+            https://www.example.com/
+          configPath: '.github/lighthouse/lighthouserc-plugin.js'
+          temporaryPublicStorage: true

@@ -3,14 +3,14 @@
 > Audit URLs using [Lighthouse](https://developers.google.com/web/tools/lighthouse)
 > and test performance with [Lighthouse CI](https://github.com/GoogleChrome/lighthouse-ci).
 
-The action integrates Lighthouse CI with Github Actions environment.
-Making it simple to see failed tests with annotations, upload results, store secrets, and interpolate env variables.
+This action integrates Lighthouse CI with Github Actions environment.
+Making it simple to see failed tests, upload results, run jobs in parallel, store secrets, and interpolate env variables.
 
 It is built in collaboration between Lighthouse Team, Treo (web performance monitoring company), and many excellent contributors.
 
 **Features**:
 
-- ✅ Audit URLs using Lighthouse
+- ✅ Audit URLs using Lighthouse v6
 - 🎯 Test performance with Lighthouse CI assertions or performance budgets
 - 😻 See failed results in the action interface
 - 💾 Upload results to a private LHCI server, Temporary Public Storage, or as artifacts
@@ -268,37 +268,8 @@ against each of them. More details on this process are in the [Lighthouse CI doc
 
 </details>
 
-<details>
-  <summary>Use URLs interpolation to pass secrets or environment variables</summary>
-
-URLs support interpolation of process env variables so that you can write URLs like:
-
-```yml
-name: Lighthouse CI
-on: push
-jobs:
-  lighthouse:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Run Lighthouse and test budgets
-        uses: treosh/lighthouse-ci-action@v3
-        with:
-          urls: |
-            https://pr-$PR_NUMBER.staging-example.com/
-            https://pr-$PR_NUMBER.staging-example.com/blog
-          budgetPath: ./budgets.json
-          temporaryPublicStorage: true
-        env:
-          PR_NUMBER: ${{ github.event.pull_request.number }}
-```
-
-[⚙️ See this workflow in use](https://github.com/treosh/lighthouse-ci-action/actions?workflow=LHCI-urls-interpolation)
-
-</details>
-
-<details>
-  <summary>Integrate Lighthouse CI with Netlify</summary>
+<details>  
+  <summary>Integrate Lighthouse CI with Netlify</summary><br>
 
 It waits for Netlify to finish building a preview and then uses a built version to check performance.
 Hence, recipe is a composition of 2 actions: [Wait for Netlify Action](https://github.com/JakePartusch/wait-for-netlify-action)
@@ -340,6 +311,90 @@ jobs:
 ```
 
 [⚙️ See this workflow in use](https://github.com/denar90/lightouse-ci-netlify-preact/actions/runs/115659149)
+
+</details>
+
+<details>
+  <summary>Use URLs interpolation to pass secrets or environment variables</summary>
+
+URLs support interpolation of process env variables so that you can write URLs like:
+
+```yml
+name: Lighthouse CI
+on: push
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run Lighthouse and test budgets
+        uses: treosh/lighthouse-ci-action@v3
+        with:
+          urls: |
+            https://pr-$PR_NUMBER.staging-example.com/
+            https://pr-$PR_NUMBER.staging-example.com/blog
+          budgetPath: ./budgets.json
+          temporaryPublicStorage: true
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+```
+
+[⚙️ See this workflow in use](https://github.com/treosh/lighthouse-ci-action/actions?workflow=LHCI-urls-interpolation)
+
+</details>
+
+<details>
+ <summary>Use with a Lighthouse plugin.</summary><br>
+
+Combine the [field performance](https://github.com/treosh/lighthouse-plugin-field-performance) plugin with Github Actions.
+
+#### main.yml
+
+```yml
+name: Lighthouse CI with a plugin
+on: push
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm install # install dependencies, that includes Lighthouse plugins
+      - name: Audit URLs with Field Performance Plugin
+        uses: treosh/lighthouse-ci-action@v3
+        with:
+          urls: |
+            https://www.example.com/
+          configPath: '.lighthouserc.json'
+          temporaryPublicStorage: true
+```
+
+#### lighthouserc.json
+
+```json
+{
+  "ci": {
+    "collect": {
+      "settings": {
+        "plugins": ["lighthouse-plugin-field-performance"]
+      }
+    }
+  }
+}
+```
+
+Add a plugin as a dependency, so it's installed locally:
+
+#### package.json
+
+```json
+{
+  "devDependencies": {
+    "lighthouse-plugin-field-performance": "^2.0.1"
+  }
+}
+```
+
+[⚙️ See this workflow in use](https://github.com/treosh/lighthouse-ci-action/actions?workflow=LHCI-lighthouse-plugin)
 
 </details>
 

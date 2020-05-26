@@ -3,14 +3,14 @@
 > Audit URLs using [Lighthouse](https://developers.google.com/web/tools/lighthouse)
 > and test performance with [Lighthouse CI](https://github.com/GoogleChrome/lighthouse-ci).
 
-The action integrates Lighthouse CI with Github Actions environment.
-Making it simple to see failed tests with annotations, upload results, store secrets, and interpolate env variables.
+This action integrates Lighthouse CI with Github Actions environment.
+Making it simple to see failed tests, upload results, run jobs in parallel, store secrets, and interpolate env variables.
 
 It is built in collaboration between Lighthouse Team, Treo (web performance monitoring company), and many excellent contributors.
 
 **Features**:
 
-- ✅ Audit URLs using Lighthouse
+- ✅ Audit URLs using Lighthouse v6
 - 🎯 Test performance with Lighthouse CI assertions or performance budgets
 - 😻 See failed results in the action interface
 - 💾 Upload results to a private LHCI server, Temporary Public Storage, or as artifacts
@@ -269,7 +269,7 @@ against each of them. More details on this process are in the [Lighthouse CI doc
 </details>
 
 <details>  
-  <summary>Integrate Lighthouse CI with Netlify</summary>
+  <summary>Integrate Lighthouse CI with Netlify</summary><br>
 
 It waits for Netlify to finish building a preview and then uses a built version to check performance.
 Hence, recipe is a composition of 2 actions: [Wait for Netlify Action](https://github.com/JakePartusch/wait-for-netlify-action)

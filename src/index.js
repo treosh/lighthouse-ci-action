@@ -89,7 +89,7 @@ async function main() {
     core.endGroup() // Uploading
   }
 
-  await setOutput(resultsPath)
+  await setOutput('resultsPath', resultsPath)
   await setAnnotations(resultsPath) // set failing error/warning annotations
 }
 

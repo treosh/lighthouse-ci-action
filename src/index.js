@@ -60,7 +60,7 @@ async function main() {
   }
 
   /******************************* 3. UPLOAD ************************************/
-  if (input.serverToken || input.temporaryPublicStorage || input.uploadArtifacts) {
+  if (input.serverToken || input.temporaryPublicStorage || input.uploadArtifacts || input.fileSystemStoragePath) {
     core.startGroup(`Uploading`)
 
     // upload artifacts as soon as collected
@@ -68,7 +68,7 @@ async function main() {
       await uploadArtifacts(resultsPath)
     }
 
-    if (input.serverToken || input.temporaryPublicStorage) {
+    if (input.serverToken || input.temporaryPublicStorage || input.fileSystemStoragePath) {
       const uploadParams = []
 
       if (input.serverToken) {
@@ -80,6 +80,8 @@ async function main() {
         )
       } else if (input.temporaryPublicStorage) {
         uploadParams.push('--target=temporary-public-storage')
+      } else if (input.fileSystemStoragePath) {
+        uploadParams.push('--target=filesystem', `--outputDir=${input.fileSystemStoragePath}`)
       }
 
       const uploadStatus = runChildCommand('upload', uploadParams)

@@ -74,6 +74,7 @@ exports.getInput = function getInputArgs() {
     serverToken,
     temporaryPublicStorage,
     uploadArtifacts: core.getInput('uploadArtifacts') === 'true' ? true : false,
+    fileSystemStoragePath: core.getInput('fileSystemStoragePath'),
   }
 }
 

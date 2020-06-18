@@ -17,8 +17,6 @@ inputs:
     description: 'Address of a LHCI server'
   serverToken:
     description: 'API token to push to LHCI server'
-  fileSystemStoragePath:
-    description: 'Opt-in to saving Lighthouse results to filesystem storage'
 outputs:
   resultsPath:
     description: 'Path to the folder with LHCI results'

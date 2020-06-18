@@ -60,15 +60,15 @@ async function main() {
   }
 
   /******************************* 3. UPLOAD ************************************/
-  if (input.serverToken || input.temporaryPublicStorage || input.uploadArtifacts || input.fileSystemStoragePath) {
-    core.startGroup(`Uploading`)
+  core.startGroup(`Uploading`)
 
+  if (input.serverToken || input.temporaryPublicStorage || input.uploadArtifacts) {
     // upload artifacts as soon as collected
     if (input.uploadArtifacts) {
       await uploadArtifacts(resultsPath)
     }
 
-    if (input.serverToken || input.temporaryPublicStorage || input.fileSystemStoragePath) {
+    if (input.serverToken || input.temporaryPublicStorage) {
       const uploadParams = []
 
       if (input.serverToken) {
@@ -80,16 +80,18 @@ async function main() {
         )
       } else if (input.temporaryPublicStorage) {
         uploadParams.push('--target=temporary-public-storage')
-      } else if (input.fileSystemStoragePath) {
-        uploadParams.push('--target=filesystem', `--outputDir=${input.fileSystemStoragePath}`)
       }
 
       const uploadStatus = runChildCommand('upload', uploadParams)
       if (uploadStatus !== 0) throw new Error(`LHCI 'upload' failed to upload to LHCI server.`)
     }
-
-    core.endGroup() // Uploading
   }
+
+  // run again for filesystem target
+  const uploadStatus = runChildCommand('upload', ['--target=filesystem', `--outputDir=${resultsPath}`])
+  if (uploadStatus !== 0) throw new Error(`LHCI 'upload' failed to upload to fylesystem.`)
+
+  core.endGroup() // Uploading
 
   await setOutput(resultsPath)
   await setAnnotations(resultsPath) // set failing error/warning annotations

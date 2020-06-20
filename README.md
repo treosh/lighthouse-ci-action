@@ -394,6 +394,37 @@ Add a plugin as a dependency, so it's installed locally:
 
 </details>
 
+<details>
+ <summary>Output usage</summary><br>
+
+#### main.yml
+
+```yml
+# Example of output usage
+name: LHCI-output-webhook
+on: push
+jobs:
+  output-webhook:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use output for sending data to API.
+        id: LHCIAction
+        uses: ./
+        with:
+          urls: |
+            https://treo.sh/
+      - name: Webhook
+          uses: denar90/webhook-action@0.1.1
+          with:
+            webhookUrl: ${{secrets.ACTION_WEBHOOK_URL}}
+            data: '{ "links": ${{steps.LHCIAction.outputs.links}}, "manifest": ${{steps.LHCIAction.outputs.manifest}} }'
+```
+
+[⚙️ See this workflow in use](https://github.com/treosh/lighthouse-ci-action/actions?workflow=LHCI-output-webhook)
+
+</details>
+
 Explore more workflows in [public examples](./.github/workflows).
 Submit a pull request with a new one if they don't cover your use case.
 

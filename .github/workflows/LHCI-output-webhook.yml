@@ -13,7 +13,7 @@ jobs:
           urls: |
             https://treo.sh/
       - name: Webhook
-        uses: denar90/webhook-action@0.1.1
+        uses: denar90/webhook-action@v0.1.1
         with:
           webhookUrl: ${{secrets.ACTION_WEBHOOK_URL}}
           data: '{ "links": ${{steps.LHCIAction.outputs.links}}, "manifest": ${{steps.LHCIAction.outputs.manifest}} }'

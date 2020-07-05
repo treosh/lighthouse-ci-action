@@ -395,7 +395,7 @@ Add a plugin as a dependency, so it's installed locally:
 </details>
 
 <details>
- <summary>Output usage</summary><br>
+ <summary>Use `output` for a powerful composition with other actions</summary><br>
 
 #### main.yml
 
@@ -503,6 +503,69 @@ serverToken: ${{ secrets.LHCI_SERVER_TOKEN }}
 ```
 
 > **Note**: Use [Github secrets](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets#creating-encrypted-secrets) to keep your token hidden!
+
+## Outputs
+
+### `resultsPath`
+
+Server path to results stored results.
+
+Example
+
+```
+/Users/lighthouse-ci-action/.lighthouseci
+```
+
+### `links`
+
+Stored results links.
+
+Example:
+
+```js
+{
+  'https://treo.sh/': 'https://storage.googleapis.com/lighthouse-infrastructure.appspot.com/reports/1593981455963-59854.report.html'
+  ...
+}
+```
+
+### `assertionResults`
+
+```js
+;[
+  {
+    name: 'maxNumericValue',
+    expected: 61440,
+    actual: 508455,
+    values: [508455],
+    operator: '<=',
+    passed: false,
+    auditProperty: 'total.size',
+    auditId: 'resource-summary',
+    level: 'error',
+    url: 'https://treo.sh/',
+    auditTitle: 'Keep request counts low and transfer sizes small',
+    auditDocumentationLink: 'https://developers.google.com/web/tools/lighthouse/audits/budgets',
+  },
+  ...
+]
+```
+
+### `manifest`
+
+Report results. Lighthouse-CI doc [reference](https://github.com/GoogleChrome/lighthouse-ci/blob/master/docs/configuration.md#outputdir).
+
+```js
+;[
+  {
+    url: 'https://treo.sh/',
+    isRepresentativeRun: true,
+    htmlPath: '/Users/lighthouse-ci-action/.lighthouseci/treo_sh-_-2020_07_05_20_37_18.report.html',
+    jsonPath: '/Users/lighthouse-ci-action/.lighthouseci/treo_sh-_-2020_07_05_20_37_18.report.json',
+    summary: { performance: 0.99, accessibility: 0.98, 'best-practices': 1, seo: 0.96, pwa: 0.71 },
+  },
+]
+```
 
 ---
 

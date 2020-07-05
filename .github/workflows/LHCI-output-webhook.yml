@@ -1,0 +1,19 @@
+# Example of output usage
+name: LHCI-output-webhook
+on: push
+jobs:
+  output-webhook:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use output for sending data to API.
+        id: LHCIAction
+        uses: ./
+        with:
+          urls: |
+            https://treo.sh/
+      - name: Webhook
+          uses: denar90/webhook-action@0.1.1
+          with:
+            webhookUrl: ${{secrets.ACTION_WEBHOOK_URL}}
+            data: '{ "links": ${{steps.LHCIAction.outputs.links}}, "manifest": ${{steps.LHCIAction.outputs.manifest}} }'

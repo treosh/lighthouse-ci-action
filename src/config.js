@@ -74,6 +74,8 @@ exports.getInput = function getInputArgs() {
     serverToken,
     temporaryPublicStorage,
     uploadArtifacts: core.getInput('uploadArtifacts') === 'true' ? true : false,
+    basicAuthUsername: core.getInput('basicAuthUsername') || 'lighthouse',
+    basicAuthPassword: core.getInput('basicAuthPassword'),
   }
 }
 

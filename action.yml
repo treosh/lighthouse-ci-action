@@ -17,6 +17,10 @@ inputs:
     description: 'Address of a LHCI server'
   serverToken:
     description: 'API token to push to LHCI server'
+  basicAuthUsername:
+    description: 'Basic auth username for LHCI server'
+  basicAuthPassword:
+    description: 'Basic auth password for LHCI server'
 outputs:
   resultsPath:
     description: 'Path to the folder with LHCI results'

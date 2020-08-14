@@ -267,7 +267,7 @@ against each of them. More details on this process are in the [Lighthouse CI doc
 
 </details>
 
-<details>  
+<details>
   <summary>Integrate Lighthouse CI with Netlify</summary><br>
 
 It waits for Netlify to finish building a preview and then uses a built version to check performance.
@@ -503,6 +503,18 @@ serverToken: ${{ secrets.LHCI_SERVER_TOKEN }}
 ```
 
 > **Note**: Use [Github secrets](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets#creating-encrypted-secrets) to keep your token hidden!
+
+
+#### `basicAuthUsername` `basicAuthPassword`
+
+Lighthouse servers can be protected with basic authentication [LHCI server basic authentication](https://github.com/GoogleChrome/lighthouse-ci/blob/master/docs/server.md#basic-authentication) by specifying both `basicAuthUsername` and `basicAuthPassword` will authenticate the upload.
+
+```yml
+basicAuthUsername: ${{ secrets.LHCI_SERVER_BASIC_AUTH_USERNAME }}
+basicAuthPassword: ${{ secrets.LHCI_SERVER_BASIC_AUTH_PASSWORD }}
+```
+
+> **Note**: Use [Github secrets](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets#creating-encrypted-secrets) to keep your username and password hidden!
 
 ## Outputs
 

@@ -34,12 +34,12 @@
   dependencies:
     tunnel "0.0.6"
 
-"@lhci/cli@^0.4.1":
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/@lhci/cli/-/cli-0.4.1.tgz#630ca7206580800ca681ae6dcfb1b407fa473d2e"
-  integrity sha512-zts7zUKwfIjGuoKPOw6hHiqx4mXDXQ4SDv+8O8LtcvQ31fPQTkxy4jj8UO03wsWVbt+PTp92Z0JVxVtG/bHp2g==
+"@lhci/cli@^0.4.4":
+  version "0.4.4"
+  resolved "https://registry.yarnpkg.com/@lhci/cli/-/cli-0.4.4.tgz#52d179658aeccb228ba94525d87bbe954bc8f87d"
+  integrity sha512-2Gp3+NLQxihURVwNrxxj4T1HxUqhDtcoziKtD6agL43RaRyA6i3TKkJ4xa/nq5V1wt3u/J8z/DFUBYnVuHMcJg==
   dependencies:
-    "@lhci/utils" "0.4.1"
+    "@lhci/utils" "0.4.4"
     chrome-launcher "^0.12.0"
     compression "^1.7.4"
     express "^4.17.1"
@@ -53,20 +53,10 @@
     yargs "^12.0.5"
     yargs-parser "^11.1.1"
 
-"@lhci/utils@0.4.1":
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/@lhci/utils/-/utils-0.4.1.tgz#45b1b89a7f88a89b97ec9ce5fa0f319bbbd5c3b5"
-  integrity sha512-twSXp1dRY31nwarz7lavOZ/cw0US8jV6Zjy+uheOyKlWjycD2LvFBOjTzTlfoEZkmm038sv1CTybzUzZ1ED2yA==
-  dependencies:
-    isomorphic-fetch "^2.2.1"
-    js-yaml "^3.13.1"
-    lighthouse "6.0.0"
-    tree-kill "^1.2.1"
-
-"@lhci/utils@^0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@lhci/utils/-/utils-0.4.0.tgz#fd61cd2c306b90b5686e2a97fb7a740ab4741939"
-  integrity sha512-MNRWfK/myWqbqsIaptqpCzwECdHa6sAoNWg7WsnSAPQLtfiMiVF8J3EZyrfaQWH2r+VKP3WfnLCrSIbB2E5SNw==
+"@lhci/utils@0.4.4", "@lhci/utils@^0.4.4":
+  version "0.4.4"
+  resolved "https://registry.yarnpkg.com/@lhci/utils/-/utils-0.4.4.tgz#3a36a1f1a4195b5529192bb9f059af905b1918b0"
+  integrity sha512-sEkxKYEVhy5kwwUhynPEsknHJy/PKfLTPF7j8YISz7ZO6w1iuQVZV691awOM3r4/x79vpEWpFRqPho6gdBJp1w==
   dependencies:
     isomorphic-fetch "^2.2.1"
     js-yaml "^3.13.1"

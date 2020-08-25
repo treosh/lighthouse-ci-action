@@ -504,7 +504,6 @@ serverToken: ${{ secrets.LHCI_SERVER_TOKEN }}
 
 > **Note**: Use [Github secrets](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets#creating-encrypted-secrets) to keep your token hidden!
 
-
 #### `basicAuthUsername` `basicAuthPassword`
 
 Lighthouse servers can be protected with basic authentication [LHCI server basic authentication](https://github.com/GoogleChrome/lighthouse-ci/blob/master/docs/server.md#basic-authentication) by specifying both `basicAuthUsername` and `basicAuthPassword` will authenticate the upload.
@@ -518,11 +517,11 @@ basicAuthPassword: ${{ secrets.LHCI_SERVER_BASIC_AUTH_PASSWORD }}
 
 ## Outputs
 
+Use outputs to compose results of the LHCI Action with other Github Actions, like webhooks, notifications, or custom assertions.
+
 ### `resultsPath`
 
-Server path to results stored results.
-
-Example
+A path to `.lighthouseci` results folder:
 
 ```
 /Users/lighthouse-ci-action/.lighthouseci
@@ -530,9 +529,7 @@ Example
 
 ### `links`
 
-Stored results links.
-
-Example:
+A JSON string with a links to uploaded results:
 
 ```js
 {
@@ -543,8 +540,10 @@ Example:
 
 ### `assertionResults`
 
+A JSON string with assertion results:
+
 ```js
-;[
+[
   {
     name: 'maxNumericValue',
     expected: 61440,
@@ -565,7 +564,7 @@ Example:
 
 ### `manifest`
 
-Report results. Lighthouse-CI doc [reference](https://github.com/GoogleChrome/lighthouse-ci/blob/master/docs/configuration.md#outputdir).
+A JSON string with report results ([LHCI docs reference](https://github.com/GoogleChrome/lighthouse-ci/blob/master/docs/configuration.md#outputdir)):
 
 ```js
 ;[

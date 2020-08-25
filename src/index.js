@@ -82,10 +82,10 @@ async function main() {
         uploadParams.push('--target=temporary-public-storage')
       }
 
-      if(input.basicAuthPassword) {
+      if (input.basicAuthPassword) {
         uploadParams.push(
           `--basicAuth.username=${input.basicAuthUsername}`,
-          `--basicAuth.password=${input.basicAuthPassword}`,
+          `--basicAuth.password=${input.basicAuthPassword}`
         )
       }
 

@@ -67,11 +67,11 @@ class UserTimings {
       }
     });
 
-    // baseline the timestamps against navStart, and translate to milliseconds
+    // baseline the timestamps against the timeOrigin, and translate to milliseconds
     userTimings.forEach(ut => {
-      ut.startTime = (ut.startTime - traceOfTab.navigationStartEvt.ts) / 1000;
+      ut.startTime = (ut.startTime - traceOfTab.timeOriginEvt.ts) / 1000;
       if (!ut.isMark) {
-        ut.endTime = (ut.endTime - traceOfTab.navigationStartEvt.ts) / 1000;
+        ut.endTime = (ut.endTime - traceOfTab.timeOriginEvt.ts) / 1000;
         ut.duration = ut.duration / 1000;
       }
     });

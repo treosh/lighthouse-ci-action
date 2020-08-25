@@ -12,7 +12,7 @@ const i18n = require('../../lib/i18n/i18n.js');
 const UIStrings = {
   /** Description of the Total Blocking Time (TBT) metric, which calculates the total duration of blocking time for a web page. Blocking times are time periods when the page would be blocked (prevented) from responding to user input (clicks, taps, and keypresses will feel slow to respond). This is displayed within a tooltip when the user hovers on the metric name to see more. No character length limits.*/
   description: 'Sum of all time periods between FCP and Time to Interactive, ' +
-      'when task length exceeded 50ms, expressed in milliseconds. [Learn more](https://web.dev/lighthouse-total-blocking-time).',
+      'when task length exceeded 50ms, expressed in milliseconds. [Learn more](https://web.dev/lighthouse-total-blocking-time/).',
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);

@@ -268,7 +268,6 @@ class NetworkAnalyzer {
 
     // Check if we can trust the connection information coming from the protocol
     if (!forceCoarseEstimates && NetworkAnalyzer.canTrustConnectionInformation(records)) {
-      // @ts-ignore
       return new Map(records.map(record => [record.requestId, !!record.connectionReused]));
     }
 

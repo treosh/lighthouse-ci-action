@@ -27,7 +27,7 @@ const UIStrings = {
   /** Imperative title of a Lighthouse audit that tells the user that their page has loaded fast enough to be considered a Progressive Web App. This imperative title is shown to users when the web page has loaded too slowly to be considered a Progressive Web App. */
   failureTitle: 'Page load is not fast enough on mobile networks',
   /** Description of a Lighthouse audit that tells the user *why* they need to load fast enough on mobile networks. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
-  description: 'A fast page load over a cellular network ensures a good mobile user experience. [Learn more](https://web.dev/load-fast-enough-for-pwa).',
+  description: 'A fast page load over a cellular network ensures a good mobile user experience. [Learn more](https://web.dev/load-fast-enough-for-pwa/).',
   /** Label for the audit identifying the time it took for the page to become interactive. */
   displayValueText: 'Interactive at {timeInMs, number, seconds}\xa0s',
   /** Label for the audit identifying the time it took for the page to become interactive on a mobile network. */

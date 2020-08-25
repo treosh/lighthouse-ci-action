@@ -17,7 +17,7 @@ const UIStrings = {
   /** Description of a Lighthouse audit that tells the user why a website should respond to requests when offline. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
   description: 'If you\'re building a Progressive Web App, consider using a service worker ' +
       'so that your app can work offline. ' +
-      '[Learn more](https://web.dev/works-offline).',
+      '[Learn more](https://web.dev/works-offline/).',
   /**
    * @description Warning that the web page redirected during testing and that may have affected the offline load test.
    * @example {https://example.com/requested/page} requested

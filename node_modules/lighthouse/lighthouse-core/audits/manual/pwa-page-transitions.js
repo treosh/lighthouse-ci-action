@@ -13,7 +13,7 @@ const UIStrings = {
   title: 'Page transitions don\'t feel like they block on the network',
   /** Description of a Lighthouse audit that tells the user why they should make transitions in their web app feel fast. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
   description: 'Transitions should feel snappy as you tap around, even on a slow network. ' +
-    'This experience is key to a user\'s perception of performance. [Learn more](https://web.dev/pwa-page-transitions).',
+    'This experience is key to a user\'s perception of performance. [Learn more](https://web.dev/pwa-page-transitions/).',
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);

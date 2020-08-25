@@ -15,9 +15,7 @@ const UIStrings = {
   failureTitle: 'Prevents users to paste into password fields',
   /** Description of a Lighthouse audit that tells the user why they should allow pasting of content into password fields. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
   description: 'Preventing password pasting undermines good security policy. ' +
-      '[Learn more](https://web.dev/password-inputs-can-be-pasted-into).',
-  /** Table column header for the HTML elements that do not allow pasting of content. */
-  columnFailingElem: 'Failing Elements',
+      '[Learn more](https://web.dev/password-inputs-can-be-pasted-into/).',
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);
@@ -53,14 +51,11 @@ class PasswordInputsCanBePastedIntoAudit extends Audit {
 
     /** @type {LH.Audit.Details.Table['headings']} */
     const headings = [
-      {key: 'node', itemType: 'node', text: str_(UIStrings.columnFailingElem)},
+      {key: 'node', itemType: 'node', text: str_(i18n.UIStrings.columnFailingElem)},
     ];
 
     return {
       score: Number(passwordInputsWithPreventedPaste.length === 0),
-      extendedInfo: {
-        value: passwordInputsWithPreventedPaste,
-      },
       details: Audit.makeTableDetails(headings, items),
     };
   }

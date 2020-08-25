@@ -76,7 +76,7 @@ function init(opts) {
       if (!err) return;
 
       // Ignore expected errors
-      // @ts-ignore Non-standard property added to flag error as not needing capturing.
+      // @ts-expect-error Non-standard property added to flag error as not needing capturing.
       if (err.expected) return;
 
       const tags = opts.tags || {};
@@ -97,9 +97,9 @@ function init(opts) {
       if (sampledErrorMatch && sampledErrorMatch.rate <= Math.random()) return;
 
       // Protocol errors all share same stack trace, so add more to fingerprint
-      // @ts-ignore - properties added to protocol method LHErrors.
+      // @ts-expect-error - properties added to protocol method LHErrors.
       if (err.protocolMethod) {
-        // @ts-ignore - properties added to protocol method LHErrors.
+        // @ts-expect-error - properties added to protocol method LHErrors.
         opts.fingerprint = ['{{ default }}', err.protocolMethod, err.protocolError];
       }
 

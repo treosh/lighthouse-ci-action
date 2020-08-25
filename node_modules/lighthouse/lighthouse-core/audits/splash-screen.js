@@ -17,7 +17,7 @@ const UIStrings = {
   /** Description of a Lighthouse audit that tells the user why they should configure a custom splash screen. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
   description: 'A themed splash screen ensures a high-quality experience when ' +
     'users launch your app from their homescreens. [Learn ' +
-    'more](https://web.dev/splash-screen).',
+    'more](https://web.dev/splash-screen/).',
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);

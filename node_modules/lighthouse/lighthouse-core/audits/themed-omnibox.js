@@ -17,7 +17,7 @@ const UIStrings = {
   failureTitle: 'Does not set a theme color for the address bar.',
   /** Description of a Lighthouse audit that tells the user why they should set a theme color for the browser's address bar. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
   description: 'The browser address bar can be themed to match your site. ' +
-    '[Learn more](https://web.dev/themed-omnibox).',
+    '[Learn more](https://web.dev/themed-omnibox/).',
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);

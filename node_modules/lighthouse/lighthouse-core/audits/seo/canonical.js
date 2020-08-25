@@ -17,7 +17,7 @@ const UIStrings = {
   failureTitle: 'Document does not have a valid `rel=canonical`',
   /** Description of a Lighthouse audit that tells the user *why* they need to have a valid rel=canonical link. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
   description: 'Canonical links suggest which URL to show in search results. ' +
-    '[Learn more](https://web.dev/canonical).',
+    '[Learn more](https://web.dev/canonical/).',
   /**
    * @description Explanatory message stating that there was a failure in an audit caused by multiple URLs conflicting with each other.
    * @example {https://example.com, https://example2.com} urlList

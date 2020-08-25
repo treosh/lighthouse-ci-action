@@ -18,7 +18,7 @@ const UIStrings = {
   failureTitle: 'Page has unsuccessful HTTP status code',
   /** Description of a Lighthouse audit that tells the user *why* they need to serve pages with a valid HTTP status code. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
   description: 'Pages with unsuccessful HTTP status codes may not be indexed properly. ' +
-  '[Learn more](https://web.dev/http-status-code).',
+  '[Learn more](https://web.dev/http-status-code/).',
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);

@@ -12,8 +12,8 @@ const UIStrings = {
   /** Descriptive title of a diagnostic audit that provides the element that was determined to be the Largest Contentful Paint. */
   title: 'Largest Contentful Paint element',
   /** Description of a Lighthouse audit that tells the user that the element shown was determined to be the Largest Contentful Paint. */
-  description: 'This is the element that was identified as the Largest Contentful Paint. ' +
-    '[Learn More](https://web.dev/lighthouse-largest-contentful-paint)',
+  description: 'This is the largest contentful element painted within the viewport. ' +
+    '[Learn More](https://web.dev/lighthouse-largest-contentful-paint/)',
   /** [ICU Syntax] Label for the Largest Contentful Paint Element audit identifying how many elements were found. */
   displayValue: `{itemCount, plural,
     =1 {1 element found}
@@ -42,8 +42,8 @@ class LargestContentfulPaintElement extends Audit {
    * @return {LH.Audit.Product}
    */
   static audit(artifacts) {
-    const lcpElement =
-      artifacts.TraceElements.find(element => element.metricName === 'largest-contentful-paint');
+    const lcpElement = artifacts.TraceElements
+      .find(element => element.traceEventType === 'largest-contentful-paint');
     const lcpElementDetails = [];
     if (lcpElement) {
       lcpElementDetails.push({
@@ -53,6 +53,7 @@ class LargestContentfulPaintElement extends Audit {
           selector: lcpElement.selector,
           nodeLabel: lcpElement.nodeLabel,
           snippet: lcpElement.snippet,
+          boundingRect: lcpElement.boundingRect,
         }),
       });
     }
@@ -68,6 +69,7 @@ class LargestContentfulPaintElement extends Audit {
 
     return {
       score: 1,
+      notApplicable: lcpElementDetails.length === 0,
       displayValue,
       details,
     };

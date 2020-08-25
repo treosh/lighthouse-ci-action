@@ -40,13 +40,28 @@ class CumulativeLayoutShift {
       };
     }
 
-    const cumulativeLayoutShift =
+    let cumulativeLayoutShift =
       finalLayoutShift.args &&
       finalLayoutShift.args.data &&
       finalLayoutShift.args.data.cumulative_score;
 
     if (cumulativeLayoutShift === undefined) {
       throw new LHError(LHError.errors.LAYOUT_SHIFT_MISSING_DATA);
+    }
+
+    // Chromium will set `had_recent_input` if there was recent user input, which
+    // skips shift events from contributing to CLS. This flag is also set when Lighthouse changes
+    // the emulation size. This consistently results in the first few shift event always being
+    // ignored for CLS. Since we don't expect any user input, we add the score of these
+    // shift events to CLS.
+    // See https://bugs.chromium.org/p/chromium/issues/detail?id=1094974.
+    for (let i = 0; i < traceOfTab.mainThreadEvents.length; i++) {
+      const evt = traceOfTab.mainThreadEvents[i];
+      if (evt.name === 'LayoutShift' && evt.args && evt.args.data && evt.args.data.is_main_frame) {
+        if (!evt.args.data.had_recent_input) break;
+        if (typeof evt.args.data.score !== 'number') continue;
+        cumulativeLayoutShift += evt.args.data.score;
+      }
     }
 
     return {

@@ -23,7 +23,7 @@ const UIStrings = {
   description:
     'Consider lazy-loading offscreen and hidden images after all critical resources have ' +
     'finished loading to lower time to interactive. ' +
-    '[Learn more](https://web.dev/offscreen-images).',
+    '[Learn more](https://web.dev/offscreen-images/).',
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);
@@ -215,7 +215,7 @@ class OffscreenImages extends ByteEfficiencyAudit {
       // Filter out images that were loaded after all CPU activity
       items = context.settings.throttlingMethod === 'simulate' ?
         OffscreenImages.filterLanternResults(unfilteredResults, lanternInteractive) :
-        // @ts-ignore - .timestamp will exist if throttlingMethod isn't lantern
+        // @ts-expect-error - .timestamp will exist if throttlingMethod isn't lantern
         OffscreenImages.filterObservedResults(unfilteredResults, interactive.timestamp);
     } catch (err) {
       // if the error is during a Lantern run, end of trace may also be inaccurate, so rethrow

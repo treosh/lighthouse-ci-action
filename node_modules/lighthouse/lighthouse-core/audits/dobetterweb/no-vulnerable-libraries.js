@@ -28,7 +28,7 @@ const UIStrings = {
   /** Description of a Lighthouse audit that tells the user why they should be concerned about the third party Javascript libraries that they use. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
   description: 'Some third-party scripts may contain known security vulnerabilities ' +
     'that are easily identified and exploited by attackers. ' +
-    '[Learn more](https://web.dev/no-vulnerable-libraries).',
+    '[Learn more](https://web.dev/no-vulnerable-libraries/).',
   /** [ICU Syntax] Label for the audit identifying the number of vulnerable Javascript libraries found. */
   displayValue: `{itemCount, plural,
     =1 {1 vulnerability detected}
@@ -184,7 +184,7 @@ class NoVulnerableLibrariesAudit extends Audit {
     /** @type {Array<{highestSeverity: string, vulnCount: number, detectedLib: LH.Audit.Details.LinkValue}>} */
     const vulnerabilityResults = [];
 
-    const libraryVulns = foundLibraries.map(lib => {
+    for (const lib of foundLibraries) {
       const version = this.normalizeVersion(lib.version) || '';
       const vulns = this.getVulnerabilities(version, lib, snykDB);
       const vulnCount = vulns.length;
@@ -204,15 +204,7 @@ class NoVulnerableLibrariesAudit extends Audit {
           },
         });
       }
-
-      return {
-        name: lib.name,
-        npmPkgName: lib.npm,
-        version,
-        vulns,
-        highestSeverity,
-      };
-    });
+    }
 
     let displayValue = '';
     if (totalVulns > 0) {
@@ -230,10 +222,6 @@ class NoVulnerableLibrariesAudit extends Audit {
     return {
       score: Number(totalVulns === 0),
       displayValue,
-      extendedInfo: {
-        jsLibs: libraryVulns,
-        vulnerabilities: vulnerabilityResults,
-      },
       details,
     };
   }

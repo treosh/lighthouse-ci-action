@@ -44,9 +44,19 @@ class I18n {
    * @param {number=} granularity Controls how coarse the displayed value is, defaults to 0.1
    * @return {string}
    */
-  formatBytesToKB(size, granularity = 0.1) {
+  formatBytesToKiB(size, granularity = 0.1) {
     const kbs = this._numberFormatter.format(Math.round(size / 1024 / granularity) * granularity);
-    return `${kbs}${NBSP2}KB`;
+    return `${kbs}${NBSP2}KiB`;
+  }
+
+  /**
+   * @param {number} size
+   * @param {number=} granularity Controls how coarse the displayed value is, defaults to 0.1
+   * @return {string}
+   */
+  formatBytes(size, granularity = 1) {
+    const kbs = this._numberFormatter.format(Math.round(size / granularity) * granularity);
+    return `${kbs}${NBSP2}bytes`;
   }
 
   /**

@@ -41,7 +41,7 @@ function convertNodeTimingsToTrace(nodeTimings) {
   // Create a fake task event ~1s after the trace ends for a sane default bounds in DT
   traceEvents.push(
     ...createFakeTaskEvents(
-      // @ts-ignore
+      // @ts-expect-error
       {childEvents: [], event: {}},
       {
         startTime: lastEventEndTime + 1000,

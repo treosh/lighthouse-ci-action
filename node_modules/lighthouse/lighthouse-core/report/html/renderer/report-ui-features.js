@@ -23,13 +23,13 @@
  * the report.
  */
 
-/* globals getFilenamePrefix Util */
+/* globals getFilenamePrefix Util ElementScreenshotRenderer */
 
 /** @typedef {import('./dom')} DOM */
 
 /**
  * @param {HTMLTableElement} tableEl
- * @return {Array<HTMLTableRowElement>}
+ * @return {Array<HTMLElement>}
  */
 function getTableRows(tableEl) {
   return Array.from(tableEl.tBodies[0].rows);
@@ -82,6 +82,7 @@ class ReportUIFeatures {
     this._setupMediaQueryListeners();
     this._dropDown.setup(this.onDropDownMenuClick);
     this._setupThirdPartyFilter();
+    this._setupElementScreenshotOverlay();
     this._setUpCollapseDetailsAfterPrinting();
     this._resetUIState();
     this._document.addEventListener('keyup', this.onKeyUp);
@@ -248,29 +249,34 @@ class ReportUIFeatures {
 
       filterInput.id = id;
       filterInput.addEventListener('change', e => {
-        // Remove rows from the dom and keep track of them to re-add on uncheck.
-        // Why removing instead of hiding? To keep nth-child(even) background-colors working.
-        if (e.target instanceof HTMLInputElement && !e.target.checked) {
-          for (const row of thirdPartyRows.values()) {
-            row.remove();
-          }
-        } else {
-          // Add row elements back to original positions.
-          for (const [position, row] of thirdPartyRows.entries()) {
-            const childrenArr = getTableRows(tableEl);
-            tableEl.tBodies[0].insertBefore(row, childrenArr[position]);
-          }
+        const shouldHideThirdParty = e.target instanceof HTMLInputElement && !e.target.checked;
+        let even = true;
+        let rowEl = rowEls[0];
+        while (rowEl) {
+          const shouldHide = shouldHideThirdParty && thirdPartyRows.includes(rowEl);
+
+          // Iterate subsequent associated sub item rows.
+          do {
+            rowEl.classList.toggle('lh-row--hidden', shouldHide);
+            // Adjust for zebra styling.
+            rowEl.classList.toggle('lh-row--even', !shouldHide && even);
+            rowEl.classList.toggle('lh-row--odd', !shouldHide && !even);
+
+            rowEl = /** @type {HTMLElement} */ (rowEl.nextElementSibling);
+          } while (rowEl && rowEl.classList.contains('lh-sub-item-row'));
+
+          if (!shouldHide) even = !even;
         }
       });
 
       this._dom.find('label', filterTemplate).setAttribute('for', id);
       this._dom.find('.lh-3p-filter-count', filterTemplate).textContent =
-          `${thirdPartyRows.size}`;
+          `${thirdPartyRows.length}`;
       this._dom.find('.lh-3p-ui-string', filterTemplate).textContent =
           Util.i18n.strings.thirdPartyResourcesLabel;
 
-      const allThirdParty = thirdPartyRows.size === rowEls.length;
-      const allFirstParty = !thirdPartyRows.size;
+      const allThirdParty = thirdPartyRows.length === rowEls.length;
+      const allFirstParty = !thirdPartyRows.length;
 
       // If all or none of the rows are 3rd party, disable the checkbox.
       if (allThirdParty || allFirstParty) {
@@ -291,30 +297,41 @@ class ReportUIFeatures {
     });
   }
 
+  _setupElementScreenshotOverlay() {
+    const fullPageScreenshot =
+      this.json.audits['full-page-screenshot'] && this.json.audits['full-page-screenshot'].details;
+    if (!fullPageScreenshot || fullPageScreenshot.type !== 'full-page-screenshot') return;
+
+    ElementScreenshotRenderer.installOverlayFeature(
+      this._dom, this._templateContext, fullPageScreenshot);
+  }
+
   /**
    * From a table with URL entries, finds the rows containing third-party URLs
-   * and returns a Map of those rows, mapping from row index to row Element.
+   * and returns them.
    * @param {HTMLElement[]} rowEls
    * @param {string} finalUrl
-   * @return {Map<number, HTMLElement>}
+   * @return {Array<HTMLElement>}
    */
   _getThirdPartyRows(rowEls, finalUrl) {
-    /** @type {Map<number, HTMLElement>} */
-    const thirdPartyRows = new Map();
+    /** @type {Array<HTMLElement>} */
+    const thirdPartyRows = [];
     const finalUrlRootDomain = Util.getRootDomain(finalUrl);
 
-    rowEls.forEach((rowEl, rowPosition) => {
+    for (const rowEl of rowEls) {
+      if (rowEl.classList.contains('lh-sub-item-row')) continue;
+
       /** @type {HTMLElement|null} */
       const urlItem = rowEl.querySelector('.lh-text__url');
-      if (!urlItem) return;
+      if (!urlItem) continue;
 
       const datasetUrl = urlItem.dataset.url;
-      if (!datasetUrl) return;
+      if (!datasetUrl) continue;
       const isThirdParty = Util.getRootDomain(datasetUrl) !== finalUrlRootDomain;
-      if (!isThirdParty) return;
+      if (!isThirdParty) continue;
 
-      thirdPartyRows.set(Number(rowPosition), rowEl);
-    });
+      thirdPartyRows.push(rowEl);
+    }
 
     return thirdPartyRows;
   }
@@ -494,7 +511,7 @@ class ReportUIFeatures {
     });
 
     // The popup's window.name is keyed by version+url+fetchTime, so we reuse/select tabs correctly
-    // @ts-ignore - If this is a v2 LHR, use old `generatedTime`.
+    // @ts-expect-error - If this is a v2 LHR, use old `generatedTime`.
     const fallbackFetchTime = /** @type {string} */ (json.generatedTime);
     const fetchTime = json.fetchTime || fallbackFetchTime;
     const windowName = `${json.lighthouseVersion}-${json.requestedUrl}-${fetchTime}`;
@@ -773,13 +790,10 @@ class DropDown {
 
   /**
    * Focus out handler for the drop down menu.
-   * @param {Event} e
+   * @param {FocusEvent} e
    */
   onMenuFocusOut(e) {
-    // TODO: The focusout event is not supported in our current version of typescript (3.5.3)
-    // https://github.com/microsoft/TypeScript/issues/30716
-    const focusEvent = /** @type {FocusEvent} */ (e);
-    const focusedEl = /** @type {?HTMLElement} */ (focusEvent.relatedTarget);
+    const focusedEl = /** @type {?HTMLElement} */ (e.relatedTarget);
 
     if (!this._menuEl.contains(focusedEl)) {
       this.close();

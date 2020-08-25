@@ -22,7 +22,7 @@ class Gatherer {
    * @return {keyof LH.GathererArtifacts}
    */
   get name() {
-    // @ts-ignore - assume that class name has been added to LH.GathererArtifacts.
+    // @ts-expect-error - assume that class name has been added to LH.GathererArtifacts.
     return this.constructor.name;
   }
 

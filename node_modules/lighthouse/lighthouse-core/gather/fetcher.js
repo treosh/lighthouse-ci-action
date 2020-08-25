@@ -13,6 +13,8 @@
 
 /* global document */
 
+const log = require('lighthouse-logger');
+
 class Fetcher {
   /**
    * @param {import('./driver.js')} driver
@@ -69,13 +71,15 @@ class Fetcher {
   /**
    * @param {LH.Crdp.Fetch.RequestPausedEvent} event
    */
-  async _onRequestPaused(event) {
+  _onRequestPaused(event) {
     const handler = this._onRequestPausedHandlers.get(event.request.url);
     if (handler) {
-      await handler(event);
+      handler(event);
     } else {
       // Nothing cares about this URL, so continue.
-      await this.driver.sendCommand('Fetch.continueRequest', {requestId: event.requestId});
+      this.driver.sendCommand('Fetch.continueRequest', {requestId: event.requestId}).catch(err => {
+        log.error('Fetcher', `Failed to continueRequest: ${err.message}`);
+      });
     }
   }
 
@@ -95,7 +99,8 @@ class Fetcher {
 
     /** @type {Promise<string>} */
     const requestInterceptionPromise = new Promise((resolve, reject) => {
-      this._setOnRequestPausedHandler(url, async (event) => {
+      /** @param {LH.Crdp.Fetch.RequestPausedEvent} event */
+      const handlerAsync = async event => {
         const {requestId, responseStatusCode} = event;
 
         // The first requestPaused event is for the request stage. Continue it.
@@ -107,7 +112,7 @@ class Fetcher {
               return {name, value};
             });
 
-          this.driver.sendCommand('Fetch.continueRequest', {
+          await this.driver.sendCommand('Fetch.continueRequest', {
             requestId,
             headers,
           });
@@ -128,8 +133,9 @@ class Fetcher {
         }
 
         // Fail the request (from the page's perspective) so that the iframe never loads.
-        this.driver.sendCommand('Fetch.failRequest', {requestId, errorReason: 'Aborted'});
-      });
+        await this.driver.sendCommand('Fetch.failRequest', {requestId, errorReason: 'Aborted'});
+      };
+      this._setOnRequestPausedHandler(url, event => handlerAsync(event).catch(reject));
     });
 
     /**
@@ -156,10 +162,6 @@ class Fetcher {
       document.body.appendChild(iframe);
     }
 
-    await this.driver.evaluateAsync(`${injectIframe}(${JSON.stringify(url)})`, {
-      useIsolation: true,
-    });
-
     /** @type {NodeJS.Timeout} */
     let timeoutHandle;
     /** @type {Promise<never>} */
@@ -168,10 +170,17 @@ class Fetcher {
       timeoutHandle = setTimeout(() => reject(new Error(errorMessage)), timeout);
     });
 
-    return Promise.race([
+    const racePromise = Promise.race([
       timeoutPromise,
       requestInterceptionPromise,
     ]).finally(() => clearTimeout(timeoutHandle));
+
+    const injectionPromise = this.driver.evaluateAsync(`${injectIframe}(${JSON.stringify(url)})`, {
+      useIsolation: true,
+    });
+
+    const [fetchResult] = await Promise.all([racePromise, injectionPromise]);
+    return fetchResult;
   }
 }
 

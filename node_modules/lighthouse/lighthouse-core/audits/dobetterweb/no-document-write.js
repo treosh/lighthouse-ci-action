@@ -39,7 +39,7 @@ const UIStrings = {
   /** Description of a Lighthouse audit that tells the user why they should avoid `document.write`. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
   description: 'For users on slow connections, external scripts dynamically injected via ' +
       '`document.write()` can delay page load by tens of seconds. ' +
-      '[Learn more](https://web.dev/no-document-write).',
+      '[Learn more](https://web.dev/no-document-write/).',
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);
@@ -75,9 +75,6 @@ class NoDocWriteAudit extends ViolationAudit {
 
     return {
       score: Number(results.length === 0),
-      extendedInfo: {
-        value: results,
-      },
       details,
     };
   }

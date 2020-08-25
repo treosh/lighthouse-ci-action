@@ -24,6 +24,9 @@ class CriticalRequestChains {
       throw new Error('mainResource not provided');
     }
 
+    // The main resource is always critical.
+    if (request.requestId === mainResource.requestId) return true;
+
     // Treat any preloaded resource as non-critical
     if (request.isLinkPreload) {
       return false;
@@ -55,6 +58,10 @@ class CriticalRequestChains {
         request.mimeType && request.mimeType.startsWith('image/')) {
       return false;
     }
+
+    // Requests that have no initiatorRequest are typically ambiguous late-load assets.
+    // Even on the off chance they were important, we don't have any parent to display for them.
+    if (!request.initiatorRequest) return false;
 
     return ['VeryHigh', 'High', 'Medium'].includes(request.priority);
   }

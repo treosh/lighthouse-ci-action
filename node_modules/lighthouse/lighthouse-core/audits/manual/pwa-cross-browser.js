@@ -14,7 +14,7 @@ const UIStrings = {
   title: 'Site works cross-browser',
   /** Description of a Lighthouse audit that tells the user why they should make sites work across different browsers. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
   description: 'To reach the most number of users, sites should work across ' +
-  'every major browser. [Learn more](https://web.dev/pwa-cross-browser).',
+  'every major browser. [Learn more](https://web.dev/pwa-cross-browser/).',
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);

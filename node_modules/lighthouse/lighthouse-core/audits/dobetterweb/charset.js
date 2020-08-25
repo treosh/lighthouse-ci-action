@@ -24,7 +24,7 @@ const UIStrings = {
   /** Description of a Lighthouse audit that tells the user why the charset needs to be defined early on. */
   description: 'A character encoding declaration is required. It can be done with a <meta> tag ' +
     'in the first 1024 bytes of the HTML or in the Content-Type HTTP response header. ' +
-    '[Learn more](https://web.dev/charset).',
+    '[Learn more](https://web.dev/charset/).',
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);

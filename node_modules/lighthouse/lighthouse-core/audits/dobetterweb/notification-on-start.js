@@ -22,7 +22,7 @@ const UIStrings = {
   /** Description of a Lighthouse audit that tells the user why they should not ask for notification permission on load. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
   description: 'Users are mistrustful of or confused by sites that request to send ' +
       'notifications without context. Consider tying the request to user gestures ' +
-      'instead. [Learn more](https://web.dev/notification-on-start).',
+      'instead. [Learn more](https://web.dev/notification-on-start/).',
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);
@@ -58,9 +58,6 @@ class NotificationOnStart extends ViolationAudit {
 
     return {
       score: Number(results.length === 0),
-      extendedInfo: {
-        value: results,
-      },
       details,
     };
   }

@@ -17,7 +17,7 @@ const UIStrings = {
   /** Description of a Lighthouse audit that tells the user why and how they should secure cross-origin links. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
   description: 'Add `rel="noopener"` or `rel="noreferrer"` to any external links to improve ' +
     'performance and prevent security vulnerabilities. ' +
-    '[Learn more](https://web.dev/external-anchors-use-rel-noopener).',
+    '[Learn more](https://web.dev/external-anchors-use-rel-noopener/).',
   /**
    * @description Warning that some links' destinations cannot be determined and therefore the audit cannot evaluate the link's safety.
    * @example {<a target="_blank">} anchorHTML
@@ -92,9 +92,6 @@ class ExternalAnchorsUseRelNoopenerAudit extends Audit {
 
     return {
       score: Number(failingAnchors.length === 0),
-      extendedInfo: {
-        value: failingAnchors,
-      },
       details,
       warnings,
     };

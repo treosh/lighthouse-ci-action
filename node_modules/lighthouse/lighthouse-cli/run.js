@@ -8,6 +8,7 @@
 /* eslint-disable no-console */
 
 const path = require('path');
+const psList = require('ps-list');
 
 const Printer = require('./printer.js');
 const ChromeLauncher = require('chrome-launcher');
@@ -171,11 +172,25 @@ async function saveResults(runnerResult, flags) {
 async function potentiallyKillChrome(launchedChrome) {
   if (!launchedChrome) return;
 
+  /** @type {NodeJS.Timeout} */
+  let timeout;
+  const timeoutPromise = new Promise((_, reject) => {
+    timeout = setTimeout(() => reject(new Error('Timed out waiting to kill Chrome')), 5000);
+  });
+
   return Promise.race([
     launchedChrome.kill(),
-    new Promise((_, reject) => setTimeout(reject, 5000, 'Timed out.')),
-  ]).catch(err => {
+    timeoutPromise,
+  ]).catch(async err => {
+    const runningProcesses = await psList();
+    if (!runningProcesses.some(proc => proc.pid === launchedChrome.pid)) {
+      log.warn('CLI', 'Warning: Chrome process could not be killed because it already exited.');
+      return;
+    }
+
     throw new Error(`Couldn't quit Chrome process. ${err}`);
+  }).finally(() => {
+    clearTimeout(timeout);
   });
 }
 

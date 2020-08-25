@@ -17,7 +17,7 @@ const UIStrings = {
       'loaded with a high priority. Consider reducing ' +
       'the length of chains, reducing the download size of resources, or ' +
       'deferring the download of unnecessary resources to improve page load. ' +
-      '[Learn more](https://web.dev/critical-request-chains).',
+      '[Learn more](https://web.dev/critical-request-chains/).',
   /** [ICU Syntax] Label for an audit identifying the number of sequences of dependent network requests used to load the page. */
   displayValue: `{itemCount, plural,
     =1 {1 chain found}
@@ -204,12 +204,6 @@ class CriticalRequestChains extends Audit {
         score: Number(chainCount === 0),
         notApplicable: chainCount === 0,
         displayValue: chainCount ? str_(UIStrings.displayValue, {itemCount: chainCount}) : '',
-        extendedInfo: {
-          value: {
-            chains: flattenedChains,
-            longestChain,
-          },
-        },
         details: {
           type: /** @type {'criticalrequestchain'} */('criticalrequestchain'),
           chains: flattenedChains,

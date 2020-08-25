@@ -96,7 +96,7 @@ async function begin() {
     cliFlags.outputPath = 'stdout';
   }
 
-  // @ts-ignore - deprecation message for removed disableDeviceEmulation; can remove warning in v6.
+  // @ts-expect-error - deprecation message for removed disableDeviceEmulation; can remove warning in v6.
   if (cliFlags.disableDeviceEmulation) {
     log.warn('config', 'The "--disable-device-emulation" has been removed in v5.' +
         ' Please use "--emulated-form-factor=none" instead.');
@@ -107,8 +107,8 @@ async function begin() {
     // copied over to LH.Settings.extraHeaders, which is LH.Crdp.Network.Headers. Force
     // the conversion here, but long term either the CLI flag or the setting should have
     // a different name.
-    // @ts-ignore
-    let extraHeadersStr = /** @type {string} */ (cliFlags.extraHeaders);
+    /** @type {string} */
+    let extraHeadersStr = cliFlags.extraHeaders;
     // If not a JSON object, assume it's a path to a JSON file.
     if (extraHeadersStr.substr(0, 1) !== '{') {
       extraHeadersStr = fs.readFileSync(extraHeadersStr, 'utf-8');

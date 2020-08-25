@@ -44,11 +44,11 @@ class Interactive extends ComputedMetric {
   /**
    * Finds all time periods where there are no long tasks.
    * @param {Array<TimePeriod>} longTasks
-   * @param {{timestamps: {navigationStart: number, traceEnd: number}}} traceOfTab
+   * @param {{timestamps: {timeOrigin: number, traceEnd: number}}} traceOfTab
    * @return {Array<TimePeriod>}
    */
   static _findCPUQuietPeriods(longTasks, traceOfTab) {
-    const navStartTsInMs = traceOfTab.timestamps.navigationStart / 1000;
+    const timeOriginTsInMs = traceOfTab.timestamps.timeOrigin / 1000;
     const traceEndTsInMs = traceOfTab.timestamps.traceEnd / 1000;
     if (longTasks.length === 0) {
       return [{start: 0, end: traceEndTsInMs}];
@@ -60,19 +60,19 @@ class Interactive extends ComputedMetric {
       if (index === 0) {
         quietPeriods.push({
           start: 0,
-          end: task.start + navStartTsInMs,
+          end: task.start + timeOriginTsInMs,
         });
       }
 
       if (index === longTasks.length - 1) {
         quietPeriods.push({
-          start: task.end + navStartTsInMs,
+          start: task.end + timeOriginTsInMs,
           end: traceEndTsInMs,
         });
       } else {
         quietPeriods.push({
-          start: task.end + navStartTsInMs,
-          end: longTasks[index + 1].start + navStartTsInMs,
+          start: task.end + timeOriginTsInMs,
+          end: longTasks[index + 1].start + timeOriginTsInMs,
         });
       }
     });
@@ -175,7 +175,7 @@ class Interactive extends ComputedMetric {
       traceOfTab.timestamps.firstContentfulPaint / 1000,
       traceOfTab.timestamps.domContentLoaded / 1000
     ) * 1000;
-    const timing = (timestamp - traceOfTab.timestamps.navigationStart) / 1000;
+    const timing = (timestamp - traceOfTab.timestamps.timeOrigin) / 1000;
     return Promise.resolve({timing, timestamp});
   }
 }

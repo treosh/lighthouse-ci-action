@@ -180,7 +180,7 @@ class FirstCPUIdle extends ComputedMetric {
    */
   static async computeObservedMetric(data) {
     const {traceOfTab} = data;
-    const navStart = traceOfTab.timestamps.navigationStart;
+    const timeOrigin = traceOfTab.timestamps.timeOrigin;
     const FMP = traceOfTab.timings.firstMeaningfulPaint;
     const DCL = traceOfTab.timings.domContentLoaded;
     const traceEnd = traceOfTab.timings.traceEnd;
@@ -201,7 +201,7 @@ class FirstCPUIdle extends ComputedMetric {
 
     return Promise.resolve({
       timing: valueInMs,
-      timestamp: valueInMs * 1000 + navStart,
+      timestamp: valueInMs * 1000 + timeOrigin,
     });
   }
 }

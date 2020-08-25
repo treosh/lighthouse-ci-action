@@ -18,9 +18,9 @@ const UIStrings = {
   description:
   'Large network payloads cost users real money and are highly correlated with ' +
   'long load times. [Learn ' +
-  'more](https://web.dev/total-byte-weight).',
-  /** Used to summarize the total byte size of the page and all its network requests. The `{totalBytes}` placeholder will be replaced with the total byte sizes, shown in kilobytes (e.g. 142 KB) */
-  displayValue: 'Total size was {totalBytes, number, bytes}\xa0KB',
+  'more](https://web.dev/total-byte-weight/).',
+  /** Used to summarize the total byte size of the page and all its network requests. The `{totalBytes}` placeholder will be replaced with the total byte sizes, shown in kibibytes (e.g. 142 KiB) */
+  displayValue: 'Total size was {totalBytes, number, bytes}\xa0KiB',
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);
@@ -78,7 +78,6 @@ class TotalByteWeight extends ByteEfficiencyAudit {
       totalBytes += result.totalBytes;
       results.push(result);
     });
-    const totalCompletedRequests = results.length;
     results = results.sort((itemA, itemB) => {
       return itemB.totalBytes - itemA.totalBytes ||
         itemA.url.localeCompare(itemB.url);
@@ -102,12 +101,6 @@ class TotalByteWeight extends ByteEfficiencyAudit {
       numericValue: totalBytes,
       numericUnit: 'byte',
       displayValue: str_(UIStrings.displayValue, {totalBytes}),
-      extendedInfo: {
-        value: {
-          results,
-          totalCompletedRequests,
-        },
-      },
       details: tableDetails,
     };
   }

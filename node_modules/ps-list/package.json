@@ -1,0 +1,38 @@
+{
+	"name": "ps-list",
+	"version": "7.2.0",
+	"description": "Get running processes",
+	"license": "MIT",
+	"repository": "sindresorhus/ps-list",
+	"funding": "https://github.com/sponsors/sindresorhus",
+	"author": {
+		"name": "Sindre Sorhus",
+		"email": "sindresorhus@gmail.com",
+		"url": "sindresorhus.com"
+	},
+	"engines": {
+		"node": ">=10"
+	},
+	"scripts": {
+		"test": "xo && ava && tsd"
+	},
+	"files": [
+		"index.js",
+		"index.d.ts",
+		"vendor/*.exe"
+	],
+	"keywords": [
+		"ps",
+		"proc",
+		"process",
+		"processes",
+		"list",
+		"running",
+		"tasklist"
+	],
+	"devDependencies": {
+		"ava": "^1.4.1",
+		"tsd": "^0.11.0",
+		"xo": "^0.25.3"
+	}
+}

@@ -35,7 +35,7 @@ const UIStrings = {
   /** Description of a Lighthouse audit that tells the user *why* they should reduce or remove network resources that block the initial render of the page. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
   description: 'Resources are blocking the first paint of your page. Consider ' +
     'delivering critical JS/CSS inline and deferring all non-critical ' +
-    'JS/styles. [Learn more](https://web.dev/render-blocking-resources).',
+    'JS/styles. [Learn more](https://web.dev/render-blocking-resources/).',
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);
@@ -60,6 +60,50 @@ function getNodesAndTimingByUrl(nodeTimings) {
   return urlMap;
 }
 
+/**
+ * Adjust the timing of a node and its dependencies to account for stack specific overrides.
+ * @param {Map<Node, LH.Gatherer.Simulation.NodeTiming>} adjustedNodeTimings
+ * @param {Node} node
+ * @param {LH.Artifacts.DetectedStack[]} Stacks
+ */
+function adjustNodeTimings(adjustedNodeTimings, node, Stacks) {
+  const nodeTiming = adjustedNodeTimings.get(node);
+  if (!nodeTiming) return;
+  const stackSpecificTiming = computeStackSpecificTiming(node, nodeTiming, Stacks);
+  const difference = nodeTiming.duration - stackSpecificTiming.duration;
+  if (!difference) return;
+
+  // AMP's method of removal of stylesheets effectively removes all dependent nodes from the FCP graph
+  node.traverse(childNode => {
+    adjustedNodeTimings.delete(childNode);
+  });
+  adjustedNodeTimings.set(node, stackSpecificTiming);
+}
+
+/**
+ * Any stack specific timing overrides should go in this function.
+ * @see https://github.com/GoogleChrome/lighthouse/issues/2832#issuecomment-591066081
+ *
+ * @param {Node} node
+ * @param {LH.Gatherer.Simulation.NodeTiming} nodeTiming
+ * @param {LH.Artifacts.DetectedStack[]} Stacks
+ */
+function computeStackSpecificTiming(node, nodeTiming, Stacks) {
+  const stackSpecificTiming = {...nodeTiming};
+  if (Stacks.some(stack => stack.id === 'amp')) {
+    // AMP will load a linked stylesheet asynchronously if it has not been loaded after 2.1 seconds:
+    // https://github.com/ampproject/amphtml/blob/8e03ac2f315774070651584a7e046ff24212c9b1/src/font-stylesheet-timeout.js#L54-L59
+    // Any potential savings must only include time spent on AMP stylesheet nodes before 2.1 seconds.
+    if (node.type === BaseNode.TYPES.NETWORK &&
+        node.record.resourceType === NetworkRequest.TYPES.Stylesheet &&
+        nodeTiming.endTime > 2100) {
+      stackSpecificTiming.endTime = Math.max(nodeTiming.startTime, 2100);
+      stackSpecificTiming.duration = stackSpecificTiming.endTime - stackSpecificTiming.startTime;
+    }
+  }
+  return stackSpecificTiming;
+}
+
 class RenderBlockingResources extends Audit {
   /**
    * @return {LH.Audit.Meta}
@@ -72,7 +116,8 @@ class RenderBlockingResources extends Audit {
       description: str_(UIStrings.description),
       // TODO: look into adding an `optionalArtifacts` property that captures the non-required nature
       // of CSSUsage
-      requiredArtifacts: ['URL', 'TagsBlockingFirstPaint', 'traces', 'devtoolsLogs', 'CSSUsage'],
+      requiredArtifacts: ['URL', 'TagsBlockingFirstPaint', 'traces', 'devtoolsLogs', 'CSSUsage',
+        'Stacks'],
     };
   }
 
@@ -90,9 +135,14 @@ class RenderBlockingResources extends Audit {
     const wastedCssBytes = await RenderBlockingResources.computeWastedCSSBytes(artifacts, context);
 
     const metricSettings = {throttlingMethod: 'simulate'};
+
+    /** @type {LH.Artifacts.MetricComputationData} */
+    // @ts-expect-error - TODO(bckenny): allow optional `throttling` settings
     const metricComputationData = {trace, devtoolsLog, simulator, settings: metricSettings};
-    // @ts-ignore - TODO(bckenny): allow optional `throttling` settings
-    const fcpSimulation = await FirstContentfulPaint.request(metricComputationData, context);
+
+    // Cast to just `LanternMetric` since we explicitly set `throttlingMethod: 'simulate'`.
+    const fcpSimulation = /** @type {LH.Artifacts.LanternMetric} */
+      (await FirstContentfulPaint.request(metricComputationData, context));
     const fcpTsInMs = traceOfTab.timestamps.firstContentfulPaint / 1000;
 
     const nodesByUrl = getNodesAndTimingByUrl(fcpSimulation.optimisticEstimate.nodeTimings);
@@ -107,11 +157,13 @@ class RenderBlockingResources extends Audit {
 
       const {node, nodeTiming} = nodesByUrl[resource.tag.url];
 
+      const stackSpecificTiming = computeStackSpecificTiming(node, nodeTiming, artifacts.Stacks);
+
       // Mark this node and all its dependents as deferrable
       node.traverse(node => deferredNodeIds.add(node.id));
 
       // "wastedMs" is the download time of the network request, responseReceived - requestSent
-      const wastedMs = Math.round(nodeTiming.duration);
+      const wastedMs = Math.round(stackSpecificTiming.duration);
       if (wastedMs < MINIMUM_WASTED_MS) continue;
 
       results.push({
@@ -129,7 +181,8 @@ class RenderBlockingResources extends Audit {
       simulator,
       fcpSimulation.optimisticGraph,
       deferredNodeIds,
-      wastedCssBytes
+      wastedCssBytes,
+      artifacts.Stacks
     );
 
     return {results, wastedMs};
@@ -149,13 +202,17 @@ class RenderBlockingResources extends Audit {
    * @param {Node} fcpGraph
    * @param {Set<string>} deferredIds
    * @param {Map<string, number>} wastedCssBytesByUrl
+   * @param {LH.Artifacts.DetectedStack[]} Stacks
    * @return {number}
    */
-  static estimateSavingsWithGraphs(simulator, fcpGraph, deferredIds, wastedCssBytesByUrl) {
-    const originalEstimate = simulator.simulate(fcpGraph).timeInMs;
+  static estimateSavingsWithGraphs(simulator, fcpGraph, deferredIds, wastedCssBytesByUrl, Stacks) {
+    const {nodeTimings} = simulator.simulate(fcpGraph);
+    const adjustedNodeTimings = new Map(nodeTimings);
 
     let totalChildNetworkBytes = 0;
     const minimalFCPGraph = /** @type {NetworkNode} */ (fcpGraph.cloneWithRelationships(node => {
+      adjustNodeTimings(adjustedNodeTimings, node, Stacks);
+
       // If a node can be deferred, exclude it from the new FCP graph
       const canDeferRequest = deferredIds.has(node.id);
       if (node.type !== BaseNode.TYPES.NETWORK) return !canDeferRequest;
@@ -170,13 +227,18 @@ class RenderBlockingResources extends Audit {
       return !canDeferRequest;
     }));
 
+    // Recalculate the "before" time based on our adjusted node timings.
+    const estimateBeforeInline = Math.max(...Array.from(
+      Array.from(adjustedNodeTimings).map(timing => timing[1].endTime)
+    ));
+
     // Add the inlined bytes to the HTML response
     const originalTransferSize = minimalFCPGraph.record.transferSize;
     const safeTransferSize = originalTransferSize || 0;
     minimalFCPGraph.record.transferSize = safeTransferSize + totalChildNetworkBytes;
     const estimateAfterInline = simulator.simulate(minimalFCPGraph).timeInMs;
     minimalFCPGraph.record.transferSize = originalTransferSize;
-    return Math.round(Math.max(originalEstimate - estimateAfterInline, 0));
+    return Math.round(Math.max(estimateBeforeInline - estimateAfterInline, 0));
   }
 
   /**

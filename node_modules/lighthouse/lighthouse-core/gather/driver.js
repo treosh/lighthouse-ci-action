@@ -293,7 +293,7 @@ class Driver {
       this._networkStatusMonitor.dispatch(event);
     }
 
-    // @ts-ignore TODO(bckenny): tsc can't type event.params correctly yet,
+    // @ts-expect-error TODO(bckenny): tsc can't type event.params correctly yet,
     // typing as property of union instead of narrowing from union of
     // properties. See https://github.com/Microsoft/TypeScript/pull/22348.
     this._eventEmitter.emit(event.method, event.params);
@@ -1218,6 +1218,48 @@ class Driver {
   }
 
   /**
+   * Resolves a backend node ID (from a trace event, protocol, etc) to the object ID for use with
+   * `Runtime.callFunctionOn`. `undefined` means the node could not be found.
+   *
+   * @param {number} backendNodeId
+   * @return {Promise<string|undefined>}
+   */
+  async resolveNodeIdToObjectId(backendNodeId) {
+    try {
+      const resolveNodeResponse = await this.sendCommand('DOM.resolveNode', {backendNodeId});
+      return resolveNodeResponse.object.objectId;
+    } catch (err) {
+      if (/No node.*found/.test(err.message)) return undefined;
+      throw err;
+    }
+  }
+
+  /**
+   * Resolves a proprietary devtools node path (created from page-function.js) to the object ID for use
+   * with `Runtime.callFunctionOn`. `undefined` means the node could not be found.
+   * Requires `DOM.getDocument` to have been called since the object's creation or it will always be `undefined`.
+   *
+   * @param {string} devtoolsNodePath
+   * @return {Promise<string|undefined>}
+   */
+  async resolveDevtoolsNodePathToObjectId(devtoolsNodePath) {
+    try {
+      const {nodeId} = await this.sendCommand('DOM.pushNodeByPathToFrontend', {
+        path: devtoolsNodePath,
+      });
+
+      const {object: {objectId}} = await this.sendCommand('DOM.resolveNode', {
+        nodeId,
+      });
+
+      return objectId;
+    } catch (err) {
+      if (/No node.*found/.test(err.message)) return undefined;
+      throw err;
+    }
+  }
+
+  /**
    * @param {{x: number, y: number}} position
    * @return {Promise<void>}
    */
@@ -1472,13 +1514,27 @@ class Driver {
   }
 
   /**
+   * Use a RequestIdleCallback shim for tests run with simulated throttling, so that the deadline can be used without
+   * a penalty
+   * @param {LH.Config.Settings} settings
+   * @return {Promise<void>}
+   */
+  async registerRequestIdleCallbackWrap(settings) {
+    if (settings.throttlingMethod === 'simulate') {
+      const scriptStr = `(${pageFunctions.wrapRequestIdleCallbackString})
+        (${settings.throttling.cpuSlowdownMultiplier})`;
+      await this.evaluateScriptOnNewDocument(scriptStr);
+    }
+  }
+
+  /**
    * @param {Array<string>} urls URL patterns to block. Wildcards ('*') are allowed.
    * @return {Promise<void>}
    */
   blockUrlPatterns(urls) {
     return this.sendCommand('Network.setBlockedURLs', {urls})
       .catch(err => {
-        // TODO: remove this handler once m59 hits stable
+        // TODO(COMPAT): remove this handler once m59 hits stable
         if (!/wasn't found/.test(err.message)) {
           throw err;
         }

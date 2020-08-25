@@ -80,8 +80,11 @@ class Simulator {
     /** @type {Record<number, Set<Node>>} */
     this._nodes = {};
     this._dns = new DNSCache({rtt: this._rtt});
-    // @ts-ignore
+    // @ts-expect-error
     this._connectionPool = /** @type {ConnectionPool} */ (null);
+
+    if (!Number.isFinite(this._rtt)) throw new Error(`Invalid rtt ${this._rtt}`);
+    if (!Number.isFinite(this._throughput)) throw new Error(`Invalid rtt ${this._throughput}`);
   }
 
   /** @return {number} */
@@ -487,7 +490,7 @@ class Simulator {
 
       // While this is no longer strictly necessary, it's always better than LH hanging
       if (!Number.isFinite(minimumTime) || iteration > 100000) {
-        throw new Error('Graph creation failed, depth exceeded');
+        throw new Error('Simulation failed, depth exceeded');
       }
 
       iteration++;

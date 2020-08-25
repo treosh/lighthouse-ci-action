@@ -51,8 +51,6 @@ const BLOCKLIST = new Set([
   'empezar',
   // Portuguese
   'clique aqui',
-  'inicio',
-  'início',
   'ir',
   'mais informação',
   'mais informações',
@@ -85,7 +83,7 @@ const UIStrings = {
   failureTitle: 'Links do not have descriptive text',
   /** Description of a Lighthouse audit that tells the user *why* they need to have descriptive text on the links in their page. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
   description: 'Descriptive link text helps search engines understand your content. ' +
-  '[Learn more](https://web.dev/link-text).',
+  '[Learn more](https://web.dev/link-text/).',
   /** [ICU Syntax] Label for the audit identifying the number of links found. "link" here refers to the links in a web page to other web pages. */
   displayValue: `{itemCount, plural,
     =1 {1 link found}

@@ -17,7 +17,7 @@ const UIStrings = {
   /** Imperative title of a Lighthouse audit that tells the user to eliminate the redirects taken through multiple URLs to load the page. This is shown in a list of audits that Lighthouse generates. */
   title: 'Avoid multiple page redirects',
   /** Description of a Lighthouse audit that tells users why they should reduce the number of server-side redirects on their page. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
-  description: 'Redirects introduce additional delays before the page can be loaded. [Learn more](https://web.dev/redirects).',
+  description: 'Redirects introduce additional delays before the page can be loaded. [Learn more](https://web.dev/redirects/).',
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);
@@ -34,6 +34,47 @@ class Redirects extends Audit {
       scoreDisplayMode: Audit.SCORING_MODES.NUMERIC,
       requiredArtifacts: ['URL', 'devtoolsLogs', 'traces'],
     };
+  }
+
+  /**
+   * This method generates the document request chain including client-side and server-side redirects.
+   *
+   * Example:
+   *    GET /initialUrl => 302 /firstRedirect
+   *    GET /firstRedirect => 200 /firstRedirect, window.location = '/secondRedirect'
+   *    GET /secondRedirect => 302 /finalUrl
+   *    GET /finalUrl => 200 /finalUrl
+   *
+   * Returns network records [/initialUrl, /firstRedirect, /secondRedirect, /thirdRedirect, /finalUrl]
+   *
+   * @param {LH.Artifacts.NetworkRequest} mainResource
+   * @param {Array<LH.Artifacts.NetworkRequest>} networkRecords
+   * @param {LH.Artifacts.TraceOfTab} traceOfTab
+   * @return {Array<LH.Artifacts.NetworkRequest>}
+   */
+  static getDocumentRequestChain(mainResource, networkRecords, traceOfTab) {
+    /** @type {Array<LH.Artifacts.NetworkRequest>} */
+    const documentRequests = [];
+
+    // Find all the document requests by examining navigation events and their redirects
+    for (const event of traceOfTab.processEvents) {
+      if (event.name !== 'navigationStart') continue;
+
+      const data = event.args.data || {};
+      if (!data.documentLoaderURL || !data.isLoadingMainFrame) continue;
+
+      let networkRecord = networkRecords.find(record => record.url === data.documentLoaderURL);
+      while (networkRecord) {
+        documentRequests.push(networkRecord);
+        networkRecord = networkRecord.redirectDestination;
+      }
+    }
+
+    // If we found documents in the trace, just use this directly.
+    if (documentRequests.length) return documentRequests;
+
+    // Use the main resource as a backup if we didn't find any modern navigationStart events
+    return (mainResource.redirects || []).concat(mainResource);
   }
 
   /**
@@ -62,26 +103,20 @@ class Redirects extends Audit {
       }
     }
 
-    // redirects is only available when redirects happens
-    const redirectRequests = Array.from(mainResource.redirects || []);
-
-    // add main resource to redirectRequests so we can use it to calculate wastedMs
-    redirectRequests.push(mainResource);
+    const documentRequests = Redirects.getDocumentRequestChain(
+      mainResource, networkRecords, traceOfTab);
 
     let totalWastedMs = 0;
-    const pageRedirects = [];
+    const tableRows = [];
 
-    // Kickoff the results table (with the initial request) if there are > 1 redirects
-    if (redirectRequests.length > 1) {
-      pageRedirects.push({
-        url: `(Initial: ${redirectRequests[0].url})`,
-        wastedMs: 0,
-      });
-    }
+    // Iterate through all the document requests and report how much time was wasted until the
+    // next document request was issued. The final document request will have a `wastedMs` of 0.
+    for (let i = 0; i < documentRequests.length; i++) {
+      // If we didn't have enough documents for at least 1 redirect, just skip this loop.
+      if (documentRequests.length < 2) break;
 
-    for (let i = 1; i < redirectRequests.length; i++) {
-      const initialRequest = redirectRequests[i - 1];
-      const redirectedRequest = redirectRequests[i];
+      const initialRequest = documentRequests[i];
+      const redirectedRequest = documentRequests[i + 1] || initialRequest;
 
       const initialTiming = nodeTimingsByUrl.get(initialRequest.url);
       const redirectedTiming = nodeTimingsByUrl.get(redirectedRequest.url);
@@ -89,11 +124,14 @@ class Redirects extends Audit {
         throw new Error('Could not find redirects in graph');
       }
 
-      const wastedMs = redirectedTiming.startTime - initialTiming.startTime;
+      const lanternTimingDeltaMs = redirectedTiming.startTime - initialTiming.startTime;
+      const observedTimingDeltaS = redirectedRequest.startTime - initialRequest.startTime;
+      const wastedMs = settings.throttlingMethod === 'simulate' ?
+        lanternTimingDeltaMs : observedTimingDeltaS * 1000;
       totalWastedMs += wastedMs;
 
-      pageRedirects.push({
-        url: redirectedRequest.url,
+      tableRows.push({
+        url: initialRequest.url,
         wastedMs,
       });
     }
@@ -103,21 +141,18 @@ class Redirects extends Audit {
       {key: 'url', valueType: 'url', label: str_(i18n.UIStrings.columnURL)},
       {key: 'wastedMs', valueType: 'timespanMs', label: str_(i18n.UIStrings.columnTimeSpent)},
     ];
-    const details = Audit.makeOpportunityDetails(headings, pageRedirects, totalWastedMs);
+    const details = Audit.makeOpportunityDetails(headings, tableRows, totalWastedMs);
 
     return {
       // We award a passing grade if you only have 1 redirect
-      score: redirectRequests.length <= 2 ? 1 : UnusedBytes.scoreForWastedMs(totalWastedMs),
+      // TODO(phulce): reconsider if cases like the example in https://github.com/GoogleChrome/lighthouse/issues/8984
+      // should fail this audit.
+      score: documentRequests.length <= 2 ? 1 : UnusedBytes.scoreForWastedMs(totalWastedMs),
       numericValue: totalWastedMs,
       numericUnit: 'millisecond',
       displayValue: totalWastedMs ?
         str_(i18n.UIStrings.displayValueMsSavings, {wastedMs: totalWastedMs}) :
         '',
-      extendedInfo: {
-        value: {
-          wastedMs: totalWastedMs,
-        },
-      },
       details,
     };
   }

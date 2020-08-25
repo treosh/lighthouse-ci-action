@@ -40,7 +40,7 @@ function prompt() {
 
   const timeoutPromise = new Promise((resolve) => {
     timeout = setTimeout(() => {
-      // @ts-ignore Promise returned by prompt is decorated with `ui`
+      // @ts-expect-error Promise returned by prompt is decorated with `ui`
       prompt.ui.close();
       process.stdout.write('\n');
       log.warn('CLI', 'No response to error logging preference, errors will not be reported.');

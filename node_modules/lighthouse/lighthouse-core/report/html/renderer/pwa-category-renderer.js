@@ -18,16 +18,6 @@
 
 /* globals self, Util, CategoryRenderer */
 
-/**
- * An always-increasing counter for making unique SVG ID suffixes.
- */
-const getUniqueSuffix = (() => {
-  let svgSuffix = 0;
-  return function() {
-    return svgSuffix++;
-  };
-})();
-
 class PwaCategoryRenderer extends CategoryRenderer {
   /**
    * @param {LH.ReportResult.Category} category
@@ -174,7 +164,7 @@ class PwaCategoryRenderer extends CategoryRenderer {
     const defsEl = svgRoot.querySelector('defs');
     if (!defsEl) return;
 
-    const idSuffix = getUniqueSuffix();
+    const idSuffix = Util.getUniqueSuffix();
     const elementsToUpdate = defsEl.querySelectorAll('[id]');
     for (const el of elementsToUpdate) {
       const oldId = el.id;

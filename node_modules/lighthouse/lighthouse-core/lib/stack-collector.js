@@ -46,12 +46,20 @@ async function detectLibraries() {
   // d41d8cd98f00b204e9800998ecf8427e_ is a consistent prefix used by the detect libraries
   // see https://github.com/HTTPArchive/httparchive/issues/77#issuecomment-291320900
   /** @type {Record<string, JSLibraryDetectorTest>} */
-  // @ts-ignore - injected libDetectorSource var
+  // @ts-expect-error - injected libDetectorSource var
   const libraryDetectorTests = d41d8cd98f00b204e9800998ecf8427e_LibraryDetectorTests; // eslint-disable-line
 
   for (const [name, lib] of Object.entries(libraryDetectorTests)) {
     try {
-      const result = await lib.test(window);
+      /** @type {NodeJS.Timeout|undefined} */
+      let timeout;
+      // Some library detections are async that can never return.
+      // Guard ourselves from PROTOCL_TIMEOUT by limiting each detection to a max of 1s.
+      // See https://github.com/GoogleChrome/lighthouse/issues/11124.
+      const timeoutPromise = new Promise(r => timeout = setTimeout(() => r(false), 1000));
+
+      const result = await Promise.race([lib.test(window), timeoutPromise]);
+      if (timeout) clearTimeout(timeout);
       if (result) {
         libraries.push({
           id: lib.id,

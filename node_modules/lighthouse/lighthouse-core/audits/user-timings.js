@@ -15,7 +15,7 @@ const UIStrings = {
   /** Description of a Lighthouse audit that tells the user they may want to use the User Timing API to help measure the performance of aspects of their page load and interaction. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
   description: 'Consider instrumenting your app with the User Timing API to measure your ' +
       'app\'s real-world performance during key user experiences. ' +
-      '[Learn more](https://web.dev/user-timings).',
+      '[Learn more](https://web.dev/user-timings/).',
   /** [ICU Syntax] Label for an audit identifying the number of User Timing timestamps present in the page. */
   displayValue: `{itemCount, plural,
     =1 {1 user timing}
@@ -23,10 +23,6 @@ const UIStrings = {
     }`,
   /** Label for the Type column in the User Timing event data table. User Timing API entries are added by the developer of the web page. The only possible types are 'Mark' and Measure'. */
   columnType: 'Type',
-  /** Label for the Start Time column in the User Timing event data table. User Timing API entries are added by the developer of the web page. Start Times are the number of milliseconds since the page started loading, e.g. '380.26 ms' */
-  columnStartTime: 'Start Time',
-  /** Label for the Duration column in the User Timing event data table. User Timing API entries are added by the developer of the web page. Durations are only provided for 'Measure' entries. Durations are the number of total number milliseconds from Start Time to their ending point. e.g. '2,020.64 ms' */
-  columnDuration: 'Duration',
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);
@@ -51,7 +47,7 @@ class UserTimings extends Audit {
   /**
    * @return {Array<string>}
    */
-  static get blacklistedPrefixes() {
+  static get excludedPrefixes() {
     return ['goog_'];
   }
 
@@ -60,8 +56,8 @@ class UserTimings extends Audit {
    * @param {MarkEvent|MeasureEvent} evt
    * @return {boolean}
    */
-  static excludeBlacklisted(evt) {
-    return UserTimings.blacklistedPrefixes.every(prefix => !evt.name.startsWith(prefix));
+  static excludeEvent(evt) {
+    return UserTimings.excludedPrefixes.every(prefix => !evt.name.startsWith(prefix));
   }
 
   /**
@@ -72,7 +68,7 @@ class UserTimings extends Audit {
   static audit(artifacts, context) {
     const trace = artifacts.traces[Audit.DEFAULT_PASS];
     return ComputedUserTimings.request(trace, context).then(computedUserTimings => {
-      const userTimings = computedUserTimings.filter(UserTimings.excludeBlacklisted);
+      const userTimings = computedUserTimings.filter(UserTimings.excludeEvent);
       const tableRows = userTimings.map(item => {
         return {
           name: item.name,
@@ -97,8 +93,9 @@ class UserTimings extends Audit {
         {key: 'name', itemType: 'text', text: str_(i18n.UIStrings.columnName)},
         {key: 'timingType', itemType: 'text', text: str_(UIStrings.columnType)},
         {key: 'startTime', itemType: 'ms', granularity: 0.01,
-          text: str_(UIStrings.columnStartTime)},
-        {key: 'duration', itemType: 'ms', granularity: 0.01, text: str_(UIStrings.columnDuration)},
+          text: str_(i18n.UIStrings.columnStartTime)},
+        {key: 'duration', itemType: 'ms', granularity: 0.01,
+          text: str_(i18n.UIStrings.columnDuration)},
       ];
 
       const details = Audit.makeTableDetails(headings, tableRows);
@@ -114,9 +111,6 @@ class UserTimings extends Audit {
         score: Number(userTimings.length === 0),
         notApplicable: userTimings.length === 0,
         displayValue,
-        extendedInfo: {
-          value: userTimings,
-        },
         details,
       };
     });

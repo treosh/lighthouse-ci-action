@@ -33,7 +33,7 @@ class FinalScreenshot extends Audit {
     const trace = artifacts.traces[Audit.DEFAULT_PASS];
     const traceOfTab = await TraceOfTab.request(trace, context);
     const screenshots = await Screenshots.request(trace, context);
-    const {navigationStart} = traceOfTab.timestamps;
+    const {timeOrigin} = traceOfTab.timestamps;
     const finalScreenshot = screenshots[screenshots.length - 1];
 
     if (!finalScreenshot) {
@@ -44,7 +44,7 @@ class FinalScreenshot extends Audit {
       score: 1,
       details: {
         type: 'screenshot',
-        timing: Math.round((finalScreenshot.timestamp - navigationStart) / 1000),
+        timing: Math.round((finalScreenshot.timestamp - timeOrigin) / 1000),
         timestamp: finalScreenshot.timestamp,
         data: finalScreenshot.datauri,
       },

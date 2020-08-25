@@ -27,7 +27,7 @@ function flatten(arr) {
  * @return {LH.CliFlags}
  */
 function getFlags(manualArgv) {
-  // @ts-ignore yargs() is incorrectly typed as not accepting a single string.
+  // @ts-expect-error yargs() is incorrectly typed as not accepting a single string.
   const y = manualArgv ? yargs(manualArgv) : yargs;
   // Intentionally left as type `any` because @types/yargs doesn't chain correctly.
   const argv = y.help('help')

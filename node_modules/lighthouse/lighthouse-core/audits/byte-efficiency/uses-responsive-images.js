@@ -25,12 +25,12 @@ const UIStrings = {
   description:
   'Serve images that are appropriately-sized to save cellular data ' +
   'and improve load time. ' +
-  '[Learn more](https://web.dev/uses-responsive-images).',
+  '[Learn more](https://web.dev/uses-responsive-images/).',
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);
 
-const IGNORE_THRESHOLD_IN_BYTES = 2048;
+const IGNORE_THRESHOLD_IN_BYTES = 4096;
 
 class UsesResponsiveImages extends ByteEfficiencyAudit {
   /**

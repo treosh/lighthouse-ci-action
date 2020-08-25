@@ -17,20 +17,20 @@ const SDK = {
  * @param {unknown[]} array
  */
 function extendArray(array) {
-  // @ts-ignore
+  // @ts-expect-error
   if (array.lowerBound) return;
 
-  // @ts-ignore
+  // @ts-expect-error
   array.lowerBound = lowerBound.bind(array);
-  // @ts-ignore
+  // @ts-expect-error
   array.upperBound = upperBound.bind(array);
-  // @ts-ignore
+
   array.slice = function(start, end) {
     const retVal = Array.prototype.slice.call(array, start, end);
     extendArray(retVal);
     return retVal;
   };
-  // @ts-ignore
+  // @ts-expect-error
   array.filter = function(fn) {
     const retVal = Array.prototype.filter.call(array, fn);
     extendArray(retVal);
@@ -74,7 +74,7 @@ SDK.TextSourceMap.prototype._reversedMappings = function(sourceURL) {
  * @template T,S
  */
 function upperBound(object, comparator, left, right) {
-  // @ts-ignore
+  // @ts-expect-error
   function defaultComparator(a, b) {
     return a < b ? -1 : (a > b ? 1 : 0);
   }
@@ -109,7 +109,7 @@ function upperBound(object, comparator, left, right) {
  * @template T,S
  */
 function lowerBound(object, comparator, left, right) {
-  // @ts-ignore
+  // @ts-expect-error
   function defaultComparator(a, b) {
     return a < b ? -1 : (a > b ? 1 : 0);
   }
@@ -128,17 +128,17 @@ function lowerBound(object, comparator, left, right) {
 }
 
 // Add `lastColumnNumber` to mappings. This will eventually be added to CDT.
-// @ts-ignore
+// @ts-expect-error
 SDK.TextSourceMap.prototype.computeLastGeneratedColumns = function() {
   const mappings = this.mappings();
-  // @ts-ignore: `lastColumnNumber` is not on types yet.
+  // @ts-expect-error: `lastColumnNumber` is not on types yet.
   if (mappings.length && typeof mappings[0].lastColumnNumber !== 'undefined') return;
 
   for (let i = 0; i < mappings.length - 1; i++) {
     const mapping = mappings[i];
     const nextMapping = mappings[i + 1];
     if (mapping.lineNumber === nextMapping.lineNumber) {
-      // @ts-ignore: `lastColumnNumber` is not on types yet.
+      // @ts-expect-error: `lastColumnNumber` is not on types yet.
       mapping.lastColumnNumber = nextMapping.columnNumber;
     }
   }

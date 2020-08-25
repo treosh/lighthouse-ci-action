@@ -5,11 +5,10 @@
  */
 'use strict';
 
-const thirdPartyWeb = require('third-party-web/httparchive-nostats-subset');
-
 const Audit = require('./audit.js');
 const BootupTime = require('./bootup-time.js');
 const i18n = require('../lib/i18n/i18n.js');
+const thirdPartyWeb = require('../lib/third-party-web.js');
 const NetworkRecords = require('../computed/network-records.js');
 const MainResource = require('../computed/main-resource.js');
 const MainThreadTasks = require('../computed/main-thread-tasks.js');
@@ -54,21 +53,6 @@ class ThirdPartySummary extends Audit {
   }
 
   /**
-   * `third-party-web` throws when the passed in string doesn't appear to have any domain whatsoever.
-   * We pass in some not-so-url-like things, so make the dependent-code simpler by making this call safe.
-   * @param {string} url
-   * @return {ThirdPartyEntity|undefined}
-   */
-  static getEntitySafe(url) {
-    try {
-      return thirdPartyWeb.getEntity(url);
-    } catch (_) {
-      return undefined;
-    }
-  }
-
-
-  /**
    *
    * @param {Array<LH.Artifacts.NetworkRequest>} networkRecords
    * @param {Array<LH.Artifacts.TaskNode>} mainThreadTasks
@@ -81,7 +65,7 @@ class ThirdPartySummary extends Audit {
     const defaultEntityStat = {mainThreadTime: 0, blockingTime: 0, transferSize: 0};
 
     for (const request of networkRecords) {
-      const entity = ThirdPartySummary.getEntitySafe(request.url);
+      const entity = thirdPartyWeb.getEntity(request.url);
       if (!entity) continue;
 
       const entityStats = entities.get(entity) || {...defaultEntityStat};
@@ -93,7 +77,7 @@ class ThirdPartySummary extends Audit {
 
     for (const task of mainThreadTasks) {
       const attributeableURL = BootupTime.getAttributableURLForTask(task, jsURLs);
-      const entity = ThirdPartySummary.getEntitySafe(attributeableURL);
+      const entity = thirdPartyWeb.getEntity(attributeableURL);
       if (!entity) continue;
 
       const entityStats = entities.get(entity) || {...defaultEntityStat};
@@ -121,7 +105,7 @@ class ThirdPartySummary extends Audit {
     const devtoolsLog = artifacts.devtoolsLogs[Audit.DEFAULT_PASS];
     const networkRecords = await NetworkRecords.request(devtoolsLog, context);
     const mainResource = await MainResource.request({devtoolsLog, URL: artifacts.URL}, context);
-    const mainEntity = ThirdPartySummary.getEntitySafe(mainResource.url);
+    const mainEntity = thirdPartyWeb.getEntity(mainResource.url);
     const tasks = await MainThreadTasks.request(trace, context);
     const multiplier = settings.throttlingMethod === 'simulate' ?
       settings.throttling.cpuSlowdownMultiplier : 1;

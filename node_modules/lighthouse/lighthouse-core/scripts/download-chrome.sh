@@ -8,7 +8,7 @@
 
 # Download chrome inside of our CI env.
 
-if [ "$APPVEYOR" == "True" ]; then
+if [ "$OSTYPE" == "msys" ]; then
   url="https://download-chromium.appspot.com/dl/Win?type=snapshots"
 else
   url="https://download-chromium.appspot.com/dl/Linux_x64?type=snapshots"

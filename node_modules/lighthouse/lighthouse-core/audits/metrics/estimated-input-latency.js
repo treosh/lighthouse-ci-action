@@ -14,7 +14,7 @@ const UIStrings = {
   description: 'Estimated Input Latency is an estimate of how long your app takes to respond to ' +
       'user input, in milliseconds, during the busiest 5s window of page load. If your ' +
       'latency is higher than 50 ms, users may perceive your app as laggy. ' +
-      '[Learn more](https://web.dev/estimated-input-latency).',
+      '[Learn more](https://web.dev/estimated-input-latency/).',
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);

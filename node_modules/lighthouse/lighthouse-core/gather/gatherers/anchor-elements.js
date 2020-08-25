@@ -30,23 +30,33 @@ function collectAnchorElements() {
     }
   };
 
+  /** @param {HTMLAnchorElement|SVGAElement} node */
+  function getTruncatedOnclick(node) {
+    const onclick = node.getAttribute('onclick') || '';
+    return onclick.slice(0, 1024);
+  }
+
   /** @type {Array<HTMLAnchorElement|SVGAElement>} */
-  // @ts-ignore - put into scope via stringification
+  // @ts-expect-error - put into scope via stringification
   const anchorElements = getElementsInDocument('a'); // eslint-disable-line no-undef
 
   return anchorElements.map(node => {
-    // @ts-ignore - put into scope via stringification
+    // @ts-expect-error - put into scope via stringification
     const outerHTML = getOuterHTMLSnippet(node); // eslint-disable-line no-undef
-    // @ts-ignore - put into scope via stringification
+    // @ts-expect-error - put into scope via stringification
     const nodePath = getNodePath(node); // eslint-disable-line no-undef
-    // @ts-ignore - getNodeSelector put into scope via stringification
+    // @ts-expect-error - getNodeSelector put into scope via stringification
     const selector = getNodeSelector(node); // eslint-disable-line no-undef
-    // @ts-ignore - getNodeLabel put into scope via stringification
+    // @ts-expect-error - getNodeLabel put into scope via stringification
     const nodeLabel = getNodeLabel(node); // eslint-disable-line no-undef
 
     if (node instanceof HTMLAnchorElement) {
       return {
         href: node.href,
+        rawHref: node.getAttribute('href') || '',
+        onclick: getTruncatedOnclick(node),
+        role: node.getAttribute('role') || '',
+        name: node.name,
         text: node.innerText, // we don't want to return hidden text, so use innerText
         rel: node.rel,
         target: node.target,
@@ -59,6 +69,9 @@ function collectAnchorElements() {
 
     return {
       href: resolveURLOrEmpty(node.href.baseVal),
+      rawHref: node.getAttribute('href') || '',
+      onclick: getTruncatedOnclick(node),
+      role: node.getAttribute('role') || '',
       text: node.textContent || '',
       rel: '',
       target: node.target.baseVal || '',
@@ -68,6 +81,22 @@ function collectAnchorElements() {
       outerHTML,
     };
   });
+}
+
+/**
+ * @param {LH.Gatherer.PassContext['driver']} driver
+ * @param {string} devtoolsNodePath
+ * @return {Promise<Array<{type: string}>>}
+ */
+async function getEventListeners(driver, devtoolsNodePath) {
+  const objectId = await driver.resolveDevtoolsNodePathToObjectId(devtoolsNodePath);
+  if (!objectId) return [];
+
+  const response = await driver.sendCommand('DOMDebugger.getEventListeners', {
+    objectId,
+  });
+
+  return response.listeners.map(({type}) => ({type}));
 }
 
 class AnchorElements extends Gatherer {
@@ -87,8 +116,24 @@ class AnchorElements extends Gatherer {
       return (${collectAnchorElements})();
     })()`;
 
-    /** @type {Array<LH.Artifacts.AnchorElement>} */
-    return driver.evaluateAsync(expression, {useIsolation: true});
+    /** @type {LH.Artifacts['AnchorElements']} */
+    const anchors = await driver.evaluateAsync(expression, {useIsolation: true});
+    await driver.sendCommand('DOM.enable');
+
+    // DOM.getDocument is necessary for pushNodesByBackendIdsToFrontend to properly retrieve nodeIds if the `DOM` domain was enabled before this gatherer, invoke it to be safe.
+    await driver.sendCommand('DOM.getDocument', {depth: -1, pierce: true});
+    const anchorsWithEventListeners = anchors.map(async anchor => {
+      const listeners = await getEventListeners(driver, anchor.devtoolsNodePath);
+
+      return {
+        ...anchor,
+        listeners,
+      };
+    });
+
+    const result = await Promise.all(anchorsWithEventListeners);
+    await driver.sendCommand('DOM.disable');
+    return result;
   }
 }
 

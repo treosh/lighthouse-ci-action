@@ -97,15 +97,16 @@ function computeSelectorSpecificity(selector) {
  * Finds the most specific directly matched CSS font-size rule from the list.
  *
  * @param {Array<LH.Crdp.CSS.RuleMatch>} [matchedCSSRules]
+ * @param {function(LH.Crdp.CSS.CSSStyle):boolean|string|undefined} isDeclarationOfInterest
  * @returns {NodeFontData['cssRule']|undefined}
  */
-function findMostSpecificMatchedCSSRule(matchedCSSRules = []) {
+function findMostSpecificMatchedCSSRule(matchedCSSRules = [], isDeclarationOfInterest) {
   let maxSpecificity = -Infinity;
   /** @type {LH.Crdp.CSS.CSSRule|undefined} */
   let maxSpecificityRule;
 
   for (const {rule, matchingSelectors} of matchedCSSRules) {
-    if (hasFontSizeDeclaration(rule.style)) {
+    if (isDeclarationOfInterest(rule.style)) {
       const specificities = matchingSelectors.map(idx =>
         computeSelectorSpecificity(rule.selectorList.selectors[idx].text)
       );
@@ -144,7 +145,7 @@ function findInheritedCSSRule(inheritedEntries = []) {
   for (const {inlineStyle, matchedCSSRules} of inheritedEntries) {
     if (hasFontSizeDeclaration(inlineStyle)) return {type: 'Inline', ...inlineStyle};
 
-    const directRule = findMostSpecificMatchedCSSRule(matchedCSSRules);
+    const directRule = findMostSpecificMatchedCSSRule(matchedCSSRules, hasFontSizeDeclaration);
     if (directRule) return directRule;
   }
 }
@@ -162,7 +163,7 @@ function getEffectiveFontRule({attributesStyle, inlineStyle, matchedCSSRules, in
   if (hasFontSizeDeclaration(inlineStyle)) return {type: 'Inline', ...inlineStyle};
 
   // Rules directly referencing the node come next
-  const matchedRule = findMostSpecificMatchedCSSRule(matchedCSSRules);
+  const matchedRule = findMostSpecificMatchedCSSRule(matchedCSSRules, hasFontSizeDeclaration);
   if (matchedRule) return matchedRule;
 
   // Then comes attributes styles (<font size="1">)
@@ -355,7 +356,7 @@ class FontSize extends Gatherer {
     // the stylsheet to the data.
     analyzedFailingNodesData
       .filter(data => data.cssRule && data.cssRule.styleSheetId)
-      // @ts-ignore - guaranteed to exist from the filter immediately above
+      // @ts-expect-error - guaranteed to exist from the filter immediately above
       .forEach(data => (data.cssRule.stylesheet = stylesheets.get(data.cssRule.styleSheetId)));
 
     await Promise.all([
@@ -376,3 +377,4 @@ class FontSize extends Gatherer {
 module.exports = FontSize;
 module.exports.computeSelectorSpecificity = computeSelectorSpecificity;
 module.exports.getEffectiveFontRule = getEffectiveFontRule;
+module.exports.findMostSpecificMatchedCSSRule = findMostSpecificMatchedCSSRule;

@@ -15,12 +15,12 @@ const UIStrings = {
   title: 'Remove unused JavaScript',
   /** Description of a Lighthouse audit that tells the user *why* they should remove JavaScript that is never needed/evaluated by the browser. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
   description: 'Remove unused JavaScript to reduce bytes consumed by network activity. ' +
-    '[Learn more](https://web.dev/remove-unused-code/).',
+    '[Learn more](https://web.dev/unused-javascript/).',
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);
 
-const IGNORE_THRESHOLD_IN_BYTES = 2048;
+const IGNORE_THRESHOLD_IN_BYTES = 20 * 1024;
 const IGNORE_BUNDLE_SOURCE_THRESHOLD_IN_BYTES = 512;
 
 /**
@@ -41,13 +41,13 @@ function commonPrefix(strings) {
 }
 
 /**
- * @param {string[]} strings
+ * @param {string} string
  * @param {string} commonPrefix
- * @return {string[]}
+ * @return {string}
  */
-function trimCommonPrefix(strings, commonPrefix) {
-  if (!commonPrefix) return strings;
-  return strings.map(s => s.startsWith(commonPrefix) ? '…' + s.slice(commonPrefix.length) : s);
+function trimCommonPrefix(string, commonPrefix) {
+  if (!commonPrefix) return string;
+  return string.startsWith(commonPrefix) ? '…' + string.slice(commonPrefix.length) : string;
 }
 
 /**
@@ -67,8 +67,7 @@ class UnusedJavaScript extends ByteEfficiencyAudit {
       title: str_(UIStrings.title),
       description: str_(UIStrings.description),
       scoreDisplayMode: ByteEfficiencyAudit.SCORING_MODES.NUMERIC,
-      requiredArtifacts: ['JsUsage', 'ScriptElements', 'devtoolsLogs', 'traces'],
-      __internalOptionalArtifacts: ['SourceMaps'],
+      requiredArtifacts: ['JsUsage', 'ScriptElements', 'SourceMaps', 'devtoolsLogs', 'traces'],
     };
   }
 
@@ -79,9 +78,11 @@ class UnusedJavaScript extends ByteEfficiencyAudit {
    * @return {Promise<ByteEfficiencyAudit.ByteEfficiencyProduct>}
    */
   static async audit_(artifacts, networkRecords, context) {
-    const bundles = artifacts.SourceMaps ? await JsBundles.request(artifacts, context) : [];
-    const {bundleSourceUnusedThreshold = IGNORE_BUNDLE_SOURCE_THRESHOLD_IN_BYTES} =
-      context.options || {};
+    const bundles = await JsBundles.request(artifacts, context);
+    const {
+      unusedThreshold = IGNORE_THRESHOLD_IN_BYTES,
+      bundleSourceUnusedThreshold = IGNORE_BUNDLE_SOURCE_THRESHOLD_IN_BYTES,
+    } = context.options || {};
 
     const items = [];
     for (const [url, scriptCoverages] of Object.entries(artifacts.JsUsage)) {
@@ -94,6 +95,7 @@ class UnusedJavaScript extends ByteEfficiencyAudit {
       const transfer = ByteEfficiencyAudit
         .estimateTransferSize(networkRecord, unusedJsSummary.totalBytes, 'Script');
       const transferRatio = transfer / unusedJsSummary.totalBytes;
+      /** @type {LH.Audit.ByteEfficiencyItem} */
       const item = {
         url: unusedJsSummary.url,
         totalBytes: Math.round(transferRatio * unusedJsSummary.totalBytes),
@@ -101,7 +103,7 @@ class UnusedJavaScript extends ByteEfficiencyAudit {
         wastedPercent: unusedJsSummary.wastedPercent,
       };
 
-      if (item.wastedBytes <= IGNORE_THRESHOLD_IN_BYTES) continue;
+      if (item.wastedBytes <= unusedThreshold) continue;
 
       // Augment with bundle data.
       if (bundle && unusedJsSummary.sourcesWastedBytes) {
@@ -120,11 +122,16 @@ class UnusedJavaScript extends ByteEfficiencyAudit {
           .filter(d => d.unused >= bundleSourceUnusedThreshold);
 
         const commonSourcePrefix = commonPrefix([...bundle.map._sourceInfos.keys()]);
-        Object.assign(item, {
-          sources: trimCommonPrefix(topUnusedSourceSizes.map(d => d.source), commonSourcePrefix),
-          sourceBytes: topUnusedSourceSizes.map(d => d.total),
-          sourceWastedBytes: topUnusedSourceSizes.map(d => d.unused),
-        });
+        item.subItems = {
+          type: 'subitems',
+          items: topUnusedSourceSizes.map(({source, unused, total}) => {
+            return {
+              source: trimCommonPrefix(source, commonSourcePrefix),
+              sourceBytes: total,
+              sourceWastedBytes: unused,
+            };
+          }),
+        };
       }
 
       items.push(item);
@@ -134,9 +141,9 @@ class UnusedJavaScript extends ByteEfficiencyAudit {
       items,
       headings: [
         /* eslint-disable max-len */
-        {key: 'url', valueType: 'url', subRows: {key: 'sources', valueType: 'code'}, label: str_(i18n.UIStrings.columnURL)},
-        {key: 'totalBytes', valueType: 'bytes', subRows: {key: 'sourceBytes'}, label: str_(i18n.UIStrings.columnTransferSize)},
-        {key: 'wastedBytes', valueType: 'bytes', subRows: {key: 'sourceWastedBytes'}, label: str_(i18n.UIStrings.columnWastedBytes)},
+        {key: 'url', valueType: 'url', subItemsHeading: {key: 'source', valueType: 'code'}, label: str_(i18n.UIStrings.columnURL)},
+        {key: 'totalBytes', valueType: 'bytes', subItemsHeading: {key: 'sourceBytes'}, label: str_(i18n.UIStrings.columnTransferSize)},
+        {key: 'wastedBytes', valueType: 'bytes', subItemsHeading: {key: 'sourceWastedBytes'}, label: str_(i18n.UIStrings.columnWastedBytes)},
         /* eslint-enable max-len */
       ],
     };

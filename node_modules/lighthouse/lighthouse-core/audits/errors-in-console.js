@@ -22,7 +22,7 @@ const UIStrings = {
   /** Description of a Lighthouse audit that tells the user why errors being logged to the devtools console are a cause for concern and so should be fixed. This is displayed after a user expands the section to see more. No character length limits. */
   description: 'Errors logged to the console indicate unresolved problems. ' +
     'They can come from network request failures and other browser concerns. ' +
-    '[Learn more](https://web.dev/errors-in-console)',
+    '[Learn more](https://web.dev/errors-in-console/)',
   /**  Label for a column in a data table; entries in the column will be the descriptions of logged browser errors. */
   columnDesc: 'Description',
 };

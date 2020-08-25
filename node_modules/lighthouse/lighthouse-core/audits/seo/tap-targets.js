@@ -18,6 +18,7 @@ const {
   allRectsContainedWithinEachOther,
   getLargestRect,
   getBoundingRectWithPadding,
+  getBoundingRect,
 } = require('../../lib/rect-helpers.js');
 const {getTappableRectsFromClientRects} = require('../../lib/tappable-rects.js');
 const i18n = require('../../lib/i18n/i18n.js');
@@ -28,7 +29,7 @@ const UIStrings = {
   /** Descriptive title of a Lighthouse audit that provides detail on whether tap targets (like buttons and links) on a page are big enough so they can easily be tapped on a mobile device. This descriptive title is shown when tap targets are not easy to tap on. */
   failureTitle: 'Tap targets are not sized appropriately',
   /** Description of a Lighthouse audit that tells the user why buttons and links need to be big enough and what 'big enough' means. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
-  description: 'Interactive elements like buttons and links should be large enough (48x48px), and have enough space around them, to be easy enough to tap without overlapping onto other elements. [Learn more](https://web.dev/tap-targets).',
+  description: 'Interactive elements like buttons and links should be large enough (48x48px), and have enough space around them, to be easy enough to tap without overlapping onto other elements. [Learn more](https://web.dev/tap-targets/).',
   /** Label of a table column that identifies tap targets (like buttons and links) that have failed the audit and aren't easy to tap on. */
   tapTargetHeader: 'Tap Target',
   /** Label of a table column that identifies a tap target (like a link or button) that overlaps with another tap target. */
@@ -244,11 +245,14 @@ function getTableItems(overlapFailures) {
  * @returns {LH.Audit.Details.NodeValue}
  */
 function targetToTableNode(target) {
+  const boundingRect = getBoundingRect(target.clientRects);
+
   return {
     type: 'node',
     snippet: target.snippet,
     path: target.path,
     selector: target.selector,
+    boundingRect,
     nodeLabel: target.nodeLabel,
   };
 }

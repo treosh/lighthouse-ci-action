@@ -70,7 +70,7 @@ class Util {
     for (const audit of Object.values(clone.audits)) {
       // Turn 'not-applicable' (LHR <4.0) and 'not_applicable' (older proto versions)
       // into 'notApplicable' (LHR ≥4.0).
-      // @ts-ignore tsc rightly flags that these values shouldn't occur.
+      // @ts-expect-error tsc rightly flags that these values shouldn't occur.
       // eslint-disable-next-line max-len
       if (audit.scoreDisplayMode === 'not_applicable' || audit.scoreDisplayMode === 'not-applicable') {
         audit.scoreDisplayMode = 'notApplicable';
@@ -79,7 +79,7 @@ class Util {
       if (audit.details) {
         // Turn `auditDetails.type` of undefined (LHR <4.2) and 'diagnostic' (LHR <5.0)
         // into 'debugdata' (LHR ≥5.0).
-        // @ts-ignore tsc rightly flags that these values shouldn't occur.
+        // @ts-expect-error tsc rightly flags that these values shouldn't occur.
         if (audit.details.type === undefined || audit.details.type === 'diagnostic') {
           audit.details.type = 'debugdata';
         }
@@ -494,8 +494,18 @@ class Util {
  */
 Util.reportJson = null;
 
+/**
+ * An always-increasing counter for making unique SVG ID suffixes.
+ */
+Util.getUniqueSuffix = (() => {
+  let svgSuffix = 0;
+  return function() {
+    return svgSuffix++;
+  };
+})();
+
 /** @type {I18n} */
-// @ts-ignore: Is set in report renderer.
+// @ts-expect-error: Is set in report renderer.
 Util.i18n = null;
 
 /**

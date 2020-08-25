@@ -15,7 +15,7 @@ const UIStrings = {
   /** Title of a diagnostic audit that provides detail on how long it took from starting a request to when the server started responding. This imperative title is shown to users when there is a significant amount of execution time that could be reduced. */
   failureTitle: 'Reduce initial server response time',
   /** Description of a Lighthouse audit that tells the user *why* they should reduce the amount of time it takes their server to start responding to requests. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
-  description: 'Keep the server response time for the main document short because all other requests depend on it. [Learn more](https://web.dev/time-to-first-byte).',
+  description: 'Keep the server response time for the main document short because all other requests depend on it. [Learn more](https://web.dev/time-to-first-byte/).',
   /** Used to summarize the total Server Response Time duration for the primary HTML response. The `{timeInMs}` placeholder will be replaced with the time duration, shown in milliseconds (e.g. 210 ms) */
   displayValue: `Root document took {timeInMs, number, milliseconds}\xa0ms`,
 };
@@ -73,11 +73,6 @@ class ServerResponseTime extends Audit {
       score: Number(passed),
       displayValue,
       details,
-      extendedInfo: {
-        value: {
-          wastedMs: responseTime - RESPONSE_THRESHOLD,
-        },
-      },
     };
   }
 }

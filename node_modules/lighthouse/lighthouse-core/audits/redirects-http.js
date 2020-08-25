@@ -15,7 +15,7 @@ const UIStrings = {
   failureTitle: 'Does not redirect HTTP traffic to HTTPS',
   /** Description of a Lighthouse audit that tells the user why they should direct HTTP traffic to HTTPS. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
   description: 'If you\'ve already set up HTTPS, make sure that you redirect all HTTP ' +
-    'traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://web.dev/redirects-http).',
+    'traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://web.dev/redirects-http/).',
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);

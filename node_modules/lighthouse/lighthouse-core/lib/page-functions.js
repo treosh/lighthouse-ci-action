@@ -49,7 +49,7 @@ function registerPerformanceObserverInPage() {
   });
 
   observer.observe({entryTypes: ['longtask']});
-  // HACK: A PerformanceObserver will be GC'd if there are no more references to it, so attach it to
+  // HACK(COMPAT): A PerformanceObserver will be GC'd if there are no more references to it, so attach it to
   // window to ensure we still receive longtask notifications. See https://crbug.com/742530.
   // For an example test of this behavior see https://gist.github.com/patrickhulce/69d8bed1807e762218994b121d06fea6.
   //   FIXME COMPAT: This hack isn't neccessary as of Chrome 62.0.3176.0
@@ -112,7 +112,8 @@ function getElementsInDocument(selector) {
  * @return {string}
  */
 /* istanbul ignore next */
-function getOuterHTMLSnippet(element, ignoreAttrs = []) {
+function getOuterHTMLSnippet(element, ignoreAttrs = [], snippetCharacterLimit = 500) {
+  const ATTRIBUTE_CHAR_LIMIT = 75;
   try {
     // ShadowRoots are sometimes passed in; use their hosts' outerHTML.
     if (element instanceof ShadowRoot) {
@@ -123,9 +124,26 @@ function getOuterHTMLSnippet(element, ignoreAttrs = []) {
     ignoreAttrs.forEach(attribute =>{
       clone.removeAttribute(attribute);
     });
+    let charCount = 0;
+    for (const attributeName of clone.getAttributeNames()) {
+      if (charCount > snippetCharacterLimit) {
+        clone.removeAttribute(attributeName);
+      } else {
+        let attributeValue = clone.getAttribute(attributeName);
+        if (attributeValue.length > ATTRIBUTE_CHAR_LIMIT) {
+          attributeValue = attributeValue.slice(0, ATTRIBUTE_CHAR_LIMIT - 1) + '…';
+          clone.setAttribute(attributeName, attributeValue);
+        }
+        charCount += attributeName.length + attributeValue.length;
+      }
+    }
+
     const reOpeningTag = /^[\s\S]*?>/;
-    const match = clone.outerHTML.match(reOpeningTag);
-    return (match && match[0]) || '';
+    const [match] = clone.outerHTML.match(reOpeningTag) || [];
+    if (match && charCount > snippetCharacterLimit) {
+      return match.slice(0, match.length - 1) + ' …>';
+    }
+    return match || '';
   } catch (_) {
     // As a last resort, fall back to localName.
     return `<${element.localName}>`;
@@ -303,6 +321,57 @@ function getNodeLabel(node) {
   return tagName;
 }
 
+/**
+ * @param {HTMLElement} element
+ * @param {LH.Artifacts.Rect}
+ */
+/* istanbul ignore next */
+function getBoundingClientRect(element) {
+  // The protocol does not serialize getters, so extract the values explicitly.
+  const rect = element.getBoundingClientRect();
+  return {
+    top: Math.round(rect.top),
+    bottom: Math.round(rect.bottom),
+    left: Math.round(rect.left),
+    right: Math.round(rect.right),
+    width: Math.round(rect.width),
+    height: Math.round(rect.height),
+  };
+}
+
+/*
+ * RequestIdleCallback shim that calculates the remaining deadline time in order to avoid a potential lighthouse
+ * penalty for tests run with simulated throttling. Reduces the deadline time to (50 - safetyAllowance) / cpuSlowdownMultiplier to
+ * ensure a long task is very unlikely if using the API correctly.
+ * @param {number} cpuSlowdownMultiplier
+ * @return {null}
+ */
+/* istanbul ignore next */
+function wrapRequestIdleCallback(cpuSlowdownMultiplier) {
+  const safetyAllowanceMs = 10;
+  const maxExecutionTimeMs = Math.floor((50 - safetyAllowanceMs) / cpuSlowdownMultiplier);
+  const nativeRequestIdleCallback = window.requestIdleCallback;
+  window.requestIdleCallback = (cb) => {
+    const cbWrap = (deadline, timeout) => {
+      const start = Date.now();
+      deadline.__timeRemaining = deadline.timeRemaining;
+      deadline.timeRemaining = () => {
+        return Math.min(
+          deadline.__timeRemaining(), Math.max(0, maxExecutionTimeMs - (Date.now() - start))
+        );
+      };
+      deadline.timeRemaining.toString = () => {
+        return 'function timeRemaining() { [native code] }';
+      };
+      cb(deadline, timeout);
+    };
+    return nativeRequestIdleCallback(cbWrap);
+  };
+  window.requestIdleCallback.toString = () => {
+    return 'function requestIdleCallback() { [native code] }';
+  };
+}
+
 module.exports = {
   wrapRuntimeEvalErrorInBrowserString: wrapRuntimeEvalErrorInBrowser.toString(),
   registerPerformanceObserverInPageString: registerPerformanceObserverInPage.toString(),
@@ -318,4 +387,6 @@ module.exports = {
   getNodeLabel: getNodeLabel,
   getNodeLabelString: getNodeLabel.toString(),
   isPositionFixedString: isPositionFixed.toString(),
+  wrapRequestIdleCallbackString: wrapRequestIdleCallback.toString(),
+  getBoundingClientRectString: getBoundingClientRect.toString(),
 };

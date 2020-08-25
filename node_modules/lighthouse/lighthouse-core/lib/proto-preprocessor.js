@@ -31,7 +31,7 @@ function processForProto(lhr) {
     // The settings that are in both proto and LHR
     const {emulatedFormFactor, locale, onlyCategories, channel} = reportJson.configSettings;
 
-    // @ts-ignore - intentionally only a subset of settings.
+    // @ts-expect-error - intentionally only a subset of settings.
     reportJson.configSettings = {emulatedFormFactor, locale, onlyCategories, channel};
   }
 
@@ -47,7 +47,7 @@ function processForProto(lhr) {
 
       // Rewrite 'not-applicable' and 'not_applicable' scoreDisplayMode to 'notApplicable'. #6201, #6783.
       if (audit.scoreDisplayMode) {
-        // @ts-ignore ts properly flags this as invalid as it should not happen,
+        // @ts-expect-error ts properly flags this as invalid as it should not happen,
         // but remains in preprocessor to protect from proto translation errors from
         // old LHRs.
         // eslint-disable-next-line max-len
@@ -100,7 +100,7 @@ function processForProto(lhr) {
   return reportJson;
 }
 
-// @ts-ignore claims always false, but this checks if cli or module
+// @ts-expect-error claims always false, but this checks if cli or module
 if (require.main === module) {
   // read in the argv for the input & output
   const args = process.argv.slice(2);

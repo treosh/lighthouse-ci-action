@@ -18,7 +18,7 @@ const config = {
     'metrics/first-contentful-paint-3g',
   ],
   categories: {
-    // @ts-ignore TODO(bckenny): type extended Config where e.g. category.title isn't required
+    // @ts-expect-error TODO(bckenny): type extended Config where e.g. category.title isn't required
     performance: {
       auditRefs: [
         {id: 'first-contentful-paint-3g', weight: 0},

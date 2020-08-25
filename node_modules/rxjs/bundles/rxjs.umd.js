@@ -450,6 +450,16 @@
         return t;
     };
 
+    function __rest(s, e) {
+        var t = {};
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+            t[p] = s[p];
+        if (s != null && typeof Object.getOwnPropertySymbols === "function")
+            for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) if (e.indexOf(p[i]) < 0)
+                t[p[i]] = s[p[i]];
+        return t;
+    }
+
     function isFunction(x) {
         return typeof x === 'function';
     }
@@ -516,6 +526,7 @@
             this._parentOrParents = null;
             this._subscriptions = null;
             if (unsubscribe) {
+                this._ctorUnsubscribe = true;
                 this._unsubscribe = unsubscribe;
             }
         }
@@ -524,7 +535,7 @@
             if (this.closed) {
                 return;
             }
-            var _a = this, _parentOrParents = _a._parentOrParents, _unsubscribe = _a._unsubscribe, _subscriptions = _a._subscriptions;
+            var _a = this, _parentOrParents = _a._parentOrParents, _ctorUnsubscribe = _a._ctorUnsubscribe, _unsubscribe = _a._unsubscribe, _subscriptions = _a._subscriptions;
             this.closed = true;
             this._parentOrParents = null;
             this._subscriptions = null;
@@ -538,6 +549,9 @@
                 }
             }
             if (isFunction(_unsubscribe)) {
+                if (_ctorUnsubscribe) {
+                    this._unsubscribe = undefined;
+                }
                 try {
                     _unsubscribe.call(this);
                 }
@@ -1809,7 +1823,8 @@
         return QueueScheduler;
     }(AsyncScheduler));
 
-    var queue = new QueueScheduler(QueueAction);
+    var queueScheduler = new QueueScheduler(QueueAction);
+    var queue = queueScheduler;
 
     var EMPTY = new Observable(function (subscriber) { return subscriber.complete(); });
     function empty$1(scheduler) {
@@ -2238,9 +2253,11 @@
         return AsapScheduler;
     }(AsyncScheduler));
 
-    var asap = new AsapScheduler(AsapAction);
+    var asapScheduler = new AsapScheduler(AsapAction);
+    var asap = asapScheduler;
 
-    var async = new AsyncScheduler(AsyncAction);
+    var asyncScheduler = new AsyncScheduler(AsyncAction);
+    var async = asyncScheduler;
 
     var AnimationFrameAction = (function (_super) {
         __extends(AnimationFrameAction, _super);
@@ -2301,7 +2318,8 @@
         return AnimationFrameScheduler;
     }(AsyncScheduler));
 
-    var animationFrame = new AnimationFrameScheduler(AnimationFrameAction);
+    var animationFrameScheduler = new AnimationFrameScheduler(AnimationFrameAction);
+    var animationFrame = animationFrameScheduler;
 
     var VirtualTimeScheduler = (function (_super) {
         __extends(VirtualTimeScheduler, _super);
@@ -2740,7 +2758,14 @@
     var subscribeToIterable = function (iterable) { return function (subscriber) {
         var iterator$$1 = iterable[iterator]();
         do {
-            var item = iterator$$1.next();
+            var item = void 0;
+            try {
+                item = iterator$$1.next();
+            }
+            catch (err) {
+                subscriber.error(err);
+                return subscriber;
+            }
             if (item.done) {
                 subscriber.complete();
                 break;
@@ -2814,8 +2839,8 @@
         for (var _i = 0; _i < arguments.length; _i++) {
             observables[_i] = arguments[_i];
         }
-        var resultSelector = null;
-        var scheduler = null;
+        var resultSelector = undefined;
+        var scheduler = undefined;
         if (isScheduler(observables[observables.length - 1])) {
             scheduler = observables.pop();
         }
@@ -2861,7 +2886,7 @@
                 this.toRespond = len;
                 for (var i = 0; i < len; i++) {
                     var observable = observables[i];
-                    this.add(subscribeToResult(this, observable, observable, i));
+                    this.add(subscribeToResult(this, observable, undefined, i));
                 }
             }
         };
@@ -2870,7 +2895,7 @@
                 this.destination.complete();
             }
         };
-        CombineLatestSubscriber.prototype.notifyNext = function (outerValue, innerValue, outerIndex, innerIndex, innerSub) {
+        CombineLatestSubscriber.prototype.notifyNext = function (_outerValue, innerValue, outerIndex) {
             var values = this.values;
             var oldVal = values[outerIndex];
             var toRespond = !this.toRespond
@@ -3010,6 +3035,90 @@
         }
     }
 
+    var SimpleInnerSubscriber = (function (_super) {
+        __extends(SimpleInnerSubscriber, _super);
+        function SimpleInnerSubscriber(parent) {
+            var _this = _super.call(this) || this;
+            _this.parent = parent;
+            return _this;
+        }
+        SimpleInnerSubscriber.prototype._next = function (value) {
+            this.parent.notifyNext(value);
+        };
+        SimpleInnerSubscriber.prototype._error = function (error) {
+            this.parent.notifyError(error);
+            this.unsubscribe();
+        };
+        SimpleInnerSubscriber.prototype._complete = function () {
+            this.parent.notifyComplete();
+            this.unsubscribe();
+        };
+        return SimpleInnerSubscriber;
+    }(Subscriber));
+    var ComplexInnerSubscriber = (function (_super) {
+        __extends(ComplexInnerSubscriber, _super);
+        function ComplexInnerSubscriber(parent, outerValue, outerIndex) {
+            var _this = _super.call(this) || this;
+            _this.parent = parent;
+            _this.outerValue = outerValue;
+            _this.outerIndex = outerIndex;
+            return _this;
+        }
+        ComplexInnerSubscriber.prototype._next = function (value) {
+            this.parent.notifyNext(this.outerValue, value, this.outerIndex, this);
+        };
+        ComplexInnerSubscriber.prototype._error = function (error) {
+            this.parent.notifyError(error);
+            this.unsubscribe();
+        };
+        ComplexInnerSubscriber.prototype._complete = function () {
+            this.parent.notifyComplete(this);
+            this.unsubscribe();
+        };
+        return ComplexInnerSubscriber;
+    }(Subscriber));
+    var SimpleOuterSubscriber = (function (_super) {
+        __extends(SimpleOuterSubscriber, _super);
+        function SimpleOuterSubscriber() {
+            return _super !== null && _super.apply(this, arguments) || this;
+        }
+        SimpleOuterSubscriber.prototype.notifyNext = function (innerValue) {
+            this.destination.next(innerValue);
+        };
+        SimpleOuterSubscriber.prototype.notifyError = function (err) {
+            this.destination.error(err);
+        };
+        SimpleOuterSubscriber.prototype.notifyComplete = function () {
+            this.destination.complete();
+        };
+        return SimpleOuterSubscriber;
+    }(Subscriber));
+    var ComplexOuterSubscriber = (function (_super) {
+        __extends(ComplexOuterSubscriber, _super);
+        function ComplexOuterSubscriber() {
+            return _super !== null && _super.apply(this, arguments) || this;
+        }
+        ComplexOuterSubscriber.prototype.notifyNext = function (_outerValue, innerValue, _outerIndex, _innerSub) {
+            this.destination.next(innerValue);
+        };
+        ComplexOuterSubscriber.prototype.notifyError = function (error) {
+            this.destination.error(error);
+        };
+        ComplexOuterSubscriber.prototype.notifyComplete = function (_innerSub) {
+            this.destination.complete();
+        };
+        return ComplexOuterSubscriber;
+    }(Subscriber));
+    function innerSubscribe(result, innerSubscriber) {
+        if (innerSubscriber.closed) {
+            return undefined;
+        }
+        if (result instanceof Observable) {
+            return result.subscribe(innerSubscriber);
+        }
+        return subscribeTo(result)(innerSubscriber);
+    }
+
     function mergeMap(project, resultSelector, concurrent) {
         if (concurrent === void 0) { concurrent = Number.POSITIVE_INFINITY; }
         if (typeof resultSelector === 'function') {
@@ -3063,13 +3172,13 @@
                 return;
             }
             this.active++;
-            this._innerSub(result, value, index);
+            this._innerSub(result);
         };
-        MergeMapSubscriber.prototype._innerSub = function (ish, value, index) {
-            var innerSubscriber = new InnerSubscriber(this, value, index);
+        MergeMapSubscriber.prototype._innerSub = function (ish) {
+            var innerSubscriber = new SimpleInnerSubscriber(this);
             var destination = this.destination;
             destination.add(innerSubscriber);
-            var innerSubscription = subscribeToResult(this, ish, undefined, undefined, innerSubscriber);
+            var innerSubscription = innerSubscribe(ish, innerSubscriber);
             if (innerSubscription !== innerSubscriber) {
                 destination.add(innerSubscription);
             }
@@ -3081,12 +3190,11 @@
             }
             this.unsubscribe();
         };
-        MergeMapSubscriber.prototype.notifyNext = function (outerValue, innerValue, outerIndex, innerIndex, innerSub) {
+        MergeMapSubscriber.prototype.notifyNext = function (innerValue) {
             this.destination.next(innerValue);
         };
-        MergeMapSubscriber.prototype.notifyComplete = function (innerSub) {
+        MergeMapSubscriber.prototype.notifyComplete = function () {
             var buffer = this.buffer;
-            this.remove(innerSub);
             this.active--;
             if (buffer.length > 0) {
                 this._next(buffer.shift());
@@ -3096,7 +3204,8 @@
             }
         };
         return MergeMapSubscriber;
-    }(OuterSubscriber));
+    }(SimpleOuterSubscriber));
+    var flatMap = mergeMap;
 
     function mergeAll(concurrent) {
         if (concurrent === void 0) { concurrent = Number.POSITIVE_INFINITY; }
@@ -3614,7 +3723,7 @@
             else {
                 for (var i = 0; i < len && !this.hasFirst; i++) {
                     var observable = observables[i];
-                    var subscription = subscribeToResult(this, observable, observable, i);
+                    var subscription = subscribeToResult(this, observable, undefined, i);
                     if (this.subscriptions) {
                         this.subscriptions.push(subscription);
                     }
@@ -3623,7 +3732,7 @@
                 this.observables = null;
             }
         };
-        RaceSubscriber.prototype.notifyNext = function (outerValue, innerValue, outerIndex, innerIndex, innerSub) {
+        RaceSubscriber.prototype.notifyNext = function (_outerValue, innerValue, outerIndex) {
             if (!this.hasFirst) {
                 this.hasFirst = true;
                 for (var i = 0; i < this.subscriptions.length; i++) {
@@ -3772,10 +3881,10 @@
         function ZipSubscriber(destination, resultSelector, values) {
             if (values === void 0) { values = Object.create(null); }
             var _this = _super.call(this, destination) || this;
+            _this.resultSelector = resultSelector;
             _this.iterators = [];
             _this.active = 0;
-            _this.resultSelector = (typeof resultSelector === 'function') ? resultSelector : null;
-            _this.values = values;
+            _this.resultSelector = (typeof resultSelector === 'function') ? resultSelector : undefined;
             return _this;
         }
         ZipSubscriber.prototype._next = function (value) {
@@ -3803,7 +3912,7 @@
                 var iterator$$1 = iterators[i];
                 if (iterator$$1.stillUnsubscribed) {
                     var destination = this.destination;
-                    destination.add(iterator$$1.subscribe(iterator$$1, i));
+                    destination.add(iterator$$1.subscribe());
                 }
                 else {
                     this.active--;
@@ -3878,7 +3987,7 @@
         };
         StaticIterator.prototype.hasCompleted = function () {
             var nextResult = this.nextResult;
-            return nextResult && nextResult.done;
+            return Boolean(nextResult && nextResult.done);
         };
         return StaticIterator;
     }());
@@ -3943,15 +4052,15 @@
                 this.destination.complete();
             }
         };
-        ZipBufferIterator.prototype.notifyNext = function (outerValue, innerValue, outerIndex, innerIndex, innerSub) {
+        ZipBufferIterator.prototype.notifyNext = function (innerValue) {
             this.buffer.push(innerValue);
             this.parent.checkIterators();
         };
-        ZipBufferIterator.prototype.subscribe = function (value, index) {
-            return subscribeToResult(this, this.observable, this, index);
+        ZipBufferIterator.prototype.subscribe = function () {
+            return innerSubscribe(this.observable, new SimpleInnerSubscriber(this));
         };
         return ZipBufferIterator;
-    }(OuterSubscriber));
+    }(SimpleOuterSubscriber));
 
     function audit(durationSelector) {
         return function auditOperatorFunction(source) {
@@ -3987,7 +4096,7 @@
                 catch (err) {
                     return this.destination.error(err);
                 }
-                var innerSubscription = subscribeToResult(this, duration);
+                var innerSubscription = innerSubscribe(duration, new SimpleInnerSubscriber(this));
                 if (!innerSubscription || innerSubscription.closed) {
                     this.clearThrottle();
                 }
@@ -4000,23 +4109,23 @@
             var _a = this, value = _a.value, hasValue = _a.hasValue, throttled = _a.throttled;
             if (throttled) {
                 this.remove(throttled);
-                this.throttled = null;
+                this.throttled = undefined;
                 throttled.unsubscribe();
             }
             if (hasValue) {
-                this.value = null;
+                this.value = undefined;
                 this.hasValue = false;
                 this.destination.next(value);
             }
         };
-        AuditSubscriber.prototype.notifyNext = function (outerValue, innerValue, outerIndex, innerIndex) {
+        AuditSubscriber.prototype.notifyNext = function () {
             this.clearThrottle();
         };
         AuditSubscriber.prototype.notifyComplete = function () {
             this.clearThrottle();
         };
         return AuditSubscriber;
-    }(OuterSubscriber));
+    }(SimpleOuterSubscriber));
 
     function auditTime(duration, scheduler) {
         if (scheduler === void 0) { scheduler = async; }
@@ -4042,19 +4151,19 @@
         function BufferSubscriber(destination, closingNotifier) {
             var _this = _super.call(this, destination) || this;
             _this.buffer = [];
-            _this.add(subscribeToResult(_this, closingNotifier));
+            _this.add(innerSubscribe(closingNotifier, new SimpleInnerSubscriber(_this)));
             return _this;
         }
         BufferSubscriber.prototype._next = function (value) {
             this.buffer.push(value);
         };
-        BufferSubscriber.prototype.notifyNext = function (outerValue, innerValue, outerIndex, innerIndex, innerSub) {
+        BufferSubscriber.prototype.notifyNext = function () {
             var buffer = this.buffer;
             this.buffer = [];
             this.destination.next(buffer);
         };
         return BufferSubscriber;
-    }(OuterSubscriber));
+    }(SimpleOuterSubscriber));
 
     function bufferCount(bufferSize, startBufferEvery) {
         if (startBufferEvery === void 0) { startBufferEvery = null; }
@@ -4303,7 +4412,6 @@
         __extends(BufferToggleSubscriber, _super);
         function BufferToggleSubscriber(destination, openings, closingSelector) {
             var _this = _super.call(this, destination) || this;
-            _this.openings = openings;
             _this.closingSelector = closingSelector;
             _this.contexts = [];
             _this.add(subscribeToResult(_this, openings));
@@ -4339,7 +4447,7 @@
             this.contexts = null;
             _super.prototype._complete.call(this);
         };
-        BufferToggleSubscriber.prototype.notifyNext = function (outerValue, innerValue, outerIndex, innerIndex, innerSub) {
+        BufferToggleSubscriber.prototype.notifyNext = function (outerValue, innerValue) {
             outerValue ? this.closeBuffer(outerValue) : this.openBuffer(innerValue);
         };
         BufferToggleSubscriber.prototype.notifyComplete = function (innerSub) {
@@ -4420,10 +4528,10 @@
             _super.prototype._complete.call(this);
         };
         BufferWhenSubscriber.prototype._unsubscribe = function () {
-            this.buffer = null;
+            this.buffer = undefined;
             this.subscribing = false;
         };
-        BufferWhenSubscriber.prototype.notifyNext = function (outerValue, innerValue, outerIndex, innerIndex, innerSub) {
+        BufferWhenSubscriber.prototype.notifyNext = function () {
             this.openBuffer();
         };
         BufferWhenSubscriber.prototype.notifyComplete = function () {
@@ -4457,11 +4565,11 @@
             this.closingSubscription = closingSubscription;
             this.add(closingSubscription);
             this.subscribing = true;
-            closingSubscription.add(subscribeToResult(this, closingNotifier));
+            closingSubscription.add(innerSubscribe(closingNotifier, new SimpleInnerSubscriber(this)));
             this.subscribing = false;
         };
         return BufferWhenSubscriber;
-    }(OuterSubscriber));
+    }(SimpleOuterSubscriber));
 
     function catchError(selector) {
         return function catchErrorOperatorFunction(source) {
@@ -4498,16 +4606,16 @@
                     return;
                 }
                 this._unsubscribeAndRecycle();
-                var innerSubscriber = new InnerSubscriber(this, undefined, undefined);
+                var innerSubscriber = new SimpleInnerSubscriber(this);
                 this.add(innerSubscriber);
-                var innerSubscription = subscribeToResult(this, result, undefined, undefined, innerSubscriber);
+                var innerSubscription = innerSubscribe(result, innerSubscriber);
                 if (innerSubscription !== innerSubscriber) {
                     this.add(innerSubscription);
                 }
             }
         };
         return CatchSubscriber;
-    }(OuterSubscriber));
+    }(SimpleOuterSubscriber));
 
     function combineAll(project) {
         return function (source) { return source.lift(new CombineLatestOperator(project)); };
@@ -4613,7 +4721,6 @@
             var _this = _super.call(this, destination) || this;
             _this.durationSelector = durationSelector;
             _this.hasValue = false;
-            _this.durationSubscription = null;
             return _this;
         }
         DebounceSubscriber.prototype._next = function (value) {
@@ -4639,12 +4746,12 @@
                 subscription.unsubscribe();
                 this.remove(subscription);
             }
-            subscription = subscribeToResult(this, duration);
+            subscription = innerSubscribe(duration, new SimpleInnerSubscriber(this));
             if (subscription && !subscription.closed) {
                 this.add(this.durationSubscription = subscription);
             }
         };
-        DebounceSubscriber.prototype.notifyNext = function (outerValue, innerValue, outerIndex, innerIndex, innerSub) {
+        DebounceSubscriber.prototype.notifyNext = function () {
             this.emitValue();
         };
         DebounceSubscriber.prototype.notifyComplete = function () {
@@ -4655,17 +4762,17 @@
                 var value = this.value;
                 var subscription = this.durationSubscription;
                 if (subscription) {
-                    this.durationSubscription = null;
+                    this.durationSubscription = undefined;
                     subscription.unsubscribe();
                     this.remove(subscription);
                 }
-                this.value = null;
+                this.value = undefined;
                 this.hasValue = false;
                 _super.prototype._next.call(this, value);
             }
         };
         return DebounceSubscriber;
-    }(OuterSubscriber));
+    }(SimpleOuterSubscriber));
 
     function debounceTime(dueTime, scheduler) {
         if (scheduler === void 0) { scheduler = async; }
@@ -4876,7 +4983,7 @@
             _this.index = 0;
             return _this;
         }
-        DelayWhenSubscriber.prototype.notifyNext = function (outerValue, innerValue, outerIndex, innerIndex, innerSub) {
+        DelayWhenSubscriber.prototype.notifyNext = function (outerValue, _innerValue, _outerIndex, _innerIndex, innerSub) {
             this.destination.next(outerValue);
             this.removeSubscription(innerSub);
             this.tryComplete();
@@ -5018,14 +5125,14 @@
             _this.keySelector = keySelector;
             _this.values = new Set();
             if (flushes) {
-                _this.add(subscribeToResult(_this, flushes));
+                _this.add(innerSubscribe(flushes, new SimpleInnerSubscriber(_this)));
             }
             return _this;
         }
-        DistinctSubscriber.prototype.notifyNext = function (outerValue, innerValue, outerIndex, innerIndex, innerSub) {
+        DistinctSubscriber.prototype.notifyNext = function () {
             this.values.clear();
         };
-        DistinctSubscriber.prototype.notifyError = function (error, innerSub) {
+        DistinctSubscriber.prototype.notifyError = function (error) {
             this._error(error);
         };
         DistinctSubscriber.prototype._next = function (value) {
@@ -5056,7 +5163,7 @@
             }
         };
         return DistinctSubscriber;
-    }(OuterSubscriber));
+    }(SimpleOuterSubscriber));
 
     function distinctUntilChanged(compare, keySelector) {
         return function (source) { return source.lift(new DistinctUntilChangedOperator(compare, keySelector)); };
@@ -5299,7 +5406,7 @@
         SwitchFirstSubscriber.prototype._next = function (value) {
             if (!this.hasSubscription) {
                 this.hasSubscription = true;
-                this.add(subscribeToResult(this, value));
+                this.add(innerSubscribe(value, new SimpleInnerSubscriber(this)));
             }
         };
         SwitchFirstSubscriber.prototype._complete = function () {
@@ -5308,15 +5415,14 @@
                 this.destination.complete();
             }
         };
-        SwitchFirstSubscriber.prototype.notifyComplete = function (innerSub) {
-            this.remove(innerSub);
+        SwitchFirstSubscriber.prototype.notifyComplete = function () {
             this.hasSubscription = false;
             if (this.hasCompleted) {
                 this.destination.complete();
             }
         };
         return SwitchFirstSubscriber;
-    }(OuterSubscriber));
+    }(SimpleOuterSubscriber));
 
     function exhaustMap(project, resultSelector) {
         if (resultSelector) {
@@ -5361,13 +5467,13 @@
                 return;
             }
             this.hasSubscription = true;
-            this._innerSub(result, value, index);
+            this._innerSub(result);
         };
-        ExhaustMapSubscriber.prototype._innerSub = function (result, value, index) {
-            var innerSubscriber = new InnerSubscriber(this, value, index);
+        ExhaustMapSubscriber.prototype._innerSub = function (result) {
+            var innerSubscriber = new SimpleInnerSubscriber(this);
             var destination = this.destination;
             destination.add(innerSubscriber);
-            var innerSubscription = subscribeToResult(this, result, undefined, undefined, innerSubscriber);
+            var innerSubscription = innerSubscribe(result, innerSubscriber);
             if (innerSubscription !== innerSubscriber) {
                 destination.add(innerSubscription);
             }
@@ -5379,26 +5485,23 @@
             }
             this.unsubscribe();
         };
-        ExhaustMapSubscriber.prototype.notifyNext = function (outerValue, innerValue, outerIndex, innerIndex, innerSub) {
+        ExhaustMapSubscriber.prototype.notifyNext = function (innerValue) {
             this.destination.next(innerValue);
         };
         ExhaustMapSubscriber.prototype.notifyError = function (err) {
             this.destination.error(err);
         };
-        ExhaustMapSubscriber.prototype.notifyComplete = function (innerSub) {
-            var destination = this.destination;
-            destination.remove(innerSub);
+        ExhaustMapSubscriber.prototype.notifyComplete = function () {
             this.hasSubscription = false;
             if (this.hasCompleted) {
                 this.destination.complete();
             }
         };
         return ExhaustMapSubscriber;
-    }(OuterSubscriber));
+    }(SimpleOuterSubscriber));
 
     function expand(project, concurrent, scheduler) {
         if (concurrent === void 0) { concurrent = Number.POSITIVE_INFINITY; }
-        if (scheduler === void 0) { scheduler = undefined; }
         concurrent = (concurrent || 0) < 1 ? Number.POSITIVE_INFINITY : concurrent;
         return function (source) { return source.lift(new ExpandOperator(project, concurrent, scheduler)); };
     }
@@ -5464,7 +5567,7 @@
         ExpandSubscriber.prototype.subscribeToProjection = function (result, value, index) {
             this.active++;
             var destination = this.destination;
-            destination.add(subscribeToResult(this, result, value, index));
+            destination.add(innerSubscribe(result, new SimpleInnerSubscriber(this)));
         };
         ExpandSubscriber.prototype._complete = function () {
             this.hasCompleted = true;
@@ -5473,13 +5576,11 @@
             }
             this.unsubscribe();
         };
-        ExpandSubscriber.prototype.notifyNext = function (outerValue, innerValue, outerIndex, innerIndex, innerSub) {
+        ExpandSubscriber.prototype.notifyNext = function (innerValue) {
             this._next(innerValue);
         };
-        ExpandSubscriber.prototype.notifyComplete = function (innerSub) {
+        ExpandSubscriber.prototype.notifyComplete = function () {
             var buffer = this.buffer;
-            var destination = this.destination;
-            destination.remove(innerSub);
             this.active--;
             if (buffer && buffer.length > 0) {
                 this._next(buffer.shift());
@@ -5489,7 +5590,7 @@
             }
         };
         return ExpandSubscriber;
-    }(OuterSubscriber));
+    }(SimpleOuterSubscriber));
 
     function finalize(callback) {
         return function (source) { return source.lift(new FinallyOperator(callback)); };
@@ -5897,17 +5998,17 @@
                     return destination.error(e);
                 }
                 this.active++;
-                this._innerSub(ish, value, index);
+                this._innerSub(ish);
             }
             else {
                 this.buffer.push(value);
             }
         };
-        MergeScanSubscriber.prototype._innerSub = function (ish, value, index) {
-            var innerSubscriber = new InnerSubscriber(this, value, index);
+        MergeScanSubscriber.prototype._innerSub = function (ish) {
+            var innerSubscriber = new SimpleInnerSubscriber(this);
             var destination = this.destination;
             destination.add(innerSubscriber);
-            var innerSubscription = subscribeToResult(this, ish, undefined, undefined, innerSubscriber);
+            var innerSubscription = innerSubscribe(ish, innerSubscriber);
             if (innerSubscription !== innerSubscriber) {
                 destination.add(innerSubscription);
             }
@@ -5922,16 +6023,14 @@
             }
             this.unsubscribe();
         };
-        MergeScanSubscriber.prototype.notifyNext = function (outerValue, innerValue, outerIndex, innerIndex, innerSub) {
+        MergeScanSubscriber.prototype.notifyNext = function (innerValue) {
             var destination = this.destination;
             this.acc = innerValue;
             this.hasValue = true;
             destination.next(innerValue);
         };
-        MergeScanSubscriber.prototype.notifyComplete = function (innerSub) {
+        MergeScanSubscriber.prototype.notifyComplete = function () {
             var buffer = this.buffer;
-            var destination = this.destination;
-            destination.remove(innerSub);
             this.active--;
             if (buffer.length > 0) {
                 this._next(buffer.shift());
@@ -5944,7 +6043,7 @@
             }
         };
         return MergeScanSubscriber;
-    }(OuterSubscriber));
+    }(SimpleOuterSubscriber));
 
     function min(comparer) {
         var min = (typeof comparer === 'function')
@@ -6015,10 +6114,10 @@
             _this.nextSources = nextSources;
             return _this;
         }
-        OnErrorResumeNextSubscriber.prototype.notifyError = function (error, innerSub) {
+        OnErrorResumeNextSubscriber.prototype.notifyError = function () {
             this.subscribeToNextSource();
         };
-        OnErrorResumeNextSubscriber.prototype.notifyComplete = function (innerSub) {
+        OnErrorResumeNextSubscriber.prototype.notifyComplete = function () {
             this.subscribeToNextSource();
         };
         OnErrorResumeNextSubscriber.prototype._error = function (err) {
@@ -6032,10 +6131,10 @@
         OnErrorResumeNextSubscriber.prototype.subscribeToNextSource = function () {
             var next = this.nextSources.shift();
             if (!!next) {
-                var innerSubscriber = new InnerSubscriber(this, undefined, undefined);
+                var innerSubscriber = new SimpleInnerSubscriber(this);
                 var destination = this.destination;
                 destination.add(innerSubscriber);
-                var innerSubscription = subscribeToResult(this, next, undefined, undefined, innerSubscriber);
+                var innerSubscription = innerSubscribe(next, innerSubscriber);
                 if (innerSubscription !== innerSubscriber) {
                     destination.add(innerSubscription);
                 }
@@ -6045,7 +6144,7 @@
             }
         };
         return OnErrorResumeNextSubscriber;
-    }(OuterSubscriber));
+    }(SimpleOuterSubscriber));
 
     function pairwise() {
         return function (source) { return source.lift(new PairwiseOperator()); };
@@ -6103,8 +6202,8 @@
         var mapper = function (x) {
             var currentProp = x;
             for (var i = 0; i < length; i++) {
-                var p = currentProp[props[i]];
-                if (typeof p !== 'undefined') {
+                var p = currentProp != null ? currentProp[props[i]] : undefined;
+                if (p !== void 0) {
                     currentProp = p;
                 }
                 else {
@@ -6220,11 +6319,11 @@
             _this.sourceIsBeingSubscribedTo = true;
             return _this;
         }
-        RepeatWhenSubscriber.prototype.notifyNext = function (outerValue, innerValue, outerIndex, innerIndex, innerSub) {
+        RepeatWhenSubscriber.prototype.notifyNext = function () {
             this.sourceIsBeingSubscribedTo = true;
             this.source.subscribe(this);
         };
-        RepeatWhenSubscriber.prototype.notifyComplete = function (innerSub) {
+        RepeatWhenSubscriber.prototype.notifyComplete = function () {
             if (this.sourceIsBeingSubscribedTo === false) {
                 return _super.prototype.complete.call(this);
             }
@@ -6239,20 +6338,20 @@
                     return _super.prototype.complete.call(this);
                 }
                 this._unsubscribeAndRecycle();
-                this.notifications.next();
+                this.notifications.next(undefined);
             }
         };
         RepeatWhenSubscriber.prototype._unsubscribe = function () {
             var _a = this, notifications = _a.notifications, retriesSubscription = _a.retriesSubscription;
             if (notifications) {
                 notifications.unsubscribe();
-                this.notifications = null;
+                this.notifications = undefined;
             }
             if (retriesSubscription) {
                 retriesSubscription.unsubscribe();
-                this.retriesSubscription = null;
+                this.retriesSubscription = undefined;
             }
-            this.retries = null;
+            this.retries = undefined;
         };
         RepeatWhenSubscriber.prototype._unsubscribeAndRecycle = function () {
             var _unsubscribe = this._unsubscribe;
@@ -6272,10 +6371,10 @@
                 return _super.prototype.complete.call(this);
             }
             this.retries = retries;
-            this.retriesSubscription = subscribeToResult(this, retries);
+            this.retriesSubscription = innerSubscribe(retries, new SimpleInnerSubscriber(this));
         };
         return RepeatWhenSubscriber;
-    }(OuterSubscriber));
+    }(SimpleOuterSubscriber));
 
     function retry(count) {
         if (count === void 0) { count = -1; }
@@ -6349,11 +6448,11 @@
                     catch (e) {
                         return _super.prototype.error.call(this, e);
                     }
-                    retriesSubscription = subscribeToResult(this, retries);
+                    retriesSubscription = innerSubscribe(retries, new SimpleInnerSubscriber(this));
                 }
                 else {
-                    this.errors = null;
-                    this.retriesSubscription = null;
+                    this.errors = undefined;
+                    this.retriesSubscription = undefined;
                 }
                 this._unsubscribeAndRecycle();
                 this.errors = errors;
@@ -6366,15 +6465,15 @@
             var _a = this, errors = _a.errors, retriesSubscription = _a.retriesSubscription;
             if (errors) {
                 errors.unsubscribe();
-                this.errors = null;
+                this.errors = undefined;
             }
             if (retriesSubscription) {
                 retriesSubscription.unsubscribe();
-                this.retriesSubscription = null;
+                this.retriesSubscription = undefined;
             }
-            this.retries = null;
+            this.retries = undefined;
         };
-        RetryWhenSubscriber.prototype.notifyNext = function (outerValue, innerValue, outerIndex, innerIndex, innerSub) {
+        RetryWhenSubscriber.prototype.notifyNext = function () {
             var _unsubscribe = this._unsubscribe;
             this._unsubscribe = null;
             this._unsubscribeAndRecycle();
@@ -6382,7 +6481,7 @@
             this.source.subscribe(this);
         };
         return RetryWhenSubscriber;
-    }(OuterSubscriber));
+    }(SimpleOuterSubscriber));
 
     function sample(notifier) {
         return function (source) { return source.lift(new SampleOperator(notifier)); };
@@ -6394,7 +6493,7 @@
         SampleOperator.prototype.call = function (subscriber, source) {
             var sampleSubscriber = new SampleSubscriber(subscriber);
             var subscription = source.subscribe(sampleSubscriber);
-            subscription.add(subscribeToResult(sampleSubscriber, this.notifier));
+            subscription.add(innerSubscribe(this.notifier, new SimpleInnerSubscriber(sampleSubscriber)));
             return subscription;
         };
         return SampleOperator;
@@ -6410,7 +6509,7 @@
             this.value = value;
             this.hasValue = true;
         };
-        SampleSubscriber.prototype.notifyNext = function (outerValue, innerValue, outerIndex, innerIndex, innerSub) {
+        SampleSubscriber.prototype.notifyNext = function () {
             this.emitValue();
         };
         SampleSubscriber.prototype.notifyComplete = function () {
@@ -6423,7 +6522,7 @@
             }
         };
         return SampleSubscriber;
-    }(OuterSubscriber));
+    }(SimpleOuterSubscriber));
 
     function sampleTime(period, scheduler) {
         if (scheduler === void 0) { scheduler = async; }
@@ -6603,9 +6702,11 @@
         var isComplete = false;
         return function shareReplayOperation(source) {
             refCount++;
+            var innerSub;
             if (!subject || hasError) {
                 hasError = false;
                 subject = new ReplaySubject(bufferSize, windowTime, scheduler);
+                innerSub = subject.subscribe(this);
                 subscription = source.subscribe({
                     next: function (value) { subject.next(value); },
                     error: function (err) {
@@ -6619,7 +6720,9 @@
                     },
                 });
             }
-            var innerSub = subject.subscribe(this);
+            else {
+                innerSub = subject.subscribe(this);
+            }
             this.add(function () {
                 refCount--;
                 innerSub.unsubscribe();
@@ -6787,10 +6890,10 @@
         function SkipUntilSubscriber(destination, notifier) {
             var _this = _super.call(this, destination) || this;
             _this.hasValue = false;
-            var innerSubscriber = new InnerSubscriber(_this, undefined, undefined);
+            var innerSubscriber = new SimpleInnerSubscriber(_this);
             _this.add(innerSubscriber);
             _this.innerSubscription = innerSubscriber;
-            var innerSubscription = subscribeToResult(_this, notifier, undefined, undefined, innerSubscriber);
+            var innerSubscription = innerSubscribe(notifier, innerSubscriber);
             if (innerSubscription !== innerSubscriber) {
                 _this.add(innerSubscription);
                 _this.innerSubscription = innerSubscription;
@@ -6802,7 +6905,7 @@
                 _super.prototype._next.call(this, value);
             }
         };
-        SkipUntilSubscriber.prototype.notifyNext = function (outerValue, innerValue, outerIndex, innerIndex, innerSub) {
+        SkipUntilSubscriber.prototype.notifyNext = function () {
             this.hasValue = true;
             if (this.innerSubscription) {
                 this.innerSubscription.unsubscribe();
@@ -6811,7 +6914,7 @@
         SkipUntilSubscriber.prototype.notifyComplete = function () {
         };
         return SkipUntilSubscriber;
-    }(OuterSubscriber));
+    }(SimpleOuterSubscriber));
 
     function skipWhile(predicate) {
         return function (source) { return source.lift(new SkipWhileOperator(predicate)); };
@@ -6957,17 +7060,17 @@
                 this.destination.error(error);
                 return;
             }
-            this._innerSub(result, value, index);
+            this._innerSub(result);
         };
-        SwitchMapSubscriber.prototype._innerSub = function (result, value, index) {
+        SwitchMapSubscriber.prototype._innerSub = function (result) {
             var innerSubscription = this.innerSubscription;
             if (innerSubscription) {
                 innerSubscription.unsubscribe();
             }
-            var innerSubscriber = new InnerSubscriber(this, value, index);
+            var innerSubscriber = new SimpleInnerSubscriber(this);
             var destination = this.destination;
             destination.add(innerSubscriber);
-            this.innerSubscription = subscribeToResult(this, result, undefined, undefined, innerSubscriber);
+            this.innerSubscription = innerSubscribe(result, innerSubscriber);
             if (this.innerSubscription !== innerSubscriber) {
                 destination.add(this.innerSubscription);
             }
@@ -6980,21 +7083,19 @@
             this.unsubscribe();
         };
         SwitchMapSubscriber.prototype._unsubscribe = function () {
-            this.innerSubscription = null;
+            this.innerSubscription = undefined;
         };
-        SwitchMapSubscriber.prototype.notifyComplete = function (innerSub) {
-            var destination = this.destination;
-            destination.remove(innerSub);
-            this.innerSubscription = null;
+        SwitchMapSubscriber.prototype.notifyComplete = function () {
+            this.innerSubscription = undefined;
             if (this.isStopped) {
                 _super.prototype._complete.call(this);
             }
         };
-        SwitchMapSubscriber.prototype.notifyNext = function (outerValue, innerValue, outerIndex, innerIndex, innerSub) {
+        SwitchMapSubscriber.prototype.notifyNext = function (innerValue) {
             this.destination.next(innerValue);
         };
         return SwitchMapSubscriber;
-    }(OuterSubscriber));
+    }(SimpleOuterSubscriber));
 
     function switchAll() {
         return switchMap(identity);
@@ -7013,7 +7114,7 @@
         }
         TakeUntilOperator.prototype.call = function (subscriber, source) {
             var takeUntilSubscriber = new TakeUntilSubscriber(subscriber);
-            var notifierSubscription = subscribeToResult(takeUntilSubscriber, this.notifier);
+            var notifierSubscription = innerSubscribe(this.notifier, new SimpleInnerSubscriber(takeUntilSubscriber));
             if (notifierSubscription && !takeUntilSubscriber.seenValue) {
                 takeUntilSubscriber.add(notifierSubscription);
                 return source.subscribe(takeUntilSubscriber);
@@ -7029,14 +7130,14 @@
             _this.seenValue = false;
             return _this;
         }
-        TakeUntilSubscriber.prototype.notifyNext = function (outerValue, innerValue, outerIndex, innerIndex, innerSub) {
+        TakeUntilSubscriber.prototype.notifyNext = function () {
             this.seenValue = true;
             this.complete();
         };
         TakeUntilSubscriber.prototype.notifyComplete = function () {
         };
         return TakeUntilSubscriber;
-    }(OuterSubscriber));
+    }(SimpleOuterSubscriber));
 
     function takeWhile(predicate, inclusive) {
         if (inclusive === void 0) { inclusive = false; }
@@ -7166,7 +7267,7 @@
     };
     function throttle(durationSelector, config) {
         if (config === void 0) { config = defaultThrottleConfig; }
-        return function (source) { return source.lift(new ThrottleOperator(durationSelector, config.leading, config.trailing)); };
+        return function (source) { return source.lift(new ThrottleOperator(durationSelector, !!config.leading, !!config.trailing)); };
     }
     var ThrottleOperator = (function () {
         function ThrottleOperator(durationSelector, leading, trailing) {
@@ -7209,12 +7310,12 @@
                 this.throttle(_sendValue);
             }
             this._hasValue = false;
-            this._sendValue = null;
+            this._sendValue = undefined;
         };
         ThrottleSubscriber.prototype.throttle = function (value) {
             var duration = this.tryDurationSelector(value);
             if (!!duration) {
-                this.add(this._throttled = subscribeToResult(this, duration));
+                this.add(this._throttled = innerSubscribe(duration, new SimpleInnerSubscriber(this)));
             }
         };
         ThrottleSubscriber.prototype.tryDurationSelector = function (value) {
@@ -7231,19 +7332,19 @@
             if (_throttled) {
                 _throttled.unsubscribe();
             }
-            this._throttled = null;
+            this._throttled = undefined;
             if (_trailing) {
                 this.send();
             }
         };
-        ThrottleSubscriber.prototype.notifyNext = function (outerValue, innerValue, outerIndex, innerIndex, innerSub) {
+        ThrottleSubscriber.prototype.notifyNext = function () {
             this.throttlingDone();
         };
         ThrottleSubscriber.prototype.notifyComplete = function () {
             this.throttlingDone();
         };
         return ThrottleSubscriber;
-    }(OuterSubscriber));
+    }(SimpleOuterSubscriber));
 
     function throttleTime(duration, scheduler, config) {
         if (scheduler === void 0) { scheduler = async; }
@@ -7369,14 +7470,13 @@
             _this.waitFor = waitFor;
             _this.withObservable = withObservable;
             _this.scheduler = scheduler;
-            _this.action = null;
             _this.scheduleTimeout();
             return _this;
         }
         TimeoutWithSubscriber.dispatchTimeout = function (subscriber) {
             var withObservable = subscriber.withObservable;
             subscriber._unsubscribeAndRecycle();
-            subscriber.add(subscribeToResult(subscriber, withObservable));
+            subscriber.add(innerSubscribe(withObservable, new SimpleInnerSubscriber(subscriber)));
         };
         TimeoutWithSubscriber.prototype.scheduleTimeout = function () {
             var action = this.action;
@@ -7394,12 +7494,12 @@
             _super.prototype._next.call(this, value);
         };
         TimeoutWithSubscriber.prototype._unsubscribe = function () {
-            this.action = null;
+            this.action = undefined;
             this.scheduler = null;
             this.withObservable = null;
         };
         return TimeoutWithSubscriber;
-    }(OuterSubscriber));
+    }(SimpleOuterSubscriber));
 
     function timeout(due, scheduler) {
         if (scheduler === void 0) { scheduler = async; }
@@ -7442,7 +7542,7 @@
             var windowSubscriber = new WindowSubscriber(subscriber);
             var sourceSubscription = source.subscribe(windowSubscriber);
             if (!sourceSubscription.closed) {
-                windowSubscriber.add(subscribeToResult(windowSubscriber, this.windowBoundaries));
+                windowSubscriber.add(innerSubscribe(this.windowBoundaries, new SimpleInnerSubscriber(windowSubscriber)));
             }
             return sourceSubscription;
         };
@@ -7456,13 +7556,13 @@
             destination.next(_this.window);
             return _this;
         }
-        WindowSubscriber.prototype.notifyNext = function (outerValue, innerValue, outerIndex, innerIndex, innerSub) {
+        WindowSubscriber.prototype.notifyNext = function () {
             this.openWindow();
         };
-        WindowSubscriber.prototype.notifyError = function (error, innerSub) {
+        WindowSubscriber.prototype.notifyError = function (error) {
             this._error(error);
         };
-        WindowSubscriber.prototype.notifyComplete = function (innerSub) {
+        WindowSubscriber.prototype.notifyComplete = function () {
             this._complete();
         };
         WindowSubscriber.prototype._next = function (value) {
@@ -7489,7 +7589,7 @@
             destination.next(newWindow);
         };
         return WindowSubscriber;
-    }(OuterSubscriber));
+    }(SimpleOuterSubscriber));
 
     function windowCount(windowSize, startWindowEvery) {
         if (startWindowEvery === void 0) { startWindowEvery = 0; }
@@ -7574,13 +7674,13 @@
             scheduler = arguments[2];
         }
         else if (isNumeric(arguments[2])) {
-            maxWindowSize = arguments[2];
+            maxWindowSize = Number(arguments[2]);
         }
         if (isScheduler(arguments[1])) {
             scheduler = arguments[1];
         }
         else if (isNumeric(arguments[1])) {
-            windowCreationInterval = arguments[1];
+            windowCreationInterval = Number(arguments[1]);
         }
         return function windowTimeOperatorFunction(source) {
             return source.lift(new WindowTimeOperator(windowTimeSpan, windowCreationInterval, maxWindowSize, scheduler));
@@ -7857,10 +7957,10 @@
             _this.openWindow();
             return _this;
         }
-        WindowSubscriber.prototype.notifyNext = function (outerValue, innerValue, outerIndex, innerIndex, innerSub) {
+        WindowSubscriber.prototype.notifyNext = function (_outerValue, _innerValue, _outerIndex, _innerIndex, innerSub) {
             this.openWindow(innerSub);
         };
-        WindowSubscriber.prototype.notifyError = function (error, innerSub) {
+        WindowSubscriber.prototype.notifyError = function (error) {
             this._error(error);
         };
         WindowSubscriber.prototype.notifyComplete = function (innerSub) {
@@ -7949,11 +8049,11 @@
             }
             for (var i = 0; i < len; i++) {
                 var observable = observables[i];
-                _this.add(subscribeToResult(_this, observable, observable, i));
+                _this.add(subscribeToResult(_this, observable, undefined, i));
             }
             return _this;
         }
-        WithLatestFromSubscriber.prototype.notifyNext = function (outerValue, innerValue, outerIndex, innerIndex, innerSub) {
+        WithLatestFromSubscriber.prototype.notifyNext = function (_outerValue, innerValue, outerIndex) {
             this.values[outerIndex] = innerValue;
             var toRespond = this.toRespond;
             if (toRespond.length > 0) {
@@ -8053,7 +8153,7 @@
         merge: merge$1,
         mergeAll: mergeAll,
         mergeMap: mergeMap,
-        flatMap: mergeMap,
+        flatMap: flatMap,
         mergeMapTo: mergeMapTo,
         mergeScan: mergeScan,
         min: min,
@@ -9166,7 +9266,9 @@
         WebSocketSubject: WebSocketSubject
     });
 
-    function fromFetch(input, init) {
+    function fromFetch(input, initWithSelector) {
+        if (initWithSelector === void 0) { initWithSelector = {}; }
+        var selector = initWithSelector.selector, init = __rest(initWithSelector, ["selector"]);
         return new Observable(function (subscriber) {
             var controller = new AbortController();
             var signal = controller.signal;
@@ -9202,9 +9304,22 @@
                 perSubscriberInit = { signal: signal };
             }
             fetch(input, perSubscriberInit).then(function (response) {
-                abortable = false;
-                subscriber.next(response);
-                subscriber.complete();
+                if (selector) {
+                    subscription.add(from(selector(response)).subscribe(function (value) { return subscriber.next(value); }, function (err) {
+                        abortable = false;
+                        if (!unsubscribed) {
+                            subscriber.error(err);
+                        }
+                    }, function () {
+                        abortable = false;
+                        subscriber.complete();
+                    }));
+                }
+                else {
+                    abortable = false;
+                    subscriber.next(response);
+                    subscriber.complete();
+                }
             }).catch(function (err) {
                 abortable = false;
                 if (!unsubscribed) {
@@ -9240,10 +9355,14 @@
     exports.BehaviorSubject = BehaviorSubject;
     exports.ReplaySubject = ReplaySubject;
     exports.AsyncSubject = AsyncSubject;
-    exports.asapScheduler = asap;
-    exports.asyncScheduler = async;
-    exports.queueScheduler = queue;
-    exports.animationFrameScheduler = animationFrame;
+    exports.asap = asap;
+    exports.asapScheduler = asapScheduler;
+    exports.async = async;
+    exports.asyncScheduler = asyncScheduler;
+    exports.queue = queue;
+    exports.queueScheduler = queueScheduler;
+    exports.animationFrame = animationFrame;
+    exports.animationFrameScheduler = animationFrameScheduler;
     exports.VirtualTimeScheduler = VirtualTimeScheduler;
     exports.VirtualAction = VirtualAction;
     exports.Scheduler = Scheduler;

@@ -105,7 +105,7 @@ class ScreenshotThumbnails extends Audit {
       const targetTimestamp = speedline.beginning + timelineEnd * i / NUMBER_OF_THUMBNAILS;
 
       /** @type {SpeedlineFrame} */
-      // @ts-ignore - there will always be at least one frame by this point. TODO: use nonnullable assertion in TS2.9
+      // @ts-expect-error - there will always be at least one frame by this point. TODO: use nonnullable assertion in TS2.9
       let frameForTimestamp = null;
       if (i === NUMBER_OF_THUMBNAILS) {
         frameForTimestamp = analyzedFrames[analyzedFrames.length - 1];

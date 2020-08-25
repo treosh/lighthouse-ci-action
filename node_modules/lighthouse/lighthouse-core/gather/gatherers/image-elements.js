@@ -12,8 +12,9 @@
 const Gatherer = require('./gatherer.js');
 const pageFunctions = require('../../lib/page-functions.js');
 const Driver = require('../driver.js'); // eslint-disable-line no-unused-vars
+const FontSize = require('./seo/font-size.js');
 
-/* global window, getElementsInDocument, Image */
+/* global window, getElementsInDocument, Image, getNodePath, getNodeSelector, getNodeLabel, getOuterHTMLSnippet, ShadowRoot */
 
 
 /** @param {Element} element */
@@ -27,6 +28,21 @@ function getClientRect(element) {
     left: clientRect.left,
     right: clientRect.right,
   };
+}
+
+/**
+ * If an image is within `picture`, the `picture` element's css position
+ * is what we want to collect, since that position is relevant to CLS.
+ * @param {Element} element
+ * @param {CSSStyleDeclaration} computedStyle
+ */
+/* istanbul ignore next */
+function getPosition(element, computedStyle) {
+  if (element.parentElement && element.parentElement.tagName === 'PICTURE') {
+    const parentStyle = window.getComputedStyle(element.parentElement);
+    return parentStyle.getPropertyValue('position');
+  }
+  return computedStyle.getPropertyValue('position');
 }
 
 /**
@@ -45,13 +61,19 @@ function getHTMLImages(allElements) {
       // currentSrc used over src to get the url as determined by the browser
       // after taking into account srcset/media/sizes/etc.
       src: element.currentSrc,
+      srcset: element.srcset,
       displayedWidth: element.width,
       displayedHeight: element.height,
       clientRect: getClientRect(element),
       naturalWidth: element.naturalWidth,
       naturalHeight: element.naturalHeight,
+      attributeWidth: element.getAttribute('width') || '',
+      attributeHeight: element.getAttribute('height') || '',
+      cssWidth: undefined, // this will get overwritten below
+      cssHeight: undefined, // this will get overwritten below
+      cssComputedPosition: getPosition(element, computedStyle),
       isCss: false,
-      // @ts-ignore: loading attribute not yet added to HTMLImageElement definition.
+      // @ts-expect-error: loading attribute not yet added to HTMLImageElement definition.
       loading: element.loading,
       resourceSize: 0, // this will get overwritten below
       isPicture: !!element.parentElement && element.parentElement.tagName === 'PICTURE',
@@ -61,8 +83,17 @@ function getHTMLImages(allElements) {
       usesPixelArtScaling: ['pixelated', 'crisp-edges'].includes(
         computedStyle.getPropertyValue('image-rendering')
       ),
+      isInShadowDOM: element.getRootNode() instanceof ShadowRoot,
       // https://html.spec.whatwg.org/multipage/images.html#pixel-density-descriptor
       usesSrcSetDensityDescriptor: / \d+(\.\d+)?x/.test(element.srcset),
+      // @ts-ignore - getNodePath put into scope via stringification
+      devtoolsNodePath: getNodePath(element),
+      // @ts-ignore - put into scope via stringification
+      selector: getNodeSelector(element),
+      // @ts-ignore - put into scope via stringification
+      nodeLabel: getNodeLabel(element),
+      // @ts-ignore - put into scope via stringification
+      snippet: getOuterHTMLSnippet(element),
     };
   });
 }
@@ -86,25 +117,40 @@ function getCSSImages(allElements) {
     if (!style.backgroundImage || !CSS_URL_REGEX.test(style.backgroundImage)) continue;
 
     const imageMatch = style.backgroundImage.match(CSS_URL_REGEX);
-    // @ts-ignore test() above ensures that there is a match.
+    // @ts-expect-error test() above ensures that there is a match.
     const url = imageMatch[1];
 
     images.push({
       src: url,
+      srcset: '',
       displayedWidth: element.clientWidth,
       displayedHeight: element.clientHeight,
       clientRect: getClientRect(element),
       // CSS Images do not expose natural size, we'll determine the size later
       naturalWidth: 0,
       naturalHeight: 0,
+      attributeWidth: '',
+      attributeHeight: '',
+      cssWidth: undefined,
+      cssHeight: undefined,
+      cssComputedPosition: getPosition(element, style),
       isCss: true,
       isPicture: false,
+      isInShadowDOM: element.getRootNode() instanceof ShadowRoot,
       usesObjectFit: false,
       usesPixelArtScaling: ['pixelated', 'crisp-edges'].includes(
         style.getPropertyValue('image-rendering')
       ),
       usesSrcSetDensityDescriptor: false,
       resourceSize: 0, // this will get overwritten below
+      // @ts-ignore - getNodePath put into scope via stringification
+      devtoolsNodePath: getNodePath(element),
+      // @ts-ignore - put into scope via stringification
+      selector: getNodeSelector(element),
+      // @ts-ignore - put into scope via stringification
+      nodeLabel: getNodeLabel(element),
+      // @ts-ignore - put into scope via stringification
+      snippet: getOuterHTMLSnippet(element),
     });
   }
 
@@ -115,7 +161,7 @@ function getCSSImages(allElements) {
 /* istanbul ignore next */
 function collectImageElementInfo() {
   /** @type {Array<Element>} */
-  // @ts-ignore - added by getElementsInDocumentFnString
+  // @ts-expect-error - added by getElementsInDocumentFnString
   const allElements = getElementsInDocument();
   return getHTMLImages(allElements).concat(getCSSImages(allElements));
 }
@@ -138,6 +184,57 @@ function determineNaturalSize(url) {
 
     img.src = url;
   });
+}
+
+/**
+ * @param {LH.Crdp.CSS.CSSStyle} [style]
+ * @param {string} property
+ * @return {string | undefined}
+ */
+function findSizeDeclaration(style, property) {
+  if (!style) return;
+
+  const definedProp = style.cssProperties.find(({name}) => name === property);
+  if (!definedProp) return;
+
+  return definedProp.value;
+}
+
+/**
+ * Finds the most specific directly matched CSS font-size rule from the list.
+ *
+ * @param {Array<LH.Crdp.CSS.RuleMatch>} [matchedCSSRules]
+ * @param {string} property
+ * @returns {string | undefined}
+ */
+function findMostSpecificCSSRule(matchedCSSRules, property) {
+  /** @param {LH.Crdp.CSS.CSSStyle} declaration */
+  const isDeclarationofInterest = (declaration) => findSizeDeclaration(declaration, property);
+  const rule = FontSize.findMostSpecificMatchedCSSRule(matchedCSSRules, isDeclarationofInterest);
+  if (!rule) return;
+
+  // @ts-expect-error style is guaranteed to exist if a rule exists
+  return findSizeDeclaration(rule.style, property);
+}
+
+/**
+ * @param {LH.Crdp.CSS.GetMatchedStylesForNodeResponse} matched CSS rules}
+ * @param {string} property
+ * @returns {string | undefined}
+ */
+function getEffectiveSizingRule({attributesStyle, inlineStyle, matchedCSSRules}, property) {
+  // CSS sizing can't be inherited.
+  // We only need to check inline & matched styles.
+  // Inline styles have highest priority.
+  const inlineRule = findSizeDeclaration(inlineStyle, property);
+  if (inlineRule) return inlineRule;
+
+  const attributeRule = findSizeDeclaration(attributesStyle, property);
+  if (attributeRule) return attributeRule;
+
+  // Rules directly referencing the node come next.
+  const matchedRule = findMostSpecificCSSRule(matchedCSSRules, property);
+  if (matchedRule) return matchedRule;
 }
 
 class ImageElements extends Gatherer {
@@ -172,6 +269,31 @@ class ImageElements extends Gatherer {
   }
 
   /**
+   * @param {Driver} driver
+   * @param {string} devtoolsNodePath
+   * @param {LH.Artifacts.ImageElement} element
+   */
+  async fetchSourceRules(driver, devtoolsNodePath, element) {
+    try {
+      const {nodeId} = await driver.sendCommand('DOM.pushNodeByPathToFrontend', {
+        path: devtoolsNodePath,
+      });
+      if (!nodeId) return;
+
+      const matchedRules = await driver.sendCommand('CSS.getMatchedStylesForNode', {
+        nodeId: nodeId,
+      });
+      const sourceWidth = getEffectiveSizingRule(matchedRules, 'width');
+      const sourceHeight = getEffectiveSizingRule(matchedRules, 'height');
+      const sourceRules = {cssWidth: sourceWidth, cssHeight: sourceHeight};
+      Object.assign(element, sourceRules);
+    } catch (err) {
+      if (/No node.*found/.test(err.message)) return;
+      throw err;
+    }
+  }
+
+  /**
    * @param {LH.Gatherer.PassContext} passContext
    * @param {LH.Gatherer.LoadData} loadData
    * @return {Promise<LH.Artifacts['ImageElements']>}
@@ -190,7 +312,12 @@ class ImageElements extends Gatherer {
 
     const expression = `(function() {
       ${pageFunctions.getElementsInDocumentString}; // define function on page
+      ${pageFunctions.getNodePathString};
+      ${pageFunctions.getNodeSelectorString};
+      ${pageFunctions.getNodeLabelString};
+      ${pageFunctions.getOuterHTMLSnippetString};
       ${getClientRect.toString()};
+      ${getPosition.toString()};
       ${getHTMLImages.toString()};
       ${getCSSImages.toString()};
       ${collectImageElementInfo.toString()};
@@ -206,6 +333,11 @@ class ImageElements extends Gatherer {
     const top50Images = Object.values(indexedNetworkRecords)
       .sort((a, b) => b.resourceSize - a.resourceSize)
       .slice(0, 50);
+    await Promise.all([
+      driver.sendCommand('DOM.enable'),
+      driver.sendCommand('CSS.enable'),
+      driver.sendCommand('DOM.getDocument', {depth: -1, pierce: true}),
+    ]);
 
     for (let element of elements) {
       // Pull some of our information directly off the network record.
@@ -219,12 +351,15 @@ class ImageElements extends Gatherer {
       const {resourceSize = 0, transferSize = 0} = networkRecord;
       element.resourceSize = Math.min(resourceSize, transferSize);
 
+      if (!element.isInShadowDOM) {
+        await this.fetchSourceRules(driver, element.devtoolsNodePath, element);
+      }
       // Images within `picture` behave strangely and natural size information isn't accurate,
       // CSS images have no natural size information at all. Try to get the actual size if we can.
       // Additional fetch is expensive; don't bother if we don't have a networkRecord for the image,
       // or it's not in the top 50 largest images.
       if (
-        (element.isPicture || element.isCss) &&
+        (element.isPicture || element.isCss || element.srcset) &&
         networkRecord &&
         top50Images.includes(networkRecord)
       ) {
@@ -233,6 +368,11 @@ class ImageElements extends Gatherer {
 
       imageUsage.push(element);
     }
+
+    await Promise.all([
+      driver.sendCommand('DOM.disable'),
+      driver.sendCommand('CSS.disable'),
+    ]);
 
     return imageUsage;
   }

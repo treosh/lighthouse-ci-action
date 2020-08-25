@@ -49,7 +49,7 @@ class ModuleDuplication {
     /**
      * @typedef SourceData
      * @property {string} source
-     * @property {number} size
+     * @property {number} resourceSize
      */
 
     /** @type {Map<LH.Artifacts.RawSourceMap, SourceData[]>} */
@@ -68,12 +68,12 @@ class ModuleDuplication {
         const sourceSize = sizes.files[sourceKey];
         sourceDataArray.push({
           source: ModuleDuplication._normalizeSource(rawMap.sources[i]),
-          size: sourceSize,
+          resourceSize: sourceSize,
         });
       }
     }
 
-    /** @type {Map<string, Array<{scriptUrl: string, size: number}>>} */
+    /** @type {Map<string, Array<{scriptUrl: string, resourceSize: number}>>} */
     const sourceDataAggregated = new Map();
     for (const {rawMap, script} of bundles) {
       const sourceDataArray = sourceDatasMap.get(rawMap);
@@ -87,14 +87,14 @@ class ModuleDuplication {
         }
         data.push({
           scriptUrl: script.src || '',
-          size: sourceData.size,
+          resourceSize: sourceData.resourceSize,
         });
       }
     }
 
     for (const [key, value] of sourceDataAggregated.entries()) {
       if (value.length === 1) sourceDataAggregated.delete(key);
-      else value.sort((a, b) => b.size - a.size);
+      else value.sort((a, b) => b.resourceSize - a.resourceSize);
     }
 
     return sourceDataAggregated;

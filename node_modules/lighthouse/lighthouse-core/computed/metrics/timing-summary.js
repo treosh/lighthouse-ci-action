@@ -78,8 +78,12 @@ class TimingSummary {
       cumulativeLayoutShift: cumulativeLayoutShiftValue,
 
       // Include all timestamps of interest from trace of tab
-      observedNavigationStart: traceOfTab.timings.navigationStart,
-      observedNavigationStartTs: traceOfTab.timestamps.navigationStart,
+      observedTimeOrigin: traceOfTab.timings.timeOrigin,
+      observedTimeOriginTs: traceOfTab.timestamps.timeOrigin,
+      // For now, navigationStart is always timeOrigin.
+      // These properties might be undefined in a future major version, but preserve them for now.
+      observedNavigationStart: traceOfTab.timings.timeOrigin,
+      observedNavigationStartTs: traceOfTab.timestamps.timeOrigin,
       observedFirstPaint: traceOfTab.timings.firstPaint,
       observedFirstPaintTs: traceOfTab.timestamps.firstPaint,
       observedFirstContentfulPaint: traceOfTab.timings.firstContentfulPaint,

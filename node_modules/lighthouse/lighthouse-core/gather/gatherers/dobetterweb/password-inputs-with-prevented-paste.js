@@ -23,7 +23,7 @@ function findPasswordInputsWithPreventedPaste() {
       )
     )
     .map(passwordInput => ({
-      // @ts-ignore - getOuterHTMLSnippet put into scope via stringification
+      // @ts-expect-error - getOuterHTMLSnippet put into scope via stringification
       snippet: getOuterHTMLSnippet(passwordInput),
     }));
 }

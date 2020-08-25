@@ -55,6 +55,29 @@ class DOM {
   }
 
   /**
+   * @param {string} namespaceURI
+   * @param {string} name
+   * @param {string=} className
+   * @param {Object<string, (string|undefined)>=} attrs Attribute key/val pairs.
+   *     Note: if an attribute key has an undefined value, this method does not
+   *     set the attribute on the node.
+   * @return {Element}
+   */
+  createElementNS(namespaceURI, name, className, attrs = {}) {
+    const element = this._document.createElementNS(namespaceURI, name);
+    if (className) {
+      element.className = className;
+    }
+    Object.keys(attrs).forEach(key => {
+      const value = attrs[key];
+      if (typeof value !== 'undefined') {
+        element.setAttribute(key, value);
+      }
+    });
+    return element;
+  }
+
+  /**
    * @return {!DocumentFragment}
    */
   createFragment() {

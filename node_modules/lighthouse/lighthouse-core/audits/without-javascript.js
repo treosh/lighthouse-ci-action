@@ -16,7 +16,7 @@ const UIStrings = {
   /** Description of a Lighthouse audit that tells the user why they should return content even if Javascript is unavailable in a browser. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
   description: 'Your app should display some content when JavaScript is disabled, even if ' +
     'it\'s just a warning to the user that JavaScript is required to use the app. ' +
-    '[Learn more](https://web.dev/without-javascript).',
+    '[Learn more](https://web.dev/without-javascript/).',
   /** Message explaining that a website's body should render some (any) content even if the page's JavaScript cannot be loaded. */
   explanation: 'The page body should render some content if its scripts are not available.',
 };

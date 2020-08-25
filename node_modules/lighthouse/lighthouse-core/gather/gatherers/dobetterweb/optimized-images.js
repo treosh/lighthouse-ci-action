@@ -26,7 +26,7 @@ const MAX_RESOURCE_SIZE_TO_ENCODE = 2000 * 1024;
 const JPEG_QUALITY = 0.92;
 const WEBP_QUALITY = 0.85;
 
-const MINIMUM_IMAGE_SIZE = 4096; // savings of <4 KB will be ignored in the audit anyway
+const MINIMUM_IMAGE_SIZE = 4096; // savings of <4 KiB will be ignored in the audit anyway
 
 const IMAGE_REGEX = /^image\/((x|ms|x-ms)-)?(png|bmp|jpeg)$/;
 

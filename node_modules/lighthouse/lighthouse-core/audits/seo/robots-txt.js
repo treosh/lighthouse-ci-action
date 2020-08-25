@@ -40,7 +40,7 @@ const UIStrings = {
   failureTitle: 'robots.txt is not valid',
   /** Description of a Lighthouse audit that tells the user *why* they need to have a valid robots.txt file. Note: "robots.txt" is a canonical filename and should not be translated. This is displayed after a user expands the section to see more. No character length limits. */
   description: 'If your robots.txt file is malformed, crawlers may not be able to understand ' +
-  'how you want your website to be crawled or indexed. [Learn more](https://web.dev/robots-txt).',
+  'how you want your website to be crawled or indexed. [Learn more](https://web.dev/robots-txt/).',
   /**
    * @description Label for the audit identifying that the robots.txt request has returned a specific HTTP status code. Note: "robots.txt" is a canonical filename and should not be translated.
    * @example {500} statusCode

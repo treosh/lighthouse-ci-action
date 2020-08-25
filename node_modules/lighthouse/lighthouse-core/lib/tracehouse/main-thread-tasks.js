@@ -107,7 +107,7 @@ class MainThreadTasks {
 
       // We're right where we need to be, point the timerId to our `currentTask`
       /** @type {string} */
-      // @ts-ignore - timerId exists on `TimerInstall` events.
+      // @ts-expect-error - timerId exists on `TimerInstall` events.
       const timerId = nextTimerInstallEvent.args.data.timerId;
       priorTaskData.timers.set(timerId, currentTask);
     }
@@ -451,7 +451,7 @@ class MainThreadTasks {
         break;
       case 'TimerFire': {
         /** @type {string} */
-        // @ts-ignore - timerId exists when name is TimerFire
+        // @ts-expect-error - timerId exists when name is TimerFire
         const timerId = task.event.args.data.timerId;
         const timerInstallerTaskNode = priorTaskData.timers.get(timerId);
         if (!timerInstallerTaskNode) break;

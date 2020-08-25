@@ -17,7 +17,7 @@ const UIStrings = {
   /** Description of a Lighthouse audit that tells the user why they should use a service worker. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
   description: 'The service worker is the technology that enables your app to use many ' +
     'Progressive Web App features, such as offline, add to homescreen, and push ' +
-    'notifications. [Learn more](https://web.dev/service-worker).',
+    'notifications. [Learn more](https://web.dev/service-worker/).',
   /**
    * @description Message explaining that the website may have service workers, but none are in scope to control the tested web page.
    * @example {https://example.com/} pageUrl

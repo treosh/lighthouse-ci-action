@@ -16,12 +16,12 @@ const i18n = require('../lib/i18n/i18n.js');
 
 const UIStrings = {
   /** Title of a Lighthouse audit that provides detail on the size of visible images on the page. This descriptive title is shown to users when all images have correct sizes. */
-  title: 'Displays images with appropriate size',
+  title: 'Serves images with appropriate resolution',
   /** Title of a Lighthouse audit that provides detail on the size of visible images on the page. This descriptive title is shown to users when not all images have correct sizes. */
-  failureTitle: 'Displays images with inappropriate size',
+  failureTitle: 'Serves images with low resolution',
   /** Description of a Lighthouse audit that tells the user why they should maintain an appropriate size for all images. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
   description: 'Image natural dimensions should be proportional to the display size and the ' +
-    'pixel ratio to maximize image clarity. [Learn more](https://web.dev/image-size-responsive).',
+    'pixel ratio to maximize image clarity. [Learn more](https://web.dev/serve-responsive-images/).',
   /**  Label for a column in a data table; entries in the column will be a string representing the displayed size of the image. */
   columnDisplayed: 'Displayed size',
   /**  Label for a column in a data table; entries in the column will be a string representing the actual size of the image. */
@@ -137,8 +137,9 @@ function allowedImageSize(displayedWidth, displayedHeight, DPR) {
   if (displayedWidth > SMALL_IMAGE_THRESHOLD || displayedHeight > SMALL_IMAGE_THRESHOLD) {
     factor = LARGE_IMAGE_FACTOR;
   }
-  const width = Math.ceil(factor * DPR * displayedWidth);
-  const height = Math.ceil(factor * DPR * displayedHeight);
+  const requiredDpr = quantizeDpr(DPR);
+  const width = Math.ceil(factor * requiredDpr * displayedWidth);
+  const height = Math.ceil(factor * requiredDpr * displayedHeight);
   return [width, height];
 }
 
@@ -235,6 +236,25 @@ class ImageSizeResponsive extends Audit {
       details: Audit.makeTableDetails(headings, finalResults),
     };
   }
+}
+
+/**
+ * Return a quantized version of the DPR.
+ *
+ * This is to relax the required size of the image, as there are some densities that are not that
+ * common, and the default DPR used in some contexts by lightouse is 2.625.
+ *
+ * @param {number} dpr
+ * @return {number}
+ */
+function quantizeDpr(dpr) {
+  if (dpr >= 2) {
+    return Math.floor(dpr);
+  }
+  if (dpr >= 1.5) {
+    return 1.5;
+  }
+  return 1.0;
 }
 
 module.exports = ImageSizeResponsive;

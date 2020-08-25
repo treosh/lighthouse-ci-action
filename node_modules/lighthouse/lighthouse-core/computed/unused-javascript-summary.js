@@ -121,14 +121,14 @@ class UnusedJavascriptSummary {
       return retVal;
     });
 
-    // @ts-ignore: We will upstream computeLastGeneratedColumns to CDT eventually.
+    // @ts-expect-error: We will upstream computeLastGeneratedColumns to CDT eventually.
     bundle.map.computeLastGeneratedColumns();
     for (const mapping of bundle.map.mappings()) {
       let offset = lineOffsets[mapping.lineNumber];
 
       offset += mapping.columnNumber;
       const lastColumnOfMapping =
-        // @ts-ignore: We will upstream lastColumnNumber to CDT eventually.
+        // @ts-expect-error: We will upstream lastColumnNumber to CDT eventually.
         (mapping.lastColumnNumber - 1) || lineLengths[mapping.lineNumber];
       for (let i = mapping.columnNumber; i <= lastColumnOfMapping; i++) {
         if (wasteData.every(data => data.unusedByIndex[offset] === 1)) {

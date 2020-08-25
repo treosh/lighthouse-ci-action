@@ -21,7 +21,7 @@ const UIStrings = {
   /** Description of a Lighthouse audit that tells the user *why* they need to adopt a long cache lifetime policy. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
   description:
     'A long cache lifetime can speed up repeat visits to your page. ' +
-    '[Learn more](https://web.dev/uses-long-cache-ttl).',
+    '[Learn more](https://web.dev/uses-long-cache-ttl/).',
   /** [ICU Syntax] Label for the audit identifying network resources with inefficient cache values. Clicking this will expand the audit to show the resources. */
   displayValue: `{itemCount, plural,
     =1 {1 resource found}
@@ -196,7 +196,6 @@ class CacheHeaders extends Audit {
     const devtoolsLogs = artifacts.devtoolsLogs[Audit.DEFAULT_PASS];
     return NetworkRecords.request(devtoolsLogs, context).then(records => {
       const results = [];
-      let queryStringCount = 0;
       let totalWastedBytes = 0;
 
       for (const record of records) {
@@ -237,7 +236,6 @@ class CacheHeaders extends Audit {
         const wastedBytes = (1 - cacheHitProbability) * totalBytes;
 
         totalWastedBytes += wastedBytes;
-        if (url.includes('?')) queryStringCount++;
 
         // Include cacheControl info (if it exists) per url as a diagnostic.
         /** @type {LH.Audit.Details.DebugData|undefined} */
@@ -288,12 +286,6 @@ class CacheHeaders extends Audit {
         numericValue: totalWastedBytes,
         numericUnit: 'byte',
         displayValue: str_(UIStrings.displayValue, {itemCount: results.length}),
-        extendedInfo: {
-          value: {
-            results,
-            queryStringCount,
-          },
-        },
         details,
       };
     });

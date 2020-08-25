@@ -32,6 +32,7 @@ const Common = require('../Common.js')
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+
 /**
  * @interface
  */

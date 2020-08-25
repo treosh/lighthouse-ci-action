@@ -24,7 +24,7 @@ const UIStrings = {
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);
 
-/** @typedef {{metric: LH.Budget.TimingMetric, label: string, measurement?: number, overBudget?: number}} BudgetItem */
+/** @typedef {{metric: LH.Budget.TimingMetric, label: string, measurement?: LH.Audit.Details.NumericValue|number, overBudget?: LH.Audit.Details.NumericValue|number}} BudgetItem */
 
 class TimingBudget extends Audit {
   /**
@@ -89,10 +89,13 @@ class TimingBudget extends Audit {
    * @return {Array<BudgetItem>}
    */
   static tableItems(budget, summary) {
+    /** @type {Array<BudgetItem>} */
+    let items = [];
     if (!budget.timings) {
-      return [];
+      return items;
     }
-    return budget.timings.map((timingBudget) => {
+
+    items = budget.timings.map((timingBudget) => {
       const metricName = timingBudget.metric;
       const label = this.getRowLabel(metricName);
       const measurement = this.getMeasurement(metricName, summary);
@@ -107,6 +110,28 @@ class TimingBudget extends Audit {
     }).sort((a, b) => {
       return (b.overBudget || 0) - (a.overBudget || 0);
     });
+
+    // CLS requires a different granularity and should be a numeric type.
+    // Defining type here overrides the column setting so that it doesn't receive ms units.
+    const clsItem = items.find(item => item.metric === 'cumulative-layout-shift');
+    if (clsItem) {
+      if (typeof clsItem.measurement !== 'object') {
+        clsItem.measurement = {
+          type: 'numeric',
+          value: Number(clsItem.measurement),
+          granularity: 0.01,
+        };
+      }
+      if (typeof clsItem.overBudget !== 'object') {
+        clsItem.overBudget = {
+          type: 'numeric',
+          value: Number(clsItem.overBudget),
+          granularity: 0.01,
+        };
+      }
+    }
+
+    return items;
   }
 
   /**

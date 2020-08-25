@@ -22,7 +22,7 @@ const UIStrings = {
   /** Description of a Lighthouse audit that tells the user why they should use passive event listeners on the page. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
   description: 'Consider marking your touch and wheel event listeners as `passive` ' +
       'to improve your page\'s scroll performance. ' +
-      '[Learn more](https://web.dev/uses-passive-event-listeners).',
+      '[Learn more](https://web.dev/uses-passive-event-listeners/).',
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);
@@ -58,9 +58,6 @@ class PassiveEventsAudit extends ViolationAudit {
 
     return {
       score: Number(results.length === 0),
-      extendedInfo: {
-        value: results,
-      },
       details,
     };
   }

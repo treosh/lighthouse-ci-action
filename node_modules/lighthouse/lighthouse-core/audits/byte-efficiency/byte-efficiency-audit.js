@@ -18,8 +18,6 @@ const str_ = i18n.createMessageInstanceIdFn(__filename, {});
 /** @typedef {import('../../lib/dependency-graph/simulator/simulator')} Simulator */
 /** @typedef {import('../../lib/dependency-graph/base-node.js').Node} Node */
 
-const KB_IN_BYTES = 1024;
-
 const WASTED_MS_FOR_AVERAGE = 300;
 const WASTED_MS_FOR_POOR = 750;
 const WASTED_MS_FOR_SCORE_OF_ZERO = 5000;
@@ -198,7 +196,6 @@ class UnusedBytes extends Audit {
     const results = result.items.sort((itemA, itemB) => itemB.wastedBytes - itemA.wastedBytes);
 
     const wastedBytes = results.reduce((sum, item) => sum + item.wastedBytes, 0);
-    const wastedKb = Math.round(wastedBytes / KB_IN_BYTES);
     const wastedMs = this.computeWasteWithTTIGraph(results, graph, simulator, {
       providedWastedBytesByUrl: result.wastedBytesByUrl,
     });
@@ -217,13 +214,6 @@ class UnusedBytes extends Audit {
       numericValue: wastedMs,
       numericUnit: 'millisecond',
       score: UnusedBytes.scoreForWastedMs(wastedMs),
-      extendedInfo: {
-        value: {
-          wastedMs,
-          wastedKb,
-          results,
-        },
-      },
       details,
     };
   }

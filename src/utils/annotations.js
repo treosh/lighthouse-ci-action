@@ -37,7 +37,7 @@ exports.setAnnotations = async function setAnnotations(resultsPath) {
       return (
         `${emoji} \`${a.auditId}${a.auditProperty ? '.' + a.auditProperty : ''}\` ` +
         `${a.level === 'error' ? 'failure' : 'warning'} for \`${a.name}\` assertion` +
-        `${a.auditTitle ? ` (${a.auditTitle}: ${a.auditDocumentationLink})` : ''}\n` +
+        `${a.auditTitle ? ` (${a.auditTitle}: ${a.auditDocumentationLink} )` : ''}\n` +
         `Expected ${a.operator} ${a.expected}, but found ${a.actual}`
       )
     })

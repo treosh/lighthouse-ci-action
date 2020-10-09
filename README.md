@@ -91,7 +91,7 @@ jobs:
           configPath: './lighthouserc.json'
 ```
 
-Make a `lighthouserc.json` file with [LHCI assertion syntax](https://github.com/GoogleChrome/lighthouse-ci/blob/master/docs/assertions.md).
+Make a `lighthouserc.json` file with [LHCI assertion syntax](https://github.com/GoogleChrome/lighthouse-ci/blob/master/docs/configuration.md).
 
 #### lighthouserc.json
 

@@ -89,6 +89,9 @@ async function main() {
         )
       }
 
+      if (input.configPath) 
+        uploadParams.push(`--config=${input.configPath}`)
+
       const uploadStatus = runChildCommand('upload', uploadParams)
       if (uploadStatus !== 0) throw new Error(`LHCI 'upload' failed to upload to LHCI server.`)
     }

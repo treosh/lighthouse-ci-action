@@ -4,12 +4,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v2
       - name: Use node 12
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
-          node-version: '12.x'
-      - name: Install and test
-        run: |
-          yarn
-          yarn test
+          node-version: '12'
+      - run: yarn install
+      - run: yarn test

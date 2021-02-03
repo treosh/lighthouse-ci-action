@@ -16,7 +16,7 @@ const path = require('path');
 const Runner = require('../runner.js');
 const ConfigPlugin = require('./config-plugin.js');
 const Budget = require('./budget.js');
-const {requireAudits, mergeOptionsOfItems, resolveModule} = require('./config-helpers.js');
+const {requireAudits, resolveModule} = require('./config-helpers.js');
 
 /** @typedef {typeof import('../gather/gatherers/gatherer.js')} GathererConstructor */
 /** @typedef {InstanceType<GathererConstructor>} Gatherer */
@@ -28,7 +28,6 @@ const {requireAudits, mergeOptionsOfItems, resolveModule} = require('./config-he
 const BASE_ARTIFACT_BLANKS = {
   fetchTime: '',
   LighthouseRunWarnings: '',
-  TestedAsMobileDevice: '',
   HostFormFactor: '',
   HostUserAgent: '',
   NetworkUserAgent: '',
@@ -109,10 +108,10 @@ function assertValidCategories(categories, audits, groups) {
     return;
   }
 
-  const auditsKeyedById = new Map((audits || []).map(audit =>
-    /** @type {[string, LH.Config.AuditDefn]} */
-    ([audit.implementation.meta.id, audit])
-  ));
+  /** @type {Map<string, LH.Config.AuditDefn>} */
+  const auditsKeyedById = new Map((audits || []).map(audit => {
+    return [audit.implementation.meta.id, audit];
+  }));
 
   Object.keys(categories).forEach(categoryId => {
     categories[categoryId].auditRefs.forEach((auditRef, index) => {
@@ -159,6 +158,48 @@ function assertValidGatherer(gathererInstance, gathererName) {
 
   if (typeof gathererInstance.afterPass !== 'function') {
     throw new Error(`${gathererName} has no afterPass() method.`);
+  }
+}
+
+
+/**
+ * Validate the LH.Flags
+ * @param {LH.Flags} flags
+ */
+function assertValidFlags(flags) {
+  // COMPAT: compatibility layer for devtools as it uses the old way and we need tests to pass
+  // TODO(paulirish): remove this from LH once emulation refactor has rolled into DevTools
+  // @ts-expect-error Deprecated flag
+  if (flags.channel === 'devtools' && flags.internalDisableDeviceScreenEmulation) {
+    // @ts-expect-error Deprecated flag
+    flags.formFactor = flags.emulatedFormFactor;
+    // @ts-expect-error Deprecated flag
+    flags.emulatedFormFactor = flags.internalDisableDeviceScreenEmulation = undefined;
+  }
+
+
+  // @ts-expect-error Checking for removed flags
+  if (flags.emulatedFormFactor || flags.internalDisableDeviceScreenEmulation) {
+    throw new Error('Invalid emulation flag. Emulation configuration changed in LH 7.0. See https://github.com/GoogleChrome/lighthouse/blob/master/docs/emulation.md');
+  }
+}
+
+/**
+ * Validate the settings after they've been built
+ * @param {LH.Config.Settings} settings
+ */
+function assertValidSettings(settings) {
+  if (!settings.formFactor) {
+    throw new Error(`\`settings.formFactor\` must be defined as 'mobile' or 'desktop'. See https://github.com/GoogleChrome/lighthouse/blob/master/docs/emulation.md`);
+  }
+
+  if (!settings.screenEmulation.disabled) {
+    // formFactor doesn't control emulation. So we don't want a mismatch:
+    //   Bad mismatch A: user wants mobile emulation but scoring is configured for desktop
+    //   Bad mismtach B: user wants everything desktop and set formFactor, but accidentally not screenEmulation
+    if (settings.screenEmulation.mobile !== (settings.formFactor === 'mobile')) {
+      throw new Error(`Screen emulation mobile setting (${settings.screenEmulation.mobile}) does not match formFactor setting (${settings.formFactor}). See https://github.com/GoogleChrome/lighthouse/blob/master/docs/emulation.md`);
+    }
   }
 }
 
@@ -325,6 +366,9 @@ class Config {
 
     // Extend the default config if specified
     if (configJSON.extends) {
+      if (configJSON.extends !== 'lighthouse:default') {
+        throw new Error('`lighthouse:default` is the only valid extension method.');
+      }
       configJSON = Config.extendConfigJSON(deepCloneConfigJson(defaultConfig), configJSON);
     }
 
@@ -334,6 +378,9 @@ class Config {
     // Validate and merge in plugins (if any).
     configJSON = Config.mergePlugins(configJSON, flags, configDir);
 
+    if (flags) {
+      assertValidFlags(flags);
+    }
     const settings = Config.initSettings(configJSON.settings, flags);
 
     // Augment passes with necessary defaults and require gatherers.
@@ -354,6 +401,7 @@ class Config {
 
     Config.filterConfigIfNeeded(this);
 
+    assertValidSettings(this.settings);
     assertValidPasses(this.passes, this.audits);
     assertValidCategories(this.categories, this.audits, this.groups);
 
@@ -374,10 +422,6 @@ class Config {
           gathererDefn.implementation = undefined;
           // @ts-expect-error Breaking the Config.GathererDefn type.
           gathererDefn.instance = undefined;
-          if (Object.keys(gathererDefn.options).length === 0) {
-            // @ts-expect-error Breaking the Config.GathererDefn type.
-            gathererDefn.options = undefined;
-          }
         }
       }
     }
@@ -394,7 +438,7 @@ class Config {
     }
 
     // Printed config is more useful with localized strings.
-    i18n.replaceIcuMessageInstanceIds(jsonConfig, jsonConfig.settings.locale);
+    i18n.replaceIcuMessages(jsonConfig, jsonConfig.settings.locale);
 
     return JSON.stringify(jsonConfig, null, 2);
   }
@@ -439,7 +483,7 @@ class Config {
       assertValidPluginName(configJSON, pluginName);
 
       // TODO: refactor and delete `global.isDevtools`.
-      const pluginPath = global.isDevtools ?
+      const pluginPath = global.isDevtools || global.isLightrider ?
         pluginName :
         resolveModule(pluginName, configDir, 'plugin');
       const rawPluginJson = require(pluginPath);
@@ -487,6 +531,12 @@ class Config {
     }
     // Locale is special and comes only from flags/settings/lookupLocale.
     settingsWithFlags.locale = locale;
+
+    // Default constants uses the mobile UA. Explicitly stating to true asks LH to use the associated UA.
+    // It's a little awkward, but the alternatives are not allowing `true` or a dedicated `disableUAEmulation` setting.
+    if (settingsWithFlags.emulatedUserAgent === true) {
+      settingsWithFlags.emulatedUserAgent = constants.userAgents[settingsWithFlags.formFactor];
+    }
 
     return settingsWithFlags;
   }
@@ -660,23 +710,17 @@ class Config {
       }
     });
 
-    return {categories, requestedAuditNames: includedAudits};
-  }
-
-  /**
-   * @param {LH.Config.Json} config
-   * @return {Array<{id: string, title: string}>}
-   */
-  static getCategories(config) {
-    const categories = config.categories;
-    if (!categories) {
-      return [];
+    // The `full-page-screenshot` audit belongs to no category, but we still want to include
+    // it (unless explictly excluded) because there are audits in every category that can use it.
+    if (settings.onlyCategories) {
+      const explicitlyExcludesFullPageScreenshot =
+        settings.skipAudits && settings.skipAudits.includes('full-page-screenshot');
+      if (!explicitlyExcludesFullPageScreenshot) {
+        includedAudits.add('full-page-screenshot');
+      }
     }
 
-    return Object.keys(categories).map(id => {
-      const title = categories[id].title;
-      return {id, title};
-    });
+    return {categories, requestedAuditNames: includedAudits};
   }
 
   /**
@@ -757,12 +801,11 @@ class Config {
 
   /**
    * @param {string} path
-   * @param {{}=} options
    * @param {Array<string>} coreAuditList
    * @param {string=} configDir
    * @return {LH.Config.GathererDefn}
    */
-  static requireGathererFromPath(path, options, coreAuditList, configDir) {
+  static requireGathererFromPath(path, coreAuditList, configDir) {
     const coreGatherer = coreAuditList.find(a => a === `${path}.js`);
 
     let requirePath = `../gather/gatherers/${path}`;
@@ -777,7 +820,6 @@ class Config {
       instance: new GathererClass(),
       implementation: GathererClass,
       path,
-      options: options || {},
     };
   }
 
@@ -804,7 +846,6 @@ class Config {
             instance: gathererDefn.instance,
             implementation: gathererDefn.implementation,
             path: gathererDefn.path,
-            options: gathererDefn.options || {},
           };
         } else if (gathererDefn.implementation) {
           const GathererClass = gathererDefn.implementation;
@@ -812,21 +853,22 @@ class Config {
             instance: new GathererClass(),
             implementation: gathererDefn.implementation,
             path: gathererDefn.path,
-            options: gathererDefn.options || {},
           };
         } else if (gathererDefn.path) {
           const path = gathererDefn.path;
-          const options = gathererDefn.options;
-          return Config.requireGathererFromPath(path, options, coreList, configDir);
+          return Config.requireGathererFromPath(path, coreList, configDir);
         } else {
           throw new Error('Invalid expanded Gatherer: ' + JSON.stringify(gathererDefn));
         }
       });
 
-      const mergedDefns = mergeOptionsOfItems(gathererDefns);
-      mergedDefns.forEach(gatherer => assertValidGatherer(gatherer.instance, gatherer.path));
+      // De-dupe gatherers by artifact name because artifact IDs must be unique at runtime.
+      const uniqueDefns = Array.from(
+        new Map(gathererDefns.map(defn => [defn.instance.name, defn])).values()
+      );
+      uniqueDefns.forEach(gatherer => assertValidGatherer(gatherer.instance, gatherer.path));
 
-      return Object.assign(pass, {gatherers: mergedDefns});
+      return Object.assign(pass, {gatherers: uniqueDefns});
     });
     log.timeEnd(status);
     return fullPasses;

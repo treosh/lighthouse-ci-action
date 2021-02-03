@@ -24,7 +24,7 @@ const UIStrings = {
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);
 
-/** @typedef {{metric: LH.Budget.TimingMetric, label: string, measurement?: LH.Audit.Details.NumericValue|number, overBudget?: LH.Audit.Details.NumericValue|number}} BudgetItem */
+/** @typedef {{metric: LH.Budget.TimingMetric, label: LH.IcuMessage, measurement?: LH.Audit.Details.NumericValue|number, overBudget?: LH.Audit.Details.NumericValue|number}} BudgetItem */
 
 class TimingBudget extends Audit {
   /**
@@ -42,7 +42,7 @@ class TimingBudget extends Audit {
 
   /**
    * @param {LH.Budget.TimingMetric} timingMetric
-   * @return {string}
+   * @return {LH.IcuMessage}
    */
   static getRowLabel(timingMetric) {
     /** @type {Record<LH.Budget.TimingMetric, string>} */

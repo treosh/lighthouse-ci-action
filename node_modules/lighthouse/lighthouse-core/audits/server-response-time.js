@@ -22,7 +22,10 @@ const UIStrings = {
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);
 
-const RESPONSE_THRESHOLD = 600;
+// Due to the way that DevTools throttling works we cannot see if server response took less than ~570ms.
+// We set our failure threshold to 600ms to avoid those false positives but we want devs to shoot for 100ms.
+const TOO_SLOW_THRESHOLD_MS = 600;
+const TARGET_MS = 100;
 
 class ServerResponseTime extends Audit {
   /**
@@ -41,7 +44,7 @@ class ServerResponseTime extends Audit {
   /**
    * @param {LH.Artifacts.NetworkRequest} record
    */
-  static caclulateResponseTime(record) {
+  static calculateResponseTime(record) {
     const timing = record.timing;
     return timing ? timing.receiveHeadersEnd - timing.sendEnd : 0;
   }
@@ -55,17 +58,21 @@ class ServerResponseTime extends Audit {
     const devtoolsLog = artifacts.devtoolsLogs[Audit.DEFAULT_PASS];
     const mainResource = await MainResource.request({devtoolsLog, URL: artifacts.URL}, context);
 
-    const responseTime = ServerResponseTime.caclulateResponseTime(mainResource);
-    const passed = responseTime < RESPONSE_THRESHOLD;
+    const responseTime = ServerResponseTime.calculateResponseTime(mainResource);
+    const passed = responseTime < TOO_SLOW_THRESHOLD_MS;
     const displayValue = str_(UIStrings.displayValue, {timeInMs: responseTime});
 
-    /** @type {LH.Audit.Details.Opportunity} */
-    const details = {
-      type: 'opportunity',
-      overallSavingsMs: responseTime - RESPONSE_THRESHOLD,
-      headings: [],
-      items: [],
-    };
+    /** @type {LH.Audit.Details.Opportunity['headings']} */
+    const headings = [
+      {key: 'url', valueType: 'url', label: str_(i18n.UIStrings.columnURL)},
+      {key: 'responseTime', valueType: 'timespanMs', label: str_(i18n.UIStrings.columnTimeSpent)},
+    ];
+
+    const details = Audit.makeOpportunityDetails(
+      headings,
+      [{url: mainResource.url, responseTime}],
+      responseTime - TARGET_MS
+    );
 
     return {
       numericValue: responseTime,

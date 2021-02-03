@@ -50,7 +50,7 @@ class UsesWebPImages extends ByteEfficiencyAudit {
   }
 
   /**
-   * @param {LH.Artifacts.ImageElement} imageElement
+   * @param {{naturalWidth: number, naturalHeight: number}} imageElement
    * @return {number}
    */
   static estimateWebPSizeFromDimensions(imageElement) {
@@ -95,7 +95,12 @@ class UsesWebPImages extends ByteEfficiencyAudit {
           continue;
         }
 
-        webpSize = UsesWebPImages.estimateWebPSizeFromDimensions(imageElement);
+        const naturalHeight = imageElement.naturalHeight;
+        const naturalWidth = imageElement.naturalWidth;
+        // If naturalHeight or naturalWidth are falsy, information is not valid, skip.
+        if (!naturalWidth || !naturalHeight) continue;
+
+        webpSize = UsesWebPImages.estimateWebPSizeFromDimensions({naturalHeight, naturalWidth});
         fromProtocol = false;
       }
 

@@ -48,6 +48,7 @@ class NetworkRequests extends Audit {
 
         return {
           url: URL.elideDataURI(record.url),
+          protocol: record.protocol,
           startTime: timeToMs(record.startTime),
           endTime: timeToMs(record.endTime),
           finished: record.finished,
@@ -67,6 +68,7 @@ class NetworkRequests extends Audit {
       /** @type {LH.Audit.Details.Table['headings']} */
       const headings = [
         {key: 'url', itemType: 'url', text: 'URL'},
+        {key: 'protocol', itemType: 'text', text: 'Protocol'},
         {key: 'startTime', itemType: 'ms', granularity: 1, text: 'Start Time'},
         {key: 'endTime', itemType: 'ms', granularity: 1, text: 'End Time'},
         {

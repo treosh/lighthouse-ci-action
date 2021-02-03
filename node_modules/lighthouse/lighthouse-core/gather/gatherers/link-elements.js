@@ -9,14 +9,9 @@ const LinkHeader = require('http-link-header');
 const Gatherer = require('./gatherer.js');
 const {URL} = require('../../lib/url-shim.js');
 const NetworkAnalyzer = require('../../lib/dependency-graph/simulator/network-analyzer.js');
-const {
-  getElementsInDocumentString,
-  getNodePathString,
-  getNodeSelectorString,
-  getNodeLabelString,
-} = require('../../lib/page-functions.js');
+const pageFunctions = require('../../lib/page-functions.js');
 
-/* globals HTMLLinkElement */
+/* globals HTMLLinkElement getNodeDetails */
 
 /**
  * @fileoverview
@@ -64,13 +59,6 @@ function getLinkElementsInDOM() {
     // https://github.com/GoogleChrome/lighthouse/issues/9764
     if (!(link instanceof HTMLLinkElement)) continue;
 
-    // @ts-expect-error - put into scope via stringification
-    const nodePath = getNodePath(link); // eslint-disable-line no-undef
-    // @ts-expect-error - getNodeSelector put into scope via stringification
-    const selector = getNodeSelector(link); // eslint-disable-line no-undef
-    // @ts-expect-error - getNodeLabel put into scope via stringification
-    const nodeLabel = getNodeLabel(link); // eslint-disable-line no-undef
-
     const hrefRaw = link.getAttribute('href') || '';
     const source = link.closest('head') ? 'head' : 'body';
 
@@ -80,11 +68,10 @@ function getLinkElementsInDOM() {
       hreflang: link.hreflang,
       as: link.as,
       crossOrigin: link.crossOrigin,
-      devtoolsNodePath: nodePath,
       hrefRaw,
       source,
-      selector,
-      nodeLabel,
+      // @ts-expect-error - put into scope via stringification
+      node: getNodeDetails(link),
     });
   }
 
@@ -99,15 +86,14 @@ class LinkElements extends Gatherer {
   static getLinkElementsInDOM(passContext) {
     // We'll use evaluateAsync because the `node.getAttribute` method doesn't actually normalize
     // the values like access from JavaScript does.
-    return passContext.driver.evaluateAsync(`(() => {
-      ${getElementsInDocumentString};
-      ${getLinkElementsInDOM};
-      ${getNodePathString};
-      ${getNodeSelectorString};
-      ${getNodeLabelString};
-
-      return getLinkElementsInDOM();
-    })()`, {useIsolation: true});
+    return passContext.driver.evaluate(getLinkElementsInDOM, {
+      args: [],
+      useIsolation: true,
+      deps: [
+        pageFunctions.getNodeDetailsString,
+        pageFunctions.getElementsInDocument,
+      ],
+    });
   }
 
   /**
@@ -135,6 +121,7 @@ class LinkElements extends Gatherer {
           as: link.as || '',
           crossOrigin: getCrossoriginFromHeader(link.crossorigin),
           source: 'headers',
+          node: null,
         });
       }
     }

@@ -7,44 +7,6 @@
 
 /** @typedef {import('../gather/driver.js')} Driver */
 
-/**
- * @type {LH.Crdp.Emulation.SetDeviceMetricsOverrideRequest}
- */
-const MOTOG4_EMULATION_METRICS = {
-  mobile: true,
-  screenWidth: 360,
-  screenHeight: 640,
-  width: 360,
-  height: 640,
-  positionX: 0,
-  positionY: 0,
-  scale: 1,
-  // Moto G4 is really 3, but a higher value here works against
-  // our perf recommendations.
-  // https://github.com/GoogleChrome/lighthouse/issues/10741#issuecomment-626903508
-  deviceScaleFactor: 2.625,
-  screenOrientation: {
-    angle: 0,
-    type: 'portraitPrimary',
-  },
-};
-
-/**
- * Desktop metrics adapted from emulated_devices/module.json
- * @type {LH.Crdp.Emulation.SetDeviceMetricsOverrideRequest}
- */
-const DESKTOP_EMULATION_METRICS = {
-  mobile: false,
-  width: 1350,
-  height: 940,
-  deviceScaleFactor: 1,
-};
-
-// eslint-disable-next-line max-len
-const MOTOG4_USERAGENT = 'Mozilla/5.0 (Linux; Android 7.0; Moto G (4)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4143.7 Mobile Safari/537.36 Chrome-Lighthouse';
-// eslint-disable-next-line max-len
-const DESKTOP_USERAGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4143.7 Safari/537.36 Chrome-Lighthouse';
-
 const OFFLINE_METRICS = {
   offline: true,
   // values of 0 remove any active throttling. crbug.com/456324#c9
@@ -64,19 +26,6 @@ const NO_CPU_THROTTLE_METRICS = {
   rate: 1,
 };
 
-const emulationParams = {
-  mobile: {
-    userAgent: MOTOG4_USERAGENT,
-    metrics: MOTOG4_EMULATION_METRICS,
-    touchEnabled: true,
-  },
-  desktop: {
-    userAgent: DESKTOP_USERAGENT,
-    metrics: DESKTOP_EMULATION_METRICS,
-    touchEnabled: false,
-  },
-};
-
 /**
  *
  * @param {Driver} driver
@@ -84,20 +33,21 @@ const emulationParams = {
  * @return {Promise<void>}
  */
 async function emulate(driver, settings) {
-  if (!settings.emulatedFormFactor || settings.emulatedFormFactor === 'none') return;
-  const params = emulationParams[settings.emulatedFormFactor];
-
-  // In DevTools, emulation is applied before Lighthouse starts (to deal with viewport emulation bugs)
-  // As a result, we don't double-apply viewport emulation (devtools sets `internalDisableDeviceScreenEmulation`).
-  // UA emulation, however, is lost in the protocol handover from devtools frontend to the audits_worker. So it's always applied.
-
-  // Network.enable must be called for UA overriding to work
-  await driver.sendCommand('Network.enable');
-  await driver.sendCommand('Network.setUserAgentOverride', {userAgent: params.userAgent});
-
-  if (!settings.internalDisableDeviceScreenEmulation) {
-    await driver.sendCommand('Emulation.setDeviceMetricsOverride', params.metrics);
-    await driver.sendCommand('Emulation.setTouchEmulationEnabled', {enabled: params.touchEnabled});
+  if (settings.emulatedUserAgent !== false) {
+    // Network.enable must be called for UA overriding to work
+    await driver.sendCommand('Network.enable');
+    await driver.sendCommand('Network.setUserAgentOverride', {
+      userAgent: /** @type {string} */ (settings.emulatedUserAgent),
+    });
+  }
+  // See devtools-entry for one usecase for disabling screenEmulation
+  if (settings.screenEmulation.disabled !== true) {
+    const {width, height, deviceScaleFactor, mobile} = settings.screenEmulation;
+    const params = {width, height, deviceScaleFactor, mobile};
+    await driver.sendCommand('Emulation.setDeviceMetricsOverride', params);
+    await driver.sendCommand('Emulation.setTouchEmulationEnabled', {
+      enabled: params.mobile,
+    });
   }
 }
 
@@ -163,6 +113,4 @@ module.exports = {
   enableCPUThrottling,
   disableCPUThrottling,
   goOffline,
-  MOBILE_USERAGENT: MOTOG4_USERAGENT,
-  DESKTOP_USERAGENT,
 };

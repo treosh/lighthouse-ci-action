@@ -5,6 +5,8 @@
  */
 'use strict';
 
+const i18n = require('../lib/i18n/i18n.js');
+
 /**
  * @param {unknown} arr
  * @return {arr is Array<Record<string, unknown>>}
@@ -127,13 +129,13 @@ class ConfigPlugin {
 
     assertNoExcessProperties(invalidRest, pluginName, 'category');
 
-    if (typeof title !== 'string') {
+    if (!i18n.isStringOrIcuMessage(title)) {
       throw new Error(`${pluginName} has an invalid category tile.`);
     }
-    if (typeof description !== 'string' && typeof description !== 'undefined') {
+    if (!i18n.isStringOrIcuMessage(description) && description !== undefined) {
       throw new Error(`${pluginName} has an invalid category description.`);
     }
-    if (typeof manualDescription !== 'string' && typeof manualDescription !== 'undefined') {
+    if (!i18n.isStringOrIcuMessage(manualDescription) && manualDescription !== undefined) {
       throw new Error(`${pluginName} has an invalid category manualDescription.`);
     }
     const auditRefs = ConfigPlugin._parseAuditRefsList(auditRefsJson, pluginName);
@@ -173,10 +175,10 @@ class ConfigPlugin {
       const {title, description, ...invalidRest} = groupJson;
       assertNoExcessProperties(invalidRest, pluginName, 'group');
 
-      if (typeof title !== 'string') {
+      if (!i18n.isStringOrIcuMessage(title)) {
         throw new Error(`${pluginName} has an invalid group title.`);
       }
-      if (typeof description !== 'string' && typeof description !== 'undefined') {
+      if (!i18n.isStringOrIcuMessage(description) && description !== undefined) {
         throw new Error(`${pluginName} has an invalid group description.`);
       }
       parsedGroupsJson[`${pluginName}-${groupId}`] = {
@@ -195,7 +197,7 @@ class ConfigPlugin {
    * @return {LH.Config.Json}
    */
   static parsePlugin(pluginJson, pluginName) {
-    // Clone to prevent modifications or original and to deactivate any live properties.
+    // Clone to prevent modifications of original and to deactivate any live properties.
     pluginJson = JSON.parse(JSON.stringify(pluginJson));
     if (!isObjectOfUnknownProperties(pluginJson)) {
       throw new Error(`${pluginName} is not defined as an object.`);

@@ -259,6 +259,16 @@ class BaseNode {
    * @param {function(Node): Node[]} [getNextNodes]
    */
   traverse(callback, getNextNodes) {
+    for (const {node, traversalPath} of this.traverseGenerator(getNextNodes)) {
+      callback(node, traversalPath);
+    }
+  }
+
+  /**
+   * @see BaseNode.traverse
+   * @param {function(Node): Node[]} [getNextNodes]
+   */
+  * traverseGenerator(getNextNodes) {
     if (!getNextNodes) {
       getNextNodes = node => node.getDependents();
     }
@@ -273,7 +283,7 @@ class BaseNode {
       // @ts-expect-error - queue has length so it's guaranteed to have an item
       const traversalPath = queue.shift();
       const node = traversalPath[0];
-      callback(node, traversalPath);
+      yield {node, traversalPath};
 
       for (const nextNode of getNextNodes(node)) {
         if (visited.has(nextNode.id)) continue;

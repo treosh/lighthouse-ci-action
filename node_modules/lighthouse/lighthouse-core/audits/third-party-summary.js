@@ -24,8 +24,6 @@ const UIStrings = {
     'your page has primarily finished loading. [Learn more](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/loading-third-party-javascript/).',
   /** Label for a table column that displays the name of a third-party provider that potentially links to their website. */
   columnThirdParty: 'Third-Party',
-  /** Label for a table column that displays how much time each row spent blocking other work on the main thread, entries will be the number of milliseconds spent. */
-  columnBlockingTime: 'Main-Thread Blocking Time',
   /** Summary text for the result of a Lighthouse audit that identifies the code on a web page that the user doesn't control (referred to as "third-party code"). This text summarizes the number of distinct entities that were found on the page. */
   displayValue: 'Third-party code blocked the main thread for ' +
     `{timeInMs, number, milliseconds}\xa0ms`,
@@ -37,6 +35,35 @@ const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);
 const PASS_THRESHOLD_IN_MS = 250;
 
 /** @typedef {import("third-party-web").IEntity} ThirdPartyEntity */
+
+/**
+ * @typedef Summary
+ * @property {number} mainThreadTime
+ * @property {number} transferSize
+ * @property {number} blockingTime
+ */
+
+/**
+ * @typedef URLSummary
+ * @property {number} transferSize
+ * @property {number} blockingTime
+ * @property {string | LH.IcuMessage} url
+ */
+
+/** @typedef SummaryMaps
+ * @property {Map<ThirdPartyEntity, Summary>} byEntity Map of impact summaries for each entity.
+ * @property {Map<string, Summary>} byURL Map of impact summaries for each URL.
+ * @property {Map<ThirdPartyEntity, string[]>} urls Map of URLs under each entity.
+ */
+
+/**
+ * Don't bother showing resources smaller than 4KiB since they're likely to be pixels, which isn't
+ * too actionable.
+ */
+const MIN_TRANSFER_SIZE_FOR_SUBITEMS = 4096;
+
+/** Show at most 5 sub items in the resource breakdown. */
+const MAX_SUBITEMS = 5;
 
 class ThirdPartySummary extends Audit {
   /**
@@ -57,41 +84,108 @@ class ThirdPartySummary extends Audit {
    * @param {Array<LH.Artifacts.NetworkRequest>} networkRecords
    * @param {Array<LH.Artifacts.TaskNode>} mainThreadTasks
    * @param {number} cpuMultiplier
-   * @return {Map<ThirdPartyEntity, {mainThreadTime: number, transferSize: number, blockingTime: number}>}
+   * @return {SummaryMaps}
    */
-  static getSummaryByEntity(networkRecords, mainThreadTasks, cpuMultiplier) {
-    /** @type {Map<ThirdPartyEntity, {mainThreadTime: number, transferSize: number, blockingTime: number}>} */
-    const entities = new Map();
-    const defaultEntityStat = {mainThreadTime: 0, blockingTime: 0, transferSize: 0};
+  static getSummaries(networkRecords, mainThreadTasks, cpuMultiplier) {
+    /** @type {Map<string, Summary>} */
+    const byURL = new Map();
+    /** @type {Map<ThirdPartyEntity, Summary>} */
+    const byEntity = new Map();
+    const defaultSummary = {mainThreadTime: 0, blockingTime: 0, transferSize: 0};
 
     for (const request of networkRecords) {
-      const entity = thirdPartyWeb.getEntity(request.url);
-      if (!entity) continue;
-
-      const entityStats = entities.get(entity) || {...defaultEntityStat};
-      entityStats.transferSize += request.transferSize;
-      entities.set(entity, entityStats);
+      const urlSummary = byURL.get(request.url) || {...defaultSummary};
+      urlSummary.transferSize += request.transferSize;
+      byURL.set(request.url, urlSummary);
     }
 
     const jsURLs = BootupTime.getJavaScriptURLs(networkRecords);
 
     for (const task of mainThreadTasks) {
-      const attributeableURL = BootupTime.getAttributableURLForTask(task, jsURLs);
-      const entity = thirdPartyWeb.getEntity(attributeableURL);
-      if (!entity) continue;
+      const attributableURL = BootupTime.getAttributableURLForTask(task, jsURLs);
 
-      const entityStats = entities.get(entity) || {...defaultEntityStat};
+      const urlSummary = byURL.get(attributableURL) || {...defaultSummary};
       const taskDuration = task.selfTime * cpuMultiplier;
       // The amount of time spent on main thread is the sum of all durations.
-      entityStats.mainThreadTime += taskDuration;
+      urlSummary.mainThreadTime += taskDuration;
       // The amount of time spent *blocking* on main thread is the sum of all time longer than 50ms.
       // Note that this is not totally equivalent to the TBT definition since it fails to account for FCP,
       // but a majority of third-party work occurs after FCP and should yield largely similar numbers.
-      entityStats.blockingTime += Math.max(taskDuration - 50, 0);
-      entities.set(entity, entityStats);
+      urlSummary.blockingTime += Math.max(taskDuration - 50, 0);
+      byURL.set(attributableURL, urlSummary);
     }
 
-    return entities;
+    // Map each URL's stat to a particular third party entity.
+    /** @type {Map<ThirdPartyEntity, string[]>} */
+    const urls = new Map();
+    for (const [url, urlSummary] of byURL.entries()) {
+      const entity = thirdPartyWeb.getEntity(url);
+      if (!entity) {
+        byURL.delete(url);
+        continue;
+      }
+
+      const entitySummary = byEntity.get(entity) || {...defaultSummary};
+      entitySummary.transferSize += urlSummary.transferSize;
+      entitySummary.mainThreadTime += urlSummary.mainThreadTime;
+      entitySummary.blockingTime += urlSummary.blockingTime;
+      byEntity.set(entity, entitySummary);
+
+      const entityURLs = urls.get(entity) || [];
+      entityURLs.push(url);
+      urls.set(entity, entityURLs);
+    }
+
+    return {byURL, byEntity, urls};
+  }
+
+  /**
+   * @param {ThirdPartyEntity} entity
+   * @param {SummaryMaps} summaries
+   * @param {Summary} stats
+   * @return {Array<URLSummary>}
+   */
+  static makeSubItems(entity, summaries, stats) {
+    const entityURLs = summaries.urls.get(entity) || [];
+    let items = entityURLs
+      .map(url => /** @type {URLSummary} */ ({url, ...summaries.byURL.get(url)}))
+      // Filter out any cases where byURL was missing entries.
+      .filter((stat) => stat.transferSize > 0)
+      // Sort by blocking time first, then transfer size to break ties.
+      .sort((a, b) => (b.blockingTime - a.blockingTime) || (b.transferSize - a.transferSize));
+
+    const subitemSummary = {transferSize: 0, blockingTime: 0};
+    const minTransferSize = Math.max(MIN_TRANSFER_SIZE_FOR_SUBITEMS, stats.transferSize / 20);
+    const maxSubItems = Math.min(MAX_SUBITEMS, items.length);
+    let numSubItems = 0;
+    while (numSubItems < maxSubItems) {
+      const nextSubItem = items[numSubItems];
+      if (nextSubItem.blockingTime === 0 && nextSubItem.transferSize < minTransferSize) {
+        // Don't include the resource in the sub-item breakdown because it didn't have a big
+        // enough impact on its own.
+        break;
+      }
+
+      numSubItems++;
+      subitemSummary.transferSize += nextSubItem.transferSize;
+      subitemSummary.blockingTime += nextSubItem.blockingTime;
+    }
+    if (!subitemSummary.blockingTime && !subitemSummary.transferSize) {
+      // Don't bother breaking down if there are no large resources.
+      return [];
+    }
+    // Only show the top N entries for brevity. If there is more than one remaining entry
+    // we'll replace the tail entries with single remainder entry.
+    items = items.slice(0, numSubItems);
+    const remainder = {
+      url: str_(i18n.UIStrings.otherResourcesLabel),
+      transferSize: stats.transferSize - subitemSummary.transferSize,
+      blockingTime: stats.blockingTime - subitemSummary.blockingTime,
+    };
+    if (remainder.transferSize > minTransferSize) {
+      items.push(remainder);
+    }
+    return items;
   }
 
   /**
@@ -110,27 +204,28 @@ class ThirdPartySummary extends Audit {
     const multiplier = settings.throttlingMethod === 'simulate' ?
       settings.throttling.cpuSlowdownMultiplier : 1;
 
-    const summaryByEntity = ThirdPartySummary.getSummaryByEntity(networkRecords, tasks, multiplier);
+    const summaries = ThirdPartySummary.getSummaries(networkRecords, tasks, multiplier);
+    const overallSummary = {wastedBytes: 0, wastedMs: 0};
 
-    const summary = {wastedBytes: 0, wastedMs: 0};
-
-    const results = Array.from(summaryByEntity.entries())
+    const results = Array.from(summaries.byEntity.entries())
       // Don't consider the page we're on to be third-party.
       // e.g. Facebook SDK isn't a third-party script on facebook.com
       .filter(([entity]) => !(mainEntity && mainEntity.name === entity.name))
       .map(([entity, stats]) => {
-        summary.wastedBytes += stats.transferSize;
-        summary.wastedMs += stats.blockingTime;
+        overallSummary.wastedBytes += stats.transferSize;
+        overallSummary.wastedMs += stats.blockingTime;
 
         return {
-          entity: /** @type {LH.Audit.Details.LinkValue} */ ({
-            type: 'link',
+          ...stats,
+          entity: {
+            type: /** @type {'link'} */ ('link'),
             text: entity.name,
             url: entity.homepage || '',
-          }),
-          transferSize: stats.transferSize,
-          mainThreadTime: stats.mainThreadTime,
-          blockingTime: stats.blockingTime,
+          },
+          subItems: {
+            type: /** @type {'subitems'} */ ('subitems'),
+            items: ThirdPartySummary.makeSubItems(entity, summaries, stats),
+          },
         };
       })
       // Sort by blocking time first, then transfer size to break ties.
@@ -138,11 +233,11 @@ class ThirdPartySummary extends Audit {
 
     /** @type {LH.Audit.Details.Table['headings']} */
     const headings = [
-      {key: 'entity', itemType: 'link', text: str_(UIStrings.columnThirdParty)},
-      {key: 'transferSize', granularity: 1, itemType: 'bytes',
-        text: str_(i18n.UIStrings.columnTransferSize)},
-      {key: 'blockingTime', granularity: 1, itemType: 'ms',
-        text: str_(UIStrings.columnBlockingTime)},
+      /* eslint-disable max-len */
+      {key: 'entity', itemType: 'link', text: str_(UIStrings.columnThirdParty), subItemsHeading: {key: 'url', itemType: 'url'}},
+      {key: 'transferSize', granularity: 1, itemType: 'bytes', text: str_(i18n.UIStrings.columnTransferSize), subItemsHeading: {key: 'transferSize'}},
+      {key: 'blockingTime', granularity: 1, itemType: 'ms', text: str_(i18n.UIStrings.columnBlockingTime), subItemsHeading: {key: 'blockingTime'}},
+      /* eslint-enable max-len */
     ];
 
     if (!results.length) {
@@ -153,11 +248,11 @@ class ThirdPartySummary extends Audit {
     }
 
     return {
-      score: Number(summary.wastedMs <= PASS_THRESHOLD_IN_MS),
+      score: Number(overallSummary.wastedMs <= PASS_THRESHOLD_IN_MS),
       displayValue: str_(UIStrings.displayValue, {
-        timeInMs: summary.wastedMs,
+        timeInMs: overallSummary.wastedMs,
       }),
-      details: Audit.makeTableDetails(headings, results, summary),
+      details: Audit.makeTableDetails(headings, results, overallSummary),
     };
   }
 }

@@ -104,15 +104,20 @@ class UnusedJavaScript extends ByteEfficiencyAudit {
       };
 
       if (item.wastedBytes <= unusedThreshold) continue;
+      items.push(item);
+
+      // If there was an error calculating the bundle sizes, we can't
+      // create any sub-items.
+      if (!bundle || 'errorMessage' in bundle.sizes) continue;
+      const sizes = bundle.sizes;
 
       // Augment with bundle data.
-      if (bundle && unusedJsSummary.sourcesWastedBytes) {
+      if (unusedJsSummary.sourcesWastedBytes) {
         const topUnusedSourceSizes = Object.entries(unusedJsSummary.sourcesWastedBytes)
           .sort((a, b) => b[1] - a[1])
           .slice(0, 5)
           .map(([source, unused]) => {
-            const total =
-              source === '(unmapped)' ? bundle.sizes.unmappedBytes : bundle.sizes.files[source];
+            const total = source === '(unmapped)' ? sizes.unmappedBytes : sizes.files[source];
             return {
               source,
               unused: Math.round(unused * transferRatio),
@@ -133,8 +138,6 @@ class UnusedJavaScript extends ByteEfficiencyAudit {
           }),
         };
       }
-
-      items.push(item);
     }
 
     return {

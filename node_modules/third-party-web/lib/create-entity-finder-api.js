@@ -19,17 +19,39 @@ function getRootDomain(originOrURL) {
   return (match && match[0]) || domain
 }
 
-function getEntityInDataset(entityByDomain, entityByRootDomain, originOrURL) {
+function sliceSubdomainFromDomain(domain, rootDomain) {
+  if (domain.length <= rootDomain.length) return domain
+  return domain
+    .split('.')
+    .slice(1)
+    .join('.')
+}
+
+function getEntityInDataset(entityByDomain, entityBySubDomain, entityByRootDomain, originOrURL) {
   const domain = getDomainFromOriginOrURL(originOrURL)
   const rootDomain = getRootDomain(domain)
   if (!domain || !rootDomain) return undefined
   if (entityByDomain.has(domain)) return entityByDomain.get(domain)
+
+  for (
+    let subdomain = domain;
+    subdomain.length > rootDomain.length;
+    subdomain = sliceSubdomainFromDomain(subdomain, rootDomain)
+  ) {
+    if (entityBySubDomain.has(subdomain)) return entityBySubDomain.get(subdomain)
+  }
+
   if (entityByRootDomain.has(rootDomain)) return entityByRootDomain.get(rootDomain)
   return undefined
 }
 
-function getProductInDataset(entityByDomain, entityByRootDomain, originOrURL) {
-  const entity = getEntityInDataset(entityByDomain, entityByRootDomain, originOrURL)
+function getProductInDataset(entityByDomain, entityBySubDomain, entityByRootDomain, originOrURL) {
+  const entity = getEntityInDataset(
+    entityByDomain,
+    entityBySubDomain,
+    entityByRootDomain,
+    originOrURL
+  )
   const products = entity && entity.products
   if (!products) return undefined
   if (typeof originOrURL !== 'string') return undefined
@@ -69,6 +91,7 @@ function createAPIFromDataset(entities_) {
   const entities = cloneEntities(entities_)
   const entityByDomain = new Map()
   const entityByRootDomain = new Map()
+  const entityBySubDomain = new Map()
 
   for (const entity of entities) {
     entity.totalExecutionTime = Number(entity.totalExecutionTime) || 0
@@ -85,7 +108,9 @@ function createAPIFromDataset(entities_) {
 
       const rootDomain = getRootDomain(domain)
       if (domain.startsWith('*.')) {
-        entityByRootDomain.set(rootDomain, entity)
+        const wildcardDomain = domain.slice(2)
+        if (wildcardDomain === rootDomain) entityByRootDomain.set(rootDomain, entity)
+        else entityBySubDomain.set(wildcardDomain, entity)
       }
     }
   }
@@ -94,8 +119,18 @@ function createAPIFromDataset(entities_) {
     if (!entity) entityByRootDomain.delete(rootDomain)
   }
 
-  const getEntity = getEntityInDataset.bind(null, entityByDomain, entityByRootDomain)
-  const getProduct = getProductInDataset.bind(null, entityByDomain, entityByRootDomain)
+  const getEntity = getEntityInDataset.bind(
+    null,
+    entityByDomain,
+    entityBySubDomain,
+    entityByRootDomain
+  )
+  const getProduct = getProductInDataset.bind(
+    null,
+    entityByDomain,
+    entityBySubDomain,
+    entityByRootDomain
+  )
   return {getEntity, getProduct, getRootDomain, entities}
 }
 

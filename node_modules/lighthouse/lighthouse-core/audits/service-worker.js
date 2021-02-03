@@ -73,23 +73,33 @@ class ServiceWorker extends Audit {
    * @param {Array<LH.Crdp.ServiceWorker.ServiceWorkerVersion>} matchingSWVersions
    * @param {Array<LH.Crdp.ServiceWorker.ServiceWorkerRegistration>} registrations
    * @param {URL} pageUrl
-   * @return {string|undefined}
+   * @return {{scopeUrl: string; scriptUrl: string} | undefined}
    */
-  static getControllingScopeUrl(matchingSWVersions, registrations, pageUrl) {
+  static getControllingServiceWorker(matchingSWVersions, registrations, pageUrl) {
     // Find the normalized scope URLs of possibly-controlling SWs.
-    const matchingScopeUrls = matchingSWVersions
-      .map(v => registrations.find(r => r.registrationId === v.registrationId))
-      .filter(/** @return {r is LH.Crdp.ServiceWorker.ServiceWorkerRegistration} */ r => !!r)
-      .map(r => new URL(r.scopeURL).href);
+    /** @type {Array<{scopeUrl: string; scriptUrl: string}>} */
+    const scriptByScopeUrlList = [];
+
+    // Populate serviceWorkerUrls map with the scriptURLs and scopeUrls of matchingSWVersions and registrations
+    for (const version of matchingSWVersions) {
+      const matchedRegistration = registrations
+        .find(r => r.registrationId === version.registrationId);
+
+      if (matchedRegistration) {
+        const scopeUrl = new URL(matchedRegistration.scopeURL).href;
+        const scriptUrl = new URL(version.scriptURL).href;
+        scriptByScopeUrlList.push({scopeUrl, scriptUrl});
+      }
+    }
 
     // Find most-specific applicable scope, the one controlling the page.
     // See https://w3c.github.io/ServiceWorker/v1/#scope-match-algorithm
-    const pageControllingScope = matchingScopeUrls
-      .filter(scopeUrl => pageUrl.href.startsWith(scopeUrl))
-      .sort((scopeA, scopeB) => scopeA.length - scopeB.length)
+    const pageControllingUrls = scriptByScopeUrlList
+      .filter(ss => pageUrl.href.startsWith(ss.scopeUrl))
+      .sort((ssA, ssB) => ssA.scopeUrl.length - ssB.scopeUrl.length)
       .pop();
 
-    return pageControllingScope;
+    return pageControllingUrls;
   }
 
   /**
@@ -97,7 +107,7 @@ class ServiceWorker extends Audit {
    * contolled by the scopeUrl.
    * @param {LH.Artifacts['WebAppManifest']} WebAppManifest
    * @param {string} scopeUrl
-   * @return {string|undefined}
+   * @return {LH.IcuMessage|undefined}
    */
   static checkStartUrl(WebAppManifest, scopeUrl) {
     if (!WebAppManifest) {
@@ -129,20 +139,30 @@ class ServiceWorker extends Audit {
       };
     }
 
-    const controllingScopeUrl = ServiceWorker.getControllingScopeUrl(versionsForOrigin,
+    const serviceWorkerUrls = ServiceWorker.getControllingServiceWorker(versionsForOrigin,
         registrations, pageUrl);
-    if (!controllingScopeUrl) {
+    if (!serviceWorkerUrls) {
       return {
         score: 0,
         explanation: str_(UIStrings.explanationOutOfScope, {pageUrl: pageUrl.href}),
       };
     }
 
+    // Include the SW details as diagnostic data.
+    const {scriptUrl, scopeUrl} = serviceWorkerUrls;
+    /** @type {LH.Audit.Details.DebugData} */
+    const details = {
+      type: 'debugdata',
+      scriptUrl,
+      scopeUrl,
+    };
+
     const startUrlFailure = ServiceWorker.checkStartUrl(artifacts.WebAppManifest,
-        controllingScopeUrl);
+      serviceWorkerUrls.scopeUrl);
     if (startUrlFailure) {
       return {
         score: 0,
+        details,
         explanation: startUrlFailure,
       };
     }
@@ -150,6 +170,7 @@ class ServiceWorker extends Audit {
     // SW controls both finalUrl and start_url.
     return {
       score: 1,
+      details,
     };
   }
 }

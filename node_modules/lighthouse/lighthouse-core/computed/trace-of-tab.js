@@ -20,6 +20,16 @@ class LHTraceProcessor extends TraceProcessor {
   }
 
   /**
+   * This isn't currently used, but will be when the time origin of trace processing is changed.
+   * @see {TraceProcessor.computeTimeOrigin}
+   * @see https://github.com/GoogleChrome/lighthouse/pull/11253#discussion_r507985527
+   * @return {Error}
+   */
+  static createNoResourceSendRequestError() {
+    return new LHError(LHError.errors.NO_RESOURCE_REQUEST);
+  }
+
+  /**
    * @return {Error}
    */
   static createNoTracingStartedError() {

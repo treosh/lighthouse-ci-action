@@ -18,7 +18,7 @@ const UIStrings = {
   /** Description of a Lighthouse audit that tells the user *why* HTTPS use *for all resources* is important. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
   description: 'All sites should be protected with HTTPS, even ones that don\'t handle ' +
       'sensitive data. This includes avoiding [mixed content](https://developers.google.com/web/fundamentals/security/prevent-mixed-content/what-is-mixed-content), ' +
-      'where some resources are loaded over HTTP despite the initial request being served' +
+      'where some resources are loaded over HTTP despite the initial request being served ' +
       'over HTTPS. HTTPS prevents intruders from tampering with or passively listening ' +
       'in on the communications between your app and your users, and is a prerequisite for ' +
       'HTTP/2 and many new web platform APIs. ' +
@@ -90,28 +90,24 @@ class HTTPS extends Audit {
           .filter(record => !HTTPS.isSecureRecord(record))
           .map(record => URL.elideDataURI(record.url));
 
-      /** @type {Array<{url: string, resolution?: string}>}  */
+      /** @type {Array<{url: string, resolution?: LH.IcuMessage|string}>}  */
       const items = Array.from(new Set(insecureURLs)).map(url => ({url, resolution: undefined}));
 
       /** @type {LH.Audit.Details.Table['headings']} */
       const headings = [
         {key: 'url', itemType: 'url', text: str_(UIStrings.columnInsecureURL)},
+        {key: 'resolution', itemType: 'text', text: str_(UIStrings.columnResolution)},
       ];
 
-      // Mixed-content issues aren't emitted until M84.
-      if (artifacts.InspectorIssues.mixedContent.length) {
-        headings.push(
-          {key: 'resolution', itemType: 'text', text: str_(UIStrings.columnResolution)});
-        for (const details of artifacts.InspectorIssues.mixedContent) {
-          let item = items.find(item => item.url === details.insecureURL);
-          if (!item) {
-            item = {url: details.insecureURL};
-            items.push(item);
-          }
-          item.resolution = resolutionToString[details.resolutionStatus] ?
-            str_(resolutionToString[details.resolutionStatus]) :
-            details.resolutionStatus;
+      for (const details of artifacts.InspectorIssues.mixedContent) {
+        let item = items.find(item => item.url === details.insecureURL);
+        if (!item) {
+          item = {url: details.insecureURL};
+          items.push(item);
         }
+        item.resolution = resolutionToString[details.resolutionStatus] ?
+          str_(resolutionToString[details.resolutionStatus]) :
+          details.resolutionStatus;
       }
 
       // If a resolution wasn't assigned from an InspectorIssue, then the item
@@ -123,7 +119,7 @@ class HTTPS extends Audit {
         if (!item.resolution) item.resolution = str_(UIStrings.allowed);
       }
 
-      let displayValue = '';
+      let displayValue;
       if (items.length > 0) {
         displayValue = str_(UIStrings.displayValue, {itemCount: items.length});
       }

@@ -98,8 +98,7 @@ class Redirects extends Audit {
     const nodeTimingsByUrl = new Map();
     for (const [node, timing] of metricResult.pessimisticEstimate.nodeTimings.entries()) {
       if (node.type === 'network') {
-        const networkNode = /** @type {LH.Gatherer.Simulation.GraphNetworkNode} */ (node);
-        nodeTimingsByUrl.set(networkNode.record.url, timing);
+        nodeTimingsByUrl.set(node.record.url, timing);
       }
     }
 

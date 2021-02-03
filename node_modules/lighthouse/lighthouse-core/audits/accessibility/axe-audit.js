@@ -74,16 +74,17 @@ class AxeAudit extends Audit {
     /** @type {LH.Audit.Details.Table['items']}>} */
     let items = [];
     if (rule && rule.nodes) {
-      items = rule.nodes.map(node => ({
-        node: /** @type {LH.Audit.Details.NodeValue} */ ({
-          type: 'node',
-          selector: Array.isArray(node.target) ? node.target.join(' ') : '',
-          path: node.path,
-          snippet: node.html || node.snippet,
-          boundingRect: node.boundingRect,
-          explanation: node.failureSummary,
-          nodeLabel: node.nodeLabel,
-        }),
+      items = rule.nodes.map(axeNode => ({
+        node: {
+          type: /** @type {'node'} */ ('node'),
+          lhId: axeNode.node.lhId,
+          selector: axeNode.node.selector,
+          path: axeNode.node.devtoolsNodePath,
+          snippet: axeNode.node.snippet,
+          boundingRect: axeNode.node.boundingRect,
+          explanation: axeNode.failureSummary,
+          nodeLabel: axeNode.node.nodeLabel,
+        },
       }));
     }
 

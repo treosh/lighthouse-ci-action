@@ -32,20 +32,24 @@ const Config = require('./config/config.js');
  *   they will override any settings in the config.
  * @param {LH.Config.Json=} configJSON Configuration for the Lighthouse run. If
  *   not present, the default config is used.
- * @param {Connection=} connection
+ * @param {Connection=} userConnection
  * @return {Promise<LH.RunnerResult|undefined>}
  */
-async function lighthouse(url, flags = {}, configJSON, connection) {
+async function lighthouse(url, flags = {}, configJSON, userConnection) {
   // set logging preferences, assume quiet
   flags.logLevel = flags.logLevel || 'error';
   log.setLevel(flags.logLevel);
 
   const config = generateConfig(configJSON, flags);
-
-  connection = connection || new ChromeProtocol(flags.port, flags.hostname);
+  const options = {url, config};
+  const connection = userConnection || new ChromeProtocol(flags.port, flags.hostname);
 
   // kick off a lighthouse run
-  return Runner.run(connection, {url, config});
+  /** @param {{requestedUrl: string}} runnerData */
+  const gatherFn = ({requestedUrl}) => {
+    return Runner._gatherArtifactsFromBrowser(requestedUrl, options, connection);
+  };
+  return Runner.run(gatherFn, options);
 }
 
 /**

@@ -73,7 +73,7 @@ function isPluginURL(url) {
     if (parts.length < 2) {
       return false;
     }
-    const part = /** @type {string} */(parts.pop());
+    const part = parts[parts.length - 1];
     return FILE_EXTENSION_BLOCKLIST.has(part.trim().toLowerCase());
   } catch (e) {
     return false;

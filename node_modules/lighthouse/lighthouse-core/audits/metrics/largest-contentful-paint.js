@@ -28,7 +28,7 @@ class LargestContentfulPaint extends Audit {
       title: str_(i18n.UIStrings.largestContentfulPaintMetric),
       description: str_(UIStrings.description),
       scoreDisplayMode: Audit.SCORING_MODES.NUMERIC,
-      requiredArtifacts: ['HostUserAgent', 'traces', 'devtoolsLogs', 'TestedAsMobileDevice'],
+      requiredArtifacts: ['HostUserAgent', 'traces', 'devtoolsLogs'],
     };
   }
 
@@ -93,8 +93,8 @@ class LargestContentfulPaint extends Audit {
       throw err;
     }
 
-    const isDesktop = artifacts.TestedAsMobileDevice === false;
-    const options = isDesktop ? context.options.desktop : context.options.mobile;
+    const options = context.options[context.settings.formFactor];
+
 
     return {
       score: Audit.computeLogNormalScore(

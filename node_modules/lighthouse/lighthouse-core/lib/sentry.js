@@ -110,7 +110,7 @@ function init(opts) {
 
     const context = Object.assign({
       url: opts.url,
-      emulatedFormFactor: opts.flags.emulatedFormFactor,
+      formFactor: opts.flags.formFactor,
       throttlingMethod: opts.flags.throttlingMethod,
     }, opts.flags.throttling);
     Sentry.mergeContext({extra: Object.assign({}, opts.environmentData.extra, context)});

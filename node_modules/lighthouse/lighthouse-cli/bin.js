@@ -67,7 +67,7 @@ async function begin() {
   if (cliFlags.configPath) {
     // Resolve the config file path relative to where cli was called.
     cliFlags.configPath = path.resolve(process.cwd(), cliFlags.configPath);
-    configJson = /** @type {LH.Config.Json} */ (require(cliFlags.configPath));
+    configJson = require(cliFlags.configPath);
   } else if (cliFlags.preset) {
     configJson = require(`../lighthouse-core/config/${cliFlags.preset}-config.js`);
   }
@@ -96,27 +96,6 @@ async function begin() {
     cliFlags.outputPath = 'stdout';
   }
 
-  // @ts-expect-error - deprecation message for removed disableDeviceEmulation; can remove warning in v6.
-  if (cliFlags.disableDeviceEmulation) {
-    log.warn('config', 'The "--disable-device-emulation" has been removed in v5.' +
-        ' Please use "--emulated-form-factor=none" instead.');
-  }
-
-  if (typeof cliFlags.extraHeaders === 'string') {
-    // TODO: LH.Flags.extraHeaders is sometimes actually a string at this point, but needs to be
-    // copied over to LH.Settings.extraHeaders, which is LH.Crdp.Network.Headers. Force
-    // the conversion here, but long term either the CLI flag or the setting should have
-    // a different name.
-    /** @type {string} */
-    let extraHeadersStr = cliFlags.extraHeaders;
-    // If not a JSON object, assume it's a path to a JSON file.
-    if (extraHeadersStr.substr(0, 1) !== '{') {
-      extraHeadersStr = fs.readFileSync(extraHeadersStr, 'utf-8');
-    }
-
-    cliFlags.extraHeaders = JSON.parse(extraHeadersStr);
-  }
-
   if (cliFlags.precomputedLanternDataPath) {
     const lanternDataStr = fs.readFileSync(cliFlags.precomputedLanternDataPath, 'utf8');
     /** @type {LH.PrecomputedLanternData} */
@@ -133,6 +112,11 @@ async function begin() {
     process.stdout.write(config.getPrintString());
     return;
   }
+
+  if (!Array.isArray(cliFlags.chromeFlags)) {
+    cliFlags.chromeFlags = [cliFlags.chromeFlags];
+  }
+  cliFlags.chromeFlags.push('--enable-features=AutofillShowTypePredictions');
 
   // By default, cliFlags.enableErrorReporting is undefined so the user is
   // prompted. This can be overriden with an explicit flag or by the cached

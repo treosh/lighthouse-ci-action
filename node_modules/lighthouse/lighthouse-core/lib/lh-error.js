@@ -15,10 +15,15 @@ const UIStrings = {
    * */
   didntCollectScreenshots: `Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. ({errorCode})`,
   /**
-   * @description Error message explaining that the network trace was not able to be recorded for the Lighthouse run.
+   * @description Error message explaining that the performance trace was not able to be recorded for the Lighthouse run.
    * @example {NO_TRACING_STARTED} errorCode
    * */
   badTraceRecording: 'Something went wrong with recording the trace over your page load. Please run Lighthouse again. ({errorCode})',
+  /**
+   * @description Error message explaining that the First Contentful Paint metric was not seen during the page load.
+   * @example {NO_FCP} errorCode
+   * */
+  noFcp: 'The page did not paint any content. Please ensure you keep the browser window in the foreground during the load and try again. ({errorCode})',
   /**
    * @description Error message explaining that the page loaded too slowly to perform a Lighthouse run.
    * @example {FMP_TOO_LATE_FOR_FCPUI} errorCode
@@ -127,9 +132,10 @@ class LighthouseError extends Error {
    */
   static fromProtocolMessage(method, protocolError) {
     // extract all errors with a regex pattern to match against.
-    const protocolErrors = Object.values(LighthouseError.errors).filter(e => e.pattern);
     // if we find one, use the friendly LighthouseError definition
-    const matchedErrorDefinition = protocolErrors.find(e => e.pattern.test(protocolError.message));
+    const matchedErrorDefinition = Object.values(LighthouseError.errors)
+      .filter(e => e.pattern)
+      .find(e => e.pattern && e.pattern.test(protocolError.message));
     if (matchedErrorDefinition) {
       return new LighthouseError(matchedErrorDefinition);
     }
@@ -242,6 +248,11 @@ const ERRORS = {
     message: UIStrings.badTraceRecording,
     lhrRuntimeError: true,
   },
+  NO_RESOURCE_REQUEST: {
+    code: 'NO_RESOURCE_REQUEST',
+    message: UIStrings.badTraceRecording,
+    lhrRuntimeError: true,
+  },
   NO_NAVSTART: {
     code: 'NO_NAVSTART',
     message: UIStrings.badTraceRecording,
@@ -249,7 +260,7 @@ const ERRORS = {
   },
   NO_FCP: {
     code: 'NO_FCP',
-    message: UIStrings.badTraceRecording,
+    message: UIStrings.noFcp,
     lhrRuntimeError: true,
   },
   NO_DCL: {
@@ -263,6 +274,10 @@ const ERRORS = {
   },
   NO_LCP: {
     code: 'NO_LCP',
+    message: UIStrings.badTraceRecording,
+  },
+  NO_LCP_ALL_FRAMES: {
+    code: 'NO_LCP_ALL_FRAMES',
     message: UIStrings.badTraceRecording,
   },
   UNSUPPORTED_OLD_CHROME: {

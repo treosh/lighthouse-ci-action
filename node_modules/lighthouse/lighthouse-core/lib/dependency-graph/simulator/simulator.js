@@ -10,6 +10,7 @@ const TcpConnection = require('./tcp-connection.js');
 const ConnectionPool = require('./connection-pool.js');
 const DNSCache = require('./dns-cache.js');
 const mobileSlow4G = require('../../../config/constants.js').throttling.mobileSlow4G;
+const SimulatorTimingMap = require('./simulator-timing-map.js');
 
 /** @typedef {BaseNode.Node} Node */
 /** @typedef {import('../network-node')} NetworkNode */
@@ -73,15 +74,15 @@ class Simulator {
 
     // Properties reset on every `.simulate` call but duplicated here for type checking
     this._flexibleOrdering = false;
-    /** @type {Map<Node, NodeTimingIntermediate>} */
-    this._nodeTimings = new Map();
+    this._nodeTimings = new SimulatorTimingMap();
     /** @type {Map<string, number>} */
     this._numberInProgressByType = new Map();
     /** @type {Record<number, Set<Node>>} */
     this._nodes = {};
     this._dns = new DNSCache({rtt: this._rtt});
+    /** @type {ConnectionPool} */
     // @ts-expect-error
-    this._connectionPool = /** @type {ConnectionPool} */ (null);
+    this._connectionPool = null;
 
     if (!Number.isFinite(this._rtt)) throw new Error(`Invalid rtt ${this._rtt}`);
     if (!Number.isFinite(this._throughput)) throw new Error(`Invalid rtt ${this._throughput}`);
@@ -111,7 +112,7 @@ class Simulator {
    * Initializes the various state data structures such _nodeTimings and the _node Sets by state.
    */
   _initializeAuxiliaryData() {
-    this._nodeTimings = new Map();
+    this._nodeTimings = new SimulatorTimingMap();
     this._numberInProgressByType = new Map();
 
     this._nodes = {};
@@ -133,26 +134,6 @@ class Simulator {
 
   /**
    * @param {Node} node
-   * @param {NodeTimingIntermediate} values
-   */
-  _setTimingData(node, values) {
-    const timingData = this._nodeTimings.get(node) || {};
-    Object.assign(timingData, values);
-    this._nodeTimings.set(node, timingData);
-  }
-
-  /**
-   * @param {Node} node
-   * @return {NodeTimingIntermediate}
-   */
-  _getTimingData(node) {
-    const timingData = this._nodeTimings.get(node);
-    if (!timingData) throw new Error(`Unable to get timing data for node ${node.id}`);
-    return timingData;
-  }
-
-  /**
-   * @param {Node} node
    * @param {number} queuedTime
    */
   _markNodeAsReadyToStart(node, queuedTime) {
@@ -165,7 +146,7 @@ class Simulator {
 
     this._nodes[NodeState.ReadyToStart].add(node);
     this._nodes[NodeState.NotReadyToStart].delete(node);
-    this._setTimingData(node, {queuedTime});
+    this._nodeTimings.setReadyToStart(node, {queuedTime});
   }
 
   /**
@@ -179,7 +160,7 @@ class Simulator {
     this._nodes[NodeState.InProgress].add(node);
     this._nodes[NodeState.ReadyToStart].delete(node);
     this._numberInProgressByType.set(node.type, this._numberInProgress(node.type) + 1);
-    this._setTimingData(node, {startTime});
+    this._nodeTimings.setInProgress(node, {startTime});
   }
 
   /**
@@ -190,7 +171,7 @@ class Simulator {
     this._nodes[NodeState.Complete].add(node);
     this._nodes[NodeState.InProgress].delete(node);
     this._numberInProgressByType.set(node.type, this._numberInProgress(node.type) - 1);
-    this._setTimingData(node, {endTime});
+    this._nodeTimings.setCompleted(node, {endTime});
 
     // Try to add all its dependents to the queue
     for (const dependent of node.getDependents()) {
@@ -230,7 +211,6 @@ class Simulator {
       // Start a CPU task if there's no other CPU task in process
       if (this._numberInProgress(node.type) === 0) {
         this._markNodeAsInProgress(node, totalElapsedTime);
-        this._setTimingData(node, {timeElapsed: 0});
       }
 
       return;
@@ -248,11 +228,6 @@ class Simulator {
     }
 
     this._markNodeAsInProgress(node, totalElapsedTime);
-    this._setTimingData(node, {
-      timeElapsed: 0,
-      timeElapsedOvershoot: 0,
-      bytesDownloaded: 0,
-    });
   }
 
   /**
@@ -285,7 +260,7 @@ class Simulator {
    * @return {number}
    */
   _estimateCPUTimeRemaining(cpuNode) {
-    const timingData = this._getTimingData(cpuNode);
+    const timingData = this._nodeTimings.getCpuStarted(cpuNode);
     const multiplier = cpuNode.didPerformLayout()
       ? this._layoutTaskMultiplier
       : this._cpuSlowdownMultiplier;
@@ -294,7 +269,7 @@ class Simulator {
       DEFAULT_MAXIMUM_CPU_TASK_DURATION
     );
     const estimatedTimeElapsed = totalDuration - timingData.timeElapsed;
-    this._setTimingData(cpuNode, {estimatedTimeElapsed});
+    this._nodeTimings.setCpuEstimated(cpuNode, {estimatedTimeElapsed});
     return estimatedTimeElapsed;
   }
 
@@ -304,7 +279,7 @@ class Simulator {
    */
   _estimateNetworkTimeRemaining(networkNode) {
     const record = networkNode.record;
-    const timingData = this._getTimingData(networkNode);
+    const timingData = this._nodeTimings.getNetworkStarted(networkNode);
 
     let timeElapsed = 0;
     if (networkNode.fromDiskCache) {
@@ -335,7 +310,7 @@ class Simulator {
     }
 
     const estimatedTimeElapsed = timeElapsed + timingData.timeElapsedOvershoot;
-    this._setTimingData(networkNode, {estimatedTimeElapsed});
+    this._nodeTimings.setNetworkEstimated(networkNode, {estimatedTimeElapsed});
     return estimatedTimeElapsed;
   }
 
@@ -359,7 +334,7 @@ class Simulator {
    * @param {number} totalElapsedTime
    */
   _updateProgressMadeInTimePeriod(node, timePeriodLength, totalElapsedTime) {
-    const timingData = this._getTimingData(node);
+    const timingData = this._nodeTimings.getInProgress(node);
     const isFinished = timingData.estimatedTimeElapsed === timePeriodLength;
 
     if (node.type === BaseNode.TYPES.CPU || node.isConnectionless) {
@@ -369,6 +344,7 @@ class Simulator {
     }
 
     if (node.type !== BaseNode.TYPES.NETWORK) throw new Error('Unsupported');
+    if (!('bytesDownloaded' in timingData)) throw new Error('Invalid timing data');
 
     const record = node.record;
     const connection = this._connectionPool.acquireActiveConnectionFromRecord(record);
@@ -405,7 +381,8 @@ class Simulator {
   _computeFinalNodeTimings() {
     /** @type {Array<[Node, LH.Gatherer.Simulation.NodeTiming]>} */
     const nodeTimingEntries = [];
-    for (const [node, timing] of this._nodeTimings) {
+    for (const node of this._nodeTimings.getNodes()) {
+      const timing = this._nodeTimings.getCompleted(node);
       nodeTimingEntries.push([node, {
         startTime: timing.startTime,
         endTime: timing.endTime,
@@ -527,14 +504,3 @@ class Simulator {
 }
 
 module.exports = Simulator;
-
-/**
- * @typedef NodeTimingIntermediate
- * @property {number} [startTime]
- * @property {number} [endTime]
- * @property {number} [queuedTime] Helpful for debugging.
- * @property {number} [estimatedTimeElapsed]
- * @property {number} [timeElapsed]
- * @property {number} [timeElapsedOvershoot]
- * @property {number} [bytesDownloaded]
- */

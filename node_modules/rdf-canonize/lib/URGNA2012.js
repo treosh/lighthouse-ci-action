@@ -72,16 +72,16 @@ module.exports = class URDNA2012 extends URDNA2015 {
       // nodes map, adding an entry as necessary.
       self.hashRelatedBlankNode(
         related, quad, issuer, position, (err, hash) => {
-        if(err) {
-          return callback(err);
-        }
-        if(hash in hashToRelated) {
-          hashToRelated[hash].push(related);
-        } else {
-          hashToRelated[hash] = [related];
-        }
-        callback();
-      });
+          if(err) {
+            return callback(err);
+          }
+          if(hash in hashToRelated) {
+            hashToRelated[hash].push(related);
+          } else {
+            hashToRelated[hash] = [related];
+          }
+          callback();
+        });
     }, err => callback(err, hashToRelated));
   }
 };

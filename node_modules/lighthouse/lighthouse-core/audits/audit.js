@@ -242,8 +242,8 @@ class Audit {
 
   /**
    * @param {typeof Audit} audit
-   * @param {string} errorMessage
-   * @return {LH.Audit.Result}
+   * @param {string | LH.IcuMessage} errorMessage
+   * @return {LH.RawIcu<LH.Audit.Result>}
    */
   static generateErrorAuditResult(audit, errorMessage) {
     return Audit.generateAuditResult(audit, {
@@ -255,7 +255,7 @@ class Audit {
   /**
    * @param {typeof Audit} audit
    * @param {LH.Audit.Product} product
-   * @return {LH.Audit.Result}
+   * @return {LH.RawIcu<LH.Audit.Result>}
    */
   static generateAuditResult(audit, product) {
     if (product.score === undefined) {

@@ -53,7 +53,7 @@ class MultiCheckAudit extends Audit {
     if (result.failures.length > 0) {
       return {
         score: 0,
-        // TODO(#7238): make this i18n-able.
+        // TODO(#11495): make this i18n-able.
         explanation: `Failures: ${result.failures.join(',\n')}.`,
         details,
       };

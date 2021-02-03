@@ -23,11 +23,6 @@ const UIStrings = {
   /** Description of a Lighthouse audit that tells the user why they should maintain the correct aspect ratios for all images. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
   description: 'Image display dimensions should match natural aspect ratio. ' +
     '[Learn more](https://web.dev/image-aspect-ratio/).',
-  /**
-   * @description Warning that the size information for an image was nonsensical.
-   * @example {https://image.cdn.com/} url
-   */
-  warningCompute: 'Invalid image sizing information {url}',
   /**  Label for a column in a data table; entries in the column will be the numeric aspect ratio of an image as displayed in a web page. */
   columnDisplayed: 'Aspect Ratio (Displayed)',
   /**  Label for a column in a data table; entries in the column will be the numeric aspect ratio of the raw (actual) image. */
@@ -56,7 +51,7 @@ class ImageAspectRatio extends Audit {
 
   /**
    * @param {WellDefinedImage} image
-   * @return {Error|{url: string, displayedAspectRatio: string, actualAspectRatio: string, doRatiosMatch: boolean}}
+   * @return {{url: string, displayedAspectRatio: string, actualAspectRatio: string, doRatiosMatch: boolean}}
    */
   static computeAspectRatios(image) {
     const url = URL.elideDataURI(image.src);
@@ -65,11 +60,6 @@ class ImageAspectRatio extends Audit {
 
     const targetDisplayHeight = image.displayedWidth / actualAspectRatio;
     const doRatiosMatch = Math.abs(targetDisplayHeight - image.displayedHeight) < THRESHOLD_PX;
-
-    if (!Number.isFinite(actualAspectRatio) ||
-      !Number.isFinite(displayedAspectRatio)) {
-      return new Error(str_(UIStrings.warningCompute, {url}));
-    }
 
     return {
       url,
@@ -88,31 +78,26 @@ class ImageAspectRatio extends Audit {
   static audit(artifacts) {
     const images = artifacts.ImageElements;
 
-    /** @type {string[]} */
-    const warnings = [];
     /** @type {Array<{url: string, displayedAspectRatio: string, actualAspectRatio: string, doRatiosMatch: boolean}>} */
     const results = [];
     images.filter(image => {
       // - filter out css background images since we don't have a reliable way to tell if it's a
       //   sprite sheet, repeated for effect, etc
       // - filter out images that don't have following properties:
-      //   networkRecord, width, height, images that use `object-fit`: `cover` or `contain`
+      //   networkRecord, width, height, `object-fit` property
       // - filter all svgs as they have no natural dimensions to audit
+      // - filter out images that have falsy naturalWidth or naturalHeight
       return !image.isCss &&
         image.mimeType &&
         image.mimeType !== 'image/svg+xml' &&
-        image.naturalHeight > 5 &&
-        image.naturalWidth > 5 &&
+        image.naturalHeight && image.naturalHeight > 5 &&
+        image.naturalWidth && image.naturalWidth > 5 &&
         image.displayedWidth &&
         image.displayedHeight &&
-        !image.usesObjectFit;
+        image.cssComputedObjectFit === 'fill';
     }).forEach(image => {
       const wellDefinedImage = /** @type {WellDefinedImage} */ (image);
       const processed = ImageAspectRatio.computeAspectRatios(wellDefinedImage);
-      if (processed instanceof Error) {
-        warnings.push(processed.message);
-        return;
-      }
 
       if (!processed.doRatiosMatch) results.push(processed);
     });
@@ -127,7 +112,6 @@ class ImageAspectRatio extends Audit {
 
     return {
       score: Number(results.length === 0),
-      warnings,
       details: Audit.makeTableDetails(headings, results),
     };
   }

@@ -52,7 +52,7 @@ const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);
 
 const SEMVER_REGEX = /^(\d+\.\d+\.\d+)[^-0-9]+/;
 
-/** @type {Object<string, string>} */
+/** @type {Record<string, LH.IcuMessage>} */
 const rowMap = {
   'low': str_(UIStrings.rowSeverityLow),
   'medium': str_(UIStrings.rowSeverityMedium),
@@ -60,7 +60,7 @@ const rowMap = {
 };
 
 /** @typedef {{npm: Object<string, Array<{id: string, severity: string, semver: {vulnerable: Array<string>}}>>}} SnykDB */
-/** @typedef {{severity: string, numericSeverity: number, library: string, url: string}} Vulnerability */
+/** @typedef {{severity: LH.IcuMessage, numericSeverity: number, library: string, url: string}} Vulnerability */
 
 class NoVulnerableLibrariesAudit extends Audit {
   /**
@@ -158,7 +158,7 @@ class NoVulnerableLibrariesAudit extends Audit {
 
   /**
    * @param {Array<Vulnerability>} vulnerabilities
-   * @return {string}
+   * @return {LH.IcuMessage}
    */
   static highestSeverity(vulnerabilities) {
     const sortedVulns = vulnerabilities
@@ -181,7 +181,7 @@ class NoVulnerableLibrariesAudit extends Audit {
     }
 
     let totalVulns = 0;
-    /** @type {Array<{highestSeverity: string, vulnCount: number, detectedLib: LH.Audit.Details.LinkValue}>} */
+    /** @type {Array<{highestSeverity: LH.IcuMessage, vulnCount: number, detectedLib: LH.Audit.Details.LinkValue}>} */
     const vulnerabilityResults = [];
 
     for (const lib of foundLibraries) {
@@ -206,7 +206,7 @@ class NoVulnerableLibrariesAudit extends Audit {
       }
     }
 
-    let displayValue = '';
+    let displayValue;
     if (totalVulns > 0) {
       displayValue = str_(UIStrings.displayValue, {itemCount: totalVulns});
     }

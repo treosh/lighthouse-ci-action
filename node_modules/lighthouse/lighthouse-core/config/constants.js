@@ -30,7 +30,7 @@ const throttling = {
   // These values partially align with WebPageTest's definition of "Regular 3G".
   // These values are meant to roughly align with Chrome UX report's 3G definition which are based
   // on HTTP RTT of 300-1400ms and downlink throughput of <700kbps.
-  mobileRegluar3G: {
+  mobileRegular3G: {
     rttMs: 300,
     throughputKbps: 700,
     requestLatencyMs: 300 * DEVTOOLS_RTT_ADJUSTMENT_FACTOR,
@@ -50,18 +50,62 @@ const throttling = {
   },
 };
 
+/**
+ * @type {Required<LH.SharedFlagsSettings['screenEmulation']>}
+ */
+const MOTOG4_EMULATION_METRICS = {
+  mobile: true,
+  width: 360,
+  height: 640,
+  // Moto G4 is really 3, but a higher value here works against
+  // our perf recommendations.
+  // https://github.com/GoogleChrome/lighthouse/issues/10741#issuecomment-626903508
+  deviceScaleFactor: 2.625,
+  disabled: false,
+};
+
+/**
+ * Desktop metrics adapted from emulated_devices/module.json
+ * @type {Required<LH.SharedFlagsSettings['screenEmulation']>}
+ */
+const DESKTOP_EMULATION_METRICS = {
+  mobile: false,
+  width: 1350,
+  height: 940,
+  deviceScaleFactor: 1,
+  disabled: false,
+};
+
+const screenEmulationMetrics = {
+  mobile: MOTOG4_EMULATION_METRICS,
+  desktop: DESKTOP_EMULATION_METRICS,
+};
+
+// eslint-disable-next-line max-len
+const MOTOG4_USERAGENT = 'Mozilla/5.0 (Linux; Android 7.0; Moto G (4)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4143.7 Mobile Safari/537.36 Chrome-Lighthouse';
+// eslint-disable-next-line max-len
+const DESKTOP_USERAGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4143.7 Safari/537.36 Chrome-Lighthouse';
+
+const userAgents = {
+  mobile: MOTOG4_USERAGENT,
+  desktop: DESKTOP_USERAGENT,
+};
+
 /** @type {LH.Config.Settings} */
 const defaultSettings = {
   output: 'json',
   maxWaitForFcp: 30 * 1000,
   maxWaitForLoad: 45 * 1000,
-  throttlingMethod: 'simulate',
+
+  formFactor: 'mobile',
   throttling: throttling.mobileSlow4G,
+  throttlingMethod: 'simulate',
+  screenEmulation: screenEmulationMetrics.mobile,
+  emulatedUserAgent: userAgents.mobile,
+
   auditMode: false,
   gatherMode: false,
   disableStorageReset: false,
-  emulatedFormFactor: 'mobile',
-  internalDisableDeviceScreenEmulation: false,
   channel: 'node',
 
   // the following settings have no defaults but we still want ensure that `key in settings`
@@ -101,6 +145,8 @@ const nonSimulatedPassConfigOverrides = {
 
 module.exports = {
   throttling,
+  screenEmulationMetrics,
+  userAgents,
   defaultSettings,
   defaultPassConfig,
   nonSimulatedPassConfigOverrides,

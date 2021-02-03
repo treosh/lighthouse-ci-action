@@ -8,15 +8,12 @@
 
 # Download chrome inside of our CI env.
 
+set -euo pipefail
+
 if [ "$OSTYPE" == "msys" ]; then
   url="https://download-chromium.appspot.com/dl/Win?type=snapshots"
 else
   url="https://download-chromium.appspot.com/dl/Linux_x64?type=snapshots"
-fi
-
-if [ x"$CHROME_PATH" == x ]; then
-  echo "Error: Environment variable CHROME_PATH not set"
-  exit 1
 fi
 
 if [ -e "$CHROME_PATH" ]; then

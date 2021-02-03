@@ -13,8 +13,7 @@
 'use strict';
 
 const Audit = require('../audit.js');
-const I18n = require('../../report/html/renderer/i18n.js');
-const i18n_ = require('../../lib/i18n/i18n.js');
+const i18n = require('../../lib/i18n/i18n.js');
 
 const UIStrings = {
   /** Title of a diagnostic audit that provides detail on the size of the web page's DOM. The size of a DOM is characterized by the total number of DOM elements and greatest DOM depth. This descriptive title is shown to users when the amount is acceptable and no user action is required. */
@@ -42,7 +41,7 @@ const UIStrings = {
   statisticDOMWidth: 'Maximum Child Elements',
 };
 
-const str_ = i18n_.createMessageInstanceIdFn(__filename, UIStrings);
+const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);
 
 class DOMSize extends Audit {
   /**
@@ -88,35 +87,37 @@ class DOMSize extends Audit {
     /** @type {LH.Audit.Details.Table['headings']} */
     const headings = [
       {key: 'statistic', itemType: 'text', text: str_(UIStrings.columnStatistic)},
-      {key: 'element', itemType: 'code', text: str_(i18n_.UIStrings.columnElement)},
+      {key: 'node', itemType: 'node', text: str_(i18n.UIStrings.columnElement)},
       {key: 'value', itemType: 'numeric', text: str_(UIStrings.columnValue)},
     ];
-
-    const i18n = new I18n(context.settings.locale);
 
     /** @type {LH.Audit.Details.Table['items']} */
     const items = [
       {
         statistic: str_(UIStrings.statisticDOMElements),
-        element: '',
-        // TODO: these values should be numbers once `_renderNumeric` in details-renderer can handle them
-        value: i18n.formatNumber(stats.totalBodyElements),
+        value: stats.totalBodyElements,
       },
       {
+        node: {
+          type: /** @type {'node'} */ ('node'),
+          path: stats.depth.devtoolsNodePath,
+          snippet: stats.depth.snippet,
+          selector: stats.depth.selector,
+          nodeLabel: stats.depth.nodeLabel,
+        },
         statistic: str_(UIStrings.statisticDOMDepth),
-        element: {
-          type: 'code',
-          value: stats.depth.snippet,
-        },
-        value: i18n.formatNumber(stats.depth.max),
+        value: stats.depth.max,
       },
       {
-        statistic: str_(UIStrings.statisticDOMWidth),
-        element: {
-          type: 'code',
-          value: stats.width.snippet,
+        node: {
+          type: /** @type {'node'} */ ('node'),
+          path: stats.width.devtoolsNodePath,
+          snippet: stats.width.snippet,
+          selector: stats.width.selector,
+          nodeLabel: stats.width.nodeLabel,
         },
-        value: i18n.formatNumber(stats.width.max),
+        statistic: str_(UIStrings.statisticDOMWidth),
+        value: stats.width.max,
       },
     ];
 

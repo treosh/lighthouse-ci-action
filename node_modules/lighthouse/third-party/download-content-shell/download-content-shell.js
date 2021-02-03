@@ -1,0 +1,175 @@
+// Copyright 2016 The Chromium Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+'use strict';
+
+/* eslint-disable no-console */
+
+// Grabbed from https://github.com/ChromeDevTools/devtools-frontend/commit/26bb5ad91b147e9c918819711542ec2337d6b268
+
+const fs = require('fs');
+const path = require('path');
+const shell = require('child_process').execSync;
+const utils = require('./utils.js');
+
+const TARGET = 'Release';
+const CONTENT_SHELL_ZIP = 'content-shell.zip';
+const MAX_CONTENT_SHELLS = 10;
+const PLATFORM = getPlatform();
+const LH_ROOT = `${__dirname}/../..`;
+const CACHE_PATH = path.resolve(LH_ROOT, '.tmp', 'chromium-web-tests', 'content-shells');
+
+function main() {
+  fs.mkdirSync(CACHE_PATH, {recursive: true});
+  deleteOldContentShells();
+
+  findPreviousUploadedPosition(findMostRecentChromiumCommit())
+    .then(onUploadedCommitPosition)
+    .catch(onError);
+
+  function onError(error) {
+    console.log('Unable to download because of error:', error);
+  }
+}
+main();
+
+function onUploadedCommitPosition(commitPosition) {
+  const contentShellDirPath = path.resolve(CACHE_PATH, commitPosition, 'out', TARGET);
+  const contentShellPath = path.resolve(CACHE_PATH, commitPosition, 'out');
+
+  const hasCachedContentShell = utils.isFile(getContentShellBinaryPath(contentShellDirPath));
+  if (hasCachedContentShell) {
+    console.log(`Using cached content shell at: ${contentShellPath}`);
+    // return runTests(contentShellPath, true);
+    return;
+  }
+  const url = `http://commondatastorage.googleapis.com/chromium-browser-snapshots/${PLATFORM}/${commitPosition
+  }/${CONTENT_SHELL_ZIP}`;
+  return prepareContentShellDirectory(commitPosition)
+      .then(() => downloadContentShell(url, commitPosition))
+      .then(extractContentShell);
+}
+
+function getPlatform() {
+  if (process.platform === 'linux') {
+    return 'Linux_x64';
+  }
+  if (process.platform === 'win32') {
+    return 'Win_x64';
+  }
+  if (process.platform === 'darwin') {
+    return 'Mac';
+  }
+
+  throw new Error(`Unrecognized platform detected: ${process.platform}`);
+}
+
+function findMostRecentChromiumCommit() {
+  // TODO: this code works only if there is a full chromium checkout present.
+  // const commitMessage = shell('git log --max-count=1 --grep="Cr-Commit-Position"').toString().trim();
+  // const commitPosition = commitMessage.match(/Cr-Commit-Position: refs\/heads\/master@\{#([0-9]+)\}/)[1];
+  // return commitPosition;
+  // TODO: make this dynamic.
+  return '822569';
+}
+
+function deleteOldContentShells() {
+  const files = fs.readdirSync(CACHE_PATH);
+  if (files.length < MAX_CONTENT_SHELLS) {
+    return;
+  }
+  files.sort((a, b) => parseInt(b, 10) - parseInt(a, 10));
+  const remainingNumberOfContentShells = MAX_CONTENT_SHELLS / 2;
+  const oldContentShellDirs = files.slice(remainingNumberOfContentShells);
+  for (let i = 0; i < oldContentShellDirs.length; i++) {
+    utils.removeRecursive(path.resolve(CACHE_PATH, oldContentShellDirs[i]));
+  }
+  console.log(`Removed old content shells: ${oldContentShellDirs}`);
+}
+
+function findPreviousUploadedPosition(commitPosition) {
+  const previousPosition = commitPosition - 100;
+  const positionsListURL =
+      `http://commondatastorage.googleapis.com/chromium-browser-snapshots/?delimiter=/&prefix=${PLATFORM
+      }/&marker=${PLATFORM}/${previousPosition}/`;
+  return utils.fetch(positionsListURL).then(onPositionsList).catch(onError);
+
+  function onPositionsList(buffer) {
+    const positions = buffer.toString('binary')
+                        .match(/([^<>]+)(?=<\/Prefix><\/CommonPrefixes>)/g)
+                        .map(prefixedPosition => prefixedPosition.split('/')[1])
+                        .map(positionString => parseInt(positionString, 10));
+    const positionSet = new Set(positions);
+    let previousUploadedPosition = commitPosition;
+    while (commitPosition - previousUploadedPosition < 100) {
+      if (positionSet.has(previousUploadedPosition)) {
+        return previousUploadedPosition.toString();
+      }
+      previousUploadedPosition--;
+    }
+    onError();
+  }
+
+  function onError(error) {
+    if (error) {
+      console.log(
+        `Received error: ${error} trying to fetch positions list from url: ${positionsListURL}`);
+    }
+    throw new Error(
+      `Unable to find a previous upload position for commit position: ${commitPosition}`);
+  }
+}
+
+async function prepareContentShellDirectory(folder) {
+  const contentShellPath = path.join(CACHE_PATH, folder);
+  if (utils.isDir(contentShellPath)) {
+    utils.removeRecursive(contentShellPath);
+  }
+  fs.mkdirSync(contentShellPath);
+  return folder;
+}
+
+function downloadContentShell(url, folder) {
+  console.log('Downloading content shell from:', url);
+  console.log('NOTE: Download is ~300 MB depending on OS');
+  return utils.fetch(url).then(writeZip).catch(onError);
+
+  function writeZip(buffer) {
+    console.log('Completed download of content shell');
+    const contentShellZipPath = path.join(CACHE_PATH, folder, CONTENT_SHELL_ZIP);
+    fs.writeFileSync(contentShellZipPath, buffer);
+    return contentShellZipPath;
+  }
+
+  function onError(error) {
+    console.log(`Received error: ${error} trying to download content shell from url: ${url}`);
+    throw new Error('Unable to download content shell');
+  }
+}
+
+function extractContentShell(contentShellZipPath) {
+  console.log(`Extracting content shell zip: ${contentShellZipPath}`);
+  const src = contentShellZipPath;
+  const dest = path.resolve(path.dirname(src), 'out');
+  shell(`unzip ${src} -d ${dest}`);
+  fs.unlinkSync(src);
+  const originalDirPath = path.resolve(dest, 'content-shell');
+  const newDirPath = path.resolve(dest, TARGET);
+  fs.renameSync(originalDirPath, newDirPath);
+  fs.chmodSync(getContentShellBinaryPath(newDirPath), '755');
+  return dest;
+}
+
+function getContentShellBinaryPath(dirPath) {
+  if (process.platform === 'linux') {
+    return path.resolve(dirPath, 'content_shell');
+  }
+
+  if (process.platform === 'win32') {
+    return path.resolve(dirPath, 'content_shell.exe');
+  }
+
+  if (process.platform === 'darwin') {
+    return path.resolve(dirPath, 'Content Shell.app', 'Contents', 'MacOS', 'Content Shell');
+  }
+}

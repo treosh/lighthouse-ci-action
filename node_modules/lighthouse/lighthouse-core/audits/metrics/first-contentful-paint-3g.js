@@ -6,7 +6,7 @@
 'use strict';
 
 const Audit = require('../audit.js');
-const regular3G = require('../../config/constants.js').throttling.mobileRegluar3G;
+const regular3G = require('../../config/constants.js').throttling.mobileRegular3G;
 const ComputedFcp = require('../../computed/metrics/first-contentful-paint.js');
 
 class FirstContentfulPaint3G extends Audit {

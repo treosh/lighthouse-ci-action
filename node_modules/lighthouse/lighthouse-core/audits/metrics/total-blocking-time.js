@@ -27,7 +27,7 @@ class TotalBlockingTime extends Audit {
       title: str_(i18n.UIStrings.totalBlockingTimeMetric),
       description: str_(UIStrings.description),
       scoreDisplayMode: Audit.SCORING_MODES.NUMERIC,
-      requiredArtifacts: ['traces', 'devtoolsLogs', 'TestedAsMobileDevice'],
+      requiredArtifacts: ['traces', 'devtoolsLogs'],
     };
   }
 
@@ -83,8 +83,8 @@ class TotalBlockingTime extends Audit {
     const metricComputationData = {trace, devtoolsLog, settings: context.settings};
     const metricResult = await ComputedTBT.request(metricComputationData, context);
 
-    const isDesktop = artifacts.TestedAsMobileDevice === false;
-    const options = isDesktop ? context.options.desktop : context.options.mobile;
+    const options = context.options[context.settings.formFactor];
+
 
     return {
       score: Audit.computeLogNormalScore(

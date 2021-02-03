@@ -27,7 +27,7 @@ class SpeedIndex extends Audit {
       title: str_(i18n.UIStrings.speedIndexMetric),
       description: str_(UIStrings.description),
       scoreDisplayMode: Audit.SCORING_MODES.NUMERIC,
-      requiredArtifacts: ['traces', 'devtoolsLogs', 'TestedAsMobileDevice'],
+      requiredArtifacts: ['traces', 'devtoolsLogs'],
     };
   }
 
@@ -67,8 +67,8 @@ class SpeedIndex extends Audit {
     const devtoolsLog = artifacts.devtoolsLogs[Audit.DEFAULT_PASS];
     const metricComputationData = {trace, devtoolsLog, settings: context.settings};
     const metricResult = await ComputedSi.request(metricComputationData, context);
-    const isDesktop = artifacts.TestedAsMobileDevice === false;
-    const options = isDesktop ? context.options.desktop : context.options.mobile;
+    const options = context.options[context.settings.formFactor];
+
 
     return {
       score: Audit.computeLogNormalScore(

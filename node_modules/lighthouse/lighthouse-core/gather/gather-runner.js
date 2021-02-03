@@ -29,18 +29,31 @@ const UIStrings = {
    */
   warningTimeout: 'The page loaded too slowly to finish within the time limit. ' +
   'Results may be incomplete.',
+  /**
+   * @description Warning that the host device where Lighthouse is running appears to have a slower
+   * CPU than the expected Lighthouse baseline.
+   */
+  warningSlowHostCpu: 'The tested device appears to have a slower CPU than  ' +
+  'Lighthouse expects. This can negatively affect your performance score. Learn more about ' +
+  '[calibrating an appropriate CPU slowdown multiplier](https://github.com/GoogleChrome/lighthouse/blob/master/docs/throttling.md#cpu-throttling).',
 };
+
+/**
+ * We want to warn when the CPU seemed to be at least ~2x weaker than our regular target device.
+ * We're starting with a more conservative value that will increase over time to our true target threshold.
+ * @see https://github.com/GoogleChrome/lighthouse/blob/ccbc8002fd058770d14e372a8301cc4f7d256414/docs/throttling.md#calibrating-multipliers
+ */
+const SLOW_CPU_BENCHMARK_INDEX_THRESHOLD = 1000;
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);
 
 /** @typedef {import('../gather/driver.js')} Driver */
 
-/** @typedef {import('./gatherers/gatherer.js').PhaseResult} PhaseResult */
 /**
  * Each entry in each gatherer result array is the output of a gatherer phase:
  * `beforePass`, `pass`, and `afterPass`. Flattened into an `LH.Artifacts` in
  * `collectArtifacts`.
- * @typedef {Record<keyof LH.GathererArtifacts, Array<PhaseResult|Promise<PhaseResult>>>} GathererResults
+ * @typedef {Record<keyof LH.GathererArtifacts, Array<LH.Gatherer.PhaseResult>>} GathererResults
  */
 /** @typedef {Array<[keyof GathererResults, GathererResults[keyof GathererResults]]>} GathererResultsEntries */
 
@@ -105,9 +118,10 @@ class GatherRunner {
   /**
    * @param {Driver} driver
    * @param {{requestedUrl: string, settings: LH.Config.Settings}} options
+   * @param {(string | LH.IcuMessage)[]} LighthouseRunWarnings
    * @return {Promise<void>}
    */
-  static async setupDriver(driver, options) {
+  static async setupDriver(driver, options, LighthouseRunWarnings) {
     const status = {msg: 'Initializing…', id: 'lh:gather:setupDriver'};
     log.time(status);
     const resetStorage = !options.settings.disableStorageReset;
@@ -119,7 +133,13 @@ class GatherRunner {
     await driver.registerPerformanceObserver();
     await driver.dismissJavaScriptDialogs();
     await driver.registerRequestIdleCallbackWrap(options.settings);
-    if (resetStorage) await driver.clearDataForOrigin(options.requestedUrl);
+    if (resetStorage) {
+      const warning = await driver.getImportantStorageWarning(options.requestedUrl);
+      if (warning) {
+        LighthouseRunWarnings.push(warning);
+      }
+      await driver.clearDataForOrigin(options.requestedUrl);
+    }
     log.timeEnd(status);
   }
 
@@ -218,20 +238,21 @@ class GatherRunner {
 
   /**
    * Returns an error if we try to load a non-HTML page.
-   * @param {LH.Artifacts.NetworkRequest|undefined} mainRecord
+   * Expects a network request with all redirects resolved, otherwise the MIME type may be incorrect.
+   * @param {LH.Artifacts.NetworkRequest|undefined} finalRecord
    * @return {LH.LighthouseError|undefined}
    */
-  static getNonHtmlError(mainRecord) {
+  static getNonHtmlError(finalRecord) {
     // MIME types are case-insenstive but Chrome normalizes MIME types to be lowercase.
     const HTML_MIME_TYPE = 'text/html';
 
     // If we never requested a document, there's no doctype error, let other cases handle it.
-    if (!mainRecord) return undefined;
+    if (!finalRecord) return undefined;
 
     // mimeType is determined by the browser, we assume Chrome is determining mimeType correctly,
     // independently of 'Content-Type' response headers, and always sending mimeType if well-formed.
-    if (HTML_MIME_TYPE !== mainRecord.mimeType) {
-      return new LHError(LHError.errors.NOT_HTML, {mimeType: mainRecord.mimeType});
+    if (HTML_MIME_TYPE !== finalRecord.mimeType) {
+      return new LHError(LHError.errors.NOT_HTML, {mimeType: finalRecord.mimeType});
     }
     return undefined;
   }
@@ -252,9 +273,15 @@ class GatherRunner {
       mainRecord = NetworkAnalyzer.findMainDocument(networkRecords, passContext.url);
     } catch (_) {}
 
+    // MIME Type is only set on the final redirected document request. Use this for the HTML check instead of root.
+    let finalRecord;
+    if (mainRecord) {
+      finalRecord = NetworkAnalyzer.resolveRedirects(mainRecord);
+    }
+
     const networkError = GatherRunner.getNetworkError(mainRecord);
     const interstitialError = GatherRunner.getInterstitialError(mainRecord, networkRecords);
-    const nonHtmlError = GatherRunner.getNonHtmlError(mainRecord);
+    const nonHtmlError = GatherRunner.getNonHtmlError(finalRecord);
 
     // Check to see if we need to ignore the page load failure.
     // e.g. When the driver is offline, the load will fail without page offline support.
@@ -275,6 +302,34 @@ class GatherRunner {
     // Use `navigationError` as the last resort.
     // Example: `NO_FCP`, the page never painted content for some unknown reason.
     return navigationError;
+  }
+
+  /**
+   * Returns a warning if the host device appeared to be underpowered according to BenchmarkIndex.
+   *
+   * @param {Pick<LH.Gatherer.PassContext, 'settings'|'baseArtifacts'>} passContext
+   * @return {LH.IcuMessage | undefined}
+   */
+  static getSlowHostCpuWarning(passContext) {
+    const {settings, baseArtifacts} = passContext;
+    const {throttling, throttlingMethod} = settings;
+    const defaultThrottling = constants.defaultSettings.throttling;
+
+    // We only want to warn when the user can take an action to fix it.
+    // Eventually, this should expand to cover DevTools.
+    if (settings.channel !== 'cli') return;
+
+    // Only warn if they are using the default throttling settings.
+    const isThrottledMethod = throttlingMethod === 'simulate' || throttlingMethod === 'devtools';
+    const isDefaultMultiplier =
+      throttling.cpuSlowdownMultiplier === defaultThrottling.cpuSlowdownMultiplier;
+    if (!isThrottledMethod || !isDefaultMultiplier) return;
+
+    // Only warn if the device didn't meet the threshold.
+    // See https://github.com/GoogleChrome/lighthouse/blob/master/docs/throttling.md#cpu-throttling
+    if (baseArtifacts.BenchmarkIndex > SLOW_CPU_BENCHMARK_INDEX_THRESHOLD) return;
+
+    return str_(UIStrings.warningSlowHostCpu);
   }
 
   /**
@@ -368,8 +423,6 @@ class GatherRunner {
 
     for (const gathererDefn of passContext.passConfig.gatherers) {
       const gatherer = gathererDefn.instance;
-      // Abuse the passContext to pass through gatherer options
-      passContext.options = gathererDefn.options || {};
       const status = {
         msg: `Gathering setup: ${gatherer.name}`,
         id: `lh:gather:beforePass:${gatherer.name}`,
@@ -398,8 +451,6 @@ class GatherRunner {
 
     for (const gathererDefn of gatherers) {
       const gatherer = gathererDefn.instance;
-      // Abuse the passContext to pass through gatherer options
-      passContext.options = gathererDefn.options || {};
       const status = {
         msg: `Gathering in-page: ${gatherer.name}`,
         id: `lh:gather:pass:${gatherer.name}`,
@@ -443,8 +494,6 @@ class GatherRunner {
       };
       log.time(status);
 
-      // Add gatherer options to the passContext.
-      passContext.options = gathererDefn.options || {};
       const artifactPromise = Promise.resolve()
         .then(_ => gatherer.afterPass(passContext, loadData));
 
@@ -503,17 +552,13 @@ class GatherRunner {
   static async initializeBaseArtifacts(options) {
     const hostUserAgent = (await options.driver.getBrowserVersion()).userAgent;
 
-    const {emulatedFormFactor} = options.settings;
     // Whether Lighthouse was run on a mobile device (i.e. not on a desktop machine).
     const HostFormFactor = hostUserAgent.includes('Android') || hostUserAgent.includes('Mobile') ?
       'mobile' : 'desktop';
-    const TestedAsMobileDevice = emulatedFormFactor === 'mobile' ||
-      (emulatedFormFactor !== 'desktop' && HostFormFactor === 'mobile');
 
     return {
       fetchTime: (new Date()).toJSON(),
       LighthouseRunWarnings: [],
-      TestedAsMobileDevice,
       HostFormFactor,
       HostUserAgent: hostUserAgent,
       NetworkUserAgent: '', // updated later
@@ -537,30 +582,17 @@ class GatherRunner {
    * @return {Promise<LH.Artifacts.InstallabilityErrors>}
    */
   static async getInstallabilityErrors(passContext) {
+    const status = {
+      msg: 'Get webapp installability errors',
+      id: 'lh:gather:getInstallabilityErrors',
+    };
+    log.time(status);
     const response =
       await passContext.driver.sendCommand('Page.getInstallabilityErrors');
 
-    let errors = response.installabilityErrors;
-    // COMPAT: Before M82, `getInstallabilityErrors` was not localized and just english
-    // error strings were returned. Convert the values we care about to the new error id format.
-    if (!errors) {
-      /** @type {string[]} */
-      // @ts-expect-error - Support older protocol data.
-      const m81StyleErrors = response.errors || [];
-      errors = m81StyleErrors.map(error => {
-        const englishErrorToErrorId = {
-          'Could not download a required icon from the manifest': 'cannot-download-icon',
-          'Downloaded icon was empty or corrupted': 'no-icon-available',
-        };
-        for (const [englishError, errorId] of Object.entries(englishErrorToErrorId)) {
-          if (error.includes(englishError)) {
-            return {errorId, errorArguments: []};
-          }
-        }
-        return {errorId: '', errorArguments: []};
-      }).filter(error => error.errorId);
-    }
+    const errors = response.installabilityErrors;
 
+    log.timeEnd(status);
     return {errors};
   }
 
@@ -571,6 +603,8 @@ class GatherRunner {
    * @param {LH.Gatherer.PassContext} passContext
    */
   static async populateBaseArtifacts(passContext) {
+    const status = {msg: 'Populate base artifacts', id: 'lh:gather:populateBaseArtifacts'};
+    log.time(status);
     const baseArtifacts = passContext.baseArtifacts;
 
     // Copy redirected URL to artifact.
@@ -602,6 +636,11 @@ class GatherRunner {
       // @ts-expect-error - guaranteed to exist by the find above
       baseArtifacts.NetworkUserAgent = userAgentEntry.params.request.headers['User-Agent'];
     }
+
+    const slowCpuWarning = GatherRunner.getSlowHostCpuWarning(passContext);
+    if (slowCpuWarning) baseArtifacts.LighthouseRunWarnings.push(slowCpuWarning);
+
+    log.timeEnd(status);
   }
 
   /**
@@ -629,9 +668,13 @@ class GatherRunner {
    * @return {Promise<LH.Artifacts.Manifest|null>}
    */
   static async getWebAppManifest(passContext) {
+    const status = {msg: 'Get webapp manifest', id: 'lh:gather:getWebAppManifest'};
+    log.time(status);
     const response = await passContext.driver.getAppManifest();
     if (!response) return null;
-    return manifestParser(response.data, response.url, passContext.url);
+    const manifest = manifestParser(response.data, response.url, passContext.url);
+    log.timeEnd(status);
+    return manifest;
   }
 
   /**
@@ -654,7 +697,7 @@ class GatherRunner {
       const baseArtifacts = await GatherRunner.initializeBaseArtifacts(options);
       baseArtifacts.BenchmarkIndex = await options.driver.getBenchmarkIndex();
 
-      await GatherRunner.setupDriver(driver, options);
+      await GatherRunner.setupDriver(driver, options, baseArtifacts.LighthouseRunWarnings);
 
       let isFirstPass = true;
       for (const passConfig of passConfigs) {

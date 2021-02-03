@@ -14,7 +14,6 @@
 'use strict';
 
 const ByteEfficiencyAudit = require('./byte-efficiency-audit.js');
-const Sentry = require('../../lib/sentry.js');
 const URL = require('../../lib/url-shim.js');
 const i18n = require('../../lib/i18n/i18n.js');
 
@@ -47,13 +46,15 @@ class UsesResponsiveImages extends ByteEfficiencyAudit {
   }
 
   /**
-   * @param {LH.Artifacts.ImageElement} image
+   * @param {LH.Artifacts.ImageElement & {naturalWidth: number, naturalHeight: number}} image
    * @param {LH.Artifacts.ViewportDimensions} ViewportDimensions
-   * @return {null|Error|LH.Audit.ByteEfficiencyItem};
+   * @param {Array<LH.Artifacts.NetworkRequest>} networkRecords
+   * @return {null|LH.Audit.ByteEfficiencyItem};
    */
-  static computeWaste(image, ViewportDimensions) {
-    // Nothing can be done without network info.
-    if (!image.resourceSize) {
+  static computeWaste(image, ViewportDimensions, networkRecords) {
+    const networkRecord = networkRecords.find(record => record.url === image.src);
+    // Nothing can be done without network info, ignore images without resource size information.
+    if (!networkRecord) {
       return null;
     }
 
@@ -81,12 +82,14 @@ class UsesResponsiveImages extends ByteEfficiencyAudit {
     const url = URL.elideDataURI(image.src);
     const actualPixels = image.naturalWidth * image.naturalHeight;
     const wastedRatio = 1 - (usedPixels / actualPixels);
-    const totalBytes = image.resourceSize;
+    // Resource size is almost always the right one to be using because of the below:
+    //     transferSize = resourceSize + headers.length
+    // HOWEVER, there are some cases where an image is compressed again over the network and transfer size
+    // is smaller (see https://github.com/GoogleChrome/lighthouse/pull/4968).
+    // Use the min of the two numbers to be safe.
+    const {resourceSize = 0, transferSize = 0} = networkRecord;
+    const totalBytes = Math.min(resourceSize, transferSize);
     const wastedBytes = Math.round(totalBytes * wastedRatio);
-
-    if (!Number.isFinite(wastedRatio)) {
-      return new Error(`Invalid image sizing information ${url}`);
-    }
 
     return {
       url,
@@ -98,33 +101,32 @@ class UsesResponsiveImages extends ByteEfficiencyAudit {
 
   /**
    * @param {LH.Artifacts} artifacts
+   * @param {Array<LH.Artifacts.NetworkRequest>} networkRecords
    * @return {ByteEfficiencyAudit.ByteEfficiencyProduct}
    */
-  static audit_(artifacts) {
+  static audit_(artifacts, networkRecords) {
     const images = artifacts.ImageElements;
     const ViewportDimensions = artifacts.ViewportDimensions;
-
-    /** @type {string[]} */
-    const warnings = [];
     /** @type {Map<string, LH.Audit.ByteEfficiencyItem>} */
     const resultsMap = new Map();
     for (const image of images) {
-      // Ignore images without resource size information.
       // Give SVG a free pass because creating a "responsive" SVG is of questionable value.
       // Ignore CSS images because it's difficult to determine what is a spritesheet,
       // and the reward-to-effort ratio for responsive CSS images is quite low https://css-tricks.com/responsive-images-css/.
-      if (!image.resourceSize || image.mimeType === 'image/svg+xml' || image.isCss) {
+      if (image.mimeType === 'image/svg+xml' || image.isCss) {
         continue;
       }
 
-      const processed = UsesResponsiveImages.computeWaste(image, ViewportDimensions);
+      const naturalHeight = image.naturalHeight;
+      const naturalWidth = image.naturalWidth;
+      // If naturalHeight or naturalWidth are falsy, information is not valid, skip.
+      if (!naturalWidth || !naturalHeight) continue;
+      const processed =
+        UsesResponsiveImages.computeWaste(
+          {...image, naturalHeight, naturalWidth},
+          ViewportDimensions, networkRecords
+        );
       if (!processed) continue;
-
-      if (processed instanceof Error) {
-        warnings.push(processed.message);
-        Sentry.captureException(processed, {tags: {audit: this.meta.id}, level: 'warning'});
-        continue;
-      }
 
       // Don't warn about an image that was later used appropriately
       const existing = resultsMap.get(processed.url);
@@ -145,7 +147,6 @@ class UsesResponsiveImages extends ByteEfficiencyAudit {
     ];
 
     return {
-      warnings,
       items,
       headings,
     };

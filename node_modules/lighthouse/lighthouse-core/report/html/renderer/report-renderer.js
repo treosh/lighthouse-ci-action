@@ -99,7 +99,7 @@ class ReportRenderer {
     this._dom.find('.lh-env__title', footer).textContent = Util.i18n.strings.runtimeSettingsTitle;
 
     const envValues = Util.getEnvironmentDisplayValues(report.configSettings || {});
-    [
+    const runtimeValues = [
       {name: Util.i18n.strings.runtimeSettingsUrl, description: report.finalUrl},
       {name: Util.i18n.strings.runtimeSettingsFetchTime,
         description: Util.i18n.formatDateTime(report.fetchTime)},
@@ -110,14 +110,22 @@ class ReportRenderer {
         report.environment.networkUserAgent},
       {name: Util.i18n.strings.runtimeSettingsBenchmark, description: report.environment &&
         report.environment.benchmarkIndex.toFixed(0)},
-    ].forEach(runtime => {
-      if (!runtime.description) return;
+    ];
+    if (report.environment.credits && report.environment.credits['axe-core']) {
+      runtimeValues.push({
+        name: Util.i18n.strings.runtimeSettingsAxeVersion,
+        description: report.environment.credits['axe-core'],
+      });
+    }
+
+    for (const runtime of runtimeValues) {
+      if (!runtime.description) continue;
 
       const item = this._dom.cloneTemplate('#tmpl-lh-env__items', env);
       this._dom.find('.lh-env__name', item).textContent = runtime.name;
       this._dom.find('.lh-env__description', item).textContent = runtime.description;
       env.appendChild(item);
-    });
+    }
 
     this._dom.find('.lh-footer__version_issue', footer).textContent = Util.i18n.strings.footerIssue;
     this._dom.find('.lh-footer__version', footer).textContent = report.lighthouseVersion;
@@ -141,7 +149,7 @@ class ReportRenderer {
     const warnings = this._dom.find('ul', container);
     for (const warningString of report.runWarnings) {
       const warning = warnings.appendChild(this._dom.createElement('li'));
-      warning.textContent = warningString;
+      warning.appendChild(this._dom.convertMarkdownLinkSnippets(warningString));
     }
 
     return container;
@@ -201,7 +209,8 @@ class ReportRenderer {
       fullPageScreenshot,
     });
     const fullPageScreenshotStyleEl = fullPageScreenshot &&
-      ElementScreenshotRenderer.createBackgroundImageStyle(this._dom, fullPageScreenshot);
+      ElementScreenshotRenderer.createBackgroundImageStyle(
+        this._dom, fullPageScreenshot.screenshot);
 
     const categoryRenderer = new CategoryRenderer(this._dom, detailsRenderer);
     categoryRenderer.setTemplateContext(this._templateContext);

@@ -249,11 +249,12 @@ function targetToTableNode(target) {
 
   return {
     type: 'node',
-    snippet: target.snippet,
-    path: target.path,
-    selector: target.selector,
+    lhId: target.node.lhId,
+    snippet: target.node.snippet,
+    path: target.node.devtoolsNodePath,
+    selector: target.node.selector,
     boundingRect,
-    nodeLabel: target.nodeLabel,
+    nodeLabel: target.node.nodeLabel,
   };
 }
 
@@ -267,7 +268,7 @@ class TapTargets extends Audit {
       title: str_(UIStrings.title),
       failureTitle: str_(UIStrings.failureTitle),
       description: str_(UIStrings.description),
-      requiredArtifacts: ['MetaElements', 'TapTargets', 'TestedAsMobileDevice'],
+      requiredArtifacts: ['MetaElements', 'TapTargets'],
     };
   }
 
@@ -277,7 +278,7 @@ class TapTargets extends Audit {
    * @return {Promise<LH.Audit.Product>}
    */
   static async audit(artifacts, context) {
-    if (!artifacts.TestedAsMobileDevice) {
+    if (context.settings.formFactor === 'desktop') {
       // Tap target sizes aren't important for desktop SEO, so disable the audit there.
       // On desktop people also tend to have more precise pointing devices than fingers.
       return {

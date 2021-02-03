@@ -186,15 +186,26 @@ class PageDependencyGraph {
    * @param {Array<CPUNode>} cpuNodes
    */
   static linkCPUNodes(rootNode, networkNodeOutput, cpuNodes) {
+    /** @type {Set<LH.Crdp.Network.ResourceType|undefined>} */
+    const linkableResourceTypes = new Set([
+      NetworkRequest.TYPES.XHR, NetworkRequest.TYPES.Fetch, NetworkRequest.TYPES.Script,
+    ]);
+
     /** @param {CPUNode} cpuNode @param {string} reqId */
     function addDependentNetworkRequest(cpuNode, reqId) {
       const networkNode = networkNodeOutput.idToNodeMap.get(reqId);
       if (!networkNode ||
-          // Ignore all non-XHRs
-          networkNode.record.resourceType !== NetworkRequest.TYPES.XHR ||
           // Ignore all network nodes that started before this CPU task started
           // A network request that started earlier could not possibly have been started by this task
           networkNode.startTime <= cpuNode.startTime) return;
+      const {record} = networkNode;
+      const resourceType = record.resourceType ||
+        record.redirectDestination && record.redirectDestination.resourceType;
+      if (!linkableResourceTypes.has(resourceType)) {
+        // We only link some resources to CPU nodes because we observe LCP simulation
+        // regressions when including images, etc.
+        return;
+      }
       cpuNode.addDependent(networkNode);
     }
 

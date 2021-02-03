@@ -26,6 +26,31 @@ class GlobalListeners extends Gatherer {
   }
 
   /**
+   * @param { LH.Artifacts.GlobalListener } listener
+   * @return { string }
+   */
+  getListenerIndentifier(listener) {
+    return `${listener.type}:${listener.scriptId}:${listener.columnNumber}:${listener.lineNumber}`;
+  }
+
+  /**
+   * @param { LH.Artifacts['GlobalListeners'] } listeners
+   * @return { LH.Artifacts['GlobalListeners'] }
+   */
+  dedupeListeners(listeners) {
+    const seenListeners = new Set();
+    return listeners.filter(listener => {
+      const id = this.getListenerIndentifier(listener);
+      if (!seenListeners.has(id)) {
+        seenListeners.add(id);
+        return true;
+      } else {
+        return false;
+      }
+    });
+  }
+
+  /**
    * @param {LH.Gatherer.PassContext} passContext
    * @return {Promise<LH.Artifacts['GlobalListeners']>}
    */
@@ -43,17 +68,19 @@ class GlobalListeners extends Gatherer {
 
     // And get all its listeners of interest.
     const {listeners} = await driver.sendCommand('DOMDebugger.getEventListeners', {objectId});
-    return listeners
-      .filter(GlobalListeners._filterForAllowlistedTypes)
-      .map(listener => {
-        const {type, scriptId, lineNumber, columnNumber} = listener;
-        return {
-          type,
-          scriptId,
-          lineNumber,
-          columnNumber,
-        };
-      });
+    const filteredListeners = listeners.filter(GlobalListeners._filterForAllowlistedTypes)
+    .map(listener => {
+      const {type, scriptId, lineNumber, columnNumber} = listener;
+      return {
+        type,
+        scriptId,
+        lineNumber,
+        columnNumber,
+      };
+    });
+
+    // Dedupe listeners with same underlying data.
+    return this.dedupeListeners(filteredListeners);
   }
 }
 

@@ -23,6 +23,7 @@ const HEADER_REQ = 'X-RequestMs';
 const HEADER_RES = 'X-ResponseMs';
 const HEADER_TOTAL = 'X-TotalMs';
 const HEADER_FETCHED_SIZE = 'X-TotalFetchedSize';
+const HEADER_PROTOCOL_IS_H2 = 'X-ProtocolIsH2';
 
 /**
  * @typedef HeaderEntry
@@ -109,7 +110,8 @@ class NetworkRequest {
     this.failed = false;
     this.localizedFailDescription = '';
 
-    this.initiator = /** @type {LH.Crdp.Network.Initiator} */ ({type: 'other'});
+    /** @type {LH.Crdp.Network.Initiator} */
+    this.initiator = {type: 'other'};
     /** @type {LH.Crdp.Network.ResourceTiming|undefined} */
     this.timing = undefined;
     /** @type {LH.Crdp.Network.ResourceType|undefined} */
@@ -144,10 +146,10 @@ class NetworkRequest {
   }
 
   /**
-   * @param {NetworkRequest} initiator
+   * @param {NetworkRequest} initiatorRequest
    */
-  setInitiatorRequest(initiator) {
-    this.initiatorRequest = initiator;
+  setInitiatorRequest(initiatorRequest) {
+    this.initiatorRequest = initiatorRequest;
   }
 
   /**
@@ -195,6 +197,7 @@ class NetworkRequest {
    */
   onResponseReceived(data) {
     this._onResponse(data.response, data.timestamp, data.type);
+    this._updateProtocolForLightrider();
     this.frameId = data.frameId;
   }
 
@@ -367,6 +370,18 @@ class NetworkRequest {
   }
 
   /**
+   * LR loses protocol information.
+   */
+  _updateProtocolForLightrider() {
+    // Bail if we aren't in Lightrider.
+    if (!global.isLightrider) return;
+
+    if (this.responseHeaders.some(item => item.name === HEADER_PROTOCOL_IS_H2)) {
+      this.protocol = 'h2';
+    }
+  }
+
+  /**
    * LR gets additional, accurate timing information from its underlying fetch infrastructure.  This
    * is passed in via X-Headers similar to 'X-TotalFetchedSize'.
    */
@@ -462,5 +477,6 @@ NetworkRequest.HEADER_REQ = HEADER_REQ;
 NetworkRequest.HEADER_RES = HEADER_RES;
 NetworkRequest.HEADER_TOTAL = HEADER_TOTAL;
 NetworkRequest.HEADER_FETCHED_SIZE = HEADER_FETCHED_SIZE;
+NetworkRequest.HEADER_PROTOCOL_IS_H2 = HEADER_PROTOCOL_IS_H2;
 
 module.exports = NetworkRequest;

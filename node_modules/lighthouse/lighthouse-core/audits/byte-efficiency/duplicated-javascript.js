@@ -7,7 +7,7 @@
 
 /** @typedef {import('./byte-efficiency-audit.js').ByteEfficiencyProduct} ByteEfficiencyProduct */
 /** @typedef {LH.Audit.ByteEfficiencyItem & {source: string, subItems: {type: 'subitems', items: SubItem[]}}} Item */
-/** @typedef {{url: string, sourceTransferBytes: number}} SubItem */
+/** @typedef {{url: string, sourceTransferBytes?: number}} SubItem */
 
 const ByteEfficiencyAudit = require('./byte-efficiency-audit.js');
 const ModuleDuplication = require('../../computed/module-duplication.js');
@@ -131,10 +131,7 @@ class DuplicatedJavascript extends ByteEfficiencyAudit {
       await DuplicatedJavascript._getDuplicationGroupedByNodeModules(artifacts, context);
     const mainDocumentRecord = await NetworkAnalyzer.findMainDocument(networkRecords);
 
-    /**
-     * @typedef {LH.Audit.ByteEfficiencyItem} Item
-     */
-
+    /** @type {Map<string, number>} */
     const transferRatioByUrl = new Map();
 
     /** @type {Item[]} */

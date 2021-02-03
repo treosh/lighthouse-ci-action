@@ -53,6 +53,8 @@ class CrawlableAnchors extends Audit {
       role = role.trim();
 
       if (role.length > 0) return;
+      // Ignore mailto links even if they use one of the failing patterns. See https://github.com/GoogleChrome/lighthouse/issues/11443#issuecomment-694898412
+      if (rawHref.startsWith('mailto:')) return;
 
       const windowLocationRegExp = /window\.location=/;
       const windowOpenRegExp = /window\.open\(/;
@@ -81,10 +83,10 @@ class CrawlableAnchors extends Audit {
       return {
         node: {
           type: 'node',
-          path: anchor.devtoolsNodePath || '',
-          selector: anchor.selector || '',
-          nodeLabel: anchor.nodeLabel || '',
-          snippet: anchor.outerHTML || '',
+          path: anchor.node.devtoolsNodePath || '',
+          selector: anchor.node.selector || '',
+          nodeLabel: anchor.node.nodeLabel || '',
+          snippet: anchor.node.snippet || '',
         },
       };
     });

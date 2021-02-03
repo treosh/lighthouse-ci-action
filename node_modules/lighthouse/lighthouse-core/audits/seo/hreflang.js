@@ -7,12 +7,14 @@
 
 /** @typedef {string|LH.Audit.Details.NodeValue|undefined} Source */
 /** @typedef {{source: Source, subItems: {type: 'subitems', items: SubItem[]}}} InvalidHreflang */
-/** @typedef {{reason: string}} SubItem */
+/** @typedef {{reason: LH.IcuMessage}} SubItem */
 
 const Audit = require('../audit.js');
+const i18n = require('../../lib/i18n/i18n.js');
+const axeLibSource = require('../../lib/axe.js').source;
+
 const VALID_LANGS = importValidLangs();
 const NO_LANGUAGE = 'x-default';
-const i18n = require('../../lib/i18n/i18n.js');
 
 const UIStrings = {
   /** Title of a Lighthouse audit that provides detail on the `hreflang` attribute on a page. This descriptive title is shown when the page's `hreflang` attribute is configured correctly. "hreflang" is an HTML attribute and should not be translated. */
@@ -32,24 +34,17 @@ const UIStrings = {
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);
 
 /**
- * Import list of valid languages from axe core without including whole axe-core package
+ * Import list of valid languages from axe core.
  * This is a huge array of language codes that can be stored more efficiently if we will need to
  * shrink the bundle size.
  * @return {Array<string>}
  */
 function importValidLangs() {
-  // @ts-expect-error - global switcheroo to load axe valid-langs
-  const axeCache = global.axe;
+  // Define a window-ish object so axe will export to it.
+  const window = {getComputedStyle: () => {}};
+  eval(axeLibSource);
   // @ts-expect-error
-  global.axe = {utils: {}};
-  // @ts-expect-error
-  require('axe-core/lib/core/utils/valid-langs.js');
-  // @ts-expect-error
-  const validLangs = global.axe.utils.validLangs();
-  // @ts-expect-error
-  global.axe = axeCache;
-
-  return validLangs;
+  return window.axe.utils.validLangs();
 }
 
 /**
@@ -121,9 +116,9 @@ class Hreflang extends Audit {
         source = {
           type: 'node',
           snippet: `<link rel="alternate" hreflang="${link.hreflang}" href="${link.hrefRaw}" />`,
-          path: link.devtoolsNodePath || '',
-          selector: link.selector || '',
-          nodeLabel: link.nodeLabel || '',
+          path: link.node !== null ? link.node.devtoolsNodePath : '',
+          selector: link.node !== null ? link.node.selector : '',
+          nodeLabel: link.node !== null ? link.node.nodeLabel : '',
         };
       } else if (link.source === 'headers') {
         source = `Link: <${link.hrefRaw}>; rel="alternate"; hreflang="${link.hreflang}"`;

@@ -623,6 +623,7 @@ var JpegImage = (function jpegImage() {
       var quantizationTables = [], frames = [];
       var huffmanTablesAC = [], huffmanTablesDC = [];
       var fileMarker = readUint16();
+      var malformedDataOffset = -1;
       this.comments = [];
       if (fileMarker != 0xFFD8) { // SOI (Start of Image)
         throw new Error("SOI not found");
@@ -813,7 +814,6 @@ var JpegImage = (function jpegImage() {
               offset--;
             }
             break;
-
           default:
             if (data[offset - 3] == 0xFF &&
                 data[offset - 2] >= 0xC0 && data[offset - 2] <= 0xFE) {
@@ -821,6 +821,19 @@ var JpegImage = (function jpegImage() {
               // block was eaten by the encoder
               offset -= 3;
               break;
+            }
+            else if (fileMarker === 0xE0 || fileMarker == 0xE1) {
+              // Recover from malformed APP1 markers popular in some phone models.
+              // See https://github.com/eugeneware/jpeg-js/issues/82
+              if (malformedDataOffset !== -1) {
+                throw new Error(`first unknown JPEG marker at offset ${malformedDataOffset.toString(16)}, second unknown JPEG marker ${fileMarker.toString(16)} at offset ${(offset - 1).toString(16)}`);
+              }
+              malformedDataOffset = offset - 1;
+              const nextOffset = readUint16();
+              if (data[offset + nextOffset - 2] === 0xFF) {
+                offset += nextOffset - 2;
+                break;
+              }
             }
             throw new Error("unknown JPEG marker " + fileMarker.toString(16));
         }

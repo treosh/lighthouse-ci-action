@@ -38,28 +38,28 @@ class ContentWidth extends Audit {
       title: str_(UIStrings.title),
       failureTitle: str_(UIStrings.failureTitle),
       description: str_(UIStrings.description),
-      requiredArtifacts: ['ViewportDimensions', 'TestedAsMobileDevice'],
+      requiredArtifacts: ['ViewportDimensions'],
     };
   }
 
   /**
    * @param {LH.Artifacts} artifacts
+   * @param {LH.Audit.Context} context
    * @return {LH.Audit.Product}
    */
-  static audit(artifacts) {
-    const IsMobile = artifacts.TestedAsMobileDevice;
+  static audit(artifacts, context) {
     const viewportWidth = artifacts.ViewportDimensions.innerWidth;
     const windowWidth = artifacts.ViewportDimensions.outerWidth;
     const widthsMatch = viewportWidth === windowWidth;
 
-    if (!IsMobile) {
+    if (context.settings.formFactor === 'desktop') {
       return {
         score: 1,
         notApplicable: true,
       };
     }
 
-    let explanation = '';
+    let explanation;
     if (!widthsMatch) {
       explanation = str_(UIStrings.explanation,
         {innerWidth: artifacts.ViewportDimensions.innerWidth,

@@ -40,6 +40,7 @@ class ResourceSummary {
    * @return {Record<LH.Budget.ResourceType, ResourceEntry>}
    */
   static summarize(networkRecords, mainResourceURL, context) {
+    /** @type {Record<LH.Budget.ResourceType, ResourceEntry>} */
     const resourceSummary = {
       'stylesheet': {count: 0, resourceSize: 0, transferSize: 0},
       'image': {count: 0, resourceSize: 0, transferSize: 0},

@@ -26,13 +26,12 @@ class FirstMeaningfulPaint extends ComputedMetric {
    */
   static async computeObservedMetric(data) {
     const {traceOfTab} = data;
-    if (!traceOfTab.timestamps.firstMeaningfulPaint) {
+    if (traceOfTab.timings.firstMeaningfulPaint === undefined) {
       throw new LHError(LHError.errors.NO_FMP);
     }
 
     return {
-      // FMP established as existing, so cast
-      timing: /** @type {number} */ (traceOfTab.timings.firstMeaningfulPaint),
+      timing: traceOfTab.timings.firstMeaningfulPaint,
       timestamp: traceOfTab.timestamps.firstMeaningfulPaint,
     };
   }

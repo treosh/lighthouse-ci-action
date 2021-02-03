@@ -328,7 +328,6 @@ class CategoryRenderer {
     const tmpl = this.dom.cloneTemplate('#tmpl-lh-gauge', this.templateContext);
     const wrapper = /** @type {HTMLAnchorElement} */ (this.dom.find('.lh-gauge__wrapper', tmpl));
     wrapper.href = `#${category.id}`;
-    wrapper.classList.add(`lh-gauge__wrapper--${Util.calculateRating(category.score)}`);
 
     if (Util.isPluginCategory(category.id)) {
       wrapper.classList.add('lh-gauge__wrapper--plugin');
@@ -350,8 +349,26 @@ class CategoryRenderer {
       percentageEl.title = Util.i18n.strings.errorLabel;
     }
 
+    // Render a numerical score if the category has applicable audits, or no audits whatsoever.
+    if (category.auditRefs.length === 0 || this.hasApplicableAudits(category)) {
+      wrapper.classList.add(`lh-gauge__wrapper--${Util.calculateRating(category.score)}`);
+    } else {
+      wrapper.classList.add(`lh-gauge__wrapper--not-applicable`);
+      percentageEl.textContent = '-';
+      percentageEl.title = Util.i18n.strings.notApplicableAuditsGroupTitle;
+    }
+
     this.dom.find('.lh-gauge__label', tmpl).textContent = category.title;
     return tmpl;
+  }
+
+  /**
+   * Returns true if an LH category has any non-"notApplicable" audits.
+   * @param {LH.ReportResult.Category} category
+   * @return {boolean}
+   */
+  hasApplicableAudits(category) {
+    return category.auditRefs.some(ref => ref.result.scoreDisplayMode !== 'notApplicable');
   }
 
   /**

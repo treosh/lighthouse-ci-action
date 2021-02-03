@@ -80,7 +80,7 @@ class OffscreenImages extends ByteEfficiencyAudit {
   static computeWaste(image, viewportDimensions, networkRecords) {
     const networkRecord = networkRecords.find(record => record.url === image.src);
     // If we don't know how big it was, we can't really report savings, treat it as passed.
-    if (!image.resourceSize || !networkRecord) return null;
+    if (!networkRecord) return null;
     // If the image had its loading behavior explicitly controlled already, treat it as passed.
     if (image.loading === 'lazy' || image.loading === 'eager') return null;
 
@@ -89,7 +89,13 @@ class OffscreenImages extends ByteEfficiencyAudit {
     const visiblePixels = this.computeVisiblePixels(image.clientRect, viewportDimensions);
     // Treat images with 0 area as if they're offscreen. See https://github.com/GoogleChrome/lighthouse/issues/1914
     const wastedRatio = totalPixels === 0 ? 1 : 1 - visiblePixels / totalPixels;
-    const totalBytes = image.resourceSize;
+    // Resource size is almost always the right one to be using because of the below:
+    //     transferSize = resourceSize + headers.length
+    // HOWEVER, there are some cases where an image is compressed again over the network and transfer size
+    // is smaller (see https://github.com/GoogleChrome/lighthouse/pull/4968).
+    // Use the min of the two numbers to be safe.
+    const {resourceSize = 0, transferSize = 0} = networkRecord;
+    const totalBytes = Math.min(resourceSize, transferSize);
     const wastedBytes = Math.round(totalBytes * wastedRatio);
 
     if (!Number.isFinite(wastedRatio)) {
@@ -123,8 +129,7 @@ class OffscreenImages extends ByteEfficiencyAudit {
       if (node.type === 'cpu' && timing.duration >= 50) {
         lastLongTaskStartTime = Math.max(lastLongTaskStartTime, timing.startTime);
       } else if (node.type === 'network') {
-        const networkNode = /** @type {LH.Gatherer.Simulation.GraphNetworkNode} */ (node);
-        startTimesByURL.set(networkNode.record.url, timing.startTime);
+        startTimesByURL.set(node.record.url, timing.startTime);
       }
     }
 

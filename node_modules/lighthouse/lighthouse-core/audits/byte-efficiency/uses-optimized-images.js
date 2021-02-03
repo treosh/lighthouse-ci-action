@@ -50,7 +50,7 @@ class UsesOptimizedImages extends ByteEfficiencyAudit {
   }
 
   /**
-   * @param {LH.Artifacts.ImageElement} imageElement
+   * @param {{naturalWidth: number, naturalHeight: number}} imageElement
    * @return {number}
    */
   static estimateJPEGSizeFromDimensions(imageElement) {
@@ -96,7 +96,12 @@ class UsesOptimizedImages extends ByteEfficiencyAudit {
           continue;
         }
 
-        jpegSize = UsesOptimizedImages.estimateJPEGSizeFromDimensions(imageElement);
+        // If naturalHeight or naturalWidth are falsy, information is not valid, skip.
+        const naturalHeight = imageElement.naturalHeight;
+        const naturalWidth = imageElement.naturalWidth;
+        if (!naturalHeight || !naturalWidth) continue;
+        jpegSize =
+          UsesOptimizedImages.estimateJPEGSizeFromDimensions({naturalHeight, naturalWidth});
         fromProtocol = false;
       }
 

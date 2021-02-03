@@ -472,6 +472,7 @@ function parse(string, manifestUrl, documentUrl) {
       raw: string,
       value: undefined,
       warning: 'ERROR: file isn\'t valid JSON: ' + e,
+      url: manifestUrl,
     };
   }
 
@@ -505,6 +506,7 @@ function parse(string, manifestUrl, documentUrl) {
     raw: string,
     value: manifest,
     warning: manifestUrlWarning,
+    url: manifestUrl,
   };
 }
 

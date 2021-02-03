@@ -14,6 +14,7 @@
 'use strict';
 
 const fs = require('fs');
+const log = require('lighthouse-logger');
 const libDetectorSource = fs.readFileSync(
   require.resolve('js-library-detector/library/libraries.js'), 'utf8');
 
@@ -79,6 +80,8 @@ async function detectLibraries() {
  * @return {Promise<LH.Artifacts['Stacks']>}
  */
 async function collectStacks(passContext) {
+  const status = {msg: 'Collect stacks', id: 'lh:gather:collectStacks'};
+  log.time(status);
   const expression = `(function () {
     ${libDetectorSource};
     return (${detectLibraries.toString()}());
@@ -87,13 +90,16 @@ async function collectStacks(passContext) {
   /** @type {JSLibrary[]} */
   const jsLibraries = await passContext.driver.evaluateAsync(expression);
 
-  return jsLibraries.map(lib => ({
-    detector: /** @type {'js'} */ ('js'),
+  /** @type {LH.Artifacts['Stacks']} */
+  const stacks = jsLibraries.map(lib => ({
+    detector: 'js',
     id: lib.id,
     name: lib.name,
     version: typeof lib.version === 'number' ? String(lib.version) : (lib.version || undefined),
     npm: lib.npm || undefined,
   }));
+  log.timeEnd(status);
+  return stacks;
 }
 
 module.exports = collectStacks;

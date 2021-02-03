@@ -46,11 +46,11 @@ class ReportScoring {
   /**
    * Returns the report JSON object with computed scores.
    * @param {Object<string, LH.Config.Category>} configCategories
-   * @param {Object<string, LH.Audit.Result>} resultsByAuditId
-   * @return {Object<string, LH.Result.Category>}
+   * @param {Object<string, LH.RawIcu<LH.Audit.Result>>} resultsByAuditId
+   * @return {Object<string, LH.RawIcu<LH.Result.Category>>}
    */
   static scoreAllCategories(configCategories, resultsByAuditId) {
-    /** @type {Record<string, LH.Result.Category>} */
+    /** @type {Record<string, LH.RawIcu<LH.Result.Category>>} */
     const scoredCategories = {};
 
     for (const [categoryId, configCategory] of Object.entries(configCategories)) {

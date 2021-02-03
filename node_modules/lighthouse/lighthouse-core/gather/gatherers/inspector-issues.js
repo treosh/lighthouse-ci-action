@@ -50,16 +50,50 @@ class InspectorIssues extends Gatherer {
     const artifact = {
       /** @type {Array<LH.Crdp.Audits.MixedContentIssueDetails>} */
       mixedContent: [],
+      /** @type {Array<LH.Crdp.Audits.SameSiteCookieIssueDetails>} */
+      sameSiteCookies: [],
+      /** @type {Array<LH.Crdp.Audits.BlockedByResponseIssueDetails>} */
+      blockedByResponse: [],
+      /** @type {Array<LH.Crdp.Audits.HeavyAdIssueDetails>} */
+      heavyAds: [],
+      /** @type {Array<LH.Crdp.Audits.ContentSecurityPolicyIssueDetails>} */
+      contentSecurityPolicy: [],
     };
 
     for (const issue of this._issues) {
       if (issue.details.mixedContentIssueDetails) {
         const issueDetails = issue.details.mixedContentIssueDetails;
         const issueReqId = issueDetails.request && issueDetails.request.requestId;
+        // Duplicate issues can occur for the same request; only use the one with a matching networkRequest.
         if (issueReqId &&
           networkRecords.find(req => req.requestId === issueReqId)) {
-          artifact.mixedContent.push(issue.details.mixedContentIssueDetails);
+          artifact.mixedContent.push(issueDetails);
         }
+      }
+      if (issue.details.sameSiteCookieIssueDetails) {
+        const issueDetails = issue.details.sameSiteCookieIssueDetails;
+        const issueReqId = issueDetails.request && issueDetails.request.requestId;
+        // Duplicate issues can occur for the same request; only use the one with a matching networkRequest.
+        if (issueReqId &&
+          networkRecords.find(req => req.requestId === issueReqId)) {
+          artifact.sameSiteCookies.push(issueDetails);
+        }
+      }
+      if (issue.details.blockedByResponseIssueDetails) {
+        const issueDetails = issue.details.blockedByResponseIssueDetails;
+        const issueReqId = issueDetails.request && issueDetails.request.requestId;
+        // Duplicate issues can occur for the same request; only use the one with a matching networkRequest.
+        if (issueReqId &&
+          networkRecords.find(req => req.requestId === issueReqId)) {
+          artifact.blockedByResponse.push(issueDetails);
+        }
+      }
+      if (issue.details.heavyAdIssueDetails) {
+        artifact.heavyAds.push(issue.details.heavyAdIssueDetails);
+      }
+      // Duplicate issues can occur for the same request; only use the one with a matching networkRequest.
+      if (issue.details.contentSecurityPolicyIssueDetails) {
+        artifact.contentSecurityPolicy.push(issue.details.contentSecurityPolicyIssueDetails);
       }
     }
 

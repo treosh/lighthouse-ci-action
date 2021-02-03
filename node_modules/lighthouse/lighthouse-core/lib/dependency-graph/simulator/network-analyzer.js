@@ -452,6 +452,18 @@ class NetworkAnalyzer {
     // The main document is the earliest document request, using position in networkRecords array to break ties.
     return documentRequests.reduce((min, r) => (r.startTime < min.startTime ? r : min));
   }
+
+  /**
+   * Resolves redirect chain given a main document.
+   * See: {@link NetworkAnalyzer.findMainDocument}) for how to retrieve main document.
+   *
+   * @param {LH.Artifacts.NetworkRequest} request
+   * @returns {LH.Artifacts.NetworkRequest}
+   */
+  static resolveRedirects(request) {
+    while (request.redirectDestination) request = request.redirectDestination;
+    return request;
+  }
 }
 
 module.exports = NetworkAnalyzer;

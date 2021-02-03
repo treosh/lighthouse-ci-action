@@ -33,7 +33,7 @@ class InteractiveMetric extends Audit {
       title: str_(i18n.UIStrings.interactiveMetric),
       description: str_(UIStrings.description),
       scoreDisplayMode: Audit.SCORING_MODES.NUMERIC,
-      requiredArtifacts: ['traces', 'devtoolsLogs', 'TestedAsMobileDevice'],
+      requiredArtifacts: ['traces', 'devtoolsLogs'],
     };
   }
 
@@ -72,8 +72,8 @@ class InteractiveMetric extends Audit {
     const metricComputationData = {trace, devtoolsLog, settings: context.settings};
     const metricResult = await Interactive.request(metricComputationData, context);
     const timeInMs = metricResult.timing;
-    const isDesktop = artifacts.TestedAsMobileDevice === false;
-    const options = isDesktop ? context.options.desktop : context.options.mobile;
+    const options = context.options[context.settings.formFactor];
+
 
     return {
       score: Audit.computeLogNormalScore(

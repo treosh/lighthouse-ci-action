@@ -67,7 +67,12 @@ var options = require("./nomnom")
 if (options.compact) {
   var fileName = options.file? options.file + ': ' : '';
   parser.parseError = parser.lexer.parseError = function(str, hash) {
-      console.error(fileName + 'line '+ hash.loc.first_line +', col '+ hash.loc.last_column +', found: \''+ hash.token +'\' - expected: '+ hash.expected.join(', ') +'.');
+      // error from dougJSONParse
+      if (hash.message) {
+        console.error(fileName + 'line '+ hash.line +', col '+ hash.col +',', hash.message + '.');
+      } else {
+        console.error(fileName + 'line '+ hash.loc.first_line +', col '+ hash.loc.last_column +', found: \''+ hash.token +'\' - expected: '+ hash.expected.join(', ') +'.');
+      }
       throw new Error(str);
   };
 }

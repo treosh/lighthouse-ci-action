@@ -535,19 +535,19 @@ module.exports = class URDNA2015 extends AsyncAlgorithm {
         const position = POSITIONS[key];
         self.hashRelatedBlankNode(
           related, quad, issuer, position, (err, hash) => {
-          if(err) {
-            return callback(err);
-          }
-          // 3.1.2) Add a mapping of hash to the blank node identifier for
-          // component to hash to related blank nodes map, adding an entry as
-          // necessary.
-          if(hash in hashToRelated) {
-            hashToRelated[hash].push(related);
-          } else {
-            hashToRelated[hash] = [related];
-          }
-          callback();
-        });
+            if(err) {
+              return callback(err);
+            }
+            // 3.1.2) Add a mapping of hash to the blank node identifier for
+            // component to hash to related blank nodes map, adding an entry as
+            // necessary.
+            if(hash in hashToRelated) {
+              hashToRelated[hash].push(related);
+            } else {
+              hashToRelated[hash] = [related];
+            }
+            callback();
+          });
       }, callback);
     }, err => callback(err, hashToRelated));
   }

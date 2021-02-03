@@ -8,7 +8,7 @@
  * @fileoverview Audits a page to ensure charset it configured properly.
  * It must be defined within the first 1024 bytes of the HTML document, defined in the HTTP header, or the document source must start with a BOM.
  *
- * @see: https://github.com/GoogleChrome/lighthouse/issues/10023
+ * @see https://github.com/GoogleChrome/lighthouse/issues/10023
  */
 'use strict';
 
@@ -22,7 +22,7 @@ const UIStrings = {
   /** Title of a Lighthouse audit that provides detail on if the charset is set properly for a page. This title is shown when the charset meta tag is missing or defined too late in the page. */
   failureTitle: 'Charset declaration is missing or occurs too late in the HTML',
   /** Description of a Lighthouse audit that tells the user why the charset needs to be defined early on. */
-  description: 'A character encoding declaration is required. It can be done with a <meta> tag ' +
+  description: 'A character encoding declaration is required. It can be done with a `<meta>` tag ' +
     'in the first 1024 bytes of the HTML or in the Content-Type HTTP response header. ' +
     '[Learn more](https://web.dev/charset/).',
 };

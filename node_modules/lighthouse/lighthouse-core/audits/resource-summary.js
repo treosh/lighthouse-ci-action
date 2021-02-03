@@ -55,7 +55,7 @@ class ResourceSummary extends Audit {
     ];
 
 
-    /** @type {Record<LH.Budget.ResourceType,string>} */
+    /** @type {Record<LH.Budget.ResourceType, LH.IcuMessage>} */
     const strMappings = {
       'total': str_(i18n.UIStrings.totalResourceType),
       'document': str_(i18n.UIStrings.documentResourceType),

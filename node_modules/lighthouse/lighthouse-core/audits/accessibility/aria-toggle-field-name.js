@@ -19,7 +19,7 @@ const UIStrings = {
   /** Title of an accesibility audit that checks that all ARIA toggle fields have an accessible name. This title is descriptive of the failing state and is shown to users when there is a failure that needs to be addressed. */
   failureTitle: 'ARIA toggle fields do not have accessible names',
   /** Description of a Lighthouse audit that tells the user *why* they should try to pass. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
-  description: 'When a toggle field doesn\'t have an accessible name, screen readers announce it with a generic name, making it unusable for users who rely on screen readers. [Learn more](https://web.dev/aria-toggle-field-name/).',
+  description: 'When a toggle field doesn\'t have an accessible name, screen readers announce it with a generic name, making it unusable for users who rely on screen readers. [Learn more](https://web.dev/aria-name/).',
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);

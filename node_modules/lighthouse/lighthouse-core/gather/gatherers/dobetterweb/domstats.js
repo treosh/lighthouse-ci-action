@@ -9,73 +9,13 @@
  * and total number of elements used on the page.
  */
 
-/* global ShadowRoot, getOuterHTMLSnippet */
+/* global getNodeDetails */
 
 'use strict';
 
 const Gatherer = require('../gatherer.js');
 const pageFunctions = require('../../../lib/page-functions.js');
 
-/**
- * Constructs a pretty label from element's selectors. For example, given
- * <div id="myid" class="myclass">, returns 'div#myid.myclass'.
- * @param {Element} element
- * @return {string}
- */
-/* istanbul ignore next */
-function createSelectorsLabel(element) {
-  let name = element.localName || '';
-  const idAttr = element.getAttribute && element.getAttribute('id');
-  if (idAttr) {
-    name += `#${idAttr}`;
-  }
-  // svg elements return SVGAnimatedString for .className, which is an object.
-  // Stringify classList instead.
-  if (element.classList) {
-    const className = element.classList.toString();
-    if (className) {
-      name += `.${className.trim().replace(/\s+/g, '.')}`;
-    }
-  } else if (ShadowRoot.prototype.isPrototypeOf(element)) {
-    name += '#shadow-root';
-  }
-
-  return name;
-}
-
-/**
- * @param {Node} element
- * @return {Array<string>}
- */
-/* istanbul ignore next */
-function elementPathInDOM(element) {
-  const visited = new Set();
-  const path = [createSelectorsLabel(element)];
-  let node = element;
-  while (node) {
-    visited.add(node);
-
-    // Anchor elements have a .host property. Be sure we've found a shadow root
-    // host and not an anchor.
-    if (ShadowRoot.prototype.isPrototypeOf(node)) {
-      const isShadowHost = node.host && node.localName !== 'a';
-      node = isShadowHost ? node.host : node.parentElement;
-    } else {
-      const isShadowHost = node.parentNode && node.parentNode.host &&
-                           node.parentNode.localName !== 'a';
-      node = isShadowHost ? node.parentNode.host : node.parentElement;
-    }
-
-    if (visited.has(node)) {
-      node = null;
-    }
-
-    if (node) {
-      path.unshift(createSelectorsLabel(node));
-    }
-  }
-  return path;
-}
 
 /**
  * Calculates the maximum tree depth of the DOM.
@@ -124,14 +64,11 @@ function getDOMStats(element, deep = true) {
   return {
     depth: {
       max: result.maxDepth,
-      pathToElement: elementPathInDOM(deepestElement),
-      // ignore style since it will provide no additional context, and is often long
-      snippet: getOuterHTMLSnippet(deepestElement, ['style']),
+      ...getNodeDetails(deepestElement),
     },
     width: {
       max: result.maxWidth,
-      pathToElement: elementPathInDOM(parentWithMostChildren),
-      snippet: getOuterHTMLSnippet(parentWithMostChildren, ['style']),
+      ...getNodeDetails(parentWithMostChildren),
     },
     totalBodyElements: result.numElements,
   };
@@ -146,9 +83,7 @@ class DOMStats extends Gatherer {
     const driver = passContext.driver;
 
     const expression = `(function() {
-      ${pageFunctions.getOuterHTMLSnippetString};
-      ${createSelectorsLabel.toString()};
-      ${elementPathInDOM.toString()};
+      ${pageFunctions.getNodeDetailsString};
       return (${getDOMStats.toString()}(document.body));
     })()`;
     await driver.sendCommand('DOM.enable');

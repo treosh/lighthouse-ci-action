@@ -8,6 +8,7 @@
 const path = require('path');
 const Audit = require('../audits/audit.js');
 const Runner = require('../runner.js');
+const i18n = require('../lib/i18n/i18n.js');
 
 /**
  * If any items with identical `path` properties are found in the input array,
@@ -53,19 +54,19 @@ function assertValidAudit(auditDefinition) {
     throw new Error(`${auditName} has no meta.id property, or the property is not a string.`);
   }
 
-  if (typeof implementation.meta.title !== 'string') {
+  if (!i18n.isStringOrIcuMessage(implementation.meta.title)) {
     throw new Error(`${auditName} has no meta.title property, or the property is not a string.`);
   }
 
   // If it'll have a ✔ or ✖ displayed alongside the result, it should have failureTitle
   if (
-    typeof implementation.meta.failureTitle !== 'string' &&
+    !i18n.isStringOrIcuMessage(implementation.meta.failureTitle) &&
     implementation.meta.scoreDisplayMode === Audit.SCORING_MODES.BINARY
   ) {
     throw new Error(`${auditName} has no failureTitle and should.`);
   }
 
-  if (typeof implementation.meta.description !== 'string') {
+  if (!i18n.isStringOrIcuMessage(implementation.meta.description)) {
     throw new Error(
       `${auditName} has no meta.description property, or the property is not a string.`
     );
@@ -139,7 +140,7 @@ function requireAudits(audits, configDir) {
       let requirePath = `../audits/${audit.path}`;
       if (!coreAudit) {
         // TODO: refactor and delete `global.isDevtools`.
-        if (global.isDevtools) {
+        if (global.isDevtools || global.isLightrider) {
           // This is for pubads bundling.
           requirePath = audit.path;
         } else {
@@ -175,6 +176,21 @@ function requireAudits(audits, configDir) {
  * @throws {Error}
  */
 function resolveModule(moduleIdentifier, configDir, category) {
+  // module in a node_modules/ that is...
+  // |                                | Lighthouse globally installed | Lighthouse locally installed |
+  // |--------------------------------|-------------------------------|------------------------------|
+  // | global                         |   1.                          |   1.                         |
+  // | in current working directory   |   2.                          |   1.                         |
+  // | relative to config.js file     |   5.                          |   -                          |
+
+  // module given by a path that is...
+  // |                                           | Lighthouse globally/locally installed |
+  // |-------------------------------------------|---------------------------------------|
+  // | absolute                                  |   1.                                  |
+  // | relative to the current working directory |   3.                                  |
+  // | relative to the config.js file            |   4.                                  |
+
+  // 1.
   // First try straight `require()`. Unlikely to be specified relative to this
   // file, but adds support for Lighthouse modules from npm since
   // `require()` walks up parent directories looking inside any node_modules/
@@ -183,6 +199,18 @@ function resolveModule(moduleIdentifier, configDir, category) {
     return require.resolve(moduleIdentifier);
   } catch (e) {}
 
+  // 2.
+  // Lighthouse globally installed, node_modules/ in current working directory.
+  // ex: lighthouse https://test.com
+  //
+  // working directory/
+  //   |-- node_modules/
+  //   |-- package.json
+  try {
+    return require.resolve(moduleIdentifier, {paths: [process.cwd()]});
+  } catch (e) {}
+
+  // 3.
   // See if the module resolves relative to the current working directory.
   // Most useful to handle the case of invoking Lighthouse as a module, since
   // then the config is an object and so has no path.
@@ -201,12 +229,26 @@ function resolveModule(moduleIdentifier, configDir, category) {
     throw new Error(errorString);
   }
 
-  // Finally, try looking up relative to the config file path. Just like the
+  // 4.
+  // Try looking up relative to the config file path. Just like the
   // relative path passed to `require()` is found relative to the file it's
   // in, this allows module paths to be specified relative to the config file.
   const relativePath = path.resolve(configDir, moduleIdentifier);
   try {
     return require.resolve(relativePath);
+  } catch (requireError) {}
+
+  // 5.
+  // Lighthouse globally installed, node_modules/ in config directory.
+  // ex: lighthouse https://test.com --config-path=./config/config.js
+  //
+  // working directory/
+  //   |-- config/
+  //     |-- node_modules/
+  //     |-- config.js
+  //     |-- package.json
+  try {
+    return require.resolve(moduleIdentifier, {paths: [configDir]});
   } catch (requireError) {}
 
   throw new Error(errorString + `

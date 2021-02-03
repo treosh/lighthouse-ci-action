@@ -422,8 +422,12 @@ jsonlint.parse = function(input) {
         dougJSONParse(input);
     } catch(e) {
         if(/Duplicate key|Bad string|Unexpected/.test(e.message)) {
-            var lineNumber = input.substring(0, e.at).split('\n').length;
-            throw SyntaxError(e.message + ' on line ' + lineNumber);
+            var linesUntilError = input.substring(0, e.at).split('\n');
+            var line = linesUntilError.length;
+            var col = linesUntilError[line - 1].length - 1;
+
+            this.parseError(e.message, {line: line, col: col, message: e.message.replace(/./, function(l) { return l.toLowerCase(); })});
+            throw SyntaxError(e.message + ' on line ' + line);
         }
     }
 

@@ -254,15 +254,6 @@
   "lighthouse-core/audits/accessibility/label.js | title": {
     "message": "K prvkům formulářů jsou přidružené štítky"
   },
-  "lighthouse-core/audits/accessibility/layout-table.js | description": {
-    "message": "Tabulka použitá pro účely rozvržení by neměla obsahovat datové prvky, jako jsou prvky th nebo caption ani atribut summary. Pro uživatele čteček obrazovek to může být matoucí. [Další informace](https://web.dev/layout-table/)"
-  },
-  "lighthouse-core/audits/accessibility/layout-table.js | failureTitle": {
-    "message": "Prezentační prvky `<table>` obsahují prvky `<th>` či `<caption>` nebo atribut `[summary]`."
-  },
-  "lighthouse-core/audits/accessibility/layout-table.js | title": {
-    "message": "Prezentační prvky `<table>` neobsahují prvky `<th>` a `<caption>`ani atribut `[summary]`."
-  },
   "lighthouse-core/audits/accessibility/link-name.js | description": {
     "message": "Text odkazů (a náhradní text obrázků, když jsou použité jako odkazy), který je rozeznatelný a jedinečný a který lze vybrat, uživatelům čteček obrazovek usnadňuje procházení stránek. [Další informace](https://web.dev/link-name/)"
   },
@@ -362,15 +353,6 @@
   "lighthouse-core/audits/accessibility/video-caption.js | title": {
     "message": "Prvky `<video>` obsahují prvek `<track>` s atributem `[kind=\"captions\"]`"
   },
-  "lighthouse-core/audits/accessibility/video-description.js | description": {
-    "message": "Zvukové popisy u videí poskytují relevantní informace, které nejsou patrné z dialogů, jako jsou například výrazy v obličejích a popisy scén. [Další informace](https://web.dev/video-description/)"
-  },
-  "lighthouse-core/audits/accessibility/video-description.js | failureTitle": {
-    "message": "Prvky `<video>` neobsahují prvek `<track>` s atributem `[kind=\"description\"]`."
-  },
-  "lighthouse-core/audits/accessibility/video-description.js | title": {
-    "message": "Prvky `<video>` obsahují prvek `<track>` s atributem `[kind=\"description\"]`"
-  },
   "lighthouse-core/audits/apple-touch-icon.js | description": {
     "message": "Pro ideální vzhled po přidání progresivní webové aplikace na plochu v systému iOS definujte atribut `apple-touch-icon`. Musí odkazovat na neprůhledný čtvercový obrázek PNG se stranami o délce 192 px (nebo 180 px). [Další informace](https://web.dev/apple-touch-icon/)"
   },
@@ -382,6 +364,33 @@
   },
   "lighthouse-core/audits/apple-touch-icon.js | title": {
     "message": "Obsahuje platný atribut `apple-touch-icon`"
+  },
+  "lighthouse-core/audits/autocomplete.js | columnCurrent": {
+    "message": "Současná hodnota"
+  },
+  "lighthouse-core/audits/autocomplete.js | columnSuggestions": {
+    "message": "Navrhovaný token"
+  },
+  "lighthouse-core/audits/autocomplete.js | description": {
+    "message": "Atribut `autocomplete` uživatelům pomáhá odesílat formuláře rychleji. Zvažte nastavení atributu `autocomplete` na platnou hodnotu, abyste uživatelům usnadnili zadávání. [Další informace](https://developers.google.com/web/fundamentals/design-and-ux/input/forms#use_metadata_to_enable_auto-complete)"
+  },
+  "lighthouse-core/audits/autocomplete.js | failureTitle": {
+    "message": "Prvky `<input>` nemají správné atributy `autocomplete`"
+  },
+  "lighthouse-core/audits/autocomplete.js | manualReview": {
+    "message": "Vyžaduje ruční kontrolu"
+  },
+  "lighthouse-core/audits/autocomplete.js | reviewOrder": {
+    "message": "Zkontrolujte pořadí tokenů"
+  },
+  "lighthouse-core/audits/autocomplete.js | title": {
+    "message": "U prvků `<input>` je správně použit atribut `autocomplete`"
+  },
+  "lighthouse-core/audits/autocomplete.js | warningInvalid": {
+    "message": "Tokeny `autocomplete`: Token „{token}“ v atributu {snippet} je neplatný"
+  },
+  "lighthouse-core/audits/autocomplete.js | warningOrder": {
+    "message": "Zkontrolujte pořadí tokenů {tokens} v {snippet}"
   },
   "lighthouse-core/audits/bootup-time.js | chromeExtensionsWarning": {
     "message": "Rychlost načítání této stránky byla negativně ovlivněna rozšířeními pro Chrome. Zkuste stránku zkontrolovat v anonymním režimu nebo profilu Chromu bez rozšíření."
@@ -558,7 +567,7 @@
     "message": "Nepoužívá mezipaměť aplikace"
   },
   "lighthouse-core/audits/dobetterweb/charset.js | description": {
-    "message": "Je požadována deklarace kódování znaků. Lze ji provést tagem <meta> v prvních 1024 bajtech kódu HTML nebo v záhlaví HTTP ve vlastnosti Content-Type. [Další informace](https://web.dev/charset/)"
+    "message": "Je požadována deklarace kódování znaků. Lze ho deklarovat pomocí značky `<meta>` v prvních 1024 bajtech kódu HTML nebo pomocí záhlaví Content-Type odpovědi HTTP. [Další informace](https://web.dev/charset/)"
   },
   "lighthouse-core/audits/dobetterweb/charset.js | failureTitle": {
     "message": "Deklarace znakové sady chybí nebo k ní v HTML dochází příliš pozdě"
@@ -714,7 +723,7 @@
     "message": "{itemCount,plural, =1{1 požadavek nebyl realizován pomocí protokolu HTTP/2}few{# požadavky nebyly realizovány pomocí protokolu HTTP/2}many{# požadavku nebylo realizováno pomocí protokolu HTTP/2}other{# požadavků nebylo realizováno pomocí protokolu HTTP/2}}"
   },
   "lighthouse-core/audits/dobetterweb/uses-http2.js | title": {
-    "message": "Use HTTP/2"
+    "message": "Použijte HTTP/2"
   },
   "lighthouse-core/audits/dobetterweb/uses-passive-event-listeners.js | description": {
     "message": "Zvažte označení posluchačů událostí dotyku a kolečka jako pasivních (`passive`), aby se stránka posouvala plynuleji. [Další informace](https://web.dev/uses-passive-event-listeners/)"
@@ -724,9 +733,6 @@
   },
   "lighthouse-core/audits/dobetterweb/uses-passive-event-listeners.js | title": {
     "message": "Používá pasivní posluchače, které zlepšují posouvání"
-  },
-  "lighthouse-core/audits/errors-in-console.js | columnDesc": {
-    "message": "Popis"
   },
   "lighthouse-core/audits/errors-in-console.js | description": {
     "message": "Chyby zaprotokolované do konzole ukazují na nevyřešené problémy. Mohou pocházet ze selhání síťových požadavků nebo jiných problémů v prohlížeči. [Další informace](https://web.dev/errors-in-console/)"
@@ -763,9 +769,6 @@
   },
   "lighthouse-core/audits/image-aspect-ratio.js | title": {
     "message": "Zobrazuje obrázky se správným poměrem stran"
-  },
-  "lighthouse-core/audits/image-aspect-ratio.js | warningCompute": {
-    "message": "Neplatné informace o velikosti obrázku {url}"
   },
   "lighthouse-core/audits/image-size-responsive.js | columnActual": {
     "message": "Skutečná velikost"
@@ -824,11 +827,23 @@
   "lighthouse-core/audits/is-on-https.js | warning": {
     "message": "Povoleno s upozorněním"
   },
+  "lighthouse-core/audits/large-javascript-libraries.js | columnLibraryName": {
+    "message": "Knihovna"
+  },
+  "lighthouse-core/audits/large-javascript-libraries.js | description": {
+    "message": "Velké javascriptové knihovny mohou snižovat rychlost. Abyste dosáhli menších balíčků, používejte raději menší funkčně rovnocenné knihovny. [Další informace](https://developers.google.com/web/fundamentals/performance/webpack/decrease-frontend-size#optimize_dependencies)"
+  },
+  "lighthouse-core/audits/large-javascript-libraries.js | displayValue": {
+    "message": "{libraryCount,plural, =1{Byla nalezena 1 velká knihovna}few{Byly nalezeny # velké knihovny}many{Bylo nalezeno # velké knihovny}other{Bylo nalezeno # velkých knihoven}}"
+  },
+  "lighthouse-core/audits/large-javascript-libraries.js | failureTitle": {
+    "message": "Zbytečně velké javascriptové knihovny nahraďte jinými alternativami"
+  },
+  "lighthouse-core/audits/large-javascript-libraries.js | title": {
+    "message": "Místo velkých javascriptových knihoven jsou použity menší alternativy"
+  },
   "lighthouse-core/audits/largest-contentful-paint-element.js | description": {
     "message": "Toto je největší obsahový prvek vykreslený v zobrazované oblasti. [Další informace](https://web.dev/lighthouse-largest-contentful-paint/)"
-  },
-  "lighthouse-core/audits/largest-contentful-paint-element.js | displayValue": {
-    "message": "{itemCount,plural, =1{Byl nalezen 1 prvek}few{Byly nalezeny # prvky}many{Bylo nalezeno # prvku}other{Bylo nalezeno # prvků}}"
   },
   "lighthouse-core/audits/largest-contentful-paint-element.js | title": {
     "message": "Prvek Largest Contentful Paint"
@@ -839,29 +854,8 @@
   "lighthouse-core/audits/layout-shift-elements.js | description": {
     "message": "Tyto prvky DOM nejvíce přispívají ke kumulativní změně rozvržení (CLS) stránky."
   },
-  "lighthouse-core/audits/layout-shift-elements.js | displayValue": {
-    "message": "{nodeCount,plural, =1{Byl nalezen 1 prvek}few{Byly nalezeny # prvky}many{Bylo nalezeno # prvku}other{Bylo nalezeno # prvků}}"
-  },
   "lighthouse-core/audits/layout-shift-elements.js | title": {
     "message": "Zajistěte, aby nedocházelo k velkým změnám rozvržení"
-  },
-  "lighthouse-core/audits/load-fast-enough-for-pwa.js | description": {
-    "message": "Rychlé načítání stránky přes mobilní síť zajišťuje dobrý dojem pro uživatele mobilních zařízení. [Další informace](https://web.dev/load-fast-enough-for-pwa/)"
-  },
-  "lighthouse-core/audits/load-fast-enough-for-pwa.js | displayValueText": {
-    "message": "Interaktivní za {timeInMs, number, seconds} s"
-  },
-  "lighthouse-core/audits/load-fast-enough-for-pwa.js | displayValueTextWithOverride": {
-    "message": "V simulované mobilní síti je stránka interaktivní za {timeInMs, number, seconds} s"
-  },
-  "lighthouse-core/audits/load-fast-enough-for-pwa.js | explanationLoadSlow": {
-    "message": "Vaše stránka se načítá příliš pomalu a neumožňuje interakci do 10 sekund. Podívejte se na příležitosti a diagnostiku v sekci Výkon, abyste zjistili, jak stránku vylepšit."
-  },
-  "lighthouse-core/audits/load-fast-enough-for-pwa.js | failureTitle": {
-    "message": "Stránka se v mobilních sítích nenačítá dostatečně rychle"
-  },
-  "lighthouse-core/audits/load-fast-enough-for-pwa.js | title": {
-    "message": "Stránka se v mobilních sítích načítá dostatečně rychle"
   },
   "lighthouse-core/audits/long-tasks.js | description": {
     "message": "Vypíše nejdelší úlohy v hlavním podprocesu, což umožňuje zjistit, co nejvíce přispívá k prodlevě vstupu. [Další informace](https://web.dev/long-tasks-devtools/)"
@@ -962,20 +956,32 @@
   "lighthouse-core/audits/no-unload-listeners.js | title": {
     "message": "Nepoužívá posluchače událostí `unload`"
   },
-  "lighthouse-core/audits/offline-start-url.js | description": {
-    "message": "Soubor service worker vaší webové aplikaci umožňuje, aby byla spolehlivá i za nepředvídatelného stavu sítě. [Další informace](https://web.dev/offline-start-url/)"
+  "lighthouse-core/audits/non-composited-animations.js | description": {
+    "message": "Neskládané animace mohou být nekvalitní a mohou zvyšovat míru kumulativní změny rozvržení (CLS). [Další informace](https://web.dev/non-composited-animations)"
   },
-  "lighthouse-core/audits/offline-start-url.js | errorLoading": {
-    "message": "Při načítání adresy {url} v Service Workeru došlo k chybě. Stavový kód: {statusCode}"
+  "lighthouse-core/audits/non-composited-animations.js | displayValue": {
+    "message": "{itemCount,plural, =1{Byl nalezen # animovaný prvek}few{Byly nalezeny # animované prvky}many{Bylo nalezeno # animovaného prvku}other{Bylo nalezeno # animovaných prvků}}"
   },
-  "lighthouse-core/audits/offline-start-url.js | failureTitle": {
-    "message": "V režimu offline `start_url` nereaguje stavovým kódem 200"
+  "lighthouse-core/audits/non-composited-animations.js | filterMayMovePixels": {
+    "message": "Vlastnost související s filtrováním může přesouvat pixely"
   },
-  "lighthouse-core/audits/offline-start-url.js | title": {
-    "message": "V režimu offline `start_url` reaguje stavovým kódem 200"
+  "lighthouse-core/audits/non-composited-animations.js | incompatibleAnimations": {
+    "message": "Cíl má další animaci, která není kompatibilní"
   },
-  "lighthouse-core/audits/offline-start-url.js | warningCantStart": {
-    "message": "Nástroji Lighthouse se v manifestu nepodařilo přečíst atribut `start_url`. Proto se předpokládá, že adresou URL dokumentu je `start_url`. Chybová zpráva: {manifestWarning}"
+  "lighthouse-core/audits/non-composited-animations.js | nonReplaceCompositeMode": {
+    "message": "Efekt má jiný režim skládání než „replace“"
+  },
+  "lighthouse-core/audits/non-composited-animations.js | title": {
+    "message": "Nepoužívejte neskládané animace"
+  },
+  "lighthouse-core/audits/non-composited-animations.js | transformDependsBoxSize": {
+    "message": "Vlastnost související s transformací závisí na velikosti pole"
+  },
+  "lighthouse-core/audits/non-composited-animations.js | unsupportedCSSProperty": {
+    "message": "{propertyCount,plural, =1{Nepodporovaná vlastnost CSS: {properties}}few{Nepodporované vlastnosti CSS: {properties}}many{Nepodporované vlastnosti CSS: {properties}}other{Nepodporované vlastnosti CSS: {properties}}}"
+  },
+  "lighthouse-core/audits/non-composited-animations.js | unsupportedTimingParameters": {
+    "message": "Efekt má nepodporované parametry časování"
   },
   "lighthouse-core/audits/performance-budget.js | description": {
     "message": "Udržujte množství a velikost síťových požadavků pod cílovými hodnotami, které udává poskytnutý rozpočet výkonu. [Další informace](https://developers.google.com/web/tools/lighthouse/audits/budgets)"
@@ -985,6 +991,21 @@
   },
   "lighthouse-core/audits/performance-budget.js | title": {
     "message": "Rozpočete výkonu"
+  },
+  "lighthouse-core/audits/preload-fonts.js | description": {
+    "message": "Načítejte písma `optional` předem, aby je mohli používat i návštěvníci, kteří přicházejí poprvé. [Další informace](https://web.dev/preload-optional-fonts/)"
+  },
+  "lighthouse-core/audits/preload-fonts.js | failureTitle": {
+    "message": "Písma s atributem `font-display: optional` se nenačítají předem"
+  },
+  "lighthouse-core/audits/preload-fonts.js | title": {
+    "message": "Písma s atributem `font-display: optional` se načítají předem"
+  },
+  "lighthouse-core/audits/preload-lcp-image.js | description": {
+    "message": "Předběžně načíst obrázek používaný prvkem vykreslení největšího obsahu za účelem zvýšení rychlosti vykreslení největšího obsahu. [Další informace](https://web.dev/optimize-lcp/#preload-important-resources)"
+  },
+  "lighthouse-core/audits/preload-lcp-image.js | title": {
+    "message": "Předběžné načtení obrázku s vykreslením největšího obsahu"
   },
   "lighthouse-core/audits/redirects-http.js | description": {
     "message": "Pokud jste protokol HTTPS už nastavili, nezapomeňte veškerý provoz přes protokol HTTP přesměrovat na HTTPS, aby všichni vaši uživatelé měli k dispozici funkce zabezpečeného webu. [Další informace](https://web.dev/redirects-http/)"
@@ -1049,6 +1070,18 @@
   "lighthouse-core/audits/seo/crawlable-anchors.js | title": {
     "message": "Odkazy lze procházet"
   },
+  "lighthouse-core/audits/seo/font-size.js | additionalIllegibleText": {
+    "message": "Další nečitelný text"
+  },
+  "lighthouse-core/audits/seo/font-size.js | columnFontSize": {
+    "message": "Velikost písma"
+  },
+  "lighthouse-core/audits/seo/font-size.js | columnPercentPageText": {
+    "message": "% textu na stránce"
+  },
+  "lighthouse-core/audits/seo/font-size.js | columnSelector": {
+    "message": "Selektor"
+  },
   "lighthouse-core/audits/seo/font-size.js | description": {
     "message": "Písma menší než 12 px jsou příliš malá na to, aby byla čitelná. Návštěvníci na mobilních zařízeních je kvůli čtení musí zvětšit roztažením prstů. Snažte se, aby více než 60 % textu na stránce mělo velikosti alespoň 12 px. [Další informace](https://web.dev/font-size/)"
   },
@@ -1060,6 +1093,9 @@
   },
   "lighthouse-core/audits/seo/font-size.js | failureTitle": {
     "message": "V dokumentu nejsou použity čitelné velikosti písma"
+  },
+  "lighthouse-core/audits/seo/font-size.js | legibleText": {
+    "message": "Čitelný text"
   },
   "lighthouse-core/audits/seo/font-size.js | title": {
     "message": "V dokumentu jsou použity čitelné velikosti písma"
@@ -1226,9 +1262,6 @@
   "lighthouse-core/audits/themed-omnibox.js | title": {
     "message": "Nastavuje barvu motivu adresního řádku."
   },
-  "lighthouse-core/audits/third-party-summary.js | columnBlockingTime": {
-    "message": "Doba blokování hlavního podprocesu"
-  },
   "lighthouse-core/audits/third-party-summary.js | columnThirdParty": {
     "message": "Třetí strana"
   },
@@ -1257,13 +1290,13 @@
     "message": "Časový rozpočet"
   },
   "lighthouse-core/audits/unsized-images.js | description": {
-    "message": "Always include explicit width and height on image elements to reduce layout shifts and improve CLS. [Learn more](https://web.dev/optimize-cls/#images-without-dimensions)"
+    "message": "U obrázkových prvků vždy explicitně určete šířku a výšku, aby se omezilo poskakování při vykreslování a zlepšila se hodnota CLS. [Další informace](https://web.dev/optimize-cls/#images-without-dimensions)"
   },
   "lighthouse-core/audits/unsized-images.js | failureTitle": {
-    "message": "Image elements do not have explicit `width` and `height`"
+    "message": "Obrázkové prvky nemají explicitní označení `width` a `height`"
   },
   "lighthouse-core/audits/unsized-images.js | title": {
-    "message": "Image elements have explicit `width` and `height`"
+    "message": "Obrázkové prvky mají explicitní označení `width` a `height`"
   },
   "lighthouse-core/audits/user-timings.js | columnType": {
     "message": "Typ"
@@ -1278,7 +1311,7 @@
     "message": "Hodnoty časování uživatelů"
   },
   "lighthouse-core/audits/uses-rel-preconnect.js | crossoriginWarning": {
-    "message": "Byl nalezen prvek <link> k předběžnému připojení ke zdroji {securityOrigin}, ale prohlížeč jej nepoužil. Zkontrolujte, zda správně používáte atribut `crossorigin`."
+    "message": "Byl nalezen prvek `<link rel=preconnect>` pro adresu {securityOrigin}, ale prohlížeč ho nepoužil. Zkontrolujte, zda správně používáte atribut `crossorigin`."
   },
   "lighthouse-core/audits/uses-rel-preconnect.js | description": {
     "message": "Zvažte přidání signálů `preconnect` nebo `dns-prefetch`, aby bylo možné včas se připojit k důležitým zdrojům třetích stran. [Další informace](https://web.dev/uses-rel-preconnect/)"
@@ -1287,16 +1320,37 @@
     "message": "K potřebným zdrojům se připojujte předem"
   },
   "lighthouse-core/audits/uses-rel-preconnect.js | tooManyPreconnectLinksWarning": {
-    "message": "Byly nalezeny více než 2 prvky k předběžnému připojení. Prvky k předběžnému připojení by měly být používány zřídka a pouze k nejdůležitějším zdrojům."
+    "message": "Byla nalezena více než 2 připojení `<link rel=preconnect>`. Tato připojení byste měli používat střídmě a pouze pro nejdůležitější zdroje."
+  },
+  "lighthouse-core/audits/uses-rel-preconnect.js | unusedWarning": {
+    "message": "Byl nalezen prvek `<link rel=preconnect>` pro adresu {securityOrigin}, ale prohlížeč ho nepoužil. Atribut `preconnect` používejte jen pro důležité zdroje, o které stránka určitě bude žádat."
   },
   "lighthouse-core/audits/uses-rel-preload.js | crossoriginWarning": {
-    "message": "Byl nalezen prvek <link> k předběžnému načtení adresy {preloadURL}, ale prohlížeč jej nepoužil. Zkontrolujte, zda správně používáte atribut `crossorigin`."
+    "message": "Byl nalezen prvek `<link>` k předběžnému načtení zdrojů z adresy {preloadURL}, ale prohlížeč ho nepoužil. Zkontrolujte, zda správně používáte atribut `crossorigin`."
   },
   "lighthouse-core/audits/uses-rel-preload.js | description": {
     "message": "Zvažte použití značky `<link rel=preload>` k prioritnímu načtení zdrojů, o které se nyní žádá později během načítání stránky. [Další informace](https://web.dev/uses-rel-preload/)"
   },
   "lighthouse-core/audits/uses-rel-preload.js | title": {
     "message": "Klíčové požadavky načítejte předběžně"
+  },
+  "lighthouse-core/audits/valid-source-maps.js | columnMapURL": {
+    "message": "Adresa URL souboru sourcemap"
+  },
+  "lighthouse-core/audits/valid-source-maps.js | description": {
+    "message": "Soubory sourcemap překládají minifikovaný kód na původní zdrojový kód. To vývojářům usnadňuje ladění produkčních verzí. Kromě toho to nástroji Lighthouse umožňuje poskytovat více informací. Zvažte implementaci souborů sourcemap, abyste tyto výhody získali. [Další informace](https://developers.google.com/web/tools/chrome-devtools/javascript/source-maps)"
+  },
+  "lighthouse-core/audits/valid-source-maps.js | failureTitle": {
+    "message": "Chybí soubory sourcemap pro velké soubory JavaScript první strany"
+  },
+  "lighthouse-core/audits/valid-source-maps.js | missingSourceMapErrorMessage": {
+    "message": "U velkého souboru JavaScript chybí soubor sourcemap"
+  },
+  "lighthouse-core/audits/valid-source-maps.js | missingSourceMapItemsWarningMesssage": {
+    "message": "{missingItems,plural, =1{Upozornění: V atributu `.sourcesContent` chybí 1 položka}few{Upozornění: V atributu `.sourcesContent` chybí # položky}many{Upozornění: V atributu `.sourcesContent` chybí # položky}other{Upozornění: V atributu `.sourcesContent` chybí # položek}}"
+  },
+  "lighthouse-core/audits/valid-source-maps.js | title": {
+    "message": "Stránka má platné soubory sourcemap"
   },
   "lighthouse-core/audits/viewport.js | description": {
     "message": "Chcete-li aplikaci optimalizovat pro obrazovky mobilních zařízení, přidejte značku `<meta name=\"viewport\">`. [Další informace](https://web.dev/viewport/)"
@@ -1309,30 +1363,6 @@
   },
   "lighthouse-core/audits/viewport.js | title": {
     "message": "Obsahuje značku `<meta name=\"viewport\">` s atributem `width` nebo `initial-scale`"
-  },
-  "lighthouse-core/audits/without-javascript.js | description": {
-    "message": "Vaše aplikace by měla zobrazovat nějaký obsah, i v případě, že bude JavaScript zakázaný, i kdyby to mělo být jen upozornění pro uživatele, že k použití aplikace je potřeba JavaScript. [Další informace](https://web.dev/without-javascript/)"
-  },
-  "lighthouse-core/audits/without-javascript.js | explanation": {
-    "message": "Pokud nejsou k dispozici skripty stránky, v hlavní části stránky by se měl vykreslit nějaký obsah."
-  },
-  "lighthouse-core/audits/without-javascript.js | failureTitle": {
-    "message": "Neposkytuje záložní obsah, když není k dispozici JavaScript"
-  },
-  "lighthouse-core/audits/without-javascript.js | title": {
-    "message": "Obsahuje určitý obsah, když není k dispozici JavaScript"
-  },
-  "lighthouse-core/audits/works-offline.js | description": {
-    "message": "Pokud vytváříte progresivní webovou aplikaci, doporučujeme použít soubor service worker, aby aplikace fungovala i offline. [Další informace](https://web.dev/works-offline/)"
-  },
-  "lighthouse-core/audits/works-offline.js | failureTitle": {
-    "message": "Stávající stránka nereaguje stavovým kódem 200, když je offline"
-  },
-  "lighthouse-core/audits/works-offline.js | title": {
-    "message": "Stávající stránka reaguje stavovým kódem 200, když je offline"
-  },
-  "lighthouse-core/audits/works-offline.js | warningNoLoad": {
-    "message": "Stránka se v režimu offline nemusí načíst, protože testovací adresa URL ({requested}) byla přesměrována na adresu „{final}“. Zkuste druhou adresu otestovat přímo."
   },
   "lighthouse-core/config/default-config.js | a11yAriaGroupDescription": {
     "message": "Toto jsou příležitosti ke zlepšení používání specifikace ARIA ve vaší aplikaci, které mohou zlepšit prostředí pro uživatele asistenčních technologií, jako jsou čtečky obrazovek."
@@ -1451,9 +1481,6 @@
   "lighthouse-core/config/default-config.js | pwaCategoryTitle": {
     "message": "Progresivní webová aplikace"
   },
-  "lighthouse-core/config/default-config.js | pwaFastReliableGroupTitle": {
-    "message": "Rychlé a spolehlivé"
-  },
   "lighthouse-core/config/default-config.js | pwaInstallableGroupTitle": {
     "message": "Instalovatelné"
   },
@@ -1487,6 +1514,9 @@
   "lighthouse-core/config/default-config.js | seoMobileGroupTitle": {
     "message": "Optimalizováno pro mobily"
   },
+  "lighthouse-core/gather/driver.js | warningData": {
+    "message": "{locationCount,plural, =1{Rychlost načítání může být ovlivněna daty uloženými v následujícím umístění: {locations}. Spusťte audit této stránky v anonymním okně, aby tyto zdroje na skóre neměly vliv.}few{Rychlost načítání může být ovlivněna daty uloženými v následujících umístěních: {locations}. Spusťte audit této stránky v anonymním okně, aby tyto zdroje na skóre neměly vliv.}many{Rychlost načítání může být ovlivněna daty uloženými v následujících umístěních: {locations}. Spusťte audit této stránky v anonymním okně, aby tyto zdroje na skóre neměly vliv.}other{Rychlost načítání může být ovlivněna daty uloženými v následujících umístěních: {locations}. Spusťte audit této stránky v anonymním okně, aby tyto zdroje na skóre neměly vliv.}}"
+  },
   "lighthouse-core/gather/gather-runner.js | warningRedirected": {
     "message": "Stránka se možná nenačítá očekávaným způsobem, protože testovací adresa URL ({requested}) byla přesměrována na adresu {final}. Zkuste přímo otestovat druhou URL."
   },
@@ -1503,7 +1533,7 @@
     "message": "Prvek"
   },
   "lighthouse-core/lib/i18n/i18n.js | columnFailingElem": {
-    "message": "Failing Elements"
+    "message": "Prvky, které neprošly"
   },
   "lighthouse-core/lib/i18n/i18n.js | columnLocation": {
     "message": "Místo"
@@ -1552,6 +1582,9 @@
   },
   "lighthouse-core/lib/i18n/i18n.js | displayValueByteSavings": {
     "message": "Potenciální úspora {wastedBytes, number, bytes} KiB"
+  },
+  "lighthouse-core/lib/i18n/i18n.js | displayValueElementsFound": {
+    "message": "{nodeCount,plural, =1{Byl nalezen 1 prvek}few{Byly nalezeny # prvky}many{Bylo nalezeno # prvku}other{Bylo nalezeno # prvků}}"
   },
   "lighthouse-core/lib/i18n/i18n.js | displayValueMsSavings": {
     "message": "Lze uspořit {wastedMs, number, milliseconds} ms"
@@ -1748,6 +1781,9 @@
   "lighthouse-core/report/html/renderer/util.js | runtimeNoEmulation": {
     "message": "Bez emulace"
   },
+  "lighthouse-core/report/html/renderer/util.js | runtimeSettingsAxeVersion": {
+    "message": "Verze knihovny Axe"
+  },
   "lighthouse-core/report/html/renderer/util.js | runtimeSettingsBenchmark": {
     "message": "Výkon procesoru/paměti"
   },
@@ -1805,139 +1841,226 @@
   "lighthouse-core/report/html/renderer/util.js | warningHeader": {
     "message": "Upozornění: "
   },
-  "stack-packs/packs/amp.js | efficient_animated_content": {
-    "message": "Pro animovaný obsah použijte prvek [amp-anim](https://amp.dev/documentation/components/amp-anim/), kterým minimalizujete využití procesoru, když příslušný obsah není na obrazovce."
+  "node_modules/lighthouse-stack-packs/packs/amp.js | efficient-animated-content": {
+    "message": "Pro animovaný obsah použijte prvek [`amp-anim`](https://amp.dev/documentation/components/amp-anim/), abyste minimalizovali využití procesoru, když příslušný obsah není na obrazovce."
   },
-  "stack-packs/packs/amp.js | offscreen_images": {
-    "message": "U obrázků dbejte na používání platných značek `amp-img`, které se automaticky líně načítají mimo první zobrazovanou oblast. [Další informace](https://amp.dev/documentation/guides-and-tutorials/develop/media_iframes_3p/?format=websites#images)"
+  "node_modules/lighthouse-stack-packs/packs/amp.js | offscreen-images": {
+    "message": "Pro obrázky používejte značky [`amp-img`](https://amp.dev/documentation/components/amp-img/?format=websites), aby se automaticky načítaly líně. [Další informace](https://amp.dev/documentation/guides-and-tutorials/develop/media_iframes_3p/?format=websites#images)"
   },
-  "stack-packs/packs/amp.js | render_blocking_resources": {
-    "message": "[Vykreslujte rozvržení AMP na straně serveru](https://amp.dev/documentation/guides-and-tutorials/optimize-and-measure/server-side-rendering/) pomocí nástrojů, jako je [AMP Optimizer](https://github.com/ampproject/amp-toolbox/tree/main/packages/optimizer)."
+  "node_modules/lighthouse-stack-packs/packs/amp.js | render-blocking-resources": {
+    "message": "[Vykreslujte rozvržení AMP na straně serveru](https://amp.dev/documentation/guides-and-tutorials/optimize-and-measure/server-side-rendering/) pomocí nástrojů, jako je [AMP Optimizer](https://github.com/ampproject/amp-toolbox/tree/master/packages/optimizer)."
   },
-  "stack-packs/packs/amp.js | unminified_css": {
+  "node_modules/lighthouse-stack-packs/packs/amp.js | unminified-css": {
     "message": "Prostudujte si [dokumentaci AMP](https://amp.dev/documentation/guides-and-tutorials/develop/style_and_layout/style_pages/) a zkontrolujte, zda jsou všechny vaše styly podporovány."
   },
-  "stack-packs/packs/amp.js | uses_responsive_images": {
-    "message": "Prvek `amp-img` podporuje atribut `srcset`, pomocí něhož lze zadat, které obrázkové podklady se mají použít pro jednotlivé velikosti obrazovek.  [Další informace](https://amp.dev/documentation/guides-and-tutorials/develop/style_and_layout/art_direction/)"
+  "node_modules/lighthouse-stack-packs/packs/amp.js | uses-responsive-images": {
+    "message": "Prvek [`amp-img`](https://amp.dev/documentation/components/amp-img/?format=websites) podporuje atribut [`srcset`](https://web.dev/use-srcset-to-automatically-choose-the-right-image/), pomocí něhož lze zadat, které obrázkové podklady se mají použít pro jednotlivé velikosti obrazovek. [Další informace](https://amp.dev/documentation/guides-and-tutorials/develop/style_and_layout/art_direction/)"
   },
-  "stack-packs/packs/amp.js | uses_webp_images": {
-    "message": "Zvažte zobrazování všech komponent `amp-img` ve formátech WebP a zadání vhodných záložních možností pro ostatní prohlížeče. [Další informace](https://amp.dev/documentation/components/amp-img/#example:-specifying-a-fallback-image)"
+  "node_modules/lighthouse-stack-packs/packs/amp.js | uses-webp-images": {
+    "message": "Zvažte zobrazování všech komponent [`amp-img`](https://amp.dev/documentation/components/amp-img/?format=websites) ve formátech WebP a zadání vhodných záložních možností pro ostatní prohlížeče. [Další informace](https://amp.dev/documentation/components/amp-img/#example:-specifying-a-fallback-image)"
   },
-  "stack-packs/packs/angular.js | dom_size": {
+  "node_modules/lighthouse-stack-packs/packs/angular.js | dom-size": {
     "message": "Pokud se vykreslují velmi velké seznamy, zvažte použití virtuálního posouvání pomocí sady Component Dev Kit (CDK). [Další informace](https://web.dev/virtualize-lists-with-angular-cdk/)"
   },
-  "stack-packs/packs/angular.js | total_byte_weight": {
+  "node_modules/lighthouse-stack-packs/packs/angular.js | total-byte-weight": {
     "message": "Minimalizujte velikost balíčků JavaScriptu pomocí [rozdělení kódu na úrovni trasy](https://web.dev/route-level-code-splitting-in-angular/). Zvažte také předběžné načítání podkladů do mezipaměti pomocí [service workeru platformy Angular](https://web.dev/precaching-with-the-angular-service-worker/)."
   },
-  "stack-packs/packs/angular.js | unminified_warning": {
+  "node_modules/lighthouse-stack-packs/packs/angular.js | unminified-warning": {
     "message": "Pokud používáte Angular CLI, dejte pozor, abyste sestavení generovali v produkčním režimu. [Další informace](https://angular.io/guide/deployment#enable-runtime-production-mode)"
   },
-  "stack-packs/packs/angular.js | unused_javascript": {
+  "node_modules/lighthouse-stack-packs/packs/angular.js | unused-javascript": {
     "message": "Pokud používáte Angular CLI, do produkčního sestavení zahrňte mapy zdroje, aby balíčky bylo možné prozkoumat. [Další informace](https://angular.io/guide/deployment#inspect-the-bundles)"
   },
-  "stack-packs/packs/angular.js | uses_rel_preload": {
+  "node_modules/lighthouse-stack-packs/packs/angular.js | uses-rel-preload": {
     "message": "Zrychlete navigaci tím, že budete trasy načítat předem. [Další informace](https://web.dev/route-preloading-in-angular/)"
   },
-  "stack-packs/packs/angular.js | uses_responsive_images": {
+  "node_modules/lighthouse-stack-packs/packs/angular.js | uses-responsive-images": {
     "message": "Zvažte použití nástroje `BreakpointObserver` v sadě Component Dev Kit (CDK) ke správě dělicích bodů obrázků. [Další informace](https://material.angular.io/cdk/layout/overview)"
   },
-  "stack-packs/packs/magento.js | critical_request_chains": {
-    "message": "Pokud javascriptové podklady neslučujete do balíčků, zvažte použití nástroje [baler](https://github.com/magento/baler)."
-  },
-  "stack-packs/packs/magento.js | disable_bundling": {
-    "message": "Vypněte [minifikaci a slučování souborů JavaScript do balíčků](https://devdocs.magento.com/guides/v2.3/frontend-dev-guide/themes/js-bundling.html) integrované v platformě Magento a zvažte namísto nich použití nástroje [baler](https://github.com/magento/baler/)."
-  },
-  "stack-packs/packs/magento.js | font_display": {
-    "message": "Při [definování vlastních písem](https://devdocs.magento.com/guides/v2.3/frontend-dev-guide/css-topics/using-fonts.html) zadejte `@font-display`."
-  },
-  "stack-packs/packs/magento.js | offscreen_images": {
-    "message": "Zvažte úpravu šablon produktů a katalogu s cílem využít funkci webové platformy pro [líné načítání](https://web.dev/native-lazy-loading/)."
-  },
-  "stack-packs/packs/magento.js | server_response_time": {
-    "message": "Použijte [integraci platformy Magento s nástrojem Varnish](https://devdocs.magento.com/guides/v2.3/config-guide/varnish/config-varnish.html)."
-  },
-  "stack-packs/packs/magento.js | unminified_css": {
-    "message": "Ve vývojářských nastaveních obchodu zapněte možnost minifikace souborů CSS. [Další informace](https://devdocs.magento.com/guides/v2.3/performance-best-practices/configuration.html?itm_source=devdocs&itm_medium=search_page&itm_campaign=federated_search&itm_term=minify%20css%20files)"
-  },
-  "stack-packs/packs/magento.js | unminified_javascript": {
-    "message": "Všechny javascriptové podklady při implementaci statického obsahu minifikujte pomocí nástroje [Terser](https://www.npmjs.com/package/terser) a integrovanou funkci minifikace zakažte."
-  },
-  "stack-packs/packs/magento.js | unused_javascript": {
-    "message": "Vypněte [slučování souborů JavaScript do balíčků](https://devdocs.magento.com/guides/v2.3/frontend-dev-guide/themes/js-bundling.html) integrované v platformě Magento."
-  },
-  "stack-packs/packs/magento.js | uses_optimized_images": {
-    "message": "Zkuste v tržišti [Magento Marketplace](https://marketplace.magento.com/catalogsearch/result/?q=optimize%20image) vyhledat různá rozšíření od třetích stran určená k optimalizaci obrázků."
-  },
-  "stack-packs/packs/magento.js | uses_rel_preconnect": {
-    "message": "Pokyny k předběžnému připojení nebo načtení zdrojů (preconnect nebo dns-prefetch) lze přidat [upravením rozvržení motivů](https://devdocs.magento.com/guides/v2.3/frontend-dev-guide/layouts/xml-manage.html)."
-  },
-  "stack-packs/packs/magento.js | uses_rel_preload": {
-    "message": "Značky `<link rel=preload>` lze přidat [úpravou rozvržení motivů](https://devdocs.magento.com/guides/v2.3/frontend-dev-guide/layouts/xml-manage.html)."
-  },
-  "stack-packs/packs/magento.js | uses_webp_images": {
-    "message": "Zkuste v online tržišti [Magento Marketplace](https://marketplace.magento.com/catalogsearch/result/?q=webp) vyhledat rozšíření třetích stran, která umožňují použití novějších formátů obrázků."
-  },
-  "stack-packs/packs/react.js | dom_size": {
-    "message": "Pokud na stránce vykreslujete mnoho opakujících se prvků, zvažte použití windowingové knihovny, jako je `react-window`, která minimalizuje počet vytvářených uzlů DOM. [Další informace](https://web.dev/virtualize-long-lists-react-window/) Minimalizujte také počet překreslení, která nejsou nezbytná, pomocí funkcí [shouldComponentUpdate](https://reactjs.org/docs/optimizing-performance.html#shouldcomponentupdate-in-action), [PureComponent](https://reactjs.org/docs/react-api.html#reactpurecomponent) nebo [React.memo](https://reactjs.org/docs/react-api.html#reactmemo), a pokud používáte hooky Effect, [přeskakujte efekty](https://reactjs.org/docs/hooks-effect.html#tip-optimizing-performance-by-skipping-effects) dokud se nezmění určité závislosti."
-  },
-  "stack-packs/packs/react.js | redirects": {
-    "message": "Pokud používáte React Router, minimalizujte použití komponenty `<Redirect>` k [navigaci po trase](https://reacttraining.com/react-router/web/api/Redirect)."
-  },
-  "stack-packs/packs/react.js | server_response_time": {
-    "message": "Pokud některé komponenty React vykreslujete na straně serveru, zvažte použití metody `renderToNodeStream()` nebo `renderToStaticNodeStream()`, která klientovi umožní přijímat různé části označení a dosazovat do nich data samostatně namísto všech najednou. [Další informace](https://reactjs.org/docs/react-dom-server.html#rendertonodestream)"
-  },
-  "stack-packs/packs/react.js | unminified_css": {
-    "message": "Pokud váš sestavovací systém minifikuje soubory CSS automaticky, dejte pozor, abyste implementovali produkční sestavení aplikace. Můžete to zkontrolovat pomocí rozšíření React Developer Tools. [Další informace](https://reactjs.org/docs/optimizing-performance.html#use-the-production-build)"
-  },
-  "stack-packs/packs/react.js | unminified_javascript": {
-    "message": "Pokud váš sestavovací systém minifikuje soubory JavaScriptu automaticky, dejte pozor, abyste implementovali produkční sestavení aplikace. Můžete to zkontrolovat pomocí rozšíření React Developer Tools. [Další informace](https://reactjs.org/docs/optimizing-performance.html#use-the-production-build)"
-  },
-  "stack-packs/packs/react.js | unused_javascript": {
-    "message": "Pokud vykreslení neprovádíte na straně serveru, [rozdělte balíčky JavaScriptu](https://web.dev/code-splitting-suspense/) pomocí metody `React.lazy()`. Jinak kód rozdělte pomocí knihovny třetí strany, jako je například [loadable-components](https://www.smooth-code.com/open-source/loadable-components/docs/getting-started/)."
-  },
-  "stack-packs/packs/react.js | user_timings": {
-    "message": "Změřte rychlost vykreslování komponent pomocí nástroje React DevTools Profiler, který využívá rozhraní Profiler API. [Další informace](https://reactjs.org/blog/2018/09/10/introducing-the-react-profiler.html)"
-  },
-  "stack-packs/packs/wordpress.js | efficient_animated_content": {
+  "node_modules/lighthouse-stack-packs/packs/drupal.js | efficient-animated-content": {
     "message": "Zvažte nahrání souboru GIF do služby, pomocí které ho bude možné vložit jako video HTML5."
   },
-  "stack-packs/packs/wordpress.js | offscreen_images": {
+  "node_modules/lighthouse-stack-packs/packs/drupal.js | font-display": {
+    "message": "Při definování vlastních písem pro motiv je třeba určit `@font-display`."
+  },
+  "node_modules/lighthouse-stack-packs/packs/drupal.js | offscreen-images": {
+    "message": "Nainstalujte [modul Drupal](https://www.drupal.org/project/project_module?f%5B0%5D=&f%5B1%5D=&f%5B2%5D=im_vid_3%3A67&f%5B3%5D=&f%5B4%5D=sm_field_project_type%3Afull&f%5B5%5D=&f%5B6%5D=&text=%22lazy+load%22&solrsort=iss_project_release_usage+desc&op=Search), který umožňuje líné načítání obrázků. Tyto moduly umožňují odložit načítání obrázků mimo obrazovku za účelem zvýšení výkonu."
+  },
+  "node_modules/lighthouse-stack-packs/packs/drupal.js | render-blocking-resources": {
+    "message": "Zvažte použití modulu k vložení kritických stylů CSS a JavaScriptu, případně načítejte zdroje asynchronně pomocí JavaScriptu, což nabízí např. modul [Advanced CSS/JS Aggregation](https://www.drupal.org/project/advagg). Upozorňujeme, že optimalizace pomocí těchto modulů může narušit funkčnost vašeho webu. V kódu proto pravděpodobně budete muset provést změny."
+  },
+  "node_modules/lighthouse-stack-packs/packs/drupal.js | time-to-first-byte": {
+    "message": "Na reakční dobu serveru mají vliv motivy, moduly a specifikace serverů. Zvažte vyhledání optimalizovaného motivu, pečlivý výběr optimalizačního modulu či upgradování serveru. Za účelem zrychlení odezvy databáze doporučujeme na hostujících serverech používat ukládání operačního kódu do mezipaměti pomocí PHP. Slouží k tomu nástroje jako Redis nebo Memcached, případně lze použít optimalizovanou logiku aplikace k rychlejší přípravě stránek."
+  },
+  "node_modules/lighthouse-stack-packs/packs/drupal.js | total-byte-weight": {
+    "message": "Zvažte použití [responzivních stylů obrázků](https://www.drupal.org/docs/8/mobile-guide/responsive-images-in-drupal-8) ke snížení velikosti obrázků načítaných stránkou. Pokud používáte Zobrazení k prezentování více obsahových položek na stránce, zvažte implementaci stránkování za účelem omezení počtu obsahových položek na jedné stránce."
+  },
+  "node_modules/lighthouse-stack-packs/packs/drupal.js | unminified-css": {
+    "message": "Na stránce Administrace » Konfigurace » Vývoj aktivujte funkci Agregovat soubory CSS. Můžete také nakonfigurovat pokročilejší možnosti agregace prostřednictvím [dodatečných modulů](https://www.drupal.org/project/project_module?f%5B0%5D=&f%5B1%5D=&f%5B2%5D=im_vid_3%3A123&f%5B3%5D=&f%5B4%5D=sm_field_project_type%3Afull&f%5B5%5D=&f%5B6%5D=&text=css+aggregation&solrsort=iss_project_release_usage+desc&op=Search). Díky zřetězení, minifikaci a kompresi stylů CSS tak zrychlíte svůj web."
+  },
+  "node_modules/lighthouse-stack-packs/packs/drupal.js | unminified-javascript": {
+    "message": "Na stránce Administrace » Konfigurace » Vývoj aktivujte funkci Agregovat javascriptové soubory. Můžete také nakonfigurovat pokročilejší možnosti agregace prostřednictvím [dodatečných modulů](https://www.drupal.org/project/project_module?f%5B0%5D=&f%5B1%5D=&f%5B2%5D=im_vid_3%3A123&f%5B3%5D=&f%5B4%5D=sm_field_project_type%3Afull&f%5B5%5D=&f%5B6%5D=&text=javascript+aggregation&solrsort=iss_project_release_usage+desc&op=Search). Díky zřetězení, minifikaci a kompresi javascriptových zdrojů tak zrychlíte svůj web."
+  },
+  "node_modules/lighthouse-stack-packs/packs/drupal.js | unused-css-rules": {
+    "message": "Zvažte odstranění nepoužívaných pravidel CSS a k odpovídající stránce nebo komponentě stránky připojte pouze nezbytné knihovny Drupal. Podrobnosti naleznete v [dokumentaci Drupal](https://www.drupal.org/docs/8/creating-custom-modules/adding-stylesheets-css-and-javascript-js-to-a-drupal-8-module#library). Připojené knihovny, které přidávají nadbytečný kód CSS, můžete vyhledat pomocí funkce [Coverage](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) v nástrojích pro vývojáře v Chromu. Odpovědný motiv či modul můžete identifikovat podle adresy URL šablony stylů, když je na vašem webu Drupal deaktivována agregace CSS. Hledejte motivy či moduly, které v seznamu mají mnoho šablon stylů, u nichž je při použití funkce Coverage velké množství kódu označeno červeně. Motiv či modul by měl šablonu stylů do fronty zařadit jen v případě, že se na stránce opravdu používá."
+  },
+  "node_modules/lighthouse-stack-packs/packs/drupal.js | unused-javascript": {
+    "message": "Zvažte odstranění nepoužívaných javascriptových zdrojů a k odpovídající stránce nebo komponentě stránky připojte pouze nezbytné knihovny Drupal. Podrobnosti naleznete v [dokumentaci Drupal](https://www.drupal.org/docs/8/creating-custom-modules/adding-stylesheets-css-and-javascript-js-to-a-drupal-8-module#library). Připojené knihovny, které přidávají nadbytečný javascriptový kód, můžete vyhledat pomocí funkce [Coverage](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) v nástrojích pro vývojáře v Chromu. Odpovědný motiv či modul můžete identifikovat podle adresy URL skriptu, když je na vašem webu Drupal deaktivována agregace JavaScriptu. Hledejte motivy či moduly, které v seznamu mají mnoho skriptů, u nichž je při použití funkce Coverage velké množství kódu označeno červeně. Motiv či modul by měl skript do fronty zařadit jen v případě, že se na stránce opravdu používá."
+  },
+  "node_modules/lighthouse-stack-packs/packs/drupal.js | uses-long-cache-ttl": {
+    "message": "Na stránce Administrace » Konfigurace » Vývoj nastavte možnost Maximální věk pro mezipaměť a proxy server. Přečtěte si o [mezipaměti systému Drupal a optimalizaci pro vyšší výkon](https://www.drupal.org/docs/7/managing-site-performance-and-scalability/caching-to-improve-performance/caching-overview#s-drupal-performance-resources)."
+  },
+  "node_modules/lighthouse-stack-packs/packs/drupal.js | uses-optimized-images": {
+    "message": "Zvažte použití [modulu](https://www.drupal.org/project/project_module?f%5B0%5D=&f%5B1%5D=&f%5B2%5D=im_vid_3%3A123&f%5B3%5D=&f%5B4%5D=sm_field_project_type%3Afull&f%5B5%5D=&f%5B6%5D=&text=optimize+images&solrsort=iss_project_release_usage+desc&op=Search), který automaticky optimalizuje obrázky nahrávané přes web a sníží jejich velikost, aniž by snížil kvalitu. Zajistěte také použití nativních [responzivních stylů obrázků](https://www.drupal.org/docs/8/mobile-guide/responsive-images-in-drupal-8) ze systému Drupal (k dispozici od verze 8) pro všechny obrázky vykreslované na webu."
+  },
+  "node_modules/lighthouse-stack-packs/packs/drupal.js | uses-rel-preconnect": {
+    "message": "Pokyny k předběžnému připojení nebo načtení zdrojů (preconnect nebo dns-prefetch) lze přidat instalací a konfigurací [modulu](https://www.drupal.org/project/project_module?f%5B0%5D=&f%5B1%5D=&f%5B2%5D=&f%5B3%5D=&f%5B4%5D=sm_field_project_type%3Afull&f%5B5%5D=&f%5B6%5D=&text=dns-prefetch&solrsort=iss_project_release_usage+desc&op=Search), který zprostředkuje hintingové instrukce pro zdroje user-agent."
+  },
+  "node_modules/lighthouse-stack-packs/packs/drupal.js | uses-responsive-images": {
+    "message": "Zajistěte použití nativních [responzivních stylů obrázků](https://www.drupal.org/docs/8/mobile-guide/responsive-images-in-drupal-8) ze systému Drupal (k dispozici od verze 8). Použijte responzivní styly obrázků při vykreslování polí obrázků prostřednictvím režimů zobrazení, zobrazení nebo u obrázků nahraných prostřednictvím editoru WYSIWYG."
+  },
+  "node_modules/lighthouse-stack-packs/packs/drupal.js | uses-webp-images": {
+    "message": "Zvažte instalaci a konfiguraci [modulu k využití formátu obrázků WebP](https://www.drupal.org/project/project_module?f%5B0%5D=&f%5B1%5D=&f%5B2%5D=&f%5B3%5D=&f%5B4%5D=sm_field_project_type%3Afull&f%5B5%5D=&f%5B6%5D=&text=webp&solrsort=iss_project_release_usage+desc&op=Search) na vašem webu. Tyto moduly automaticky vygenerují verze nahraných obrázků ve formátu WebP, což optimalizuje dobu načítání."
+  },
+  "node_modules/lighthouse-stack-packs/packs/joomla.js | efficient-animated-content": {
+    "message": "Zvažte nahrání souboru GIF do služby, pomocí které ho bude možné vložit jako video HTML5."
+  },
+  "node_modules/lighthouse-stack-packs/packs/joomla.js | offscreen-images": {
+    "message": "Nainstalujte [plugin Joomla pro líné načítání](https://extensions.joomla.org/instant-search/?jed_live%5Bquery%5D=lazy%20loading), který umožňuje odložit načítání obrázků mimo obrazovku, nebo přejděte na šablonu, která tuto funkci poskytuje. Od verze Joomla 4.0 lze vyhrazený plugin pro líné načítání aktivovat pomocí pluginu Content - Lazy Loading Images. Zvažte také použití [pluginu AMP](https://extensions.joomla.org/instant-search/?jed_live%5Bquery%5D=amp)."
+  },
+  "node_modules/lighthouse-stack-packs/packs/joomla.js | render-blocking-resources": {
+    "message": "K dispozici je celá řada pluginů Joomla, které vám pomohou [vložit kritické zdroje přímo do kódu](https://extensions.joomla.org/instant-search/?jed_live%5Bquery%5D=performance) nebo [odložit načítání méně důležitých zdrojů](https://extensions.joomla.org/instant-search/?jed_live%5Bquery%5D=performance). Upozorňujeme, že optimalizace pomocí těchto pluginů může narušit funkčnost vašich šablon nebo pluginů. Bude potřeba provést důkladné testování."
+  },
+  "node_modules/lighthouse-stack-packs/packs/joomla.js | server-response-time": {
+    "message": "Na reakční dobu serveru mají vliv šablony, rozšíření a specifikace serverů. Zvažte vyhledání optimalizované šablony, pečlivý výběr optimalizačního rozšíření či upgradování serveru."
+  },
+  "node_modules/lighthouse-stack-packs/packs/joomla.js | total-byte-weight": {
+    "message": "Zvažte zobrazování ukázek v kategoriích článků (např. prostřednictvím odkazu k načtení dalšího obsahu), snížení počtu článků zobrazených na jedné stránce, rozdělení dlouhých příspěvků na několik stránek nebo použití pluginu k línému načítání komentářů."
+  },
+  "node_modules/lighthouse-stack-packs/packs/joomla.js | unminified-css": {
+    "message": "K dispozici je celá řada [rozšíření Joomla](https://extensions.joomla.org/instant-search/?jed_live%5Bquery%5D=performance), které váš web mohou zrychlit zřetězením, minifikací a zkomprimováním stylů CSS. Tuto funkci také poskytují některé šablony."
+  },
+  "node_modules/lighthouse-stack-packs/packs/joomla.js | unminified-javascript": {
+    "message": "K dispozici je celá řada [rozšíření Joomla](https://extensions.joomla.org/instant-search/?jed_live%5Bquery%5D=performance), která váš web mohou zrychlit zřetězením, minifikací a zkomprimováním skriptů. Tuto funkci také poskytují některé šablony."
+  },
+  "node_modules/lighthouse-stack-packs/packs/joomla.js | unused-css-rules": {
+    "message": "Zvažte snížení nebo přepnutí počtu [rozšíření Joomla](https://extensions.joomla.org/), které na stránce načítají nepoužívané styly CSS. Rozšíření, která přidávají nadbytečné styly CSS, můžete vyhledat pomocí funkce [Coverage](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) v nástrojích pro vývojáře v Chromu. Odpovědný motiv či plugin můžete identifikovat podle adresy URL šablony stylů. Hledejte pluginy, které v seznamu mají mnoho šablon stylů, u nichž je při použití funkce Coverage velké množství kódu označeno červeně. Plugin by měl šablonu stylů do fronty zařadit jen v případě, že je na stránce opravdu použita."
+  },
+  "node_modules/lighthouse-stack-packs/packs/joomla.js | unused-javascript": {
+    "message": "Zvažte snížení nebo přepnutí počtu [rozšíření Joomla](https://extensions.joomla.org/), které na stránce načítají nepoužívaný kód JavaScript. Pluginy, které přidávají nadbytečný javascriptový kód, můžete vyhledat pomocí funkce [Coverage](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) v nástrojích pro vývojáře v Chromu. Odpovědné rozšíření poznáte podle adresy URL skriptu. Hledejte rozšíření, která v seznamu mají mnoho skriptů, u nichž je při použití funkce Coverage velké množství kódu označeno červeně. Rozšíření by mělo skript do fronty zařadit jen v případě, že se na stránce opravdu používá."
+  },
+  "node_modules/lighthouse-stack-packs/packs/joomla.js | uses-long-cache-ttl": {
+    "message": "Přečtěte si o [ukládání do mezipaměti prohlížeče v systému Joomla](https://docs.joomla.org/Cache)."
+  },
+  "node_modules/lighthouse-stack-packs/packs/joomla.js | uses-optimized-images": {
+    "message": "Zvažte použití [pluginu na optimalizaci obrázků](https://extensions.joomla.org/instant-search/?jed_live%5Bquery%5D=performance), který obrázky komprimuje, přičemž zachová jejich kvalitu."
+  },
+  "node_modules/lighthouse-stack-packs/packs/joomla.js | uses-responsive-images": {
+    "message": "Zvažte použití [pluginu pro responzivní obrázky](https://extensions.joomla.org/instant-search/?jed_live%5Bquery%5D=responsive%20images), abyste ve svém obsahu mohli použít responzivní obrázky."
+  },
+  "node_modules/lighthouse-stack-packs/packs/joomla.js | uses-text-compression": {
+    "message": "Kompresi textu můžete aktivovat tak, že povolíte funkci Komprese stránek Gzip v nastavení Joomla (Systém > Globální konfigurace > Server)."
+  },
+  "node_modules/lighthouse-stack-packs/packs/joomla.js | uses-webp-images": {
+    "message": "Zvažte použití [pluginu](https://extensions.joomla.org/instant-search/?jed_live%5Bquery%5D=webp) nebo služby, která nahrané obrázky automaticky převede na optimální formáty."
+  },
+  "node_modules/lighthouse-stack-packs/packs/magento.js | critical-request-chains": {
+    "message": "Pokud javascriptové podklady neslučujete do balíčků, zvažte použití nástroje [baler](https://github.com/magento/baler)."
+  },
+  "node_modules/lighthouse-stack-packs/packs/magento.js | disable-bundling": {
+    "message": "Vypněte [minifikaci a slučování souborů JavaScript do balíčků](https://devdocs.magento.com/guides/v2.3/frontend-dev-guide/themes/js-bundling.html) integrované v platformě Magento a zvažte namísto nich použití nástroje [baler](https://github.com/magento/baler/)."
+  },
+  "node_modules/lighthouse-stack-packs/packs/magento.js | font-display": {
+    "message": "Při [definování vlastních písem](https://devdocs.magento.com/guides/v2.3/frontend-dev-guide/css-topics/using-fonts.html) zadejte `@font-display`."
+  },
+  "node_modules/lighthouse-stack-packs/packs/magento.js | offscreen-images": {
+    "message": "Zvažte úpravu šablon produktů a katalogu s cílem využít funkci webové platformy pro [líné načítání](https://web.dev/native-lazy-loading)."
+  },
+  "node_modules/lighthouse-stack-packs/packs/magento.js | time-to-first-byte": {
+    "message": "Použijte [integraci platformy Magento s nástrojem Varnish](https://devdocs.magento.com/guides/v2.3/config-guide/varnish/config-varnish.html)."
+  },
+  "node_modules/lighthouse-stack-packs/packs/magento.js | unminified-css": {
+    "message": "Ve vývojářských nastaveních obchodu zapněte možnost minifikace souborů CSS. [Další informace](https://devdocs.magento.com/guides/v2.3/performance-best-practices/configuration.html?itm_source=devdocs&itm_medium=search_page&itm_campaign=federated_search&itm_term=minify%20css%20files)"
+  },
+  "node_modules/lighthouse-stack-packs/packs/magento.js | unminified-javascript": {
+    "message": "Všechny javascriptové zdroje při implementaci statického obsahu minifikujte pomocí nástroje [Terser](https://www.npmjs.com/package/terser) a integrovanou funkci minifikace zakažte."
+  },
+  "node_modules/lighthouse-stack-packs/packs/magento.js | unused-javascript": {
+    "message": "Vypněte [slučování souborů JavaScript do balíčků](https://devdocs.magento.com/guides/v2.3/frontend-dev-guide/themes/js-bundling.html) integrované v platformě Magento."
+  },
+  "node_modules/lighthouse-stack-packs/packs/magento.js | uses-optimized-images": {
+    "message": "Zkuste v tržišti [Magento Marketplace](https://marketplace.magento.com/catalogsearch/result/?q=optimize%20image) vyhledat různá rozšíření od třetích stran určená k optimalizaci obrázků."
+  },
+  "node_modules/lighthouse-stack-packs/packs/magento.js | uses-rel-preconnect": {
+    "message": "Pokyny k předběžnému připojení nebo načtení zdrojů (preconnect nebo dns-prefetch) lze přidat [upravením rozvržení motivů](https://devdocs.magento.com/guides/v2.3/frontend-dev-guide/layouts/xml-manage.html)."
+  },
+  "node_modules/lighthouse-stack-packs/packs/magento.js | uses-rel-preload": {
+    "message": "Značky `<link rel=preload>` lze přidat [úpravou rozvržení motivů](https://devdocs.magento.com/guides/v2.3/frontend-dev-guide/layouts/xml-manage.html)."
+  },
+  "node_modules/lighthouse-stack-packs/packs/magento.js | uses-webp-images": {
+    "message": "Zkuste v online tržišti [Magento Marketplace](https://marketplace.magento.com/catalogsearch/result/?q=webp) vyhledat rozšíření třetích stran, která umožňují použití novějších formátů obrázků."
+  },
+  "node_modules/lighthouse-stack-packs/packs/react.js | dom-size": {
+    "message": "Pokud na stránce vykreslujete mnoho opakujících se prvků, zvažte použití windowingové knihovny, jako je `react-window`, která minimalizuje počet vytvářených uzlů DOM. [Další informace](https://web.dev/virtualize-long-lists-react-window/) Minimalizujte také počet překreslení pomocí funkcí [`shouldComponentUpdate`](https://reactjs.org/docs/optimizing-performance.html#shouldcomponentupdate-in-action), [`PureComponent`](https://reactjs.org/docs/react-api.html#reactpurecomponent) nebo [`React.memo`](https://reactjs.org/docs/react-api.html#reactmemo), a pokud používáte hooky `Effect`, [přeskakujte efekty](https://reactjs.org/docs/hooks-effect.html#tip-optimizing-performance-by-skipping-effects), dokud se nezmění určité závislosti."
+  },
+  "node_modules/lighthouse-stack-packs/packs/react.js | redirects": {
+    "message": "Pokud používáte React Router, minimalizujte použití komponenty `<Redirect>` k [navigaci po trase](https://reacttraining.com/react-router/web/api/Redirect)."
+  },
+  "node_modules/lighthouse-stack-packs/packs/react.js | time-to-first-byte": {
+    "message": "Pokud některé komponenty React vykreslujete na straně serveru, zvažte použití metody `renderToNodeStream()` nebo `renderToStaticNodeStream()`, která klientovi umožní přijímat různé části označení a dosazovat do nich data samostatně namísto všech najednou. [Další informace](https://reactjs.org/docs/react-dom-server.html#rendertonodestream)"
+  },
+  "node_modules/lighthouse-stack-packs/packs/react.js | unminified-css": {
+    "message": "Pokud váš sestavovací systém minifikuje soubory CSS automaticky, dejte pozor, abyste implementovali produkční sestavení aplikace. Můžete to zkontrolovat pomocí rozšíření React Developer Tools. [Další informace](https://reactjs.org/docs/optimizing-performance.html#use-the-production-build)"
+  },
+  "node_modules/lighthouse-stack-packs/packs/react.js | unminified-javascript": {
+    "message": "Pokud váš sestavovací systém minifikuje soubory JavaScriptu automaticky, dejte pozor, abyste implementovali produkční sestavení aplikace. Můžete to zkontrolovat pomocí rozšíření React Developer Tools. [Další informace](https://reactjs.org/docs/optimizing-performance.html#use-the-production-build)"
+  },
+  "node_modules/lighthouse-stack-packs/packs/react.js | unused-javascript": {
+    "message": "Pokud vykreslení neprovádíte na straně serveru, [rozdělte balíčky JavaScriptu](https://web.dev/code-splitting-suspense/) pomocí metody `React.lazy()`. Jinak kód rozdělte pomocí knihovny třetí strany, jako je například [loadable-components](https://www.smooth-code.com/open-source/loadable-components/docs/getting-started/)."
+  },
+  "node_modules/lighthouse-stack-packs/packs/react.js | user-timings": {
+    "message": "Změřte rychlost vykreslování komponent pomocí nástroje React DevTools Profiler, který využívá rozhraní Profiler API. [Další informace](https://reactjs.org/blog/2018/09/10/introducing-the-react-profiler.html)"
+  },
+  "node_modules/lighthouse-stack-packs/packs/wordpress.js | efficient-animated-content": {
+    "message": "Zvažte nahrání souboru GIF do služby, pomocí které ho bude možné vložit jako video HTML5."
+  },
+  "node_modules/lighthouse-stack-packs/packs/wordpress.js | offscreen-images": {
     "message": "Nainstalujte [plugin služby WordPress pro líné načítání](https://wordpress.org/plugins/search/lazy+load/), který umožňuje odložit načítání obrázků mimo obrazovku, nebo přejděte na motiv, který tuto funkci poskytuje. Zvažte také použití [pluginu AMP](https://wordpress.org/plugins/amp/)."
   },
-  "stack-packs/packs/wordpress.js | render_blocking_resources": {
+  "node_modules/lighthouse-stack-packs/packs/wordpress.js | render-blocking-resources": {
     "message": "K dispozici je celá řada pluginů služby WordPress, které vám pomohou [vložit kritické podklady přímo do kódu](https://wordpress.org/plugins/search/critical+css/) nebo [odložit načítání méně důležitých zdrojů](https://wordpress.org/plugins/search/defer+css+javascript/). Upozorňujeme, že optimalizace pomocí těchto pluginů může narušit funkčnost vašeho motivu nebo pluginů. V kódu proto pravděpodobně budete muset provést změny."
   },
-  "stack-packs/packs/wordpress.js | server_response_time": {
+  "node_modules/lighthouse-stack-packs/packs/wordpress.js | time-to-first-byte": {
     "message": "Na reakční dobu serveru mají vliv motivy, pluginy a specifikace serverů. Zvažte vyhledání optimalizovaného motivu, pečlivý výběr optimalizačního pluginu či upgradování serveru."
   },
-  "stack-packs/packs/wordpress.js | total_byte_weight": {
+  "node_modules/lighthouse-stack-packs/packs/wordpress.js | total-byte-weight": {
     "message": "Zvažte zobrazování ukázek v seznamech příspěvků (např. prostřednictvím značky k načtení dalšího obsahu), snížení počtu příspěvků zobrazených na jedné stránce, rozdělení dlouhých příspěvků na několik stránek nebo použití pluginu k línému načítání komentářů."
   },
-  "stack-packs/packs/wordpress.js | unminified_css": {
+  "node_modules/lighthouse-stack-packs/packs/wordpress.js | unminified-css": {
     "message": "K dispozici je celá řada [pluginů služby WordPress](https://wordpress.org/plugins/search/minify+css/), které web mohou zrychlit zřetězením, minifikací a komprimací stylů. Pokud je to možné, můžete minifikaci provést také předem pomocí procesu sestavení."
   },
-  "stack-packs/packs/wordpress.js | unminified_javascript": {
+  "node_modules/lighthouse-stack-packs/packs/wordpress.js | unminified-javascript": {
     "message": "K dispozici je celá řada [pluginů služby WordPress](https://wordpress.org/plugins/search/minify+javascript/), které váš web mohou zrychlit zřetězením, minifikací a zkomprimováním skriptů. Pokud je to možné, můžete minifikaci provést také předem pomocí procesu sestavení."
   },
-  "stack-packs/packs/wordpress.js | unused_css_rules": {
+  "node_modules/lighthouse-stack-packs/packs/wordpress.js | unused-css-rules": {
     "message": "Zvažte snížení počtu [pluginů služby WordPress](https://wordpress.org/plugins/), které na stránce načítají nevyužité styly CSS. Pluginy, které přidávají nadbytečné styly CSS, můžete vyhledat pomocí funkce [Coverage](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) v nástrojích pro vývojáře v Chromu. Odpovědný motiv či plugin můžete identifikovat podle adresy URL šablony stylů. Hledejte pluginy, které v seznamu mají mnoho šablon stylů, u nichž je při použití funkce Coverage velké množství kódu označeno červeně. Plugin by měl šablonu stylů do fronty zařadit jen v případě, že je na stránce opravdu použita."
   },
-  "stack-packs/packs/wordpress.js | unused_javascript": {
+  "node_modules/lighthouse-stack-packs/packs/wordpress.js | unused-javascript": {
     "message": "Zvažte snížení počtu [pluginů služby WordPress](https://wordpress.org/plugins/), které na stránce načítají nepoužívaný kód JavaScript. Pluginy, které přidávají nadbytečný javascriptový kód, můžete vyhledat pomocí funkce [Coverage](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) v nástrojích pro vývojáře v Chromu. Odpovědný motiv či plugin poznáte podle adresy URL skriptu. Hledejte pluginy, které v seznamu mají mnoho skriptů, u nichž je při použití funkce Coverage velké množství kódu označeno červeně. Plugin by měl skript do fronty zařadit jen v případě, že se na stránce opravdu používá."
   },
-  "stack-packs/packs/wordpress.js | uses_long_cache_ttl": {
+  "node_modules/lighthouse-stack-packs/packs/wordpress.js | uses-long-cache-ttl": {
     "message": "Přečtěte si o [ukládání do mezipaměti prohlížeče ve službě WordPress](https://wordpress.org/support/article/optimization/#browser-caching)."
   },
-  "stack-packs/packs/wordpress.js | uses_optimized_images": {
+  "node_modules/lighthouse-stack-packs/packs/wordpress.js | uses-optimized-images": {
     "message": "Zvažte použití [pluginu služby WordPress na optimalizaci obrázků](https://wordpress.org/plugins/search/optimize+images/), který obrázky komprimuje, přičemž zachová jejich kvalitu."
   },
-  "stack-packs/packs/wordpress.js | uses_responsive_images": {
+  "node_modules/lighthouse-stack-packs/packs/wordpress.js | uses-responsive-images": {
     "message": "Nahrajte obrázky přímo prostřednictvím [mediální knihovny](https://wordpress.org/support/article/media-library-screen/), abyste zajistili dostupnost potřebných velikostí obrázků, a poté je vložte z mediální knihovny, případně použití optimálních velikostí obrázků zajistěte pomocí widgetu pro obrázky (včetně obrázků pro responzivní dělicí body). Obrázky v této velikosti: `Full Size` používejte pouze v případě, že jsou jejich rozměry adekvátní k použití. [Další informace](https://wordpress.org/support/article/inserting-images-into-posts-and-pages/)"
   },
-  "stack-packs/packs/wordpress.js | uses_text_compression": {
+  "node_modules/lighthouse-stack-packs/packs/wordpress.js | uses-text-compression": {
     "message": "Můžete v konfiguraci webového serveru zapnout kompresi textu."
   },
-  "stack-packs/packs/wordpress.js | uses_webp_images": {
+  "node_modules/lighthouse-stack-packs/packs/wordpress.js | uses-webp-images": {
     "message": "Zvažte použití [pluginu](https://wordpress.org/plugins/search/convert+webp/) nebo služby, která nahrané obrázky automaticky převede na optimální formáty."
   }
 }

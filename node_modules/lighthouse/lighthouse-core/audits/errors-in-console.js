@@ -23,8 +23,6 @@ const UIStrings = {
   description: 'Errors logged to the console indicate unresolved problems. ' +
     'They can come from network request failures and other browser concerns. ' +
     '[Learn more](https://web.dev/errors-in-console/)',
-  /**  Label for a column in a data table; entries in the column will be the descriptions of logged browser errors. */
-  columnDesc: 'Description',
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);
@@ -41,7 +39,7 @@ class ErrorLogs extends Audit {
       title: str_(UIStrings.title),
       failureTitle: str_(UIStrings.failureTitle),
       description: str_(UIStrings.description),
-      requiredArtifacts: ['ConsoleMessages', 'RuntimeExceptions'],
+      requiredArtifacts: ['ConsoleMessages'],
     };
   }
 
@@ -80,43 +78,27 @@ class ErrorLogs extends Audit {
    * @return {LH.Audit.Product}
    */
   static audit(artifacts, context) {
-    const auditOptions = /** @type {AuditOptions} */ (context.options);
+    /** @type {AuditOptions} */
+    const auditOptions = context.options;
 
-    const consoleEntries = artifacts.ConsoleMessages;
-    const runtimeExceptions = artifacts.RuntimeExceptions;
     /** @type {Array<{source: string, description: string|undefined, url: string|undefined}>} */
-    const consoleRows =
-      consoleEntries.filter(log => log.entry && log.entry.level === 'error')
+    const consoleRows = artifacts.ConsoleMessages
+      .filter(item => item.level === 'error')
       .map(item => {
         return {
-          source: item.entry.source,
-          description: item.entry.text,
-          url: item.entry.url,
+          source: item.source,
+          description: item.text,
+          url: item.url,
         };
       });
 
-    const runtimeExRows =
-      runtimeExceptions.filter(entry => entry.exceptionDetails !== undefined)
-      .map(entry => {
-        const description = entry.exceptionDetails.exception ?
-          entry.exceptionDetails.exception.description : entry.exceptionDetails.text;
-
-        return {
-          source: 'Runtime.exception',
-          description,
-          url: entry.exceptionDetails.url,
-        };
-      });
-
-    const tableRows = ErrorLogs.filterAccordingToOptions(
-      consoleRows.concat(runtimeExRows),
-      auditOptions
-    ).sort((a, b) => (a.description || '').localeCompare(b.description || ''));
+    const tableRows = ErrorLogs.filterAccordingToOptions(consoleRows, auditOptions)
+      .sort((a, b) => (a.description || '').localeCompare(b.description || ''));
 
     /** @type {LH.Audit.Details.Table['headings']} */
     const headings = [
       {key: 'url', itemType: 'url', text: str_(i18n.UIStrings.columnURL)},
-      {key: 'description', itemType: 'code', text: str_(UIStrings.columnDesc)},
+      {key: 'description', itemType: 'code', text: str_(i18n.UIStrings.columnDescription)},
     ];
 
     const details = Audit.makeTableDetails(headings, tableRows);

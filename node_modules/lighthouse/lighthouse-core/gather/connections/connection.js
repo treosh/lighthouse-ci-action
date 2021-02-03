@@ -104,7 +104,8 @@ class Connection {
    * @protected
    */
   handleRawMessage(message) {
-    const object = /** @type {LH.Protocol.RawMessage} */(JSON.parse(message));
+    /** @type {LH.Protocol.RawMessage} */
+    const object = JSON.parse(message);
 
     // Responses to commands carry "id" property, while events do not.
     if (!('id' in object)) {

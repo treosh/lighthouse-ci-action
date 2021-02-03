@@ -254,15 +254,6 @@
   "lighthouse-core/audits/accessibility/label.js | title": {
     "message": "องค์ประกอบฟอร์มมีป้ายกำกับที่เชื่อมโยงอยู่"
   },
-  "lighthouse-core/audits/accessibility/layout-table.js | description": {
-    "message": "ตารางที่ใช้สำหรับการออกแบบต้องไม่มีองค์ประกอบข้อมูล เช่น องค์ประกอบ th หรือคำอธิบายภาพ หรือแอตทริบิวต์สรุป เพราะอาจสร้างความสับสนระหว่างการใช้งานของผู้ใช้โปรแกรมอ่านหน้าจอ [ดูข้อมูลเพิ่มเติม](https://web.dev/layout-table/)"
-  },
-  "lighthouse-core/audits/accessibility/layout-table.js | failureTitle": {
-    "message": "องค์ประกอบ `<table>` สำหรับการนำเสนอไม่หลีกเลี่ยงการใช้ `<th>`, `<caption>` หรือแอตทริบิวต์ `[summary]`"
-  },
-  "lighthouse-core/audits/accessibility/layout-table.js | title": {
-    "message": "องค์ประกอบ `<table>` สำหรับการนำเสนอหลีกเลี่ยงการใช้ `<th>`, `<caption>` หรือแอตทริบิวต์ `[summary]`"
-  },
   "lighthouse-core/audits/accessibility/link-name.js | description": {
     "message": "ข้อความลิงก์ (และข้อความสำรองสำหรับรูปภาพเมื่อใช้เป็นลิงก์) ที่แยกแยะได้ ไม่ซ้ำกัน และโฟกัสได้ ช่วยปรับปรุงประสบการณ์การไปยังส่วนต่างๆ สำหรับผู้ใช้โปรแกรมอ่านหน้าจอ [ดูข้อมูลเพิ่มเติม](https://web.dev/link-name/)"
   },
@@ -362,15 +353,6 @@
   "lighthouse-core/audits/accessibility/video-caption.js | title": {
     "message": "องค์ประกอบ `<video>` มีองค์ประกอบ `<track>` ที่มี `[kind=\"captions\"]`"
   },
-  "lighthouse-core/audits/accessibility/video-description.js | description": {
-    "message": "คำอธิบายเสียงให้ข้อมูลเกี่ยวข้องสำหรับวิดีโอที่สื่อสารผ่านบทพูดไม่ได้ เช่น สีหน้าและฉากต่างๆ [ดูข้อมูลเพิ่มเติม](https://web.dev/video-description/)"
-  },
-  "lighthouse-core/audits/accessibility/video-description.js | failureTitle": {
-    "message": "องค์ประกอบ `<video>` ไม่มีองค์ประกอบ `<track>` ที่มี `[kind=\"description\"]`"
-  },
-  "lighthouse-core/audits/accessibility/video-description.js | title": {
-    "message": "องค์ประกอบ `<video>` มีองค์ประกอบ `<track>` ที่มี `[kind=\"description\"]`"
-  },
   "lighthouse-core/audits/apple-touch-icon.js | description": {
     "message": "ให้ระบุ `apple-touch-icon` เพื่อให้ปรากฏใน iOS ได้อย่างดีที่สุดเมื่อผู้ใช้เพิ่ม Progressive Web App ลงในหน้าจอหลัก โดยต้องชี้ไปที่สี่เหลี่ยมจตุรัสแบบไม่โปร่งใสขนาด 192 พิกเซล (หรือ 180 พิกเซล) รูปแบบ PNG [ดูข้อมูลเพิ่มเติม](https://web.dev/apple-touch-icon/)"
   },
@@ -382,6 +364,33 @@
   },
   "lighthouse-core/audits/apple-touch-icon.js | title": {
     "message": "มี `apple-touch-icon` ที่ถูกต้อง"
+  },
+  "lighthouse-core/audits/autocomplete.js | columnCurrent": {
+    "message": "ค่าปัจจุบัน"
+  },
+  "lighthouse-core/audits/autocomplete.js | columnSuggestions": {
+    "message": "โทเค็นแนะนำ"
+  },
+  "lighthouse-core/audits/autocomplete.js | description": {
+    "message": "`autocomplete` ช่วยให้ผู้ใช้ส่งแบบฟอร์มได้เร็วขึ้น พิจารณาเปิดใช้โดยตั้งค่าแอตทริบิวต์ `autocomplete` เป็นค่าที่ถูกต้องเพื่ออำนวยความสะดวกแก่ผู้ใช้ [ดูข้อมูลเพิ่มเติม](https://developers.google.com/web/fundamentals/design-and-ux/input/forms#use_metadata_to_enable_auto-complete)"
+  },
+  "lighthouse-core/audits/autocomplete.js | failureTitle": {
+    "message": "เอลิเมนต์ `<input>` ไม่มีแอตทริบิวต์ `autocomplete` ที่ถูกต้อง"
+  },
+  "lighthouse-core/audits/autocomplete.js | manualReview": {
+    "message": "ต้องตรวจสอบโดยเจ้าหน้าที่"
+  },
+  "lighthouse-core/audits/autocomplete.js | reviewOrder": {
+    "message": "ตรวจสอบลำดับของโทเค็น"
+  },
+  "lighthouse-core/audits/autocomplete.js | title": {
+    "message": "เอลิเมนต์ `<input>` ใช้ `autocomplete` อย่างถูกต้อง"
+  },
+  "lighthouse-core/audits/autocomplete.js | warningInvalid": {
+    "message": "โทเค็น `autocomplete`: \"{token}\" ใน {snippet} ไม่ถูกต้อง"
+  },
+  "lighthouse-core/audits/autocomplete.js | warningOrder": {
+    "message": "ตรวจสอบลำดับของโทเค็น: \"{tokens}\" ใน {snippet}"
   },
   "lighthouse-core/audits/bootup-time.js | chromeExtensionsWarning": {
     "message": "ส่วนขยาย Chrome ส่งผลเสียต่อประสิทธิภาพในการโหลดของหน้านี้ ลองตรวจสอบหน้าในโหมดไม่ระบุตัวตนหรือจากโปรไฟล์ Chrome ที่ไม่มีส่วนขยาย"
@@ -507,7 +516,7 @@
     "message": "แสดงรูปภาพในรูปแบบสมัยใหม่"
   },
   "lighthouse-core/audits/content-width.js | description": {
-    "message": "หากความกว้างของเนื้อหาในแอปไม่ตรงกับความกว้างของวิวพอร์ต แอปอาจไม่ได้รับการเพิ่มประสิทธิภาพสำหรับหน้าจออุปกรณ์เคลื่อนที่ [ดูข้อมูลเพิ่มเติม](https://web.dev/content-width/)"
+    "message": "หากความกว้างของเนื้อหาในแอปไม่ตรงกับความกว้างของวิวพอร์ต แอปอาจไม่ได้รับการเพิ่มประสิทธิภาพเพื่อหน้าจออุปกรณ์เคลื่อนที่ [ดูข้อมูลเพิ่มเติม](https://web.dev/content-width/)"
   },
   "lighthouse-core/audits/content-width.js | explanation": {
     "message": "ขนาดวิวพอร์ต {innerWidth} พิกเซลไม่ตรงกับขนาดหน้าต่าง {outerWidth} พิกเซล"
@@ -558,7 +567,7 @@
     "message": "หลีกเลี่ยงการใช้แคชของแอปพลิเคชัน"
   },
   "lighthouse-core/audits/dobetterweb/charset.js | description": {
-    "message": "จำเป็นต้องประกาศการเข้ารหัสอักขระ ซึ่งทำได้โดยใช้แท็ก <meta> ใน 1024 ไบต์แรกของ HTML หรือในส่วนหัวการตอบกลับ HTTP ประเภทเนื้อหา [ดูข้อมูลเพิ่มเติม](https://web.dev/charset/)"
+    "message": "จำเป็นต้องประกาศการเข้ารหัสอักขระ ซึ่งทำได้โดยใช้แท็ก `<meta>` ใน 1024 ไบต์แรกของ HTML หรือในส่วนหัวการตอบกลับ HTTP ประเภทเนื้อหา [ดูข้อมูลเพิ่มเติม](https://web.dev/charset/)"
   },
   "lighthouse-core/audits/dobetterweb/charset.js | failureTitle": {
     "message": "ไม่มีการประกาศชุดอักขระหรือประกาศช้าเกินไปใน HTML"
@@ -714,7 +723,7 @@
     "message": "{itemCount,plural, =1{คำขอ 1 รายการไม่ได้แสดงผ่าน HTTP/2}other{คำขอ # รายการไม่ได้แสดงผ่าน HTTP/2}}"
   },
   "lighthouse-core/audits/dobetterweb/uses-http2.js | title": {
-    "message": "Use HTTP/2"
+    "message": "ใช้ HTTP/2"
   },
   "lighthouse-core/audits/dobetterweb/uses-passive-event-listeners.js | description": {
     "message": "ลองระบุ Listener เหตุการณ์แบบแตะและลูกกลิ้งเป็น `passive` เพื่อปรับปรุงประสิทธิภาพการเลื่อนของหน้าเว็บ [ดูข้อมูลเพิ่มเติม](https://web.dev/uses-passive-event-listeners/)"
@@ -724,9 +733,6 @@
   },
   "lighthouse-core/audits/dobetterweb/uses-passive-event-listeners.js | title": {
     "message": "ใช้ Listener แบบแพสซีฟเพื่อปรับปรุงประสิทธิภาพการเลื่อน"
-  },
-  "lighthouse-core/audits/errors-in-console.js | columnDesc": {
-    "message": "รายละเอียด"
   },
   "lighthouse-core/audits/errors-in-console.js | description": {
     "message": "ข้อผิดพลาดที่บันทึกลงในคอนโซลแสดงให้เห็นถึงปัญหาที่ไม่ได้รับการแก้ไข ข้อผิดพลาดอาจมาจากคำขอเครือข่ายที่ไม่สำเร็จ และปัญหาอื่นๆ เกี่ยวกับเบราว์เซอร์ [ดูข้อมูลเพิ่มเติม](https://web.dev/errors-in-console/)"
@@ -763,9 +769,6 @@
   },
   "lighthouse-core/audits/image-aspect-ratio.js | title": {
     "message": "แสดงรูปภาพที่มีสัดส่วนถูกต้อง"
-  },
-  "lighthouse-core/audits/image-aspect-ratio.js | warningCompute": {
-    "message": "ข้อมูลขนาดรูปภาพไมู่กต้อง {url}"
   },
   "lighthouse-core/audits/image-size-responsive.js | columnActual": {
     "message": "ขนาดจริง"
@@ -824,11 +827,23 @@
   "lighthouse-core/audits/is-on-https.js | warning": {
     "message": "อนุญาตแบบมีคำเตือน"
   },
+  "lighthouse-core/audits/large-javascript-libraries.js | columnLibraryName": {
+    "message": "ไลบรารี"
+  },
+  "lighthouse-core/audits/large-javascript-libraries.js | description": {
+    "message": "ไลบรารี JavaScript ขนาดใหญ่อาจทำให้ประสิทธิภาพต่ำ ขอแนะนำให้ใช้ไลบรารีขนาดเล็กที่มีฟังก์ชันการใช้งานเทียบเท่ากันเพื่อลดขนาด Bundle [ดูข้อมูลเพิ่มเติม](https://developers.google.com/web/fundamentals/performance/webpack/decrease-frontend-size#optimize_dependencies)"
+  },
+  "lighthouse-core/audits/large-javascript-libraries.js | displayValue": {
+    "message": "{libraryCount,plural, =1{พบไลบรารีขนาดใหญ่ 1 รายการ}other{พบไลบรารีขนาดใหญ่ # รายการ}}"
+  },
+  "lighthouse-core/audits/large-javascript-libraries.js | failureTitle": {
+    "message": "แทนที่ไลบรารี JavaScript ที่มีขนาดใหญ่เกินความจำเป็น"
+  },
+  "lighthouse-core/audits/large-javascript-libraries.js | title": {
+    "message": "หลีกเลี่ยงการใช้ไลบรารี JavaScript ขนาดใหญ่หากมีไลบรารีอื่นที่ขนาดเล็กกว่า"
+  },
   "lighthouse-core/audits/largest-contentful-paint-element.js | description": {
     "message": "นี่คือองค์ประกอบที่มีเนื้อหาเต็มขนาดใหญ่ที่สุดซึ่งแสดงผลภายในวิวพอร์ต [ดูข้อมูลเพิ่มเติม](https://web.dev/lighthouse-largest-contentful-paint/)"
-  },
-  "lighthouse-core/audits/largest-contentful-paint-element.js | displayValue": {
-    "message": "{itemCount,plural, =1{พบ 1 องค์ประกอบ}other{พบ # องค์ประกอบ}}"
   },
   "lighthouse-core/audits/largest-contentful-paint-element.js | title": {
     "message": "องค์ประกอบ Largest Contentful Paint"
@@ -839,29 +854,8 @@
   "lighthouse-core/audits/layout-shift-elements.js | description": {
     "message": "องค์ประกอบ DOM เหล่านี้มีส่วนอย่างมากที่สุดต่อ CLS ของหน้า"
   },
-  "lighthouse-core/audits/layout-shift-elements.js | displayValue": {
-    "message": "{nodeCount,plural, =1{พบ 1 องค์ประกอบ}other{พบ # องค์ประกอบ}}"
-  },
   "lighthouse-core/audits/layout-shift-elements.js | title": {
     "message": "หลีกเลี่ยงการเลื่อนเลย์เอาต์ขนาดใหญ่"
-  },
-  "lighthouse-core/audits/load-fast-enough-for-pwa.js | description": {
-    "message": "การโหลดหน้าเว็บที่รวดเร็วผ่านเครือข่ายมือถือช่วยให้มั่นใจว่าผู้ใช้ได้รับประสบการณ์การใช้งานที่ดีในอุปกรณ์เคลื่อนที่ [ดูข้อมูลเพิ่มเติม](https://web.dev/load-fast-enough-for-pwa/)"
-  },
-  "lighthouse-core/audits/load-fast-enough-for-pwa.js | displayValueText": {
-    "message": "โต้ตอบที่ {timeInMs, number, seconds} วินาที"
-  },
-  "lighthouse-core/audits/load-fast-enough-for-pwa.js | displayValueTextWithOverride": {
-    "message": "มีการโต้ตอบในเครือข่ายมือถือจำลองที่ {timeInMs, number, seconds} วินาที"
-  },
-  "lighthouse-core/audits/load-fast-enough-for-pwa.js | explanationLoadSlow": {
-    "message": "หน้าเว็บโหลดช้าเกินไปและไม่มีการโต้ตอบภายใน 10 วินาที ไปที่โอกาสและการวินิจฉัยในส่วน \"ประสิทธิภาพ\" เพื่อดูวิธีปรับปรุง"
-  },
-  "lighthouse-core/audits/load-fast-enough-for-pwa.js | failureTitle": {
-    "message": "การโหลดหน้าเว็บไม่เร็วพอเมื่อใช้เครือข่ายมือถือ"
-  },
-  "lighthouse-core/audits/load-fast-enough-for-pwa.js | title": {
-    "message": "การโหลดหน้าเว็บเร็วพอเมื่อใช้เครือข่ายมือถือ"
   },
   "lighthouse-core/audits/long-tasks.js | description": {
     "message": "ระบุงานที่ใช้เวลานานที่สุดในเทรดหลัก เหมาะสำหรับการระบุปัจจัยที่แย่ที่สุดที่ทำให้อินพุตล่าช้า [ดูข้อมูลเพิ่มเติม](https://web.dev/long-tasks-devtools/)"
@@ -962,20 +956,32 @@
   "lighthouse-core/audits/no-unload-listeners.js | title": {
     "message": "หลีกเลี่ยง Listener เหตุการณ์ `unload`"
   },
-  "lighthouse-core/audits/offline-start-url.js | description": {
-    "message": "Service Worker ช่วยให้เว็บแอปของคุณเชื่อถือได้ในสภาวะของเครือข่ายที่คาดการณ์ไม่ได้ [ดูข้อมูลเพิ่มเติม](https://web.dev/offline-start-url/)"
+  "lighthouse-core/audits/non-composited-animations.js | description": {
+    "message": "ภาพเคลื่อนไหวที่ไม่ได้ทำการ Composite อาจมีคุณภาพต่ำและทำให้ CLS เพิ่มขึ้น [ดูข้อมูลเพิ่มเติม](https://web.dev/non-composited-animations)"
   },
-  "lighthouse-core/audits/offline-start-url.js | errorLoading": {
-    "message": "การโหลดที่ผิดพลาดของ {url} ใน Service Worker ได้รหัสสถานะ {statusCode}"
+  "lighthouse-core/audits/non-composited-animations.js | displayValue": {
+    "message": "{itemCount,plural, =1{พบองค์ประกอบของภาพเคลื่อนไหว # รายการ}other{พบองค์ประกอบของภาพเคลื่อนไหว # รายการ}}"
   },
-  "lighthouse-core/audits/offline-start-url.js | failureTitle": {
-    "message": "`start_url` ไม่ตอบสนองด้วยรหัส 200 เมื่อออฟไลน์"
+  "lighthouse-core/audits/non-composited-animations.js | filterMayMovePixels": {
+    "message": "พร็อพเพอร์ตี้ที่เกี่ยวข้องกับตัวกรองอาจทำให้พิกเซลเคลื่อนที่"
   },
-  "lighthouse-core/audits/offline-start-url.js | title": {
-    "message": "`start_url` ตอบสนองด้วยรหัส 200 เมื่อออฟไลน์"
+  "lighthouse-core/audits/non-composited-animations.js | incompatibleAnimations": {
+    "message": "เป้าหมายมีภาพเคลื่อนไหวอื่นที่ใช้ร่วมกันไม่ได้"
   },
-  "lighthouse-core/audits/offline-start-url.js | warningCantStart": {
-    "message": "Lighthouse อ่าน `start_url` จากไฟล์ Manifest ไม่ได้ ด้วยเหตุนี้ ระบบจึงสันนิษฐานว่า `start_url` เป็น URL ของเอกสาร ข้อความแสดงข้อผิดพลาด: \"{manifestWarning}\""
+  "lighthouse-core/audits/non-composited-animations.js | nonReplaceCompositeMode": {
+    "message": "เอฟเฟกต์มีโหมด Composite อื่นที่ไม่ใช่ \"replace\""
+  },
+  "lighthouse-core/audits/non-composited-animations.js | title": {
+    "message": "หลีกเลี่ยงการใช้ภาพเคลื่อนไหวที่ไม่ได้ทำการ Composite"
+  },
+  "lighthouse-core/audits/non-composited-animations.js | transformDependsBoxSize": {
+    "message": "พร็อพเพอร์ตี้ที่เกี่ยวข้องกับการเปลี่ยนรูปแบบจะขึ้นอยู่กับขนาดช่อง"
+  },
+  "lighthouse-core/audits/non-composited-animations.js | unsupportedCSSProperty": {
+    "message": "{propertyCount,plural, =1{มีพร็อพเพอร์ตี้ CSS ที่ไม่รองรับ: {properties}}other{มีพร็อพเพอร์ตี้ CSS ที่ไม่รองรับ: {properties}}}"
+  },
+  "lighthouse-core/audits/non-composited-animations.js | unsupportedTimingParameters": {
+    "message": "เอฟเฟกต์มีพารามิเตอร์การจับเวลาที่ไม่รองรับ"
   },
   "lighthouse-core/audits/performance-budget.js | description": {
     "message": "ควบคุมให้จำนวนและขนาดของคำขอเครือข่ายอยู่ภายในเป้าหมายที่กำหนดตามงบประมาณประสิทธิภาพที่ให้มา [ดูข้อมูลเพิ่มเติม](https://developers.google.com/web/tools/lighthouse/audits/budgets)"
@@ -985,6 +991,21 @@
   },
   "lighthouse-core/audits/performance-budget.js | title": {
     "message": "งบประมาณประสิทธิภาพ"
+  },
+  "lighthouse-core/audits/preload-fonts.js | description": {
+    "message": "โหลดแบบอักษร `optional` ไว้ล่วงหน้าเพื่อให้ผู้เข้าชมครั้งแรกใช้ได้ [ดูข้อมูลเพิ่มเติม](https://web.dev/preload-optional-fonts/)"
+  },
+  "lighthouse-core/audits/preload-fonts.js | failureTitle": {
+    "message": "ไม่มีการโหลดแบบอักษรที่มีค่า `font-display: optional` ไว้ล่วงหน้า"
+  },
+  "lighthouse-core/audits/preload-fonts.js | title": {
+    "message": "มีการโหลดแบบอักษรที่มีค่า `font-display: optional` ไว้ล่วงหน้า"
+  },
+  "lighthouse-core/audits/preload-lcp-image.js | description": {
+    "message": "โหลดรูปภาพที่ใช้โดยองค์ประกอบ LCP ล่วงหน้าเพื่อปรับปรุงเวลา LCP [ดูข้อมูลเพิ่มเติม](https://web.dev/optimize-lcp/#preload-important-resources)"
+  },
+  "lighthouse-core/audits/preload-lcp-image.js | title": {
+    "message": "โหลดรูปภาพ Largest Contentful Paint ล่วงหน้า"
   },
   "lighthouse-core/audits/redirects-http.js | description": {
     "message": "หากคุณตั้งค่า HTTPS ไว้แล้ว ให้ตรวจสอบว่าได้เปลี่ยนเส้นทางการเข้าชมผ่าน HTTP ทั้งหมดไปยัง HTTPS เพื่อให้ผู้ใช้ทุกคนใช้ฟีเจอร์เว็บที่ปลอดภัยได้ [ดูข้อมูลเพิ่มเติม](https://web.dev/redirects-http/)"
@@ -1049,6 +1070,18 @@
   "lighthouse-core/audits/seo/crawlable-anchors.js | title": {
     "message": "รวบรวมข้อมูลลิงก์ได้"
   },
+  "lighthouse-core/audits/seo/font-size.js | additionalIllegibleText": {
+    "message": "ข้อความอื่นที่อ่านได้ไม่ชัดเจน"
+  },
+  "lighthouse-core/audits/seo/font-size.js | columnFontSize": {
+    "message": "ขนาดแบบอักษร"
+  },
+  "lighthouse-core/audits/seo/font-size.js | columnPercentPageText": {
+    "message": "% ของข้อความในหน้า"
+  },
+  "lighthouse-core/audits/seo/font-size.js | columnSelector": {
+    "message": "ตัวเลือก"
+  },
   "lighthouse-core/audits/seo/font-size.js | description": {
     "message": "ขนาดตัวอักษรที่เล็กกว่า 12 พิกเซลจะเล็กเกินไปจนอ่านไม่ออกและทำให้ผู้เข้าชมในอุปกรณ์เคลื่อนที่ต้อง “บีบเพื่อซูมเข้า” เพื่ออ่าน พยายามให้ข้อความในหน้าเว็บมากกว่า 60% มีขนาดอย่างน้อย 12 พิกเซล [ดูข้อมูลเพิ่มเติม](https://web.dev/font-size/)"
   },
@@ -1060,6 +1093,9 @@
   },
   "lighthouse-core/audits/seo/font-size.js | failureTitle": {
     "message": "เอกสารไม่ได้ใช้ขนาดตัวอักษรที่อ่านได้ชัดเจน"
+  },
+  "lighthouse-core/audits/seo/font-size.js | legibleText": {
+    "message": "ข้อความที่อ่านได้ชัดเจน"
   },
   "lighthouse-core/audits/seo/font-size.js | title": {
     "message": "เอกสารใช้ขนาดตัวอักษรที่อ่านได้ชัดเจน"
@@ -1226,9 +1262,6 @@
   "lighthouse-core/audits/themed-omnibox.js | title": {
     "message": "กำหนดสีธีมของแถบที่อยู่"
   },
-  "lighthouse-core/audits/third-party-summary.js | columnBlockingTime": {
-    "message": "เวลาในการบล็อกเทรดหลัก"
-  },
   "lighthouse-core/audits/third-party-summary.js | columnThirdParty": {
     "message": "บุคคลที่สาม"
   },
@@ -1257,13 +1290,13 @@
     "message": "งบประมาณด้านเวลา"
   },
   "lighthouse-core/audits/unsized-images.js | description": {
-    "message": "Always include explicit width and height on image elements to reduce layout shifts and improve CLS. [Learn more](https://web.dev/optimize-cls/#images-without-dimensions)"
+    "message": "กำหนดความกว้างและความยาวขององค์ประกอบรูปภาพอย่างชัดเจนเพื่อลดการขยับของเลย์เอาต์และปรับปรุง CLS [ดูข้อมูลเพิ่มเติม](https://web.dev/optimize-cls/#images-without-dimensions)"
   },
   "lighthouse-core/audits/unsized-images.js | failureTitle": {
-    "message": "Image elements do not have explicit `width` and `height`"
+    "message": "องค์ประกอบรูปภาพไม่มี `width` และ `height` ที่ชัดเจน"
   },
   "lighthouse-core/audits/unsized-images.js | title": {
-    "message": "Image elements have explicit `width` and `height`"
+    "message": "องค์ประกอบรูปภาพมี `width` และ `height` ที่ชัดเจน"
   },
   "lighthouse-core/audits/user-timings.js | columnType": {
     "message": "ประเภท"
@@ -1278,7 +1311,7 @@
     "message": "ระยะเวลาที่เจาะจงของผู้ใช้และระยะเวลาทั่วไป"
   },
   "lighthouse-core/audits/uses-rel-preconnect.js | crossoriginWarning": {
-    "message": "พบ <link> ที่เชื่อมต่อล่วงหน้าสำหรับ \"{securityOrigin}\" แต่เบราว์เซอร์ไม่ได้นำไปใช้งาน โปรดตรวจสอบว่าคุณใช้แอตทริบิวต์ `crossorigin` อย่างถูกต้องแล้ว"
+    "message": "พบ `<link rel=preconnect>` สำหรับ \"{securityOrigin}\" แต่เบราว์เซอร์ไม่ได้นำไปใช้งาน โปรดตรวจสอบว่าคุณใช้แอตทริบิวต์ `crossorigin` อย่างถูกต้องแล้ว"
   },
   "lighthouse-core/audits/uses-rel-preconnect.js | description": {
     "message": "พิจารณาเพิ่ม `preconnect` หรือ `dns-prefetch` ซึ่งบอกถึงทรัพยากรเพื่อสร้างการเชื่อมต่อกับต้นทางที่สำคัญของบุคคลที่สามตั้งแต่เนิ่นๆ [ดูข้อมูลเพิ่มเติม](https://web.dev/uses-rel-preconnect/)"
@@ -1287,16 +1320,37 @@
     "message": "เชื่อมต่อกับต้นทางที่จำเป็นล่วงหน้า"
   },
   "lighthouse-core/audits/uses-rel-preconnect.js | tooManyPreconnectLinksWarning": {
-    "message": "พบลิงก์ที่เชื่อมต่อล่วงหน้ามากกว่า 2 รายการ ควรใช้ลิงก์ที่เชื่อมต่อล่วงหน้าเท่าที่จำเป็นและใช้กับต้นทางที่สำคัญที่สุดเท่านั้น"
+    "message": "พบการเชื่อมต่อ `<link rel=preconnect>` มากกว่า 2 รายการ ควรใช้การเชื่อมต่อเช่นนี้เท่าที่จำเป็นและใช้กับต้นทางที่สำคัญที่สุดเท่านั้น"
+  },
+  "lighthouse-core/audits/uses-rel-preconnect.js | unusedWarning": {
+    "message": "พบ `<link rel=preconnect>` สำหรับ \"{securityOrigin}\" แต่เบราว์เซอร์ไม่ได้นำไปใช้งาน ใช้ `preconnect` กับต้นทางที่สำคัญซึ่งหน้าเว็บจะขออย่างแน่นอน"
   },
   "lighthouse-core/audits/uses-rel-preload.js | crossoriginWarning": {
-    "message": "พบ <link> ที่โหลดล่วงหน้าสำหรับ \"{preloadURL}\" แต่เบราว์เซอร์ไม่ได้นำไปใช้งาน โปรดตรวจสอบว่าคุณใช้แอตทริบิวต์ `crossorigin` อย่างถูกต้องแล้ว"
+    "message": "พบ `<link>` การโหลดล่วงหน้าสำหรับ \"{preloadURL}\" แต่เบราว์เซอร์ไม่ได้นำไปใช้งาน โปรดตรวจสอบว่าคุณใช้แอตทริบิวต์ `crossorigin` อย่างถูกต้องแล้ว"
   },
   "lighthouse-core/audits/uses-rel-preload.js | description": {
     "message": "พิจารณาใช้ `<link rel=preload>` เพื่อจัดลำดับความสำคัญในการเรียกทรัพยากรที่มีการขอให้โหลดหน้าเว็บภายหลัง [ดูข้อมูลเพิ่มเติม](https://web.dev/uses-rel-preload/)"
   },
   "lighthouse-core/audits/uses-rel-preload.js | title": {
     "message": "โหลดคำขอสำคัญล่วงหน้า"
+  },
+  "lighthouse-core/audits/valid-source-maps.js | columnMapURL": {
+    "message": "URL ของแผนที่"
+  },
+  "lighthouse-core/audits/valid-source-maps.js | description": {
+    "message": "แผนที่แหล่งที่มาจะแปลโค้ดที่มีการลดขนาดเป็นซอร์สโค้ดต้นฉบับ ซึ่งจะช่วยนักพัฒนาซอฟต์แวร์ในการแก้ไขข้อบกพร่องในเวอร์ชันที่ใช้งานจริง นอกจากนี้ Lighthouse ยังให้ข้อมูลเชิงลึกเพิ่มเติมได้ด้วย ลองพิจารณานำแผนที่แหล่งที่มาไปใช้งานเพื่อรับประโยชน์ดังกล่าว [ดูข้อมูลเพิ่มเติม](https://developers.google.com/web/tools/chrome-devtools/javascript/source-maps)"
+  },
+  "lighthouse-core/audits/valid-source-maps.js | failureTitle": {
+    "message": "ไม่มีแผนที่แหล่งที่มาของ JavaScript ขนาดใหญ่ของบุคคลที่หนึ่ง"
+  },
+  "lighthouse-core/audits/valid-source-maps.js | missingSourceMapErrorMessage": {
+    "message": "ไฟล์ JavaScript ขนาดใหญ่ไม่มีแผนที่แหล่งที่มา"
+  },
+  "lighthouse-core/audits/valid-source-maps.js | missingSourceMapItemsWarningMesssage": {
+    "message": "{missingItems,plural, =1{คำเตือน: มี 1 รายการที่ขาดไปใน `.sourcesContent`}other{คำเตือน: มี # รายการที่ขาดไปใน `.sourcesContent`}}"
+  },
+  "lighthouse-core/audits/valid-source-maps.js | title": {
+    "message": "หน้าเว็บมีแผนที่แหล่งที่มาถูกต้อง"
   },
   "lighthouse-core/audits/viewport.js | description": {
     "message": "เพิ่มแท็ก `<meta name=\"viewport\">` เพื่อเพิ่มประสิทธิภาพแอปสำหรับหน้าจออุปกรณ์เคลื่อนที่ [ดูข้อมูลเพิ่มเติม](https://web.dev/viewport/)"
@@ -1309,30 +1363,6 @@
   },
   "lighthouse-core/audits/viewport.js | title": {
     "message": "มีแท็ก `<meta name=\"viewport\">` ที่มี `width` หรือ `initial-scale`"
-  },
-  "lighthouse-core/audits/without-javascript.js | description": {
-    "message": "แอปควรแสดงเนื้อหาบางอย่างเมื่อมีการปิดใช้ JavaScript แม้จะเป็นเพียงการเตือนผู้ใช้ว่าการใช้แอปจำเป็นต้องใช้ JavaScript [ดูข้อมูลเพิ่มเติม](https://web.dev/without-javascript/)"
-  },
-  "lighthouse-core/audits/without-javascript.js | explanation": {
-    "message": "ส่วนเนื้อหาในหน้าควรแสดงเนื้อหาบางอย่างถ้าสคริปต์ในหน้าไม่พร้อมใช้งาน"
-  },
-  "lighthouse-core/audits/without-javascript.js | failureTitle": {
-    "message": "ไม่แสดงเนื้อหาทางเลือกเมื่อ JavaScript ไม่พร้อมใช้งาน"
-  },
-  "lighthouse-core/audits/without-javascript.js | title": {
-    "message": "มีเนื้อหาบางอย่างแสดงขึ้นเมื่อ JavaScript ไม่พร้อมใช้งาน"
-  },
-  "lighthouse-core/audits/works-offline.js | description": {
-    "message": "หากคุณกำลังสร้าง Progressive Web App ให้พิจารณาใช้ Service Worker เพื่อให้แอปทำงานแบบออฟไลน์ได้ [ดูข้อมูลเพิ่มเติม](https://web.dev/works-offline/)"
-  },
-  "lighthouse-core/audits/works-offline.js | failureTitle": {
-    "message": "หน้าปัจจุบันไม่ตอบสนองด้วยรหัส 200 เมื่อออฟไลน์"
-  },
-  "lighthouse-core/audits/works-offline.js | title": {
-    "message": "หน้าปัจจุบันตอบสนองด้วยรหัส 200 เมื่อออฟไลน์"
-  },
-  "lighthouse-core/audits/works-offline.js | warningNoLoad": {
-    "message": "หน้านี้อาจไม่โหลดขึ้นขณะออฟไลน์เนื่องจาก URL ทดสอบของคุณ ({requested}) มีการเปลี่ยนเส้นทางไปยัง \"{final}\" ลองทดสอบ URL ที่ 2 โดยตรง"
   },
   "lighthouse-core/config/default-config.js | a11yAriaGroupDescription": {
     "message": "นี่เป็นโอกาสปรับปรุงการใช้งาน ARIA ในแอปพลิเคชันของคุณ ซึ่งอาจช่วยให้ผู้ใช้ได้รับประสบการณ์การใช้งานเทคโนโลยีอำนวยความสะดวก เช่น โปรแกรมอ่านหน้าจอ ที่ดียิ่งขึ้น"
@@ -1451,9 +1481,6 @@
   "lighthouse-core/config/default-config.js | pwaCategoryTitle": {
     "message": "Progressive Web App"
   },
-  "lighthouse-core/config/default-config.js | pwaFastReliableGroupTitle": {
-    "message": "ทำงานเร็วและวางใจได้"
-  },
   "lighthouse-core/config/default-config.js | pwaInstallableGroupTitle": {
     "message": "ติดตั้งได้"
   },
@@ -1461,7 +1488,7 @@
     "message": "เพิ่มประสิทธิภาพ PWA แล้ว"
   },
   "lighthouse-core/config/default-config.js | seoCategoryDescription": {
-    "message": "การตรวจสอบเหล่านี้ช่วยให้มั่นใจว่าหน้าเว็บของคุณได้รับการเพิ่มประสิทธิภาพสำหรับการจัดอันดับผลลัพธ์ของเครื่องมือค้นหา มีปัจจัยอื่นๆ ที่ Lighthouse ไม่ได้ตรวจสอบซึ่งอาจส่งผลกระทบต่อการจัดอันดับของคุณในการค้นหา [ดูข้อมูลเพิ่มเติม](https://support.google.com/webmasters/answer/35769)"
+    "message": "การตรวจสอบเหล่านี้ช่วยให้มั่นใจว่าหน้าเว็บของคุณได้รับการเพิ่มประสิทธิภาพเพื่อการจัดอันดับผลลัพธ์ของเครื่องมือค้นหา มีปัจจัยอื่นๆ ที่ Lighthouse ไม่ได้ตรวจสอบซึ่งอาจส่งผลกระทบต่อการจัดอันดับของคุณในการค้นหา [ดูข้อมูลเพิ่มเติม](https://support.google.com/webmasters/answer/35769)"
   },
   "lighthouse-core/config/default-config.js | seoCategoryManualDescription": {
     "message": "เรียกใช้ตัวตรวจสอบความถูกต้องเพิ่มเติมเหล่านี้ในเว็บไซต์ของคุณเพื่อดูแนวทางปฏิบัติที่ดีที่สุดเพิ่มเติมเกี่ยวกับ SEO"
@@ -1487,6 +1514,9 @@
   "lighthouse-core/config/default-config.js | seoMobileGroupTitle": {
     "message": "เหมาะกับอุปกรณ์เคลื่อนที่"
   },
+  "lighthouse-core/gather/driver.js | warningData": {
+    "message": "{locationCount,plural, =1{อาจมีข้อมูลที่จัดเก็บไว้ที่ส่งผลกระทบต่อประสิทธิภาพการโหลดในตำแหน่ง {locations} ทดสอบหน้านี้ในหน้าต่างที่ไม่ระบุตัวตนเพื่อป้องกันไม่ให้ทรัพยากรเหล่านั้นส่งผลกระทบต่อคะแนนของคุณ}other{อาจมีข้อมูลที่จัดเก็บไว้ที่ส่งผลกระทบต่อประสิทธิภาพการโหลดในตำแหน่ง {locations} ทดสอบหน้านี้ในหน้าต่างที่ไม่ระบุตัวตนเพื่อป้องกันไม่ให้ทรัพยากรเหล่านั้นส่งผลกระทบต่อคะแนนของคุณ}}"
+  },
   "lighthouse-core/gather/gather-runner.js | warningRedirected": {
     "message": "หน้านี้อาจไม่โหลดขึ้นตามที่คาดไว้เนื่องจาก URL ทดสอบของคุณ ({requested}) มีการเปลี่ยนเส้นทางไปยัง {final} ลองทดสอบ URL ที่ 2 โดยตรง"
   },
@@ -1503,7 +1533,7 @@
     "message": "องค์ประกอบ"
   },
   "lighthouse-core/lib/i18n/i18n.js | columnFailingElem": {
-    "message": "Failing Elements"
+    "message": "องค์ประกอบที่ไม่ผ่านการตรวจสอบ"
   },
   "lighthouse-core/lib/i18n/i18n.js | columnLocation": {
     "message": "ตำแหน่ง"
@@ -1552,6 +1582,9 @@
   },
   "lighthouse-core/lib/i18n/i18n.js | displayValueByteSavings": {
     "message": "อาจประหยัดพื้นที่ได้ {wastedBytes, number, bytes} KiB"
+  },
+  "lighthouse-core/lib/i18n/i18n.js | displayValueElementsFound": {
+    "message": "{nodeCount,plural, =1{พบ 1 องค์ประกอบ}other{พบ # องค์ประกอบ}}"
   },
   "lighthouse-core/lib/i18n/i18n.js | displayValueMsSavings": {
     "message": "อาจประหยัดได้ {wastedMs, number, milliseconds} มิลลิวินาที"
@@ -1748,6 +1781,9 @@
   "lighthouse-core/report/html/renderer/util.js | runtimeNoEmulation": {
     "message": "ไม่มีการจำลอง"
   },
+  "lighthouse-core/report/html/renderer/util.js | runtimeSettingsAxeVersion": {
+    "message": "เวอร์ชัน Axe"
+  },
   "lighthouse-core/report/html/renderer/util.js | runtimeSettingsBenchmark": {
     "message": "ความแรงของ CPU/หน่วยความจำ"
   },
@@ -1805,139 +1841,226 @@
   "lighthouse-core/report/html/renderer/util.js | warningHeader": {
     "message": "คำเตือน "
   },
-  "stack-packs/packs/amp.js | efficient_animated_content": {
-    "message": "สำหรับเนื้อหาที่เป็นภาพเคลื่อนไหว ให้ใช้ [AMP-anim](https://amp.dev/documentation/components/amp-anim/) เพื่อลดการใช้ CPU ขณะที่เนื้อหายังคงอยู่นอกจอ"
+  "node_modules/lighthouse-stack-packs/packs/amp.js | efficient-animated-content": {
+    "message": "สำหรับเนื้อหาที่เป็นภาพเคลื่อนไหว ให้ใช้ [`amp-anim`](https://amp.dev/documentation/components/amp-anim/) เพื่อลดการใช้ CPU ขณะที่เนื้อหาไม่ได้อยู่ในหน้าจอ"
   },
-  "stack-packs/packs/amp.js | offscreen_images": {
-    "message": "ตรวจสอบให้แน่ใจว่าคุณกำลังใช้แท็ก `amp-img` ที่ถูกต้องสำหรับรูปภาพที่มีการโหลดแบบ Lazy Loading โดยอัตโนมัตินอกวิวพอร์ตแรก [ดูข้อมูลเพิ่มเติม](https://amp.dev/documentation/guides-and-tutorials/develop/media_iframes_3p/?format=websites#images)"
+  "node_modules/lighthouse-stack-packs/packs/amp.js | offscreen-images": {
+    "message": "ตรวจสอบว่าคุณกำลังใช้ [`amp-img`](https://amp.dev/documentation/components/amp-img/?format=websites) สำหรับรูปภาพเพื่อโหลดแบบ Lazy Loading โดยอัตโนมัติ [ดูข้อมูลเพิ่มเติม](https://amp.dev/documentation/guides-and-tutorials/develop/media_iframes_3p/?format=websites#images)"
   },
-  "stack-packs/packs/amp.js | render_blocking_resources": {
-    "message": "ใช้เครื่องมือ เช่น [AMP Optimizer](https://github.com/ampproject/amp-toolbox/tree/main/packages/optimizer) เพื่อ[แสดงเลย์เอาต์ AMP ฝั่งเซิร์ฟเวอร์](https://amp.dev/documentation/guides-and-tutorials/optimize-and-measure/server-side-rendering/)"
+  "node_modules/lighthouse-stack-packs/packs/amp.js | render-blocking-resources": {
+    "message": "ใช้เครื่องมือ เช่น [AMP Optimizer](https://github.com/ampproject/amp-toolbox/tree/master/packages/optimizer) เพื่อ[แสดงเลย์เอาต์ AMP ฝั่งเซิร์ฟเวอร์](https://amp.dev/documentation/guides-and-tutorials/optimize-and-measure/server-side-rendering/)"
   },
-  "stack-packs/packs/amp.js | unminified_css": {
+  "node_modules/lighthouse-stack-packs/packs/amp.js | unminified-css": {
     "message": "ดู[เอกสาร AMP](https://amp.dev/documentation/guides-and-tutorials/develop/style_and_layout/style_pages/) เพื่อให้แน่ใจว่าระบบรองรับรูปแบบทั้งหมด"
   },
-  "stack-packs/packs/amp.js | uses_responsive_images": {
-    "message": "`amp-img` องค์ประกอบรองรับ`srcset`แอตทริบิวต์เพื่อกำหนดว่าจะใช้เนื้อหาภาพใดตามขนาดของหน้าจอ  [ดูข้อมูลเพิ่มเติม](https://amp.dev/documentation/guides-and-tutorials/develop/style_and_layout/art_direction/)"
+  "node_modules/lighthouse-stack-packs/packs/amp.js | uses-responsive-images": {
+    "message": "คอมโพเนนต์ [`amp-img`](https://amp.dev/documentation/components/amp-img/?format=websites) รองรับแอตทริบิวต์ [`srcset`](https://web.dev/use-srcset-to-automatically-choose-the-right-image/) เพื่อกำหนดเนื้อหารูปภาพที่จะใช้ตามขนาดของหน้าจอ [ดูข้อมูลเพิ่มเติม](https://amp.dev/documentation/guides-and-tutorials/develop/style_and_layout/art_direction/)"
   },
-  "stack-packs/packs/amp.js | uses_webp_images": {
-    "message": "ลองแสดงคอมโพเนนต์ `amp-img` ทั้งหมดในรูปแบบ WebP โดยกำหนดการสำรองที่เหมาะสมให้กับเบราว์เซอร์อื่นด้วย [ดูข้อมูลเพิ่มเติม](https://amp.dev/documentation/components/amp-img/#example:-specifying-a-fallback-image)"
+  "node_modules/lighthouse-stack-packs/packs/amp.js | uses-webp-images": {
+    "message": "ลองแสดงคอมโพเนนต์ [`amp-img`](https://amp.dev/documentation/components/amp-img/?format=websites) ทั้งหมดในรูปแบบ WebP โดยกำหนดการสำรองที่เหมาะสมให้กับเบราว์เซอร์อื่นด้วย [ดูข้อมูลเพิ่มเติม](https://amp.dev/documentation/components/amp-img/#example:-specifying-a-fallback-image)"
   },
-  "stack-packs/packs/angular.js | dom_size": {
+  "node_modules/lighthouse-stack-packs/packs/angular.js | dom-size": {
     "message": "ลองใช้การเลื่อนเสมือนจริงด้วย Component Dev Kit (CDK) หากกำลังแสดงรายการที่ใหญ่มาก [ดูข้อมูลเพิ่มเติม](https://web.dev/virtualize-lists-with-angular-cdk/)"
   },
-  "stack-packs/packs/angular.js | total_byte_weight": {
-    "message": "ใช้[การแยกโค้กระดับเส้นทาง](https://web.dev/route-level-code-splitting-in-angular/)เพื่อลดขนาดกลุ่ม JavaScript และลองแคชเนื้อหาล่วงหน้าด้วย [Angular Service Worker](https://web.dev/precaching-with-the-angular-service-worker/)"
+  "node_modules/lighthouse-stack-packs/packs/angular.js | total-byte-weight": {
+    "message": "ใช้[การแยกโค้ดระดับเส้นทาง](https://web.dev/route-level-code-splitting-in-angular/)เพื่อลดขนาดกลุ่ม JavaScript และลองแคชเนื้อหาล่วงหน้าด้วย [Angular Service Worker](https://web.dev/precaching-with-the-angular-service-worker/)"
   },
-  "stack-packs/packs/angular.js | unminified_warning": {
+  "node_modules/lighthouse-stack-packs/packs/angular.js | unminified-warning": {
     "message": "หากคุณกำลังใช้ Angular CLI โปรดตรวจสอบให้แน่ใจว่ารุ่นดังกล่าวสร้างขึ้นในโหมดที่ใช้งานจริง [ดูข้อมูลเพิ่มเติม](https://angular.io/guide/deployment#enable-runtime-production-mode)"
   },
-  "stack-packs/packs/angular.js | unused_javascript": {
+  "node_modules/lighthouse-stack-packs/packs/angular.js | unused-javascript": {
     "message": "หากคุณกำลังใช้ Angular CLI ให้รวมแมปที่มาลงในรุ่นที่ใช้งานจริงเพื่อตรวจสอบกลุ่ม [ดูข้อมูลเพิ่มเติม](https://angular.io/guide/deployment#inspect-the-bundles)"
   },
-  "stack-packs/packs/angular.js | uses_rel_preload": {
+  "node_modules/lighthouse-stack-packs/packs/angular.js | uses-rel-preload": {
     "message": "โหลดเส้นทางล่วงหน้าก่อนเวลาเพื่อเร่งความเร็วในการไปยังส่วนต่างๆ [ดูข้อมูลเพิ่มเติม](https://web.dev/route-preloading-in-angular/)"
   },
-  "stack-packs/packs/angular.js | uses_responsive_images": {
+  "node_modules/lighthouse-stack-packs/packs/angular.js | uses-responsive-images": {
     "message": "ลองใช้ยูทิลิตี `BreakpointObserver` ใน Component Dev Kit (CDK) เพื่อจัดการเบรกพอยท์ของภาพ [ดูข้อมูลเพิ่มเติม](https://material.angular.io/cdk/layout/overview)"
   },
-  "stack-packs/packs/magento.js | critical_request_chains": {
-    "message": "หากไม่ได้รวมกลุ่มเนื้อหา JavaScript ให้ลองใช้ [Baler](https://github.com/magento/baler)"
-  },
-  "stack-packs/packs/magento.js | disable_bundling": {
-    "message": "ปิดใช้[การรวมกลุ่มและการลดขนาดของ JavaScript](https://devdocs.magento.com/guides/v2.3/frontend-dev-guide/themes/js-bundling.html) ในตัวของ Magento และลองใช้ [Baler](https://github.com/magento/baler/) แทน"
-  },
-  "stack-packs/packs/magento.js | font_display": {
-    "message": "ระบุ `@font-display` เมื่อ [ กำหนดฟอนต์ที่กำหนดเอง ](https://devdocs.magento.com/guides/v2.3/frontend-dev-guide/css-topics/using-fonts.html)"
-  },
-  "stack-packs/packs/magento.js | offscreen_images": {
-    "message": "ลองแก้ไขเทมเพลตผลิตภัณฑ์และแคตตาล็อกเพื่อใช้ประโยชน์จากฟีเจอร์[การโหลดแบบ Lazy Loading](https://web.dev/native-lazy-loading/) ของแพลตฟอร์มเว็บ"
-  },
-  "stack-packs/packs/magento.js | server_response_time": {
-    "message": "ใช้[การผสานรวม Varnish](https://devdocs.magento.com/guides/v2.3/config-guide/varnish/config-varnish.html) ของ Magento"
-  },
-  "stack-packs/packs/magento.js | unminified_css": {
-    "message": "เปิดใช้ตัวเลือก \"Minify CSS Files\" ในการตั้งค่านักพัฒนาซอฟต์แวร์ของร้านค้า [ดูข้อมูลเพิ่มเติม](https://devdocs.magento.com/guides/v2.3/performance-best-practices/configuration.html?itm_source=devdocs&itm_medium=search_page&itm_campaign=federated_search&itm_term=minify%20css%20files)"
-  },
-  "stack-packs/packs/magento.js | unminified_javascript": {
-    "message": "ใช้ [Terser](https://www.npmjs.com/package/terser) เพื่อลด Outfrom เนื้อหาของ JavaScript จากการใช้งานเนื้อหาและปิดใช้ฟีเจอร์การลดขนาดในตัว"
-  },
-  "stack-packs/packs/magento.js | unused_javascript": {
-    "message": "ปิดใช้[การรวมกลุ่ม JavaScript](https://devdocs.magento.com/guides/v2.3/frontend-dev-guide/themes/js-bundling.html) ในตัวของ Magento"
-  },
-  "stack-packs/packs/magento.js | uses_optimized_images": {
-    "message": "ลองค้นหาใน[ตลาดกลางของ Magento](https://marketplace.magento.com/catalogsearch/result/?q=optimize%20image) เพื่อหาส่วนขยายต่างๆ ของบุคคลที่สามเพื่อเพิ่มประสิทธิภาพให้รูปภาพ"
-  },
-  "stack-packs/packs/magento.js | uses_rel_preconnect": {
-    "message": "เพิ่มการเชื่อมต่อล่วงหน้าหรือคำแนะนำด้านทรัพยากรที่ DNS ดึงมาล่วงหน้าได้โดย[แก้ไขเลย์เอาต์ของธีม](https://devdocs.magento.com/guides/v2.3/frontend-dev-guide/layouts/xml-manage.html)"
-  },
-  "stack-packs/packs/magento.js | uses_rel_preload": {
-    "message": "เพิ่มแท็ก `<link rel=preload>` ได้โดย[แก้ไขเลย์เอาต์ของธีม](https://devdocs.magento.com/guides/v2.3/frontend-dev-guide/layouts/xml-manage.html)"
-  },
-  "stack-packs/packs/magento.js | uses_webp_images": {
-    "message": "ลองค้นหาใน[ตลาดกลางของ Magento](https://marketplace.magento.com/catalogsearch/result/?q=webp) เพื่อหาส่วนขยายต่างๆ ของบุคคลที่สามเพื่อใช้ประโยชน์จากรูปแบบรูปภาพที่ใหม่กว่า"
-  },
-  "stack-packs/packs/react.js | dom_size": {
-    "message": "ลองใช้ไลบรารี \"การสร้างกรอบเวลา\" เช่น `react-window` เพื่อลดจำนวนโหนดของ DOM ที่สร้างขึ้น หากกำลังแสดงองค์ประกอบซ้ำบนหน้านั้น [ดูข้อมูลเพิ่มเติม](https://web.dev/virtualize-long-lists-react-window/) และลดการแสดงซ้ำที่ไม่จำเป็นโดยใช้ [shouldComponentUpdate](https://reactjs.org/docs/optimizing-performance.html#shouldcomponentupdate-in-action), [PureComponent](https://reactjs.org/docs/react-api.html#reactpurecomponent) หรือ [React.memo](https://reactjs.org/docs/react-api.html#reactmemo) และ[ข้ามเอฟเฟกต์](https://reactjs.org/docs/hooks-effect.html#tip-optimizing-performance-by-skipping-effects)เฉพาะเมื่อการพึ่งพาบางประการเปลี่ยนแปลงไปหากคุณกำลังใช้ฮุก Effect เพื่อปรับปรุงประสิทธิภาพของรันไทม์"
-  },
-  "stack-packs/packs/react.js | redirects": {
-    "message": "หากคุณกำลังใช้ React Router ให้ลดการใช้ของคอมโพเนนต์ `<Redirect>` ในการ[ไปยังเส้นทางต่างๆ](https://reacttraining.com/react-router/web/api/Redirect)"
-  },
-  "stack-packs/packs/react.js | server_response_time": {
-    "message": "หากคุณกำลังแสดงคอมโพเนนต์ของ React ใดๆ บนฝั่งเซิร์ฟเวอร์ ให้ลองใช้ `renderToNodeStream()` หรือ `renderToStaticNodeStream()` เพื่อให้ลูกค้าได้รับและรวมส่วนต่างๆ ของมาร์กอัปแทนที่จะรวมทั้งหมดในคราวเดียว [ดูข้อมูลเพิ่มเติม](https://reactjs.org/docs/react-dom-server.html#rendertonodestream)"
-  },
-  "stack-packs/packs/react.js | unminified_css": {
-    "message": "หากระบบในรุ่นของคุณลดขนาดไฟล์ CSS โดยอัตโนมัติ โปรดตรวจสอบให้แน่ใจว่าคุณทำให้รุ่นที่ใช้งานจริงของแอปพลิเคชันใช้งานได้ ตรวจสอบเรื่องนี้ได้ด้วยส่วนขยายของ React Developer Tools [ดูข้อมูลเพิ่มเติม](https://reactjs.org/docs/optimizing-performance.html#use-the-production-build)"
-  },
-  "stack-packs/packs/react.js | unminified_javascript": {
-    "message": "หากระบบในรุ่นของคุณลดขนาดไฟล์ JS โดยอัตโนมัติ โปรดตรวจสอบให้แน่ใจว่าคุณทำให้รุ่นที่ใช้งานจริงของแอปพลิเคชันใช้งานได้ ตรวจสอบเรื่องนี้ได้ด้วยส่วนขยายของ React Developer Tools [ดูข้อมูลเพิ่มเติม](https://reactjs.org/docs/optimizing-performance.html#use-the-production-build)"
-  },
-  "stack-packs/packs/react.js | unused_javascript": {
-    "message": "หากคุณไม่ได้กำลังแสดงผลฝั่งเซิร์ฟเวอร์ ให้[แยกกลุ่ม JavaScript](https://web.dev/code-splitting-suspense/) ด้วย `React.lazy()` หรือแยกโค้ดโดยใช้ไลบรารีของบุคคลที่สาม เช่น [คอมโพเนนต์ที่โหลดได้](https://www.smooth-code.com/open-source/loadable-components/docs/getting-started/)"
-  },
-  "stack-packs/packs/react.js | user_timings": {
-    "message": "ใช้ React DevTools Profiler ซึ่งใช้ประโยชน์จาก Profiler API ในการวัดประสิทธิภาพในการแสดงผลของคอมโพเนนต์ [ดูข้อมูลเพิ่มเติม](https://reactjs.org/blog/2018/09/10/introducing-the-react-profiler.html)"
-  },
-  "stack-packs/packs/wordpress.js | efficient_animated_content": {
+  "node_modules/lighthouse-stack-packs/packs/drupal.js | efficient-animated-content": {
     "message": "ลองอัปโหลด GIF ไปยังบริการซึ่งจะทำให้ใช้ GIF เพื่อฝังเป็นวิดีโอ HTML5 ได้"
   },
-  "stack-packs/packs/wordpress.js | offscreen_images": {
+  "node_modules/lighthouse-stack-packs/packs/drupal.js | font-display": {
+    "message": "ระบุ `@font-display` เมื่อกำหนดแบบอักษรที่กำหนดเองในธีม"
+  },
+  "node_modules/lighthouse-stack-packs/packs/drupal.js | offscreen-images": {
+    "message": "ติดตั้ง[โมดูล Drupal](https://www.drupal.org/project/project_module?f%5B0%5D=&f%5B1%5D=&f%5B2%5D=im_vid_3%3A67&f%5B3%5D=&f%5B4%5D=sm_field_project_type%3Afull&f%5B5%5D=&f%5B6%5D=&text=%22lazy+load%22&solrsort=iss_project_release_usage+desc&op=Search) ที่โหลดรูปภาพแบบ Lazy Loading ได้ โมดูลนี้จะช่วยเลื่อนเวลาโหลดรูปภาพนอกจอภาพเพื่อปรับปรุงประสิทธิภาพ"
+  },
+  "node_modules/lighthouse-stack-packs/packs/drupal.js | render-blocking-resources": {
+    "message": "ลองใช้โมดูลเพื่อแทรก CSS และ JavaScript ที่สำคัญในหน้าหรือโมดูลที่อาจโหลดเนื้อหาแบบไม่พร้อมกันผ่าน JavaScript เช่น โมดูล[การรวม CSS/JS ขั้นสูง](https://www.drupal.org/project/advagg) โปรดระวังว่าการเพิ่มประสิทธิภาพโดยโมดูลนี้อาจทำให้เว็บไซต์เสียหาย ซึ่งน่าจะทำให้คุณต้องแก้ไขโค้ด"
+  },
+  "node_modules/lighthouse-stack-packs/packs/drupal.js | time-to-first-byte": {
+    "message": "ข้อกำหนดของธีม โมดูล และเซิร์ฟเวอร์ล้วนส่งผลต่อเวลาในการตอบสนองของเซิร์ฟเวอร์ ลองหาธีมที่เพิ่มประสิทธิภาพมากขึ้น พยายามเลือกโมดูลการเพิ่มประสิทธิภาพด้วยความระมัดระวัง และ/หรืออัปเกรดเซิร์ฟเวอร์ เซิร์ฟเวอร์โฮสติ้งควรใช้ประโยชน์จากการแคช PHP Opcode, การแคชหน่วยความจำเพื่อลดเวลาในการค้นหาฐานข้อมูล เช่น Redis หรือ Memcached รวมถึงตรรกะของแอปพลิเคชันที่เพิ่มประสิทธิภาพเพื่อให้เตรียมความพร้อมของหน้าได้เร็วขึ้น"
+  },
+  "node_modules/lighthouse-stack-packs/packs/drupal.js | total-byte-weight": {
+    "message": "ลองใช้[สไตล์รูปภาพที่ปรับเปลี่ยนตามอุปกรณ์](https://www.drupal.org/docs/8/mobile-guide/responsive-images-in-drupal-8)เพื่อลดขนาดของรูปภาพที่โหลดในหน้า หากคุณใช้มุมมองเพื่อดูรายการเนื้อหาหลายรายการในหน้า ให้ลองใช้การใส่เลขหน้าเพื่อจำกัดจำนวนของรายการเนื้อหาที่แสดงในหน้าหนึ่งๆ"
+  },
+  "node_modules/lighthouse-stack-packs/packs/drupal.js | unminified-css": {
+    "message": "ตรวจสอบว่าคุณได้เปิดใช้ \"รวมไฟล์ CSS\" ในหน้า \"การดูแลระบบ » การกำหนดค่า » การพัฒนา\" คุณกำหนดค่าตัวเลือกการรวมขั้นสูงยิ่งขึ้นผ่าน[โมดูลเพิ่มเติม](https://www.drupal.org/project/project_module?f%5B0%5D=&f%5B1%5D=&f%5B2%5D=im_vid_3%3A123&f%5B3%5D=&f%5B4%5D=sm_field_project_type%3Afull&f%5B5%5D=&f%5B6%5D=&text=css+aggregation&solrsort=iss_project_release_usage+desc&op=Search)ได้ด้วยเพื่อช่วยให้เว็บไซต์เร็วขึ้นได้ด้วยการเชื่อมโยง การลดขนาด และการบีบอัดสไตล์ CSS"
+  },
+  "node_modules/lighthouse-stack-packs/packs/drupal.js | unminified-javascript": {
+    "message": "ตรวจสอบว่าคุณได้เปิดใช้ \"รวมไฟล์ JavaScript\" ในหน้า \"การดูแลระบบ » การกำหนดค่า » การพัฒนา\" คุณกำหนดค่าตัวเลือกการรวมขั้นสูงยิ่งขึ้นผ่าน[โมดูลเพิ่มเติม](https://www.drupal.org/project/project_module?f%5B0%5D=&f%5B1%5D=&f%5B2%5D=im_vid_3%3A123&f%5B3%5D=&f%5B4%5D=sm_field_project_type%3Afull&f%5B5%5D=&f%5B6%5D=&text=javascript+aggregation&solrsort=iss_project_release_usage+desc&op=Search)ได้ด้วยเพื่อช่วยให้เว็บไซต์เร็วขึ้นได้ด้วยการเชื่อมโยง การลดขนาด และการบีบเนื้อหา JavaScript"
+  },
+  "node_modules/lighthouse-stack-packs/packs/drupal.js | unused-css-rules": {
+    "message": "ลองนำกฎ CSS ที่ไม่ได้ใช้ออกและแนบเฉพาะไลบรารี Drupal ที่จำเป็นลงในหน้าที่เกี่ยวข้องหรือคอมโพเนนต์ในหน้า ดูรายละเอียดได้ที่[ลิงก์เอกสารประกอบของ Drupal](https://www.drupal.org/docs/8/creating-custom-modules/adding-stylesheets-css-and-javascript-js-to-a-drupal-8-module#library) หากต้องการระบุไลบรารีที่แนบซึ่งเพิ่ม CSS โดยไม่จำเป็น ลองเรียกใช้ [Code Coverage](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) ใน DevTools ของ Chrome คุณระบุธีม/โมดูลที่รับผิดชอบได้จาก URL ของสไตล์ชีตเมื่อปิดใช้การรวม CSS ในเว็บไซต์ Drupal ของคุณ หาธีม/โมดูลที่มีสไตล์ชีตจำนวนมากอยู่ในรายการซึ่งมีสีแดงอยู่จำนวนมากใน Code Coverage ธีม/โมดูลควรเป็นเพียงตัวกำหนดลำดับของสไตล์ชีตเท่านั้นหากใช้ธีม/โมดูลในหน้าจริงๆ"
+  },
+  "node_modules/lighthouse-stack-packs/packs/drupal.js | unused-javascript": {
+    "message": "ลองนำเนื้อหา JavaScript ที่ไม่ได้ใช้ออก และแนบเฉพาะไลบรารี Drupal ที่จำเป็นลงในหน้าที่เกี่ยวข้องหรือคอมโพเนนต์ในหน้า ดูรายละเอียดได้ที่[ลิงก์เอกสารประกอบของ Drupal](https://www.drupal.org/docs/8/creating-custom-modules/adding-stylesheets-css-and-javascript-js-to-a-drupal-8-module#library) หากต้องการระบุไลบรารีที่แนบซึ่งเพิ่ม JavaScript โดยไม่จำเป็น ลองเรียกใช้ [Code Coverage](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) ใน DevTools ของ Chrome คุณระบุธีม/โมดูลที่รับผิดชอบได้จาก URL ของสคริปต์เมื่อปิดใช้การรวม JavaScript ในเว็บไซต์ Drupal ของคุณ หาธีม/โมดูลที่มีสคริปต์จำนวนมากอยู่ในรายการซึ่งมีสีแดงอยู่จำนวนมากใน Code Coverage ธีม/โมดูลควรเป็นเพียงตัวกำหนดลำดับของสคริปต์เท่านั้นหากใช้ธีม/โมดูลในหน้าจริงๆ"
+  },
+  "node_modules/lighthouse-stack-packs/packs/drupal.js | uses-long-cache-ttl": {
+    "message": "ตั้งค่า \"อายุสูงสุดของแคชในเบราว์เซอร์และพร็อกซี\" ในหน้า \"การดูแลระบบ » การกำหนดค่า » การพัฒนา\" อ่านเกี่ยวกับ[แคช Drupal และการเพิ่มประสิทธิภาพ](https://www.drupal.org/docs/7/managing-site-performance-and-scalability/caching-to-improve-performance/caching-overview#s-drupal-performance-resources)"
+  },
+  "node_modules/lighthouse-stack-packs/packs/drupal.js | uses-optimized-images": {
+    "message": "ลองใช้[โมดูล](https://www.drupal.org/project/project_module?f%5B0%5D=&f%5B1%5D=&f%5B2%5D=im_vid_3%3A123&f%5B3%5D=&f%5B4%5D=sm_field_project_type%3Afull&f%5B5%5D=&f%5B6%5D=&text=optimize+images&solrsort=iss_project_release_usage+desc&op=Search)ที่เพิ่มประสิทธิภาพและลดขนาดของรูปภาพที่อัปโหลดผ่านเว็บไซต์โดยอัตโนมัติขณะที่ยังคงรักษาคุณภาพไว้ และตรวจสอบว่าคุณกำลังใช้[สไตล์รูปภาพที่ปรับเปลี่ยนตามอุปกรณ์](https://www.drupal.org/docs/8/mobile-guide/responsive-images-in-drupal-8)แบบเนทีฟจาก Drupal (พร้อมใช้งานใน Drupal 8 ขึ้นไป) สำหรับรูปภาพทั้งหมดที่แสดงในเว็บไซต์"
+  },
+  "node_modules/lighthouse-stack-packs/packs/drupal.js | uses-rel-preconnect": {
+    "message": "เพิ่มการเชื่อมต่อล่วงหน้าหรือคำแนะนำด้านทรัพยากรที่ DNS ดึงมาล่วงหน้าได้โดยติดตั้งและกำหนดค่า[โมดูล](https://www.drupal.org/project/project_module?f%5B0%5D=&f%5B1%5D=&f%5B2%5D=&f%5B3%5D=&f%5B4%5D=sm_field_project_type%3Afull&f%5B5%5D=&f%5B6%5D=&text=dns-prefetch&solrsort=iss_project_release_usage+desc&op=Search)ที่มีพื้นที่สำหรับคำแนะนำด้านทรัพยากรของ User Agent"
+  },
+  "node_modules/lighthouse-stack-packs/packs/drupal.js | uses-responsive-images": {
+    "message": "ตรวจสอบว่าคุณกำลังใช้[สไตล์รูปภาพที่ปรับเปลี่ยนตามอุปกรณ์](https://www.drupal.org/docs/8/mobile-guide/responsive-images-in-drupal-8)แบบเนทีฟจาก Drupal (พร้อมใช้งานใน Drupal 8 ขึ้นไป) ใช้สไตล์รูปภาพที่ปรับเปลี่ยนตามอุปกรณ์เมื่อแสดงผลช่องรูปภาพผ่านโหมดมุมมอง มุมมอง หรือรูปภาพที่อัปโหลดผ่านตัวแก้ไข WYSIWYG"
+  },
+  "node_modules/lighthouse-stack-packs/packs/drupal.js | uses-webp-images": {
+    "message": "ลองติดตั้งและกำหนดค่า[โมดูลเพื่อใช้ประโยชน์จากรูปแบบรูปภาพ WebP](https://www.drupal.org/project/project_module?f%5B0%5D=&f%5B1%5D=&f%5B2%5D=&f%5B3%5D=&f%5B4%5D=sm_field_project_type%3Afull&f%5B5%5D=&f%5B6%5D=&text=webp&solrsort=iss_project_release_usage+desc&op=Search) ในเว็บไซต์ของคุณ โมดูลดังกล่าวจะสร้างเวอร์ชัน WebP ของรูปภาพที่อัปโหลดโดยอัตโนมัติเพื่อปรับปรุงเวลาที่ใช้ในการโหลด"
+  },
+  "node_modules/lighthouse-stack-packs/packs/joomla.js | efficient-animated-content": {
+    "message": "ลองอัปโหลด GIF ไปยังบริการซึ่งจะทำให้ใช้ GIF เพื่อฝังเป็นวิดีโอ HTML5 ได้"
+  },
+  "node_modules/lighthouse-stack-packs/packs/joomla.js | offscreen-images": {
+    "message": "ติดตั้ง[ปลั๊กอินการโหลดแบบ Lazy Loading ของ Joomla](https://extensions.joomla.org/instant-search/?jed_live%5Bquery%5D=lazy%20loading) ที่จะช่วยให้เลื่อนเวลาโหลดรูปภาพนอกจอภาพได้ หรือเปลี่ยนไปใช้เทมเพลตที่มีฟังก์ชันดังกล่าว ตั้งแต่ Joomla 4.0 เป็นต้นไป คุณเปิดใช้ปลั๊กอินสำหรับการโหลดแบบ Lazy Loading โดยเฉพาะได้ โดยใช้ปลั๊กอิน \"เนื้อหา - รูปภาพสำหรับการโหลดแบบ Lazy Loading\" และอาจลองใช้[ปลั๊กอิน AMP](https://extensions.joomla.org/instant-search/?jed_live%5Bquery%5D=amp) ด้วย"
+  },
+  "node_modules/lighthouse-stack-packs/packs/joomla.js | render-blocking-resources": {
+    "message": "มีปลั๊กอิน Joomla หลายรายการที่ช่วยคุณ[แทรกเนื้อหาสำคัญในหน้า](https://extensions.joomla.org/instant-search/?jed_live%5Bquery%5D=performance)หรือ[เลื่อนเวลาโหลดทรัพยากรที่สำคัญน้อยกว่า](https://extensions.joomla.org/instant-search/?jed_live%5Bquery%5D=performance)ได้ โปรดทราบว่าการเพิ่มประสิทธิภาพที่ได้จากปลั๊กอินเหล่านี้อาจทำให้ฟีเจอร์ของเทมเพลตหรือปลั๊กอินเสียหาย คุณจึงจะต้องทดสอบปลั๊กอินเหล่านี้อย่างละเอียด"
+  },
+  "node_modules/lighthouse-stack-packs/packs/joomla.js | server-response-time": {
+    "message": "ข้อกำหนดของเทมเพลต ส่วนขยาย และเซิร์ฟเวอร์ล้วนส่งผลต่อเวลาในการตอบสนองของเซิร์ฟเวอร์ ลองหาเทมเพลตที่เพิ่มประสิทธิภาพมากขึ้น พยายามเลือกส่วนขยายการเพิ่มประสิทธิภาพด้วยความระมัดระวัง และ/หรืออัปเกรดเซิร์ฟเวอร์"
+  },
+  "node_modules/lighthouse-stack-packs/packs/joomla.js | total-byte-weight": {
+    "message": "ลองแสดงข้อความที่ตัดตอนมาในหมวดหมู่บทความ (เช่น ผ่านลิงก์ \"อ่านเพิ่มเติม\") ลดจำนวนบทความที่แสดงในหน้าหนึ่งๆ แบ่งโพสต์ยาวๆ เป็นหลายหน้า หรือใช้ปลั๊กอินเพื่อโหลดความคิดเห็นแบบ Lazy Loading"
+  },
+  "node_modules/lighthouse-stack-packs/packs/joomla.js | unminified-css": {
+    "message": "มี[ส่วนขยาย Joomla](https://extensions.joomla.org/instant-search/?jed_live%5Bquery%5D=performance) หลายรายการที่ช่วยให้เว็บไซต์เร็วขึ้นได้ด้วยการเชื่อมโยง การลดขนาด และการบีบอัดสไตล์ CSS นอกจากนี้ยังมีเทมเพลตที่มีฟังก์ชันการทำงานนี้ด้วย"
+  },
+  "node_modules/lighthouse-stack-packs/packs/joomla.js | unminified-javascript": {
+    "message": "มี[ส่วนขยาย Joomla](https://extensions.joomla.org/instant-search/?jed_live%5Bquery%5D=performance) หลายรายการที่ช่วยให้เว็บไซต์เร็วขึ้นได้ด้วยการเชื่อมโยง การลดขนาด และการบีบอัดสคริปต์ นอกจากนี้ยังมีเทมเพลตที่มีฟังก์ชันการทำงานนี้ด้วย"
+  },
+  "node_modules/lighthouse-stack-packs/packs/joomla.js | unused-css-rules": {
+    "message": "ลองลดหรือเปลี่ยนจำนวน[ส่วนขยาย Joomla](https://extensions.joomla.org/) ที่โหลด CSS ที่ไม่ได้ใช้ในหน้าเว็บของคุณ หากต้องการระบุส่วนขยายที่เพิ่ม CSS โดยไม่จำเป็น ลองเรียกใช้ [Code Coverage](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) ใน DevTools ของ Chrome คุณระบุธีม/ปลั๊กอินที่รับผิดชอบได้จาก URL ของสไตล์ชีต หาปลั๊กอินที่มีสไตล์ชีตจำนวนมากอยู่ในรายการซึ่งมีสีแดงอยู่จำนวนมากใน Code Coverage ปลั๊กอินควรเป็นเพียงตัวกำหนดลำดับของสไตล์ชีตเท่านั้นหากใช้ปลั๊กอินในหน้าจริงๆ"
+  },
+  "node_modules/lighthouse-stack-packs/packs/joomla.js | unused-javascript": {
+    "message": "ลองลดหรือเปลี่ยนจำนวน[ส่วนขยาย Joomla](https://extensions.joomla.org/) ที่โหลด JavaScript ที่ไม่ได้ใช้ในหน้าเว็บของคุณ หากต้องการระบุปลั๊กอินที่เพิ่ม JS โดยไม่จำเป็น ลองเรียกใช้ [Code Coverage](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) ใน DevTools ของ Chrome คุณระบุส่วนขยายที่รับผิดชอบได้จาก URL ของสคริปต์ หาธีม/โมดูลที่มีสคริปต์จำนวนมากอยู่ในรายการซึ่งมีสีแดงอยู่จำนวนมากใน Code Coverage ส่วนขยายควรเป็นเพียงตัวกำหนดลำดับของสคริปต์เท่านั้นหากใช้ส่วนขยายในหน้าจริงๆ"
+  },
+  "node_modules/lighthouse-stack-packs/packs/joomla.js | uses-long-cache-ttl": {
+    "message": "อ่านเกี่ยวกับ[การแคชของเบราว์เซอร์ใน Joomla](https://docs.joomla.org/Cache)"
+  },
+  "node_modules/lighthouse-stack-packs/packs/joomla.js | uses-optimized-images": {
+    "message": "ลองใช้[ปลั๊กอินการเพิ่มประสิทธิภาพรูปภาพ](https://extensions.joomla.org/instant-search/?jed_live%5Bquery%5D=performance)ที่บีบอัดรูปภาพแต่ยังคงคุณภาพไว้ได้"
+  },
+  "node_modules/lighthouse-stack-packs/packs/joomla.js | uses-responsive-images": {
+    "message": "ลองใช้[ปลั๊กอินรูปภาพที่ปรับเปลี่ยนตามอุปกรณ์](https://extensions.joomla.org/instant-search/?jed_live%5Bquery%5D=responsive%20images)เพื่อใช้รูปภาพที่ปรับเปลี่ยนตามอุปกรณ์ในเนื้อหาของคุณ"
+  },
+  "node_modules/lighthouse-stack-packs/packs/joomla.js | uses-text-compression": {
+    "message": "คุณเปิดใช้การบีบอัดข้อความได้โดยเปิดใช้การบีบอัดหน้าของ Gzip ใน Joomla (ระบบ > การกำหนดค่าส่วนกลาง > เซิร์ฟเวอร์)"
+  },
+  "node_modules/lighthouse-stack-packs/packs/joomla.js | uses-webp-images": {
+    "message": "ลองใช้[ปลั๊กอิน](https://extensions.joomla.org/instant-search/?jed_live%5Bquery%5D=webp)หรือบริการที่จะแปลงรูปภาพที่อัปโหลดเป็นรูปแบบที่เหมาะสมที่สุดโดยอัตโนมัติ"
+  },
+  "node_modules/lighthouse-stack-packs/packs/magento.js | critical-request-chains": {
+    "message": "หากไม่ได้รวมกลุ่มเนื้อหา JavaScript ให้ลองใช้ [Baler](https://github.com/magento/baler)"
+  },
+  "node_modules/lighthouse-stack-packs/packs/magento.js | disable-bundling": {
+    "message": "ปิดใช้[การรวมกลุ่มและการลดขนาดของ JavaScript](https://devdocs.magento.com/guides/v2.3/frontend-dev-guide/themes/js-bundling.html) ในตัวของ Magento และลองใช้ [Baler](https://github.com/magento/baler/) แทน"
+  },
+  "node_modules/lighthouse-stack-packs/packs/magento.js | font-display": {
+    "message": "ระบุ `@font-display` เมื่อ [ กำหนดฟอนต์ที่กำหนดเอง ](https://devdocs.magento.com/guides/v2.3/frontend-dev-guide/css-topics/using-fonts.html)"
+  },
+  "node_modules/lighthouse-stack-packs/packs/magento.js | offscreen-images": {
+    "message": "ลองแก้ไขเทมเพลตผลิตภัณฑ์และแคตตาล็อกเพื่อใช้ประโยชน์จากฟีเจอร์[การโหลดแบบ Lazy Loading](https://web.dev/native-lazy-loading) ของแพลตฟอร์มเว็บ"
+  },
+  "node_modules/lighthouse-stack-packs/packs/magento.js | time-to-first-byte": {
+    "message": "ใช้[การผสานรวม Varnish](https://devdocs.magento.com/guides/v2.3/config-guide/varnish/config-varnish.html) ของ Magento"
+  },
+  "node_modules/lighthouse-stack-packs/packs/magento.js | unminified-css": {
+    "message": "เปิดใช้ตัวเลือก \"Minify CSS Files\" ในการตั้งค่านักพัฒนาซอฟต์แวร์ของร้านค้า [ดูข้อมูลเพิ่มเติม](https://devdocs.magento.com/guides/v2.3/performance-best-practices/configuration.html?itm_source=devdocs&itm_medium=search_page&itm_campaign=federated_search&itm_term=minify%20css%20files)"
+  },
+  "node_modules/lighthouse-stack-packs/packs/magento.js | unminified-javascript": {
+    "message": "ใช้ [Terser](https://www.npmjs.com/package/terser) เพื่อลดขนาดเนื้อหาของ JavaScript ทั้งหมดจากการใช้งานเนื้อหาแบบคงที่และปิดใช้ฟีเจอร์การลดขนาดในตัว"
+  },
+  "node_modules/lighthouse-stack-packs/packs/magento.js | unused-javascript": {
+    "message": "ปิดใช้[การรวมกลุ่ม JavaScript](https://devdocs.magento.com/guides/v2.3/frontend-dev-guide/themes/js-bundling.html) ในตัวของ Magento"
+  },
+  "node_modules/lighthouse-stack-packs/packs/magento.js | uses-optimized-images": {
+    "message": "ลองค้นหาใน[ตลาดกลางของ Magento](https://marketplace.magento.com/catalogsearch/result/?q=optimize%20image) เพื่อหาส่วนขยายต่างๆ ของบุคคลที่สามเพื่อเพิ่มประสิทธิภาพให้รูปภาพ"
+  },
+  "node_modules/lighthouse-stack-packs/packs/magento.js | uses-rel-preconnect": {
+    "message": "เพิ่มการเชื่อมต่อล่วงหน้าหรือคำแนะนำด้านทรัพยากรที่ DNS ดึงมาล่วงหน้าได้โดย[แก้ไขเลย์เอาต์ของธีม](https://devdocs.magento.com/guides/v2.3/frontend-dev-guide/layouts/xml-manage.html)"
+  },
+  "node_modules/lighthouse-stack-packs/packs/magento.js | uses-rel-preload": {
+    "message": "เพิ่มแท็ก `<link rel=preload>` ได้โดย[แก้ไขเลย์เอาต์ของธีม](https://devdocs.magento.com/guides/v2.3/frontend-dev-guide/layouts/xml-manage.html)"
+  },
+  "node_modules/lighthouse-stack-packs/packs/magento.js | uses-webp-images": {
+    "message": "ลองค้นหาใน[ตลาดกลางของ Magento](https://marketplace.magento.com/catalogsearch/result/?q=webp) เพื่อหาส่วนขยายต่างๆ ของบุคคลที่สามเพื่อใช้ประโยชน์จากรูปแบบรูปภาพที่ใหม่กว่า"
+  },
+  "node_modules/lighthouse-stack-packs/packs/react.js | dom-size": {
+    "message": "ลองใช้ไลบรารี \"การสร้างกรอบเวลา\" เช่น `react-window` เพื่อลดจำนวนโหนดของ DOM ที่สร้างขึ้นหากคุณแสดงผลเอลิเมนต์ซ้ำกันหลายรายการในหน้านั้น [ดูข้อมูลเพิ่มเติม](https://web.dev/virtualize-long-lists-react-window/) นอกจากนี้ให้ลดการแสดงผลซ้ำที่ไม่จำเป็นโดยใช้ [`shouldComponentUpdate`](https://reactjs.org/docs/optimizing-performance.html#shouldcomponentupdate-in-action), [`PureComponent`](https://reactjs.org/docs/react-api.html#reactpurecomponent) หรือ [`React.memo`](https://reactjs.org/docs/react-api.html#reactmemo) และ[ข้ามเอฟเฟกต์](https://reactjs.org/docs/hooks-effect.html#tip-optimizing-performance-by-skipping-effects)เฉพาะเมื่อทรัพยากร Dependency บางรายการมีการเปลี่ยนแปลงในกรณีที่คุณใช้ฮุก `Effect` เพื่อปรับปรุงประสิทธิภาพของรันไทม์"
+  },
+  "node_modules/lighthouse-stack-packs/packs/react.js | redirects": {
+    "message": "หากคุณกำลังใช้ React Router ให้ลดการใช้ของคอมโพเนนต์ `<Redirect>` ในการ[ไปยังเส้นทางต่างๆ](https://reacttraining.com/react-router/web/api/Redirect)"
+  },
+  "node_modules/lighthouse-stack-packs/packs/react.js | time-to-first-byte": {
+    "message": "หากคุณกำลังแสดงคอมโพเนนต์ของ React ใดๆ บนฝั่งเซิร์ฟเวอร์ ให้ลองใช้ `renderToNodeStream()` หรือ `renderToStaticNodeStream()` เพื่อให้ลูกค้าได้รับและรวมส่วนต่างๆ ของมาร์กอัปแทนที่จะรวมทั้งหมดในคราวเดียว [ดูข้อมูลเพิ่มเติม](https://reactjs.org/docs/react-dom-server.html#rendertonodestream)"
+  },
+  "node_modules/lighthouse-stack-packs/packs/react.js | unminified-css": {
+    "message": "หากระบบในรุ่นของคุณลดขนาดไฟล์ CSS โดยอัตโนมัติ โปรดตรวจสอบว่าคุณทำให้รุ่นที่ใช้งานจริงของแอปพลิเคชันใช้งานได้ โดยใช้ส่วนขยาย React Developer Tools [ดูข้อมูลเพิ่มเติม](https://reactjs.org/docs/optimizing-performance.html#use-the-production-build)"
+  },
+  "node_modules/lighthouse-stack-packs/packs/react.js | unminified-javascript": {
+    "message": "หากระบบในรุ่นของคุณลดขนาดไฟล์ JS โดยอัตโนมัติ โปรดตรวจสอบว่าคุณทำให้รุ่นที่ใช้งานจริงของแอปพลิเคชันใช้งานได้ โดยใช้ส่วนขยาย React Developer Tools [ดูข้อมูลเพิ่มเติม](https://reactjs.org/docs/optimizing-performance.html#use-the-production-build)"
+  },
+  "node_modules/lighthouse-stack-packs/packs/react.js | unused-javascript": {
+    "message": "หากคุณไม่ได้กำลังแสดงผลฝั่งเซิร์ฟเวอร์ ให้[แยกกลุ่ม JavaScript](https://web.dev/code-splitting-suspense/) ด้วย `React.lazy()` หรือแยกโค้ดโดยใช้ไลบรารีของบุคคลที่สาม เช่น [คอมโพเนนต์ที่โหลดได้](https://www.smooth-code.com/open-source/loadable-components/docs/getting-started/)"
+  },
+  "node_modules/lighthouse-stack-packs/packs/react.js | user-timings": {
+    "message": "ใช้ React DevTools Profiler ซึ่งใช้ประโยชน์จาก Profiler API ในการวัดประสิทธิภาพในการแสดงผลของคอมโพเนนต์ [ดูข้อมูลเพิ่มเติม](https://reactjs.org/blog/2018/09/10/introducing-the-react-profiler.html)"
+  },
+  "node_modules/lighthouse-stack-packs/packs/wordpress.js | efficient-animated-content": {
+    "message": "ลองอัปโหลด GIF ไปยังบริการซึ่งจะทำให้ใช้ GIF เพื่อฝังเป็นวิดีโอ HTML5 ได้"
+  },
+  "node_modules/lighthouse-stack-packs/packs/wordpress.js | offscreen-images": {
     "message": "ติดตั้ง[ปลั๊กอินการโหลดแบบ Lazy Loading ของ WordPress](https://wordpress.org/plugins/search/lazy+load/) ที่จะช่วยเลื่อนเวลาโหลดรูปภาพนอกหน้าจอ หรือเปลี่ยนไปใช้ธีมที่มีฟังก์ชันดังกล่าว และอาจลองพิจารณาใช้[ปลั๊กอิน AMP](https://wordpress.org/plugins/amp/)"
   },
-  "stack-packs/packs/wordpress.js | render_blocking_resources": {
+  "node_modules/lighthouse-stack-packs/packs/wordpress.js | render-blocking-resources": {
     "message": "มีปลั๊กอิน WordPress หลายรายการที่ช่วยคุณ[แทรกเนื้อหาที่สำคัญ](https://wordpress.org/plugins/search/critical+css/) หรือ[เลื่อนเวลาโหลดทรัพยากรที่สำคัญน้อยกว่า](https://wordpress.org/plugins/search/defer+css+javascript/) โปรดระวังว่าการเพิ่มประสิทธิภาพโดยปลั๊กอินเหล่านี้อาจทำให้ฟีเจอร์ของธีมหรือปลั๊กอินของคุณเสียหาย ซึ่งน่าจะทำให้คุณต้องแก้ไขโค้ด"
   },
-  "stack-packs/packs/wordpress.js | server_response_time": {
+  "node_modules/lighthouse-stack-packs/packs/wordpress.js | time-to-first-byte": {
     "message": "การกำหนดธีม ปลั๊กอิน และเซิร์ฟเวอร์ล้วนส่งผลต่อเวลาการตอบสนองของเซิร์ฟเวอร์ ลองหาธีมที่เพิ่มประสิทธิภาพมากขึ้น พยายามเลือกปลั๊กอินการเพิ่มประสิทธิภาพด้วยความระมัดระวัง และ/หรืออัปเกรดเซิร์ฟเวอร์"
   },
-  "stack-packs/packs/wordpress.js | total_byte_weight": {
+  "node_modules/lighthouse-stack-packs/packs/wordpress.js | total-byte-weight": {
     "message": "ลองแสดงข้อความที่ตัดตอนมาในรายการโพสต์ (เช่น ผ่านแท็ก \"เพิ่มเติม\") ลดจำนวนโพสต์ที่แสดงในหน้าหนึ่งๆ แบ่งโพสต์ยาวๆ เป็นหลายหน้า หรือใช้ปลั๊กอินเพื่อโหลดความคิดเห็นแบบ Lazy Loading"
   },
-  "stack-packs/packs/wordpress.js | unminified_css": {
+  "node_modules/lighthouse-stack-packs/packs/wordpress.js | unminified-css": {
     "message": "มี[ปลั๊กอิน WordPress](https://wordpress.org/plugins/search/minify+css/) หลายอย่างที่ช่วยให้เว็บไซต์เร็วขึ้นได้ด้วยการลิงก์ ลดขนาด และบีบอัดสไตล์ นอกจากนี้คุณอาจใช้กระบวนการของเวอร์ชันเพื่อลดขนาดล่วงหน้าหากเป็นไปได้"
   },
-  "stack-packs/packs/wordpress.js | unminified_javascript": {
+  "node_modules/lighthouse-stack-packs/packs/wordpress.js | unminified-javascript": {
     "message": "มี[ปลั๊กอิน WordPress](https://wordpress.org/plugins/search/minify+javascript/) หลายอย่างที่ช่วยให้เว็บไซต์เร็วขึ้นได้ด้วยการลิงก์ ลดขนาด และบีบอัดสคริปต์ นอกจากนี้คุณอาจใช้กระบวนการของเวอร์ชันเพื่อลดขนาดล่วงหน้าหากเป็นไปได้"
   },
-  "stack-packs/packs/wordpress.js | unused_css_rules": {
+  "node_modules/lighthouse-stack-packs/packs/wordpress.js | unused-css-rules": {
     "message": "ลองลดหรือเปลี่ยนจำนวน[ปลั๊กอิน WordPress](https://wordpress.org/plugins/) ที่โหลด CSS ที่ไม่ได้ใช้ในหน้าเว็บของคุณ หากต้องการระบุปลั๊กอินที่เพิ่ม CSS โดยไม่จำเป็น ให้ลองเรียกใช้[การครอบคลุมโค้ด](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage)ใน DevTools ของ Chrome คุณระบุธีม/ปลั๊กอินที่รับผิดชอบได้จาก URL ของสไตล์ชีต หาปลั๊กอินที่มีสไตล์ชีตจำนวนมากอยู่ในรายการซึ่งมีสีแดงอยู่จำนวนมากในการครอบคลุมโค้ด ปลั๊กอินควรเป็นเพียงตัวกำหนดลำดับของสไตล์ชีตเท่านั้นหากใช้ปลั๊กอินในหน้าจริงๆ"
   },
-  "stack-packs/packs/wordpress.js | unused_javascript": {
+  "node_modules/lighthouse-stack-packs/packs/wordpress.js | unused-javascript": {
     "message": "ลองลดหรือเปลี่ยนจำนวน[ปลั๊กอิน WordPress](https://wordpress.org/plugins/) ที่โหลด JavaScript ที่ไม่ได้ใช้ในหน้าเว็บของคุณ หากต้องการระบุปลั๊กอินที่เพิ่ม JS โดยไม่จำเป็น ให้ลองเรียกใช้ [การครอบคลุมโค้ด](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage)ใน DevTools ของ Chrome คุณระบุธีม/ปลั๊กอินที่รับผิดชอบได้จาก URL ของสคริปต์ หาปลั๊กอินที่มีสคริปต์จำนวนมากอยู่ในรายการซึ่งมีสีแดงอยู่จำนวนมากในการครอบคลุมโค้ด ปลั๊กอินควรเป็นเพียงตัวกำหนดลำดับของสคริปต์เท่านั้นหากใช้ปลั๊กอินในหน้าจริงๆ"
   },
-  "stack-packs/packs/wordpress.js | uses_long_cache_ttl": {
+  "node_modules/lighthouse-stack-packs/packs/wordpress.js | uses-long-cache-ttl": {
     "message": "อ่านเกี่ยวกับ[การแคชของเบราว์เซอร์ใน WordPress](https://wordpress.org/support/article/optimization/#browser-caching)"
   },
-  "stack-packs/packs/wordpress.js | uses_optimized_images": {
+  "node_modules/lighthouse-stack-packs/packs/wordpress.js | uses-optimized-images": {
     "message": "พิจารณาใช้[ปลั๊กอิน WordPress การเพิ่มประสิทธิภาพรูปภาพ](https://wordpress.org/plugins/search/optimize+images/)ที่บีบอัดรูปภาพแต่ยังคงคุณภาพไว้ได้"
   },
-  "stack-packs/packs/wordpress.js | uses_responsive_images": {
+  "node_modules/lighthouse-stack-packs/packs/wordpress.js | uses-responsive-images": {
     "message": "อัปโหลดรูปภาพโดยตรงผ่าน[ไลบรารีสื่อ](https://wordpress.org/support/article/media-library-screen/)เพื่อให้แน่ใจว่ามีขนาดรูปภาพที่จำเป็นพร้อมใช้งาน จากนั้นแทรกรูปภาพจากไลบรารีสื่อหรือใช้วิดเจ็ตรูปภาพเพื่อให้มีการใช้ขนาดรูปภาพที่มีประสิทธิภาพสูงสุด (รวมถึงขนาดสำหรับเบรกพอยท์ที่ปรับเปลี่ยนตามอุปกรณ์) หลีกเลี่ยงการใช้รูปภาพ`Full Size` นอกเสียจากว่าขนาดจะเพียงพอต่อการใช้งาน [ดูข้อมูลเพิ่มเติม](https://wordpress.org/support/article/inserting-images-into-posts-and-pages/)"
   },
-  "stack-packs/packs/wordpress.js | uses_text_compression": {
+  "node_modules/lighthouse-stack-packs/packs/wordpress.js | uses-text-compression": {
     "message": "คุณเปิดใช้การบีบอัดข้อความในการกำหนดค่าเว็บเซิร์ฟเวอร์ได้"
   },
-  "stack-packs/packs/wordpress.js | uses_webp_images": {
-    "message": "พิจารณาใช้[ปลั๊กอิน](https://wordpress.org/plugins/search/convert+webp/)หรือบริการที่จะแปลงรูปภาพที่อัปโหลดเป็นรูปแบบที่เหมาะสมที่สุดโดยอัตโนมัติ"
+  "node_modules/lighthouse-stack-packs/packs/wordpress.js | uses-webp-images": {
+    "message": "ลองใช้[ปลั๊กอิน](https://wordpress.org/plugins/search/convert+webp/)หรือบริการที่จะแปลงรูปภาพที่อัปโหลดเป็นรูปแบบที่เหมาะสมที่สุดโดยอัตโนมัติ"
   }
 }

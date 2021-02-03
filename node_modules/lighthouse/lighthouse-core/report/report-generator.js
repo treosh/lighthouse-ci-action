@@ -66,19 +66,25 @@ class ReportGenerator {
     const separator = ',';
     /** @param {string} value @return {string} */
     const escape = value => `"${value.replace(/"/g, '""')}"`;
+    /** @param {Array<string | number>} row @return {string[]} */
+    const rowFormatter = row => row.map(value => value.toString()).map(escape);
 
     // Possible TODO: tightly couple headers and row values
     const header = ['requestedUrl', 'finalUrl', 'category', 'name', 'title', 'type', 'score'];
-    const table = Object.values(lhr.categories).map(category => {
-      return category.auditRefs.map(auditRef => {
+    const table = Object.keys(lhr.categories).map(categoryId => {
+      const rows = [];
+      const category = lhr.categories[categoryId];
+      const overallCategoryScore = category.score === null ? -1 : category.score;
+      rows.push(rowFormatter([lhr.requestedUrl, lhr.finalUrl, category.title,
+        `${categoryId}-score`, `Overall ${category.title} Category Score`, 'numeric',
+        overallCategoryScore]));
+      return rows.concat(category.auditRefs.map(auditRef => {
         const audit = lhr.audits[auditRef.id];
         // CSV validator wants all scores to be numeric, use -1 for now
         const numericScore = audit.score === null ? -1 : audit.score;
-        return [lhr.requestedUrl, lhr.finalUrl, category.title, audit.id, audit.title,
-          audit.scoreDisplayMode, numericScore]
-          .map(value => value.toString())
-          .map(escape);
-      });
+        return rowFormatter([lhr.requestedUrl, lhr.finalUrl, category.title, audit.id, audit.title,
+          audit.scoreDisplayMode, numericScore]);
+      }));
     });
 
     return [header].concat(...table)

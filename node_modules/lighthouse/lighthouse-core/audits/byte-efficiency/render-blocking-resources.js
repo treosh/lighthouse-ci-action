@@ -210,7 +210,7 @@ class RenderBlockingResources extends Audit {
     const adjustedNodeTimings = new Map(nodeTimings);
 
     let totalChildNetworkBytes = 0;
-    const minimalFCPGraph = /** @type {NetworkNode} */ (fcpGraph.cloneWithRelationships(node => {
+    const minimalFCPGraph = fcpGraph.cloneWithRelationships(node => {
       adjustNodeTimings(adjustedNodeTimings, node, Stacks);
 
       // If a node can be deferred, exclude it from the new FCP graph
@@ -225,7 +225,11 @@ class RenderBlockingResources extends Audit {
         totalChildNetworkBytes += (node.record.transferSize || 0) - wastedBytes;
       }
       return !canDeferRequest;
-    }));
+    });
+
+    if (minimalFCPGraph.type !== 'network') {
+      throw new Error('minimalFCPGraph not a NetworkNode');
+    }
 
     // Recalculate the "before" time based on our adjusted node timings.
     const estimateBeforeInline = Math.max(...Array.from(
@@ -270,7 +274,7 @@ class RenderBlockingResources extends Audit {
   static async audit(artifacts, context) {
     const {results, wastedMs} = await RenderBlockingResources.computeResults(artifacts, context);
 
-    let displayValue = '';
+    let displayValue;
     if (results.length > 0) {
       displayValue = str_(i18n.UIStrings.displayValueMsSavings, {wastedMs});
     }

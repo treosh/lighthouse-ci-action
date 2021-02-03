@@ -124,6 +124,15 @@ async function saveArtifacts(artifacts, basePath) {
 }
 
 /**
+ * Save LHR to file located at basePath/lhr.report.json.
+ * @param {LH.Result} lhr
+ * @param {string} basePath
+ */
+function saveLhr(lhr, basePath) {
+  fs.writeFileSync(`${basePath}/lhr.report.json`, JSON.stringify(lhr, null, 2));
+}
+
+/**
  * Filter traces and extract screenshots to prepare for saving.
  * @param {LH.Artifacts} artifacts
  * @param {LH.Audit.Results} [audits]
@@ -284,6 +293,7 @@ async function saveLanternNetworkData(devtoolsLog, outputPath) {
 
 module.exports = {
   saveArtifacts,
+  saveLhr,
   loadArtifacts,
   saveAssets,
   prepareAssets,

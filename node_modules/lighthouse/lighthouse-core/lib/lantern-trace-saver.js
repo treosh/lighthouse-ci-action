@@ -28,13 +28,11 @@ function convertNodeTimingsToTrace(nodeTimings) {
     lastEventEndTime = Math.max(lastEventEndTime, timing.endTime);
     if (node.type === 'cpu') {
       // Represent all CPU work that was bundled in a task as an EvaluateScript event
-      const cpuNode = /** @type {LH.Gatherer.Simulation.GraphCPUNode} */ (node);
-      traceEvents.push(...createFakeTaskEvents(cpuNode, timing));
+      traceEvents.push(...createFakeTaskEvents(node, timing));
     } else {
-      const networkNode = /** @type {LH.Gatherer.Simulation.GraphNetworkNode} */ (node);
       // Ignore data URIs as they don't really add much value
-      if (/^data/.test(networkNode.record.url)) continue;
-      traceEvents.push(...createFakeNetworkEvents(networkNode.record, timing));
+      if (/^data/.test(node.record.url)) continue;
+      traceEvents.push(...createFakeNetworkEvents(node.record, timing));
     }
   }
 

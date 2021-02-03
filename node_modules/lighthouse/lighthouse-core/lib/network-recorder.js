@@ -11,7 +11,7 @@ const log = require('lighthouse-logger');
 
 const IGNORED_NETWORK_SCHEMES = ['data', 'ws'];
 
-/** @typedef {'requeststarted'|'requestloaded'|'network-2-idle'|'networkidle'|'networkbusy'|'network-2-busy'} NetworkRecorderEvent */
+/** @typedef {'requeststarted'|'requestloaded'|'network-2-idle'|'network-critical-idle'|'networkidle'|'networkbusy'|'network-critical-busy'|'network-2-busy'} NetworkRecorderEvent */
 
 class NetworkRecorder extends EventEmitter {
   /**
@@ -57,6 +57,23 @@ class NetworkRecorder extends EventEmitter {
     return this._isActiveIdlePeriod(0);
   }
 
+  /**
+   * Returns whether any important resources for the page are in progress.
+   * Above-the-fold images and XHRs should be included.
+   * Tracking pixels, low priority images, and cross frame requests should be excluded.
+   * @return {boolean}
+   */
+  isCriticalIdle() {
+    const rootFrameRequest = this._records.find(r => r.resourceType === 'Document');
+    const rootFrameId = rootFrameRequest && rootFrameRequest.frameId;
+
+    return this._isActiveIdlePeriod(
+      0,
+      request => request.frameId === rootFrameId &&
+        (request.priority === 'VeryHigh' || request.priority === 'High')
+    );
+  }
+
   is2Idle() {
     return this._isActiveIdlePeriod(2);
   }
@@ -65,14 +82,16 @@ class NetworkRecorder extends EventEmitter {
    * Returns whether the number of currently inflight requests is less than or
    * equal to the number of allowed concurrent requests.
    * @param {number} allowedRequests
+   * @param {(request: NetworkRequest) => boolean} [requestFilter]
    * @return {boolean}
    */
-  _isActiveIdlePeriod(allowedRequests) {
+  _isActiveIdlePeriod(allowedRequests, requestFilter) {
     let inflightRequests = 0;
 
     for (let i = 0; i < this._records.length; i++) {
       const record = this._records[i];
       if (record.finished) continue;
+      if (requestFilter && !requestFilter(record)) continue;
       if (IGNORED_NETWORK_SCHEMES.includes(record.parsedURL.scheme)) continue;
       inflightRequests++;
     }
@@ -83,20 +102,15 @@ class NetworkRecorder extends EventEmitter {
   _emitNetworkStatus() {
     const zeroQuiet = this.isIdle();
     const twoQuiet = this.is2Idle();
+    const criticalQuiet = this.isCriticalIdle();
 
-    if (twoQuiet && zeroQuiet) {
-      log.verbose('NetworkRecorder', 'network fully-quiet');
-      this.emit('network-2-idle');
-      this.emit('networkidle');
-    } else if (twoQuiet && !zeroQuiet) {
-      log.verbose('NetworkRecorder', 'network semi-quiet');
-      this.emit('network-2-idle');
-      this.emit('networkbusy');
-    } else {
-      log.verbose('NetworkRecorder', 'network busy');
-      this.emit('network-2-busy');
-      this.emit('networkbusy');
-    }
+    this.emit(zeroQuiet ? 'networkidle' : 'networkbusy');
+    this.emit(twoQuiet ? 'network-2-idle' : 'network-2-busy');
+    this.emit(criticalQuiet ? 'network-critical-idle' : 'network-critical-busy');
+
+    if (twoQuiet && zeroQuiet) log.verbose('NetworkRecorder', 'network fully-quiet');
+    else if (twoQuiet && !zeroQuiet) log.verbose('NetworkRecorder', 'network semi-quiet');
+    else log.verbose('NetworkRecorder', 'network busy');
   }
 
   /**
@@ -333,7 +347,7 @@ class NetworkRecorder extends EventEmitter {
    * @return {NetworkRequest|null}
    * @private
    */
-  static _chooseInitiator(record, recordsByURL) {
+  static _chooseInitiatorRequest(record, recordsByURL) {
     if (record.redirectSource) {
       return record.redirectSource;
     }
@@ -393,11 +407,11 @@ class NetworkRecorder extends EventEmitter {
       recordsByURL.set(record.url, records);
     }
 
-    // set the initiator and redirects array
+    // set the initiatorRequest and redirects array
     for (const record of records) {
-      const initiator = NetworkRecorder._chooseInitiator(record, recordsByURL);
-      if (initiator) {
-        record.setInitiatorRequest(initiator);
+      const initiatorRequest = NetworkRecorder._chooseInitiatorRequest(record, recordsByURL);
+      if (initiatorRequest) {
+        record.setInitiatorRequest(initiatorRequest);
       }
 
       let finalRecord = record;

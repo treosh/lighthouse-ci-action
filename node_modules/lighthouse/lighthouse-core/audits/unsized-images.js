@@ -98,13 +98,13 @@ class UnsizedImages extends Audit {
       const url = URL.elideDataURI(image.src);
       unsizedImages.push({
         url,
-        node: /** @type {LH.Audit.Details.NodeValue} */ ({
-          type: 'node',
-          path: image.devtoolsNodePath,
-          selector: image.selector,
-          nodeLabel: image.nodeLabel,
-          snippet: image.snippet,
-        }),
+        node: {
+          type: /** @type {'node'} */ ('node'),
+          path: image.node.devtoolsNodePath,
+          selector: image.node.selector,
+          nodeLabel: image.node.nodeLabel,
+          snippet: image.node.snippet,
+        },
       });
     }
 

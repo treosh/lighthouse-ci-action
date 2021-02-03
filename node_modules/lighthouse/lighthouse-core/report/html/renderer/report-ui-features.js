@@ -35,6 +35,15 @@ function getTableRows(tableEl) {
   return Array.from(tableEl.tBodies[0].rows);
 }
 
+function getAppsOrigin() {
+  const isVercel = window.location.host.endsWith('.vercel.app');
+  const isDev = new URLSearchParams(window.location.search).has('dev');
+
+  if (isVercel) return `https://${window.location.host}/gh-pages`;
+  if (isDev) return 'http://localhost:8000';
+  return 'https://googlechrome.github.io/lighthouse';
+}
+
 class ReportUIFeatures {
   /**
    * @param {DOM} dom
@@ -98,11 +107,14 @@ class ReportUIFeatures {
       turnOffTheLights = true;
     }
 
-    // Fireworks.
-    const scoresAll100 = Object.values(report.categories).every(cat => cat.score === 1);
-    const hasAllCoreCategories =
-      Object.keys(report.categories).filter(id => !Util.isPluginCategory(id)).length >= 5;
-    if (scoresAll100 && hasAllCoreCategories) {
+    // Fireworks!
+    // To get fireworks you need 100 scores in all core categories, except PWA (because going the PWA route is discretionary).
+    const fireworksRequiredCategoryIds = ['performance', 'accessibility', 'best-practices', 'seo'];
+    const scoresAll100 = fireworksRequiredCategoryIds.every(id => {
+      const cat = report.categories[id];
+      return cat && cat.score === 1;
+    });
+    if (scoresAll100) {
       turnOffTheLights = true;
       this._enableFireworks();
     }
@@ -216,8 +228,9 @@ class ReportUIFeatures {
   _setupThirdPartyFilter() {
     // Some audits should not display the third party filter option.
     const thirdPartyFilterAuditExclusions = [
-      // This audit deals explicitly with third party resources.
+      // These audits deal explicitly with third party resources.
       'uses-rel-preconnect',
+      'third-party-facades',
     ];
     // Some audits should hide third party by default.
     const thirdPartyFilterAuditHideByDefault = [
@@ -299,8 +312,11 @@ class ReportUIFeatures {
 
   _setupElementScreenshotOverlay() {
     const fullPageScreenshot =
-      this.json.audits['full-page-screenshot'] && this.json.audits['full-page-screenshot'].details;
-    if (!fullPageScreenshot || fullPageScreenshot.type !== 'full-page-screenshot') return;
+      this.json.audits['full-page-screenshot'] &&
+      this.json.audits['full-page-screenshot'].details &&
+      this.json.audits['full-page-screenshot'].details.type === 'full-page-screenshot' &&
+      this.json.audits['full-page-screenshot'].details;
+    if (!fullPageScreenshot) return;
 
     ElementScreenshotRenderer.installOverlayFeature(
       this._dom, this._templateContext, fullPageScreenshot);
@@ -454,8 +470,7 @@ class ReportUIFeatures {
         break;
       }
       case 'open-viewer': {
-        const viewerPath = '/lighthouse/viewer/';
-        ReportUIFeatures.openTabAndSendJsonReport(this.json, viewerPath);
+        ReportUIFeatures.openTabAndSendJsonReportToViewer(this.json);
         break;
       }
       case 'save-gist': {
@@ -489,33 +504,64 @@ class ReportUIFeatures {
   /**
    * Opens a new tab to the online viewer and sends the local page's JSON results
    * to the online viewer using postMessage.
-   * @param {LH.Result} reportJson
-   * @param {string} viewerPath
+   * @param {LH.Result} json
    * @protected
    */
-  static openTabAndSendJsonReport(reportJson, viewerPath) {
-    const VIEWER_ORIGIN = 'https://googlechrome.github.io';
+  static openTabAndSendJsonReportToViewer(json) {
+    // The popup's window.name is keyed by version+url+fetchTime, so we reuse/select tabs correctly
+    // @ts-ignore - If this is a v2 LHR, use old `generatedTime`.
+    const fallbackFetchTime = /** @type {string} */ (json.generatedTime);
+    const fetchTime = json.fetchTime || fallbackFetchTime;
+    const windowName = `${json.lighthouseVersion}-${json.requestedUrl}-${fetchTime}`;
+    const url = getAppsOrigin() + '/viewer/';
+    ReportUIFeatures.openTabAndSendData({lhr: json}, url, windowName);
+  }
+
+  /**
+   * Opens a new tab to the treemap app and sends the JSON results using postMessage.
+   * @param {LH.Result} json
+   */
+  static openTreemap(json) {
+    const treemapDebugData = /** @type {LH.Audit.Details.DebugData} */ (
+      json.audits['script-treemap-data'].details);
+    if (!treemapDebugData) {
+      throw new Error('no script treemap data found');
+    }
+
+    const windowName = `treemap-${json.requestedUrl}`;
+    /** @type {LH.Treemap.Options} */
+    const treemapOptions = {
+      lhr: json,
+    };
+    const url = getAppsOrigin() + '/treemap/';
+    ReportUIFeatures.openTabAndSendData(treemapOptions, url, windowName);
+  }
+
+  /**
+   * Opens a new tab to an external page and sends data using postMessage.
+   * @param {{lhr: LH.Result} | LH.Treemap.Options} data
+   * @param {string} url
+   * @param {string} windowName
+   * @protected
+   */
+  static openTabAndSendData(data, url, windowName) {
+    const origin = new URL(url).origin;
     // Chrome doesn't allow us to immediately postMessage to a popup right
     // after it's created. Normally, we could also listen for the popup window's
     // load event, however it is cross-domain and won't fire. Instead, listen
     // for a message from the target app saying "I'm open".
-    const json = reportJson;
     window.addEventListener('message', function msgHandler(messageEvent) {
-      if (messageEvent.origin !== VIEWER_ORIGIN) {
+      if (messageEvent.origin !== origin) {
         return;
       }
       if (popup && messageEvent.data.opened) {
-        popup.postMessage({lhresults: json}, VIEWER_ORIGIN);
+        popup.postMessage(data, origin);
         window.removeEventListener('message', msgHandler);
       }
     });
 
     // The popup's window.name is keyed by version+url+fetchTime, so we reuse/select tabs correctly
-    // @ts-expect-error - If this is a v2 LHR, use old `generatedTime`.
-    const fallbackFetchTime = /** @type {string} */ (json.generatedTime);
-    const fetchTime = json.fetchTime || fallbackFetchTime;
-    const windowName = `${json.lighthouseVersion}-${json.requestedUrl}-${fetchTime}`;
-    const popup = window.open(`${VIEWER_ORIGIN}${viewerPath}`, windowName);
+    const popup = window.open(url, windowName);
   }
 
   /**
@@ -548,10 +594,9 @@ class ReportUIFeatures {
     if ('onbeforeprint' in self) {
       self.addEventListener('afterprint', this.collapseAllDetails);
     } else {
-      const win = /** @type {Window} */ (self);
       // Note: FF implements both window.onbeforeprint and media listeners. However,
       // it doesn't matchMedia doesn't fire when matching 'print'.
-      win.matchMedia('print').addListener(mql => {
+      self.matchMedia('print').addListener(mql => {
         if (mql.matches) {
           this.expandAllDetails();
         } else {

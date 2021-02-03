@@ -13,11 +13,6 @@ const UIStrings = {
   title: 'Avoid large layout shifts',
   /** Description of a diagnostic audit that provides up to the top five elements contributing to Cumulative Layout Shift. */
   description: 'These DOM elements contribute most to the CLS of the page.',
-  /** [ICU Syntax] Label for the Cumulative Layout Shift Elements audit identifying how many elements were found. */
-  displayValue: `{nodeCount, plural,
-    =1 {1 element found}
-    other {# elements found}
-    }`,
   /**  Label for a column in a data table; entries in this column will be the amount that the corresponding element contributes to the total CLS metric score. */
   columnContribution: 'CLS Contribution',
 };
@@ -34,7 +29,7 @@ class LayoutShiftElements extends Audit {
       title: str_(UIStrings.title),
       description: str_(UIStrings.description),
       scoreDisplayMode: Audit.SCORING_MODES.INFORMATIVE,
-      requiredArtifacts: ['TraceElements'],
+      requiredArtifacts: ['traces', 'TraceElements'],
     };
   }
 
@@ -48,14 +43,15 @@ class LayoutShiftElements extends Audit {
 
     const clsElementData = clsElements.map(element => {
       return {
-        node: /** @type {LH.Audit.Details.NodeValue} */ ({
-          type: 'node',
-          path: element.devtoolsNodePath,
-          selector: element.selector,
-          nodeLabel: element.nodeLabel,
-          snippet: element.snippet,
-          boundingRect: element.boundingRect,
-        }),
+        node: {
+          type: /** @type {'node'} */ ('node'),
+          lhId: element.node.lhId,
+          path: element.node.devtoolsNodePath,
+          selector: element.node.selector,
+          nodeLabel: element.node.nodeLabel,
+          snippet: element.node.snippet,
+          boundingRect: element.node.boundingRect,
+        },
         score: element.score,
       };
     });
@@ -70,7 +66,8 @@ class LayoutShiftElements extends Audit {
     const details = Audit.makeTableDetails(headings, clsElementData);
     let displayValue;
     if (clsElementData.length > 0) {
-      displayValue = str_(UIStrings.displayValue, {nodeCount: clsElementData.length});
+      displayValue = str_(i18n.UIStrings.displayValueElementsFound,
+        {nodeCount: clsElementData.length});
     }
 
     return {

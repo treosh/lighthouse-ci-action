@@ -27,9 +27,9 @@ const WASTED_MS_FOR_SCORE_OF_ZERO = 5000;
  * @property {Array<LH.Audit.ByteEfficiencyItem>} items
  * @property {Map<string, number>=} wastedBytesByUrl
  * @property {LH.Audit.Details.Opportunity['headings']} headings
- * @property {string} [displayValue]
- * @property {string} [explanation]
- * @property {Array<string>} [warnings]
+ * @property {LH.IcuMessage} [displayValue]
+ * @property {LH.IcuMessage} [explanation]
+ * @property {Array<string | LH.IcuMessage>} [warnings]
  */
 
 /**
@@ -62,7 +62,7 @@ class UnusedBytes extends Audit {
    * Estimates the number of bytes this network record would have consumed on the network based on the
    * uncompressed size (totalBytes). Uses the actual transfer size from the network record if applicable.
    *
-   * @param {LH.Artifacts.NetworkRequest=} networkRecord
+   * @param {LH.Artifacts.NetworkRequest|undefined} networkRecord
    * @param {number} totalBytes Uncompressed size of the resource
    * @param {LH.Crdp.Network.ResourceType=} resourceType
    * @return {number}

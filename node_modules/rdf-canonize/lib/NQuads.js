@@ -3,6 +3,7 @@
  */
 'use strict';
 
+// eslint-disable-next-line no-unused-vars
 const TERMS = ['subject', 'predicate', 'object', 'graph'];
 const RDF = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#';
 const RDF_LANGSTRING = RDF + 'langString';
@@ -259,8 +260,8 @@ module.exports = class NQuads {
 
     const termTypeMap = {
       'blank node': 'BlankNode',
-      'IRI': 'NamedNode',
-      'literal': 'Literal'
+      IRI: 'NamedNode',
+      literal: 'Literal'
     };
 
     for(const graphName in dataset) {

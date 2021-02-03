@@ -10,9 +10,11 @@ const Speedline = require('../speedline.js');
 const FirstContentfulPaint = require('./first-contentful-paint.js');
 const FirstMeaningfulPaint = require('./first-meaningful-paint.js');
 const LargestContentfulPaint = require('./largest-contentful-paint.js');
+const LargestContentfulPaintAllFrames = require('./largest-contentful-paint-all-frames.js');
 const FirstCPUIdle = require('./first-cpu-idle.js');
 const Interactive = require('./interactive.js');
 const CumulativeLayoutShift = require('./cumulative-layout-shift.js');
+const CumulativeLayoutShiftAllFrames = require('./cumulative-layout-shift-all-frames.js');
 const SpeedIndex = require('./speed-index.js');
 const EstimatedInputLatency = require('./estimated-input-latency.js');
 const MaxPotentialFID = require('./max-potential-fid.js');
@@ -44,9 +46,11 @@ class TimingSummary {
     const firstContentfulPaint = await FirstContentfulPaint.request(metricComputationData, context);
     const firstMeaningfulPaint = await FirstMeaningfulPaint.request(metricComputationData, context);
     const largestContentfulPaint = await requestOrUndefined(LargestContentfulPaint, metricComputationData); // eslint-disable-line max-len
+    const largestContentfulPaintAllFrames = await requestOrUndefined(LargestContentfulPaintAllFrames, metricComputationData); // eslint-disable-line max-len
     const firstCPUIdle = await requestOrUndefined(FirstCPUIdle, metricComputationData);
     const interactive = await requestOrUndefined(Interactive, metricComputationData);
     const cumulativeLayoutShift = await requestOrUndefined(CumulativeLayoutShift, trace);
+    const cumulativeLayoutShiftAllFrames = await requestOrUndefined(CumulativeLayoutShiftAllFrames, trace); // eslint-disable-line max-len
     const maxPotentialFID = await requestOrUndefined(MaxPotentialFID, metricComputationData);
     const speedIndex = await requestOrUndefined(SpeedIndex, metricComputationData);
     const estimatedInputLatency = await EstimatedInputLatency.request(metricComputationData, context); // eslint-disable-line max-len
@@ -55,6 +59,8 @@ class TimingSummary {
     const cumulativeLayoutShiftValue = cumulativeLayoutShift &&
       cumulativeLayoutShift.value !== null ?
       cumulativeLayoutShift.value : undefined;
+    const cumulativeLayoutShiftAllFramesValue = cumulativeLayoutShiftAllFrames ?
+      cumulativeLayoutShiftAllFrames.value : undefined;
 
     /** @type {LH.Artifacts.TimingSummary} */
     const metrics = {
@@ -65,6 +71,8 @@ class TimingSummary {
       firstMeaningfulPaintTs: firstMeaningfulPaint.timestamp,
       largestContentfulPaint: largestContentfulPaint && largestContentfulPaint.timing,
       largestContentfulPaintTs: largestContentfulPaint && largestContentfulPaint.timestamp,
+      largestContentfulPaintAllFrames: largestContentfulPaintAllFrames && largestContentfulPaintAllFrames.timing, // eslint-disable-line max-len
+      largestContentfulPaintAllFramesTs: largestContentfulPaintAllFrames && largestContentfulPaintAllFrames.timestamp, // eslint-disable-line max-len
       firstCPUIdle: firstCPUIdle && firstCPUIdle.timing,
       firstCPUIdleTs: firstCPUIdle && firstCPUIdle.timestamp,
       interactive: interactive && interactive.timing,
@@ -76,6 +84,7 @@ class TimingSummary {
       totalBlockingTime: totalBlockingTime.timing,
       maxPotentialFID: maxPotentialFID && maxPotentialFID.timing,
       cumulativeLayoutShift: cumulativeLayoutShiftValue,
+      cumulativeLayoutShiftAllFrames: cumulativeLayoutShiftAllFramesValue,
 
       // Include all timestamps of interest from trace of tab
       observedTimeOrigin: traceOfTab.timings.timeOrigin,
@@ -92,6 +101,8 @@ class TimingSummary {
       observedFirstMeaningfulPaintTs: traceOfTab.timestamps.firstMeaningfulPaint,
       observedLargestContentfulPaint: traceOfTab.timings.largestContentfulPaint,
       observedLargestContentfulPaintTs: traceOfTab.timestamps.largestContentfulPaint,
+      observedLargestContentfulPaintAllFrames: traceOfTab.timings.largestContentfulPaintAllFrames,
+      observedLargestContentfulPaintAllFramesTs: traceOfTab.timestamps.largestContentfulPaintAllFrames, // eslint-disable-line max-len
       observedTraceEnd: traceOfTab.timings.traceEnd,
       observedTraceEndTs: traceOfTab.timestamps.traceEnd,
       observedLoad: traceOfTab.timings.load,
@@ -99,6 +110,7 @@ class TimingSummary {
       observedDomContentLoaded: traceOfTab.timings.domContentLoaded,
       observedDomContentLoadedTs: traceOfTab.timestamps.domContentLoaded,
       observedCumulativeLayoutShift: cumulativeLayoutShiftValue,
+      observedCumulativeLayoutShiftAllFrames: cumulativeLayoutShiftAllFramesValue,
 
       // Include some visual metrics from speedline
       observedFirstVisualChange: speedline.first,

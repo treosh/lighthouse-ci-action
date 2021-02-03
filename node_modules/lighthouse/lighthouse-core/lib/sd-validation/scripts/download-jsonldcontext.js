@@ -9,7 +9,7 @@
  * Call this script to update assets/jsonldcontext.json with the latest schema.org spec
  */
 
-const fetch = require('isomorphic-fetch');
+const fetch = require('node-fetch');
 const path = require('path');
 const fs = require('fs');
 

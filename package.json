@@ -1,6 +1,6 @@
 {
   "name": "lighthouse-ci-action",
-  "version": "3.1.0",
+  "version": "7.0.0",
   "license": "MIT",
   "description": "Run Lighthouse in CI using Github Actions",
   "repository": "treosh/lighthouse-ci-action",

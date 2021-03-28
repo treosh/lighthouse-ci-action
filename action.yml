@@ -9,6 +9,9 @@ inputs:
     description: 'Path to a LHCI lighthouserc.json file'
   uploadArtifacts:
     description: 'Opt-out of saving Lighthouse results as an action artifacts'
+  artifactName:
+    description: 'Name of the artifact group if using uploadArtifacts. default: lighthouse-results'
+    default: lighthouse-results
   temporaryPublicStorage:
     descripton: 'Opt-in to saving Lighthouse results to temporary public storage'
   runs:

@@ -65,7 +65,7 @@ async function main() {
   if (input.serverToken || input.temporaryPublicStorage || input.uploadArtifacts) {
     // upload artifacts as soon as collected
     if (input.uploadArtifacts) {
-      await uploadArtifacts(resultsPath)
+      await uploadArtifacts(resultsPath, input.artifactName)
     }
 
     if (input.serverToken || input.temporaryPublicStorage) {

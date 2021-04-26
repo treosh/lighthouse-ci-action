@@ -178,7 +178,7 @@ Chrome flags can be set directly in the `lighthouserc`'s `collect` section.
     "collect": {
       "numberOfRuns": 1,
       "settings": {
-        "chromeFlags": ["--disable-gpu", "--no-sandbox", "--no-zygote"]
+        "chromeFlags": "--disable-gpu --no-sandbox --no-zygote"
       }
     }
   }

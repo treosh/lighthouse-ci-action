@@ -567,7 +567,7 @@ A JSON string with assertion results:
 A JSON string with report results ([LHCI docs reference](https://github.com/GoogleChrome/lighthouse-ci/blob/master/docs/configuration.md#outputdir)):
 
 ```js
-;[
+[
   {
     url: 'https://treo.sh/',
     isRepresentativeRun: true,

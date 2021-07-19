@@ -100,7 +100,7 @@ function processForProto(lhr) {
   return reportJson;
 }
 
-// @ts-expect-error claims always false, but this checks if cli or module
+// Test if called from the CLI or as a module.
 if (require.main === module) {
   // read in the argv for the input & output
   const args = process.argv.slice(2);

@@ -41,7 +41,8 @@ async function lighthouse(url, flags = {}, configJSON, userConnection) {
   log.setLevel(flags.logLevel);
 
   const config = generateConfig(configJSON, flags);
-  const options = {url, config};
+  const computedCache = new Map();
+  const options = {url, config, computedCache};
   const connection = userConnection || new ChromeProtocol(flags.port, flags.hostname);
 
   // kick off a lighthouse run

@@ -3,7 +3,6 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
  */
-// @ts-nocheck - TODO: cut down on exported artifact properties not needed by audits
 /**
  * @fileoverview
  *   Identifies stylesheets, HTML Imports, and scripts that potentially block
@@ -19,163 +18,211 @@
 
 'use strict';
 
-const Gatherer = require('../gatherer.js');
-const Driver = require('../../driver.js'); // eslint-disable-line no-unused-vars
+const NetworkRecords = require('../../../computed/network-records.js');
+const DevtoolsLog = require('../devtools-log.js');
+const FRGatherer = require('../../../fraggle-rock/gather/base-gatherer.js');
 
-/* global document,window,HTMLLinkElement */
+/* global document, window, performance, HTMLLinkElement, SVGScriptElement */
 
-/* istanbul ignore next */
+/** @typedef {{href: string, media: string, msSinceHTMLEnd: number, matches: boolean}} MediaChange */
+/** @typedef {{tagName: 'LINK', url: string, href: string, rel: string, media: string, disabled: boolean, mediaChanges: Array<MediaChange>}} LinkTag */
+/** @typedef {{tagName: 'SCRIPT', url: string, src: string}} ScriptTag */
+
+/* c8 ignore start */
 function installMediaListener() {
+  // @ts-expect-error - inserted in page to track media changes.
   window.___linkMediaChanges = [];
   Object.defineProperty(HTMLLinkElement.prototype, 'media', {
     set: function(val) {
-      window.___linkMediaChanges.push({
+      /** @type {MediaChange} */
+      const mediaChange = {
         href: this.href,
         media: val,
-        msSinceHTMLEnd: Date.now() - window.performance.timing.responseEnd,
+        msSinceHTMLEnd: Date.now() - performance.timing.responseEnd,
         matches: window.matchMedia(val).matches,
-      });
+      };
+      // @ts-expect-error - `___linkMediaChanges` created above.
+      window.___linkMediaChanges.push(mediaChange);
 
-      return this.setAttribute('media', val);
+      this.setAttribute('media', val);
     },
   });
 }
+/* c8 ignore stop */
 
 /**
- * @return {Promise<{tagName: string, url: string, src: string, href: string, rel: string, media: string, disabled: boolean, mediaChanges: {href: string, media: string, msSinceHTMLEnd: number, matches: boolean}}>}
+ * @return {Promise<Array<LinkTag | ScriptTag>>}
  */
-/* istanbul ignore next */
-function collectTagsThatBlockFirstPaint() {
-  return new Promise((resolve, reject) => {
-    try {
-      const tagList = [...document.querySelectorAll('link, head script[src]')]
-        .filter(tag => {
-          if (tag.tagName === 'SCRIPT') {
-            const scriptTag = /** @type {HTMLScriptElement} */ (tag);
-            return (
-              !scriptTag.hasAttribute('async') &&
-              !scriptTag.hasAttribute('defer') &&
-              !/^data:/.test(scriptTag.src) &&
-              !/^blob:/.test(scriptTag.src) &&
-              scriptTag.getAttribute('type') !== 'module'
-            );
-          } else if (tag.tagName === 'LINK') {
-            // Filter stylesheet/HTML imports that block rendering.
-            // https://www.igvita.com/2012/06/14/debunking-responsive-css-performance-myths/
-            // https://www.w3.org/TR/html-imports/#dfn-import-async-attribute
-            const linkTag = /** @type {HTMLLinkElement} */ (tag);
-            const blockingStylesheet = linkTag.rel === 'stylesheet' &&
-              window.matchMedia(linkTag.media).matches && !linkTag.disabled;
-            const blockingImport = linkTag.rel === 'import' && !linkTag.hasAttribute('async');
-            return blockingStylesheet || blockingImport;
-          }
+/* c8 ignore start */
+async function collectTagsThatBlockFirstPaint() {
+  /** @type {Array<MediaChange>} */
+  // @ts-expect-error - `___linkMediaChanges` created in `installMediaListener`.
+  const linkMediaChanges = window.___linkMediaChanges;
 
-          return false;
-        })
-        .map(tag => {
-          return {
-            tagName: tag.tagName,
-            url: tag.tagName === 'LINK' ? tag.href : tag.src,
-            src: tag.src,
-            href: tag.href,
-            rel: tag.rel,
-            media: tag.media,
-            disabled: tag.disabled,
-            mediaChanges: window.___linkMediaChanges.filter(item => item.href === tag.href),
-          };
-        });
-      resolve(tagList);
-    } catch (e) {
-      const friendly = 'Unable to gather Scripts/Stylesheets/HTML Imports on the page';
-      reject(new Error(`${friendly}: ${e.message}`));
-    }
-  });
+  try {
+    /** @type {Array<LinkTag>} */
+    const linkTags = [...document.querySelectorAll('link')]
+      .filter(linkTag => {
+        // Filter stylesheet/HTML imports that block rendering.
+        // https://www.igvita.com/2012/06/14/debunking-responsive-css-performance-myths/
+        // https://www.w3.org/TR/html-imports/#dfn-import-async-attribute
+        const blockingStylesheet = linkTag.rel === 'stylesheet' &&
+          window.matchMedia(linkTag.media).matches && !linkTag.disabled;
+        const blockingImport = linkTag.rel === 'import' && !linkTag.hasAttribute('async');
+        return blockingStylesheet || blockingImport;
+      })
+      .map(tag => {
+        return {
+          tagName: 'LINK',
+          url: tag.href,
+          href: tag.href,
+          rel: tag.rel,
+          media: tag.media,
+          disabled: tag.disabled,
+          mediaChanges: linkMediaChanges.filter(item => item.href === tag.href),
+        };
+      });
+
+    /** @type {Array<ScriptTag>} */
+    const scriptTags = [...document.querySelectorAll('head script[src]')]
+      .filter(/** @return {scriptTag is HTMLScriptElement} */ scriptTag => {
+        // SVGScriptElement can't appear in <head> (it'll be kicked to <body>), but keep tsc happy.
+        // https://html.spec.whatwg.org/multipage/semantics.html#the-head-element
+        if (scriptTag instanceof SVGScriptElement) return false;
+
+        return (
+          !scriptTag.hasAttribute('async') &&
+          !scriptTag.hasAttribute('defer') &&
+          !/^data:/.test(scriptTag.src) &&
+          !/^blob:/.test(scriptTag.src) &&
+          scriptTag.getAttribute('type') !== 'module'
+        );
+      })
+      .map(tag => {
+        return {
+          tagName: 'SCRIPT',
+          url: tag.src,
+          src: tag.src,
+        };
+      });
+
+    return [...linkTags, ...scriptTags];
+  } catch (e) {
+    const friendly = 'Unable to gather Scripts/Stylesheets/HTML Imports on the page';
+    throw new Error(`${friendly}: ${e.message}`);
+  }
 }
+/* c8 ignore stop */
 
-class TagsBlockingFirstPaint extends Gatherer {
+class TagsBlockingFirstPaint extends FRGatherer {
+  /** @type {LH.Gatherer.GathererMeta<'DevtoolsLog'>} */
+  meta = {
+    supportedModes: ['navigation'],
+    dependencies: {DevtoolsLog: DevtoolsLog.symbol},
+  }
+
   /**
    * @param {Array<LH.Artifacts.NetworkRequest>} networkRecords
+   * @return {Map<string, LH.Artifacts.NetworkRequest>}
    */
   static _filteredAndIndexedByUrl(networkRecords) {
-    /** @type {Object<string, {isLinkPreload: boolean, transferSize: number, startTime: number, endTime: number}>} */
-    const result = {};
+    /** @type {Map<string, LH.Artifacts.NetworkRequest>} */
+    const result = new Map();
 
-    return networkRecords.reduce((prev, record) => {
-      if (!record.finished) {
-        return prev;
-      }
+    for (const record of networkRecords) {
+      if (!record.finished) continue;
 
       const isParserGenerated = record.initiator.type === 'parser';
       // A stylesheet only blocks script if it was initiated by the parser
       // https://html.spec.whatwg.org/multipage/semantics.html#interactions-of-styling-and-scripting
       const isParserScriptOrStyle = /(css|script)/.test(record.mimeType) && isParserGenerated;
-      const isFailedRequest = record._failed;
+      const isFailedRequest = record.failed;
       const isHtml = record.mimeType && record.mimeType.includes('html');
 
       // Filter stylesheet, javascript, and html import mimetypes.
       // Include 404 scripts/links generated by the parser because they are likely blocking.
       if (isHtml || isParserScriptOrStyle || (isFailedRequest && isParserGenerated)) {
-        prev[record.url] = {
-          isLinkPreload: !!record.isLinkPreload,
-          transferSize: record.transferSize,
-          startTime: record.startTime,
-          endTime: record.endTime,
-        };
+        result.set(record.url, record);
       }
+    }
 
-      return prev;
-    }, result);
+    return result;
   }
 
   /**
-   * @param {Driver} driver
+   * @param {LH.Gatherer.FRTransitionalDriver} driver
    * @param {Array<LH.Artifacts.NetworkRequest>} networkRecords
+   * @return {Promise<Array<LH.Artifacts.TagBlockingFirstPaint>>}
    */
-  static findBlockingTags(driver, networkRecords) {
-    const scriptSrc = `(${collectTagsThatBlockFirstPaint.toString()}())`;
+  static async findBlockingTags(driver, networkRecords) {
     const firstRequestEndTime = networkRecords.reduce(
       (min, record) => Math.min(min, record.endTime),
       Infinity
     );
-    return driver.evaluateAsync(scriptSrc).then(tags => {
-      const requests = TagsBlockingFirstPaint._filteredAndIndexedByUrl(networkRecords);
+    const tags = await driver.executionContext.evaluate(collectTagsThatBlockFirstPaint, {args: []});
+    const requests = TagsBlockingFirstPaint._filteredAndIndexedByUrl(networkRecords);
 
-      return tags.reduce((prev, tag) => {
-        const request = requests[tag.url];
-        if (request && !request.isLinkPreload) {
-          // Even if the request was initially blocking or appeared to be blocking once the
-          // page was loaded, the media attribute could have been changed during load, capping the
-          // amount of time it was render blocking. See https://github.com/GoogleChrome/lighthouse/issues/2832.
-          const timesResourceBecameNonBlocking = (tag.mediaChanges || [])
-            .filter(change => !change.matches)
-            .map(change => change.msSinceHTMLEnd);
+    /** @type {Array<LH.Artifacts.TagBlockingFirstPaint>} */
+    const result = [];
+    for (const tag of tags) {
+      const request = requests.get(tag.url);
+      if (!request || request.isLinkPreload) continue;
+
+      let endTime = request.endTime;
+      let mediaChanges;
+
+      if (tag.tagName === 'LINK') {
+        // Even if the request was initially blocking or appeared to be blocking once the
+        // page was loaded, the media attribute could have been changed during load, capping the
+        // amount of time it was render blocking. See https://github.com/GoogleChrome/lighthouse/issues/2832.
+        const timesResourceBecameNonBlocking = tag.mediaChanges
+          .filter(change => !change.matches)
+          .map(change => change.msSinceHTMLEnd);
+        if (timesResourceBecameNonBlocking.length > 0) {
           const earliestNonBlockingTime = Math.min(...timesResourceBecameNonBlocking);
           const lastTimeResourceWasBlocking = Math.max(
             request.startTime,
             firstRequestEndTime + earliestNonBlockingTime / 1000
           );
-
-          prev.push({
-            tag,
-            transferSize: request.transferSize || 0,
-            startTime: request.startTime,
-            endTime: Math.min(request.endTime, lastTimeResourceWasBlocking),
-          });
-
-          // Prevent duplicates from showing up again
-          requests[tag.url] = null;
+          endTime = Math.min(endTime, lastTimeResourceWasBlocking);
         }
 
-        return prev;
-      }, []);
-    });
+        mediaChanges = tag.mediaChanges;
+      }
+
+      const {tagName, url} = tag;
+
+      result.push({
+        tag: {tagName, url, mediaChanges},
+        transferSize: request.transferSize,
+        startTime: request.startTime,
+        endTime,
+      });
+
+      // Prevent duplicates from showing up again
+      requests.delete(tag.url);
+    }
+
+    return result;
   }
 
   /**
-   * @param {LH.Gatherer.PassContext} passContext
+   * @param {LH.Gatherer.FRTransitionalContext} context
    */
-  beforePass(passContext) {
-    return passContext.driver.evaluateScriptOnNewDocument(`(${installMediaListener.toString()})()`);
+  async startSensitiveInstrumentation(context) {
+    const {executionContext} = context.driver;
+    // Don't return return value of `evaluateOnNewDocument`.
+    await executionContext.evaluateOnNewDocument(installMediaListener, {args: []});
+  }
+
+  /**
+   * @param {LH.Gatherer.FRTransitionalContext<'DevtoolsLog'>} context
+   * @return {Promise<LH.Artifacts['TagsBlockingFirstPaint']>}
+   */
+  async getArtifact(context) {
+    const devtoolsLog = context.dependencies.DevtoolsLog;
+    const networkRecords = await NetworkRecords.request(devtoolsLog, context);
+    return TagsBlockingFirstPaint.findBlockingTags(context.driver, networkRecords);
   }
 
   /**

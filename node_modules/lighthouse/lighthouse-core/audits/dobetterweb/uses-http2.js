@@ -15,6 +15,7 @@
 
 const Audit = require('../audit.js');
 const ThirdParty = require('../../lib/third-party-web.js');
+const URL = require('../../lib/url-shim.js');
 const ByteEfficiencyAudit = require('../byte-efficiency/byte-efficiency-audit.js');
 const Interactive = require('../../computed/metrics/lantern-interactive.js');
 const NetworkRequest = require('../../lib/network-request.js');
@@ -146,6 +147,7 @@ class UsesHTTP2Audit extends Audit {
    *    - Served over HTTP/1.1 or earlier
    *    - Served over an origin that serves at least 6 static asset requests
    *      (if there aren't more requests than browser's max/host, multiplexing isn't as big a deal)
+   *    - Not served on localhost (h2 is a pain to deal with locally & and CI)
    *
    * ** = https://news.ycombinator.com/item?id=19086639
    *      https://www.twilio.com/blog/2017/10/http2-issues.html
@@ -164,6 +166,7 @@ class UsesHTTP2Audit extends Audit {
     const groupedByOrigin = new Map();
     for (const record of networkRecords) {
       if (!UsesHTTP2Audit.isStaticAsset(record)) continue;
+      if (URL.isLikeLocalhost(record.parsedURL.host)) continue;
       const existing = groupedByOrigin.get(record.parsedURL.securityOrigin) || [];
       existing.push(record);
       groupedByOrigin.set(record.parsedURL.securityOrigin, existing);

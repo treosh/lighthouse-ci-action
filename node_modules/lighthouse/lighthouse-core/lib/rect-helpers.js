@@ -21,13 +21,14 @@ function rectContainsPoint(rect, {x, y}) {
  */
 // We sometimes run this as a part of a gatherer script injected into the page, so prevent
 // renaming the function for code coverage.
-/* istanbul ignore next */
+/* c8 ignore start */
 function rectContains(rect1, rect2) {
   return rect2.top >= rect1.top &&
     rect2.right <= rect1.right &&
     rect2.bottom <= rect1.bottom &&
     rect2.left >= rect1.left;
 }
+/* c8 ignore stop */
 
 /**
  * @param {LH.Artifacts.Rect[]} rects
@@ -63,13 +64,14 @@ function filterOutRectsContainedByOthers(rects) {
 /**
  * @param {LH.Artifacts.Rect} rect
  */
-/* istanbul ignore next */
+/* c8 ignore start */
 function getRectCenterPoint(rect) {
   return {
     x: rect.left + rect.width / 2,
     y: rect.top + rect.height / 2,
   };
 }
+/* c8 ignore stop */
 
 /**
  * @param {LH.Artifacts.Rect} rectA
@@ -194,15 +196,16 @@ function getRectAtCenter(rect, centerRectSize) {
 /**
  * @param {LH.Artifacts.Rect} rect
  */
-/* istanbul ignore next */
+/* c8 ignore start */
 function getRectArea(rect) {
   return rect.width * rect.height;
 }
+/* c8 ignore stop */
 
 /**
  * @param {LH.Artifacts.Rect[]} rects
  */
-/* istanbul ignore next */
+/* c8 ignore start */
 function getLargestRect(rects) {
   let largestRect = rects[0];
   for (const rect of rects) {
@@ -212,6 +215,7 @@ function getLargestRect(rects) {
   }
   return largestRect;
 }
+/* c8 ignore stop */
 
 /**
  *

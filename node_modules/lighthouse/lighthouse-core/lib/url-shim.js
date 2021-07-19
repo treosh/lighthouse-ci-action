@@ -9,13 +9,18 @@
  * URL shim so we keep our code DRY
  */
 
-/* global URL */
-
 const Util = require('../report/html/renderer/util.js');
+
+/** @typedef {import('./network-request.js')} NetworkRequest */
 
 const allowedProtocols = [
   'https:', 'http:', 'chrome:', 'chrome-extension:',
 ];
+
+const SECURE_SCHEMES = ['data', 'https', 'wss', 'blob', 'chrome', 'chrome-extension', 'about',
+  'filesystem'];
+const SECURE_LOCALHOST_DOMAINS = ['localhost', '127.0.0.1'];
+const NON_NETWORK_SCHEMES = ['blob', 'data', 'intent'];
 
 /**
  * There is fancy URL rewriting logic for the chrome://settings page that we need to work around.
@@ -172,11 +177,47 @@ class URLShim extends URL {
       return false;
     }
   }
+
+  /**
+   * Is the host localhost-enough to satisfy the "secure context" definition
+   * https://github.com/GoogleChrome/lighthouse/pull/11766#discussion_r582340683
+   * @param {string} hostname Either a `new URL(url).hostname` or a `networkRequest.parsedUrl.host`
+   * @return {boolean}
+   */
+  static isLikeLocalhost(hostname) {
+    // Any hostname terminating in `.localhost` is considered to be local.
+    // https://w3c.github.io/webappsec-secure-contexts/#localhost
+    // This method doesn't consider IPs that resolve to loopback, IPv6 or other loopback edgecases
+    return SECURE_LOCALHOST_DOMAINS.includes(hostname) || hostname.endsWith('.localhost');
+  }
+
+  /**
+   * @param {NetworkRequest['parsedURL']['scheme']} scheme
+   * @return {boolean}
+   */
+  static isSecureScheme(scheme) {
+    return SECURE_SCHEMES.includes(scheme);
+  }
+
+  /**
+   * Use `NetworkRequest.isNonNetworkRequest(req)` if working with a request.
+   * Note: the `protocol` field from CDP can be 'h2', 'http', (not 'https'!) or it'll be url's scheme.
+   *   https://source.chromium.org/chromium/chromium/src/+/master:content/browser/devtools/protocol/network_handler.cc;l=598-611;drc=56d4a9a9deb30be73adcee8737c73bcb2a5ab64f
+   * However, a `new URL(href).protocol` has a colon suffix.
+   *   https://url.spec.whatwg.org/#dom-url-protocol
+   * A URL's `scheme` is specced as the `protocol` sans-colon, but isn't exposed on a URL object.
+   * This method can take all 3 of these string types as a parameter.
+   * @param {NetworkRequest['protocol'] | URL['protocol']} protocol Either a networkRequest's `protocol` per CDP or a `new URL(href).protocol`
+   * @return {boolean}
+   */
+  static isNonNetworkProtocol(protocol) {
+    // Strip off any colon
+    const urlScheme = protocol.includes(':') ? protocol.slice(0, protocol.indexOf(':')) : protocol;
+    return NON_NETWORK_SCHEMES.includes(urlScheme);
+  }
 }
 
 URLShim.URL = URL;
-
-URLShim.NON_NETWORK_PROTOCOLS = ['blob', 'data', 'intent'];
 
 URLShim.INVALID_URL_DEBUG_STRING =
     'Lighthouse was unable to determine the URL of some script executions. ' +

@@ -58,8 +58,7 @@ class PwaCategoryRenderer extends CategoryRenderer {
     }
 
     const tmpl = this.dom.cloneTemplate('#tmpl-lh-gauge--pwa', this.templateContext);
-    const wrapper = /** @type {HTMLAnchorElement} */ (this.dom.find('.lh-gauge--pwa__wrapper',
-      tmpl));
+    const wrapper = this.dom.find('a.lh-gauge--pwa__wrapper', tmpl);
     wrapper.href = `#${category.id}`;
 
     // Correct IDs in case multiple instances end up in the page.

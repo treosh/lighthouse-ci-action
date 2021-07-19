@@ -86,6 +86,22 @@ class Connection {
     this._eventEmitter.on(eventName, cb);
   }
 
+  /**
+   * Unbind listeners for connection events.
+   * @param {'protocolevent'} eventName
+   * @param {function(LH.Protocol.RawEventMessage): void} cb
+   */
+  off(eventName, cb) {
+    if (eventName !== 'protocolevent') {
+      throw new Error('Only supports "protocolevent" events');
+    }
+
+    if (!this._eventEmitter) {
+      throw new Error('Attempted to remove event listener after connection disposed.');
+    }
+    this._eventEmitter.removeListener(eventName, cb);
+  }
+
   /* eslint-disable no-unused-vars */
 
   /**

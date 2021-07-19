@@ -37,14 +37,21 @@ class TotalBlockingTime extends Audit {
   static get defaultOptions() {
     return {
       mobile: {
-        // According to a cluster telemetry run over top 10k sites on mobile, 5th percentile was 0ms,
-        // 25th percentile was 270ms and median was 895ms. These numbers include 404 pages. Picking
-        // thresholds according to our 25/75-th rule will be quite harsh scoring (a single 350ms task)
-        // after FCP will yield a score of .5. The following coefficients are semi-arbitrarily picked
-        // to give 600ms jank a score of .5 and 100ms jank a score of .999. We can tweak these numbers
-        // in the future. See https://www.desmos.com/calculator/bbsv8fedg5
+        // If determined from HTTP Archive data…
+        //     SELECT
+        //         APPROX_QUANTILES(tbt_value, 100)[OFFSET(8)] AS p08_tbt,
+        //         APPROX_QUANTILES(tbt_value, 100)[OFFSET(25)] AS p25_tbt
+        //     FROM (
+        //         SELECT CAST(JSON_EXTRACT_SCALAR(report, '$.audits.total-blocking-time.numericValue') AS FLOAT64) AS tbt_value
+        //         FROM `httparchive.lighthouse.2021_05_01_mobile`
+        //         WHERE report is not NULL
+        //     )
+        // …we'd use control points of 19 and 189, which leads to surprisingly harsh scoring.
+        //
+        // The following coefficients are semi-arbitrarily chosen, but start to approach the "correct" ones:
+        // See https://www.desmos.com/calculator/pwcgna1cvf go/lh8-tbt-curves
         scoring: {
-          p10: 287,
+          p10: 200,
           median: 600,
         },
       },

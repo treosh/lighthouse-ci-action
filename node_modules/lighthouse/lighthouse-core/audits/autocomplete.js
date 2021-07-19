@@ -260,11 +260,7 @@ class AutocompleteAudit extends Audit {
           continue;
         }
         failingFormsData.push({
-          node: {
-            type: /** @type {'node'} */ ('node'),
-            snippet: input.node.snippet,
-            nodeLabel: input.node.nodeLabel,
-          },
+          node: Audit.makeNodeItem(input.node),
           suggestion: suggestion,
           current: input.autocomplete.attribute,
         });

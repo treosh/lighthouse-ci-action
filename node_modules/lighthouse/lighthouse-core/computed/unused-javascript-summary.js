@@ -28,7 +28,7 @@ const makeComputedArtifact = require('./computed-artifact.js');
  * @property {number} totalBytes
  * @property {number} wastedBytes
  * @property {number=} wastedPercent
- * @property {Record<string, number>=} sourcesWastedBytes
+ * @property {Record<string, number>=} sourcesWastedBytes Keyed by file name. Includes (unmapped) key too.
  */
 
 class UnusedJavascriptSummary {

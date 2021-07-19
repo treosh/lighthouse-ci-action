@@ -54,22 +54,22 @@ class CumulativeLayoutShift extends Audit {
    */
   static async audit(artifacts, context) {
     const trace = artifacts.traces[Audit.DEFAULT_PASS];
-    const metricResult = await ComputedCLS.request(trace, context);
+    const {cumulativeLayoutShift, ...rest} = await ComputedCLS.request(trace, context);
 
     /** @type {LH.Audit.Details.DebugData} */
     const details = {
       type: 'debugdata',
-      items: [metricResult.debugInfo],
+      items: [rest],
     };
 
     return {
       score: Audit.computeLogNormalScore(
         {p10: context.options.p10, median: context.options.median},
-        metricResult.value
+        cumulativeLayoutShift
       ),
-      numericValue: metricResult.value,
+      numericValue: cumulativeLayoutShift,
       numericUnit: 'unitless',
-      displayValue: metricResult.value.toLocaleString(context.settings.locale),
+      displayValue: cumulativeLayoutShift.toLocaleString(context.settings.locale),
       details,
     };
   }

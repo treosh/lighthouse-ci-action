@@ -7,7 +7,8 @@
 
 /* global getNodeDetails */
 
-const Gatherer = require('./gatherer.js');
+const FRGatherer = require('../../fraggle-rock/gather/base-gatherer.js');
+const dom = require('../driver/dom.js');
 const pageFunctions = require('../../lib/page-functions.js');
 
 /* eslint-env browser, node */
@@ -21,7 +22,7 @@ const pageFunctions = require('../../lib/page-functions.js');
  *
  * @return {LH.Artifacts['AnchorElements']}
  */
-/* istanbul ignore next */
+/* c8 ignore start */
 function collectAnchorElements() {
   /** @param {string} url */
   const resolveURLOrEmpty = url => {
@@ -71,45 +72,51 @@ function collectAnchorElements() {
     };
   });
 }
+/* c8 ignore stop */
 
 /**
- * @param {LH.Gatherer.PassContext['driver']} driver
+ * @param {LH.Gatherer.FRProtocolSession} session
  * @param {string} devtoolsNodePath
  * @return {Promise<Array<{type: string}>>}
  */
-async function getEventListeners(driver, devtoolsNodePath) {
-  const objectId = await driver.resolveDevtoolsNodePathToObjectId(devtoolsNodePath);
+async function getEventListeners(session, devtoolsNodePath) {
+  const objectId = await dom.resolveDevtoolsNodePathToObjectId(session, devtoolsNodePath);
   if (!objectId) return [];
 
-  const response = await driver.sendCommand('DOMDebugger.getEventListeners', {
+  const response = await session.sendCommand('DOMDebugger.getEventListeners', {
     objectId,
   });
 
   return response.listeners.map(({type}) => ({type}));
 }
 
-class AnchorElements extends Gatherer {
+class AnchorElements extends FRGatherer {
+  /** @type {LH.Gatherer.GathererMeta} */
+  meta = {
+    supportedModes: ['snapshot', 'navigation'],
+  }
+
   /**
-   * @param {LH.Gatherer.PassContext} passContext
+   * @param {LH.Gatherer.FRTransitionalContext} passContext
    * @return {Promise<LH.Artifacts['AnchorElements']>}
    */
-  async afterPass(passContext) {
-    const driver = passContext.driver;
-    const expression = `(() => {
-      ${pageFunctions.getElementsInDocumentString};
-      ${pageFunctions.getNodeDetailsString};
+  async getArtifact(passContext) {
+    const session = passContext.driver.defaultSession;
 
-      return (${collectAnchorElements})();
-    })()`;
-
-    /** @type {LH.Artifacts['AnchorElements']} */
-    const anchors = await driver.evaluateAsync(expression, {useIsolation: true});
-    await driver.sendCommand('DOM.enable');
+    const anchors = await passContext.driver.executionContext.evaluate(collectAnchorElements, {
+      args: [],
+      useIsolation: true,
+      deps: [
+        pageFunctions.getElementsInDocumentString,
+        pageFunctions.getNodeDetailsString,
+      ],
+    });
+    await session.sendCommand('DOM.enable');
 
     // DOM.getDocument is necessary for pushNodesByBackendIdsToFrontend to properly retrieve nodeIds if the `DOM` domain was enabled before this gatherer, invoke it to be safe.
-    await driver.sendCommand('DOM.getDocument', {depth: -1, pierce: true});
+    await session.sendCommand('DOM.getDocument', {depth: -1, pierce: true});
     const anchorsWithEventListeners = anchors.map(async anchor => {
-      const listeners = await getEventListeners(driver, anchor.node.devtoolsNodePath);
+      const listeners = await getEventListeners(session, anchor.node.devtoolsNodePath);
 
       return {
         ...anchor,
@@ -118,7 +125,7 @@ class AnchorElements extends Gatherer {
     });
 
     const result = await Promise.all(anchorsWithEventListeners);
-    await driver.sendCommand('DOM.disable');
+    await session.sendCommand('DOM.disable');
     return result;
   }
 }

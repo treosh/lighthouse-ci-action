@@ -397,6 +397,23 @@ class LegacyJavascript extends ByteEfficiencyAudit {
   }
 
   /**
+   * @param {LH.Artifacts.Bundle} bundle
+   * @param {number} generatedLine
+   * @param {number} generatedColumn
+   * @return {LH.Audit.Details.SourceLocationValue['original']}
+   */
+  static _findOriginalLocation(bundle, generatedLine, generatedColumn) {
+    const entry = bundle && bundle.map.findEntry(generatedLine, generatedColumn);
+    if (!entry) return;
+
+    return {
+      file: entry.sourceURL || '',
+      line: entry.sourceLineNumber || 0,
+      column: entry.sourceColumnNumber || 0,
+    };
+  }
+
+  /**
    * @param {LH.Artifacts} artifacts
    * @param {Array<LH.Artifacts.NetworkRequest>} networkRecords
    * @param {LH.Audit.Context} context
@@ -434,8 +451,11 @@ class LegacyJavascript extends ByteEfficiencyAudit {
         // Not needed, but keeps typescript happy.
         totalBytes: 0,
       };
+
+      const bundle = bundles.find(bundle => bundle.script.src === url);
       for (const match of matches) {
         const {name, line, column} = match;
+
         /** @type {SubItem} */
         const subItem = {
           signal: name,
@@ -444,6 +464,7 @@ class LegacyJavascript extends ByteEfficiencyAudit {
             url,
             line,
             column,
+            original: bundle && this._findOriginalLocation(bundle, line, column),
             urlProvider: 'network',
           },
         };

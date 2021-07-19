@@ -55,7 +55,7 @@ class ImageAspectRatio extends Audit {
    */
   static computeAspectRatios(image) {
     const url = URL.elideDataURI(image.src);
-    const actualAspectRatio = image.naturalWidth / image.naturalHeight;
+    const actualAspectRatio = image.naturalDimensions.width / image.naturalDimensions.height;
     const displayedAspectRatio = image.displayedWidth / image.displayedHeight;
 
     const targetDisplayHeight = image.displayedWidth / actualAspectRatio;
@@ -65,7 +65,7 @@ class ImageAspectRatio extends Audit {
       url,
       displayedAspectRatio: `${image.displayedWidth} x ${image.displayedHeight}
         (${displayedAspectRatio.toFixed(2)})`,
-      actualAspectRatio: `${image.naturalWidth} x ${image.naturalHeight}
+      actualAspectRatio: `${image.naturalDimensions.width} x ${image.naturalDimensions.height}
         (${actualAspectRatio.toFixed(2)})`,
       doRatiosMatch,
     };
@@ -90,11 +90,12 @@ class ImageAspectRatio extends Audit {
       return !image.isCss &&
         image.mimeType &&
         image.mimeType !== 'image/svg+xml' &&
-        image.naturalHeight && image.naturalHeight > 5 &&
-        image.naturalWidth && image.naturalWidth > 5 &&
+        image.naturalDimensions &&
+        image.naturalDimensions.height > 5 &&
+        image.naturalDimensions.width > 5 &&
         image.displayedWidth &&
         image.displayedHeight &&
-        image.cssComputedObjectFit === 'fill';
+        image.computedStyles.objectFit === 'fill';
     }).forEach(image => {
       const wellDefinedImage = /** @type {WellDefinedImage} */ (image);
       const processed = ImageAspectRatio.computeAspectRatios(wellDefinedImage);

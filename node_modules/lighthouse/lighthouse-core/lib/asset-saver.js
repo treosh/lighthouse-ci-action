@@ -9,13 +9,14 @@ const fs = require('fs');
 const path = require('path');
 const log = require('lighthouse-logger');
 const stream = require('stream');
+const {promisify} = require('util');
 const Simulator = require('./dependency-graph/simulator/simulator.js');
 const lanternTraceSaver = require('./lantern-trace-saver.js');
 const Metrics = require('./traces/pwmetrics-events.js');
-const rimraf = require('rimraf');
 const NetworkAnalysisComputed = require('../computed/network-analysis.js');
 const LoadSimulatorComputed = require('../computed/load-simulator.js');
 const LHError = require('../lib/lh-error.js');
+const pipeline = promisify(stream.pipeline);
 
 const artifactsFilename = 'artifacts.json';
 const traceSuffix = '.trace.json';
@@ -100,8 +101,15 @@ async function saveArtifacts(artifacts, basePath) {
   const status = {msg: 'Saving artifacts', id: 'lh:assetSaver:saveArtifacts'};
   log.time(status);
   fs.mkdirSync(basePath, {recursive: true});
-  rimraf.sync(`${basePath}/*${traceSuffix}`);
-  rimraf.sync(`${basePath}/${artifactsFilename}`);
+
+  // Delete any previous artifacts in this directory.
+  const filenames = fs.readdirSync(basePath);
+  for (const filename of filenames) {
+    if (filename.endsWith(traceSuffix) || filename.endsWith(devtoolsLogSuffix) ||
+        filename === artifactsFilename) {
+      fs.unlinkSync(`${basePath}/${filename}`);
+    }
+  }
 
   const {traces, devtoolsLogs, ...restArtifacts} = artifacts;
 
@@ -112,12 +120,11 @@ async function saveArtifacts(artifacts, basePath) {
 
   // save devtools log
   for (const [passName, devtoolsLog] of Object.entries(devtoolsLogs)) {
-    const log = JSON.stringify(devtoolsLog);
-    fs.writeFileSync(`${basePath}/${passName}${devtoolsLogSuffix}`, log, 'utf8');
+    await saveDevtoolsLog(devtoolsLog, `${basePath}/${passName}${devtoolsLogSuffix}`);
   }
 
   // save everything else, using a replacer to serialize LHErrors in the artifacts.
-  const restArtifactsString = JSON.stringify(restArtifacts, stringifyReplacer, 2);
+  const restArtifactsString = JSON.stringify(restArtifacts, stringifyReplacer, 2) + '\n';
   fs.writeFileSync(`${basePath}/${artifactsFilename}`, restArtifactsString, 'utf8');
   log.log('Artifacts saved to disk in folder:', basePath);
   log.timeEnd(status);
@@ -164,47 +171,55 @@ async function prepareAssets(artifacts, audits) {
 }
 
 /**
+ * Generates a JSON representation of an array of objects with the objects
+ * printed one per line for a more readable (but not too verbose) version.
+ * @param {Array<unknown>} arrayOfObjects
+ * @return {IterableIterator<string>}
+ */
+function* arrayOfObjectsJsonGenerator(arrayOfObjects) {
+  const ITEMS_PER_ITERATION = 500;
+
+  // Stringify and emit items separately to avoid a giant string in memory.
+  yield '[\n';
+  if (arrayOfObjects.length > 0) {
+    const itemsIterator = arrayOfObjects[Symbol.iterator]();
+    // Emit first item manually to avoid a trailing comma.
+    const firstItem = itemsIterator.next().value;
+    yield `  ${JSON.stringify(firstItem)}`;
+
+    let itemsRemaining = ITEMS_PER_ITERATION;
+    let itemsJSON = '';
+    for (const item of itemsIterator) {
+      itemsJSON += `,\n  ${JSON.stringify(item)}`;
+      itemsRemaining--;
+      if (itemsRemaining === 0) {
+        yield itemsJSON;
+        itemsRemaining = ITEMS_PER_ITERATION;
+        itemsJSON = '';
+      }
+    }
+    yield itemsJSON;
+  }
+  yield '\n]';
+}
+
+/**
  * Generates a JSON representation of traceData line-by-line for a nicer printed
  * version with one trace event per line.
  * @param {LH.Trace} traceData
  * @return {IterableIterator<string>}
  */
 function* traceJsonGenerator(traceData) {
-  const EVENTS_PER_ITERATION = 500;
-  const keys = Object.keys(traceData);
+  const {traceEvents, ...rest} = traceData;
 
   yield '{\n';
 
-  // Stringify and emit trace events separately to avoid a giant string in memory.
-  yield '"traceEvents": [\n';
-  if (traceData.traceEvents.length > 0) {
-    const eventsIterator = traceData.traceEvents[Symbol.iterator]();
-    // Emit first item manually to avoid a trailing comma.
-    const firstEvent = eventsIterator.next().value;
-    yield `  ${JSON.stringify(firstEvent)}`;
+  yield '"traceEvents": ';
+  yield* arrayOfObjectsJsonGenerator(traceEvents);
 
-    let eventsRemaining = EVENTS_PER_ITERATION;
-    let eventsJSON = '';
-    for (const event of eventsIterator) {
-      eventsJSON += `,\n  ${JSON.stringify(event)}`;
-      eventsRemaining--;
-      if (eventsRemaining === 0) {
-        yield eventsJSON;
-        eventsRemaining = EVENTS_PER_ITERATION;
-        eventsJSON = '';
-      }
-    }
-    yield eventsJSON;
-  }
-  yield '\n]';
-
-  // Emit the rest of the object (usually just `metadata`)
-  if (keys.length > 1) {
-    for (const key of keys) {
-      if (key === 'traceEvents') continue;
-
-      yield `,\n"${key}": ${JSON.stringify(traceData[key], null, 2)}`;
-    }
+  // Emit the rest of the object (usually just `metadata`, if anything).
+  for (const [key, value] of Object.entries(rest)) {
+    yield `,\n"${key}": ${JSON.stringify(value, null, 2)}`;
   }
 
   yield '}\n';
@@ -216,24 +231,26 @@ function* traceJsonGenerator(traceData) {
  * @param {string} traceFilename
  * @return {Promise<void>}
  */
-function saveTrace(traceData, traceFilename) {
-  return new Promise((resolve, reject) => {
-    const traceIter = traceJsonGenerator(traceData);
-    // A stream that pulls in the next traceJsonGenerator chunk as writeStream
-    // reads from it. Closes stream with null when iteration is complete.
-    const traceStream = new stream.Readable({
-      read() {
-        const next = traceIter.next();
-        this.push(next.done ? null : next.value);
-      },
-    });
+async function saveTrace(traceData, traceFilename) {
+  const traceIter = traceJsonGenerator(traceData);
+  const writeStream = fs.createWriteStream(traceFilename);
 
-    const writeStream = fs.createWriteStream(traceFilename);
-    writeStream.on('finish', resolve);
-    writeStream.on('error', reject);
+  // TODO: Can remove Readable.from() in Node 13, promisify(pipeline) in Node 15.
+  // https://nodejs.org/api/stream.html#stream_stream_pipeline_streams_callback
+  return pipeline(stream.Readable.from(traceIter), writeStream);
+}
 
-    traceStream.pipe(writeStream);
-  });
+/**
+ * Save a devtoolsLog as JSON by streaming to disk at devtoolLogFilename.
+ * @param {LH.DevtoolsLog} devtoolsLog
+ * @param {string} devtoolLogFilename
+ * @return {Promise<void>}
+ */
+function saveDevtoolsLog(devtoolsLog, devtoolLogFilename) {
+  const logIter = arrayOfObjectsJsonGenerator(devtoolsLog);
+  const writeStream = fs.createWriteStream(devtoolLogFilename);
+
+  return pipeline(stream.Readable.from(logIter), writeStream);
 }
 
 /**
@@ -298,6 +315,7 @@ module.exports = {
   saveAssets,
   prepareAssets,
   saveTrace,
+  saveDevtoolsLog,
   saveLanternNetworkData,
   stringifyReplacer,
 };

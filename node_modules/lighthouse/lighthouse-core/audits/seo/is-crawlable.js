@@ -105,7 +105,7 @@ class IsCrawlable extends Audit {
           if (isBlocking) {
             blockingDirectives.push({
               source: {
-                type: /** @type {'node'} */ ('node'),
+                ...Audit.makeNodeItem(metaRobots.node),
                 snippet: `<meta name="robots" content="${metaRobotsContent}" />`,
               },
             });

@@ -12,9 +12,14 @@
  * around page unload, but this can be expanded in the future.
  */
 
-const Gatherer = require('./gatherer.js');
+const FRGatherer = require('../../fraggle-rock/gather/base-gatherer.js');
 
-class GlobalListeners extends Gatherer {
+class GlobalListeners extends FRGatherer {
+  /** @type {LH.Gatherer.GathererMeta} */
+  meta = {
+    supportedModes: ['snapshot', 'navigation'],
+  }
+
   /**
    * @param {LH.Crdp.DOMDebugger.EventListener} listener
    * @return {listener is {type: 'pagehide'|'unload'|'visibilitychange'} & LH.Crdp.DOMDebugger.EventListener}
@@ -51,14 +56,14 @@ class GlobalListeners extends Gatherer {
   }
 
   /**
-   * @param {LH.Gatherer.PassContext} passContext
+   * @param {LH.Gatherer.FRTransitionalContext} passContext
    * @return {Promise<LH.Artifacts['GlobalListeners']>}
    */
-  async afterPass(passContext) {
-    const driver = passContext.driver;
+  async getArtifact(passContext) {
+    const session = passContext.driver.defaultSession;
 
     // Get a RemoteObject handle to `window`.
-    const {result: {objectId}} = await driver.sendCommand('Runtime.evaluate', {
+    const {result: {objectId}} = await session.sendCommand('Runtime.evaluate', {
       expression: 'window',
       returnByValue: false,
     });
@@ -67,7 +72,7 @@ class GlobalListeners extends Gatherer {
     }
 
     // And get all its listeners of interest.
-    const {listeners} = await driver.sendCommand('DOMDebugger.getEventListeners', {objectId});
+    const {listeners} = await session.sendCommand('DOMDebugger.getEventListeners', {objectId});
     const filteredListeners = listeners.filter(GlobalListeners._filterForAllowlistedTypes)
     .map(listener => {
       const {type, scriptId, lineNumber, columnNumber} = listener;

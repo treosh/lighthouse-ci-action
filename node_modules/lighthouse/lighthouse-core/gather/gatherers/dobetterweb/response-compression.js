@@ -10,17 +10,20 @@
   */
 'use strict';
 
-const Gatherer = require('../gatherer.js');
+const FRGatherer = require('../../../fraggle-rock/gather/base-gatherer.js');
 const URL = require('../../../lib/url-shim.js');
 const Sentry = require('../../../lib/sentry.js');
 const NetworkRequest = require('../../../lib/network-request.js');
 const gzip = require('zlib').gzip;
+const DevtoolsLog = require('../devtools-log.js');
+const {fetchResponseBodyFromCache} = require('../../driver/network.js');
+const NetworkRecords = require('../../../computed/network-records.js');
 
 const CHROME_EXTENSION_PROTOCOL = 'chrome-extension:';
 const compressionHeaders = ['content-encoding', 'x-original-content-encoding'];
 const compressionTypes = ['gzip', 'br', 'deflate'];
 const binaryMimeTypes = ['image', 'audio', 'video'];
-/** @type {Array<LH.Crdp.Network.ResourceType>} */
+/** @type {LH.Crdp.Network.ResourceType[]} */
 const textResourceTypes = [
   NetworkRequest.TYPES.Document,
   NetworkRequest.TYPES.Script,
@@ -30,9 +33,15 @@ const textResourceTypes = [
   NetworkRequest.TYPES.EventSource,
 ];
 
-class ResponseCompression extends Gatherer {
+class ResponseCompression extends FRGatherer {
+  /** @type {LH.Gatherer.GathererMeta<'DevtoolsLog'>} */
+  meta = {
+    supportedModes: ['timespan', 'navigation'],
+    dependencies: {DevtoolsLog: DevtoolsLog.symbol},
+  }
+
   /**
-   * @param {Array<LH.Artifacts.NetworkRequest>} networkRecords
+   * @param {LH.Artifacts.NetworkRequest[]} networkRecords
    * @return {LH.Artifacts['ResponseCompression']}
    */
   static filterUnoptimizedResponses(networkRecords) {
@@ -77,17 +86,16 @@ class ResponseCompression extends Gatherer {
   }
 
   /**
-   * @param {LH.Gatherer.PassContext} passContext
-   * @param {LH.Gatherer.LoadData} loadData
+   * @param {LH.Gatherer.FRTransitionalContext} context
+   * @param {LH.Artifacts.NetworkRequest[]} networkRecords
    * @return {Promise<LH.Artifacts['ResponseCompression']>}
    */
-  afterPass(passContext, loadData) {
-    const networkRecords = loadData.networkRecords;
+  async _getArtifact(context, networkRecords) {
+    const session = context.driver.defaultSession;
     const textRecords = ResponseCompression.filterUnoptimizedResponses(networkRecords);
 
-    const driver = passContext.driver;
     return Promise.all(textRecords.map(record => {
-      return driver.getRequestContent(record.requestId).then(content => {
+      return fetchResponseBodyFromCache(session, record.requestId).then(content => {
         // if we don't have any content, gzipSize is already set to 0
         if (!content) {
           return record;
@@ -116,6 +124,25 @@ class ResponseCompression extends Gatherer {
         return record;
       });
     }));
+  }
+
+  /**
+   * @param {LH.Gatherer.FRTransitionalContext<'DevtoolsLog'>} context
+   * @return {Promise<LH.Artifacts['ResponseCompression']>}
+   */
+  async getArtifact(context) {
+    const devtoolsLog = context.dependencies.DevtoolsLog;
+    const networkRecords = await NetworkRecords.request(devtoolsLog, context);
+    return this._getArtifact(context, networkRecords);
+  }
+
+  /**
+   * @param {LH.Gatherer.PassContext} passContext
+   * @param {LH.Gatherer.LoadData} loadData
+   * @return {Promise<LH.Artifacts['ResponseCompression']>}
+   */
+  async afterPass(passContext, loadData) {
+    return this._getArtifact({...passContext, dependencies: {}}, loadData.networkRecords);
   }
 }
 

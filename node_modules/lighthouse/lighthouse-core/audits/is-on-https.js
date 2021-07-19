@@ -7,6 +7,7 @@
 
 const Audit = require('./audit.js');
 const URL = require('../lib/url-shim.js');
+const NetworkRequest = require('../lib/network-request.js');
 const NetworkRecords = require('../computed/network-records.js');
 const i18n = require('../lib/i18n/i18n.js');
 
@@ -50,9 +51,6 @@ const resolutionToString = {
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);
 
-const SECURE_SCHEMES = ['data', 'https', 'wss', 'blob', 'chrome', 'chrome-extension', 'about',
-  'filesystem'];
-const SECURE_DOMAINS = ['localhost', '127.0.0.1'];
 
 class HTTPS extends Audit {
   /**
@@ -69,16 +67,6 @@ class HTTPS extends Audit {
   }
 
   /**
-   * @param {{parsedURL: {scheme: string, host: string}, protocol: string}} record
-   * @return {boolean}
-   */
-  static isSecureRecord(record) {
-    return SECURE_SCHEMES.includes(record.parsedURL.scheme) ||
-           SECURE_SCHEMES.includes(record.protocol) ||
-           SECURE_DOMAINS.includes(record.parsedURL.host);
-  }
-
-  /**
    * @param {LH.Artifacts} artifacts
    * @param {LH.Audit.Context} context
    * @return {Promise<LH.Audit.Product>}
@@ -87,7 +75,7 @@ class HTTPS extends Audit {
     const devtoolsLogs = artifacts.devtoolsLogs[Audit.DEFAULT_PASS];
     return NetworkRecords.request(devtoolsLogs, context).then(networkRecords => {
       const insecureURLs = networkRecords
-          .filter(record => !HTTPS.isSecureRecord(record))
+          .filter(record => !NetworkRequest.isSecureRequest(record))
           .map(record => URL.elideDataURI(record.url));
 
       /** @type {Array<{url: string, resolution?: LH.IcuMessage|string}>}  */

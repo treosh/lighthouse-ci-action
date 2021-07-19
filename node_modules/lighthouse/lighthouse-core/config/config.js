@@ -10,13 +10,19 @@ const defaultConfig = require('./default-config.js');
 const constants = require('./constants.js');
 const i18n = require('./../lib/i18n/i18n.js');
 
-const isDeepEqual = require('lodash.isequal');
 const log = require('lighthouse-logger');
 const path = require('path');
 const Runner = require('../runner.js');
 const ConfigPlugin = require('./config-plugin.js');
-const Budget = require('./budget.js');
-const {requireAudits, resolveModule} = require('./config-helpers.js');
+const {
+  mergeConfigFragment,
+  resolveSettings,
+  resolveAuditsToDefns,
+  resolveGathererToDefn,
+  resolveModulePath,
+  deepClone,
+  deepCloneConfigJson,
+} = require('./config-helpers.js');
 
 /** @typedef {typeof import('../gather/gatherers/gatherer.js')} GathererConstructor */
 /** @typedef {InstanceType<GathererConstructor>} Gatherer */
@@ -185,25 +191,6 @@ function assertValidFlags(flags) {
 }
 
 /**
- * Validate the settings after they've been built
- * @param {LH.Config.Settings} settings
- */
-function assertValidSettings(settings) {
-  if (!settings.formFactor) {
-    throw new Error(`\`settings.formFactor\` must be defined as 'mobile' or 'desktop'. See https://github.com/GoogleChrome/lighthouse/blob/master/docs/emulation.md`);
-  }
-
-  if (!settings.screenEmulation.disabled) {
-    // formFactor doesn't control emulation. So we don't want a mismatch:
-    //   Bad mismatch A: user wants mobile emulation but scoring is configured for desktop
-    //   Bad mismtach B: user wants everything desktop and set formFactor, but accidentally not screenEmulation
-    if (settings.screenEmulation.mobile !== (settings.formFactor === 'mobile')) {
-      throw new Error(`Screen emulation mobile setting (${settings.screenEmulation.mobile}) does not match formFactor setting (${settings.formFactor}). See https://github.com/GoogleChrome/lighthouse/blob/master/docs/emulation.md`);
-    }
-  }
-}
-
-/**
  * Throws if pluginName is invalid or (somehow) collides with a category in the
  * configJSON being added to.
  * @param {LH.Config.Json} configJSON
@@ -219,127 +206,9 @@ function assertValidPluginName(configJSON, pluginName) {
   }
 }
 
-/**
- * Creates a settings object from potential flags object by dropping all the properties
- * that don't exist on Config.Settings.
- * @param {Partial<LH.Flags>=} flags
- * @return {RecursivePartial<LH.Config.Settings>}
-*/
-function cleanFlagsForSettings(flags = {}) {
-  /** @type {RecursivePartial<LH.Config.Settings>} */
-  const settings = {};
-
-  for (const key of Object.keys(flags)) {
-    if (key in constants.defaultSettings) {
-      // @ts-expect-error tsc can't yet express that key is only a single type in each iteration, not a union of types.
-      settings[key] = flags[key];
-    }
-  }
-
-  return settings;
-}
 
 /**
- * More widely typed than exposed merge() function, below.
- * @param {Object<string, any>|Array<any>|undefined|null} base
- * @param {Object<string, any>|Array<any>} extension
- * @param {boolean=} overwriteArrays
- */
-function _merge(base, extension, overwriteArrays = false) {
-  // If the default value doesn't exist or is explicitly null, defer to the extending value
-  if (typeof base === 'undefined' || base === null) {
-    return extension;
-  } else if (typeof extension === 'undefined') {
-    return base;
-  } else if (Array.isArray(extension)) {
-    if (overwriteArrays) return extension;
-    if (!Array.isArray(base)) throw new TypeError(`Expected array but got ${typeof base}`);
-    const merged = base.slice();
-    extension.forEach(item => {
-      if (!merged.some(candidate => isDeepEqual(candidate, item))) merged.push(item);
-    });
-
-    return merged;
-  } else if (typeof extension === 'object') {
-    if (typeof base !== 'object') throw new TypeError(`Expected object but got ${typeof base}`);
-    if (Array.isArray(base)) throw new TypeError('Expected object but got Array');
-    Object.keys(extension).forEach(key => {
-      const localOverwriteArrays = overwriteArrays ||
-        (key === 'settings' && typeof base[key] === 'object');
-      base[key] = _merge(base[key], extension[key], localOverwriteArrays);
-    });
-    return base;
-  }
-
-  return extension;
-}
-
-/**
- * Until support of jsdoc templates with constraints, type in config.d.ts.
- * See https://github.com/Microsoft/TypeScript/issues/24283
- * @type {LH.Config.Merge}
- */
-const merge = _merge;
-
-/**
- * @template T
- * @param {Array<T>} array
- * @return {Array<T>}
- */
-function cloneArrayWithPluginSafety(array) {
-  return array.map(item => {
-    if (typeof item === 'object') {
-      // Return copy of instance and prototype chain (in case item is instantiated class).
-      return Object.assign(
-        Object.create(
-          Object.getPrototypeOf(item)
-        ),
-        item
-      );
-    }
-
-    return item;
-  });
-}
-
-/**
- * // TODO(bckenny): could adopt "jsonified" type to ensure T will survive JSON
- * round trip: https://github.com/Microsoft/TypeScript/issues/21838
- * @template T
- * @param {T} json
- * @return {T}
- */
-function deepClone(json) {
-  return JSON.parse(JSON.stringify(json));
-}
-
-/**
- * Deep clone a ConfigJson, copying over any "live" gatherer or audit that
- * wouldn't make the JSON round trip.
- * @param {LH.Config.Json} json
- * @return {LH.Config.Json}
- */
-function deepCloneConfigJson(json) {
-  const cloned = deepClone(json);
-
-  // Copy arrays that could contain plugins to allow for programmatic
-  // injection of plugins.
-  if (Array.isArray(cloned.passes) && Array.isArray(json.passes)) {
-    for (let i = 0; i < cloned.passes.length; i++) {
-      const pass = cloned.passes[i];
-      pass.gatherers = cloneArrayWithPluginSafety(json.passes[i].gatherers || []);
-    }
-  }
-
-  if (Array.isArray(json.audits)) {
-    cloned.audits = cloneArrayWithPluginSafety(json.audits);
-  }
-
-  return cloned;
-}
-
-/**
- * @implements {LH.Config.Json}
+ * @implements {LH.Config.Config}
  */
 class Config {
   /**
@@ -381,7 +250,7 @@ class Config {
     if (flags) {
       assertValidFlags(flags);
     }
-    const settings = Config.initSettings(configJSON.settings, flags);
+    const settings = resolveSettings(configJSON.settings || {}, flags);
 
     // Augment passes with necessary defaults and require gatherers.
     const passesWithDefaults = Config.augmentPassesWithDefaults(configJSON.passes);
@@ -401,7 +270,6 @@ class Config {
 
     Config.filterConfigIfNeeded(this);
 
-    assertValidSettings(this.settings);
     assertValidPasses(this.passes, this.audits);
     assertValidCategories(this.categories, this.audits, this.groups);
 
@@ -458,14 +326,14 @@ class Config {
         if (!basePass) {
           baseJSON.passes.push(pass);
         } else {
-          merge(basePass, pass);
+          mergeConfigFragment(basePass, pass);
         }
       }
 
       delete extendJSON.passes;
     }
 
-    return merge(baseJSON, extendJSON);
+    return mergeConfigFragment(baseJSON, extendJSON);
   }
 
   /**
@@ -485,7 +353,7 @@ class Config {
       // TODO: refactor and delete `global.isDevtools`.
       const pluginPath = global.isDevtools || global.isLightrider ?
         pluginName :
-        resolveModule(pluginName, configDir, 'plugin');
+        resolveModulePath(pluginName, configDir, 'plugin');
       const rawPluginJson = require(pluginPath);
       const pluginJson = ConfigPlugin.parsePlugin(rawPluginJson, pluginName);
 
@@ -505,79 +373,7 @@ class Config {
     }
 
     const {defaultPassConfig} = constants;
-    return passes.map(pass => merge(deepClone(defaultPassConfig), pass));
-  }
-
-  /**
-   * @param {LH.SharedFlagsSettings=} settingsJson
-   * @param {LH.Flags=} flags
-   * @return {LH.Config.Settings}
-   */
-  static initSettings(settingsJson = {}, flags) {
-    // If a locale is requested in flags or settings, use it. A typical CLI run will not have one,
-    // however `lookupLocale` will always determine which of our supported locales to use (falling
-    // back if necessary).
-    const locale = i18n.lookupLocale((flags && flags.locale) || settingsJson.locale);
-
-    // Fill in missing settings with defaults
-    const {defaultSettings} = constants;
-    const settingWithDefaults = merge(deepClone(defaultSettings), settingsJson, true);
-
-    // Override any applicable settings with CLI flags
-    const settingsWithFlags = merge(settingWithDefaults || {}, cleanFlagsForSettings(flags), true);
-
-    if (settingsWithFlags.budgets) {
-      settingsWithFlags.budgets = Budget.initializeBudget(settingsWithFlags.budgets);
-    }
-    // Locale is special and comes only from flags/settings/lookupLocale.
-    settingsWithFlags.locale = locale;
-
-    // Default constants uses the mobile UA. Explicitly stating to true asks LH to use the associated UA.
-    // It's a little awkward, but the alternatives are not allowing `true` or a dedicated `disableUAEmulation` setting.
-    if (settingsWithFlags.emulatedUserAgent === true) {
-      settingsWithFlags.emulatedUserAgent = constants.userAgents[settingsWithFlags.formFactor];
-    }
-
-    return settingsWithFlags;
-  }
-
-  /**
-   * Expands the gatherers from user-specified to an internal gatherer definition format.
-   *
-   * Input Examples:
-   *  - 'my-gatherer'
-   *  - class MyGatherer extends Gatherer { }
-   *  - {instance: myGathererInstance}
-   *
-   * @param {Array<LH.Config.GathererJson>} gatherers
-   * @return {Array<{instance?: Gatherer, implementation?: GathererConstructor, path?: string, options?: {}}>} passes
-   */
-  static expandGathererShorthand(gatherers) {
-    const expanded = gatherers.map(gatherer => {
-      if (typeof gatherer === 'string') {
-        // just 'path/to/gatherer'
-        return {path: gatherer, options: {}};
-      } else if ('implementation' in gatherer || 'instance' in gatherer) {
-        // {implementation: GathererConstructor, ...} or {instance: GathererInstance, ...}
-        return gatherer;
-      } else if ('path' in gatherer) {
-        // {path: 'path/to/gatherer', ...}
-        if (typeof gatherer.path !== 'string') {
-          throw new Error('Invalid Gatherer type ' + JSON.stringify(gatherer));
-        }
-        return gatherer;
-      } else if (typeof gatherer === 'function') {
-        // just GathererConstructor
-        return {implementation: gatherer, options: {}};
-      } else if (gatherer && typeof gatherer.beforePass === 'function') {
-        // just GathererInstance
-        return {instance: gatherer, options: {}};
-      } else {
-        throw new Error('Invalid Gatherer type ' + JSON.stringify(gatherer));
-      }
-    });
-
-    return expanded;
+    return passes.map(pass => mergeConfigFragment(deepClone(defaultPassConfig), pass));
   }
 
   /**
@@ -785,7 +581,7 @@ class Config {
 
   /**
    * Take an array of audits and audit paths and require any paths (possibly
-   * relative to the optional `configDir`) using `resolveModule`,
+   * relative to the optional `configDir`) using `resolveModulePath`,
    * leaving only an array of AuditDefns.
    * @param {LH.Config.Json['audits']} audits
    * @param {string=} configDir
@@ -794,39 +590,15 @@ class Config {
   static requireAudits(audits, configDir) {
     const status = {msg: 'Requiring audits', id: 'lh:config:requireAudits'};
     log.time(status, 'verbose');
-    const auditDefns = requireAudits(audits, configDir);
+    const auditDefns = resolveAuditsToDefns(audits, configDir);
     log.timeEnd(status);
     return auditDefns;
   }
 
   /**
-   * @param {string} path
-   * @param {Array<string>} coreAuditList
-   * @param {string=} configDir
-   * @return {LH.Config.GathererDefn}
-   */
-  static requireGathererFromPath(path, coreAuditList, configDir) {
-    const coreGatherer = coreAuditList.find(a => a === `${path}.js`);
-
-    let requirePath = `../gather/gatherers/${path}`;
-    if (!coreGatherer) {
-      // Otherwise, attempt to find it elsewhere. This throws if not found.
-      requirePath = resolveModule(path, configDir, 'gatherer');
-    }
-
-    const GathererClass = /** @type {GathererConstructor} */ (require(requirePath));
-
-    return {
-      instance: new GathererClass(),
-      implementation: GathererClass,
-      path,
-    };
-  }
-
-  /**
    * Takes an array of passes with every property now initialized except the
    * gatherers and requires them, (relative to the optional `configDir` if
-   * provided) using `resolveModule`, returning an array of full Passes.
+   * provided) using `resolveModulePath`, returning an array of full Passes.
    * @param {?Array<Required<LH.Config.PassJson>>} passes
    * @param {string=} configDir
    * @return {Config['passes']}
@@ -840,27 +612,8 @@ class Config {
 
     const coreList = Runner.getGathererList();
     const fullPasses = passes.map(pass => {
-      const gathererDefns = Config.expandGathererShorthand(pass.gatherers).map(gathererDefn => {
-        if (gathererDefn.instance) {
-          return {
-            instance: gathererDefn.instance,
-            implementation: gathererDefn.implementation,
-            path: gathererDefn.path,
-          };
-        } else if (gathererDefn.implementation) {
-          const GathererClass = gathererDefn.implementation;
-          return {
-            instance: new GathererClass(),
-            implementation: gathererDefn.implementation,
-            path: gathererDefn.path,
-          };
-        } else if (gathererDefn.path) {
-          const path = gathererDefn.path;
-          return Config.requireGathererFromPath(path, coreList, configDir);
-        } else {
-          throw new Error('Invalid expanded Gatherer: ' + JSON.stringify(gathererDefn));
-        }
-      });
+      const gathererDefns = pass.gatherers
+        .map(gatherer => resolveGathererToDefn(gatherer, coreList, configDir));
 
       // De-dupe gatherers by artifact name because artifact IDs must be unique at runtime.
       const uniqueDefns = Array.from(

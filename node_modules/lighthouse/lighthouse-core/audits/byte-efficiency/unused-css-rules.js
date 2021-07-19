@@ -10,11 +10,11 @@ const UnusedCSS = require('../../computed/unused-css.js');
 const i18n = require('../../lib/i18n/i18n.js');
 
 const UIStrings = {
-  /** Imperative title of a Lighthouse audit that tells the user to remove content from their CSS that isn’t needed immediately and instead load that content at a later time. This is displayed in a list of audit titles that Lighthouse generates. */
-  title: 'Remove unused CSS',
+  /** Imperative title of a Lighthouse audit that tells the user to reduce content from their CSS that isn’t needed immediately and instead load that content at a later time. This is displayed in a list of audit titles that Lighthouse generates. */
+  title: 'Reduce unused CSS',
   /** Description of a Lighthouse audit that tells the user *why* they should defer loading any content in CSS that isn’t needed at page load. This is displayed after a user expands the section to see more. No word length limits. 'Learn More' becomes link text to additional documentation. */
-  description: 'Remove dead rules from stylesheets and defer the loading of CSS not used for ' +
-    'above-the-fold content to reduce unnecessary bytes consumed by network activity. ' +
+  description: 'Reduce unused rules from stylesheets and defer CSS not used for ' +
+    'above-the-fold content to decrease bytes consumed by network activity. ' +
     '[Learn more](https://web.dev/unused-css-rules/).',
 };
 

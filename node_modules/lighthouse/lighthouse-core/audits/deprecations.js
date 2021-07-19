@@ -56,34 +56,21 @@ class Deprecations extends Audit {
   static audit(artifacts) {
     const entries = artifacts.ConsoleMessages;
 
-    const deprecations = entries.filter(log => log.source === 'deprecation').map(log => {
-      // HTML deprecations will have no url and no way to attribute to a specific line.
-      /** @type {LH.Audit.Details.SourceLocationValue=} */
-      let source;
-      if (log.url) {
-        // JS deprecations will have a stack trace.
-        // CSS deprecations only expose a line number.
-        const topCallFrame = log.stackTrace && log.stackTrace.callFrames[0];
-        const line = log.lineNumber || 0;
-        const column = topCallFrame ? topCallFrame.columnNumber : 0;
-        source = {
-          type: 'source-location',
-          url: log.url,
-          urlProvider: 'network',
-          line,
-          column,
-        };
-      }
+    const deprecations = entries.filter(log => log.source === 'deprecation')
+    // TODO(M91): Temporary ignore until Chrome M91 became stable version.
+    // M91 doesn't throw deprecation on ::-webkit-details-marker.
+    .filter(log => !log.text.includes('::-webkit-details-marker'))
+    .map(log => {
       return {
         value: log.text,
-        source,
+        source: Audit.makeSourceLocationFromConsoleMessage(log),
       };
     });
 
     /** @type {LH.Audit.Details.Table['headings']} */
     const headings = [
       {key: 'value', itemType: 'text', text: str_(UIStrings.columnDeprecate)},
-      {key: 'source', itemType: 'source-location', text: str_(i18n.UIStrings.columnURL)},
+      {key: 'source', itemType: 'source-location', text: str_(i18n.UIStrings.columnSource)},
     ];
     const details = Audit.makeTableDetails(headings, deprecations);
 

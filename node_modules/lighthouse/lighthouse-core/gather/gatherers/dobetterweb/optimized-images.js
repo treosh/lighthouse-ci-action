@@ -11,11 +11,12 @@
 'use strict';
 
 const log = require('lighthouse-logger');
-const Gatherer = require('../gatherer.js');
+const FRGatherer = require('../../../fraggle-rock/gather/base-gatherer.js');
 const URL = require('../../../lib/url-shim.js');
 const NetworkRequest = require('../../../lib/network-request.js');
 const Sentry = require('../../../lib/sentry.js');
-const Driver = require('../../driver.js'); // eslint-disable-line no-unused-vars
+const NetworkRecords = require('../../../computed/network-records.js');
+const DevtoolsLog = require('../devtools-log.js');
 
 // Image encoding can be slow and we don't want to spend forever on it.
 // Cap our encoding to 5 seconds, anything after that will be estimated.
@@ -32,7 +33,13 @@ const IMAGE_REGEX = /^image\/((x|ms|x-ms)-)?(png|bmp|jpeg)$/;
 
 /** @typedef {{requestId: string, url: string, mimeType: string, resourceSize: number}} SimplifiedNetworkRecord */
 
-class OptimizedImages extends Gatherer {
+class OptimizedImages extends FRGatherer {
+  /** @type {LH.Gatherer.GathererMeta<'DevtoolsLog'>} */
+  meta = {
+    supportedModes: ['timespan', 'navigation'],
+    dependencies: {DevtoolsLog: DevtoolsLog.symbol},
+  }
+
   constructor() {
     super();
     this._encodingStartAt = 0;
@@ -70,25 +77,25 @@ class OptimizedImages extends Gatherer {
   }
 
   /**
-   * @param {Driver} driver
+   * @param {LH.Gatherer.FRProtocolSession} session
    * @param {string} requestId
    * @param {'jpeg'|'webp'} encoding Either webp or jpeg.
    * @return {Promise<LH.Crdp.Audits.GetEncodedResponseResponse>}
    */
-  _getEncodedResponse(driver, requestId, encoding) {
+  _getEncodedResponse(session, requestId, encoding) {
     requestId = NetworkRequest.getRequestIdForBackend(requestId);
 
     const quality = encoding === 'jpeg' ? JPEG_QUALITY : WEBP_QUALITY;
     const params = {requestId, encoding, quality, sizeOnly: true};
-    return driver.sendCommand('Audits.getEncodedResponse', params);
+    return session.sendCommand('Audits.getEncodedResponse', params);
   }
 
   /**
-   * @param {Driver} driver
+   * @param {LH.Gatherer.FRProtocolSession} session
    * @param {SimplifiedNetworkRecord} networkRecord
    * @return {Promise<{originalSize: number, jpegSize?: number, webpSize?: number}>}
    */
-  async calculateImageStats(driver, networkRecord) {
+  async calculateImageStats(session, networkRecord) {
     const originalSize = networkRecord.resourceSize;
     // Once we've hit our execution time limit or when the image is too big, don't try to re-encode it.
     // Images in this execution path will fallback to byte-per-pixel heuristics on the audit side.
@@ -97,8 +104,8 @@ class OptimizedImages extends Gatherer {
       return {originalSize, jpegSize: undefined, webpSize: undefined};
     }
 
-    const jpegData = await this._getEncodedResponse(driver, networkRecord.requestId, 'jpeg');
-    const webpData = await this._getEncodedResponse(driver, networkRecord.requestId, 'webp');
+    const jpegData = await this._getEncodedResponse(session, networkRecord.requestId, 'jpeg');
+    const webpData = await this._getEncodedResponse(session, networkRecord.requestId, 'webp');
 
     return {
       originalSize,
@@ -108,11 +115,11 @@ class OptimizedImages extends Gatherer {
   }
 
   /**
-   * @param {Driver} driver
+   * @param {LH.Gatherer.FRProtocolSession} session
    * @param {Array<SimplifiedNetworkRecord>} imageRecords
    * @return {Promise<LH.Artifacts['OptimizedImages']>}
    */
-  async computeOptimizedImages(driver, imageRecords) {
+  async computeOptimizedImages(session, imageRecords) {
     this._encodingStartAt = Date.now();
 
     /** @type {LH.Artifacts['OptimizedImages']} */
@@ -120,7 +127,7 @@ class OptimizedImages extends Gatherer {
 
     for (const record of imageRecords) {
       try {
-        const stats = await this.calculateImageStats(driver, record);
+        const stats = await this.calculateImageStats(session, record);
         /** @type {LH.Artifacts.OptimizedImage} */
         const image = {failed: false, ...stats, ...record};
         results.push(image);
@@ -145,26 +152,40 @@ class OptimizedImages extends Gatherer {
   }
 
   /**
-   * @param {LH.Gatherer.PassContext} passContext
-   * @param {LH.Gatherer.LoadData} loadData
+   * @param {LH.Gatherer.FRTransitionalContext} context
+   * @param {LH.Artifacts.NetworkRequest[]} networkRecords
    * @return {Promise<LH.Artifacts['OptimizedImages']>}
    */
-  afterPass(passContext, loadData) {
-    const networkRecords = loadData.networkRecords;
+  async _getArtifact(context, networkRecords) {
     const imageRecords = OptimizedImages
       .filterImageRequests(networkRecords)
       .sort((a, b) => b.resourceSize - a.resourceSize);
 
-    return Promise.resolve()
-      .then(_ => this.computeOptimizedImages(passContext.driver, imageRecords))
-      .then(results => {
-        const successfulResults = results.filter(result => !result.failed);
-        if (results.length && !successfulResults.length) {
-          throw new Error('All image optimizations failed');
-        }
+    const results = await this.computeOptimizedImages(context.driver.defaultSession, imageRecords);
+    const successfulResults = results.filter(result => !result.failed);
+    if (results.length && !successfulResults.length) {
+      throw new Error('All image optimizations failed');
+    }
+    return results;
+  }
 
-        return results;
-      });
+  /**
+   * @param {LH.Gatherer.FRTransitionalContext<'DevtoolsLog'>} context
+   * @return {Promise<LH.Artifacts['OptimizedImages']>}
+   */
+  async getArtifact(context) {
+    const devtoolsLog = context.dependencies.DevtoolsLog;
+    const networkRecords = await NetworkRecords.request(devtoolsLog, context);
+    return this._getArtifact(context, networkRecords);
+  }
+
+  /**
+   * @param {LH.Gatherer.PassContext} passContext
+   * @param {LH.Gatherer.LoadData} loadData
+   * @return {Promise<LH.Artifacts['OptimizedImages']>}
+   */
+  async afterPass(passContext, loadData) {
+    return this._getArtifact({...passContext, dependencies: {}}, loadData.networkRecords);
   }
 }
 

@@ -16,10 +16,13 @@
  * 4. Return all those items in one handy bundle.
  */
 
-/** @typedef {Omit<LH.Artifacts.TraceTimes, 'firstContentfulPaint'> & {firstContentfulPaint?: number}} TraceTimesWithoutFCP */
+/** @typedef {Omit<LH.Artifacts.TraceTimes, 'firstContentfulPaint'|'firstContentfulPaintAllFrames'> & {firstContentfulPaint?: number, firstContentfulPaintAllFrames?: number}} TraceTimesWithoutFCP */
 /** @typedef {Omit<TraceTimesWithoutFCP, 'traceEnd'>} TraceTimesWithoutFCPAndTraceEnd */
-/** @typedef {Omit<LH.Artifacts.TraceOfTab, 'firstContentfulPaintEvt'|'timings'|'timestamps'> & {timings: TraceTimesWithoutFCP, timestamps: TraceTimesWithoutFCP, firstContentfulPaintEvt?: LH.Artifacts.TraceOfTab['firstContentfulPaintEvt']}} TraceOfTabWithoutFCP */
+/** @typedef {Omit<LH.Artifacts.TraceOfTab, 'firstContentfulPaintEvt'|'firstContentfulPaintAllFramesEvt'|'timings'|'timestamps'> & {timings: TraceTimesWithoutFCP, timestamps: TraceTimesWithoutFCP, firstContentfulPaintEvt?: LH.Artifacts.TraceOfTab['firstContentfulPaintEvt'], firstContentfulPaintAllFramesEvt?: LH.Artifacts.TraceOfTab['largestContentfulPaintAllFramesEvt']}} TraceOfTabWithoutFCP */
 /** @typedef {'lastNavigationStart'|'firstResourceSendRequest'} TimeOriginDeterminationMethod */
+/** @typedef {Omit<LH.TraceEvent, 'name'|'args'> & {name: 'FrameCommittedInBrowser', args: {data: {frame: string, url: string, parent?: string}}}} FrameCommittedEvent */
+/** @typedef {Omit<LH.TraceEvent, 'name'|'args'> & {name: 'largestContentfulPaint::Invalidate'|'largestContentfulPaint::Candidate', args: {data?: {size?: number}, frame: string}}} LCPEvent */
+/** @typedef {Omit<LH.TraceEvent, 'name'|'args'> & {name: 'largestContentfulPaint::Candidate', args: {data: {size: number}, frame: string}}} LCPCandidateEvent */
 
 const log = require('lighthouse-logger');
 
@@ -478,37 +481,94 @@ class TraceProcessor {
   }
 
   /**
-   * @param {{candidateEventName: string, invalidateEventName: string, events: LH.TraceEvent[], timeOriginEvt: LH.TraceEvent}} options
-   * @return {{lcp: LH.TraceEvent | undefined, invalidated: boolean}}
+   * @param {LH.TraceEvent} evt
+   * @return {evt is LCPEvent}
    */
-  static computeValidLCP(options) {
-    const {
-      candidateEventName,
-      invalidateEventName,
-      events,
-      timeOriginEvt,
-    } = options;
+  static isLCPEvent(evt) {
+    if (evt.name !== 'largestContentfulPaint::Invalidate' &&
+        evt.name !== 'largestContentfulPaint::Candidate') return false;
+    return Boolean(evt.args && evt.args.frame);
+  }
 
-    let lcp;
-    let invalidated = false;
-    // Iterate the events backwards.
-    for (let i = events.length - 1; i >= 0; i--) {
-      const e = events[i];
-      // If the event's timestamp is before the time origin, stop.
-      if (e.ts <= timeOriginEvt.ts) break;
-      // If the last lcp event in the trace is 'Invalidate', there is inconclusive data to determine LCP.
-      if (e.name === invalidateEventName) {
-        invalidated = true;
-        break;
-      }
-      // If not an lcp 'Candidate', keep iterating.
-      if (e.name !== candidateEventName) continue;
-      // Found the last LCP candidate in the trace, let's use it.
-      lcp = e;
-      break;
+  /**
+   * @param {LH.TraceEvent} evt
+   * @return {evt is LCPCandidateEvent}
+   */
+  static isLCPCandidateEvent(evt) {
+    return Boolean(
+      evt.name === 'largestContentfulPaint::Candidate' &&
+      evt.args &&
+      evt.args.frame &&
+      evt.args.data &&
+      evt.args.data.size !== undefined
+    );
+  }
+
+  /**
+   * Returns the maximum LCP event across all frames in `events`.
+   * Sets `invalidated` flag if LCP of every frame is invalidated.
+   *
+   * LCP's trace event was first introduced in m78. We can't surface an LCP for older Chrome versions.
+   * LCP comes from a frame's latest `largestContentfulPaint::Candidate`, but it can be invalidated by a `largestContentfulPaint::Invalidate` event.
+   *
+   * @param {LH.TraceEvent[]} events
+   * @param {LH.TraceEvent} timeOriginEvent
+   * @return {{lcp: LCPEvent | undefined, invalidated: boolean}}
+   */
+  static computeValidLCPAllFrames(events, timeOriginEvent) {
+    const lcpEvents = events.filter(this.isLCPEvent).reverse();
+
+    /** @type {Map<string, LCPEvent>} */
+    const finalLcpEventsByFrame = new Map();
+    for (const e of lcpEvents) {
+      if (e.ts <= timeOriginEvent.ts) break;
+
+      // Already found final LCP state of this frame.
+      const frame = e.args.frame;
+      if (finalLcpEventsByFrame.has(frame)) continue;
+
+      finalLcpEventsByFrame.set(frame, e);
     }
 
-    return {lcp, invalidated};
+    /** @type {LCPCandidateEvent | undefined} */
+    let maxLcpAcrossFrames;
+    for (const lcp of finalLcpEventsByFrame.values()) {
+      if (!this.isLCPCandidateEvent(lcp)) continue;
+      if (!maxLcpAcrossFrames || lcp.args.data.size > maxLcpAcrossFrames.args.data.size) {
+        maxLcpAcrossFrames = lcp;
+      }
+    }
+
+    return {
+      lcp: maxLcpAcrossFrames,
+      // LCP events were found, but final LCP event of every frame was an invalidate event.
+      invalidated: Boolean(!maxLcpAcrossFrames && finalLcpEventsByFrame.size),
+    };
+  }
+
+  /**
+   * @param {Array<{id: string, url: string, parent?: string}>} frames
+   * @return {Map<string, string>}
+   */
+  static resolveRootFrames(frames) {
+    /** @type {Map<string, string>} */
+    const parentFrames = new Map();
+    for (const frame of frames) {
+      if (!frame.parent) continue;
+      parentFrames.set(frame.id, frame.parent);
+    }
+
+    /** @type {Map<string, string>} */
+    const frameIdToRootFrameId = new Map();
+    for (const frame of frames) {
+      let cur = frame.id;
+      while (parentFrames.has(cur)) {
+        cur = /** @type {string} */ (parentFrames.get(cur));
+      }
+      frameIdToRootFrameId.set(frame.id, cur);
+    }
+
+    return frameIdToRootFrameId;
   }
 
   /**
@@ -533,8 +593,44 @@ class TraceProcessor {
     // Find the inspected frame
     const mainFrameIds = this.findMainFrameIds(keyEvents);
 
-    // Filter to just events matching the frame ID, just to make sure.
+    const frames = keyEvents
+      .filter(/** @return {evt is FrameCommittedEvent} */ evt => {
+        return Boolean(
+          evt.name === 'FrameCommittedInBrowser' &&
+          evt.args.data &&
+          evt.args.data.frame &&
+          evt.args.data.url
+        );
+      })
+      .map(evt => {
+        return {
+          id: evt.args.data.frame,
+          url: evt.args.data.url,
+          parent: evt.args.data.parent,
+        };
+      });
+    const frameIdToRootFrameId = this.resolveRootFrames(frames);
+
+    // Filter to just events matching the main frame ID, just to make sure.
     const frameEvents = keyEvents.filter(e => e.args.frame === mainFrameIds.frameId);
+
+    // Filter to just events matching the main frame ID or any child frame IDs.
+    // In practice, there should always be FrameCommittedInBrowser events to define the frame tree.
+    // Unfortunately, many test traces do not include FrameCommittedInBrowser events due to minification.
+    // This ensures there is always a minimal frame tree and events so those tests don't fail.
+    let frameTreeEvents = [];
+    if (frameIdToRootFrameId.has(mainFrameIds.frameId)) {
+      frameTreeEvents = keyEvents.filter(e => {
+        return e.args.frame && frameIdToRootFrameId.get(e.args.frame) === mainFrameIds.frameId;
+      });
+    } else {
+      log.warn(
+        'trace-of-tab',
+        'frameTreeEvents may be incomplete, make sure the trace has FrameCommittedInBrowser events'
+      );
+      frameIdToRootFrameId.set(mainFrameIds.frameId, mainFrameIds.frameId);
+      frameTreeEvents = frameEvents;
+    }
 
     // Compute our time origin to use for all relative timings.
     const timeOriginEvt = this.computeTimeOrigin(
@@ -545,13 +641,13 @@ class TraceProcessor {
     // Compute the key frame timings for the main frame.
     const frameTimings = this.computeKeyTimingsForFrame(frameEvents, {timeOriginEvt});
 
+    // Compute FCP for all frames.
+    const fcpAllFramesEvt = frameTreeEvents.find(
+      e => e.name === 'firstContentfulPaint' && e.ts > timeOriginEvt.ts
+    );
+
     // Compute LCP for all frames.
-    const lcpAllFramesEvt = this.computeValidLCP({
-      candidateEventName: 'NavStartToLargestContentfulPaint::Candidate::AllFrames::UKM',
-      invalidateEventName: 'NavStartToLargestContentfulPaint::Invalidate::AllFrames::UKM',
-      events: keyEvents,
-      timeOriginEvt,
-    }).lcp;
+    const lcpAllFramesEvt = this.computeValidLCPAllFrames(frameTreeEvents, timeOriginEvt).lcp;
 
     // Subset all trace events to just our tab's process (incl threads other than main)
     // stable-sort events to keep them correctly nested.
@@ -560,13 +656,6 @@ class TraceProcessor {
 
     const mainThreadEvents = processEvents
       .filter(e => e.tid === mainFrameIds.tid);
-
-    const frames = keyEvents
-      .filter(evt => evt.name === 'FrameCommittedInBrowser')
-      .map(evt => evt.args.data)
-      .filter(/** @return {data is {frame: string, url: string}} */ data => {
-        return Boolean(data && data.frame && data.url);
-      });
 
     // Ensure our traceEnd reflects all page activity.
     const traceEnd = this.computeTraceEnd(trace.traceEvents, timeOriginEvt);
@@ -578,12 +667,14 @@ class TraceProcessor {
     return {
       frames,
       mainThreadEvents,
+      frameTreeEvents,
       processEvents,
       mainFrameIds,
       timings: {
         timeOrigin: frameTimings.timings.timeOrigin,
         firstPaint: frameTimings.timings.firstPaint,
         firstContentfulPaint: frameTimings.timings.firstContentfulPaint,
+        firstContentfulPaintAllFrames: maybeGetTiming(fcpAllFramesEvt && fcpAllFramesEvt.ts),
         firstMeaningfulPaint: frameTimings.timings.firstMeaningfulPaint,
         largestContentfulPaint: frameTimings.timings.largestContentfulPaint,
         largestContentfulPaintAllFrames: maybeGetTiming(lcpAllFramesEvt && lcpAllFramesEvt.ts),
@@ -595,6 +686,7 @@ class TraceProcessor {
         timeOrigin: frameTimings.timestamps.timeOrigin,
         firstPaint: frameTimings.timestamps.firstPaint,
         firstContentfulPaint: frameTimings.timestamps.firstContentfulPaint,
+        firstContentfulPaintAllFrames: fcpAllFramesEvt && fcpAllFramesEvt.ts,
         firstMeaningfulPaint: frameTimings.timestamps.firstMeaningfulPaint,
         largestContentfulPaint: frameTimings.timestamps.largestContentfulPaint,
         largestContentfulPaintAllFrames: lcpAllFramesEvt && lcpAllFramesEvt.ts,
@@ -605,6 +697,7 @@ class TraceProcessor {
       timeOriginEvt: frameTimings.timeOriginEvt,
       firstPaintEvt: frameTimings.firstPaintEvt,
       firstContentfulPaintEvt: frameTimings.firstContentfulPaintEvt,
+      firstContentfulPaintAllFramesEvt: fcpAllFramesEvt,
       firstMeaningfulPaintEvt: frameTimings.firstMeaningfulPaintEvt,
       largestContentfulPaintEvt: frameTimings.largestContentfulPaintEvt,
       largestContentfulPaintAllFramesEvt: lcpAllFramesEvt,
@@ -712,16 +805,8 @@ class TraceProcessor {
       firstMeaningfulPaint = lastCandidate;
     }
 
-    // LCP's trace event was first introduced in m78. We can't surface an LCP for older Chrome versions
-    // LCP comes from the latest `largestContentfulPaint::Candidate`, but it can be invalidated
-    // by a `largestContentfulPaint::Invalidate` event. In the case that the last candidate is
-    // invalidated, the value will be undefined.
-    const lcpResult = this.computeValidLCP({
-      candidateEventName: 'largestContentfulPaint::Candidate',
-      invalidateEventName: 'largestContentfulPaint::Invalidate',
-      events: frameEvents,
-      timeOriginEvt,
-    });
+    // This function accepts events spanning multiple frames, but this usage will only provide events from the main frame.
+    const lcpResult = this.computeValidLCPAllFrames(frameEvents, timeOriginEvt);
 
     const load = frameEvents.find(e => e.name === 'loadEventEnd' && e.ts > timeOriginEvt.ts);
     const domContentLoaded = frameEvents.find(

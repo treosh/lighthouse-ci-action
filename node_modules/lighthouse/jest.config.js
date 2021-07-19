@@ -27,6 +27,7 @@ module.exports = {
     '**/lighthouse-treemap/**/*-test-pptr.js',
     '**/lighthouse-viewer/**/*-test.js',
     '**/lighthouse-viewer/**/*-test-pptr.js',
+    '**/third-party/**/*-test.js',
     '**/clients/test/**/*-test.js',
     '**/docs/**/*.test.js',
   ],

@@ -16,9 +16,10 @@
  */
 'use strict';
 
-/* globals URL self Util */
+/* globals self Util */
 
 /** @typedef {HTMLElementTagNameMap & {[id: string]: HTMLElement}} HTMLElementByTagName */
+/** @template {string} T @typedef {import('typed-query-selector/parser').ParseSelector<T, Element>} ParseSelector */
 
 class DOM {
   /**
@@ -213,27 +214,32 @@ class DOM {
   /**
    * Guaranteed context.querySelector. Always returns an element or throws if
    * nothing matches query.
-   * @param {string} query
+   * @template {string} T
+   * @param {T} query
    * @param {ParentNode} context
-   * @return {!HTMLElement}
+   * @return {ParseSelector<T>}
    */
   find(query, context) {
-    /** @type {?HTMLElement} */
     const result = context.querySelector(query);
     if (result === null) {
       throw new Error(`query ${query} not found`);
     }
-    return result;
+
+    // Because we control the report layout and templates, use the simpler
+    // `typed-query-selector` types that don't require differentiating between
+    // e.g. HTMLAnchorElement and SVGAElement. See https://github.com/GoogleChrome/lighthouse/issues/12011
+    return /** @type {ParseSelector<T>} */ (result);
   }
 
   /**
    * Helper for context.querySelectorAll. Returns an Array instead of a NodeList.
-   * @param {string} query
+   * @template {string} T
+   * @param {T} query
    * @param {ParentNode} context
-   * @return {!Array<HTMLElement>}
    */
   findAll(query, context) {
-    return Array.from(context.querySelectorAll(query));
+    const elements = Array.from(context.querySelectorAll(query));
+    return elements;
   }
 }
 

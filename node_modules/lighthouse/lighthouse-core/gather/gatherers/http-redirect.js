@@ -34,8 +34,9 @@ class HTTPRedirect extends Gatherer {
     // Reset the options.
     passContext.url = this._preRedirectURL;
 
+    const executionContext = passContext.driver.executionContext;
     const expression = `new URL(window.location).protocol === 'https:'`;
-    const isHttps = await passContext.driver.evaluateAsync(expression, {useIsolation: true});
+    const isHttps = await executionContext.evaluateAsync(expression, {useIsolation: true});
     return {
       value: isHttps,
     };

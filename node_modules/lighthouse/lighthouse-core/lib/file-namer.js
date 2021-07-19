@@ -5,8 +5,6 @@
  */
 'use strict';
 
-/* global URL */
-
 /**
  * @fileoverview
  * @suppress {reportUnknownTypes}

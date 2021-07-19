@@ -452,7 +452,7 @@ class PageDependencyGraph {
 
   /**
    * @param {{trace: LH.Trace, devtoolsLog: LH.DevtoolsLog}} data
-   * @param {LH.Audit.Context} context
+   * @param {LH.Artifacts.ComputedContext} context
    * @return {Promise<Node>}
    */
   static async compute_(data, context) {

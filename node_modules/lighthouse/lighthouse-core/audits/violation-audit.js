@@ -11,21 +11,32 @@ class ViolationAudit extends Audit {
   /**
    * @param {LH.Artifacts} artifacts
    * @param {RegExp} pattern
-   * @return {Array<{label: string, url?: string}>}
+   * @return {Array<{source: LH.Audit.Details.SourceLocationValue}>}
    */
   static getViolationResults(artifacts, pattern) {
+    /**
+     * @template T
+     * @param {T} value
+     * @return {value is Exclude<T, undefined>}
+     */
+    function filterUndefined(value) {
+      return value !== undefined;
+    }
+
     const seen = new Set();
     return artifacts.ConsoleMessages
         .filter(entry => entry.url && entry.source === 'violation' && pattern.test(entry.text))
-        .map(entry => ({label: `line: ${entry.lineNumber}`, url: entry.url}))
-        .filter(entry => {
-          // Filter out duplicate entries by URL/label since they are not differentiable to the user
+        .map(Audit.makeSourceLocationFromConsoleMessage)
+        .filter(filterUndefined)
+        .filter(source => {
+          // Filter out duplicate entries since they are not differentiable to the user
           // @see https://github.com/GoogleChrome/lighthouse/issues/5218
-          const key = `${entry.url}!${entry.label}`;
+          const key = `${source.url}!${source.line}!${source.column}`;
           if (seen.has(key)) return false;
           seen.add(key);
           return true;
-        });
+        })
+        .map(source => ({source}));
   }
 }
 

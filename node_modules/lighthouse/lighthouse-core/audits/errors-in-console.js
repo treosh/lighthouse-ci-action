@@ -44,10 +44,10 @@ class ErrorLogs extends Audit {
   }
 
   /** @return {AuditOptions} */
-  static defaultOptions() {
-    return {};
+  static get defaultOptions() {
+    // Any failed network requests with error messsage aren't actionable
+    return {ignoredPatterns: ['ERR_BLOCKED_BY_CLIENT.Inspector']};
   }
-
 
   /**
    * @template {{description: string | undefined}} T
@@ -81,14 +81,16 @@ class ErrorLogs extends Audit {
     /** @type {AuditOptions} */
     const auditOptions = context.options;
 
-    /** @type {Array<{source: string, description: string|undefined, url: string|undefined}>} */
+    /** @type {Array<{source: string, description: string|undefined, sourceLocation: LH.Audit.Details.SourceLocationValue|undefined}>} */
     const consoleRows = artifacts.ConsoleMessages
       .filter(item => item.level === 'error')
       .map(item => {
         return {
           source: item.source,
           description: item.text,
+          // TODO: remove for v8 (url is covered in sourceLocation)
           url: item.url,
+          sourceLocation: Audit.makeSourceLocationFromConsoleMessage(item),
         };
       });
 
@@ -97,7 +99,7 @@ class ErrorLogs extends Audit {
 
     /** @type {LH.Audit.Details.Table['headings']} */
     const headings = [
-      {key: 'url', itemType: 'url', text: str_(i18n.UIStrings.columnURL)},
+      {key: 'sourceLocation', itemType: 'source-location', text: str_(i18n.UIStrings.columnSource)},
       {key: 'description', itemType: 'code', text: str_(i18n.UIStrings.columnDescription)},
     ];
 

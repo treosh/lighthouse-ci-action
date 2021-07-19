@@ -219,11 +219,9 @@ class Budget {
     /** @type {Array<LH.Budget.TimingMetric>} */
     const validTimingMetrics = [
       'first-contentful-paint',
-      'first-cpu-idle',
       'interactive',
       'first-meaningful-paint',
       'max-potential-fid',
-      'estimated-input-latency',
       'total-blocking-time',
       'speed-index',
       'largest-contentful-paint',

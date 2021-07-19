@@ -9,6 +9,7 @@
 
 const constants = require('./constants.js');
 const i18n = require('../lib/i18n/i18n.js');
+const m2a = require('./metrics-to-audits.js');
 
 const UIStrings = {
   /** Title of the Performance category of audits. Equivalent to 'Web performance', this term is inclusive of all web page speed and loading optimization topics. Also used as a label of a score gauge; try to limit to 20 characters. */
@@ -191,13 +192,11 @@ const defaultConfig = {
     'metrics/speed-index',
     'screenshot-thumbnails',
     'final-screenshot',
-    'metrics/estimated-input-latency',
     'metrics/total-blocking-time',
     'metrics/max-potential-fid',
     'metrics/cumulative-layout-shift',
     'errors-in-console',
     'server-response-time',
-    'metrics/first-cpu-idle',
     'metrics/interactive',
     'user-timings',
     'critical-request-chains',
@@ -236,7 +235,9 @@ const defaultConfig = {
     'unsized-images',
     'valid-source-maps',
     'preload-lcp-image',
+    'csp-xss',
     'full-page-screenshot',
+    'script-treemap-data',
     'manual/pwa-cross-browser',
     'manual/pwa-page-transitions',
     'manual/pwa-each-page-has-url',
@@ -302,7 +303,7 @@ const defaultConfig = {
     'byte-efficiency/unminified-javascript',
     'byte-efficiency/unused-css-rules',
     'byte-efficiency/unused-javascript',
-    'byte-efficiency/uses-webp-images',
+    'byte-efficiency/modern-image-formats',
     'byte-efficiency/uses-optimized-images',
     'byte-efficiency/uses-text-compression',
     'byte-efficiency/uses-responsive-images',
@@ -420,17 +421,16 @@ const defaultConfig = {
     'performance': {
       title: str_(UIStrings.performanceCategoryTitle),
       auditRefs: [
-        {id: 'first-contentful-paint', weight: 15, group: 'metrics'},
-        {id: 'speed-index', weight: 15, group: 'metrics'},
-        {id: 'largest-contentful-paint', weight: 25, group: 'metrics'},
-        {id: 'interactive', weight: 15, group: 'metrics'},
-        {id: 'total-blocking-time', weight: 25, group: 'metrics'},
-        {id: 'cumulative-layout-shift', weight: 5, group: 'metrics'},
-        // intentionally left out of metrics group so they won't be displayed
-        {id: 'first-cpu-idle', weight: 0},
+        {id: 'first-contentful-paint', weight: 10, group: 'metrics', acronym: 'FCP', relevantAudits: m2a.fcpRelevantAudits},
+        {id: 'speed-index', weight: 10, group: 'metrics', acronym: 'SI'},
+        {id: 'largest-contentful-paint', weight: 25, group: 'metrics', acronym: 'LCP', relevantAudits: m2a.lcpRelevantAudits},
+        {id: 'interactive', weight: 10, group: 'metrics', acronym: 'TTI'},
+        {id: 'total-blocking-time', weight: 30, group: 'metrics', acronym: 'TBT', relevantAudits: m2a.tbtRelevantAudits},
+        {id: 'cumulative-layout-shift', weight: 15, group: 'metrics', acronym: 'CLS', relevantAudits: m2a.clsRelevantAudits},
+
+        // These are our "invisible" metrics. Not displayed, but still in the LHR
         {id: 'max-potential-fid', weight: 0},
-        {id: 'first-meaningful-paint', weight: 0},
-        {id: 'estimated-input-latency', weight: 0},
+        {id: 'first-meaningful-paint', weight: 0, acronym: 'FMP'},
 
         {id: 'render-blocking-resources', weight: 0, group: 'load-opportunities'},
         {id: 'uses-responsive-images', weight: 0, group: 'load-opportunities'},
@@ -440,7 +440,7 @@ const defaultConfig = {
         {id: 'unused-css-rules', weight: 0, group: 'load-opportunities'},
         {id: 'unused-javascript', weight: 0, group: 'load-opportunities'},
         {id: 'uses-optimized-images', weight: 0, group: 'load-opportunities'},
-        {id: 'uses-webp-images', weight: 0, group: 'load-opportunities'},
+        {id: 'modern-image-formats', weight: 0, group: 'load-opportunities'},
         {id: 'uses-text-compression', weight: 0, group: 'load-opportunities'},
         {id: 'uses-rel-preconnect', weight: 0, group: 'load-opportunities'},
         {id: 'server-response-time', weight: 0, group: 'load-opportunities'},
@@ -480,6 +480,7 @@ const defaultConfig = {
         {id: 'metrics', weight: 0},
         {id: 'screenshot-thumbnails', weight: 0},
         {id: 'final-screenshot', weight: 0},
+        {id: 'script-treemap-data', weight: 0},
       ],
     },
     'accessibility': {
@@ -557,6 +558,7 @@ const defaultConfig = {
         {id: 'geolocation-on-start', weight: 1, group: 'best-practices-trust-safety'},
         {id: 'notification-on-start', weight: 1, group: 'best-practices-trust-safety'},
         {id: 'no-vulnerable-libraries', weight: 1, group: 'best-practices-trust-safety'},
+        {id: 'csp-xss', weight: 0, group: 'best-practices-trust-safety'},
         // User Experience
         {id: 'password-inputs-can-be-pasted-into', weight: 1, group: 'best-practices-ux'},
         {id: 'image-aspect-ratio', weight: 1, group: 'best-practices-ux'},

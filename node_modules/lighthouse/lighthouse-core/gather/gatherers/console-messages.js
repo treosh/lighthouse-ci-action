@@ -11,7 +11,7 @@
 
 'use strict';
 
-const Gatherer = require('./gatherer.js');
+const FRGatherer = require('../../fraggle-rock/gather/base-gatherer.js');
 
 /**
  * @param {LH.Crdp.Runtime.RemoteObject} obj
@@ -30,7 +30,12 @@ function remoteObjectToString(obj) {
   return `[${type} ${className}]`;
 }
 
-class ConsoleMessages extends Gatherer {
+class ConsoleMessages extends FRGatherer {
+  /** @type {LH.Gatherer.GathererMeta} */
+  meta = {
+    supportedModes: ['timespan', 'navigation'],
+  }
+
   constructor() {
     super();
     /** @type {LH.Artifacts.ConsoleMessage[]} */
@@ -51,6 +56,7 @@ class ConsoleMessages extends Gatherer {
       // Only gather warnings and errors for brevity.
       return;
     }
+
     /** @type {LH.Crdp.Runtime.RemoteObject[]} */
     const args = event.args || [];
     const text = args.map(remoteObjectToString).join(' ');
@@ -58,6 +64,7 @@ class ConsoleMessages extends Gatherer {
       // No useful information from Chrome. Skip.
       return;
     }
+
     const {url, lineNumber, columnNumber} =
       event.stackTrace && event.stackTrace.callFrames[0] || {};
     /** @type {LH.Artifacts.ConsoleMessage} */
@@ -107,6 +114,11 @@ class ConsoleMessages extends Gatherer {
    */
   onLogEntry(event) {
     const {source, level, text, stackTrace, timestamp, url, lineNumber} = event.entry;
+
+    // JS events have a stack trace, which we use to get the column.
+    // CSS/HTML events only expose a line number.
+    const {columnNumber} = event.entry.stackTrace && event.entry.stackTrace.callFrames[0] || {};
+
     this._logEntries.push({
       eventType: 'protocolLog',
       source,
@@ -116,37 +128,44 @@ class ConsoleMessages extends Gatherer {
       timestamp,
       url,
       lineNumber,
+      columnNumber,
     });
   }
 
   /**
-   * @param {LH.Gatherer.PassContext} passContext
+   * @param {LH.Gatherer.FRTransitionalContext} passContext
    */
-  async beforePass(passContext) {
-    const driver = passContext.driver;
+  async startInstrumentation(passContext) {
+    const session = passContext.driver.defaultSession;
 
-    driver.on('Log.entryAdded', this._onLogEntryAdded);
-    await driver.sendCommand('Log.enable');
-    await driver.sendCommand('Log.startViolationsReport', {
+    session.on('Log.entryAdded', this._onLogEntryAdded);
+    await session.sendCommand('Log.enable');
+    await session.sendCommand('Log.startViolationsReport', {
       config: [{name: 'discouragedAPIUse', threshold: -1}],
     });
 
-    driver.on('Runtime.consoleAPICalled', this._onConsoleAPICalled);
-    driver.on('Runtime.exceptionThrown', this._onExceptionThrown);
-    await driver.sendCommand('Runtime.enable');
+    session.on('Runtime.consoleAPICalled', this._onConsoleAPICalled);
+    session.on('Runtime.exceptionThrown', this._onExceptionThrown);
+    await session.sendCommand('Runtime.enable');
   }
 
   /**
-   * @param {LH.Gatherer.PassContext} passContext
+   * @param {LH.Gatherer.FRTransitionalContext} passContext
+   * @return {Promise<void>}
+   */
+  async stopInstrumentation({driver}) {
+    await driver.defaultSession.sendCommand('Log.stopViolationsReport');
+    await driver.defaultSession.off('Log.entryAdded', this._onLogEntryAdded);
+    await driver.defaultSession.sendCommand('Log.disable');
+    await driver.defaultSession.off('Runtime.consoleAPICalled', this._onConsoleAPICalled);
+    await driver.defaultSession.off('Runtime.exceptionThrown', this._onExceptionThrown);
+    await driver.defaultSession.sendCommand('Runtime.disable');
+  }
+
+  /**
    * @return {Promise<LH.Artifacts['ConsoleMessages']>}
    */
-  async afterPass({driver}) {
-    await driver.sendCommand('Log.stopViolationsReport');
-    await driver.off('Log.entryAdded', this._onLogEntryAdded);
-    await driver.sendCommand('Log.disable');
-    await driver.off('Runtime.consoleAPICalled', this._onConsoleAPICalled);
-    await driver.off('Runtime.exceptionThrown', this._onExceptionThrown);
-    await driver.sendCommand('Runtime.disable');
+  async getArtifact() {
     return this._logEntries;
   }
 }

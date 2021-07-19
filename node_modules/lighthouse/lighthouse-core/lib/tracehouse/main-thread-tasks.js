@@ -559,7 +559,7 @@ class MainThreadTasks {
 
   /**
    * @param {LH.TraceEvent[]} mainThreadEvents
-   * @param {Array<{frame: string, url: string}>} frames
+   * @param {Array<{id: string, url: string}>} frames
    * @param {number} traceEndTs
    * @return {TaskNode[]}
    */
@@ -567,7 +567,7 @@ class MainThreadTasks {
     const timers = new Map();
     const xhrs = new Map();
     const frameURLsById = new Map();
-    frames.forEach(({frame, url}) => frameURLsById.set(frame, url));
+    frames.forEach(({id, url}) => frameURLsById.set(id, url));
     /** @type {Array<string>} */
     const lastTaskURLs = [];
     const priorTaskData = {timers, xhrs, frameURLsById, lastTaskURLs};

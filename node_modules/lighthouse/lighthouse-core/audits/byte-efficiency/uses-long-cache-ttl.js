@@ -154,7 +154,8 @@ class CacheHeaders extends Audit {
     ]);
 
     // It's not a request loaded over the network, caching makes no sense
-    if (URL.NON_NETWORK_PROTOCOLS.includes(record.protocol)) return false;
+    if (NetworkRequest.isNonNetworkRequest(record)) return false;
+
 
     return (
       CACHEABLE_STATUS_CODES.has(record.statusCode) &&

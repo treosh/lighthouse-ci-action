@@ -13,7 +13,7 @@ const TraceOfTab = require('./trace-of-tab.js');
 class Speedline {
   /**
    * @param {LH.Trace} trace
-   * @param {LH.Audit.Context} context
+   * @param {LH.Artifacts.ComputedContext} context
    * @return {Promise<LH.Artifacts.Speedline>}
    */
   static async compute_(trace, context) {

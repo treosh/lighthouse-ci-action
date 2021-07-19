@@ -74,7 +74,7 @@ class Y18N {
         }
         // if a %d placeholder is provided, add quantity
         // to the arguments expanded by util.format.
-        var values = [str];
+        const values = [str];
         if (~str.indexOf('%d'))
             values.push(quantity);
         return shim.format.apply(shim.format, values.concat(args));
@@ -97,7 +97,7 @@ class Y18N {
     _taggedLiteral(parts, ...args) {
         let str = '';
         parts.forEach(function (part, i) {
-            var arg = args[i + 1];
+            const arg = args[i + 1];
             str += part;
             if (typeof arg !== 'undefined') {
                 str += '%s';
@@ -111,14 +111,14 @@ class Y18N {
             this._processWriteQueue();
     }
     _processWriteQueue() {
-        var _this = this;
-        var work = this.writeQueue[0];
+        const _this = this;
+        const work = this.writeQueue[0];
         // destructure the enqueued work.
-        var directory = work.directory;
-        var locale = work.locale;
-        var cb = work.cb;
-        var languageFile = this._resolveLocaleFile(directory, locale);
-        var serializedLocale = JSON.stringify(this.cache[locale], null, 2);
+        const directory = work.directory;
+        const locale = work.locale;
+        const cb = work.cb;
+        const languageFile = this._resolveLocaleFile(directory, locale);
+        const serializedLocale = JSON.stringify(this.cache[locale], null, 2);
         shim.fs.writeFile(languageFile, serializedLocale, 'utf-8', function (err) {
             _this.writeQueue.shift();
             if (_this.writeQueue.length > 0)
@@ -127,10 +127,13 @@ class Y18N {
         });
     }
     _readLocaleFile() {
-        var localeLookup = {};
-        var languageFile = this._resolveLocaleFile(this.directory, this.locale);
+        let localeLookup = {};
+        const languageFile = this._resolveLocaleFile(this.directory, this.locale);
         try {
-            localeLookup = JSON.parse(shim.fs.readFileSync(languageFile, 'utf-8'));
+            // When using a bundler such as webpack, readFileSync may not be defined:
+            if (shim.fs.readFileSync) {
+                localeLookup = JSON.parse(shim.fs.readFileSync(languageFile, 'utf-8'));
+            }
         }
         catch (err) {
             if (err instanceof SyntaxError) {
@@ -144,10 +147,10 @@ class Y18N {
         this.cache[this.locale] = localeLookup;
     }
     _resolveLocaleFile(directory, locale) {
-        var file = shim.resolve(directory, './', locale + '.json');
+        let file = shim.resolve(directory, './', locale + '.json');
         if (this.fallbackToLanguage && !this._fileExistsSync(file) && ~locale.lastIndexOf('_')) {
             // attempt fallback to language only
-            var languageFile = shim.resolve(directory, './', locale.split('_')[0] + '.json');
+            const languageFile = shim.resolve(directory, './', locale.split('_')[0] + '.json');
             if (this._fileExistsSync(languageFile))
                 file = languageFile;
         }

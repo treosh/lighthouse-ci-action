@@ -13,13 +13,14 @@ const {isObjectOfUnknownValues} = require('../lighthouse-core/lib/type-verifiers
 
 /**
  * @param {string=} manualArgv
+ * @param {{noExitOnFailure?: boolean}=} options
  * @return {LH.CliFlags}
  */
-function getFlags(manualArgv) {
+function getFlags(manualArgv, options = {}) {
   // @ts-expect-error - undocumented, but yargs() supports parsing a single `string`.
   const y = manualArgv ? yargs(manualArgv) : yargs;
 
-  const argv = y.help('help')
+  let parser = y.help('help')
       .showHelpOnFail(false, 'Specify --help for available options')
 
       .usage('lighthouse <url> <options>')
@@ -308,11 +309,20 @@ function getFlags(manualArgv) {
         throw new Error('Please provide a url');
       })
       .epilogue('For more information on Lighthouse, see https://developers.google.com/web/tools/lighthouse/.')
-      .wrap(yargs.terminalWidth())
-      .argv;
+      .wrap(yargs.terminalWidth());
+
+  if (options.noExitOnFailure) {
+    // Silence console.error() logging and don't process.exit().
+    // `parser.fail(false)` can be used in yargs once v17 is released.
+    parser = parser.fail((msg, err) => {
+      if (err) throw err;
+      else if (msg) throw new Error(msg);
+    });
+  }
 
   // Augmenting yargs type with auto-camelCasing breaks in tsc@4.1.2 and @types/yargs@15.0.11,
   // so for now cast to add yarg's camelCase properties to type.
+  const argv = parser.argv;
   const cliFlags = /** @type {typeof argv & CamelCasify<typeof argv>} */ (argv);
 
   return cliFlags;
@@ -456,10 +466,17 @@ function coerceScreenEmulation(value) {
         break;
       case 'mobile':
       case 'disabled':
-        if (possibleSetting !== undefined && typeof possibleSetting !== 'boolean') {
+        // Manually coerce 'true'/'false' strings to booleans since nested property types aren't set.
+        if (possibleSetting === 'true') {
+          screenEmulationSettings[key] = true;
+        } else if (possibleSetting === 'false') {
+          screenEmulationSettings[key] = false;
+        } else if (possibleSetting === undefined || typeof possibleSetting === 'boolean') {
+          screenEmulationSettings[key] = possibleSetting;
+        } else {
           throw new Error(`Invalid value: 'screenEmulation.${key}' must be a boolean`);
         }
-        screenEmulationSettings[key] = possibleSetting;
+
         break;
       default:
         throw new Error(`Unrecognized screenEmulation option: ${key}`);

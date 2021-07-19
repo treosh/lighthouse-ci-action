@@ -13,7 +13,7 @@ const LHError = require('../../lib/lh-error.js');
 const UIStrings = {
   /** Description of the Largest Contentful Paint (LCP) metric, which marks the time at which the largest text or image is painted by the browser. This is displayed within a tooltip when the user hovers on the metric name to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
   description: 'Largest Contentful Paint marks the time at which the largest text or image is ' +
-      `painted. [Learn More](https://web.dev/lighthouse-largest-contentful-paint/)`,
+      `painted. [Learn more](https://web.dev/lighthouse-largest-contentful-paint/)`,
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);

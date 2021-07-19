@@ -136,7 +136,7 @@ class UnusedCSS {
 
   /**
    * @param {{CSSUsage: LH.Artifacts['CSSUsage'], URL: LH.Artifacts['URL'], devtoolsLog: LH.DevtoolsLog}} data
-   * @param {LH.Audit.Context} context
+   * @param {LH.Artifacts.ComputedContext} context
    * @return {Promise<LH.Audit.ByteEfficiencyItem[]>}
   */
   static async compute_(data, context) {

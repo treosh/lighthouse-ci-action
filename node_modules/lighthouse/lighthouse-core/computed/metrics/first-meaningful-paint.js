@@ -13,7 +13,7 @@ const LanternFirstMeaningfulPaint = require('./lantern-first-meaningful-paint.js
 class FirstMeaningfulPaint extends ComputedMetric {
   /**
    * @param {LH.Artifacts.MetricComputationData} data
-   * @param {LH.Audit.Context} context
+   * @param {LH.Artifacts.ComputedContext} context
    * @return {Promise<LH.Artifacts.LanternMetric>}
    */
   static computeSimulatedMetric(data, context) {

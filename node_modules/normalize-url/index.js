@@ -11,7 +11,7 @@ const testParameter = (name, filters) => {
 };
 
 const normalizeDataURL = (urlString, {stripHash}) => {
-	const parts = urlString.match(/^data:(.*?),(.*?)(?:#(.*))?$/);
+	const parts = urlString.match(/^data:([^,]*?),([^#]*?)(?:#(.*))?$/);
 
 	if (!parts) {
 		throw new Error(`Invalid URL: ${urlString}`);

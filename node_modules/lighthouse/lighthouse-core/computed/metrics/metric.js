@@ -23,7 +23,7 @@ class ComputedMetric {
 
   /**
    * @param {LH.Artifacts.MetricComputationData} data
-   * @param {LH.Audit.Context} context
+   * @param {LH.Artifacts.ComputedContext} context
    * @return {Promise<LH.Artifacts.LanternMetric>}
    */
   static computeSimulatedMetric(data, context) { // eslint-disable-line no-unused-vars
@@ -32,7 +32,7 @@ class ComputedMetric {
 
   /**
    * @param {LH.Artifacts.MetricComputationData} data
-   * @param {LH.Audit.Context} context
+   * @param {LH.Artifacts.ComputedContext} context
    * @return {Promise<LH.Artifacts.Metric>}
    */
   static computeObservedMetric(data, context) { // eslint-disable-line no-unused-vars
@@ -41,7 +41,7 @@ class ComputedMetric {
 
   /**
    * @param {LH.Artifacts.MetricComputationDataInput} data
-   * @param {LH.Audit.Context} context
+   * @param {LH.Artifacts.ComputedContext} context
    * @return {Promise<LH.Artifacts.LanternMetric|LH.Artifacts.Metric>}
    */
   static async compute_(data, context) {

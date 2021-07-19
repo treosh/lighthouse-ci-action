@@ -7,7 +7,7 @@
 
 /* global getNodeDetails */
 
-const Gatherer = require('./gatherer.js');
+const FRGatherer = require('../../fraggle-rock/gather/base-gatherer.js');
 const pageFunctions = require('../../lib/page-functions.js');
 
 /* eslint-env browser, node */
@@ -15,7 +15,7 @@ const pageFunctions = require('../../lib/page-functions.js');
 /**
  * @return {LH.Artifacts['FormElements']}
  */
-/* istanbul ignore next */
+/* c8 ignore start */
 function collectFormElements() {
   // @ts-expect-error - put into scope via stringification
   const formChildren = getElementsInDocument('textarea, input, label, select'); // eslint-disable-line no-undef
@@ -57,6 +57,7 @@ function collectFormElements() {
         placeholder: child instanceof HTMLSelectElement ? undefined : child.placeholder,
         autocomplete: {
           property: child.autocomplete,
+          // Requires `--enable-features=AutofillShowTypePredictions`.
           attribute: child.getAttribute('autocomplete'),
           prediction: child.getAttribute('autofill-prediction'),
         },
@@ -82,23 +83,29 @@ function collectFormElements() {
   }
   return [...forms.values()];
 }
+/* c8 ignore stop */
 
-class FormElements extends Gatherer {
+class FormElements extends FRGatherer {
+  /** @type {LH.Gatherer.GathererMeta} */
+  meta = {
+    supportedModes: ['snapshot', 'navigation'],
+  }
+
   /**
-   * @param {LH.Gatherer.PassContext} passContext
+   * @param {LH.Gatherer.FRTransitionalContext} passContext
    * @return {Promise<LH.Artifacts['FormElements']>}
    */
-  async afterPass(passContext) {
+  async getArtifact(passContext) {
     const driver = passContext.driver;
 
-    const expression = `(() => {
-      ${pageFunctions.getElementsInDocumentString};
-      ${pageFunctions.getNodeDetailsString};
-      return (${collectFormElements})();
-    })()`;
-
-    /** @type {LH.Artifacts['FormElements']} */
-    const formElements = await driver.evaluateAsync(expression, {useIsolation: true});
+    const formElements = await driver.executionContext.evaluate(collectFormElements, {
+      args: [],
+      useIsolation: true,
+      deps: [
+        pageFunctions.getElementsInDocumentString,
+        pageFunctions.getNodeDetailsString,
+      ],
+    });
     return formElements;
   }
 }

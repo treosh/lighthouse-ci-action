@@ -66,11 +66,6 @@ class Metrics {
         tsKey: 'observedLastVisualChangeTs',
       },
       {
-        name: 'First CPU Idle',
-        id: 'ttfi',
-        tsKey: 'firstCPUIdleTs',
-      },
-      {
         name: 'Interactive',
         id: 'tti',
         tsKey: 'interactiveTs',

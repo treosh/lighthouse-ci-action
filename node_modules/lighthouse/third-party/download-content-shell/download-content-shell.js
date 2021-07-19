@@ -18,12 +18,14 @@ const MAX_CONTENT_SHELLS = 10;
 const PLATFORM = getPlatform();
 const LH_ROOT = `${__dirname}/../..`;
 const CACHE_PATH = path.resolve(LH_ROOT, '.tmp', 'chromium-web-tests', 'content-shells');
+const COMMIT_POSITION_UPDATE_PERIOD = 420;
 
 function main() {
   fs.mkdirSync(CACHE_PATH, {recursive: true});
   deleteOldContentShells();
 
-  findPreviousUploadedPosition(findMostRecentChromiumCommit())
+  findMostRecentChromiumCommit()
+    .then(findPreviousUploadedPosition)
     .then(onUploadedCommitPosition)
     .catch(onError);
 
@@ -64,13 +66,13 @@ function getPlatform() {
   throw new Error(`Unrecognized platform detected: ${process.platform}`);
 }
 
-function findMostRecentChromiumCommit() {
-  // TODO: this code works only if there is a full chromium checkout present.
-  // const commitMessage = shell('git log --max-count=1 --grep="Cr-Commit-Position"').toString().trim();
-  // const commitPosition = commitMessage.match(/Cr-Commit-Position: refs\/heads\/master@\{#([0-9]+)\}/)[1];
-  // return commitPosition;
-  // TODO: make this dynamic.
-  return '822569';
+async function findMostRecentChromiumCommit() {
+  const snapshotUrl = `https://www.googleapis.com/download/storage/v1/b/chromium-browser-snapshots/o/${PLATFORM}%2FLAST_CHANGE?alt=media`;
+  const commitPosition = Number((await utils.fetch(snapshotUrl)).toString());
+
+  // Only update the content shell roughly once a day.
+  // see https://github.com/GoogleChrome/lighthouse/pull/12232#discussion_r592016416
+  return commitPosition - commitPosition % COMMIT_POSITION_UPDATE_PERIOD;
 }
 
 function deleteOldContentShells() {

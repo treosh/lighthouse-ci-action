@@ -40,12 +40,6 @@ const UIStrings = {
   columnVuln: 'Vulnerability Count',
   /** Label for a column in a data table; entries will be the severity of the vulnerabilities found within a Javascript library. */
   columnSeverity: 'Highest Severity',
-  /** Table row value for the severity of a small, or low impact Javascript vulnerability.  Part of a ranking scale in the form: low, medium, high. */
-  rowSeverityLow: 'Low',
-  /** Table row value for the severity of a Javascript vulnerability.  Part of a ranking scale in the form: low, medium, high. */
-  rowSeverityMedium: 'Medium',
-  /** Table row value for the severity of a high impact, or dangerous Javascript vulnerability.  Part of a ranking scale in the form: low, medium, high. */
-  rowSeverityHigh: 'High',
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);
@@ -53,10 +47,10 @@ const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);
 const SEMVER_REGEX = /^(\d+\.\d+\.\d+)[^-0-9]+/;
 
 /** @type {Record<string, LH.IcuMessage>} */
-const rowMap = {
-  'low': str_(UIStrings.rowSeverityLow),
-  'medium': str_(UIStrings.rowSeverityMedium),
-  'high': str_(UIStrings.rowSeverityHigh),
+const severityStringsMap = {
+  'low': str_(i18n.UIStrings.itemSeverityLow),
+  'medium': str_(i18n.UIStrings.itemSeverityMedium),
+  'high': str_(i18n.UIStrings.itemSeverityHigh),
 };
 
 /** @typedef {{npm: Object<string, Array<{id: string, severity: string, semver: {vulnerable: Array<string>}}>>}} SnykDB */
@@ -146,7 +140,7 @@ class NoVulnerableLibrariesAudit extends Audit {
 
     const vulns = matchingVulns.map(vuln => {
       return {
-        severity: rowMap[vuln.severity],
+        severity: severityStringsMap[vuln.severity],
         numericSeverity: this.severityMap[vuln.severity],
         library: `${lib.name}@${normalizedVersion}`,
         url: 'https://snyk.io/vuln/' + vuln.id,

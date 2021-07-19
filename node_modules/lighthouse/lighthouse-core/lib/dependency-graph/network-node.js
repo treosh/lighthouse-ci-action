@@ -7,7 +7,6 @@
 
 const BaseNode = require('./base-node.js');
 const NetworkRequest = require('../network-request.js');
-const URL = require('../url-shim.js');
 
 class NetworkNode extends BaseNode {
   /**
@@ -62,7 +61,7 @@ class NetworkNode extends BaseNode {
    * @return {boolean}
    */
   get isNonNetworkProtocol() {
-    return URL.NON_NETWORK_PROTOCOLS.includes(this._record.protocol);
+    return NetworkRequest.isNonNetworkRequest(this._record);
   }
 
 

@@ -9,6 +9,7 @@ module.exports = {
     'dist/extension/scripts/lighthouse-ext-bundle.js',
     'dist/lighthouse-dt-bundle.js',
     'dist/gh-pages/viewer/src/bundled.js',
+    'dist/gh-pages/treemap/src/bundled.js',
     'dist/lightrider/report-generator-bundle.js',
     'dist/dt-report-resources/report.js',
     'dist/dt-report-resources/report-generator.js',

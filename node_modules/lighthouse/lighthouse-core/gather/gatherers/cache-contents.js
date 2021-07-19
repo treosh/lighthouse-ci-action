@@ -7,13 +7,12 @@
 
 /* global caches */
 
-const Gatherer = require('./gatherer.js');
+const FRGatherer = require('../../fraggle-rock/gather/base-gatherer.js');
 
 /**
- * This is run in the page, not Lighthouse itself.
  * @return {Promise<Array<string>>}
  */
-/* istanbul ignore next */
+/* c8 ignore start */
 function getCacheContents() {
   // Get every cache by name.
   return caches.keys()
@@ -36,22 +35,23 @@ function getCacheContents() {
         });
       });
 }
+/* c8 ignore stop */
 
-class CacheContents extends Gatherer {
+class CacheContents extends FRGatherer {
+  /** @type {LH.Gatherer.GathererMeta} */
+  meta = {
+    supportedModes: ['snapshot', 'navigation'],
+  }
+
   /**
    * Creates an array of cached URLs.
-   * @param {LH.Gatherer.PassContext} passContext
+   * @param {LH.Gatherer.FRTransitionalContext} passContext
    * @return {Promise<LH.Artifacts['CacheContents']>}
    */
-  async afterPass(passContext) {
+  async getArtifact(passContext) {
     const driver = passContext.driver;
 
-    /** @type {Array<string>|void} */
-    const cacheUrls = await driver.evaluateAsync(`(${getCacheContents.toString()}())`);
-    if (!cacheUrls || !Array.isArray(cacheUrls)) {
-      throw new Error('Unable to retrieve cache contents');
-    }
-
+    const cacheUrls = await driver.executionContext.evaluate(getCacheContents, {args: []});
     return cacheUrls;
   }
 }

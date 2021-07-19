@@ -6,6 +6,7 @@
 'use strict';
 
 const Gatherer = require('./gatherer.js');
+const serviceWorkers = require('../driver/service-workers.js');
 
 class ServiceWorker extends Gatherer {
   /**
@@ -13,8 +14,9 @@ class ServiceWorker extends Gatherer {
    * @return {Promise<LH.Artifacts['ServiceWorker']>}
    */
   async beforePass(passContext) {
-    const {versions} = await passContext.driver.getServiceWorkerVersions();
-    const {registrations} = await passContext.driver.getServiceWorkerRegistrations();
+    const session = passContext.driver.defaultSession;
+    const {versions} = await serviceWorkers.getServiceWorkerVersions(session);
+    const {registrations} = await serviceWorkers.getServiceWorkerRegistrations(session);
 
     return {
       versions,

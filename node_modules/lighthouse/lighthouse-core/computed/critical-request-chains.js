@@ -125,7 +125,7 @@ class CriticalRequestChains {
 
   /**
    * @param {{URL: LH.Artifacts['URL'], devtoolsLog: LH.DevtoolsLog, trace: LH.Trace}} data
-   * @param {LH.Audit.Context} context
+   * @param {LH.Artifacts.ComputedContext} context
    * @return {Promise<LH.Artifacts.CriticalRequestNode>}
    */
   static async compute_(data, context) {

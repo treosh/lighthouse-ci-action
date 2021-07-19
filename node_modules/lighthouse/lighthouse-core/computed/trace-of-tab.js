@@ -50,13 +50,30 @@ class TraceOfTab {
     // We'll check that we got an FCP here and re-type accordingly so all of our consumers don't
     // have to repeat this check.
     const traceOfTab = await LHTraceProcessor.computeTraceOfTab(trace);
-    const {timings, timestamps, firstContentfulPaintEvt} = traceOfTab;
-    const {firstContentfulPaint: firstContentfulPaintTiming} = timings;
-    const {firstContentfulPaint: firstContentfulPaintTs} = timestamps;
+    const {
+      timings,
+      timestamps,
+      firstContentfulPaintEvt,
+      firstContentfulPaintAllFramesEvt,
+    } = traceOfTab;
+    const {
+      firstContentfulPaint: firstContentfulPaintTiming,
+      firstContentfulPaintAllFrames: firstContentfulPaintAllFramesTiming,
+    } = timings;
+    const {
+      firstContentfulPaint: firstContentfulPaintTs,
+      firstContentfulPaintAllFrames: firstContentfulPaintAllFramesTs,
+    } = timestamps;
+
     if (
       !firstContentfulPaintEvt ||
       firstContentfulPaintTiming === undefined ||
-      firstContentfulPaintTs === undefined
+      firstContentfulPaintTs === undefined ||
+      // FCP-AF will only be undefined if FCP is also undefined.
+      // These conditions are for enforcing types and should never actually trigger.
+      !firstContentfulPaintAllFramesEvt ||
+      firstContentfulPaintAllFramesTiming === undefined ||
+      firstContentfulPaintAllFramesTs === undefined
     ) {
       throw new LHError(LHError.errors.NO_FCP);
     }
@@ -66,8 +83,17 @@ class TraceOfTab {
     return {
       ...traceOfTab,
       firstContentfulPaintEvt,
-      timings: {...timings, firstContentfulPaint: firstContentfulPaintTiming},
-      timestamps: {...timestamps, firstContentfulPaint: firstContentfulPaintTs},
+      firstContentfulPaintAllFramesEvt,
+      timings: {
+        ...timings,
+        firstContentfulPaint: firstContentfulPaintTiming,
+        firstContentfulPaintAllFrames: firstContentfulPaintAllFramesTiming,
+      },
+      timestamps: {
+        ...timestamps,
+        firstContentfulPaint: firstContentfulPaintTs,
+        firstContentfulPaintAllFrames: firstContentfulPaintAllFramesTs,
+      },
     };
   }
 }

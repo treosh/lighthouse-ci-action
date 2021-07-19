@@ -81,13 +81,7 @@ class CrawlableAnchors extends Audit {
     /** @type {LH.Audit.Details.Table['items']} */
     const itemsToDisplay = failingAnchors.map(anchor => {
       return {
-        node: {
-          type: 'node',
-          path: anchor.node.devtoolsNodePath || '',
-          selector: anchor.node.selector || '',
-          nodeLabel: anchor.node.nodeLabel || '',
-          snippet: anchor.node.snippet || '',
-        },
+        node: Audit.makeNodeItem(anchor.node),
       };
     });
 

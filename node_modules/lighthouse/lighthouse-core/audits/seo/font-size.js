@@ -68,18 +68,21 @@ function getUniqueFailingRules(fontSizeArtifact) {
 }
 
 /**
- * @param {Array<string>=} attributes
+ * @param {Array<string|undefined>=} attributes
  * @returns {Map<string, string>}
  */
 function getAttributeMap(attributes = []) {
   const map = new Map();
 
   for (let i = 0; i < attributes.length; i += 2) {
-    const name = attributes[i].toLowerCase();
-    const value = attributes[i + 1].trim();
+    const name = attributes[i];
+    const value = attributes[i + 1];
+    if (!name || !value) continue;
 
-    if (value) {
-      map.set(name, value);
+    const normalizedValue = value.trim();
+
+    if (normalizedValue) {
+      map.set(name.toLowerCase(), normalizedValue);
     }
   }
 

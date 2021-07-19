@@ -129,26 +129,8 @@ class Plugins extends Audit {
         return failingParams.length > 0;
       })
       .map(plugin => {
-        const tagName = plugin.tagName.toLowerCase();
-        /** @type {Array<keyof LH.Artifacts.EmbeddedContentInfo>} */
-        const attributeKeys = ['src', 'data', 'code', 'type'];
-        const attributes = attributeKeys
-          .reduce((result, attr) => {
-            if (plugin[attr] !== null) {
-              result += ` ${attr}="${plugin[attr]}"`;
-            }
-            return result;
-          }, '');
-        const params = plugin.params
-          .filter(param => SOURCE_PARAMS.has(param.name.trim().toLowerCase()))
-          .map(param => `<param ${param.name}="${param.value}" />`)
-          .join('');
-
         return {
-          source: {
-            type: /** @type {'node'} */ ('node'),
-            snippet: `<${tagName}${attributes}>${params}</${tagName}>`,
-          },
+          source: Audit.makeNodeItem(plugin.node),
         };
       });
 

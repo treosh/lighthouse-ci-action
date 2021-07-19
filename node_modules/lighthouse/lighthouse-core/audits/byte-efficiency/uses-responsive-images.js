@@ -117,8 +117,10 @@ class UsesResponsiveImages extends ByteEfficiencyAudit {
         continue;
       }
 
-      const naturalHeight = image.naturalHeight;
-      const naturalWidth = image.naturalWidth;
+      // Skip if we couldn't collect natural image size information.
+      if (!image.naturalDimensions) continue;
+      const naturalHeight = image.naturalDimensions.height;
+      const naturalWidth = image.naturalDimensions.width;
       // If naturalHeight or naturalWidth are falsy, information is not valid, skip.
       if (!naturalWidth || !naturalHeight) continue;
       const processed =

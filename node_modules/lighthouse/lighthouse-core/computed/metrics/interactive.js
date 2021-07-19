@@ -9,7 +9,7 @@ const makeComputedArtifact = require('../computed-artifact.js');
 const ComputedMetric = require('./metric.js');
 const LanternInteractive = require('./lantern-interactive.js');
 
-const NetworkRecorder = require('../../lib/network-recorder.js');
+const NetworkMonitor = require('../../gather/driver/network-monitor.js');
 const TracingProcessor = require('../../lib/tracehouse/trace-processor.js');
 const LHError = require('../../lib/lh-error.js');
 
@@ -37,7 +37,7 @@ class Interactive extends ComputedMetric {
           // Consider network records that had 4xx/5xx status code as "failed"
           record.statusCode < 400;
     });
-    return NetworkRecorder.findNetworkQuietPeriods(filteredNetworkRecords,
+    return NetworkMonitor.findNetworkQuietPeriods(filteredNetworkRecords,
       ALLOWED_CONCURRENT_REQUESTS, traceEndTsInMs);
   }
 
@@ -142,7 +142,7 @@ class Interactive extends ComputedMetric {
 
   /**
    * @param {LH.Artifacts.MetricComputationData} data
-   * @param {LH.Audit.Context} context
+   * @param {LH.Artifacts.ComputedContext} context
    * @return {Promise<LH.Artifacts.LanternMetric>}
    */
   static computeSimulatedMetric(data, context) {

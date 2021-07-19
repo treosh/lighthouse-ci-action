@@ -6,7 +6,7 @@
 'use strict';
 
 const Configstore = require('configstore');
-const inquirer = require('inquirer');
+const {Confirm} = require('enquirer');
 
 const log = require('lighthouse-logger');
 
@@ -15,7 +15,7 @@ const MAXIMUM_WAIT_TIME = 20 * 1000;
 // eslint-disable-next-line max-len
 const MESSAGE = `${log.reset}We're constantly trying to improve Lighthouse and its reliability.\n  ` +
   `${log.reset}Learn more: https://github.com/GoogleChrome/lighthouse/blob/master/docs/error-reporting.md \n ` +
-  ` May we anonymously report runtime exceptions to improve the tool over time? `;
+  ` ${log.bold}May we anonymously report runtime exceptions to improve the tool over time?${log.reset} `; // eslint-disable-line max-len
 
 /**
  * @return {Promise<boolean>}
@@ -29,29 +29,26 @@ function prompt() {
   /** @type {NodeJS.Timer|undefined} */
   let timeout;
 
-  const prompt = inquirer.prompt([
-    {
-      type: 'confirm',
-      name: 'isErrorReportingEnabled',
-      default: false,
-      message: MESSAGE,
-    },
-  ]);
+  const prompt = new Confirm({
+    name: 'isErrorReportingEnabled',
+    initial: false,
+    message: MESSAGE,
+    actions: {ctrl: {}},
+  });
 
   const timeoutPromise = new Promise((resolve) => {
     timeout = setTimeout(() => {
-      // @ts-expect-error Promise returned by prompt is decorated with `ui`
-      prompt.ui.close();
-      process.stdout.write('\n');
-      log.warn('CLI', 'No response to error logging preference, errors will not be reported.');
-      resolve(false);
+      prompt.close().then(() => {
+        log.warn('CLI', 'No response to error logging preference, errors will not be reported.');
+        resolve(false);
+      });
     }, MAXIMUM_WAIT_TIME);
   });
 
   return Promise.race([
-    prompt.then(result => {
+    prompt.run().then(result => {
       clearTimeout(/** @type {NodeJS.Timer} */ (timeout));
-      return result.isErrorReportingEnabled;
+      return result;
     }),
     timeoutPromise,
   ]);

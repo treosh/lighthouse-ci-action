@@ -11,7 +11,7 @@ const log = require('lighthouse-logger');
 /**
  * Decorate computableArtifact with a caching `request()` method which will
  * automatically call `computableArtifact.compute_()` under the hood.
- * @template {{name: string, compute_(artifacts: unknown, context: LH.Audit.Context): Promise<unknown>}} C
+ * @template {{name: string, compute_(artifacts: unknown, context: LH.Artifacts.ComputedContext): Promise<unknown>}} C
  * @param {C} computableArtifact
  */
 function makeComputedArtifact(computableArtifact) {
@@ -21,7 +21,7 @@ function makeComputedArtifact(computableArtifact) {
   /**
    * Return an automatically cached result from the computed artifact.
    * @param {FirstParamType<C['compute_']>} artifacts
-   * @param {LH.Audit.Context} context
+   * @param {LH.Artifacts.ComputedContext} context
    * @return {ReturnType<C['compute_']>}
    */
   const request = (artifacts, context) => {

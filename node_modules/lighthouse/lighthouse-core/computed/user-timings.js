@@ -14,7 +14,7 @@ const TraceOfTab = require('./trace-of-tab.js');
 class UserTimings {
   /**
    * @param {LH.Trace} trace
-   * @param {LH.Audit.Context} context
+   * @param {LH.Artifacts.ComputedContext} context
    * @return {Promise<Array<MarkEvent|MeasureEvent>>}
    */
   static async compute_(trace, context) {

@@ -98,24 +98,12 @@ class DOMSize extends Audit {
         value: stats.totalBodyElements,
       },
       {
-        node: {
-          type: /** @type {'node'} */ ('node'),
-          path: stats.depth.devtoolsNodePath,
-          snippet: stats.depth.snippet,
-          selector: stats.depth.selector,
-          nodeLabel: stats.depth.nodeLabel,
-        },
+        node: Audit.makeNodeItem(stats.depth),
         statistic: str_(UIStrings.statisticDOMDepth),
         value: stats.depth.max,
       },
       {
-        node: {
-          type: /** @type {'node'} */ ('node'),
-          path: stats.width.devtoolsNodePath,
-          snippet: stats.width.snippet,
-          selector: stats.width.selector,
-          nodeLabel: stats.width.nodeLabel,
-        },
+        node: Audit.makeNodeItem(stats.width),
         statistic: str_(UIStrings.statisticDOMWidth),
         value: stats.width.max,
       },

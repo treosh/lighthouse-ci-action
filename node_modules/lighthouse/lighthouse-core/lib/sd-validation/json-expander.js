@@ -14,27 +14,27 @@ const SCHEMA_ORG_HOST = 'schema.org';
  * Custom loader that prevents network calls and allows us to return local version of the
  * schema.org document
  * @param {string} schemaUrl
- * @param {(err: null|Error, value?: any) => void} callback
+ * @return {Promise<import('jsonld').RemoteDocument>}
  */
-function documentLoader(schemaUrl, callback) {
+async function documentLoader(schemaUrl) {
   let urlObj = null;
 
   try {
     // Give a dummy base URL so relative URLs will be considered valid.
     urlObj = new URL(schemaUrl, 'http://example.com');
   } catch (e) {
-    return callback(new Error('Error parsing URL: ' + schemaUrl), undefined);
+    throw new Error('Error parsing URL: ' + schemaUrl);
   }
 
   if (urlObj.host === SCHEMA_ORG_HOST && urlObj.pathname === '/') {
-    callback(null, {
+    return {
       document: schemaOrgContext,
-    });
+    };
   } else {
     // We only process schema.org, for other schemas we return an empty object
-    callback(null, {
+    return {
       document: {},
-    });
+    };
   }
 }
 

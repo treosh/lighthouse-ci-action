@@ -31,7 +31,7 @@ function fetch(url) {
 
   function getCallback(resolve, reject, response) {
     if (response.statusCode !== 200) {
-      reject(new Error(`Request error: + ${response.statusCode}`));
+      reject(new Error(`Request error: ${response.statusCode}`));
       return;
     }
     const body = new Stream();

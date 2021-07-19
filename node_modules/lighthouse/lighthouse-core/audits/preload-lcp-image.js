@@ -5,9 +5,9 @@
  */
 'use strict';
 
-const URL = require('../lib/url-shim.js');
 const Audit = require('./audit.js');
 const i18n = require('../lib/i18n/i18n.js');
+const NetworkRequest = require('../lib/network-request.js');
 const MainResource = require('../computed/main-resource.js');
 const LanternLCP = require('../computed/metrics/lantern-largest-contentful-paint.js');
 const LoadSimulator = require('../computed/load-simulator.js');
@@ -50,7 +50,7 @@ class PreloadLCPImageAudit extends Audit {
     // If it's already preloaded, no need to recommend it.
     if (request.isLinkPreload) return false;
     // It's not a request loaded over the network, don't recommend it.
-    if (URL.NON_NETWORK_PROTOCOLS.includes(request.protocol)) return false;
+    if (NetworkRequest.isNonNetworkRequest(request)) return false;
     // It's already discoverable from the main document, don't recommend it.
     if (initiatorPath.length <= mainResourceDepth) return false;
     // Finally, return whether or not it belongs to the main frame

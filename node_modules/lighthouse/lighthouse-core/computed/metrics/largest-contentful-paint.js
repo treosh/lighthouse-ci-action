@@ -21,7 +21,7 @@ const LanternLargestContentfulPaint = require('./lantern-largest-contentful-pain
 class LargestContentfulPaint extends ComputedMetric {
   /**
    * @param {LH.Artifacts.MetricComputationData} data
-   * @param {LH.Audit.Context} context
+   * @param {LH.Artifacts.ComputedContext} context
    * @return {Promise<LH.Artifacts.LanternMetric>}
    */
   static computeSimulatedMetric(data, context) {

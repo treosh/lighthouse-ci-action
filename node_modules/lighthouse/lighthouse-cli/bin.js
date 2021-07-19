@@ -23,16 +23,16 @@ const path = require('path');
 
 const commands = require('./commands/commands.js');
 const printer = require('./printer.js');
-const getFlags = require('./cli-flags.js').getFlags;
-const runLighthouse = require('./run.js').runLighthouse;
-const generateConfig = require('../lighthouse-core/index.js').generateConfig;
+const {getFlags} = require('./cli-flags.js');
+const {runLighthouse} = require('./run.js');
+const {generateConfig} = require('../lighthouse-core/index.js');
 
 const log = require('lighthouse-logger');
 const pkg = require('../package.json');
 const Sentry = require('../lighthouse-core/lib/sentry.js');
 
 const updateNotifier = require('update-notifier');
-const askPermission = require('./sentry-prompt.js').askPermission;
+const {askPermission} = require('./sentry-prompt.js');
 
 /**
  * @return {boolean}
@@ -112,11 +112,6 @@ async function begin() {
     process.stdout.write(config.getPrintString());
     return;
   }
-
-  if (!Array.isArray(cliFlags.chromeFlags)) {
-    cliFlags.chromeFlags = [cliFlags.chromeFlags];
-  }
-  cliFlags.chromeFlags.push('--enable-features=AutofillShowTypePredictions');
 
   // By default, cliFlags.enableErrorReporting is undefined so the user is
   // prompted. This can be overriden with an explicit flag or by the cached

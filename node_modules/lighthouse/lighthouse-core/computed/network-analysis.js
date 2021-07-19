@@ -50,7 +50,7 @@ class NetworkAnalysis {
 
   /**
    * @param {LH.DevtoolsLog} devtoolsLog
-   * @param {LH.Audit.Context} context
+   * @param {LH.Artifacts.ComputedContext} context
    * @return {Promise<LH.Artifacts.NetworkAnalysis>}
    */
   static async compute_(devtoolsLog, context) {

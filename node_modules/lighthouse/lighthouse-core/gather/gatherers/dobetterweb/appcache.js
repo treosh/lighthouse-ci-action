@@ -5,20 +5,29 @@
  */
 'use strict';
 
-const Gatherer = require('../gatherer.js');
+const FRGatherer = require('../../../fraggle-rock/gather/base-gatherer.js');
 
-class AppCacheManifest extends Gatherer {
+/* global document */
+
+class AppCacheManifest extends FRGatherer {
+  /** @type {LH.Gatherer.GathererMeta} */
+  meta = {
+    supportedModes: ['snapshot', 'navigation'],
+  }
+
   /**
-   * Returns the value of the html element's manifest attribute or null if it
-   * is not defined.
-   * @param {LH.Gatherer.PassContext} passContext
+   * @param {LH.Gatherer.FRTransitionalContext} passContext
    * @return {Promise<LH.Artifacts['AppCacheManifest']>}
    */
-  afterPass(passContext) {
+  getArtifact(passContext) {
     const driver = passContext.driver;
 
-    return driver.querySelector('html')
-      .then(node => node && node.getAttribute('manifest'));
+    return driver.executionContext.evaluate(() => {
+      return document.documentElement && document.documentElement.getAttribute('manifest');
+    }, {
+      args: [],
+      useIsolation: true,
+    });
   }
 }
 

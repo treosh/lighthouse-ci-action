@@ -4,8 +4,8 @@ jobs:
   lighthouse-plugin:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2 # checkout your own repo
-      - run: yarn add --no-lockfile lighthouse-plugin-field-performance # or just `npm install` to install dependencies from package.json
+      - uses: actions/checkout@v2
+      - run: yarn add --no-lockfile lighthouse-plugin-field-performance
       - name: Audit URLs with Field Performance Plugin
         uses: ./
         with:

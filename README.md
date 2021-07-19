@@ -566,15 +566,15 @@ A JSON string with assertion results:
 
 A JSON string with report results ([LHCI docs reference](https://github.com/GoogleChrome/lighthouse-ci/blob/master/docs/configuration.md#outputdir)):
 
-```js
+```json
 [
   {
-    url: 'https://treo.sh/',
-    isRepresentativeRun: true,
-    htmlPath: '/Users/lighthouse-ci-action/.lighthouseci/treo_sh-_-2020_07_05_20_37_18.report.html',
-    jsonPath: '/Users/lighthouse-ci-action/.lighthouseci/treo_sh-_-2020_07_05_20_37_18.report.json',
-    summary: { performance: 0.99, accessibility: 0.98, 'best-practices': 1, seo: 0.96, pwa: 0.71 },
-  },
+    "url": "https://treo.sh/",
+    "isRepresentativeRun": true,
+    "htmlPath": "/Users/lighthouse-ci-action/.lighthouseci/treo_sh-_-2020_07_05_20_37_18.report.html",
+    "jsonPath": "/Users/lighthouse-ci-action/.lighthouseci/treo_sh-_-2020_07_05_20_37_18.report.json",
+    "summary": { "performance": 0.99, "accessibility": 0.98, "best-practices": 1, "seo": 0.96, "pwa": 0.71 }
+  }
 ]
 ```
 

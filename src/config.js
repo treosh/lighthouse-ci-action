@@ -76,6 +76,7 @@ exports.getInput = function getInputArgs() {
     uploadArtifacts: core.getInput('uploadArtifacts') === 'true' ? true : false,
     basicAuthUsername: core.getInput('basicAuthUsername') || 'lighthouse',
     basicAuthPassword: core.getInput('basicAuthPassword'),
+    artifactName: core.getInput('artifactName'),
   }
 }
 

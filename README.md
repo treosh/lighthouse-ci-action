@@ -10,7 +10,7 @@ It is built in collaboration between Lighthouse Team, Treo (web performance moni
 
 **Features**:
 
-- ✅ Audit URLs using Lighthouse v6
+- ✅ Audit URLs using Lighthouse v8
 - 🎯 Test performance with Lighthouse CI assertions or performance budgets
 - 😻 See failed results in the action interface
 - 💾 Upload results to a private LHCI server, Temporary Public Storage, or as artifacts
@@ -491,6 +491,8 @@ Use `lighthouserc` to configure the collection of data (via Lighthouse config an
 ```yml
 configPath: ./lighthouserc.json
 ```
+
+If some configurations aren't set using action parameters, the settings are fetched from the config file provided here. 
 
 #### `serverBaseUrl`
 

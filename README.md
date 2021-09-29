@@ -25,6 +25,8 @@ Run Lighthouse on each push to the repo, test performance budget, save results a
 
 Create `.github/workflows/main.yml` with the list of URLs to audit using Lighthouse.
 
+### GitHub Action workflow on native VM
+
 ```yml
 name: Lighthouse CI
 on: push
@@ -42,6 +44,34 @@ jobs:
           budgetPath: ./budget.json # test performance budgets
           uploadArtifacts: true # save results as an action artifacts
           temporaryPublicStorage: true # upload lighthouse report to the temporary storage
+```
+
+### GitHub Action workflow on on-premise GitHub runner
+
+```yml
+name: Lighthouse CI
+on: push
+jobs:
+  lighthouse:
+    runs-on: [self-hosted, your-custom-label]
+    steps:
+      - uses: actions/checkout@v2
+      - name: install Node.js
+
+      - uses: browser-actions/setup-chrome@latest
+
+      - run: chrome --version
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{YOUR_REQUIRED_NODE_JS_VERSION}}
+
+      - name: Audit URLs using Lighthouse
+        uses: treosh/lighthouse-ci-action@v8
+        with:
+          urls: |
+            https://example.com/
+            https://example.com/blog
+        [...]
 ```
 
 Describe your performance budget using a [`budget.json`](https://web.dev/use-lighthouse-for-performance-budgets/).

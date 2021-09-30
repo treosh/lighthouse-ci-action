@@ -46,7 +46,9 @@ jobs:
           temporaryPublicStorage: true # upload lighthouse report to the temporary storage
 ```
 
-### GitHub Action workflow on on-premise GitHub runner
+### GitHub Action workflow on self-hosted GitHub runner (e.g. on-premise)
+
+https://docs.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners
 
 ```yml
 name: Lighthouse CI

@@ -25,8 +25,6 @@ Run Lighthouse on each push to the repo, test performance budget, save results a
 
 Create `.github/workflows/main.yml` with the list of URLs to audit using Lighthouse.
 
-### GitHub Action workflow on native VM
-
 ```yml
 name: Lighthouse CI
 on: push
@@ -44,36 +42,6 @@ jobs:
           budgetPath: ./budget.json # test performance budgets
           uploadArtifacts: true # save results as an action artifacts
           temporaryPublicStorage: true # upload lighthouse report to the temporary storage
-```
-
-### GitHub Action workflow on self-hosted GitHub runner (e.g. on-premise)
-
-https://docs.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners
-
-```yml
-name: Lighthouse CI
-on: push
-jobs:
-  lighthouse:
-    runs-on: [self-hosted, your-custom-label]
-    steps:
-      - uses: actions/checkout@v2
-      - name: install Node.js
-
-      - uses: browser-actions/setup-chrome@latest
-
-      - run: chrome --version
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{YOUR_REQUIRED_NODE_JS_VERSION}}
-
-      - name: Audit URLs using Lighthouse
-        uses: treosh/lighthouse-ci-action@v8
-        with:
-          urls: |
-            https://example.com/
-            https://example.com/blog
-        [...]
 ```
 
 Describe your performance budget using a [`budget.json`](https://web.dev/use-lighthouse-for-performance-budgets/).
@@ -455,6 +423,41 @@ jobs:
 
 [⚙️ See this workflow in use](https://github.com/treosh/lighthouse-ci-action/actions?workflow=LHCI-output-webhook)
 
+</details>
+
+<details>
+  <summary>GitHub Action workflow on self-hosted GitHub runner (e.g. on-premise)</summary>
+  
+#### main.yml  
+  
+```yml
+name: Lighthouse CI
+on: push
+jobs:
+  lighthouse:
+    runs-on: [self-hosted, your-custom-label]
+    steps:
+      - uses: actions/checkout@v2
+      - name: install Node.js
+
+      - uses: browser-actions/setup-chrome@latest
+
+      - run: chrome --version
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{YOUR_REQUIRED_NODE_JS_VERSION}}
+
+      - name: Audit URLs using Lighthouse
+        uses: treosh/lighthouse-ci-action@v8
+        with:
+          urls: |
+            https://example.com/
+            https://example.com/blog
+        [...]
+```
+
+[Learn more about hosted runners](https://docs.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners)  
+  
 </details>
 
 Explore more workflows in [public examples](./.github/workflows).

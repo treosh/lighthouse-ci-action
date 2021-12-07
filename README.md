@@ -454,10 +454,11 @@ jobs:
             https://example.com/
             https://example.com/blog
         [...]
-```
 
-[Learn more about hosted runners](https://docs.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners)  
-  
+````
+
+[Learn more about hosted runners](https://docs.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners)
+
 </details>
 
 Explore more workflows in [public examples](./.github/workflows).
@@ -475,7 +476,7 @@ urls: |
   https://example.com/
   https://example.com/blog
   https://example.com/pricing
-```
+````
 
 #### `uploadArtifacts` (default: false)
 
@@ -527,7 +528,7 @@ Use `lighthouserc` to configure the collection of data (via Lighthouse config an
 configPath: ./lighthouserc.json
 ```
 
-If some configurations aren't set using action parameters, the settings are fetched from the config file provided here. 
+If some configurations aren't set using action parameters, the settings are fetched from the config file provided here.
 
 #### `serverBaseUrl`
 

@@ -166,15 +166,11 @@ function elementCenterIsAtZAxisTop(el, elCenterPoint) {
 /**
  * Finds all position sticky/absolute elements on the page and adds a class
  * that disables pointer events on them.
+ * @param {string} className
  * @return {() => void} - undo function to re-enable pointer events
  */
 /* c8 ignore start */
-function disableFixedAndStickyElementPointerEvents() {
-  const className = 'lighthouse-disable-pointer-events';
-  const styleTag = document.createElement('style');
-  styleTag.textContent = `.${className} { pointer-events: none !important }`;
-  document.body.appendChild(styleTag);
-
+function disableFixedAndStickyElementPointerEvents(className) {
   document.querySelectorAll('*').forEach(el => {
     const position = getComputedStyle(el).position;
     if (position === 'fixed' || position === 'sticky') {
@@ -186,17 +182,17 @@ function disableFixedAndStickyElementPointerEvents() {
     Array.from(document.getElementsByClassName(className)).forEach(el => {
       el.classList.remove(className);
     });
-    styleTag.remove();
   };
 }
 /* c8 ignore stop */
 
 /**
  * @param {string} tapTargetsSelector
+ * @param {string} className
  * @return {LH.Artifacts.TapTarget[]}
  */
 /* c8 ignore start */
-function gatherTapTargets(tapTargetsSelector) {
+function gatherTapTargets(tapTargetsSelector, className) {
   /** @type {LH.Artifacts.TapTarget[]} */
   const targets = [];
 
@@ -209,7 +205,7 @@ function gatherTapTargets(tapTargetsSelector) {
 
   /** @type {{
     tapTargetElement: Element,
-    clientRects: ClientRect[]
+    clientRects: LH.Artifacts.Rect[]
   }[]} */
   const tapTargetsWithClientRects = [];
   tapTargetElements.forEach(tapTargetElement => {
@@ -237,11 +233,12 @@ function gatherTapTargets(tapTargetsSelector) {
   // Disable pointer events so that tap targets below them don't get
   // detected as non-tappable (they are tappable, just not while the viewport
   // is at the current scroll position)
-  const reenableFixedAndStickyElementPointerEvents = disableFixedAndStickyElementPointerEvents();
+  const reenableFixedAndStickyElementPointerEvents =
+    disableFixedAndStickyElementPointerEvents(className);
 
   /** @type {{
     tapTargetElement: Element,
-    visibleClientRects: ClientRect[]
+    visibleClientRects: LH.Artifacts.Rect[]
   }[]} */
   const tapTargetsWithVisibleClientRects = [];
   // We use separate loop here to get visible client rects because that involves
@@ -288,13 +285,61 @@ function gatherTapTargets(tapTargetsSelector) {
 /* c8 ignore stop */
 
 class TapTargets extends FRGatherer {
+  constructor() {
+    super();
+    /**
+     * This needs to be in the constructor.
+     * https://github.com/GoogleChrome/lighthouse/issues/12134
+     * @type {LH.Gatherer.GathererMeta}
+     */
+    this.meta = {
+      supportedModes: ['snapshot', 'navigation'],
+    };
+  }
+
+  /**
+   * @param {LH.Gatherer.FRProtocolSession} session
+   * @param {string} className
+   * @return {Promise<string>}
+   */
+  async addStyleRule(session, className) {
+    const frameTreeResponse = await session.sendCommand('Page.getFrameTree');
+    const {styleSheetId} = await session.sendCommand('CSS.createStyleSheet', {
+      frameId: frameTreeResponse.frameTree.frame.id,
+    });
+    const ruleText = `.${className} { pointer-events: none !important }`;
+    await session.sendCommand('CSS.setStyleSheetText', {
+      styleSheetId,
+      text: ruleText,
+    });
+    return styleSheetId;
+  }
+
+  /**
+   * @param {LH.Gatherer.FRProtocolSession} session
+   * @param {string} styleSheetId
+   */
+  async removeStyleRule(session, styleSheetId) {
+    await session.sendCommand('CSS.setStyleSheetText', {
+      styleSheetId,
+      text: '',
+    });
+  }
+
   /**
    * @param {LH.Gatherer.FRTransitionalContext} passContext
    * @return {Promise<LH.Artifacts.TapTarget[]>} All visible tap targets with their positions and sizes
    */
-  getArtifact(passContext) {
-    return passContext.driver.executionContext.evaluate(gatherTapTargets, {
-      args: [tapTargetsSelector],
+  async getArtifact(passContext) {
+    const session = passContext.driver.defaultSession;
+    await session.sendCommand('DOM.enable');
+    await session.sendCommand('CSS.enable');
+
+    const className = 'lighthouse-disable-pointer-events';
+    const styleSheetId = await this.addStyleRule(session, className);
+
+    const tapTargets = await passContext.driver.executionContext.evaluate(gatherTapTargets, {
+      args: [tapTargetsSelector, className],
       useIsolation: true,
       deps: [
         pageFunctions.getNodeDetailsString,
@@ -312,6 +357,13 @@ class TapTargets extends FRGatherer {
         pageFunctions.getNodeLabel,
       ],
     });
+
+    await this.removeStyleRule(session, styleSheetId);
+
+    await session.sendCommand('CSS.disable');
+    await session.sendCommand('DOM.disable');
+
+    return tapTargets;
   }
 }
 

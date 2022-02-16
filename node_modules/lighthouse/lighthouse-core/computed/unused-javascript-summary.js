@@ -127,9 +127,9 @@ class UnusedJavascriptSummary {
       let offset = lineOffsets[mapping.lineNumber];
 
       offset += mapping.columnNumber;
-      const lastColumnOfMapping =
-        // @ts-expect-error: We will upstream lastColumnNumber to CDT eventually.
-        (mapping.lastColumnNumber - 1) || lineLengths[mapping.lineNumber];
+      const lastColumnOfMapping = mapping.lastColumnNumber !== undefined ?
+        mapping.lastColumnNumber - 1 :
+        lineLengths[mapping.lineNumber];
       for (let i = mapping.columnNumber; i <= lastColumnOfMapping; i++) {
         if (wasteData.every(data => data.unusedByIndex[offset] === 1)) {
           const key = mapping.sourceURL || '(unmapped)';
@@ -169,4 +169,7 @@ class UnusedJavascriptSummary {
   }
 }
 
-module.exports = makeComputedArtifact(UnusedJavascriptSummary);
+module.exports = makeComputedArtifact(
+  UnusedJavascriptSummary,
+  ['bundle', 'scriptCoverages', 'url']
+);

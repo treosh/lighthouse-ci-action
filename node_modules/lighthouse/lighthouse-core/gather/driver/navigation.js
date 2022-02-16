@@ -5,8 +5,9 @@
  */
 'use strict';
 
+const log = require('lighthouse-logger');
 const NetworkMonitor = require('./network-monitor.js');
-const {waitForFullyLoaded, waitForFrameNavigated} = require('./wait-for-condition.js');
+const {waitForFullyLoaded, waitForFrameNavigated, waitForUserToContinue} = require('./wait-for-condition.js'); // eslint-disable-line max-len
 const constants = require('../../config/constants.js');
 const i18n = require('../../lib/i18n/i18n.js');
 const URL = require('../../lib/url-shim.js');
@@ -39,7 +40,7 @@ const DEFAULT_NETWORK_QUIET_THRESHOLD = 5000;
 // Controls how long to wait between longtasks before determining the CPU is idle, off by default
 const DEFAULT_CPU_QUIET_THRESHOLD = 0;
 
-/** @typedef {{waitUntil: Array<'fcp'|'load'|'navigated'>} & LH.Config.SharedPassNavigationJson & Partial<Pick<LH.Config.Settings, 'maxWaitForFcp'|'maxWaitForLoad'>>} NavigationOptions */
+/** @typedef {{waitUntil: Array<'fcp'|'load'|'navigated'>} & LH.Config.SharedPassNavigationJson & Partial<Pick<LH.Config.Settings, 'maxWaitForFcp'|'maxWaitForLoad'|'debugNavigation'>>} NavigationOptions */
 
 /** @param {NavigationOptions} options */
 function resolveWaitForFullyLoadedOptions(options) {
@@ -82,6 +83,9 @@ function resolveWaitForFullyLoadedOptions(options) {
  * @return {Promise<{finalUrl: string, warnings: Array<LH.IcuMessage>}>}
  */
 async function gotoURL(driver, url, options) {
+  const status = {msg: `Navigating to ${url}`, id: 'lh:driver:navigate'};
+  log.time(status);
+
   const session = driver.defaultSession;
   const networkMonitor = new NetworkMonitor(driver.defaultSession);
 
@@ -121,6 +125,11 @@ async function gotoURL(driver, url, options) {
   await waitforPageNavigateCmd;
   await networkMonitor.disable();
 
+  if (options.debugNavigation) {
+    await waitForUserToContinue(driver);
+  }
+
+  log.timeEnd(status);
   return {
     finalUrl,
     warnings: getNavigationWarnings({timedOut, finalUrl, requestedUrl: url}),
@@ -138,10 +147,7 @@ function getNavigationWarnings(navigation) {
 
   if (navigation.timedOut) warnings.push(str_(UIStrings.warningTimeout));
 
-  if (
-    !URL.equalWithExcludedFragments(requestedUrl, finalUrl) &&
-    !finalUrl.startsWith('chrome-error://')
-  ) {
+  if (!URL.equalWithExcludedFragments(requestedUrl, finalUrl)) {
     warnings.push(str_(UIStrings.warningRedirected, {
       requested: requestedUrl,
       final: finalUrl,

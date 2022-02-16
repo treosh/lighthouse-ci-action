@@ -10,10 +10,23 @@
 
 set -euo pipefail
 
-if [ "$OSTYPE" == "msys" ]; then
+unameOut="$(uname -s)"
+case "${unameOut}" in
+  Linux*)     machine=Linux;;
+  Darwin*)    machine=Mac;;
+  MINGW*)     machine=MinGw;;
+  *)          machine="UNKNOWN:${unameOut}"
+esac
+
+if [ "$machine" == "MinGw" ]; then
   url="https://download-chromium.appspot.com/dl/Win?type=snapshots"
-else
+elif [ "$machine" == "Linux" ]; then
   url="https://download-chromium.appspot.com/dl/Linux_x64?type=snapshots"
+elif [ "$machine" == "Mac" ]; then
+  url="https://download-chromium.appspot.com/dl/Mac?type=snapshots"
+else
+  echo "unsupported platform"
+  exit 1
 fi
 
 if [ -e "$CHROME_PATH" ]; then

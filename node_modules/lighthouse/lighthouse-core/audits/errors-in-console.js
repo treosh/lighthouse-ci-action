@@ -12,6 +12,7 @@
 
 const log = require('lighthouse-logger');
 const Audit = require('./audit.js');
+const JsBundles = require('../computed/js-bundles.js');
 const i18n = require('../lib/i18n/i18n.js');
 
 const UIStrings = {
@@ -39,7 +40,7 @@ class ErrorLogs extends Audit {
       title: str_(UIStrings.title),
       failureTitle: str_(UIStrings.failureTitle),
       description: str_(UIStrings.description),
-      requiredArtifacts: ['ConsoleMessages'],
+      requiredArtifacts: ['ConsoleMessages', 'SourceMaps', 'ScriptElements'],
     };
   }
 
@@ -75,22 +76,22 @@ class ErrorLogs extends Audit {
   /**
    * @param {LH.Artifacts} artifacts
    * @param {LH.Audit.Context} context
-   * @return {LH.Audit.Product}
+   * @return {Promise<LH.Audit.Product>}
    */
-  static audit(artifacts, context) {
+  static async audit(artifacts, context) {
     /** @type {AuditOptions} */
     const auditOptions = context.options;
+    const bundles = await JsBundles.request(artifacts, context);
 
     /** @type {Array<{source: string, description: string|undefined, sourceLocation: LH.Audit.Details.SourceLocationValue|undefined}>} */
     const consoleRows = artifacts.ConsoleMessages
       .filter(item => item.level === 'error')
       .map(item => {
+        const bundle = bundles.find(bundle => bundle.script.src === item.url);
         return {
           source: item.source,
           description: item.text,
-          // TODO: remove for v8 (url is covered in sourceLocation)
-          url: item.url,
-          sourceLocation: Audit.makeSourceLocationFromConsoleMessage(item),
+          sourceLocation: Audit.makeSourceLocationFromConsoleMessage(item, bundle),
         };
       });
 

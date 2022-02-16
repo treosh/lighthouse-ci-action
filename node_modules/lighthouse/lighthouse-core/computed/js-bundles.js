@@ -29,8 +29,7 @@ function computeGeneratedFileSizes(map, content) {
     const source = mapping.sourceURL;
     const lineNum = mapping.lineNumber;
     const colNum = mapping.columnNumber;
-    // @ts-expect-error: `lastColumnNumber` is not on types yet. This will eventually be added to CDT.
-    const lastColNum = /** @type {number=} */ (mapping.lastColumnNumber);
+    const lastColNum = mapping.lastColumnNumber;
 
     // Webpack sometimes emits null mappings.
     // https://github.com/mozilla/source-map/pull/303
@@ -99,11 +98,9 @@ class JSBundles {
 
       const compiledUrl = SourceMap.scriptUrl || 'compiled.js';
       const mapUrl = SourceMap.sourceMapUrl || 'compiled.js.map';
-      // Hack: CDT expects undefined properties to be explicit.
-      const rawMapForCdt = /** @type {any} */ (rawMap);
-      const map = new SDK.TextSourceMap(compiledUrl, mapUrl, rawMapForCdt);
+      const map = new SDK.TextSourceMap(compiledUrl, mapUrl, rawMap);
 
-      const content = scriptElement && scriptElement.content ? scriptElement.content : '';
+      const content = scriptElement?.content ? scriptElement.content : '';
       const sizes = computeGeneratedFileSizes(map, content);
 
       const bundle = {
@@ -119,4 +116,4 @@ class JSBundles {
   }
 }
 
-module.exports = makeComputedArtifact(JSBundles);
+module.exports = makeComputedArtifact(JSBundles, ['ScriptElements', 'SourceMaps']);

@@ -37,16 +37,19 @@ class NotificationOnStart extends ViolationAudit {
       title: str_(UIStrings.title),
       failureTitle: str_(UIStrings.failureTitle),
       description: str_(UIStrings.description),
-      requiredArtifacts: ['ConsoleMessages'],
+      supportedModes: ['navigation'],
+      requiredArtifacts: ['ConsoleMessages', 'SourceMaps', 'ScriptElements'],
     };
   }
 
   /**
    * @param {LH.Artifacts} artifacts
-   * @return {LH.Audit.Product}
+   * @param {LH.Audit.Context} context
+   * @return {Promise<LH.Audit.Product>}
    */
-  static audit(artifacts) {
-    const results = ViolationAudit.getViolationResults(artifacts, /notification permission/);
+  static async audit(artifacts, context) {
+    const results =
+      await ViolationAudit.getViolationResults(artifacts, context, /notification permission/);
 
     /** @type {LH.Audit.Details.Table['headings']} */
     const headings = [

@@ -106,7 +106,7 @@ class UnsizedImages extends Audit {
    * @return {boolean}
    */
   static isNonNetworkSvg(image) {
-    const isSvg = image.mimeType === 'image/svg+xml';
+    const isSvg = URL.guessMimeType(image.src) === 'image/svg+xml';
     const urlScheme = image.src.slice(0, image.src.indexOf(':'));
     const isNonNetwork = URL.isNonNetworkProtocol(urlScheme);
     return isSvg && isNonNetwork;
@@ -147,9 +147,8 @@ class UnsizedImages extends Audit {
 
     /** @type {LH.Audit.Details.Table['headings']} */
     const headings = [
-      {key: 'url', itemType: 'thumbnail', text: ''},
+      {key: 'node', itemType: 'node', text: ''},
       {key: 'url', itemType: 'url', text: str_(i18n.UIStrings.columnURL)},
-      {key: 'node', itemType: 'node', text: str_(i18n.UIStrings.columnFailingElem)},
     ];
 
     return {

@@ -18,7 +18,7 @@ const FRGatherer = require('../../fraggle-rock/gather/base-gatherer.js');
 class TraceCompat extends FRGatherer {
   /** @type {LH.Gatherer.GathererMeta<'Trace'>} */
   meta = {
-    supportedModes: ['navigation'],
+    supportedModes: ['timespan', 'navigation'],
     dependencies: {Trace: TraceGatherer.symbol},
   };
 

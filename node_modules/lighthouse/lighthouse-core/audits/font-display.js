@@ -48,6 +48,7 @@ class FontDisplay extends Audit {
       title: str_(UIStrings.title),
       failureTitle: str_(UIStrings.failureTitle),
       description: str_(UIStrings.description),
+      supportedModes: ['navigation'],
       requiredArtifacts: ['devtoolsLogs', 'CSSUsage', 'URL'],
     };
   }
@@ -78,7 +79,7 @@ class FontDisplay extends Audit {
         // Find the font-display value by matching a single token, optionally surrounded by whitespace,
         // followed either by a semicolon or the end of a block.
         const fontDisplayMatch = declaration.match(/font-display\s*:\s*(\w+)\s*(;|\})/);
-        const rawFontDisplay = (fontDisplayMatch && fontDisplayMatch[1]) || '';
+        const rawFontDisplay = fontDisplayMatch?.[1] || '';
         const hasPassingFontDisplay = passingFontDisplayRegex.test(rawFontDisplay);
         const targetURLSet = hasPassingFontDisplay ? passingURLs : failingURLs;
 

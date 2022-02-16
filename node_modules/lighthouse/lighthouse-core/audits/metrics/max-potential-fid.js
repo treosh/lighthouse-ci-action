@@ -32,7 +32,8 @@ class MaxPotentialFID extends Audit {
       title: str_(i18n.UIStrings.maxPotentialFIDMetric),
       description: str_(UIStrings.description),
       scoreDisplayMode: Audit.SCORING_MODES.NUMERIC,
-      requiredArtifacts: ['traces', 'devtoolsLogs'],
+      supportedModes: ['navigation'],
+      requiredArtifacts: ['traces', 'devtoolsLogs', 'GatherContext'],
     };
   }
 
@@ -55,7 +56,8 @@ class MaxPotentialFID extends Audit {
   static async audit(artifacts, context) {
     const trace = artifacts.traces[Audit.DEFAULT_PASS];
     const devtoolsLog = artifacts.devtoolsLogs[Audit.DEFAULT_PASS];
-    const metricComputationData = {trace, devtoolsLog, settings: context.settings};
+    const gatherContext = artifacts.GatherContext;
+    const metricComputationData = {trace, devtoolsLog, gatherContext, settings: context.settings};
     const metricResult = await ComputedFid.request(metricComputationData, context);
 
     return {

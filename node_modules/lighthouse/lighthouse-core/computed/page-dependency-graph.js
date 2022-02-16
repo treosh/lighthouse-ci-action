@@ -11,7 +11,7 @@ const CPUNode = require('../lib/dependency-graph/cpu-node.js');
 const NetworkAnalyzer = require('../lib/dependency-graph/simulator/network-analyzer.js');
 const TracingProcessor = require('../lib/tracehouse/trace-processor.js');
 const NetworkRequest = require('../lib/network-request.js');
-const TraceOfTab = require('./trace-of-tab.js');
+const ProcessedTrace = require('./processed-trace.js');
 const NetworkRecords = require('./network-records.js');
 
 /** @typedef {import('../lib/dependency-graph/base-node.js').Node} Node */
@@ -102,18 +102,18 @@ class PageDependencyGraph {
   }
 
   /**
-   * @param {LH.Artifacts.TraceOfTab} traceOfTab
+   * @param {LH.Artifacts.ProcessedTrace} processedTrace
    * @return {Array<CPUNode>}
    */
-  static getCPUNodes(traceOfTab) {
+  static getCPUNodes({mainThreadEvents}) {
     /** @type {Array<CPUNode>} */
     const nodes = [];
     let i = 0;
 
-    TracingProcessor.assertHasToplevelEvents(traceOfTab.mainThreadEvents);
+    TracingProcessor.assertHasToplevelEvents(mainThreadEvents);
 
-    while (i < traceOfTab.mainThreadEvents.length) {
-      const evt = traceOfTab.mainThreadEvents[i];
+    while (i < mainThreadEvents.length) {
+      const evt = mainThreadEvents[i];
       i++;
 
       // Skip all trace events that aren't schedulable tasks with sizable duration
@@ -126,10 +126,10 @@ class PageDependencyGraph {
       const children = [];
       for (
         const endTime = evt.ts + evt.dur;
-        i < traceOfTab.mainThreadEvents.length && traceOfTab.mainThreadEvents[i].ts < endTime;
+        i < mainThreadEvents.length && mainThreadEvents[i].ts < endTime;
         i++
       ) {
-        children.push(traceOfTab.mainThreadEvents[i]);
+        children.push(mainThreadEvents[i]);
       }
 
       nodes.push(new CPUNode(evt, children));
@@ -147,6 +147,9 @@ class PageDependencyGraph {
       const directInitiatorRequest = node.record.initiatorRequest || rootNode.record;
       const directInitiatorNode =
         networkNodeOutput.idToNodeMap.get(directInitiatorRequest.requestId) || rootNode;
+      const canDependOnInitiator =
+        !directInitiatorNode.isDependentOn(node) &&
+        node.canDependOn(directInitiatorNode);
       const initiators = PageDependencyGraph.getNetworkInitiators(node.record);
       if (initiators.length) {
         initiators.forEach(initiator => {
@@ -156,16 +159,18 @@ class PageDependencyGraph {
               parentCandidates[0].startTime <= node.startTime &&
               !parentCandidates[0].isDependentOn(node)) {
             node.addDependency(parentCandidates[0]);
-          } else if (!directInitiatorNode.isDependentOn(node)) {
+          } else if (canDependOnInitiator) {
             directInitiatorNode.addDependent(node);
           }
         });
-      } else if (!directInitiatorNode.isDependentOn(node)) {
+      } else if (canDependOnInitiator) {
         directInitiatorNode.addDependent(node);
       }
 
       // Make sure the nodes are attached to the graph if the initiator information was invalid.
-      if (node !== rootNode && node.getDependencies().length === 0) node.addDependency(rootNode);
+      if (node !== rootNode && node.getDependencies().length === 0 && node.canDependOn(rootNode)) {
+        node.addDependency(rootNode);
+      }
 
       if (!node.record.redirects) return;
 
@@ -200,7 +205,7 @@ class PageDependencyGraph {
           networkNode.startTime <= cpuNode.startTime) return;
       const {record} = networkNode;
       const resourceType = record.resourceType ||
-        record.redirectDestination && record.redirectDestination.resourceType;
+        record.redirectDestination?.resourceType;
       if (!linkableResourceTypes.has(resourceType)) {
         // We only link some resources to CPU nodes because we observe LCP simulation
         // regressions when including images, etc.
@@ -321,7 +326,8 @@ class PageDependencyGraph {
         }
       }
 
-      if (node.getNumberOfDependencies() === 0) {
+      // Nodes starting before the root node cannot depend on it.
+      if (node.getNumberOfDependencies() === 0 && node.canDependOn(rootNode)) {
         node.addDependency(rootNode);
       }
     }
@@ -380,31 +386,35 @@ class PageDependencyGraph {
   }
 
   /**
-   * @param {LH.Artifacts.TraceOfTab} traceOfTab
+   * @param {LH.Artifacts.ProcessedTrace} processedTrace
    * @param {Array<LH.Artifacts.NetworkRequest>} networkRecords
    * @return {Node}
    */
-  static createGraph(traceOfTab, networkRecords) {
+  static createGraph(processedTrace, networkRecords) {
     const networkNodeOutput = PageDependencyGraph.getNetworkNodeOutput(networkRecords);
-    const cpuNodes = PageDependencyGraph.getCPUNodes(traceOfTab);
+    const cpuNodes = PageDependencyGraph.getCPUNodes(processedTrace);
 
-    // The root request is the earliest network request, using position in networkRecords array to break ties.
-    const rootRequest = networkRecords.reduce((min, r) => (r.startTime < min.startTime ? r : min));
-    const rootNode = networkNodeOutput.idToNodeMap.get(rootRequest.requestId);
     // The main document request is the earliest network request *of type document*.
     // This will be different from the root request when there are server redirects.
     const mainDocumentRequest = NetworkAnalyzer.findMainDocument(networkRecords);
     const mainDocumentNode = networkNodeOutput.idToNodeMap.get(mainDocumentRequest.requestId);
-
-    if (!rootNode || !mainDocumentNode) {
-      // Should always be found.
-      throw new Error(`${rootNode ? 'mainDocument' : 'root'}Node not found.`);
+    if (!mainDocumentNode) {
+      // mainDocumentNode should always be found.
+      throw new Error('mainDocumentNode not found.');
     }
 
-    if (mainDocumentNode !== rootNode &&
-        (!mainDocumentNode.record.redirects ||
-        !mainDocumentNode.record.redirects.includes(rootNode.record))) {
-      throw new Error('Root node was not in redirect chain of mainDocument');
+    // The root request is the earliest request in the main document redirect chain.
+    // Will be undefined if there were no redirects.
+    const rootRequest = mainDocumentNode.record.redirects?.[0];
+
+    let rootNode;
+    if (rootRequest) {
+      // rootNode should always be found.
+      rootNode = rootRequest && networkNodeOutput.idToNodeMap.get(rootRequest.requestId);
+      if (!rootNode) throw new Error('rootNode not found');
+    } else {
+      // Use main document as root if there were no redirects.
+      rootNode = mainDocumentNode;
     }
 
     PageDependencyGraph.linkNetworkNodes(rootNode, networkNodeOutput);
@@ -458,16 +468,16 @@ class PageDependencyGraph {
   static async compute_(data, context) {
     const trace = data.trace;
     const devtoolsLog = data.devtoolsLog;
-    const [traceOfTab, networkRecords] = await Promise.all([
-      TraceOfTab.request(trace, context),
+    const [processedTrace, networkRecords] = await Promise.all([
+      ProcessedTrace.request(trace, context),
       NetworkRecords.request(devtoolsLog, context),
     ]);
 
-    return PageDependencyGraph.createGraph(traceOfTab, networkRecords);
+    return PageDependencyGraph.createGraph(processedTrace, networkRecords);
   }
 }
 
-module.exports = makeComputedArtifact(PageDependencyGraph);
+module.exports = makeComputedArtifact(PageDependencyGraph, ['devtoolsLog', 'trace']);
 
 /**
  * @typedef {Object} NetworkNodeOutput

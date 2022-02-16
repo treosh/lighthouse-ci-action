@@ -33,7 +33,8 @@ class PredictivePerf extends Audit {
         'Predicted performance evaluates how your site will perform under ' +
         'a cellular connection on a mobile device.',
       scoreDisplayMode: Audit.SCORING_MODES.NUMERIC,
-      requiredArtifacts: ['traces', 'devtoolsLogs'],
+      supportedModes: ['navigation'],
+      requiredArtifacts: ['traces', 'devtoolsLogs', 'GatherContext'],
     };
   }
 
@@ -43,16 +44,18 @@ class PredictivePerf extends Audit {
    * @return {Promise<LH.Audit.Product>}
    */
   static async audit(artifacts, context) {
+    const gatherContext = artifacts.GatherContext;
     const trace = artifacts.traces[Audit.DEFAULT_PASS];
     const devtoolsLog = artifacts.devtoolsLogs[Audit.DEFAULT_PASS];
     /** @type {LH.Config.Settings} */
     // @ts-expect-error - TODO(bckenny): allow optional `throttling` settings
     const settings = {}; // Use default settings.
-    const fcp = await LanternFcp.request({trace, devtoolsLog, settings}, context);
-    const fmp = await LanternFmp.request({trace, devtoolsLog, settings}, context);
-    const tti = await LanternInteractive.request({trace, devtoolsLog, settings}, context);
-    const si = await LanternSpeedIndex.request({trace, devtoolsLog, settings}, context);
-    const lcp = await LanternLcp.request({trace, devtoolsLog, settings}, context);
+    const computationData = {trace, devtoolsLog, gatherContext, settings};
+    const fcp = await LanternFcp.request(computationData, context);
+    const fmp = await LanternFmp.request(computationData, context);
+    const tti = await LanternInteractive.request(computationData, context);
+    const si = await LanternSpeedIndex.request(computationData, context);
+    const lcp = await LanternLcp.request(computationData, context);
 
     const values = {
       roughEstimateOfFCP: fcp.timing,

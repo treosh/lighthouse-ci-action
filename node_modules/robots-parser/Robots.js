@@ -1,5 +1,3 @@
-var URL = require('url').URL;
-
 /**
  * Trims the white space from the start and end of the line.
  *

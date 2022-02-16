@@ -26,4 +26,4 @@ class Screenshots {
   }
 }
 
-module.exports = makeComputedArtifact(Screenshots);
+module.exports = makeComputedArtifact(Screenshots, null);

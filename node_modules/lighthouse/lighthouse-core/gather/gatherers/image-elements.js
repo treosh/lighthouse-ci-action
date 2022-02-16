@@ -12,9 +12,7 @@
 const log = require('lighthouse-logger');
 const FRGatherer = require('../../fraggle-rock/gather/base-gatherer.js');
 const pageFunctions = require('../../lib/page-functions.js');
-const DevtoolsLog = require('./devtools-log.js');
 const FontSize = require('./seo/font-size.js');
-const NetworkRecords = require('../../computed/network-records.js');
 
 /* global window, getElementsInDocument, Image, getNodeDetails, ShadowRoot */
 
@@ -191,7 +189,7 @@ function findSizeDeclaration(rule, property) {
  *
  * @param {Array<LH.Crdp.CSS.RuleMatch>|undefined} matchedCSSRules
  * @param {string} property
- * @returns {string | undefined}
+ * @return {string | undefined}
  */
 function findMostSpecificCSSRule(matchedCSSRules, property) {
   /** @param {LH.Crdp.CSS.CSSStyle} declaration */
@@ -205,7 +203,7 @@ function findMostSpecificCSSRule(matchedCSSRules, property) {
 /**
  * @param {LH.Crdp.CSS.GetMatchedStylesForNodeResponse} matched CSS rules}
  * @param {string} property
- * @returns {string | null}
+ * @return {string | null}
  */
 function getEffectiveSizingRule({attributesStyle, inlineStyle, matchedCSSRules}, property) {
   // CSS sizing can't be inherited.
@@ -224,11 +222,21 @@ function getEffectiveSizingRule({attributesStyle, inlineStyle, matchedCSSRules},
   return null;
 }
 
+/**
+ * @param {LH.Artifacts.ImageElement} element
+ * @return {number}
+ */
+function getPixelArea(element) {
+  if (element.naturalDimensions) {
+    return element.naturalDimensions.height * element.naturalDimensions.width;
+  }
+  return element.displayedHeight * element.displayedWidth;
+}
+
 class ImageElements extends FRGatherer {
-  /** @type {LH.Gatherer.GathererMeta<'DevtoolsLog'>} */
+  /** @type {LH.Gatherer.GathererMeta} */
   meta = {
-    supportedModes: ['navigation'],
-    dependencies: {DevtoolsLog: DevtoolsLog.symbol},
+    supportedModes: ['snapshot', 'timespan', 'navigation'],
   };
 
   constructor() {
@@ -290,40 +298,17 @@ class ImageElements extends FRGatherer {
   }
 
   /**
-   * @param {LH.Artifacts.NetworkRequest[]} networkRecords
-   */
-  indexNetworkRecords(networkRecords) {
-    return networkRecords.reduce((map, record) => {
-      // An image response in newer formats is sometimes incorrectly marked as "application/octet-stream",
-      // so respect the extension too.
-      const isImage = /^image/.test(record.mimeType) || /\.(avif|webp)$/i.test(record.url);
-      // The network record is only valid for size information if it finished with a successful status
-      // code that indicates a complete image response.
-      if (isImage && record.finished && record.statusCode === 200) {
-        map[record.url] = record;
-      }
-
-      return map;
-    }, /** @type {Record<string, LH.Artifacts.NetworkRequest>} */ ({}));
-  }
-
-  /**
    *
    * @param {LH.Gatherer.FRTransitionalDriver} driver
    * @param {LH.Artifacts.ImageElement[]} elements
-   * @param {Record<string, LH.Artifacts.NetworkRequest>} indexedNetworkRecords
    */
-  async collectExtraDetails(driver, elements, indexedNetworkRecords) {
+  async collectExtraDetails(driver, elements) {
     // Don't do more than 5s of this expensive devtools protocol work. See #11289
     let reachedGatheringBudget = false;
     setTimeout(_ => (reachedGatheringBudget = true), 5000);
     let skippedCount = 0;
 
     for (const element of elements) {
-      // Pull some of our information directly off the network record.
-      const networkRecord = indexedNetworkRecords[element.src];
-      element.mimeType = networkRecord && networkRecord.mimeType;
-
       if (reachedGatheringBudget) {
         skippedCount++;
         continue;
@@ -335,8 +320,7 @@ class ImageElements extends FRGatherer {
       }
       // Images within `picture` behave strangely and natural size information isn't accurate,
       // CSS images have no natural size information at all. Try to get the actual size if we can.
-      // Additional fetch is expensive; don't bother if we don't have a networkRecord for the image.
-      if ((element.isPicture || element.isCss || element.srcset) && networkRecord) {
+      if (element.isPicture || element.isCss || element.srcset) {
         await this.fetchElementWithSizeInformation(driver, element);
       }
     }
@@ -348,13 +332,11 @@ class ImageElements extends FRGatherer {
 
   /**
    * @param {LH.Gatherer.FRTransitionalContext} context
-   * @param {LH.Artifacts.NetworkRequest[]} networkRecords
    * @return {Promise<LH.Artifacts['ImageElements']>}
    */
-  async _getArtifact(context, networkRecords) {
+  async getArtifact(context) {
     const session = context.driver.defaultSession;
     const executionContext = context.driver.executionContext;
-    const indexedNetworkRecords = this.indexNetworkRecords(networkRecords);
 
     const elements = await executionContext.evaluate(collectImageElementInfo, {
       args: [],
@@ -375,14 +357,11 @@ class ImageElements extends FRGatherer {
       session.sendCommand('DOM.getDocument', {depth: -1, pierce: true}),
     ]);
 
-    // Sort (in-place) as largest images descending.
-    elements.sort((a, b) => {
-      const aRecord = indexedNetworkRecords[a.src] || {};
-      const bRecord = indexedNetworkRecords[b.src] || {};
-      return bRecord.resourceSize - aRecord.resourceSize;
-    });
+    // Spend our extra details budget on highest impact images.
+    // Our best approximation of impact without network records is to use pixel area.
+    elements.sort((a, b) => getPixelArea(b) - getPixelArea(a));
 
-    await this.collectExtraDetails(context.driver, elements, indexedNetworkRecords);
+    await this.collectExtraDetails(context.driver, elements);
 
     await Promise.all([
       session.sendCommand('DOM.disable'),
@@ -390,25 +369,6 @@ class ImageElements extends FRGatherer {
     ]);
 
     return elements;
-  }
-
-  /**
-   * @param {LH.Gatherer.FRTransitionalContext<'DevtoolsLog'>} context
-   * @return {Promise<LH.Artifacts['ImageElements']>}
-   */
-  async getArtifact(context) {
-    const devtoolsLog = context.dependencies.DevtoolsLog;
-    const networkRecords = await NetworkRecords.request(devtoolsLog, context);
-    return this._getArtifact(context, networkRecords);
-  }
-
-  /**
-   * @param {LH.Gatherer.PassContext} passContext
-   * @param {LH.Gatherer.LoadData} loadData
-   * @return {Promise<LH.Artifacts['ImageElements']>}
-   */
-  async afterPass(passContext, loadData) {
-    return this._getArtifact({...passContext, dependencies: {}}, loadData.networkRecords);
   }
 }
 

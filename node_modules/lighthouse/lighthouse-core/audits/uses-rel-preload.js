@@ -42,6 +42,7 @@ class UsesRelPreloadAudit extends Audit {
       id: 'uses-rel-preload',
       title: str_(UIStrings.title),
       description: str_(UIStrings.description),
+      supportedModes: ['navigation'],
       requiredArtifacts: ['devtoolsLogs', 'traces', 'URL'],
       scoreDisplayMode: Audit.SCORING_MODES.NUMERIC,
     };
@@ -208,11 +209,11 @@ class UsesRelPreloadAudit extends Audit {
    * @param {LH.Audit.Context} context
    * @return {Promise<LH.Audit.Product>}
    */
-  static async audit(artifacts, context) {
+  static async audit_(artifacts, context) {
     const trace = artifacts.traces[UsesRelPreloadAudit.DEFAULT_PASS];
     const devtoolsLog = artifacts.devtoolsLogs[UsesRelPreloadAudit.DEFAULT_PASS];
     const URL = artifacts.URL;
-    const simulatorOptions = {trace, devtoolsLog, settings: context.settings};
+    const simulatorOptions = {devtoolsLog, settings: context.settings};
 
     const [mainResource, graph, simulator] = await Promise.all([
       MainResource.request({devtoolsLog, URL}, context),
@@ -250,6 +251,15 @@ class UsesRelPreloadAudit extends Audit {
       details,
       warnings,
     };
+  }
+
+  /**
+   * @return {Promise<LH.Audit.Product>}
+   */
+  static async audit() {
+    // Preload advice is on hold until https://github.com/GoogleChrome/lighthouse/issues/11960
+    // is resolved.
+    return {score: 1, notApplicable: true, details: Audit.makeOpportunityDetails([], [], 0)};
   }
 }
 

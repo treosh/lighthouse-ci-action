@@ -35,7 +35,7 @@ class MultiCheckAudit extends Audit {
       allChecks: undefined,
     };
 
-    if (result.manifestValues && result.manifestValues.allChecks) {
+    if (result.manifestValues?.allChecks) {
       result.manifestValues.allChecks.forEach(check => {
         detailsItem[check.id] = check.passing;
       });

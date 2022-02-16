@@ -10,7 +10,6 @@ const BootupTime = require('./bootup-time.js');
 const i18n = require('../lib/i18n/i18n.js');
 const thirdPartyWeb = require('../lib/third-party-web.js');
 const NetworkRecords = require('../computed/network-records.js');
-const MainResource = require('../computed/main-resource.js');
 const MainThreadTasks = require('../computed/main-thread-tasks.js');
 
 const UIStrings = {
@@ -198,8 +197,7 @@ class ThirdPartySummary extends Audit {
     const trace = artifacts.traces[Audit.DEFAULT_PASS];
     const devtoolsLog = artifacts.devtoolsLogs[Audit.DEFAULT_PASS];
     const networkRecords = await NetworkRecords.request(devtoolsLog, context);
-    const mainResource = await MainResource.request({devtoolsLog, URL: artifacts.URL}, context);
-    const mainEntity = thirdPartyWeb.getEntity(mainResource.url);
+    const mainEntity = thirdPartyWeb.getEntity(artifacts.URL.finalUrl);
     const tasks = await MainThreadTasks.request(trace, context);
     const multiplier = settings.throttlingMethod === 'simulate' ?
       settings.throttling.cpuSlowdownMultiplier : 1;
@@ -218,12 +216,12 @@ class ThirdPartySummary extends Audit {
         return {
           ...stats,
           entity: {
-            type: /** @type {'link'} */ ('link'),
+            type: /** @type {const} */ ('link'),
             text: entity.name,
             url: entity.homepage || '',
           },
           subItems: {
-            type: /** @type {'subitems'} */ ('subitems'),
+            type: /** @type {const} */ ('subitems'),
             items: ThirdPartySummary.makeSubItems(entity, summaries, stats),
           },
         };

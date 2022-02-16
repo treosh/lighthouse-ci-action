@@ -88,31 +88,68 @@ async function resetStorageForNavigation(session, navigation) {
 }
 
 /**
- * Prepares a target for a particular navigation by resetting storage and setting throttling.
+ * Prepares a target for observational analysis by setting throttling and network headers/blocked patterns.
  *
- * This method assumes `prepareTargetForNavigationMode` has already been invoked.
+ * This method assumes `prepareTargetForNavigationMode` or `prepareTargetForTimespanMode` has already been invoked.
  *
  * @param {LH.Gatherer.FRProtocolSession} session
  * @param {LH.Config.Settings} settings
- * @param {Pick<LH.Config.NavigationDefn, 'disableThrottling'|'disableStorageReset'|'blockedUrlPatterns'> & {url: string}} navigation
+ * @param {{disableThrottling: boolean, blockedUrlPatterns?: string[]}} options
  */
-async function prepareNetworkForNavigation(session, settings, navigation) {
-  const status = {msg: 'Preparing network conditions', id: `lh:gather:prepareNetworkForNavigation`};
+async function prepareThrottlingAndNetwork(session, settings, options) {
+  const status = {msg: 'Preparing network conditions', id: `lh:gather:prepareThrottlingAndNetwork`};
   log.time(status);
 
-  if (navigation.disableThrottling) await emulation.clearThrottling(session);
+  if (options.disableThrottling) await emulation.clearThrottling(session);
   else await emulation.throttle(session, settings);
 
   // Set request blocking before any network activity.
-  // No "clearing" is done at the end of the navigation since Network.setBlockedURLs([]) will unset all if
-  // neccessary at the beginning of the next navigation.
-  const blockedUrls = (navigation.blockedUrlPatterns || []).concat(
+  // No "clearing" is done at the end of the recording since Network.setBlockedURLs([]) will unset all if
+  // neccessary at the beginning of the next section.
+  const blockedUrls = (options.blockedUrlPatterns || []).concat(
     settings.blockedUrlPatterns || []
   );
   await session.sendCommand('Network.setBlockedURLs', {urls: blockedUrls});
 
   const headers = settings.extraHeaders;
   if (headers) await session.sendCommand('Network.setExtraHTTPHeaders', {headers});
+
+  log.timeEnd(status);
+}
+
+/**
+ * Prepares a target to be analyzed by setting up device emulation (screen/UA, not throttling) and
+ * async stack traces for network initiators.
+ *
+ * @param {LH.Gatherer.FRTransitionalDriver} driver
+ * @param {LH.Config.Settings} settings
+ */
+async function prepareDeviceEmulationAndAsyncStacks(driver, settings) {
+  // Enable network domain here so future calls to `emulate()` don't clear cache (https://github.com/GoogleChrome/lighthouse/issues/12631)
+  await driver.defaultSession.sendCommand('Network.enable');
+
+  // Emulate our target device screen and user agent.
+  await emulation.emulate(driver.defaultSession, settings);
+
+  // Enable better stacks on network requests.
+  await enableAsyncStacks(driver.defaultSession);
+}
+
+/**
+ * Prepares a target to be analyzed in timespan mode by enabling protocol domains, emulation, and throttling.
+ *
+ * @param {LH.Gatherer.FRTransitionalDriver} driver
+ * @param {LH.Config.Settings} settings
+ */
+async function prepareTargetForTimespanMode(driver, settings) {
+  const status = {msg: 'Preparing target for timespan mode', id: 'lh:prepare:timespanMode'};
+  log.time(status);
+
+  await prepareDeviceEmulationAndAsyncStacks(driver, settings);
+  await prepareThrottlingAndNetwork(driver.defaultSession, settings, {
+    disableThrottling: false,
+    blockedUrlPatterns: undefined,
+  });
 
   log.timeEnd(status);
 }
@@ -127,11 +164,10 @@ async function prepareNetworkForNavigation(session, settings, navigation) {
  * @param {LH.Config.Settings} settings
  */
 async function prepareTargetForNavigationMode(driver, settings) {
-  // Emulate our target device screen and user agent.
-  await emulation.emulate(driver.defaultSession, settings);
+  const status = {msg: 'Preparing target for navigation mode', id: 'lh:prepare:navigationMode'};
+  log.time(status);
 
-  // Enable better stacks on network requests.
-  await enableAsyncStacks(driver.defaultSession);
+  await prepareDeviceEmulationAndAsyncStacks(driver, settings);
 
   // Automatically handle any JavaScript dialogs to prevent a hung renderer.
   await dismissJavaScriptDialogs(driver.defaultSession);
@@ -143,6 +179,8 @@ async function prepareTargetForNavigationMode(driver, settings) {
   if (settings.throttlingMethod === 'simulate') {
     await shimRequestIdleCallbackOnNewDocument(driver, settings);
   }
+
+  log.timeEnd(status);
 }
 
 /**
@@ -156,6 +194,9 @@ async function prepareTargetForNavigationMode(driver, settings) {
  * @return {Promise<{warnings: Array<LH.IcuMessage>}>}
  */
 async function prepareTargetForIndividualNavigation(session, settings, navigation) {
+  const status = {msg: 'Preparing target for navigation', id: 'lh:prepare:navigation'};
+  log.time(status);
+
   /** @type {Array<LH.IcuMessage>} */
   const warnings = [];
 
@@ -165,13 +206,15 @@ async function prepareTargetForIndividualNavigation(session, settings, navigatio
     warnings.push(...storageWarnings);
   }
 
-  await prepareNetworkForNavigation(session, settings, navigation);
+  await prepareThrottlingAndNetwork(session, settings, navigation);
 
+  log.timeEnd(status);
   return {warnings};
 }
 
 module.exports = {
-  prepareNetworkForNavigation,
+  prepareThrottlingAndNetwork,
+  prepareTargetForTimespanMode,
   prepareTargetForNavigationMode,
   prepareTargetForIndividualNavigation,
 };

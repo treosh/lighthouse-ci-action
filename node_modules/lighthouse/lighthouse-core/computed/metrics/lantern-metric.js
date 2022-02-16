@@ -7,7 +7,8 @@
 
 const BaseNode = require('../../lib/dependency-graph/base-node.js');
 const NetworkRequest = require('../../lib/network-request.js');
-const TraceOfTab = require('../trace-of-tab.js');
+const ProcessedTrace = require('../processed-trace.js');
+const ProcessedNavigation = require('../processed-navigation.js');
 const PageDependencyGraph = require('../page-dependency-graph.js');
 const LoadSimulator = require('../load-simulator.js');
 
@@ -66,19 +67,19 @@ class LanternMetricArtifact {
 
   /**
    * @param {Node} dependencyGraph
-   * @param {LH.Artifacts.TraceOfTab} traceOfTab
+   * @param {LH.Artifacts.ProcessedNavigation} processedNavigation
    * @return {Node}
    */
-  static getOptimisticGraph(dependencyGraph, traceOfTab) { // eslint-disable-line no-unused-vars
+  static getOptimisticGraph(dependencyGraph, processedNavigation) { // eslint-disable-line no-unused-vars
     throw new Error('Optimistic graph unimplemented!');
   }
 
   /**
    * @param {Node} dependencyGraph
-   * @param {LH.Artifacts.TraceOfTab} traceOfTab
+   * @param {LH.Artifacts.ProcessedNavigation} processedNavigation
    * @return {Node}
    */
-  static getPessimisticGraph(dependencyGraph, traceOfTab) { // eslint-disable-line no-unused-vars
+  static getPessimisticGraph(dependencyGraph, processedNavigation) { // eslint-disable-line no-unused-vars
     throw new Error('Pessmistic graph unimplemented!');
   }
 
@@ -98,15 +99,22 @@ class LanternMetricArtifact {
    * @return {Promise<LH.Artifacts.LanternMetric>}
    */
   static async computeMetricWithGraphs(data, context, extras) {
+    // TODO: remove this fallback when lighthouse-pub-ads plugin can update.
+    const gatherContext = data.gatherContext || {gatherMode: 'navigation'};
     const {trace, devtoolsLog, settings} = data;
+    if (gatherContext.gatherMode !== 'navigation') {
+      throw new Error(`Lantern metrics can only be computed on navigations`);
+    }
+
     const metricName = this.name.replace('Lantern', '');
     const graph = await PageDependencyGraph.request({trace, devtoolsLog}, context);
-    const traceOfTab = await TraceOfTab.request(trace, context);
+    const processedTrace = await ProcessedTrace.request(trace, context);
+    const processedNavigation = await ProcessedNavigation.request(processedTrace, context);
     const simulator = data.simulator ||
-        await LoadSimulator.request({devtoolsLog, settings}, context);
+        (await LoadSimulator.request({devtoolsLog, settings}, context));
 
-    const optimisticGraph = this.getOptimisticGraph(graph, traceOfTab);
-    const pessimisticGraph = this.getPessimisticGraph(graph, traceOfTab);
+    const optimisticGraph = this.getOptimisticGraph(graph, processedNavigation);
+    const pessimisticGraph = this.getPessimisticGraph(graph, processedNavigation);
 
     /** @type {{flexibleOrdering?: boolean, label?: string}} */
     let simulateOptions = {label: `optimistic${metricName}`};

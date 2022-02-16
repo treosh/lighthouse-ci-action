@@ -31,4 +31,4 @@ class MainResource {
   }
 }
 
-module.exports = makeComputedArtifact(MainResource);
+module.exports = makeComputedArtifact(MainResource, ['URL', 'devtoolsLog']);

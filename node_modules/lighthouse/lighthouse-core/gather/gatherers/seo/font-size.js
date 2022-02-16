@@ -36,25 +36,28 @@ function hasFontSizeDeclaration(style) {
 
 /**
  * Computes the CSS specificity of a given selector, i.e. #id > .class > div
+ * TODO: Handle pseudo selectors (:not(), :where, :nth-child) and attribute selectors
  * LIMITATION: !important is not respected
  *
  * @see https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity
  * @see https://www.smashingmagazine.com/2010/04/css-specificity-and-inheritance/
+ * @see https://drafts.csswg.org/selectors-4/#specificity-rules
  *
  * @param {string} selector
  * @return {number}
  */
 function computeSelectorSpecificity(selector) {
-  const tokens = selector.split(' ');
+  // Remove universal selector and separator characters, then split.
+  const tokens = selector.replace(/[*\s+>~]/g, ' ').split(' ');
 
   let numIDs = 0;
   let numClasses = 0;
   let numTypes = 0;
 
   for (const token of tokens) {
-    const ids = token.match(/\b#[a-z0-9]+/g) || [];
-    const classes = token.match(/\b\.[a-z0-9]+/g) || [];
-    const types = token.match(/^[a-z]+/) ? [1] : [];
+    const ids = token.match(/(\b|^)#[a-z0-9_-]+/gi) || [];
+    const classes = token.match(/(\b|^)\.[a-z0-9_-]+/gi) || [];
+    const types = token.match(/^[a-z]+/i) ? [1] : [];
     numIDs += ids.length;
     numClasses += classes.length;
     numTypes += types.length;
@@ -68,7 +71,7 @@ function computeSelectorSpecificity(selector) {
  *
  * @param {Array<LH.Crdp.CSS.RuleMatch>} matchedCSSRules
  * @param {function(LH.Crdp.CSS.CSSStyle):boolean|string|undefined} isDeclarationOfInterest
- * @returns {NodeFontData['cssRule']|undefined}
+ * @return {NodeFontData['cssRule']|undefined}
  */
 function findMostSpecificMatchedCSSRule(matchedCSSRules = [], isDeclarationOfInterest) {
   let maxSpecificity = -Infinity;
@@ -105,7 +108,7 @@ function findMostSpecificMatchedCSSRule(matchedCSSRules = [], isDeclarationOfInt
  * Finds the most specific directly matched CSS font-size rule from the list.
  *
  * @param {Array<LH.Crdp.CSS.InheritedStyleEntry>} [inheritedEntries]
- * @returns {NodeFontData['cssRule']|undefined}
+ * @return {NodeFontData['cssRule']|undefined}
  */
 function findInheritedCSSRule(inheritedEntries = []) {
   // The inherited array contains the array of matched rules for all parents in ascending tree order.
@@ -126,7 +129,7 @@ function findInheritedCSSRule(inheritedEntries = []) {
  *
  * @see https://cs.chromium.org/chromium/src/third_party/blink/renderer/devtools/front_end/sdk/CSSMatchedStyles.js?q=CSSMatchedStyles+f:devtools+-f:out&sq=package:chromium&dr=C&l=59-134
  * @param {LH.Crdp.CSS.GetMatchedStylesForNodeResponse} matched CSS rules
- * @returns {NodeFontData['cssRule']|undefined}
+ * @return {NodeFontData['cssRule']|undefined}
  */
 function getEffectiveFontRule({attributesStyle, inlineStyle, matchedCSSRules, inherited}) {
   // Inline styles have highest priority
@@ -148,7 +151,7 @@ function getEffectiveFontRule({attributesStyle, inlineStyle, matchedCSSRules, in
 
 /**
  * @param {string} text
- * @returns {number}
+ * @return {number}
  */
 function getTextLength(text) {
   // Array.from to count symbols not unicode code points. See: #6973
@@ -158,7 +161,7 @@ function getTextLength(text) {
 /**
  * @param {LH.Gatherer.FRProtocolSession} session
  * @param {number} nodeId text node
- * @returns {Promise<NodeFontData['cssRule']|undefined>}
+ * @return {Promise<NodeFontData['cssRule']|undefined>}
  */
 async function fetchSourceRule(session, nodeId) {
   const matchedRules = await session.sendCommand('CSS.getMatchedStylesForNode', {
@@ -182,7 +185,7 @@ class FontSize extends FRGatherer {
   /** @type {LH.Gatherer.GathererMeta} */
   meta = {
     supportedModes: ['snapshot', 'navigation'],
-  }
+  };
 
   /**
    * @param {LH.Gatherer.FRProtocolSession} session
@@ -352,7 +355,7 @@ class FontSize extends FRGatherer {
     // For the nodes whose computed style we could attribute to a stylesheet, assign
     // the stylsheet to the data.
     analyzedFailingNodesData
-      .filter(data => data.cssRule && data.cssRule.styleSheetId)
+      .filter(data => data.cssRule?.styleSheetId)
       // @ts-expect-error - guaranteed to exist from the filter immediately above
       .forEach(data => (data.cssRule.stylesheet = stylesheets.get(data.cssRule.styleSheetId)));
 

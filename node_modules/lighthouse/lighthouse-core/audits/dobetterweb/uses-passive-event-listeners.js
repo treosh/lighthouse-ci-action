@@ -37,16 +37,18 @@ class PassiveEventsAudit extends ViolationAudit {
       title: str_(UIStrings.title),
       failureTitle: str_(UIStrings.failureTitle),
       description: str_(UIStrings.description),
-      requiredArtifacts: ['ConsoleMessages'],
+      requiredArtifacts: ['ConsoleMessages', 'SourceMaps', 'ScriptElements'],
     };
   }
 
   /**
    * @param {LH.Artifacts} artifacts
-   * @return {LH.Audit.Product}
+   * @param {LH.Audit.Context} context
+   * @return {Promise<LH.Audit.Product>}
    */
-  static audit(artifacts) {
-    const results = ViolationAudit.getViolationResults(artifacts, /passive event listener/);
+  static async audit(artifacts, context) {
+    const results =
+      await ViolationAudit.getViolationResults(artifacts, context, /passive event listener/);
 
     /** @type {LH.Audit.Details.Table['headings']} */
     const headings = [

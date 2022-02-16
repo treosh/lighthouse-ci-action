@@ -49,7 +49,7 @@ function importValidLangs() {
 
 /**
  * @param {string} href
- * @returns {boolean}
+ * @return {boolean}
  */
 function isFullyQualified(href) {
   return href.startsWith('http:') || href.startsWith('https:');
@@ -57,7 +57,7 @@ function isFullyQualified(href) {
 
 /**
  * @param {string} hreflang
- * @returns {boolean}
+ * @return {boolean}
  */
 function isExpectedLanguageCode(hreflang) {
   if (hreflang.toLowerCase() === NO_LANGUAGE) {
@@ -79,6 +79,7 @@ class Hreflang extends Audit {
       title: str_(UIStrings.title),
       failureTitle: str_(UIStrings.failureTitle),
       description: str_(UIStrings.description),
+      supportedModes: ['navigation'],
       requiredArtifacts: ['LinkElements', 'URL'],
     };
   }

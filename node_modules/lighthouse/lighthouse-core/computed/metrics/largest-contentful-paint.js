@@ -14,35 +14,39 @@
  */
 
 const makeComputedArtifact = require('../computed-artifact.js');
-const ComputedMetric = require('./metric.js');
+const NavigationMetric = require('./navigation-metric.js');
 const LHError = require('../../lib/lh-error.js');
 const LanternLargestContentfulPaint = require('./lantern-largest-contentful-paint.js');
 
-class LargestContentfulPaint extends ComputedMetric {
+class LargestContentfulPaint extends NavigationMetric {
   /**
-   * @param {LH.Artifacts.MetricComputationData} data
+   * @param {LH.Artifacts.NavigationMetricComputationData} data
    * @param {LH.Artifacts.ComputedContext} context
    * @return {Promise<LH.Artifacts.LanternMetric>}
    */
   static computeSimulatedMetric(data, context) {
-    return LanternLargestContentfulPaint.request(data, context);
+    const metricData = NavigationMetric.getMetricComputationInput(data);
+    return LanternLargestContentfulPaint.request(metricData, context);
   }
 
   /**
-   * @param {LH.Artifacts.MetricComputationData} data
+   * @param {LH.Artifacts.NavigationMetricComputationData} data
    * @return {Promise<LH.Artifacts.Metric>}
    */
   static async computeObservedMetric(data) {
-    const {traceOfTab} = data;
-    if (traceOfTab.timings.largestContentfulPaint === undefined) {
+    const {processedNavigation} = data;
+    if (processedNavigation.timings.largestContentfulPaint === undefined) {
       throw new LHError(LHError.errors.NO_LCP);
     }
 
     return {
-      timing: traceOfTab.timings.largestContentfulPaint,
-      timestamp: traceOfTab.timestamps.largestContentfulPaint,
+      timing: processedNavigation.timings.largestContentfulPaint,
+      timestamp: processedNavigation.timestamps.largestContentfulPaint,
     };
   }
 }
 
-module.exports = makeComputedArtifact(LargestContentfulPaint);
+module.exports = makeComputedArtifact(
+  LargestContentfulPaint,
+  ['devtoolsLog', 'gatherContext', 'settings', 'simulator', 'trace']
+);

@@ -7,9 +7,13 @@
 
 /* eslint-disable max-len */
 
-const yargs = require('yargs');
-const fs = require('fs');
-const {isObjectOfUnknownValues} = require('../lighthouse-core/lib/type-verifiers.js');
+import fs from 'fs';
+
+import yargs from 'yargs';
+import * as yargsHelpers from 'yargs/helpers';
+
+import {LH_ROOT} from '../root.js';
+import {isObjectOfUnknownValues} from '../shared/type-verifiers.js';
 
 /**
  * @param {string=} manualArgv
@@ -17,10 +21,13 @@ const {isObjectOfUnknownValues} = require('../lighthouse-core/lib/type-verifiers
  * @return {LH.CliFlags}
  */
 function getFlags(manualArgv, options = {}) {
-  // @ts-expect-error - undocumented, but yargs() supports parsing a single `string`.
-  const y = manualArgv ? yargs(manualArgv) : yargs;
+  const y = manualArgv ?
+    // @ts-expect-error - undocumented, but yargs() supports parsing a single `string`.
+    yargs(manualArgv) :
+    yargs(yargsHelpers.hideBin(process.argv));
 
   let parser = y.help('help')
+      .version(JSON.parse(fs.readFileSync(`${LH_ROOT}/package.json`, 'utf-8')).version)
       .showHelpOnFail(false, 'Specify --help for available options')
 
       .usage('lighthouse <url> <options>')
@@ -98,6 +105,11 @@ function getFlags(manualArgv, options = {}) {
           default: false,
           describe: 'Prints a list of all available audits and exits',
         },
+        'list-locales': {
+          type: 'boolean',
+          default: false,
+          describe: 'Prints a list of all supported locales and exits',
+        },
         'list-trace-categories': {
           type: 'boolean',
           default: false,
@@ -107,6 +119,15 @@ function getFlags(manualArgv, options = {}) {
           type: 'boolean',
           default: false,
           describe: 'Print the normalized config for the given config and options, then exit.',
+        },
+        'debug-navigation': {
+          type: 'boolean',
+          describe: 'Pause after page load to wait for permission to continue the run, evaluate `continueLighthouseRun` in the console to continue.',
+        },
+        'fraggle-rock': {
+          type: 'boolean',
+          default: false,
+          describe: '[EXPERIMENTAL] Use the new Fraggle Rock navigation runner to gather results.',
         },
         'additional-trace-categories': {
           type: 'string',
@@ -135,7 +156,7 @@ function getFlags(manualArgv, options = {}) {
         },
         'hostname': {
           type: 'string',
-          default: 'localhost',
+          default: '127.0.0.1',
           describe: 'The hostname to use for the debugging protocol.',
         },
         'form-factor': {
@@ -157,7 +178,6 @@ function getFlags(manualArgv, options = {}) {
         },
         'enable-error-reporting': {
           type: 'boolean',
-          default: undefined, // Explicitly `undefined` so prompted by default.
           describe: 'Enables error reporting, overriding any saved preference. --no-enable-error-reporting will do the opposite. More: https://git.io/vFFTO',
         },
         'gather-mode': {
@@ -194,7 +214,7 @@ function getFlags(manualArgv, options = {}) {
         },
       })
       .group([
-        'save-assets', 'list-all-audits', 'list-trace-categories', 'print-config', 'additional-trace-categories',
+        'save-assets', 'list-all-audits', 'list-locales', 'list-trace-categories', 'print-config', 'additional-trace-categories',
         'config-path', 'preset', 'chrome-flags', 'port', 'hostname', 'form-factor', 'screenEmulation', 'emulatedUserAgent',
         'max-wait-for-load', 'enable-error-reporting', 'gather-mode', 'audit-mode',
         'only-audits', 'only-categories', 'skip-audits', 'budget-path',
@@ -204,7 +224,7 @@ function getFlags(manualArgv, options = {}) {
       .options({
         'output': {
           type: 'array',
-          default: /** @type {['html']} */ (['html']),
+          default: /** @type {const} */ (['html']),
           coerce: coerceOutput,
           describe: 'Reporter for the results, supports multiple values. choices: "json", "html", "csv"',
         },
@@ -288,9 +308,9 @@ function getFlags(manualArgv, options = {}) {
       })
 
       // Choices added outside of `options()` and cast so tsc picks them up.
-      .choices('form-factor', /** @type {['mobile', 'desktop']} */ (['mobile', 'desktop']))
-      .choices('throttling-method', /** @type {['devtools', 'provided', 'simulate']} */ (['devtools', 'provided', 'simulate']))
-      .choices('preset', /** @type {['perf', 'experimental', 'desktop']} */ (['perf', 'experimental', 'desktop']))
+      .choices('form-factor', /** @type {const} */ (['mobile', 'desktop']))
+      .choices('throttling-method', /** @type {const} */ (['devtools', 'provided', 'simulate']))
+      .choices('preset', /** @type {const} */ (['perf', 'experimental', 'desktop']))
 
       .check(argv => {
         // Lighthouse doesn't need a URL if...
@@ -298,7 +318,7 @@ function getFlags(manualArgv, options = {}) {
         //   - We're just printing the config.
         //   - We're in auditMode (and we have artifacts already)
         // If one of these don't apply, if no URL, stop the program and ask for one.
-        const isPrintSomethingMode = argv.listAllAudits || argv.listTraceCategories || argv.printConfig;
+        const isPrintSomethingMode = argv.listAllAudits || argv.listLocales || argv.listTraceCategories || argv.printConfig;
         const isOnlyAuditMode = !!argv.auditMode && !argv.gatherMode;
         if (isPrintSomethingMode || isOnlyAuditMode) {
           return true;
@@ -309,7 +329,7 @@ function getFlags(manualArgv, options = {}) {
         throw new Error('Please provide a url');
       })
       .epilogue('For more information on Lighthouse, see https://developers.google.com/web/tools/lighthouse/.')
-      .wrap(yargs.terminalWidth());
+      .wrap(y.terminalWidth());
 
   if (options.noExitOnFailure) {
     // Silence console.error() logging and don't process.exit().
@@ -322,8 +342,15 @@ function getFlags(manualArgv, options = {}) {
 
   // Augmenting yargs type with auto-camelCasing breaks in tsc@4.1.2 and @types/yargs@15.0.11,
   // so for now cast to add yarg's camelCase properties to type.
-  const argv = parser.argv;
+  const argv = /** @type {Awaited<typeof parser.argv>} */ (parser.argv);
   const cliFlags = /** @type {typeof argv & CamelCasify<typeof argv>} */ (argv);
+
+  // yargs will return `undefined` for options that have a `coerce` function but
+  // are not actually present in the user input. Instead of passing properties
+  // explicitly set to undefined, delete them from the flags object.
+  for (const [k, v] of Object.entries(cliFlags)) {
+    if (v === undefined) delete cliFlags[k];
+  }
 
   return cliFlags;
 }
@@ -331,10 +358,10 @@ function getFlags(manualArgv, options = {}) {
 /**
  * Support comma-separated values for some array flags by splitting on any ',' found.
  * @param {Array<string>=} strings
- * @return {Array<string>|undefined}
+ * @return {Array<string>=}
  */
 function splitCommaSeparatedValues(strings) {
-  if (!strings) return strings;
+  if (!strings) return;
 
   return strings.flatMap(value => value.split(','));
 }
@@ -344,7 +371,9 @@ function splitCommaSeparatedValues(strings) {
  * @return {boolean|string|undefined}
  */
 function coerceOptionalStringBoolean(value) {
-  if (typeof value !== 'undefined' && typeof value !== 'string' && typeof value !== 'boolean') {
+  if (value === undefined) return;
+
+  if (typeof value !== 'string' && typeof value !== 'boolean') {
     throw new Error('Invalid value: Argument must be a string or a boolean');
   }
   return value;
@@ -357,16 +386,20 @@ function coerceOptionalStringBoolean(value) {
  */
 function coerceOutput(values) {
   const outputTypes = ['json', 'html', 'csv'];
-  const errorMsg = `Invalid values. Argument 'output' must be an array from choices "${outputTypes.join('", "')}"`;
+  const errorHint = `Argument 'output' must be an array from choices "${outputTypes.join('", "')}"`;
   if (!values.every(/** @return {item is string} */ item => typeof item === 'string')) {
-    throw new Error(errorMsg);
+    throw new Error('Invalid values. ' + errorHint);
   }
   // Allow parsing of comma-separated values.
   const strings = values.flatMap(value => value.split(','));
-  if (!strings.every(/** @return {str is LH.OutputMode} */ str => outputTypes.includes(str))) {
-    throw new Error(errorMsg);
-  }
-  return strings;
+  const validValues = strings.filter(/** @return {str is LH.OutputMode} */ str => {
+    if (!outputTypes.includes(str)) {
+      throw new Error(`"${str}" is not a valid 'output' value. ` + errorHint);
+    }
+    return true;
+  });
+
+  return validValues;
 }
 
 /**
@@ -374,9 +407,11 @@ function coerceOutput(values) {
  * allowlist specific locales. Why? So we can support the user who requests 'es-MX' (unsupported)
  * and we'll fall back to 'es' (supported).
  * @param {unknown} value
- * @return {LH.Locale}
+ * @return {LH.Locale|undefined}
  */
 function coerceLocale(value) {
+  if (value === undefined) return;
+
   if (typeof value !== 'string') throw new Error(`Invalid value: Argument 'locale' must be a string`);
   return /** @type {LH.Locale} */ (value);
 }
@@ -406,9 +441,11 @@ function coerceExtraHeaders(value) {
 /**
  * Take yarg's unchecked object value and ensure it's proper throttling settings.
  * @param {unknown} value
- * @return {LH.ThrottlingSettings}
+ * @return {LH.ThrottlingSettings|undefined}
  */
 function coerceThrottling(value) {
+  if (value === undefined) return;
+
   if (!isObjectOfUnknownValues(value)) {
     throw new Error(`Invalid value: Argument 'throttling' must be an object, specified per-property ('throttling.rttMs', 'throttling.throughputKbps', etc)`);
   }
@@ -440,9 +477,11 @@ function coerceThrottling(value) {
 /**
  * Take yarg's unchecked object value and ensure it is a proper LH.screenEmulationSettings.
  * @param {unknown} value
- * @return {Partial<LH.ScreenEmulationSettings>}
+ * @return {Partial<LH.ScreenEmulationSettings>|undefined}
  */
 function coerceScreenEmulation(value) {
+  if (value === undefined) return;
+
   if (!isObjectOfUnknownValues(value)) {
     throw new Error(`Invalid value: Argument 'screenEmulation' must be an object, specified per-property ('screenEmulation.width', 'screenEmulation.deviceScaleFactor', etc)`);
   }
@@ -486,6 +525,6 @@ function coerceScreenEmulation(value) {
   return screenEmulationSettings;
 }
 
-module.exports = {
+export {
   getFlags,
 };

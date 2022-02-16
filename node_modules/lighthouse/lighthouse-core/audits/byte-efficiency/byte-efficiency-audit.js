@@ -105,24 +105,38 @@ class UnusedBytes extends Audit {
    * @param {LH.Audit.Context} context
    * @return {Promise<LH.Audit.Product>}
    */
-  static audit(artifacts, context) {
+  static async audit(artifacts, context) {
+    const gatherContext = artifacts.GatherContext;
     const trace = artifacts.traces[Audit.DEFAULT_PASS];
     const devtoolsLog = artifacts.devtoolsLogs[Audit.DEFAULT_PASS];
-    const settings = context && context.settings || {};
+    const settings = context?.settings || {};
     const simulatorOptions = {
       devtoolsLog,
       settings,
     };
+    const networkRecords = await NetworkRecords.request(devtoolsLog, context);
+    const hasContentfulRecords = networkRecords.some(record => record.transferSize);
 
-    return NetworkRecords.request(devtoolsLog, context)
-      .then(networkRecords =>
-        Promise.all([
-          this.audit_(artifacts, networkRecords, context),
-          PageDependencyGraph.request({trace, devtoolsLog}, context),
-          LoadSimulator.request(simulatorOptions, context),
-        ])
-      )
-      .then(([result, graph, simulator]) => this.createAuditProduct(result, graph, simulator));
+    // Requesting load simulator requires non-empty network records.
+    // Timespans are not guaranteed to have any network activity.
+    // There are no bytes to be saved if no bytes were downloaded, so mark N/A if empty.
+    if (!hasContentfulRecords && gatherContext.gatherMode === 'timespan') {
+      return {
+        score: 1,
+        notApplicable: true,
+      };
+    }
+
+    const [result, graph, simulator] = await Promise.all([
+      this.audit_(artifacts, networkRecords, context),
+      // Page dependency graph is only used in navigation mode.
+      gatherContext.gatherMode === 'navigation' ?
+        PageDependencyGraph.request({trace, devtoolsLog}, context) :
+        null,
+      LoadSimulator.request(simulatorOptions, context),
+    ]);
+
+    return this.createAuditProduct(result, graph, simulator, gatherContext);
   }
 
   /**
@@ -188,17 +202,25 @@ class UnusedBytes extends Audit {
 
   /**
    * @param {ByteEfficiencyProduct} result
-   * @param {Node} graph
+   * @param {Node|null} graph
    * @param {Simulator} simulator
+   * @param {LH.Artifacts['GatherContext']} gatherContext
    * @return {LH.Audit.Product}
    */
-  static createAuditProduct(result, graph, simulator) {
+  static createAuditProduct(result, graph, simulator, gatherContext) {
     const results = result.items.sort((itemA, itemB) => itemB.wastedBytes - itemA.wastedBytes);
 
     const wastedBytes = results.reduce((sum, item) => sum + item.wastedBytes, 0);
-    const wastedMs = this.computeWasteWithTTIGraph(results, graph, simulator, {
-      providedWastedBytesByUrl: result.wastedBytesByUrl,
-    });
+
+    let wastedMs;
+    if (gatherContext.gatherMode === 'navigation') {
+      if (!graph) throw Error('Page dependency graph should always be computed in navigation mode');
+      wastedMs = this.computeWasteWithTTIGraph(results, graph, simulator, {
+        providedWastedBytesByUrl: result.wastedBytesByUrl,
+      });
+    } else {
+      wastedMs = simulator.computeWastedMsFromWastedBytes(wastedBytes);
+    }
 
     let displayValue = result.displayValue || '';
     if (typeof result.displayValue === 'undefined' && wastedBytes) {

@@ -33,6 +33,9 @@ const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);
  * @return {Promise<void>}
  */
 async function clearDataForOrigin(session, url) {
+  const status = {msg: 'Cleaning origin data', id: 'lh:storage:clearDataForOrigin'};
+  log.time(status);
+
   const origin = new URL(url).origin;
 
   // Clear some types of storage.
@@ -40,7 +43,6 @@ async function clearDataForOrigin(session, url) {
   // indexeddb, websql, and localstorage are not cleared to prevent loss of potentially important data.
   //   https://chromedevtools.github.io/debugger-protocol-viewer/tot/Storage/#type-StorageType
   const typesToClear = [
-    'appcache',
     // 'cookies',
     'file_systems',
     'shader_cache',
@@ -63,6 +65,8 @@ async function clearDataForOrigin(session, url) {
     } else {
       throw err;
     }
+  } finally {
+    log.timeEnd(status);
   }
 }
 

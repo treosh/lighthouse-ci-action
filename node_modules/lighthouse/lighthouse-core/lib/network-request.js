@@ -480,7 +480,9 @@ class NetworkRequest {
    */
   static isNonNetworkRequest(record) {
     // The 'protocol' field in devtools a string more like a `scheme`
-    return URL.isNonNetworkProtocol(record.protocol);
+    return URL.isNonNetworkProtocol(record.protocol) ||
+      // But `protocol` can fail to be populated if the request fails, so fallback to scheme.
+      URL.isNonNetworkProtocol(record.parsedURL.scheme);
   }
 
   /**
@@ -493,7 +495,37 @@ class NetworkRequest {
   static isSecureRequest(record) {
     return URL.isSecureScheme(record.parsedURL.scheme) ||
         URL.isSecureScheme(record.protocol) ||
-        URL.isLikeLocalhost(record.parsedURL.host);
+        URL.isLikeLocalhost(record.parsedURL.host) ||
+        NetworkRequest.isHstsRequest(record);
+  }
+
+  /**
+   * Returns whether the network request was an HSTS redirect request.
+   * @param {NetworkRequest} record
+   * @return {boolean}
+   */
+  static isHstsRequest(record) {
+    const destination = record.redirectDestination;
+    if (!destination) return false;
+
+    const reasonHeader = record.responseHeaders
+      .find(header => header.name === 'Non-Authoritative-Reason');
+    const reason = reasonHeader?.value;
+    return reason === 'HSTS' && NetworkRequest.isSecureRequest(destination);
+  }
+
+  /**
+   * Resource size is almost always the right one to be using because of the below:
+   *     `transferSize = resourceSize + headers.length`.
+   * HOWEVER, there are some cases where an image is compressed again over the network and transfer size
+   * is smaller (see https://github.com/GoogleChrome/lighthouse/pull/4968).
+   * Use the min of the two numbers to be safe.
+   * `tranferSize` of cached records is 0
+   * @param {NetworkRequest} networkRecord
+   * @return {number}
+   */
+  static getResourceSizeOnNetwork(networkRecord) {
+    return Math.min(networkRecord.resourceSize || 0, networkRecord.transferSize || Infinity);
   }
 }
 

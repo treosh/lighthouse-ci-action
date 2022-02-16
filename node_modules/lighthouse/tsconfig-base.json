@@ -1,0 +1,24 @@
+// Base compiler options for all tsconfig files.
+
+{
+  "compilerOptions": {
+    "composite": true,
+    "emitDeclarationOnly": true,
+    "declarationMap": true,
+
+    "target": "es2020",
+    "module": "es2020",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+
+    "allowJs": true,
+    "checkJs": true,
+    "strict": true,
+    // TODO: remove the next line to be fully `strict`.
+    "useUnknownInCatchVariables": false,
+
+    // "listFiles": true,
+    // "noErrorTruncation": true,
+    // "extendedDiagnostics": true,
+  },
+}

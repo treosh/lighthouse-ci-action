@@ -11,12 +11,13 @@ const fs = require('fs');
 const path = require('path');
 const shell = require('child_process').execSync;
 const utils = require('./utils.js');
+const {LH_ROOT} = require('../../root.js');
 
 const TARGET = 'Release';
 const CONTENT_SHELL_ZIP = 'content-shell.zip';
 const MAX_CONTENT_SHELLS = 10;
 const PLATFORM = getPlatform();
-const LH_ROOT = `${__dirname}/../..`;
+
 const CACHE_PATH = path.resolve(LH_ROOT, '.tmp', 'chromium-web-tests', 'content-shells');
 const COMMIT_POSITION_UPDATE_PERIOD = 420;
 
@@ -84,7 +85,7 @@ function deleteOldContentShells() {
   const remainingNumberOfContentShells = MAX_CONTENT_SHELLS / 2;
   const oldContentShellDirs = files.slice(remainingNumberOfContentShells);
   for (let i = 0; i < oldContentShellDirs.length; i++) {
-    utils.removeRecursive(path.resolve(CACHE_PATH, oldContentShellDirs[i]));
+    fs.rmSync(path.resolve(CACHE_PATH, oldContentShellDirs[i]), {recursive: true, force: true});
   }
   console.log(`Removed old content shells: ${oldContentShellDirs}`);
 }
@@ -125,7 +126,7 @@ function findPreviousUploadedPosition(commitPosition) {
 async function prepareContentShellDirectory(folder) {
   const contentShellPath = path.join(CACHE_PATH, folder);
   if (utils.isDir(contentShellPath)) {
-    utils.removeRecursive(contentShellPath);
+    fs.rmSync(contentShellPath, {recursive: true, force: true});
   }
   fs.mkdirSync(contentShellPath);
   return folder;

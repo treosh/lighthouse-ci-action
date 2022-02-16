@@ -7,7 +7,7 @@
 
 const makeComputedArtifact = require('./computed-artifact.js');
 const MainThreadTasks_ = require('../lib/tracehouse/main-thread-tasks.js');
-const TraceOfTab = require('./trace-of-tab.js');
+const ProcessedTrace = require('./processed-trace.js');
 
 class MainThreadTasks {
   /**
@@ -16,9 +16,9 @@ class MainThreadTasks {
    * @return {Promise<Array<LH.Artifacts.TaskNode>>}
    */
   static async compute_(trace, context) {
-    const {mainThreadEvents, frames, timestamps} = await TraceOfTab.request(trace, context);
+    const {mainThreadEvents, frames, timestamps} = await ProcessedTrace.request(trace, context);
     return MainThreadTasks_.getMainThreadTasks(mainThreadEvents, frames, timestamps.traceEnd);
   }
 }
 
-module.exports = makeComputedArtifact(MainThreadTasks);
+module.exports = makeComputedArtifact(MainThreadTasks, null);

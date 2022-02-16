@@ -40,7 +40,7 @@ const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);
 
 /**
  * @param {Array<FailingNodeData>} fontSizeArtifact
- * @returns {Array<FailingNodeData>}
+ * @return {Array<FailingNodeData>}
  */
 function getUniqueFailingRules(fontSizeArtifact) {
   /** @type {Map<string, FailingNodeData>} */
@@ -69,7 +69,7 @@ function getUniqueFailingRules(fontSizeArtifact) {
 
 /**
  * @param {Array<string|undefined>=} attributes
- * @returns {Map<string, string>}
+ * @return {Map<string, string>}
  */
 function getAttributeMap(attributes = []) {
   const map = new Map();
@@ -92,7 +92,7 @@ function getAttributeMap(attributes = []) {
 /**
  * TODO: return unique selector, like axe-core does, instead of just id/class/name of a single node
  * @param {FailingNodeData['parentNode']} parentNode
- * @returns {string}
+ * @return {string}
  */
 function getSelector(parentNode) {
   const attributeMap = getAttributeMap(parentNode.attributes);
@@ -130,7 +130,7 @@ function nodeToTableNode(parentNode) {
  * @param {string} baseURL
  * @param {FailingNodeData['cssRule']} styleDeclaration
  * @param {FailingNodeData['parentNode']} parentNode
- * @returns {{source: LH.Audit.Details.UrlValue | LH.Audit.Details.SourceLocationValue | LH.Audit.Details.CodeValue, selector: string | LH.Audit.Details.NodeValue}}
+ * @return {{source: LH.Audit.Details.UrlValue | LH.Audit.Details.SourceLocationValue | LH.Audit.Details.CodeValue, selector: string | LH.Audit.Details.NodeValue}}
  */
 function findStyleRuleSource(baseURL, styleDeclaration, parentNode) {
   if (!styleDeclaration ||
@@ -196,9 +196,11 @@ function findStyleRuleSource(baseURL, styleDeclaration, parentNode) {
       }
     }
 
-    const url = stylesheet.sourceURL;
+    const source = Audit.makeSourceLocation(stylesheet.sourceURL, line, column);
+    source.urlProvider = urlProvider;
+
     return {
-      source: {type: 'source-location', url, urlProvider, line, column},
+      source,
       selector,
     };
   }

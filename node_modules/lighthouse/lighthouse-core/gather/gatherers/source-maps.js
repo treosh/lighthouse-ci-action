@@ -15,7 +15,7 @@ class SourceMaps extends FRGatherer {
   /** @type {LH.Gatherer.GathererMeta} */
   meta = {
     supportedModes: ['timespan', 'navigation'],
-  }
+  };
 
   constructor() {
     super();

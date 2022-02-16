@@ -72,7 +72,7 @@ function clientRectBelowMinimumSize(cr) {
 /**
  * A target is "too small" if none of its clientRects are at least the size of a finger.
  * @param {BoundedTapTarget[]} targets
- * @returns {BoundedTapTarget[]}
+ * @return {BoundedTapTarget[]}
  */
 function getTooSmallTargets(targets) {
   return targets.filter(target => {
@@ -83,7 +83,7 @@ function getTooSmallTargets(targets) {
 /**
  * @param {BoundedTapTarget[]} tooSmallTargets
  * @param {BoundedTapTarget[]} allTargets
- * @returns {TapTargetOverlapFailure[]}
+ * @return {TapTargetOverlapFailure[]}
  */
 function getAllOverlapFailures(tooSmallTargets, allTargets) {
   /** @type {TapTargetOverlapFailure[]} */
@@ -138,7 +138,7 @@ function getAllOverlapFailures(tooSmallTargets, allTargets) {
 /**
  * @param {LH.Artifacts.Rect[]} tappableRects
  * @param {LH.Artifacts.Rect[]} maybeOverlappingRects
- * @returns {ClientRectOverlapFailure | null}
+ * @return {ClientRectOverlapFailure | null}
  */
 function getOverlapFailureForTargetPair(tappableRects, maybeOverlappingRects) {
   /** @type ClientRectOverlapFailure | null */
@@ -176,7 +176,7 @@ function getOverlapFailureForTargetPair(tappableRects, maybeOverlappingRects) {
 /**
  * Only report one failure if two targets overlap each other
  * @param {TapTargetOverlapFailure[]} overlapFailures
- * @returns {TapTargetOverlapFailure[]}
+ * @return {TapTargetOverlapFailure[]}
  */
 function mergeSymmetricFailures(overlapFailures) {
   /** @type TapTargetOverlapFailure[] */
@@ -212,7 +212,7 @@ function mergeSymmetricFailures(overlapFailures) {
 
 /**
  * @param {TapTargetOverlapFailure[]} overlapFailures
- * @returns {TapTargetTableItem[]}
+ * @return {TapTargetTableItem[]}
  */
 function getTableItems(overlapFailures) {
   const tableItems = overlapFailures.map(failure => {

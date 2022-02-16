@@ -35,7 +35,8 @@ class UsesOptimizedImages extends ByteEfficiencyAudit {
       title: str_(UIStrings.title),
       description: str_(UIStrings.description),
       scoreDisplayMode: ByteEfficiencyAudit.SCORING_MODES.NUMERIC,
-      requiredArtifacts: ['OptimizedImages', 'ImageElements', 'devtoolsLogs', 'traces', 'URL'],
+      requiredArtifacts: ['OptimizedImages', 'ImageElements', 'GatherContext', 'devtoolsLogs',
+        'traces', 'URL'],
     };
   }
 
@@ -75,10 +76,12 @@ class UsesOptimizedImages extends ByteEfficiencyAudit {
     const imageElementsByURL = new Map();
     imageElements.forEach(img => imageElementsByURL.set(img.src, img));
 
-    /** @type {Array<{url: string, fromProtocol: boolean, isCrossOrigin: boolean, totalBytes: number, wastedBytes: number}>} */
+    /** @type {Array<{node?: LH.Audit.Details.NodeValue, url: string, fromProtocol: boolean, isCrossOrigin: boolean, totalBytes: number, wastedBytes: number}>} */
     const items = [];
     const warnings = [];
     for (const image of images) {
+      const imageElement = imageElementsByURL.get(image.url);
+
       if (image.failed) {
         warnings.push(`Unable to decode ${URL.getURLDisplayName(image.url)}`);
         continue;
@@ -90,7 +93,6 @@ class UsesOptimizedImages extends ByteEfficiencyAudit {
       let fromProtocol = true;
 
       if (typeof jpegSize === 'undefined') {
-        const imageElement = imageElementsByURL.get(image.url);
         if (!imageElement) {
           warnings.push(`Unable to locate resource ${URL.getURLDisplayName(image.url)}`);
           continue;
@@ -114,6 +116,7 @@ class UsesOptimizedImages extends ByteEfficiencyAudit {
       const jpegSavings = UsesOptimizedImages.computeSavings({...image, jpegSize});
 
       items.push({
+        node: imageElement ? ByteEfficiencyAudit.makeNodeItem(imageElement.node) : undefined,
         url,
         fromProtocol,
         isCrossOrigin,
@@ -124,7 +127,7 @@ class UsesOptimizedImages extends ByteEfficiencyAudit {
 
     /** @type {LH.Audit.Details.Opportunity['headings']} */
     const headings = [
-      {key: 'url', valueType: 'thumbnail', label: ''},
+      {key: 'node', valueType: 'node', label: ''},
       {key: 'url', valueType: 'url', label: str_(i18n.UIStrings.columnURL)},
       {key: 'totalBytes', valueType: 'bytes', label: str_(i18n.UIStrings.columnResourceSize)},
       {key: 'wastedBytes', valueType: 'bytes', label: str_(i18n.UIStrings.columnWastedBytes)},

@@ -98,9 +98,9 @@ class UnusedCSS {
       const firstRuleStart = preview.indexOf('{');
       const firstRuleEnd = preview.indexOf('}');
 
-      if (firstRuleStart === -1 || firstRuleEnd === -1
-          || firstRuleStart > firstRuleEnd
-          || firstRuleStart > PREVIEW_LENGTH) {
+      if (firstRuleStart === -1 || firstRuleEnd === -1 ||
+          firstRuleStart > firstRuleEnd ||
+          firstRuleStart > PREVIEW_LENGTH) {
         // We couldn't determine the first rule-set or it's not within the preview
         preview = preview.slice(0, PREVIEW_LENGTH) + '...';
       } else if (firstRuleEnd < PREVIEW_LENGTH) {
@@ -151,4 +151,4 @@ class UnusedCSS {
   }
 }
 
-module.exports = makeComputedArtifact(UnusedCSS);
+module.exports = makeComputedArtifact(UnusedCSS, ['CSSUsage', 'URL', 'devtoolsLog']);

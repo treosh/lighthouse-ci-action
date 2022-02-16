@@ -101,7 +101,7 @@ function verifyDirective(directiveName, directiveValue) {
 /**
  * @param {string} line single line from a robots.txt file
  * @throws will throw an exception if given line has errors
- * @returns {{directive: string, value: string}|null}
+ * @return {{directive: string, value: string}|null}
  */
 function parseLine(line) {
   const hashIndex = line.indexOf('#');
@@ -135,7 +135,7 @@ function parseLine(line) {
 
 /**
  * @param {string} content
- * @returns {Array<{index: string, line: string, message: string}>}
+ * @return {Array<{index: string, line: string, message: string}>}
  */
 function validateRobots(content) {
   /**

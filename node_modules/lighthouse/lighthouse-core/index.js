@@ -9,6 +9,7 @@ const Runner = require('./runner.js');
 const log = require('lighthouse-logger');
 const ChromeProtocol = require('./gather/connections/cri.js');
 const Config = require('./config/config.js');
+const URL = require('./lib/url-shim.js');
 
 /** @typedef {import('./gather/connections/connection.js')} Connection */
 
@@ -42,12 +43,12 @@ async function lighthouse(url, flags = {}, configJSON, userConnection) {
 
   const config = generateConfig(configJSON, flags);
   const computedCache = new Map();
-  const options = {url, config, computedCache};
+  const options = {config, computedCache};
   const connection = userConnection || new ChromeProtocol(flags.port, flags.hostname);
 
   // kick off a lighthouse run
-  /** @param {{requestedUrl: string}} runnerData */
-  const gatherFn = ({requestedUrl}) => {
+  const gatherFn = () => {
+    const requestedUrl = URL.normalizeUrl(url);
     return Runner._gatherArtifactsFromBrowser(requestedUrl, options, connection);
   };
   return Runner.run(gatherFn, options);
@@ -70,6 +71,10 @@ lighthouse.getAuditList = Runner.getAuditList;
 lighthouse.traceCategories = require('./gather/driver.js').traceCategories;
 lighthouse.Audit = require('./audits/audit.js');
 lighthouse.Gatherer = require('./gather/gatherers/gatherer.js');
+
+// Explicit type reference (hidden by makeComputedArtifact) for d.ts export.
+// TODO(esmodules): should be a workaround for module.export and can be removed when in esm.
+/** @type {typeof import('./computed/network-records.js')} */
 lighthouse.NetworkRecords = require('./computed/network-records.js');
 
 module.exports = lighthouse;

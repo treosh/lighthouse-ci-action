@@ -38,6 +38,7 @@ const tbtRelevantAudits = [
   'dom-size',
   'duplicated-javascript',
   'legacy-javascript',
+  'viewport',
 ];
 
 const clsRelevantAudits = [

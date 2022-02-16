@@ -6,9 +6,9 @@
 'use strict';
 
 const makeComputedArtifact = require('../computed-artifact.js');
-const ComputedMetric = require('./metric.js');
+const NavigationMetric = require('./navigation-metric.js');
 
-class FirstContentfulPaintAllFrames extends ComputedMetric {
+class FirstContentfulPaintAllFrames extends NavigationMetric {
   /**
    * @return {Promise<LH.Artifacts.LanternMetric>}
    */
@@ -18,17 +18,20 @@ class FirstContentfulPaintAllFrames extends ComputedMetric {
   }
 
   /**
-   * @param {LH.Artifacts.MetricComputationData} data
+   * @param {LH.Artifacts.NavigationMetricComputationData} data
    * @return {Promise<LH.Artifacts.Metric>}
    */
   static async computeObservedMetric(data) {
-    const {traceOfTab} = data;
+    const {processedNavigation} = data;
 
     return {
-      timing: traceOfTab.timings.firstContentfulPaintAllFrames,
-      timestamp: traceOfTab.timestamps.firstContentfulPaintAllFrames,
+      timing: processedNavigation.timings.firstContentfulPaintAllFrames,
+      timestamp: processedNavigation.timestamps.firstContentfulPaintAllFrames,
     };
   }
 }
 
-module.exports = makeComputedArtifact(FirstContentfulPaintAllFrames);
+module.exports = makeComputedArtifact(
+  FirstContentfulPaintAllFrames,
+  ['devtoolsLog', 'gatherContext', 'settings', 'simulator', 'trace']
+);

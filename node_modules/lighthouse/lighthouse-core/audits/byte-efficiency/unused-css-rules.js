@@ -34,7 +34,7 @@ class UnusedCSSRules extends ByteEfficiencyAudit {
       title: str_(UIStrings.title),
       description: str_(UIStrings.description),
       scoreDisplayMode: ByteEfficiencyAudit.SCORING_MODES.NUMERIC,
-      requiredArtifacts: ['CSSUsage', 'URL', 'devtoolsLogs', 'traces'],
+      requiredArtifacts: ['CSSUsage', 'URL', 'devtoolsLogs', 'traces', 'GatherContext'],
     };
   }
 

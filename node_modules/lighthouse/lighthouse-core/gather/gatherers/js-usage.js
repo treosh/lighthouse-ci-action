@@ -13,9 +13,8 @@ const FRGatherer = require('../../fraggle-rock/gather/base-gatherer.js');
 class JsUsage extends FRGatherer {
   /** @type {LH.Gatherer.GathererMeta} */
   meta = {
-    // TODO(FR-COMPAT): special snapshot case for scriptId -> URL mappings.
-    supportedModes: ['timespan', 'navigation'],
-  }
+    supportedModes: ['snapshot', 'timespan', 'navigation'],
+  };
 
   constructor() {
     super();
@@ -60,8 +59,8 @@ class JsUsage extends FRGatherer {
    */
   async startSensitiveInstrumentation(context) {
     const session = context.driver.defaultSession;
+    session.on('Debugger.scriptParsed', this.onScriptParsed);
     await session.sendCommand('Debugger.enable');
-    await session.on('Debugger.scriptParsed', this.onScriptParsed);
   }
 
   /**
@@ -69,16 +68,47 @@ class JsUsage extends FRGatherer {
    */
   async stopSensitiveInstrumentation(context) {
     const session = context.driver.defaultSession;
-    await session.off('Debugger.scriptParsed', this.onScriptParsed);
     await session.sendCommand('Debugger.disable');
+    session.off('Debugger.scriptParsed', this.onScriptParsed);
   }
 
   /**
+   * Usages alone do not always generate an exhaustive list of scripts in timespan and snapshot.
+   * For audits which use this for url/scriptId mappings, we can include an empty usage object.
+   *
+   * @param {Record<string, Array<LH.Crdp.Profiler.ScriptCoverage>>} usageByUrl
+   */
+  _addMissingScriptIds(usageByUrl) {
+    for (const scriptParsedEvent of this._scriptParsedEvents) {
+      const url = scriptParsedEvent.embedderName;
+      if (!url) continue;
+
+      const scripts = usageByUrl[url] || [];
+      if (!scripts.find(s => s.scriptId === scriptParsedEvent.scriptId)) {
+        scripts.push({
+          url,
+          scriptId: scriptParsedEvent.scriptId,
+          functions: [],
+        });
+      }
+      usageByUrl[url] = scripts;
+    }
+  }
+
+  /**
+   * @param {LH.Gatherer.FRTransitionalContext} context
    * @return {Promise<LH.Artifacts['JsUsage']>}
    */
-  async getArtifact() {
+  async getArtifact(context) {
     /** @type {Record<string, Array<LH.Crdp.Profiler.ScriptCoverage>>} */
     const usageByUrl = {};
+
+    // Force `Debugger.scriptParsed` events for url to scriptId mappings in snapshot mode.
+    if (context.gatherMode === 'snapshot') {
+      await this.startSensitiveInstrumentation(context);
+      await this.stopSensitiveInstrumentation(context);
+    }
+
     for (const scriptUsage of this._scriptUsages) {
       // `ScriptCoverage.url` can be overridden by a magic sourceURL comment.
       // Get the associated ScriptParsedEvent and use embedderName, which is the original url.
@@ -86,7 +116,7 @@ class JsUsage extends FRGatherer {
       let url = scriptUsage.url;
       const scriptParsedEvent =
         this._scriptParsedEvents.find(e => e.scriptId === scriptUsage.scriptId);
-      if (scriptParsedEvent && scriptParsedEvent.embedderName) {
+      if (scriptParsedEvent?.embedderName) {
         url = scriptParsedEvent.embedderName;
       }
 
@@ -102,6 +132,10 @@ class JsUsage extends FRGatherer {
       const scripts = usageByUrl[url] || [];
       scripts.push(scriptUsage);
       usageByUrl[url] = scripts;
+    }
+
+    if (context.gatherMode !== 'navigation') {
+      this._addMissingScriptIds(usageByUrl);
     }
 
     return usageByUrl;

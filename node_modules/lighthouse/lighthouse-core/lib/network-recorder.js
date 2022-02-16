@@ -5,6 +5,7 @@
  */
 'use strict';
 
+const log = require('lighthouse-logger');
 const NetworkRequest = require('./network-request.js');
 const EventEmitter = require('events').EventEmitter;
 
@@ -88,6 +89,7 @@ class NetworkRecorder extends EventEmitter {
       request.onRequestWillBeSent(data);
       request.sessionId = event.sessionId;
       this.onRequestStarted(request);
+      log.verbose('network', `request will be sent to ${request.url}`);
       return;
     }
 
@@ -108,6 +110,7 @@ class NetworkRecorder extends EventEmitter {
 
     redirectedRequest.onRequestWillBeSent(modifiedData);
     originalRequest.onRedirectResponse(data);
+    log.verbose('network', `${originalRequest.url} redirected to ${redirectedRequest.url}`);
 
     originalRequest.redirectDestination = redirectedRequest;
     redirectedRequest.redirectSource = originalRequest;
@@ -124,6 +127,7 @@ class NetworkRecorder extends EventEmitter {
     const data = event.params;
     const request = this._findRealRequestAndSetSession(data.requestId, event.sessionId);
     if (!request) return;
+    log.verbose('network', `${request.url} served from cache`);
     request.onRequestServedFromCache();
   }
 
@@ -134,6 +138,7 @@ class NetworkRecorder extends EventEmitter {
     const data = event.params;
     const request = this._findRealRequestAndSetSession(data.requestId, event.sessionId);
     if (!request) return;
+    log.verbose('network', `${request.url} response received`);
     request.onResponseReceived(data);
   }
 
@@ -144,6 +149,7 @@ class NetworkRecorder extends EventEmitter {
     const data = event.params;
     const request = this._findRealRequestAndSetSession(data.requestId, event.sessionId);
     if (!request) return;
+    log.verbose('network', `${request.url} data received`);
     request.onDataReceived(data);
   }
 
@@ -154,6 +160,7 @@ class NetworkRecorder extends EventEmitter {
     const data = event.params;
     const request = this._findRealRequestAndSetSession(data.requestId, event.sessionId);
     if (!request) return;
+    log.verbose('network', `${request.url} loading finished`);
     request.onLoadingFinished(data);
     this.onRequestFinished(request);
   }
@@ -165,6 +172,7 @@ class NetworkRecorder extends EventEmitter {
     const data = event.params;
     const request = this._findRealRequestAndSetSession(data.requestId, event.sessionId);
     if (!request) return;
+    log.verbose('network', `${request.url} loading failed`);
     request.onLoadingFailed(data);
     this.onRequestFinished(request);
   }
@@ -243,8 +251,8 @@ class NetworkRecorder extends EventEmitter {
     if (record.redirectSource) {
       return record.redirectSource;
     }
-    const stackFrames = (record.initiator.stack && record.initiator.stack.callFrames) || [];
-    const initiatorURL = record.initiator.url || (stackFrames[0] && stackFrames[0].url);
+    const stackFrames = record.initiator.stack?.callFrames || [];
+    const initiatorURL = record.initiator.url || stackFrames[0]?.url;
 
     let candidates = recordsByURL.get(initiatorURL) || [];
     // The initiator must come before the initiated request.

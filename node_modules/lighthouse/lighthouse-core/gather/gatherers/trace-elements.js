@@ -16,10 +16,12 @@
 const FRGatherer = require('../../fraggle-rock/gather/base-gatherer.js');
 const {resolveNodeIdToObjectId} = require('../driver/dom.js');
 const pageFunctions = require('../../lib/page-functions.js');
-const TraceProcessor = require('../../lib/tracehouse/trace-processor.js');
 const RectHelpers = require('../../lib/rect-helpers.js');
 const Sentry = require('../../lib/sentry.js');
 const Trace = require('./trace.js');
+const ProcessedTrace = require('../../computed/processed-trace.js');
+const ProcessedNavigation = require('../../computed/processed-navigation.js');
+const LighthouseError = require('../../lib/lh-error.js');
 
 /** @typedef {{nodeId: number, score?: number, animations?: {name?: string, failureReasonsMask?: number, unsupportedProperties?: string[]}[]}} TraceElementData */
 
@@ -43,7 +45,7 @@ class TraceElements extends FRGatherer {
   meta = {
     supportedModes: ['timespan', 'navigation'],
     dependencies: {Trace: Trace.symbol},
-  }
+  };
 
   /** @type {Map<string, string>} */
   animationIdToName = new Map();
@@ -56,42 +58,6 @@ class TraceElements extends FRGatherer {
   /** @param {LH.Crdp.Animation.AnimationStartedEvent} args */
   _onAnimationStarted({animation: {id, name}}) {
     if (name) this.animationIdToName.set(id, name);
-  }
-
-  /**
-   * @param {LH.TraceEvent | undefined} event
-   * @return {number | undefined}
-   */
-  static getNodeIDFromTraceEvent(event) {
-    return event && event.args &&
-      event.args.data && event.args.data.nodeId;
-  }
-
-  /**
-   * @param {LH.TraceEvent | undefined} event
-   * @return {string | undefined}
-   */
-  static getAnimationIDFromTraceEvent(event) {
-    return event && event.args &&
-      event.args.data && event.args.data.id;
-  }
-
-  /**
-   * @param {LH.TraceEvent | undefined} event
-   * @return {number | undefined}
-   */
-  static getFailureReasonsFromTraceEvent(event) {
-    return event && event.args &&
-      event.args.data && event.args.data.compositeFailed;
-  }
-
-  /**
-   * @param {LH.TraceEvent | undefined} event
-   * @return {string[] | undefined}
-   */
-  static getUnsupportedPropertiesFromTraceEvent(event) {
-    return event && event.args &&
-      event.args.data && event.args.data.unsupportedProperties;
   }
 
   /**
@@ -122,7 +88,7 @@ class TraceElements extends FRGatherer {
     const clsPerNode = new Map();
     const shiftEvents = mainThreadEvents
       .filter(e => e.name === 'LayoutShift')
-      .map(e => e.args && e.args.data);
+      .map(e => e.args?.data);
     const indexFirstEventWithoutInput =
       shiftEvents.findIndex(event => event && !event.had_recent_input);
 
@@ -205,11 +171,12 @@ class TraceElements extends FRGatherer {
     /** @type {Map<number, Set<{animationId: string, failureReasonsMask?: number, unsupportedProperties?: string[]}>>} */
     const elementAnimations = new Map();
     for (const {begin, status} of animationPairs.values()) {
-      const nodeId = TraceElements.getNodeIDFromTraceEvent(begin);
-      const animationId = TraceElements.getAnimationIDFromTraceEvent(begin);
-      const failureReasonsMask = TraceElements.getFailureReasonsFromTraceEvent(status);
-      const unsupportedProperties = TraceElements.getUnsupportedPropertiesFromTraceEvent(status);
+      const nodeId = begin?.args?.data?.nodeId;
+      const animationId = begin?.args?.data?.id;
+      const failureReasonsMask = status?.args?.data?.compositeFailed;
+      const unsupportedProperties = status?.args?.data?.unsupportedProperties;
       if (!nodeId || !animationId) continue;
+
       const animationIds = elementAnimations.get(nodeId) || new Set();
       animationIds.add({animationId, failureReasonsMask, unsupportedProperties});
       elementAnimations.set(nodeId, animationIds);
@@ -255,10 +222,20 @@ class TraceElements extends FRGatherer {
       throw new Error('Trace is missing!');
     }
 
-    const {largestContentfulPaintEvt, mainThreadEvents} =
-      TraceProcessor.computeTraceOfTab(trace);
+    const processedTrace = await ProcessedTrace.request(trace, context);
+    const {largestContentfulPaintEvt} = await ProcessedNavigation
+      .request(processedTrace, context)
+      .catch(err => {
+        // If we were running in timespan mode and there was no paint, treat LCP as missing.
+        if (context.gatherMode === 'timespan' && err.code === LighthouseError.errors.NO_FCP.code) {
+          return {largestContentfulPaintEvt: undefined};
+        }
 
-    const lcpNodeId = TraceElements.getNodeIDFromTraceEvent(largestContentfulPaintEvt);
+        throw err;
+      });
+    const {mainThreadEvents} = processedTrace;
+
+    const lcpNodeId = largestContentfulPaintEvt?.args?.data?.nodeId;
     const clsNodeData = TraceElements.getTopLayoutShiftElements(mainThreadEvents);
     const animatedElementData =
       await this.getAnimatedElements(mainThreadEvents);
@@ -296,7 +273,7 @@ class TraceElements extends FRGatherer {
           continue;
         }
 
-        if (response && response.result && response.result.value) {
+        if (response?.result?.value) {
           traceElements.push({
             traceEventType,
             ...response.result.value,

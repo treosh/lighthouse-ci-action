@@ -198,8 +198,9 @@ class NetworkAnalyzer {
       if (!Number.isFinite(timing.receiveHeadersEnd) || timing.receiveHeadersEnd < 0) return;
       if (!record.resourceType) return;
 
-      const serverResponseTimePercentage = SERVER_RESPONSE_PERCENTAGE_OF_TTFB[record.resourceType]
-        || DEFAULT_SERVER_RESPONSE_PERCENTAGE;
+      const serverResponseTimePercentage =
+        SERVER_RESPONSE_PERCENTAGE_OF_TTFB[record.resourceType] ||
+        DEFAULT_SERVER_RESPONSE_PERCENTAGE;
       const estimatedServerResponseTime = timing.receiveHeadersEnd * serverResponseTimePercentage;
 
       // When connection was reused...
@@ -389,7 +390,7 @@ class NetworkAnalyzer {
     // downloading those bytes. We slice up all the network records into start/end boundaries, so
     // it's easier to deal with the gaps in downloading.
     const timeBoundaries = networkRecords.reduce((boundaries, record) => {
-      const scheme = record.parsedURL && record.parsedURL.scheme;
+      const scheme = record.parsedURL?.scheme;
       // Requests whose bodies didn't come over the network or didn't completely finish will mess
       // with the computation, just skip over them.
       if (scheme === 'data' || record.failed || !record.finished ||
@@ -437,6 +438,17 @@ class NetworkAnalyzer {
    * @return {LH.Artifacts.NetworkRequest}
    */
   static findMainDocument(records, finalURL) {
+    const mainDocument = NetworkAnalyzer.findOptionalMainDocument(records, finalURL);
+    if (!mainDocument) throw new Error('Unable to identify the main resource');
+    return mainDocument;
+  }
+
+  /**
+   * @param {Array<LH.Artifacts.NetworkRequest>} records
+   * @param {string} [finalURL]
+   * @return {LH.Artifacts.NetworkRequest|undefined}
+   */
+  static findOptionalMainDocument(records, finalURL) {
     // Try to find an exact match with the final URL first if we have one
     if (finalURL) {
       // equalWithExcludedFragments is expensive, so check that the finalUrl starts with the request first
@@ -448,7 +460,7 @@ class NetworkAnalyzer {
 
     const documentRequests = records.filter(record => record.resourceType ===
         NetworkRequest.TYPES.Document);
-    if (!documentRequests.length) throw new Error('Unable to identify the main resource');
+    if (!documentRequests.length) return undefined;
     // The main document is the earliest document request, using position in networkRecords array to break ties.
     return documentRequests.reduce((min, r) => (r.startTime < min.startTime ? r : min));
   }
@@ -458,7 +470,7 @@ class NetworkAnalyzer {
    * See: {@link NetworkAnalyzer.findMainDocument}) for how to retrieve main document.
    *
    * @param {LH.Artifacts.NetworkRequest} request
-   * @returns {LH.Artifacts.NetworkRequest}
+   * @return {LH.Artifacts.NetworkRequest}
    */
   static resolveRedirects(request) {
     while (request.redirectDestination) request = request.redirectDestination;

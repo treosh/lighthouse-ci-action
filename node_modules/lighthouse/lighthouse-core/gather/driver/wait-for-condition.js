@@ -5,7 +5,7 @@
  */
 'use strict';
 
-/* global window, performance */
+/* global window */
 
 const log = require('lighthouse-logger');
 const LHError = require('../../lib/lh-error.js');
@@ -490,6 +490,32 @@ async function waitForFullyLoaded(session, networkMonitor, options) {
   return cleanupFn();
 }
 
+/**
+ * @param {LH.Gatherer.FRTransitionalDriver} driver
+ */
+function waitForUserToContinue(driver) {
+  /* c8 ignore start */
+  function createInPagePromise() {
+    let resolve = () => {};
+    /** @type {Promise<void>} */
+    const promise = new Promise(r => resolve = r);
+
+    // eslint-disable-next-line no-console
+    console.log([
+      `You have enabled Lighthouse navigation debug mode.`,
+      `When you have finished inspecting the page, evaluate "continueLighthouseRun()"`,
+      `in the console to continue with the Lighthouse run.`,
+    ].join(' '));
+
+    window.continueLighthouseRun = resolve;
+    return promise;
+  }
+  /* c8 ignore stop */
+
+  driver.defaultSession.setNextProtocolTimeout(2 ** 31 - 1);
+  return driver.executionContext.evaluate(createInPagePromise, {args: []});
+}
+
 module.exports = {
   waitForNothing,
   waitForFrameNavigated,
@@ -498,4 +524,5 @@ module.exports = {
   waitForNetworkIdle,
   waitForCPUIdle,
   waitForFullyLoaded,
+  waitForUserToContinue,
 };

@@ -1,0 +1,4 @@
+{
+  "type": "module",
+  "//": "Any directory that uses `import ... from` or `export ...` must be type module. Temporary file until root package.json is type: module"
+}

@@ -87,7 +87,7 @@ class HTTPS extends Audit {
         {key: 'resolution', itemType: 'text', text: str_(UIStrings.columnResolution)},
       ];
 
-      for (const details of artifacts.InspectorIssues.mixedContent) {
+      for (const details of artifacts.InspectorIssues.mixedContentIssue) {
         let item = items.find(item => item.url === details.insecureURL);
         if (!item) {
           item = {url: details.insecureURL};

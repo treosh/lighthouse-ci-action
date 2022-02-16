@@ -22,7 +22,7 @@ const NetworkRecords = require('../../../computed/network-records.js');
 const DevtoolsLog = require('../devtools-log.js');
 const FRGatherer = require('../../../fraggle-rock/gather/base-gatherer.js');
 
-/* global document, window, performance, HTMLLinkElement, SVGScriptElement */
+/* global document, window, HTMLLinkElement, SVGScriptElement */
 
 /** @typedef {{href: string, media: string, msSinceHTMLEnd: number, matches: boolean}} MediaChange */
 /** @typedef {{tagName: 'LINK', url: string, href: string, rel: string, media: string, disabled: boolean, mediaChanges: Array<MediaChange>}} LinkTag */
@@ -119,7 +119,7 @@ class TagsBlockingFirstPaint extends FRGatherer {
   meta = {
     supportedModes: ['navigation'],
     dependencies: {DevtoolsLog: DevtoolsLog.symbol},
-  }
+  };
 
   /**
    * @param {Array<LH.Artifacts.NetworkRequest>} networkRecords

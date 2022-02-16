@@ -6,10 +6,11 @@
 'use strict';
 
 const Audit = require('../audit.js');
-const MainResource = require('../../computed/main-resource.js');
+const NetworkRecords = require('../../computed/network-records.js');
 const HTTP_UNSUCCESSFUL_CODE_LOW = 400;
 const HTTP_UNSUCCESSFUL_CODE_HIGH = 599;
 const i18n = require('../../lib/i18n/i18n.js');
+const NetworkAnalyzer = require('../../lib/dependency-graph/simulator/network-analyzer.js');
 
 const UIStrings = {
   /** Title of a Lighthouse audit that provides detail on the HTTP status code a page responds with. This descriptive title is shown when the page has responded with a valid HTTP status code. */
@@ -33,7 +34,8 @@ class HTTPStatusCode extends Audit {
       title: str_(UIStrings.title),
       failureTitle: str_(UIStrings.failureTitle),
       description: str_(UIStrings.description),
-      requiredArtifacts: ['devtoolsLogs', 'URL'],
+      requiredArtifacts: ['devtoolsLogs', 'URL', 'GatherContext'],
+      supportedModes: ['navigation'],
     };
   }
 
@@ -42,26 +44,25 @@ class HTTPStatusCode extends Audit {
    * @param {LH.Audit.Context} context
    * @return {Promise<LH.Audit.Product>}
    */
-  static audit(artifacts, context) {
+  static async audit(artifacts, context) {
     const devtoolsLog = artifacts.devtoolsLogs[Audit.DEFAULT_PASS];
     const URL = artifacts.URL;
+    const networkRecords = await NetworkRecords.request(devtoolsLog, context);
+    const mainResource = NetworkAnalyzer.findMainDocument(networkRecords, URL.finalUrl);
 
-    return MainResource.request({devtoolsLog, URL}, context)
-      .then(mainResource => {
-        const statusCode = mainResource.statusCode;
+    const statusCode = mainResource.statusCode;
 
-        if (statusCode >= HTTP_UNSUCCESSFUL_CODE_LOW &&
+    if (statusCode >= HTTP_UNSUCCESSFUL_CODE_LOW &&
           statusCode <= HTTP_UNSUCCESSFUL_CODE_HIGH) {
-          return {
-            score: 0,
-            displayValue: `${statusCode}`,
-          };
-        }
+      return {
+        score: 0,
+        displayValue: `${statusCode}`,
+      };
+    }
 
-        return {
-          score: 1,
-        };
-      });
+    return {
+      score: 1,
+    };
   }
 }
 

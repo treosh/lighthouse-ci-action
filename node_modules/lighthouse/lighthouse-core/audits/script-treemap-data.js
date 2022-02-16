@@ -8,7 +8,7 @@
 /**
  * @fileoverview
  * Creates nodes for treemap app.
- * Example output: lighthouse-treemap/app/debug.json
+ * Example output: treemap/app/debug.json
  */
 
 /**

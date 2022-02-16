@@ -1,8 +1,11 @@
 #!/usr/bin/env node
 
 'use strict';
+
 /**
  * @fileoverview Script to launch a clean Chrome instance on-demand.
+ *
+ * node lighthouse-core/scripts/manual-chrome-launcher.js
  *
  * Assuming Lighthouse is installed globally or `npm link`ed, use via:
  *     chrome-debug
@@ -13,7 +16,7 @@
  *     chrome-debug --enable-extensions
  */
 
-const {Launcher, launch} = require('chrome-launcher');
+import {Launcher, launch} from 'chrome-launcher';
 
 const args = process.argv.slice(2);
 const chromeFlags = [];

@@ -15,7 +15,8 @@ const BaseNode = require('../../lib/dependency-graph/base-node.js');
 const ByteEfficiencyAudit = require('./byte-efficiency-audit.js');
 const UnusedCSS = require('../../computed/unused-css.js');
 const NetworkRequest = require('../../lib/network-request.js');
-const TraceOfTab = require('../../computed/trace-of-tab.js');
+const ProcessedTrace = require('../../computed/processed-trace.js');
+const ProcessedNavigation = require('../../computed/processed-navigation.js');
 const LoadSimulator = require('../../computed/load-simulator.js');
 const FirstContentfulPaint = require('../../computed/metrics/first-contentful-paint.js');
 
@@ -112,12 +113,13 @@ class RenderBlockingResources extends Audit {
     return {
       id: 'render-blocking-resources',
       title: str_(UIStrings.title),
+      supportedModes: ['navigation'],
       scoreDisplayMode: Audit.SCORING_MODES.NUMERIC,
       description: str_(UIStrings.description),
       // TODO: look into adding an `optionalArtifacts` property that captures the non-required nature
       // of CSSUsage
       requiredArtifacts: ['URL', 'TagsBlockingFirstPaint', 'traces', 'devtoolsLogs', 'CSSUsage',
-        'Stacks'],
+        'GatherContext', 'Stacks'],
     };
   }
 
@@ -127,23 +129,28 @@ class RenderBlockingResources extends Audit {
    * @return {Promise<{wastedMs: number, results: Array<{url: string, totalBytes: number, wastedMs: number}>}>}
    */
   static async computeResults(artifacts, context) {
+    const gatherContext = artifacts.GatherContext;
     const trace = artifacts.traces[Audit.DEFAULT_PASS];
     const devtoolsLog = artifacts.devtoolsLogs[Audit.DEFAULT_PASS];
     const simulatorData = {devtoolsLog, settings: context.settings};
-    const traceOfTab = await TraceOfTab.request(trace, context);
+    const processedTrace = await ProcessedTrace.request(trace, context);
+    const processedNavigation = await ProcessedNavigation.request(processedTrace, context);
     const simulator = await LoadSimulator.request(simulatorData, context);
     const wastedCssBytes = await RenderBlockingResources.computeWastedCSSBytes(artifacts, context);
 
-    const metricSettings = {throttlingMethod: 'simulate'};
+    /** @type {Immutable<LH.Config.Settings>} */
+    const metricSettings = {
+      ...context.settings,
+      throttlingMethod: 'simulate',
+    };
 
-    /** @type {LH.Artifacts.MetricComputationData} */
-    // @ts-expect-error - TODO(bckenny): allow optional `throttling` settings
-    const metricComputationData = {trace, devtoolsLog, simulator, settings: metricSettings};
+    const metricComputationData = {trace, devtoolsLog, gatherContext, simulator,
+      settings: metricSettings};
 
     // Cast to just `LanternMetric` since we explicitly set `throttlingMethod: 'simulate'`.
     const fcpSimulation = /** @type {LH.Artifacts.LanternMetric} */
       (await FirstContentfulPaint.request(metricComputationData, context));
-    const fcpTsInMs = traceOfTab.timestamps.firstContentfulPaint / 1000;
+    const fcpTsInMs = processedNavigation.timestamps.firstContentfulPaint / 1000;
 
     const nodesByUrl = getNodesAndTimingByUrl(fcpSimulation.optimisticEstimate.nodeTimings);
 

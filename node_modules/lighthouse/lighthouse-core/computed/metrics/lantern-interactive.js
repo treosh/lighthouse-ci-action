@@ -107,4 +107,7 @@ class LanternInteractive extends LanternMetric {
   }
 }
 
-module.exports = makeComputedArtifact(LanternInteractive);
+module.exports = makeComputedArtifact(
+  LanternInteractive,
+  ['devtoolsLog', 'gatherContext', 'settings', 'simulator', 'trace']
+);

@@ -9,7 +9,8 @@
  * URL shim so we keep our code DRY
  */
 
-const Util = require('../report/html/renderer/util.js');
+const {Util} = require('../util-commonjs.js');
+const LHError = require('../lib/lh-error.js');
 
 /** @typedef {import('./network-request.js')} NetworkRequest */
 
@@ -20,7 +21,13 @@ const allowedProtocols = [
 const SECURE_SCHEMES = ['data', 'https', 'wss', 'blob', 'chrome', 'chrome-extension', 'about',
   'filesystem'];
 const SECURE_LOCALHOST_DOMAINS = ['localhost', '127.0.0.1'];
-const NON_NETWORK_SCHEMES = ['blob', 'data', 'intent'];
+const NON_NETWORK_SCHEMES = [
+  'blob', // @see https://developer.mozilla.org/en-US/docs/Web/API/URL/createObjectURL
+  'data', // @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs
+  'intent', // @see https://developer.chrome.com/docs/multidevice/android/intents/
+  'file', // @see https://en.wikipedia.org/wiki/File_URI_scheme
+  'filesystem', // @see https://developer.mozilla.org/en-US/docs/Web/API/FileSystem
+];
 
 /**
  * There is fancy URL rewriting logic for the chrome://settings page that we need to work around.
@@ -202,7 +209,7 @@ class URLShim extends URL {
   /**
    * Use `NetworkRequest.isNonNetworkRequest(req)` if working with a request.
    * Note: the `protocol` field from CDP can be 'h2', 'http', (not 'https'!) or it'll be url's scheme.
-   *   https://source.chromium.org/chromium/chromium/src/+/master:content/browser/devtools/protocol/network_handler.cc;l=598-611;drc=56d4a9a9deb30be73adcee8737c73bcb2a5ab64f
+   *   https://source.chromium.org/chromium/chromium/src/+/main:content/browser/devtools/protocol/network_handler.cc;l=598-611;drc=56d4a9a9deb30be73adcee8737c73bcb2a5ab64f
    * However, a `new URL(href).protocol` has a colon suffix.
    *   https://url.spec.whatwg.org/#dom-url-protocol
    * A URL's `scheme` is specced as the `protocol` sans-colon, but isn't exposed on a URL object.
@@ -214,6 +221,47 @@ class URLShim extends URL {
     // Strip off any colon
     const urlScheme = protocol.includes(':') ? protocol.slice(0, protocol.indexOf(':')) : protocol;
     return NON_NETWORK_SCHEMES.includes(urlScheme);
+  }
+
+  /**
+   * @param {string} src
+   * @return {string|undefined}
+   */
+  static guessMimeType(src) {
+    let url;
+    try {
+      url = new URL(src);
+    } catch {
+      return undefined;
+    }
+
+    if (url.protocol === 'data:') {
+      const match = url.pathname.match(/image\/(png|jpeg|svg\+xml|webp|gif|avif)(?=;)/);
+      if (!match) return undefined;
+      return match[0];
+    }
+
+    const match = url.pathname.toLowerCase().match(/\.(png|jpeg|jpg|svg|webp|gif|avif)$/);
+    if (!match) return undefined;
+
+    const ext = match[1];
+    if (ext === 'svg') return 'image/svg+xml';
+    if (ext === 'jpg') return 'image/jpeg';
+    return `image/${ext}`;
+  }
+
+  /**
+   * @param {string|undefined} url
+   * @return {string}
+   */
+  static normalizeUrl(url) {
+    // Verify the url is valid and that protocol is allowed
+    if (url && this.isValid(url) && this.isProtocolAllowed(url)) {
+      // Use canonicalized URL (with trailing slashes and such)
+      return new URL(url).href;
+    } else {
+      throw new LHError(LHError.errors.INVALID_URL);
+    }
   }
 }
 

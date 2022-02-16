@@ -41,10 +41,10 @@ class NetworkRequests extends Audit {
         undefined : (time - earliestStartTime) * 1000;
 
       const results = records.map(record => {
-        const endTimeDeltaMs = record.lrStatistics && record.lrStatistics.endTimeDeltaMs;
-        const TCPMs = record.lrStatistics && record.lrStatistics.TCPMs;
-        const requestMs = record.lrStatistics && record.lrStatistics.requestMs;
-        const responseMs = record.lrStatistics && record.lrStatistics.responseMs;
+        const endTimeDeltaMs = record.lrStatistics?.endTimeDeltaMs;
+        const TCPMs = record.lrStatistics?.TCPMs;
+        const requestMs = record.lrStatistics?.requestMs;
+        const responseMs = record.lrStatistics?.responseMs;
 
         return {
           url: URL.elideDataURI(record.url),

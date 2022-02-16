@@ -17,8 +17,8 @@ const FRGatherer = require('../../fraggle-rock/gather/base-gatherer.js');
 class GlobalListeners extends FRGatherer {
   /** @type {LH.Gatherer.GathererMeta} */
   meta = {
-    supportedModes: ['snapshot', 'navigation'],
-  }
+    supportedModes: ['snapshot', 'timespan', 'navigation'],
+  };
 
   /**
    * @param {LH.Crdp.DOMDebugger.EventListener} listener

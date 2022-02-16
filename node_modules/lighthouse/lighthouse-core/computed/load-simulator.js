@@ -24,6 +24,7 @@ class LoadSimulator {
     const options = {
       additionalRttByOrigin: networkAnalysis.additionalRttByOrigin,
       serverResponseTimeByOrigin: networkAnalysis.serverResponseTimeByOrigin,
+      observedThroughput: networkAnalysis.throughput,
     };
 
     // If we have precomputed lantern data, overwrite our observed estimates and use precomputed instead
@@ -88,4 +89,4 @@ class LoadSimulator {
   }
 }
 
-module.exports = makeComputedArtifact(LoadSimulator);
+module.exports = makeComputedArtifact(LoadSimulator, ['devtoolsLog', 'settings']);

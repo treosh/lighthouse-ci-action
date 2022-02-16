@@ -71,12 +71,12 @@ const UIStrings = {
   /** Error message explaining that Lighthouse timed out while waiting for the initial connection to the Chrome Devtools protocol. */
   criTimeout: 'Timeout waiting for initial Debugger Protocol connection.',
   /**
-   * @description Error message explaning that a resource that was required for testing was never collected. "artifactName" will be replaced with the name of the resource that wasn't collected.
+   * @description Error message explaining that a resource that was required for testing was never collected. "artifactName" will be replaced with the name of the resource that wasn't collected.
    * @example {WebAppManifest} artifactName
    * */
   missingRequiredArtifact: 'Required {artifactName} gatherer did not run.',
   /**
-   * @description Error message explaning that there was an error while trying to collect a resource that was required for testing. "artifactName" will be replaced with the name of the resource that wasn't collected; "errorMessage" will be replaced with a string description of the error that occurred.
+   * @description Error message explaining that there was an error while trying to collect a resource that was required for testing. "artifactName" will be replaced with the name of the resource that wasn't collected; "errorMessage" will be replaced with a string description of the error that occurred.
    * @example {WebAppManifest} artifactName
    * @example {Manifest invalid} errorMessage
    * */

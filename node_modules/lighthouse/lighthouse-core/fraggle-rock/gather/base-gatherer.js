@@ -17,7 +17,7 @@
  */
 class FRGatherer {
   /** @type {LH.Gatherer.GathererMeta} */
-  meta = {supportedModes: []}
+  meta = {supportedModes: []};
 
   /**
    * Method to start observing a page for an arbitrary period of time.
@@ -62,8 +62,13 @@ class FRGatherer {
    * @return {keyof LH.GathererArtifacts}
    */
   get name() {
+    let name = this.constructor.name;
+    // Rollup will mangle class names in an known way–just trim until `$`.
+    if (name.includes('$')) {
+      name = name.substr(0, name.indexOf('$'));
+    }
     // @ts-expect-error - assume that class name has been added to LH.GathererArtifacts.
-    return this.constructor.name;
+    return name;
   }
 
   /**

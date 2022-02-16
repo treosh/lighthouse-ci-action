@@ -74,7 +74,7 @@ class ModuleDuplication {
   }
 
   /**
-   * @param {LH.Artifacts} artifacts
+   * @param {Pick<LH.Artifacts, 'ScriptElements'|'SourceMaps'>} artifacts
    * @param {LH.Artifacts.ComputedContext} context
    */
   static async compute_(artifacts, context) {
@@ -133,4 +133,4 @@ class ModuleDuplication {
   }
 }
 
-module.exports = makeComputedArtifact(ModuleDuplication);
+module.exports = makeComputedArtifact(ModuleDuplication, ['ScriptElements', 'SourceMaps']);

@@ -49,8 +49,8 @@ function collectFormElements() {
       forms.set(parentFormElement, newFormObj);
     }
     const formObj = forms.get(parentFormElement) || formlessObj;
-    if (child instanceof HTMLInputElement || child instanceof HTMLTextAreaElement
-      || child instanceof HTMLSelectElement) {
+    if (child instanceof HTMLInputElement || child instanceof HTMLTextAreaElement ||
+      child instanceof HTMLSelectElement) {
       formObj.inputs.push({
         id: child.id,
         name: child.name,
@@ -89,7 +89,7 @@ class FormElements extends FRGatherer {
   /** @type {LH.Gatherer.GathererMeta} */
   meta = {
     supportedModes: ['snapshot', 'navigation'],
-  }
+  };
 
   /**
    * @param {LH.Gatherer.FRTransitionalContext} passContext

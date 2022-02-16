@@ -208,7 +208,8 @@ function computeBenchmarkIndex() {
 
     while (Date.now() - start < 500) {
       let s = '';
-      for (let j = 0; j < 10000; j++) s += 'a'; // eslint-disable-line no-unused-vars
+      for (let j = 0; j < 10000; j++) s += 'a';
+      if (s.length === 1) throw new Error('will never happen, but prevents compiler optimizations');
 
       iterations++;
     }
@@ -378,9 +379,9 @@ function isPositionFixed(element) {
 /**
  * Generate a human-readable label for the given element, based on end-user facing
  * strings like the innerText or alt attribute.
- * Falls back to the tagName if no useful label is found.
+ * Returns label string or null if no useful label is found.
  * @param {Element} element
- * @return {string}
+ * @return {string | null}
  */
 function getNodeLabel(element) {
   // Inline so that audits that import getNodeLabel don't
@@ -415,7 +416,7 @@ function getNodeLabel(element) {
       }
     }
   }
-  return tagName;
+  return null;
 }
 
 /**
@@ -482,6 +483,7 @@ function getNodeDetails(element) {
   }
 
   element = element instanceof ShadowRoot ? element.host : element;
+  const selector = getNodeSelector(element);
 
   // Create an id that will be unique across all execution contexts.
   // The id could be any arbitrary string, the exact value is not important.
@@ -505,10 +507,10 @@ function getNodeDetails(element) {
   const details = {
     lhId,
     devtoolsNodePath: getNodePath(element),
-    selector: getNodeSelector(element),
+    selector: selector,
     boundingRect: getBoundingClientRect(element),
     snippet: getOuterHTMLSnippet(element),
-    nodeLabel: getNodeLabel(element),
+    nodeLabel: getNodeLabel(element) || selector,
   };
 
   return details;
@@ -529,8 +531,8 @@ module.exports = {
   getElementsInDocument,
   getElementsInDocumentString: getElementsInDocument.toString(),
   getOuterHTMLSnippetString: getOuterHTMLSnippet.toString(),
-  getOuterHTMLSnippet: getOuterHTMLSnippet,
-  computeBenchmarkIndex: computeBenchmarkIndex,
+  getOuterHTMLSnippet,
+  computeBenchmarkIndex,
   computeBenchmarkIndexString: computeBenchmarkIndex.toString(),
   getMaxTextureSize,
   getNodeDetailsString,
@@ -538,8 +540,8 @@ module.exports = {
   getNodePathString: getNodePath.toString(),
   getNodeSelectorString: getNodeSelector.toString(),
   getNodePath,
-  getNodeSelector: getNodeSelector,
-  getNodeLabel: getNodeLabel,
+  getNodeSelector,
+  getNodeLabel,
   getNodeLabelString: getNodeLabel.toString(),
   isPositionFixedString: isPositionFixed.toString(),
   wrapRequestIdleCallback,

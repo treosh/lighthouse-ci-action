@@ -46,7 +46,7 @@ class ViewportMeta {
   }
 }
 
-module.exports = makeComputedArtifact(ViewportMeta);
+module.exports = makeComputedArtifact(ViewportMeta, null);
 
 /**
  * @typedef {object} ViewportMetaResult

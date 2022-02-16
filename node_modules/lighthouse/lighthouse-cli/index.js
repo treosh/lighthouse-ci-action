@@ -6,7 +6,9 @@
  */
 'use strict';
 
-require('./bin.js').begin().catch(err => {
+import {begin} from './bin.js';
+
+begin().catch(err => {
   process.stderr.write(err.stack);
   process.exit(1);
 });

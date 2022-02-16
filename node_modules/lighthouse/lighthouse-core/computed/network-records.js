@@ -18,4 +18,4 @@ class NetworkRecords {
   }
 }
 
-module.exports = makeComputedArtifact(NetworkRecords);
+module.exports = makeComputedArtifact(NetworkRecords, null);

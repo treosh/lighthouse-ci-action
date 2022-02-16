@@ -42,6 +42,7 @@ class ThemedOmnibox extends MultiCheckAudit {
       title: str_(UIStrings.title),
       failureTitle: str_(UIStrings.failureTitle),
       description: str_(UIStrings.description),
+      supportedModes: ['navigation'],
       requiredArtifacts: ['WebAppManifest', 'InstallabilityErrors', 'MetaElements'],
     };
   }
@@ -100,7 +101,7 @@ class ThemedOmnibox extends MultiCheckAudit {
     return {
       failures,
       manifestValues,
-      themeColor: (themeColorMeta && themeColorMeta.content) || null,
+      themeColor: themeColorMeta?.content || null,
     };
   }
 }

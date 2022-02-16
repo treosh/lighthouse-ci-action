@@ -132,4 +132,4 @@ class ManifestValues {
   }
 }
 
-module.exports = makeComputedArtifact(ManifestValues);
+module.exports = makeComputedArtifact(ManifestValues, ['InstallabilityErrors', 'WebAppManifest']);

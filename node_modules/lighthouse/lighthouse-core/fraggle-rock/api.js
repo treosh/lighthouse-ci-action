@@ -8,9 +8,19 @@
 const {snapshot} = require('./gather/snapshot-runner.js');
 const {startTimespan} = require('./gather/timespan-runner.js');
 const {navigation} = require('./gather/navigation-runner.js');
+const UserFlow = require('./user-flow.js');
+
+/**
+ * @param {import('puppeteer').Page} page
+ * @param {UserFlow.UserFlowOptions} [options]
+ */
+async function startFlow(page, options) {
+  return new UserFlow(page, options);
+}
 
 module.exports = {
   snapshot,
   startTimespan,
   navigation,
+  startFlow,
 };

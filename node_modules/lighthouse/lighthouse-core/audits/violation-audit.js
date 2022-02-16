@@ -6,14 +6,18 @@
 'use strict';
 
 const Audit = require('./audit.js');
+const JsBundles = require('../computed/js-bundles.js');
 
 class ViolationAudit extends Audit {
   /**
    * @param {LH.Artifacts} artifacts
+   * @param {LH.Audit.Context} context
    * @param {RegExp} pattern
-   * @return {Array<{source: LH.Audit.Details.SourceLocationValue}>}
+   * @return {Promise<Array<{source: LH.Audit.Details.SourceLocationValue}>>}
    */
-  static getViolationResults(artifacts, pattern) {
+  static async getViolationResults(artifacts, context, pattern) {
+    const bundles = await JsBundles.request(artifacts, context);
+
     /**
      * @template T
      * @param {T} value
@@ -26,7 +30,10 @@ class ViolationAudit extends Audit {
     const seen = new Set();
     return artifacts.ConsoleMessages
         .filter(entry => entry.url && entry.source === 'violation' && pattern.test(entry.text))
-        .map(Audit.makeSourceLocationFromConsoleMessage)
+        .map(entry => {
+          const bundle = bundles.find(bundle => bundle.script.src === entry.url);
+          return Audit.makeSourceLocationFromConsoleMessage(entry, bundle);
+        })
         .filter(filterUndefined)
         .filter(source => {
           // Filter out duplicate entries since they are not differentiable to the user

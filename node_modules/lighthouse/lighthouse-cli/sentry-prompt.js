@@ -5,10 +5,9 @@
  */
 'use strict';
 
-const Configstore = require('configstore');
-const {Confirm} = require('enquirer');
-
-const log = require('lighthouse-logger');
+import Configstore from 'configstore';
+import Confirm from 'enquirer';
+import log from 'lighthouse-logger';
 
 const MAXIMUM_WAIT_TIME = 20 * 1000;
 
@@ -29,7 +28,7 @@ function prompt() {
   /** @type {NodeJS.Timer|undefined} */
   let timeout;
 
-  const prompt = new Confirm({
+  const prompt = new Confirm.Confirm({
     name: 'isErrorReportingEnabled',
     initial: false,
     message: MESSAGE,
@@ -75,6 +74,6 @@ function askPermission() {
   }).catch(_ => false);
 }
 
-module.exports = {
+export {
   askPermission,
 };

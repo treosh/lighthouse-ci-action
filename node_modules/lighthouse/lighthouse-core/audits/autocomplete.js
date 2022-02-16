@@ -63,11 +63,11 @@ const validAutocompleteTokens = ['name', 'honorific-prefix', 'given-name',
   'tel-local', 'tel-local-prefix', 'tel-local-suffix', 'tel-extension', 'email', 'impp', 'off',
   'additional-name-initial', 'home', 'work', 'mobile', 'fax', 'pager', 'shipping', 'billing'];
 
-/** @type {string[]} This array contains all autofull suggestions that have no prediction tied to it. Autofill predictions found at https://source.chromium.org/chromium/chromium/src/+/master:components/autofill/core/browser/field_types.h;l=26 */
+/** @type {string[]} This array contains all autofull suggestions that have no prediction tied to it. Autofill predictions found at https://source.chromium.org/chromium/chromium/src/+/main:components/autofill/core/browser/field_types.h;l=26 */
 const noPrediction = ['NO_SERVER_DATA', 'UNKNOWN_TYPE', 'EMPTY_TYPE', 'HTML_TYPE_UNSPECIFIED',
   'HTML_TYPE_UNRECOGNIZED'];
 
-/** This mapping contains all autofill predictions to corresponding autocomplete attributes. Autofill predictions are found at https://source.chromium.org/chromium/chromium/src/+/master:components/autofill/core/browser/field_types.h;l=34*/
+/** This mapping contains all autofill predictions to corresponding autocomplete attributes. Autofill predictions are found at https://source.chromium.org/chromium/chromium/src/+/main:components/autofill/core/browser/field_types.h;l=34*/
 const predictionTypesToTokens = {
   'NO_SERVER_DATA': str_(UIStrings.manualReview),
   'UNKNOWN_TYPE': str_(UIStrings.manualReview),

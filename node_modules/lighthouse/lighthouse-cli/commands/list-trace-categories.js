@@ -5,7 +5,7 @@
  */
 'use strict';
 
-const lighthouse = require('../../lighthouse-core/index.js');
+import lighthouse from '../../lighthouse-core/index.js';
 
 function listTraceCategories() {
   const traceCategories = lighthouse.traceCategories;
@@ -13,4 +13,4 @@ function listTraceCategories() {
   process.exit(0);
 }
 
-module.exports = listTraceCategories;
+export {listTraceCategories};

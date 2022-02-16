@@ -18,6 +18,7 @@ const {Directive} = require('csp_evaluator/dist/csp.js');
 
 const log = require('lighthouse-logger');
 const i18n = require('../lib/i18n/i18n.js');
+const {isIcuMessage} = require('../../shared/localization/format.js');
 
 const UIStrings = {
   /** Message shown when a CSP does not have a base-uri directive. Shown in a table with a list of other CSP vulnerabilities and suggestions. "CSP" stands for "Content Security Policy". "base-uri", "'none'", and "'self'" do not need to be translated. */
@@ -28,12 +29,11 @@ const UIStrings = {
   missingScriptSrc: 'script-src directive is missing. ' +
     'This can allow the execution of unsafe scripts.',
   /** Message shown when a CSP does not have a script-src directive. Shown in a table with a list of other CSP vulnerabilities and suggestions. "CSP" stands for "Content Security Policy". "object-src" and "'none'" do not need to be translated. */
-  missingObjectSrc: 'Elements controlled by object-src are considered legacy features. ' +
-    'Consider setting object-src to \'none\' to prevent the injection of ' +
-    'plugins that execute unsafe scripts.',
+  missingObjectSrc: 'Missing object-src allows the injection of plugins ' +
+    'that execute unsafe scripts. Consider setting object-src to \'none\' if you can.',
   /** Message shown when a CSP uses a domain allowlist to filter out malicious scripts. Shown in a table with a list of other CSP vulnerabilities and suggestions. "CSP" stands for "Content Security Policy". "CSP", "'strict-dynamic'", "nonces", and "hashes" do not need to be translated. "allowlists" can be interpreted as "whitelist". */
   strictDynamic: 'Host allowlists can frequently be bypassed. Consider using ' +
-    '\'strict-dynamic\' in combination with CSP nonces or hashes.',
+    'CSP nonces or hashes instead, along with \'strict-dynamic\' if necessary.',
   /** Message shown when a CSP allows inline scripts to be run in the page. Shown in a table with a list of other CSP vulnerabilities and suggestions. "CSP" stands for "Content Security Policy". "CSP", "'unsafe-inline'", "nonces", and "hashes" do not need to be translated. */
   unsafeInline: '\'unsafe-inline\' allows the execution of unsafe in-page scripts ' +
     'and event handlers. Consider using CSP nonces or hashes to allow scripts individually.',
@@ -76,6 +76,18 @@ const UIStrings = {
   /** Message shown when a CSP uses the deprecated disown-opener directive. Shown in a table with a list of other CSP vulnerabilities and suggestions. "CSP" stands for "Content Security Policy". "disown-opener", "CSP3" and "Cross-Origin-Opener-Policy" do not need to be translated. */
   deprecatedDisownOpener: 'disown-opener is deprecated since CSP3. ' +
     'Please, use the Cross-Origin-Opener-Policy header instead.',
+  /**
+   * @description Message shown when a CSP wildcard allows unsafe scripts to be run in the page. Shown in a table with a list of other CSP vulnerabilities and suggestions. "CSP" stands for "Content Security Policy".
+   *  @example {*} keyword
+   */
+  plainWildcards: 'Avoid using plain wildcards ({keyword}) in this directive. ' +
+    'Plain wildcards allow scripts to be sourced from an unsafe domain.',
+  /**
+   * @description Message shown when a CSP URL scheme allows unsafe scripts to be run in the page. Shown in a table with a list of other CSP vulnerabilities and suggestions. "CSP" stands for "Content Security Policy".
+   *  @example {https:} keyword
+   */
+  plainUrlScheme: 'Avoid using plain URL schemes ({keyword}) in this directive. ' +
+    'Plain URL schemes allow scripts to be sourced from an unsafe domain.',
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);
@@ -91,6 +103,8 @@ const FINDING_TO_UI_STRING = {
     [Directive.OBJECT_SRC]: str_(UIStrings.missingObjectSrc),
   },
   [Type.SCRIPT_UNSAFE_INLINE]: str_(UIStrings.unsafeInline),
+  [Type.PLAIN_WILDCARD]: UIStrings.plainWildcards,
+  [Type.PLAIN_URL_SCHEMES]: UIStrings.plainUrlScheme,
   [Type.NONCE_LENGTH]: str_(UIStrings.nonceLength),
   [Type.NONCE_CHARSET]: str_(UIStrings.nonceCharset),
   [Type.DEPRECATED_DIRECTIVE]: {
@@ -117,7 +131,7 @@ function getTranslatedDescription(finding) {
   }
 
   // Return if translated result found.
-  if (i18n.isIcuMessage(result)) return result;
+  if (isIcuMessage(result)) return result;
 
   // If result was not translated, that means `finding.value` is included in the UI string.
   if (typeof result === 'string') return str_(result, {keyword: finding.value || ''});

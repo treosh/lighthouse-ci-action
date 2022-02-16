@@ -42,6 +42,7 @@ class MaskableIcon extends Audit {
       title: str_(UIStrings.title),
       failureTitle: str_(UIStrings.failureTitle),
       description: str_(UIStrings.description),
+      supportedModes: ['navigation'],
       requiredArtifacts: ['WebAppManifest', 'InstallabilityErrors'],
     };
   }
@@ -61,7 +62,7 @@ class MaskableIcon extends Audit {
     }
     const maskableIconCheck = manifestValues.allChecks.find(i => i.id === 'hasMaskableIcon');
     return {
-      score: (maskableIconCheck && maskableIconCheck.passing) ? 1 : 0,
+      score: maskableIconCheck?.passing ? 1 : 0,
     };
   }
 }

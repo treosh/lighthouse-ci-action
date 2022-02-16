@@ -46,9 +46,15 @@ class DevtoolsLog {
    * @param {LH.Protocol.RawEventMessage} message
    */
   record(message) {
-    if (this._isRecording && (!this._filter || this._filter.test(message.method))) {
-      this._messages.push(message);
-    }
+    // We're not recording, skip the rest of the checks.
+    if (!this._isRecording) return;
+    // The event was likely an internal puppeteer method that uses Symbols.
+    if (typeof message.method !== 'string') return;
+    // The event didn't pass our filter, do not record it.
+    if (this._filter && !this._filter.test(message.method)) return;
+
+    // We passed all the checks, record the message.
+    this._messages.push(message);
   }
 }
 

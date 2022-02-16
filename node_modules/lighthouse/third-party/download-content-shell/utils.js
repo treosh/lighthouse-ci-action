@@ -96,29 +96,6 @@ function copyRecursive(src, dest) {
   }
 }
 
-function removeRecursive(filePath) {
-  try {
-    if (fs.existsSync(filePath)) {
-      if (isFile(filePath)) {
-        fs.unlinkSync(filePath);
-        return;
-      }
-      const files = fs.readdirSync(filePath);
-      for (let i = 0; i < files.length; i++) {
-        const childPath = path.resolve(filePath, files[i]);
-        if (isDir(childPath)) {
-          removeRecursive(childPath);
-        } else {
-          fs.unlinkSync(childPath);
-        }
-      }
-      fs.rmdirSync(filePath);
-    }
-  } catch (error) {
-    throw new Error(`Received an error: [${error}] while trying to remove: ${filePath}`);
-  }
-}
-
 function includes(sequence, target) {
   return sequence.indexOf(target) > -1;
 }
@@ -145,7 +122,6 @@ module.exports = {
   isDir,
   copy,
   copyRecursive,
-  removeRecursive,
   includes,
   shellOutput,
   parseArgs,

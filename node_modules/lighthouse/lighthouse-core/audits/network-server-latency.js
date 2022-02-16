@@ -7,6 +7,7 @@
 
 const Audit = require('./audit.js');
 const i18n = require('../lib/i18n/i18n.js');
+const NetworkRecords = require('../computed/network-records.js');
 const NetworkAnalysisComputed = require('../computed/network-analysis.js');
 
 const UIStrings = {
@@ -41,6 +42,14 @@ class NetworkServerLatency extends Audit {
    */
   static async audit(artifacts, context) {
     const devtoolsLog = artifacts.devtoolsLogs[Audit.DEFAULT_PASS];
+    const records = await NetworkRecords.request(devtoolsLog, context);
+    if (!records.length) {
+      return {
+        score: 1,
+        notApplicable: true,
+      };
+    }
+
     const analysis = await NetworkAnalysisComputed.request(devtoolsLog, context);
 
     /** @type {number} */

@@ -61,4 +61,4 @@ class NetworkAnalysis {
   }
 }
 
-module.exports = makeComputedArtifact(NetworkAnalysis);
+module.exports = makeComputedArtifact(NetworkAnalysis, null);

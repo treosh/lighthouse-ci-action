@@ -345,6 +345,14 @@ class BaseNode {
 
     return false;
   }
+
+  /**
+   * @param {Node} node
+   * @return {boolean}
+   */
+  canDependOn(node) {
+    return node.startTime <= this.startTime;
+  }
 }
 
 BaseNode.TYPES = /** @type {{NETWORK: 'network', CPU: 'cpu'}} */({

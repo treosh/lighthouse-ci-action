@@ -6,33 +6,30 @@
 'use strict';
 
 const makeComputedArtifact = require('../computed-artifact.js');
-const MetricArtifact = require('./metric.js');
+const NavigationMetric = require('./navigation-metric.js');
 const LanternMaxPotentialFID = require('./lantern-max-potential-fid.js');
-const LHError = require('../../lib/lh-error.js');
 const TracingProcessor = require('../../lib/tracehouse/trace-processor.js');
 
-class MaxPotentialFID extends MetricArtifact {
+class MaxPotentialFID extends NavigationMetric {
   /**
-   * @param {LH.Artifacts.MetricComputationData} data
+   * @param {LH.Artifacts.NavigationMetricComputationData} data
    * @param {LH.Artifacts.ComputedContext} context
    * @return {Promise<LH.Artifacts.LanternMetric>}
    */
   static computeSimulatedMetric(data, context) {
-    return LanternMaxPotentialFID.request(data, context);
+    const metricData = NavigationMetric.getMetricComputationInput(data);
+    return LanternMaxPotentialFID.request(metricData, context);
   }
 
   /**
-   * @param {LH.Artifacts.MetricComputationData} data
+   * @param {LH.Artifacts.NavigationMetricComputationData} data
    * @return {Promise<LH.Artifacts.Metric>}
    */
   static computeObservedMetric(data) {
-    const {firstContentfulPaint} = data.traceOfTab.timings;
-    if (!firstContentfulPaint) {
-      throw new LHError(LHError.errors.NO_FCP);
-    }
+    const {firstContentfulPaint} = data.processedNavigation.timings;
 
     const events = TracingProcessor.getMainThreadTopLevelEvents(
-      data.traceOfTab,
+      data.processedTrace,
       firstContentfulPaint
     ).filter(evt => evt.duration >= 1);
 
@@ -42,4 +39,7 @@ class MaxPotentialFID extends MetricArtifact {
   }
 }
 
-module.exports = makeComputedArtifact(MaxPotentialFID);
+module.exports = makeComputedArtifact(
+  MaxPotentialFID,
+  ['devtoolsLog', 'gatherContext', 'settings', 'simulator', 'trace']
+);

@@ -60,7 +60,9 @@ class UsesHTTP2Audit extends Audit {
       id: 'uses-http2',
       title: str_(UIStrings.title),
       description: str_(UIStrings.description),
-      requiredArtifacts: ['URL', 'devtoolsLogs', 'traces'],
+      scoreDisplayMode: Audit.SCORING_MODES.NUMERIC,
+      supportedModes: ['timespan', 'navigation'],
+      requiredArtifacts: ['URL', 'devtoolsLogs', 'traces', 'GatherContext'],
     };
   }
 
@@ -200,23 +202,39 @@ class UsesHTTP2Audit extends Audit {
   static async audit(artifacts, context) {
     const trace = artifacts.traces[Audit.DEFAULT_PASS];
     const devtoolsLog = artifacts.devtoolsLogs[Audit.DEFAULT_PASS];
-    const settings = context && context.settings || {};
-    const simulatorOptions = {
-      devtoolsLog,
-      settings,
-    };
-
     const networkRecords = await NetworkRecords.request(devtoolsLog, context);
-    const graph = await PageDependencyGraph.request({trace, devtoolsLog}, context);
-    const simulator = await LoadSimulator.request(simulatorOptions, context);
-
     const resources = UsesHTTP2Audit.determineNonHttp2Resources(networkRecords);
-    const wastedMs = UsesHTTP2Audit.computeWasteWithTTIGraph(resources, graph, simulator);
 
     let displayValue;
     if (resources.length > 0) {
       displayValue = str_(UIStrings.displayValue, {itemCount: resources.length});
     }
+
+    // TODO: Compute actual savings for timespan mode.
+    if (artifacts.GatherContext.gatherMode === 'timespan') {
+      /** @type {LH.Audit.Details.Table['headings']} */
+      const headings = [
+        {key: 'url', itemType: 'url', text: str_(i18n.UIStrings.columnURL)},
+        {key: 'protocol', itemType: 'text', text: str_(UIStrings.columnProtocol)},
+      ];
+
+      const details = Audit.makeTableDetails(headings, resources);
+
+      return {
+        displayValue,
+        score: resources.length ? 0 : 1,
+        details,
+      };
+    }
+
+    const settings = context?.settings || {};
+    const simulatorOptions = {
+      devtoolsLog,
+      settings,
+    };
+    const graph = await PageDependencyGraph.request({trace, devtoolsLog}, context);
+    const simulator = await LoadSimulator.request(simulatorOptions, context);
+    const wastedMs = UsesHTTP2Audit.computeWasteWithTTIGraph(resources, graph, simulator);
 
     /** @type {LH.Audit.Details.Opportunity['headings']} */
     const headings = [

@@ -32,17 +32,12 @@ const UIStrings = {
    * @description Explanatory message stating that there was a failure in an audit caused by a URL being relative instead of absolute.
    * @example {https://example.com/} url
    * */
-  explanationRelative: 'Relative URL ({url})',
+  explanationRelative: 'Is not an absolute URL ({url})',
   /**
    * @description Explanatory message stating that there was a failure in an audit caused by a URL pointing to a different hreflang than the current context.'hreflang' is an HTML attribute and should not be translated.
    * @example {https://example.com/} url
    */
   explanationPointsElsewhere: 'Points to another `hreflang` location ({url})',
-  /**
-   * @description Explanatory message stating that there was a failure in an audit caused by a URL pointing to a different domain.
-   * @example {https://example.com/} url
-   * */
-  explanationDifferentDomain: 'Points to a different domain ({url})',
   /** Explanatory message stating that the page's canonical URL was pointing to the domain's root URL, which is a common mistake. "points" refers to the action of the 'rel=canonical' referencing another link. "root" refers to the starting/home page of the website. "domain" refers to the registered domain name of the website. */
   explanationRoot: 'Points to the domain\'s root URL (the homepage), ' +
     'instead of an equivalent page of content',
@@ -68,6 +63,7 @@ class Canonical extends Audit {
       title: str_(UIStrings.title),
       failureTitle: str_(UIStrings.failureTitle),
       description: str_(UIStrings.description),
+      supportedModes: ['navigation'],
       requiredArtifacts: ['LinkElements', 'URL', 'devtoolsLogs'],
     };
   }
@@ -170,15 +166,6 @@ class Canonical extends Audit {
       return {
         score: 0,
         explanation: str_(UIStrings.explanationPointsElsewhere, {url: baseURL.href}),
-      };
-    }
-
-    // bing and yahoo don't allow canonical URLs pointing to different domains, it's also
-    // a common mistake to publish a page with canonical pointing to e.g. a test domain or localhost
-    if (!URL.rootDomainsMatch(canonicalURL, baseURL)) {
-      return {
-        score: 0,
-        explanation: str_(UIStrings.explanationDifferentDomain, {url: canonicalURL.href}),
       };
     }
 

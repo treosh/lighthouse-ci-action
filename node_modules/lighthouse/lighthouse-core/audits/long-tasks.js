@@ -62,7 +62,7 @@ class LongTasks extends Audit {
     const taskTimingsByEvent = new Map();
 
     if (settings.throttlingMethod === 'simulate') {
-      const simulatorOptions = {trace, devtoolsLog, settings: context.settings};
+      const simulatorOptions = {devtoolsLog, settings: context.settings};
       const pageGraph = await PageDependencyGraph.request({trace, devtoolsLog}, context);
       const simulator = await LoadSimulator.request(simulatorOptions, context);
       const simulation = await simulator.simulate(pageGraph, {label: 'long-tasks-diagnostic'});

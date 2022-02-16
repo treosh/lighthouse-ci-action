@@ -5,97 +5,26 @@
  */
 'use strict';
 
+/** @fileoverview This file is no longer used internally, but remains here for backcompat with plugins. */
+
+const log = require('lighthouse-logger');
 const makeComputedArtifact = require('./computed-artifact.js');
-const LHError = require('../lib/lh-error.js');
-const TraceProcessor = require('../lib/tracehouse/trace-processor.js');
-
-// TraceProcessor throws generic errors, but we'd like our special localized and code-specific LHError
-// objects to be thrown instead.
-class LHTraceProcessor extends TraceProcessor {
-  /**
-   * @return {Error}
-   */
-  static createNoNavstartError() {
-    return new LHError(LHError.errors.NO_NAVSTART);
-  }
-
-  /**
-   * This isn't currently used, but will be when the time origin of trace processing is changed.
-   * @see {TraceProcessor.computeTimeOrigin}
-   * @see https://github.com/GoogleChrome/lighthouse/pull/11253#discussion_r507985527
-   * @return {Error}
-   */
-  static createNoResourceSendRequestError() {
-    return new LHError(LHError.errors.NO_RESOURCE_REQUEST);
-  }
-
-  /**
-   * @return {Error}
-   */
-  static createNoTracingStartedError() {
-    return new LHError(LHError.errors.NO_TRACING_STARTED);
-  }
-}
-
+const ProcessedTrace = require('./processed-trace.js');
+const ProcessedNavigation = require('./processed-navigation.js');
 
 class TraceOfTab {
   /**
-   * Finds key trace events, identifies main process/thread, and returns timings of trace events
-   * in milliseconds since navigation start in addition to the standard microsecond monotonic timestamps.
-   * @param {LH.Trace} trace
-   * @return {Promise<LH.Artifacts.TraceOfTab>}
-  */
-  static async compute_(trace) {
-    // Trace of tab doesn't require FCP to exist, but all of LH requires it.
-    // We'll check that we got an FCP here and re-type accordingly so all of our consumers don't
-    // have to repeat this check.
-    const traceOfTab = await LHTraceProcessor.computeTraceOfTab(trace);
-    const {
-      timings,
-      timestamps,
-      firstContentfulPaintEvt,
-      firstContentfulPaintAllFramesEvt,
-    } = traceOfTab;
-    const {
-      firstContentfulPaint: firstContentfulPaintTiming,
-      firstContentfulPaintAllFrames: firstContentfulPaintAllFramesTiming,
-    } = timings;
-    const {
-      firstContentfulPaint: firstContentfulPaintTs,
-      firstContentfulPaintAllFrames: firstContentfulPaintAllFramesTs,
-    } = timestamps;
-
-    if (
-      !firstContentfulPaintEvt ||
-      firstContentfulPaintTiming === undefined ||
-      firstContentfulPaintTs === undefined ||
-      // FCP-AF will only be undefined if FCP is also undefined.
-      // These conditions are for enforcing types and should never actually trigger.
-      !firstContentfulPaintAllFramesEvt ||
-      firstContentfulPaintAllFramesTiming === undefined ||
-      firstContentfulPaintAllFramesTs === undefined
-    ) {
-      throw new LHError(LHError.errors.NO_FCP);
-    }
-
-    // We already know that `traceOfTab` is good to go at this point, but tsc doesn't yet.
-    // Help tsc out by reconstructing the object manually with the known defined values.
-    return {
-      ...traceOfTab,
-      firstContentfulPaintEvt,
-      firstContentfulPaintAllFramesEvt,
-      timings: {
-        ...timings,
-        firstContentfulPaint: firstContentfulPaintTiming,
-        firstContentfulPaintAllFrames: firstContentfulPaintAllFramesTiming,
-      },
-      timestamps: {
-        ...timestamps,
-        firstContentfulPaint: firstContentfulPaintTs,
-        firstContentfulPaintAllFrames: firstContentfulPaintAllFramesTs,
-      },
-    };
+     * @param {LH.Trace} trace
+     * @param {LH.Artifacts.ComputedContext} context
+     * @return {Promise<any>}
+    */
+  static async compute_(trace, context) {
+    const processedTrace = await ProcessedTrace.request(trace, context);
+    const processedNavigation = await ProcessedNavigation.request(processedTrace, context);
+    return {...processedTrace, ...processedNavigation};
   }
 }
 
-module.exports = makeComputedArtifact(TraceOfTab);
+log.warn(`trace-of-tab`, `trace-of-tab is deprecated, use processed-trace / processed-navigation instead`); // eslint-disable-line max-len
+module.exports = makeComputedArtifact(TraceOfTab, null);
+

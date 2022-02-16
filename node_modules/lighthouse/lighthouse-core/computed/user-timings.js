@@ -6,7 +6,7 @@
 'use strict';
 
 const makeComputedArtifact = require('./computed-artifact.js');
-const TraceOfTab = require('./trace-of-tab.js');
+const ProcessedTrace = require('./processed-trace.js');
 
 /** @typedef {{name: string, isMark: true, args: LH.TraceEvent['args'], startTime: number}} MarkEvent */
 /** @typedef {{name: string, isMark: false, args: LH.TraceEvent['args'], startTime: number, endTime: number, duration: number}} MeasureEvent */
@@ -18,7 +18,7 @@ class UserTimings {
    * @return {Promise<Array<MarkEvent|MeasureEvent>>}
    */
   static async compute_(trace, context) {
-    const traceOfTab = await TraceOfTab.request(trace, context);
+    const processedTrace = await ProcessedTrace.request(trace, context);
     /** @type {Array<MarkEvent|MeasureEvent>} */
     const userTimings = [];
     /** @type {Record<string, number>} */
@@ -28,7 +28,7 @@ class UserTimings {
     // The event phases we are interested in are mark and instant events (R, i, I)
     // and duration events which correspond to measures (B, b, E, e).
     // @see https://docs.google.com/document/d/1CvAClvFfyA5R-PhYUmn5OOQtYMH4h6I0nSsKchNAySU/preview#
-    traceOfTab.processEvents.filter(evt => {
+    processedTrace.processEvents.filter(evt => {
       if (!evt.cat.includes('blink.user_timing')) {
         return false;
       }
@@ -69,9 +69,9 @@ class UserTimings {
 
     // baseline the timestamps against the timeOrigin, and translate to milliseconds
     userTimings.forEach(ut => {
-      ut.startTime = (ut.startTime - traceOfTab.timeOriginEvt.ts) / 1000;
+      ut.startTime = (ut.startTime - processedTrace.timeOriginEvt.ts) / 1000;
       if (!ut.isMark) {
-        ut.endTime = (ut.endTime - traceOfTab.timeOriginEvt.ts) / 1000;
+        ut.endTime = (ut.endTime - processedTrace.timeOriginEvt.ts) / 1000;
         ut.duration = ut.duration / 1000;
       }
     });
@@ -80,4 +80,4 @@ class UserTimings {
   }
 }
 
-module.exports = makeComputedArtifact(UserTimings);
+module.exports = makeComputedArtifact(UserTimings, null);

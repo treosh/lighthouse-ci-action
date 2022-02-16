@@ -73,8 +73,7 @@ function pngSizedAtLeast(sizeRequirement, manifest) {
 function containsMaskableIcon(manifest) {
   const iconValues = manifest.icons.value;
   return iconValues.some(icon => {
-    return icon.value.purpose &&
-      icon.value.purpose.value &&
+    return icon.value.purpose?.value &&
       icon.value.purpose.value.includes('maskable');
   });
 }

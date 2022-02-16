@@ -127,6 +127,11 @@ class Driver {
     return this._connection.disconnect();
   }
 
+  /** @return {Promise<void>} */
+  dispose() {
+    return this.disconnect();
+  }
+
   /**
    * Get the browser WebSocket endpoint for devtools protocol clients like Puppeteer.
    * Only works with WebSocket connection, not extension or devtools.
@@ -196,6 +201,21 @@ class Driver {
    */
   removeProtocolMessageListener(callback) {
     this._connection.off('protocolevent', callback);
+  }
+
+  /** @param {LH.Crdp.Target.TargetInfo} targetInfo */
+  setTargetInfo(targetInfo) { // eslint-disable-line no-unused-vars
+    // OOPIF handling in legacy driver is implicit.
+  }
+
+  /** @param {(session: LH.Gatherer.FRProtocolSession) => void} callback */
+  addSessionAttachedListener(callback) { // eslint-disable-line no-unused-vars
+    // OOPIF handling in legacy driver is implicit.
+  }
+
+  /** @param {(session: LH.Gatherer.FRProtocolSession) => void} callback */
+  removeSessionAttachedListener(callback) { // eslint-disable-line no-unused-vars
+    // OOPIF handling in legacy driver is implicit.
   }
 
   /**
@@ -318,13 +338,9 @@ class Driver {
     let asyncTimeout;
     const timeoutPromise = new Promise((resolve, reject) => {
       if (timeout === Infinity) return;
-      asyncTimeout = setTimeout((() => {
-        const err = new LHError(
-          LHError.errors.PROTOCOL_TIMEOUT,
-          {protocolMethod: method}
-        );
-        reject(err);
-      }), timeout);
+      asyncTimeout = setTimeout(reject, timeout, new LHError(LHError.errors.PROTOCOL_TIMEOUT, {
+        protocolMethod: method,
+      }));
     });
 
     return Promise.race([
@@ -409,7 +425,7 @@ class Driver {
    * @return {Promise<void>}
    */
   async beginTrace(settings) {
-    const additionalCategories = (settings && settings.additionalTraceCategories &&
+    const additionalCategories = (settings?.additionalTraceCategories &&
         settings.additionalTraceCategories.split(',')) || [];
     const traceCategories = TraceGatherer.getDefaultTraceCategories().concat(additionalCategories);
 

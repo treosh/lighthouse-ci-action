@@ -5,6 +5,8 @@
  */
 'use strict';
 
+const {version: lighthouseVersion} = require('../../package.json');
+
 const NO_THROTTLING_METRICS = {
   latency: 0,
   downloadThroughput: 0,
@@ -17,16 +19,56 @@ const NO_CPU_THROTTLE_METRICS = {
 };
 
 /**
+ * @param {string} userAgent
+ * @param {LH.Config.Settings['formFactor']} formFactor
+ * @return {LH.Crdp.Emulation.SetUserAgentOverrideRequest['userAgentMetadata']}
+ */
+function parseUseragentIntoMetadata(userAgent, formFactor) {
+  const match = userAgent.match(/Chrome\/([\d.]+)/); // eg 'Chrome/(71.0.3577.0)'
+  const fullVersion = match?.[1] || '99.0.1234.0';
+  const [version] = fullVersion.split('.', 1);
+  const brands = [
+    {brand: 'Chromium', version},
+    {brand: 'Google Chrome', version},
+    {brand: 'Lighthouse', version: lighthouseVersion},
+  ];
+
+  const motoG4Details = {
+    platform: 'Android',
+    platformVersion: '6.0',
+    architecture: '',
+    model: 'Moto G4',
+  };
+  const macDesktopDetails = {
+    platform: 'macOS',
+    platformVersion: '10.15.7',
+    architecture: 'x86',
+    model: '',
+  };
+  const mobile = formFactor === 'mobile';
+
+  return {
+    brands,
+    fullVersion,
+    // Since config users can supply a custom useragent, they likely are emulating something
+    // other than Moto G4 and MacOS Desktop.
+    // TODO: Determine how to thoughtfully expose this metadata/client-hints configurability.
+    ...(mobile ? motoG4Details : macDesktopDetails),
+    mobile,
+  };
+}
+
+/**
  * @param {LH.Gatherer.FRProtocolSession} session
  * @param {LH.Config.Settings} settings
  * @return {Promise<void>}
  */
 async function emulate(session, settings) {
   if (settings.emulatedUserAgent !== false) {
-    // Network.enable must be called for UA overriding to work
-    await session.sendCommand('Network.enable');
+    const userAgent = /** @type {string} */ (settings.emulatedUserAgent);
     await session.sendCommand('Network.setUserAgentOverride', {
-      userAgent: /** @type {string} */ (settings.emulatedUserAgent),
+      userAgent,
+      userAgentMetadata: parseUseragentIntoMetadata(userAgent, settings.formFactor),
     });
   }
   // See devtools-entry for one usecase for disabling screenEmulation
@@ -49,7 +91,6 @@ async function emulate(session, settings) {
  * @return {Promise<void>}
  */
 async function throttle(session, settings) {
-  // TODO(FR-COMPAT): reconsider if this should be resetting anything
   if (settings.throttlingMethod !== 'devtools') return clearNetworkThrottling(session);
 
   await Promise.all([

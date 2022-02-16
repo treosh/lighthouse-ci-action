@@ -8,6 +8,8 @@
 const Audit = require('./audit.js');
 const i18n = require('../lib/i18n/i18n.js');
 const MainResource = require('../computed/main-resource.js');
+const NetworkRecords = require('../computed/network-records.js');
+const NetworkAnalyzer = require('../lib/dependency-graph/simulator/network-analyzer.js');
 
 const UIStrings = {
   /** Title of a diagnostic audit that provides detail on how long it took from starting a request to when the server started responding. This descriptive title is shown to users when the amount is acceptable and no user action is required. */
@@ -37,7 +39,8 @@ class ServerResponseTime extends Audit {
       title: str_(UIStrings.title),
       failureTitle: str_(UIStrings.failureTitle),
       description: str_(UIStrings.description),
-      requiredArtifacts: ['devtoolsLogs', 'URL'],
+      supportedModes: ['timespan', 'navigation'],
+      requiredArtifacts: ['devtoolsLogs', 'URL', 'GatherContext'],
     };
   }
 
@@ -56,7 +59,22 @@ class ServerResponseTime extends Audit {
    */
   static async audit(artifacts, context) {
     const devtoolsLog = artifacts.devtoolsLogs[Audit.DEFAULT_PASS];
-    const mainResource = await MainResource.request({devtoolsLog, URL: artifacts.URL}, context);
+
+    /** @type {LH.Artifacts.NetworkRequest} */
+    let mainResource;
+    if (artifacts.GatherContext.gatherMode === 'timespan') {
+      const networkRecords = await NetworkRecords.request(devtoolsLog, context);
+      const optionalMainResource = NetworkAnalyzer.findOptionalMainDocument(
+        networkRecords,
+        artifacts.URL.finalUrl
+      );
+      if (!optionalMainResource) {
+        return {score: null, notApplicable: true};
+      }
+      mainResource = optionalMainResource;
+    } else {
+      mainResource = await MainResource.request({devtoolsLog, URL: artifacts.URL}, context);
+    }
 
     const responseTime = ServerResponseTime.calculateResponseTime(mainResource);
     const passed = responseTime < TOO_SLOW_THRESHOLD_MS;

@@ -41,7 +41,7 @@ class CacheContents extends FRGatherer {
   /** @type {LH.Gatherer.GathererMeta} */
   meta = {
     supportedModes: ['snapshot', 'navigation'],
-  }
+  };
 
   /**
    * Creates an array of cached URLs.

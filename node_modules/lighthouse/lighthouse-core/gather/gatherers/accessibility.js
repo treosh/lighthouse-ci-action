@@ -87,10 +87,37 @@ function createAxeRuleResultArtifact(result) {
     // @ts-expect-error - getNodeDetails put into scope via stringification
     const nodeDetails = getNodeDetails(/** @type {HTMLElement} */ (element));
 
+    /** @type {Set<HTMLElement>} */
+    const relatedNodeElements = new Set();
+    /** @param {import('axe-core/axe').ImpactValue} impact */
+    const impactToNumber =
+      (impact) => [null, 'minor', 'moderate', 'serious', 'critical'].indexOf(impact);
+    const checkResults = [...node.any, ...node.all, ...node.none]
+      // @ts-expect-error CheckResult.impact is a string, even though ImpactValue is a thing.
+      .sort((a, b) => impactToNumber(b.impact) - impactToNumber(a.impact));
+    for (const checkResult of checkResults) {
+      for (const relatedNode of checkResult.relatedNodes || []) {
+        /** @type {HTMLElement} */
+        // @ts-expect-error - should always exist, just being cautious.
+        const relatedElement = relatedNode.element;
+
+        // Prevent overloading the report with way too many nodes.
+        if (relatedNodeElements.size >= 3) break;
+        // Should always exist, just being cautious.
+        if (!relatedElement) continue;
+        if (element === relatedElement) continue;
+
+        relatedNodeElements.add(relatedElement);
+      }
+    }
+    // @ts-expect-error - getNodeDetails put into scope via stringification
+    const relatedNodeDetails = [...relatedNodeElements].map(getNodeDetails);
+
     return {
       target,
       failureSummary,
       node: nodeDetails,
+      relatedNodes: relatedNodeDetails,
     };
   });
 
@@ -121,7 +148,7 @@ class Accessibility extends FRGatherer {
   /** @type {LH.Gatherer.GathererMeta} */
   meta = {
     supportedModes: ['snapshot', 'navigation'],
-  }
+  };
 
   /**
    * @param {LH.Gatherer.FRTransitionalContext} passContext

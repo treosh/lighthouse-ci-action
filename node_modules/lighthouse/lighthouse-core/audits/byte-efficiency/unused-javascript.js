@@ -67,7 +67,8 @@ class UnusedJavaScript extends ByteEfficiencyAudit {
       title: str_(UIStrings.title),
       description: str_(UIStrings.description),
       scoreDisplayMode: ByteEfficiencyAudit.SCORING_MODES.NUMERIC,
-      requiredArtifacts: ['JsUsage', 'ScriptElements', 'SourceMaps', 'devtoolsLogs', 'traces'],
+      requiredArtifacts: ['JsUsage', 'ScriptElements', 'SourceMaps', 'GatherContext',
+        'devtoolsLogs', 'traces'],
     };
   }
 
@@ -127,7 +128,7 @@ class UnusedJavaScript extends ByteEfficiencyAudit {
           })
           .filter(d => d.unused >= bundleSourceUnusedThreshold);
 
-        const commonSourcePrefix = commonPrefix([...bundle.map._sourceInfos.keys()]);
+        const commonSourcePrefix = commonPrefix([...bundle.map.sourceInfos.keys()]);
         item.subItems = {
           type: 'subitems',
           items: topUnusedSourceSizes.map(({source, unused, total}) => {

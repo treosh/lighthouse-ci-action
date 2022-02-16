@@ -41,8 +41,8 @@ class CriticalRequestChains {
     }
 
     // Iframes are considered High Priority but they are not render blocking
-    const isIframe = request.resourceType === NetworkRequest.TYPES.Document
-      && request.frameId !== mainResource.frameId;
+    const isIframe = request.resourceType === NetworkRequest.TYPES.Document &&
+      request.frameId !== mainResource.frameId;
     // XHRs are fetched at High priority, but we exclude them, as they are unlikely to be critical
     // Images are also non-critical.
     // Treat any missed images, primarily favicons, as non-critical resources
@@ -143,4 +143,4 @@ class CriticalRequestChains {
   }
 }
 
-module.exports = makeComputedArtifact(CriticalRequestChains);
+module.exports = makeComputedArtifact(CriticalRequestChains, ['URL', 'devtoolsLog', 'trace']);

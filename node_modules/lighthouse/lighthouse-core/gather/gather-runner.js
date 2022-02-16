@@ -10,7 +10,7 @@ const NetworkRecords = require('../computed/network-records.js');
 const {getPageLoadError} = require('../lib/navigation-error.js');
 const emulation = require('../lib/emulation.js');
 const constants = require('../config/constants.js');
-const i18n = require('../lib/i18n/i18n.js');
+const format = require('../../shared/localization/format.js');
 const {getBenchmarkIndex, getEnvironmentWarnings} = require('./driver/environment.js');
 const prepare = require('./driver/prepare.js');
 const storage = require('./driver/storage.js');
@@ -20,6 +20,7 @@ const WebAppManifest = require('./gatherers/web-app-manifest.js');
 const InstallabilityErrors = require('./gatherers/installability-errors.js');
 const NetworkUserAgent = require('./gatherers/network-user-agent.js');
 const Stacks = require('./gatherers/stacks.js');
+const {finalizeArtifacts} = require('../fraggle-rock/gather/base-artifacts.js');
 
 /** @typedef {import('../gather/driver.js')} Driver */
 /** @typedef {import('../lib/arbitrary-equality-map.js')} ArbitraryEqualityMap */
@@ -73,6 +74,7 @@ class GatherRunner {
       const {finalUrl, warnings} = await navigation.gotoURL(driver, requestedUrl, {
         waitUntil: passContext.passConfig.recordTrace ?
           ['load', 'fcp'] : ['load'],
+        debugNavigation: passContext.settings.debugNavigation,
         maxWaitForFcp: passContext.settings.maxWaitForFcp,
         maxWaitForLoad: passContext.settings.maxWaitForLoad,
         ...passContext.passConfig,
@@ -153,7 +155,6 @@ class GatherRunner {
     const session = driver.defaultSession;
 
     // Assert no service workers are still installed, so we test that they would actually be installed for a new user.
-    // TODO(FR-COMPAT): re-evaluate the necessity of this check
     await GatherRunner.assertNoSameOriginServiceWorkerClients(session, options.requestedUrl);
 
     await prepare.prepareTargetForNavigationMode(driver, options.settings);
@@ -405,6 +406,7 @@ class GatherRunner {
       traces: {},
       devtoolsLogs: {},
       settings: options.settings,
+      GatherContext: {gatherMode: 'navigation'},
       URL: {requestedUrl: options.requestedUrl, finalUrl: options.requestedUrl},
       Timing: [],
       PageLoadError: null,
@@ -420,21 +422,44 @@ class GatherRunner {
   static async populateBaseArtifacts(passContext) {
     const status = {msg: 'Populate base artifacts', id: 'lh:gather:populateBaseArtifacts'};
     log.time(status);
+
     const baseArtifacts = passContext.baseArtifacts;
 
     // Copy redirected URL to artifact.
     baseArtifacts.URL.finalUrl = passContext.url;
 
     // Fetch the manifest, if it exists.
-    baseArtifacts.WebAppManifest = await WebAppManifest.getWebAppManifest(
-      passContext.driver.defaultSession, passContext.url);
-
-    if (baseArtifacts.WebAppManifest) {
-      baseArtifacts.InstallabilityErrors = await InstallabilityErrors.getInstallabilityErrors(
-        passContext.driver.defaultSession);
+    try {
+      baseArtifacts.WebAppManifest = await WebAppManifest.getWebAppManifest(
+        passContext.driver.defaultSession, passContext.url);
+    } catch (err) {
+      log.error('GatherRunner WebAppManifest', err);
+      baseArtifacts.WebAppManifest = null;
     }
 
-    baseArtifacts.Stacks = await Stacks.collectStacks(passContext.driver.executionContext);
+    try {
+      if (baseArtifacts.WebAppManifest) {
+        baseArtifacts.InstallabilityErrors = await InstallabilityErrors.getInstallabilityErrors(
+          passContext.driver.defaultSession);
+      }
+    } catch (err) {
+      log.error('GatherRunner InstallabilityErrors', err);
+      baseArtifacts.InstallabilityErrors = {
+        errors: [
+          {
+            errorId: 'protocol-timeout',
+            errorArguments: [],
+          },
+        ],
+      };
+    }
+
+    try {
+      baseArtifacts.Stacks = await Stacks.collectStacks(passContext.driver.executionContext);
+    } catch (err) {
+      log.error('GatherRunner Stacks', err);
+      baseArtifacts.Stacks = [];
+    }
 
     // Find the NetworkUserAgent actually used in the devtoolsLogs.
     const devtoolsLog = baseArtifacts.devtoolsLogs[passContext.passConfig.passName];
@@ -444,18 +469,6 @@ class GatherRunner {
     baseArtifacts.LighthouseRunWarnings.push(...environmentWarnings);
 
     log.timeEnd(status);
-  }
-
-  /**
-   * Finalize baseArtifacts after gathering is fully complete.
-   * @param {LH.BaseArtifacts} baseArtifacts
-   */
-  static finalizeBaseArtifacts(baseArtifacts) {
-    // Take only unique LighthouseRunWarnings.
-    baseArtifacts.LighthouseRunWarnings = Array.from(new Set(baseArtifacts.LighthouseRunWarnings));
-
-    // Take the timing entries we've gathered so far.
-    baseArtifacts.Timing = log.getTimeEntries();
   }
 
   /**
@@ -515,8 +528,7 @@ class GatherRunner {
       }
 
       await GatherRunner.disposeDriver(driver, options);
-      GatherRunner.finalizeBaseArtifacts(baseArtifacts);
-      return /** @type {LH.Artifacts} */ ({...baseArtifacts, ...artifacts}); // Cast to drop Partial<>.
+      return finalizeArtifacts(baseArtifacts, artifacts);
     } catch (err) {
       // Clean up on error. Don't await so that the root error, not a disposal error, is shown.
       GatherRunner.disposeDriver(driver, options);
@@ -585,7 +597,7 @@ class GatherRunner {
       networkRecords: loadData.networkRecords,
     });
     if (pageLoadError) {
-      const localizedMessage = i18n.getFormatted(pageLoadError.friendlyMessage,
+      const localizedMessage = format.getFormatted(pageLoadError.friendlyMessage,
           passContext.settings.locale);
       log.error('GatherRunner', localizedMessage, passContext.url);
 

@@ -81,10 +81,9 @@ const screenEmulationMetrics = {
   desktop: DESKTOP_EMULATION_METRICS,
 };
 
-// eslint-disable-next-line max-len
-const MOTOG4_USERAGENT = 'Mozilla/5.0 (Linux; Android 7.0; Moto G (4)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4420.0 Mobile Safari/537.36 Chrome-Lighthouse';
-// eslint-disable-next-line max-len
-const DESKTOP_USERAGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4420.0 Safari/537.36 Chrome-Lighthouse';
+
+const MOTOG4_USERAGENT = 'Mozilla/5.0 (Linux; Android 7.0; Moto G (4)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4695.0 Mobile Safari/537.36 Chrome-Lighthouse'; // eslint-disable-line max-len
+const DESKTOP_USERAGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4695.0 Safari/537.36 Chrome-Lighthouse'; // eslint-disable-line max-len
 
 const userAgents = {
   mobile: MOTOG4_USERAGENT,
@@ -106,6 +105,7 @@ const defaultSettings = {
   auditMode: false,
   gatherMode: false,
   disableStorageReset: false,
+  debugNavigation: false,
   channel: 'node',
 
   // the following settings have no defaults but we still want ensure that `key in settings`

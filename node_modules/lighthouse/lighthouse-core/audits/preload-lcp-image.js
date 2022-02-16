@@ -32,7 +32,9 @@ class PreloadLCPImageAudit extends Audit {
       id: 'preload-lcp-image',
       title: str_(UIStrings.title),
       description: str_(UIStrings.description),
-      requiredArtifacts: ['traces', 'devtoolsLogs', 'URL', 'TraceElements', 'ImageElements'],
+      supportedModes: ['navigation'],
+      requiredArtifacts: ['traces', 'devtoolsLogs', 'GatherContext', 'URL', 'TraceElements',
+        'ImageElements'],
       scoreDisplayMode: Audit.SCORING_MODES.NUMERIC,
     };
   }
@@ -104,13 +106,14 @@ class PreloadLCPImageAudit extends Audit {
 
   /**
    * Computes the estimated effect of preloading the LCP image.
+   * @param {LH.Artifacts.TraceElement|undefined} lcpElement
    * @param {LH.Gatherer.Simulation.GraphNetworkNode|undefined} lcpNode
    * @param {LH.Gatherer.Simulation.GraphNode} graph
    * @param {LH.Gatherer.Simulation.Simulator} simulator
-   * @return {{wastedMs: number, results: Array<{url: string, wastedMs: number}>}}
+   * @return {{wastedMs: number, results: Array<{node: LH.Audit.Details.NodeValue, url: string, wastedMs: number}>}}
    */
-  static computeWasteWithGraph(lcpNode, graph, simulator) {
-    if (!lcpNode) {
+  static computeWasteWithGraph(lcpElement, lcpNode, graph, simulator) {
+    if (!lcpElement || !lcpNode) {
       return {
         wastedMs: 0,
         results: [],
@@ -173,7 +176,7 @@ class PreloadLCPImageAudit extends Audit {
       const node = modifiedNodesById.get(nodeId);
       if (!node) throw new Error('Impossible - node should never be undefined');
       const timings = simulationAfterChanges.nodeTimings.get(node);
-      const endTime = timings && timings.endTime || 0;
+      const endTime = timings?.endTime || 0;
       maxDependencyEndTime = Math.max(maxDependencyEndTime, endTime);
     }
 
@@ -183,6 +186,7 @@ class PreloadLCPImageAudit extends Audit {
     return {
       wastedMs,
       results: [{
+        node: Audit.makeNodeItem(lcpElement.node),
         url: lcpNode.record.url,
         wastedMs,
       }],
@@ -195,17 +199,18 @@ class PreloadLCPImageAudit extends Audit {
    * @return {Promise<LH.Audit.Product>}
    */
   static async audit(artifacts, context) {
+    const gatherContext = artifacts.GatherContext;
     const trace = artifacts.traces[PreloadLCPImageAudit.DEFAULT_PASS];
     const devtoolsLog = artifacts.devtoolsLogs[PreloadLCPImageAudit.DEFAULT_PASS];
     const URL = artifacts.URL;
-    const simulatorOptions = {trace, devtoolsLog, settings: context.settings};
+    const metricData = {trace, devtoolsLog, gatherContext, settings: context.settings};
     const lcpElement = artifacts.TraceElements
       .find(element => element.traceEventType === 'largest-contentful-paint');
 
     const [mainResource, lanternLCP, simulator] = await Promise.all([
       MainResource.request({devtoolsLog, URL}, context),
-      LanternLCP.request(simulatorOptions, context),
-      LoadSimulator.request(simulatorOptions, context),
+      LanternLCP.request(metricData, context),
+      LoadSimulator.request({devtoolsLog, settings: context.settings}, context),
     ]);
 
     const graph = lanternLCP.pessimisticGraph;
@@ -213,11 +218,11 @@ class PreloadLCPImageAudit extends Audit {
     const lcpNode = PreloadLCPImageAudit.getLCPNodeToPreload(mainResource, graph, lcpElement, artifacts.ImageElements);
 
     const {results, wastedMs} =
-      PreloadLCPImageAudit.computeWasteWithGraph(lcpNode, graph, simulator);
+      PreloadLCPImageAudit.computeWasteWithGraph(lcpElement, lcpNode, graph, simulator);
 
     /** @type {LH.Audit.Details.Opportunity['headings']} */
     const headings = [
-      {key: 'url', valueType: 'thumbnail', label: ''},
+      {key: 'node', valueType: 'node', label: ''},
       {key: 'url', valueType: 'url', label: str_(i18n.UIStrings.columnURL)},
       {key: 'wastedMs', valueType: 'timespanMs', label: str_(i18n.UIStrings.columnWastedMs)},
     ];

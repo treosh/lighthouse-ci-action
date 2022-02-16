@@ -47,7 +47,7 @@ class AxeAudit extends Audit {
     // If aXe reports an error, then bubble it up to the caller
     const incomplete = artifacts.Accessibility.incomplete || [];
     const incompleteResult = incomplete.find(result => result.id === this.meta.id);
-    if (incompleteResult && incompleteResult.error) {
+    if (incompleteResult?.error) {
       return {
         score: null,
         errorMessage: `axe-core Error: ${incompleteResult.error.message || 'Unknown error'}`,
@@ -58,8 +58,8 @@ class AxeAudit extends Audit {
     const violations = artifacts.Accessibility.violations || [];
     const failureCases = isInformative ? violations.concat(incomplete) : violations;
     const rule = failureCases.find(result => result.id === this.meta.id);
-    const impact = rule && rule.impact;
-    const tags = rule && rule.tags;
+    const impact = rule?.impact;
+    const tags = rule?.tags;
 
     // Handle absence of aXe failure results for informative rules as 'not applicable'
     // This scenario indicates that no action is required by the web property owner
@@ -73,18 +73,24 @@ class AxeAudit extends Audit {
 
     /** @type {LH.Audit.Details.Table['items']}>} */
     let items = [];
-    if (rule && rule.nodes) {
+    if (rule?.nodes) {
       items = rule.nodes.map(axeNode => ({
         node: {
           ...Audit.makeNodeItem(axeNode.node),
           explanation: axeNode.failureSummary,
         },
+        subItems: axeNode.relatedNodes.length ? {
+          type: 'subitems',
+          items: axeNode.relatedNodes.map(node => ({relatedNode: Audit.makeNodeItem(node)})),
+        } : undefined,
       }));
     }
 
     /** @type {LH.Audit.Details.Table['headings']} */
     const headings = [
-      {key: 'node', itemType: 'node', text: str_(UIStrings.failingElementsHeader)},
+      /* eslint-disable max-len */
+      {key: 'node', itemType: 'node', subItemsHeading: {key: 'relatedNode', itemType: 'node'}, text: str_(UIStrings.failingElementsHeader)},
+      /* eslint-enable max-len */
     ];
 
     /** @type {LH.Audit.Details.DebugData|undefined} */

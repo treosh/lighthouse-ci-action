@@ -8,7 +8,7 @@
 const Audit = require('./audit.js');
 const UnusedBytes = require('./byte-efficiency/byte-efficiency-audit.js');
 const i18n = require('../lib/i18n/i18n.js');
-const TraceOfTab = require('../computed/trace-of-tab.js');
+const ProcessedTrace = require('../computed/processed-trace.js');
 const NetworkRecords = require('../computed/network-records.js');
 const MainResource = require('../computed/main-resource.js');
 const LanternInteractive = require('../computed/metrics/lantern-interactive.js');
@@ -32,7 +32,8 @@ class Redirects extends Audit {
       title: str_(UIStrings.title),
       description: str_(UIStrings.description),
       scoreDisplayMode: Audit.SCORING_MODES.NUMERIC,
-      requiredArtifacts: ['URL', 'devtoolsLogs', 'traces'],
+      supportedModes: ['navigation'],
+      requiredArtifacts: ['URL', 'GatherContext', 'devtoolsLogs', 'traces'],
     };
   }
 
@@ -49,15 +50,15 @@ class Redirects extends Audit {
    *
    * @param {LH.Artifacts.NetworkRequest} mainResource
    * @param {Array<LH.Artifacts.NetworkRequest>} networkRecords
-   * @param {LH.Artifacts.TraceOfTab} traceOfTab
+   * @param {LH.Artifacts.ProcessedTrace} processedTrace
    * @return {Array<LH.Artifacts.NetworkRequest>}
    */
-  static getDocumentRequestChain(mainResource, networkRecords, traceOfTab) {
+  static getDocumentRequestChain(mainResource, networkRecords, processedTrace) {
     /** @type {Array<LH.Artifacts.NetworkRequest>} */
     const documentRequests = [];
 
     // Find all the document requests by examining navigation events and their redirects
-    for (const event of traceOfTab.processEvents) {
+    for (const event of processedTrace.processEvents) {
       if (event.name !== 'navigationStart') continue;
 
       const data = event.args.data || {};
@@ -86,12 +87,13 @@ class Redirects extends Audit {
     const settings = context.settings;
     const trace = artifacts.traces[Audit.DEFAULT_PASS];
     const devtoolsLog = artifacts.devtoolsLogs[Audit.DEFAULT_PASS];
+    const gatherContext = artifacts.GatherContext;
 
-    const traceOfTab = await TraceOfTab.request(trace, context);
+    const processedTrace = await ProcessedTrace.request(trace, context);
     const networkRecords = await NetworkRecords.request(devtoolsLog, context);
     const mainResource = await MainResource.request({URL: artifacts.URL, devtoolsLog}, context);
 
-    const metricComputationData = {trace, devtoolsLog, traceOfTab, networkRecords, settings};
+    const metricComputationData = {trace, devtoolsLog, gatherContext, settings};
     const metricResult = await LanternInteractive.request(metricComputationData, context);
 
     /** @type {Map<string, LH.Gatherer.Simulation.NodeTiming>} */
@@ -103,7 +105,7 @@ class Redirects extends Audit {
     }
 
     const documentRequests = Redirects.getDocumentRequestChain(
-      mainResource, networkRecords, traceOfTab);
+      mainResource, networkRecords, processedTrace);
 
     let totalWastedMs = 0;
     const tableRows = [];

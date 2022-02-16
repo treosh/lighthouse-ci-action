@@ -82,9 +82,6 @@ class Stacks extends FRGatherer {
   constructor() {
     super();
 
-    // Because this file uses `fs.readFile` it gets parsed by a different branch of the browserify internals
-    // that cannot handle the latest ECMAScript features.
-    // See https://github.com/GoogleChrome/lighthouse/issues/12134
     /** @type {LH.Gatherer.GathererMeta} */
     this.meta = {
       supportedModes: ['snapshot', 'navigation'],
@@ -120,7 +117,7 @@ class Stacks extends FRGatherer {
    * @param {LH.Gatherer.FRTransitionalContext} context
    * @return {Promise<LH.Artifacts['Stacks']>}
    */
-  async snapshot(context) {
+  async getArtifact(context) {
     return Stacks.collectStacks(context.driver.executionContext);
   }
 }

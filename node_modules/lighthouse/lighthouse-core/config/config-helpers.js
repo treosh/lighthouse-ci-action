@@ -9,23 +9,40 @@ const path = require('path');
 const isDeepEqual = require('lodash.isequal');
 const constants = require('./constants.js');
 const Budget = require('./budget.js');
-const Audit = require('../audits/audit.js');
+const ConfigPlugin = require('./config-plugin.js');
 const Runner = require('../runner.js');
 const i18n = require('../lib/i18n/i18n.js');
+const validation = require('../fraggle-rock/config/validation.js');
 
 /** @typedef {typeof import('../gather/gatherers/gatherer.js')} GathererConstructor */
+/** @typedef {typeof import('../audits/audit.js')} Audit */
 /** @typedef {InstanceType<GathererConstructor>} Gatherer */
+
+function isBundledEnvironment() {
+  // If we're in DevTools or LightRider, we are definitely bundled.
+  // TODO: refactor and delete `global.isDevtools`.
+  if (global.isDevtools || global.isLightrider) return true;
+
+  try {
+    // Not foolproof, but `lighthouse-logger` is a dependency of lighthouse that should always be resolvable.
+    // `require.resolve` will only throw in atypical/bundled environments.
+    require.resolve('lighthouse-logger');
+    return false;
+  } catch (err) {
+    return true;
+  }
+}
 
 /**
  * If any items with identical `path` properties are found in the input array,
  * merge their `options` properties into the first instance and then discard any
  * other instances.
- * Until support of jsdoc templates with constraints, type in config.d.ts.
- * See https://github.com/Microsoft/TypeScript/issues/24283
- * @type {LH.Config.MergeOptionsOfItems}
+ * @template {{path?: string, options: Record<string, unknown>}} T
+ * @param {T[]} items
+ * @return T[]
  */
 const mergeOptionsOfItems = function(items) {
-  /** @type {Array<{id: string, path?: string, options?: Object<string, any>}>} */
+  /** @type {T[]} */
   const mergedItems = [];
 
   for (const item of items) {
@@ -94,70 +111,38 @@ function _mergeConfigFragment(base, extension, overwriteArrays = false) {
 const mergeConfigFragment = _mergeConfigFragment;
 
 /**
- * Validate the settings after they've been built
- * @param {LH.Config.Settings} settings
+ * Merge an array of items by a caller-defined key. `mergeConfigFragment` is used to merge any items
+ * with a matching key.
+ *
+ * @template T
+ * @param {Array<T>|null|undefined} baseArray
+ * @param {Array<T>|null|undefined} extensionArray
+ * @param {(item: T) => string} keyFn
+ * @return {Array<T>}
  */
-function assertValidSettings(settings) {
-  if (!settings.formFactor) {
-    throw new Error(`\`settings.formFactor\` must be defined as 'mobile' or 'desktop'. See https://github.com/GoogleChrome/lighthouse/blob/master/docs/emulation.md`);
+function mergeConfigFragmentArrayByKey(baseArray, extensionArray, keyFn) {
+  /** @type {Map<string, {index: number, item: T}>} */
+  const itemsByKey = new Map();
+  const mergedArray = baseArray || [];
+  for (let i = 0; i < mergedArray.length; i++) {
+    const item = mergedArray[i];
+    itemsByKey.set(keyFn(item), {index: i, item});
   }
 
-  if (!settings.screenEmulation.disabled) {
-    // formFactor doesn't control emulation. So we don't want a mismatch:
-    //   Bad mismatch A: user wants mobile emulation but scoring is configured for desktop
-    //   Bad mismtach B: user wants everything desktop and set formFactor, but accidentally not screenEmulation
-    if (settings.screenEmulation.mobile !== (settings.formFactor === 'mobile')) {
-      throw new Error(`Screen emulation mobile setting (${settings.screenEmulation.mobile}) does not match formFactor setting (${settings.formFactor}). See https://github.com/GoogleChrome/lighthouse/blob/master/docs/emulation.md`);
+  for (const item of extensionArray || []) {
+    const baseItemEntry = itemsByKey.get(keyFn(item));
+    if (baseItemEntry) {
+      const baseItem = baseItemEntry.item;
+      const merged = typeof item === 'object' && typeof baseItem === 'object' ?
+        mergeConfigFragment(baseItem, item, true) :
+        item;
+      mergedArray[baseItemEntry.index] = merged;
+    } else {
+      mergedArray.push(item);
     }
   }
-}
 
-/**
- * Throws an error if the provided object does not implement the required properties of an audit
- * definition.
- * @param {LH.Config.AuditDefn} auditDefinition
- */
-function assertValidAudit(auditDefinition) {
-  const {implementation, path: auditPath} = auditDefinition;
-  const auditName = auditPath ||
-    (implementation && implementation.meta && implementation.meta.id) ||
-    'Unknown audit';
-
-  if (typeof implementation.audit !== 'function' || implementation.audit === Audit.audit) {
-    throw new Error(`${auditName} has no audit() method.`);
-  }
-
-  if (typeof implementation.meta.id !== 'string') {
-    throw new Error(`${auditName} has no meta.id property, or the property is not a string.`);
-  }
-
-  if (!i18n.isStringOrIcuMessage(implementation.meta.title)) {
-    throw new Error(`${auditName} has no meta.title property, or the property is not a string.`);
-  }
-
-  // If it'll have a ✔ or ✖ displayed alongside the result, it should have failureTitle
-  if (
-    !i18n.isStringOrIcuMessage(implementation.meta.failureTitle) &&
-    implementation.meta.scoreDisplayMode === Audit.SCORING_MODES.BINARY
-  ) {
-    throw new Error(`${auditName} has no failureTitle and should.`);
-  }
-
-  if (!i18n.isStringOrIcuMessage(implementation.meta.description)) {
-    throw new Error(
-      `${auditName} has no meta.description property, or the property is not a string.`
-    );
-  } else if (implementation.meta.description === '') {
-    throw new Error(
-      `${auditName} has an empty meta.description string. Please add a description for the UI.`
-    );
-  }
-
-  if (!Array.isArray(implementation.meta.requiredArtifacts)) {
-    throw new Error(
-      `${auditName} has no meta.requiredArtifacts property, or the property is not an array.`
-    );
-  }
+  return mergedArray;
 }
 
 /**
@@ -198,7 +183,7 @@ function expandGathererShorthand(gatherer) {
 /**
  * Expands the audits from user-specified JSON to an internal audit definition format.
  * @param {LH.Config.AuditJson} audit
- * @return {{id?: string, path: string, options?: {}} | {id?: string, implementation: typeof Audit, path?: string, options?: {}}}
+ * @return {{id?: string, path: string, options?: {}} | {id?: string, implementation: Audit, path?: string, options?: {}}}
  */
 function expandAuditShorthand(audit) {
   if (typeof audit === 'string') {
@@ -218,6 +203,18 @@ function expandAuditShorthand(audit) {
   }
 }
 
+/** @type {Map<string, any>} */
+const bundledModules = new Map(/* BUILD_REPLACE_BUNDLED_MODULES */);
+
+/**
+ * Wraps `require` with an entrypoint for bundled dynamic modules.
+ * See build-bundle.js
+ * @param {string} requirePath
+ */
+function requireWrapper(requirePath) {
+  return bundledModules.get(requirePath) || require(requirePath);
+}
+
 /**
  * @param {string} gathererPath
  * @param {Array<string>} coreGathererList
@@ -233,7 +230,7 @@ function requireGatherer(gathererPath, coreGathererList, configDir) {
     requirePath = resolveModulePath(gathererPath, configDir, 'gatherer');
   }
 
-  const GathererClass = /** @type {GathererConstructor} */ (require(requirePath));
+  const GathererClass = /** @type {GathererConstructor} */ (requireWrapper(requirePath));
 
   return {
     instance: new GathererClass(),
@@ -243,31 +240,29 @@ function requireGatherer(gathererPath, coreGathererList, configDir) {
 }
 
 /**
- *
  * @param {string} auditPath
  * @param {Array<string>} coreAuditList
  * @param {string=} configDir
  * @return {LH.Config.AuditDefn['implementation']}
  */
 function requireAudit(auditPath, coreAuditList, configDir) {
-// See if the audit is a Lighthouse core audit.
+  // See if the audit is a Lighthouse core audit.
   const auditPathJs = `${auditPath}.js`;
   const coreAudit = coreAuditList.find(a => a === auditPathJs);
   let requirePath = `../audits/${auditPath}`;
   if (!coreAudit) {
-  // TODO: refactor and delete `global.isDevtools`.
-    if (global.isDevtools || global.isLightrider) {
-    // This is for pubads bundling.
+    if (isBundledEnvironment()) {
+      // This is for pubads bundling.
       requirePath = auditPath;
     } else {
-    // Otherwise, attempt to find it elsewhere. This throws if not found.
+      // Otherwise, attempt to find it elsewhere. This throws if not found.
       const absolutePath = resolveModulePath(auditPath, configDir, 'audit');
       // Use a relative path so bundler can easily expose it.
       requirePath = path.relative(__dirname, absolutePath);
     }
   }
 
-  return require(requirePath);
+  return requireWrapper(requirePath);
 }
 
 /**
@@ -299,7 +294,8 @@ function resolveSettings(settingsJson = {}, overrides = undefined) {
   // If a locale is requested in flags or settings, use it. A typical CLI run will not have one,
   // however `lookupLocale` will always determine which of our supported locales to use (falling
   // back if necessary).
-  const locale = i18n.lookupLocale((overrides && overrides.locale) || settingsJson.locale);
+  // TODO: could do more work to sniff out the user's locale
+  const locale = i18n.lookupLocale(overrides?.locale || settingsJson.locale);
 
   // Fill in missing settings with defaults
   const {defaultSettings} = constants;
@@ -324,8 +320,35 @@ function resolveSettings(settingsJson = {}, overrides = undefined) {
     settingsWithFlags.emulatedUserAgent = constants.userAgents[settingsWithFlags.formFactor];
   }
 
-  assertValidSettings(settingsWithFlags);
+  validation.assertValidSettings(settingsWithFlags);
   return settingsWithFlags;
+}
+
+/**
+ * @param {LH.Config.Json} configJSON
+ * @param {string | undefined} configDir
+ * @param {{plugins?: string[]} | undefined} flags
+ * @return {LH.Config.Json}
+ */
+function mergePlugins(configJSON, configDir, flags) {
+  const configPlugins = configJSON.plugins || [];
+  const flagPlugins = flags?.plugins || [];
+  const pluginNames = new Set([...configPlugins, ...flagPlugins]);
+
+  for (const pluginName of pluginNames) {
+    validation.assertValidPluginName(configJSON, pluginName);
+
+    // In bundled contexts, `resolveModulePath` will fail, so use the raw pluginName directly.
+    const pluginPath = isBundledEnvironment() ?
+        pluginName :
+        resolveModulePath(pluginName, configDir, 'plugin');
+    const rawPluginJson = requireWrapper(pluginPath);
+    const pluginJson = ConfigPlugin.parsePlugin(rawPluginJson, pluginName);
+
+    configJSON = mergeConfigFragment(configJSON, pluginJson);
+  }
+
+  return configJSON;
 }
 
 
@@ -393,7 +416,7 @@ function resolveAuditsToDefns(audits, configDir) {
   });
 
   const mergedAuditDefns = mergeOptionsOfItems(auditDefns);
-  mergedAuditDefns.forEach(audit => assertValidAudit(audit));
+  mergedAuditDefns.forEach(audit => validation.assertValidAudit(audit));
   return mergedAuditDefns;
 }
 
@@ -556,10 +579,12 @@ function deepCloneConfigJson(json) {
 module.exports = {
   deepClone,
   deepCloneConfigJson,
-  mergeOptionsOfItems,
   mergeConfigFragment,
-  resolveSettings,
-  resolveGathererToDefn,
+  mergeConfigFragmentArrayByKey,
+  mergeOptionsOfItems,
+  mergePlugins,
   resolveAuditsToDefns,
+  resolveGathererToDefn,
   resolveModulePath,
+  resolveSettings,
 };

@@ -10,6 +10,7 @@ const LanternMetric = require('./lantern-metric.js');
 const BaseNode = require('../../lib/dependency-graph/base-node.js');
 const LanternFirstContentfulPaint = require('./lantern-first-contentful-paint.js');
 const LanternInteractive = require('./lantern-interactive.js');
+const {BLOCKING_TIME_THRESHOLD, calculateSumOfBlockingTime} = require('./tbt-utils.js');
 
 /** @typedef {BaseNode.Node} Node */
 
@@ -66,9 +67,7 @@ class LanternTotalBlockingTime extends LanternMetric {
       ? extras.interactiveResult.optimisticEstimate.timeInMs
       : extras.interactiveResult.pessimisticEstimate.timeInMs;
 
-    // Require here to resolve circular dependency.
-    const TotalBlockingTime = require('./total-blocking-time.js');
-    const minDurationMs = TotalBlockingTime.BLOCKING_TIME_THRESHOLD;
+    const minDurationMs = BLOCKING_TIME_THRESHOLD;
 
     const events = LanternTotalBlockingTime.getTopLevelEvents(
       simulation.nodeTimings,
@@ -76,7 +75,7 @@ class LanternTotalBlockingTime extends LanternMetric {
     );
 
     return {
-      timeInMs: TotalBlockingTime.calculateSumOfBlockingTime(
+      timeInMs: calculateSumOfBlockingTime(
         events,
         fcpTimeInMs,
         interactiveTimeMs
@@ -121,4 +120,7 @@ class LanternTotalBlockingTime extends LanternMetric {
   }
 }
 
-module.exports = makeComputedArtifact(LanternTotalBlockingTime);
+module.exports = makeComputedArtifact(
+  LanternTotalBlockingTime,
+  ['devtoolsLog', 'gatherContext', 'settings', 'simulator', 'trace']
+);

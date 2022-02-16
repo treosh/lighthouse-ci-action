@@ -6,7 +6,7 @@
 'use strict';
 
 const makeComputedArtifact = require('../computed-artifact.js');
-const TraceOfTab = require('../trace-of-tab.js');
+const ProcessedTrace = require('../processed-trace.js');
 const LHError = require('../../lib/lh-error.js');
 
 /** @typedef {{ts: number, isMainFrame: boolean, weightedScore: number}} LayoutShiftEvent */
@@ -108,10 +108,10 @@ class CumulativeLayoutShift {
    * @return {Promise<{cumulativeLayoutShift: number, cumulativeLayoutShiftMainFrame: number, totalCumulativeLayoutShift: number}>}
    */
   static async compute_(trace, context) {
-    const traceOfTab = await TraceOfTab.request(trace, context);
+    const processedTrace = await ProcessedTrace.request(trace, context);
 
     const allFrameShiftEvents =
-        CumulativeLayoutShift.getLayoutShiftEvents(traceOfTab.frameTreeEvents);
+        CumulativeLayoutShift.getLayoutShiftEvents(processedTrace.frameTreeEvents);
     const mainFrameShiftEvents = allFrameShiftEvents.filter(e => e.isMainFrame);
 
     // The original Cumulative Layout Shift metric, the sum of all main-frame shift events.
@@ -126,4 +126,4 @@ class CumulativeLayoutShift {
   }
 }
 
-module.exports = makeComputedArtifact(CumulativeLayoutShift);
+module.exports = makeComputedArtifact(CumulativeLayoutShift, null);

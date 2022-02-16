@@ -5,7 +5,7 @@
  */
 'use strict';
 
-const lighthouse = require('../../lighthouse-core/index.js');
+import lighthouse from '../../lighthouse-core/index.js';
 
 function listAudits() {
   const audits = lighthouse.getAuditList().map((i) => i.replace(/\.js$/, ''));
@@ -13,4 +13,4 @@ function listAudits() {
   process.exit(0);
 }
 
-module.exports = listAudits;
+export {listAudits};

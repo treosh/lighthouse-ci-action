@@ -109,7 +109,8 @@ class LegacyJavascript extends ByteEfficiencyAudit {
       scoreDisplayMode: ByteEfficiencyAudit.SCORING_MODES.NUMERIC,
       description: str_(UIStrings.description),
       title: str_(UIStrings.title),
-      requiredArtifacts: ['devtoolsLogs', 'traces', 'ScriptElements', 'SourceMaps', 'URL'],
+      requiredArtifacts: ['devtoolsLogs', 'traces', 'ScriptElements', 'SourceMaps',
+        'GatherContext', 'URL'],
     };
   }
 
@@ -177,8 +178,6 @@ class LegacyJavascript extends ByteEfficiencyAudit {
       ['Array.isArray', 'es6.array.is-array'],
       ['Array.prototype.map', 'es6.array.map'],
       ['Array.of', 'es6.array.of'],
-      ['Array.prototype.reduce', 'es6.array.reduce'],
-      ['Array.prototype.reduceRight', 'es6.array.reduce-right'],
       ['Array.prototype.some', 'es6.array.some'],
       ['Date.now', 'es6.date.now'],
       ['Date.prototype.toISOString', 'es6.date.to-iso-string'],
@@ -187,11 +186,9 @@ class LegacyJavascript extends ByteEfficiencyAudit {
       ['Function.prototype.name', 'es6.function.name'],
       ['Number.isInteger', 'es6.number.is-integer'],
       ['Number.isSafeInteger', 'es6.number.is-safe-integer'],
-      ['Number.parseInt', 'es6.number.parse-int'],
       ['Object.defineProperties', 'es6.object.define-properties'],
       ['Object.defineProperty', 'es6.object.define-property'],
       ['Object.freeze', 'es6.object.freeze'],
-      ['Object.getOwnPropertyNames', 'es6.object.get-own-property-names'],
       ['Object.getPrototypeOf', 'es6.object.get-prototype-of'],
       ['Object.isExtensible', 'es6.object.is-extensible'],
       ['Object.isFrozen', 'es6.object.is-frozen'],
@@ -376,7 +373,7 @@ class LegacyJavascript extends ByteEfficiencyAudit {
     let transferRatio = transferRatioByUrl.get(url);
     if (transferRatio !== undefined) return transferRatio;
 
-    const mainDocumentRecord = await NetworkAnalyzer.findMainDocument(networkRecords);
+    const mainDocumentRecord = NetworkAnalyzer.findOptionalMainDocument(networkRecords);
     const networkRecord = url === artifacts.URL.finalUrl ?
       mainDocumentRecord :
       networkRecords.find(n => n.url === url);
@@ -394,23 +391,6 @@ class LegacyJavascript extends ByteEfficiencyAudit {
 
     transferRatioByUrl.set(url, transferRatio);
     return transferRatio;
-  }
-
-  /**
-   * @param {LH.Artifacts.Bundle} bundle
-   * @param {number} generatedLine
-   * @param {number} generatedColumn
-   * @return {LH.Audit.Details.SourceLocationValue['original']}
-   */
-  static _findOriginalLocation(bundle, generatedLine, generatedColumn) {
-    const entry = bundle && bundle.map.findEntry(generatedLine, generatedColumn);
-    if (!entry) return;
-
-    return {
-      file: entry.sourceURL || '',
-      line: entry.sourceLineNumber || 0,
-      column: entry.sourceColumnNumber || 0,
-    };
   }
 
   /**
@@ -455,18 +435,10 @@ class LegacyJavascript extends ByteEfficiencyAudit {
       const bundle = bundles.find(bundle => bundle.script.src === url);
       for (const match of matches) {
         const {name, line, column} = match;
-
         /** @type {SubItem} */
         const subItem = {
           signal: name,
-          location: {
-            type: 'source-location',
-            url,
-            line,
-            column,
-            original: bundle && this._findOriginalLocation(bundle, line, column),
-            urlProvider: 'network',
-          },
+          location: ByteEfficiencyAudit.makeSourceLocation(url, line, column, bundle),
         };
         item.subItems.items.push(subItem);
       }

@@ -5,6 +5,7 @@
  */
 'use strict';
 
+const log = require('lighthouse-logger');
 const ProtocolSession = require('./session.js');
 const ExecutionContext = require('../../gather/driver/execution-context.js');
 const Fetcher = require('../../gather/fetcher.js');
@@ -16,6 +17,7 @@ const throwNotConnectedFn = () => {
 
 /** @type {LH.Gatherer.FRProtocolSession} */
 const defaultSession = {
+  setTargetInfo: throwNotConnectedFn,
   hasNextProtocolTimeout: throwNotConnectedFn,
   getNextProtocolTimeout: throwNotConnectedFn,
   setNextProtocolTimeout: throwNotConnectedFn,
@@ -24,7 +26,10 @@ const defaultSession = {
   off: throwNotConnectedFn,
   addProtocolMessageListener: throwNotConnectedFn,
   removeProtocolMessageListener: throwNotConnectedFn,
+  addSessionAttachedListener: throwNotConnectedFn,
+  removeSessionAttachedListener: throwNotConnectedFn,
   sendCommand: throwNotConnectedFn,
+  dispose: throwNotConnectedFn,
 };
 
 /** @implements {LH.Gatherer.FRTransitionalDriver} */
@@ -64,10 +69,19 @@ class Driver {
   /** @return {Promise<void>} */
   async connect() {
     if (this._session) return;
+    const status = {msg: 'Connecting to browser', id: 'lh:driver:connect'};
+    log.time(status);
     const session = await this._page.target().createCDPSession();
     this._session = this.defaultSession = new ProtocolSession(session);
     this._executionContext = new ExecutionContext(this._session);
     this._fetcher = new Fetcher(this._session, this._executionContext);
+    log.timeEnd(status);
+  }
+
+  /** @return {Promise<void>} */
+  async disconnect() {
+    if (!this._session) return;
+    await this._session.dispose();
   }
 }
 

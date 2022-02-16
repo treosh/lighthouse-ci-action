@@ -20,7 +20,8 @@ class FirstContentfulPaint3G extends Audit {
       description: 'First Contentful Paint 3G marks the time at which the first text or image is ' +
         `painted while on a 3G network. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/first-contentful-paint).`,
       scoreDisplayMode: Audit.SCORING_MODES.NUMERIC,
-      requiredArtifacts: ['traces', 'devtoolsLogs'],
+      supportedModes: ['navigation'],
+      requiredArtifacts: ['traces', 'devtoolsLogs', 'GatherContext'],
     };
   }
 
@@ -43,11 +44,12 @@ class FirstContentfulPaint3G extends Audit {
    * @return {Promise<LH.Audit.Product>}
    */
   static async audit(artifacts, context) {
+    const gatherContext = artifacts.GatherContext;
     const trace = artifacts.traces[Audit.DEFAULT_PASS];
     const devtoolsLog = artifacts.devtoolsLogs[Audit.DEFAULT_PASS];
     /** @type {Immutable<LH.Config.Settings>} */
     const settings = {...context.settings, throttlingMethod: 'simulate', throttling: regular3G};
-    const metricComputationData = {trace, devtoolsLog, settings};
+    const metricComputationData = {trace, devtoolsLog, gatherContext, settings};
     const metricResult = await ComputedFcp.request(metricComputationData, context);
 
     return {

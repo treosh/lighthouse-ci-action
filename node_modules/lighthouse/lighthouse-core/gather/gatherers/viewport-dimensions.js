@@ -30,8 +30,8 @@ function getViewportDimensions() {
 class ViewportDimensions extends FRGatherer {
   /** @type {LH.Gatherer.GathererMeta} */
   meta = {
-    supportedModes: ['snapshot', 'navigation'],
-  }
+    supportedModes: ['snapshot', 'timespan', 'navigation'],
+  };
 
   /**
    * @param {LH.Gatherer.FRTransitionalContext} passContext

@@ -10,10 +10,10 @@
  */
 
 const makeComputedArtifact = require('../computed-artifact.js');
-const ComputedMetric = require('./metric.js');
+const NavigationMetric = require('./navigation-metric.js');
 const LHError = require('../../lib/lh-error.js');
 
-class LargestContentfulPaintAllFrames extends ComputedMetric {
+class LargestContentfulPaintAllFrames extends NavigationMetric {
   /**
    * TODO: Simulate LCP all frames in lantern.
    * @return {Promise<LH.Artifacts.LanternMetric>}
@@ -23,20 +23,23 @@ class LargestContentfulPaintAllFrames extends ComputedMetric {
   }
 
   /**
-   * @param {LH.Artifacts.MetricComputationData} data
+   * @param {LH.Artifacts.NavigationMetricComputationData} data
    * @return {Promise<LH.Artifacts.Metric>}
    */
   static async computeObservedMetric(data) {
-    const {traceOfTab} = data;
-    if (traceOfTab.timings.largestContentfulPaintAllFrames === undefined) {
+    const {processedNavigation} = data;
+    if (processedNavigation.timings.largestContentfulPaintAllFrames === undefined) {
       throw new LHError(LHError.errors.NO_LCP_ALL_FRAMES);
     }
 
     return {
-      timing: traceOfTab.timings.largestContentfulPaintAllFrames,
-      timestamp: traceOfTab.timestamps.largestContentfulPaintAllFrames,
+      timing: processedNavigation.timings.largestContentfulPaintAllFrames,
+      timestamp: processedNavigation.timestamps.largestContentfulPaintAllFrames,
     };
   }
 }
 
-module.exports = makeComputedArtifact(LargestContentfulPaintAllFrames);
+module.exports = makeComputedArtifact(
+  LargestContentfulPaintAllFrames,
+  ['devtoolsLog', 'gatherContext', 'settings', 'simulator', 'trace']
+);

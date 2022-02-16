@@ -5,10 +5,13 @@
  */
 'use strict';
 
-const Gatherer = require('./gatherer.js');
+const FRGatherer = require('../../fraggle-rock/gather/base-gatherer.js');
+const NetworkRecords = require('../../computed/network-records.js');
 const NetworkAnalyzer = require('../../lib/dependency-graph/simulator/network-analyzer.js');
 const NetworkRequest = require('../../lib/network-request.js');
 const pageFunctions = require('../../lib/page-functions.js');
+const {fetchResponseBodyFromCache} = require('../driver/network.js');
+const DevtoolsLog = require('./devtools-log.js');
 
 /* global getNodeDetails */
 
@@ -62,17 +65,25 @@ async function runInSeriesOrParallel(values, promiseMapper, runInSeries) {
 /**
  * @fileoverview Gets JavaScript file contents.
  */
-class ScriptElements extends Gatherer {
+class ScriptElements extends FRGatherer {
+  /** @type {LH.Gatherer.GathererMeta<'DevtoolsLog'>} */
+  meta = {
+    supportedModes: ['timespan', 'navigation'],
+    dependencies: {DevtoolsLog: DevtoolsLog.symbol},
+  };
+
   /**
-   * @param {LH.Gatherer.PassContext} passContext
-   * @param {LH.Gatherer.LoadData} loadData
+   * @param {LH.Gatherer.FRTransitionalContext} context
+   * @param {LH.Artifacts.NetworkRequest[]} networkRecords
+   * @param {LH.Artifacts['HostFormFactor']} formFactor
    * @return {Promise<LH.Artifacts['ScriptElements']>}
    */
-  async afterPass(passContext, loadData) {
-    const driver = passContext.driver;
-    const mainResource = NetworkAnalyzer.findMainDocument(loadData.networkRecords, passContext.url);
+  async _getArtifact(context, networkRecords, formFactor) {
+    const session = context.driver.defaultSession;
+    const executionContext = context.driver.executionContext;
+    const mainResource = NetworkAnalyzer.findOptionalMainDocument(networkRecords, context.url);
 
-    const scripts = await driver.executionContext.evaluate(collectAllScriptElements, {
+    const scripts = await executionContext.evaluate(collectAllScriptElements, {
       args: [],
       useIsolation: true,
       deps: [
@@ -82,10 +93,10 @@ class ScriptElements extends Gatherer {
     });
 
     for (const script of scripts) {
-      if (script.content) script.requestId = mainResource.requestId;
+      if (mainResource && script.content) script.requestId = mainResource.requestId;
     }
 
-    const scriptRecords = loadData.networkRecords
+    const scriptRecords = networkRecords
       // Ignore records from OOPIFs
       .filter(record => !record.sessionId)
       // Only get the content of script requests
@@ -95,8 +106,9 @@ class ScriptElements extends Gatherer {
     // record at a time.
     const scriptRecordContents = await runInSeriesOrParallel(
       scriptRecords,
-      record => driver.getRequestContent(record.requestId).catch(() => ''),
-      passContext.baseArtifacts.HostFormFactor === 'mobile' /* runInSeries*/ );
+      record => fetchResponseBodyFromCache(session, record.requestId).catch(() => ''),
+      formFactor === 'mobile' /* runInSeries */
+    );
 
     for (let i = 0; i < scriptRecords.length; i++) {
       const record = scriptRecords[i];
@@ -122,6 +134,26 @@ class ScriptElements extends Gatherer {
       }
     }
     return scripts;
+  }
+
+  /**
+   * @param {LH.Gatherer.FRTransitionalContext<'DevtoolsLog'>} context
+   */
+  async getArtifact(context) {
+    const devtoolsLog = context.dependencies.DevtoolsLog;
+    const formFactor = context.baseArtifacts.HostFormFactor;
+    const networkRecords = await NetworkRecords.request(devtoolsLog, context);
+    return this._getArtifact(context, networkRecords, formFactor);
+  }
+
+  /**
+   * @param {LH.Gatherer.PassContext} passContext
+   * @param {LH.Gatherer.LoadData} loadData
+   */
+  async afterPass(passContext, loadData) {
+    const networkRecords = loadData.networkRecords;
+    const formFactor = passContext.baseArtifacts.HostFormFactor;
+    return this._getArtifact({...passContext, dependencies: {}}, networkRecords, formFactor);
   }
 }
 

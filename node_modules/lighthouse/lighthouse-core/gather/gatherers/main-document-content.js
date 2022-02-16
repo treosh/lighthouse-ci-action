@@ -19,7 +19,7 @@ class MainDocumentContent extends FRGatherer {
   meta = {
     supportedModes: ['navigation'],
     dependencies: {DevtoolsLog: DevtoolsLog.symbol},
-  }
+  };
 
   /**
    *

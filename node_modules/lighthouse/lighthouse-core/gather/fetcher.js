@@ -93,6 +93,19 @@ class Fetcher {
   }
 
   /**
+   * `Network.loadNetworkResource` was introduced in M88.
+   * The long timeout bug with `IO.read` was fixed in M92:
+   * https://bugs.chromium.org/p/chromium/issues/detail?id=1191757
+   * Lightrider has a bug forcing us to use the old version for now:
+   * https://docs.google.com/document/d/1V-DxgsOFMPxUuFrdGPQpyiCqSljvgNlOqXCtqDtd0b8/edit?usp=sharing&resourcekey=0-aIaIqcHFKG-0dX4MAudBEw
+   * @return {Promise<boolean>}
+   */
+  async shouldUseLegacyFetcher() {
+    const {milestone} = await getBrowserVersion(this.session);
+    return milestone < 92 || Boolean(global.isLightrider);
+  }
+
+  /**
    * Requires that `fetcher.enable` has been called.
    *
    * Fetches any resource in a way that circumvents CORS.
@@ -101,19 +114,16 @@ class Fetcher {
    * @param {{timeout: number}=} options timeout is in ms
    * @return {Promise<FetchResponse>}
    */
-  async fetchResource(url, options = {timeout: 500}) {
+  async fetchResource(url, options = {timeout: 2_000}) {
     if (!this._enabled) {
       throw new Error('Must call `enable` before using fetchResource');
     }
 
-    // `Network.loadNetworkResource` was introduced in M88.
-    // The long timeout bug with `IO.read` was fixed in M92:
-    // https://bugs.chromium.org/p/chromium/issues/detail?id=1191757
-    const {milestone} = await getBrowserVersion(this.session);
-    if (milestone >= 92) {
-      return await this._fetchResourceOverProtocol(url, options);
+    if (await this.shouldUseLegacyFetcher()) {
+      return this._fetchResourceIframe(url, options);
     }
-    return await this._fetchResourceIframe(url, options);
+
+    return this._fetchResourceOverProtocol(url, options);
   }
 
   /**
@@ -121,7 +131,7 @@ class Fetcher {
    * @param {{timeout: number}=} options,
    * @return {Promise<string>}
    */
-  async _readIOStream(handle, options = {timeout: 500}) {
+  async _readIOStream(handle, options = {timeout: 2_000}) {
     const startTime = Date.now();
 
     let ioResponse;
@@ -146,7 +156,6 @@ class Fetcher {
    * @return {Promise<{stream: LH.Crdp.IO.StreamHandle|null, status: number|null}>}
    */
   async _loadNetworkResource(url) {
-    await this.session.sendCommand('Network.enable');
     const frameTreeResponse = await this.session.sendCommand('Page.getFrameTree');
     const networkResponse = await this.session.sendCommand('Network.loadNetworkResource', {
       frameId: frameTreeResponse.frameTree.frame.id,
@@ -156,7 +165,6 @@ class Fetcher {
         includeCredentials: true,
       },
     });
-    await this.session.sendCommand('Network.disable');
 
     return {
       stream: networkResponse.resource.success ? (networkResponse.resource.stream || null) : null,
@@ -187,9 +195,7 @@ class Fetcher {
     /** @type {NodeJS.Timeout} */
     let timeoutHandle;
     const timeoutPromise = new Promise((_, reject) => {
-      timeoutHandle = setTimeout(() => {
-        reject(new Error('Timed out fetching resource'));
-      }, options.timeout);
+      timeoutHandle = setTimeout(reject, options.timeout, new Error('Timed out fetching resource'));
     });
 
     const responsePromise = this._loadNetworkResource(url);
@@ -275,17 +281,16 @@ class Fetcher {
     /* c8 ignore stop */
 
     /** @type {NodeJS.Timeout} */
-    let timeoutHandle;
+    let asyncTimeout;
     /** @type {Promise<never>} */
     const timeoutPromise = new Promise((_, reject) => {
-      const errorMessage = 'Timed out fetching resource.';
-      timeoutHandle = setTimeout(() => reject(new Error(errorMessage)), options.timeout);
+      asyncTimeout = setTimeout(reject, options.timeout, new Error('Timed out fetching resource.'));
     });
 
     const racePromise = Promise.race([
       timeoutPromise,
       requestInterceptionPromise,
-    ]).finally(() => clearTimeout(timeoutHandle));
+    ]).finally(() => clearTimeout(asyncTimeout));
 
     // Temporarily disable auto-attaching for this iframe.
     await this.session.sendCommand('Target.setAutoAttach', {

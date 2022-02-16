@@ -8,8 +8,9 @@
 /**
  * @typedef CollectPhaseArtifactOptions
  * @property {import('./driver.js')} driver
- * @property {Array<LH.Config.ArtifactDefn>} artifactDefinitions
+ * @property {Array<LH.Config.AnyArtifactDefn>} artifactDefinitions
  * @property {ArtifactState} artifactState
+ * @property {LH.FRBaseArtifacts} baseArtifacts
  * @property {LH.Gatherer.FRGatherPhase} phase
  * @property {LH.Gatherer.GatherMode} gatherMode
  * @property {Map<string, LH.ArbitraryEqualityMap>} computedCache
@@ -21,6 +22,8 @@
 /** @typedef {Record<CollectPhaseArtifactOptions['phase'], IntermediateArtifacts>} ArtifactState */
 
 /** @typedef {LH.Gatherer.FRTransitionalContext<LH.Gatherer.DependencyKey>['dependencies']} Dependencies */
+
+const log = require('lighthouse-logger');
 
 /**
  *
@@ -66,6 +69,7 @@ async function collectPhaseArtifacts(options) {
     driver,
     artifactDefinitions,
     artifactState,
+    baseArtifacts,
     phase,
     gatherMode,
     computedCache,
@@ -75,6 +79,8 @@ async function collectPhaseArtifacts(options) {
   const priorPhaseArtifacts = (priorPhase && artifactState[priorPhase]) || {};
 
   for (const artifactDefn of artifactDefinitions) {
+    const logLevel = phase === 'getArtifact' ? 'log' : 'verbose';
+    log[logLevel](`artifacts:${phase}`, artifactDefn.id);
     const gatherer = artifactDefn.gatherer.instance;
 
     const priorArtifactPromise = priorPhaseArtifacts[artifactDefn.id] || Promise.resolve();
@@ -87,6 +93,7 @@ async function collectPhaseArtifacts(options) {
         url: await driver.url(),
         gatherMode,
         driver,
+        baseArtifacts,
         dependencies,
         computedCache,
         settings,
@@ -99,7 +106,7 @@ async function collectPhaseArtifacts(options) {
 }
 
 /**
- * @param {LH.Config.ArtifactDefn} artifact
+ * @param {LH.Config.AnyArtifactDefn} artifact
  * @param {Record<string, LH.Gatherer.PhaseResult>} artifactsById
  * @return {Promise<Dependencies>}
  */

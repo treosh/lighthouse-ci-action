@@ -8,18 +8,18 @@
 const defaultConfigPath = './default-config.js';
 const defaultConfig = require('./default-config.js');
 const constants = require('./constants.js');
-const i18n = require('./../lib/i18n/i18n.js');
+const format = require('../../shared/localization/format.js');
+const validation = require('./../fraggle-rock/config/validation.js');
 
 const log = require('lighthouse-logger');
 const path = require('path');
 const Runner = require('../runner.js');
-const ConfigPlugin = require('./config-plugin.js');
 const {
+  mergePlugins,
   mergeConfigFragment,
   resolveSettings,
   resolveAuditsToDefns,
   resolveGathererToDefn,
-  resolveModulePath,
   deepClone,
   deepCloneConfigJson,
 } = require('./config-helpers.js');
@@ -39,6 +39,7 @@ const BASE_ARTIFACT_BLANKS = {
   NetworkUserAgent: '',
   BenchmarkIndex: '',
   WebAppManifest: '',
+  GatherContext: '',
   InstallabilityErrors: '',
   Stacks: '',
   traces: '',
@@ -105,49 +106,6 @@ function assertValidPasses(passes, audits) {
 }
 
 /**
- * @param {Config['categories']} categories
- * @param {Config['audits']} audits
- * @param {Config['groups']} groups
- */
-function assertValidCategories(categories, audits, groups) {
-  if (!categories) {
-    return;
-  }
-
-  /** @type {Map<string, LH.Config.AuditDefn>} */
-  const auditsKeyedById = new Map((audits || []).map(audit => {
-    return [audit.implementation.meta.id, audit];
-  }));
-
-  Object.keys(categories).forEach(categoryId => {
-    categories[categoryId].auditRefs.forEach((auditRef, index) => {
-      if (!auditRef.id) {
-        throw new Error(`missing an audit id at ${categoryId}[${index}]`);
-      }
-
-      const audit = auditsKeyedById.get(auditRef.id);
-      if (!audit) {
-        throw new Error(`could not find ${auditRef.id} audit for category ${categoryId}`);
-      }
-
-      const auditImpl = audit.implementation;
-      const isManual = auditImpl.meta.scoreDisplayMode === 'manual';
-      if (categoryId === 'accessibility' && !auditRef.group && !isManual) {
-        throw new Error(`${auditRef.id} accessibility audit does not have a group`);
-      }
-
-      if (auditRef.weight > 0 && isManual) {
-        throw new Error(`${auditRef.id} is manual but has a positive weight`);
-      }
-
-      if (auditRef.group && (!groups || !groups[auditRef.group])) {
-        throw new Error(`${auditRef.id} references unknown group ${auditRef.group}`);
-      }
-    });
-  });
-}
-
-/**
  * @param {Gatherer} gathererInstance
  * @param {string=} gathererName
  */
@@ -190,22 +148,6 @@ function assertValidFlags(flags) {
   }
 }
 
-/**
- * Throws if pluginName is invalid or (somehow) collides with a category in the
- * configJSON being added to.
- * @param {LH.Config.Json} configJSON
- * @param {string} pluginName
- */
-function assertValidPluginName(configJSON, pluginName) {
-  if (!pluginName.startsWith('lighthouse-plugin-')) {
-    throw new Error(`plugin name '${pluginName}' does not start with 'lighthouse-plugin-'`);
-  }
-
-  if (configJSON.categories && configJSON.categories[pluginName]) {
-    throw new Error(`plugin name '${pluginName}' not allowed because it is the id of a category already found in config`); // eslint-disable-line max-len
-  }
-}
-
 
 /**
  * @implements {LH.Config.Config}
@@ -219,7 +161,7 @@ class Config {
   constructor(configJSON, flags) {
     const status = {msg: 'Create config', id: 'lh:init:config'};
     log.time(status, 'verbose');
-    let configPath = flags && flags.configPath;
+    let configPath = flags?.configPath;
 
     if (!configJSON) {
       configJSON = defaultConfig;
@@ -245,7 +187,7 @@ class Config {
     const configDir = configPath ? path.dirname(configPath) : undefined;
 
     // Validate and merge in plugins (if any).
-    configJSON = Config.mergePlugins(configJSON, flags, configDir);
+    configJSON = mergePlugins(configJSON, configDir, flags);
 
     if (flags) {
       assertValidFlags(flags);
@@ -271,7 +213,7 @@ class Config {
     Config.filterConfigIfNeeded(this);
 
     assertValidPasses(this.passes, this.audits);
-    assertValidCategories(this.categories, this.audits, this.groups);
+    validation.assertValidCategories(this.categories, this.audits, this.groups);
 
     log.timeEnd(status);
   }
@@ -306,7 +248,7 @@ class Config {
     }
 
     // Printed config is more useful with localized strings.
-    i18n.replaceIcuMessages(jsonConfig, jsonConfig.settings.locale);
+    format.replaceIcuMessages(jsonConfig, jsonConfig.settings.locale);
 
     return JSON.stringify(jsonConfig, null, 2);
   }
@@ -334,33 +276,6 @@ class Config {
     }
 
     return mergeConfigFragment(baseJSON, extendJSON);
-  }
-
-  /**
-   * @param {LH.Config.Json} configJSON
-   * @param {LH.Flags=} flags
-   * @param {string=} configDir
-   * @return {LH.Config.Json}
-   */
-  static mergePlugins(configJSON, flags, configDir) {
-    const configPlugins = configJSON.plugins || [];
-    const flagPlugins = (flags && flags.plugins) || [];
-    const pluginNames = new Set([...configPlugins, ...flagPlugins]);
-
-    for (const pluginName of pluginNames) {
-      assertValidPluginName(configJSON, pluginName);
-
-      // TODO: refactor and delete `global.isDevtools`.
-      const pluginPath = global.isDevtools || global.isLightrider ?
-        pluginName :
-        resolveModulePath(pluginName, configDir, 'plugin');
-      const rawPluginJson = require(pluginPath);
-      const pluginJson = ConfigPlugin.parsePlugin(rawPluginJson, pluginName);
-
-      configJSON = Config.extendConfigJSON(configJSON, pluginJson);
-    }
-
-    return configJSON;
   }
 
   /**
@@ -508,12 +423,10 @@ class Config {
 
     // The `full-page-screenshot` audit belongs to no category, but we still want to include
     // it (unless explictly excluded) because there are audits in every category that can use it.
-    if (settings.onlyCategories) {
-      const explicitlyExcludesFullPageScreenshot =
-        settings.skipAudits && settings.skipAudits.includes('full-page-screenshot');
-      if (!explicitlyExcludesFullPageScreenshot) {
-        includedAudits.add('full-page-screenshot');
-      }
+    const explicitlyExcludesFullPageScreenshot =
+      settings.skipAudits && settings.skipAudits.includes('full-page-screenshot');
+    if (!explicitlyExcludesFullPageScreenshot && (settings.onlyCategories || settings.skipAudits)) {
+      includedAudits.add('full-page-screenshot');
     }
 
     return {categories, requestedAuditNames: includedAudits};

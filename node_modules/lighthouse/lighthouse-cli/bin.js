@@ -5,11 +5,8 @@
  */
 'use strict';
 
-const fs = require('fs');
-const path = require('path');
-
-/*
- * The relationship between these CLI modules:
+/**
+ * @fileoverview The relationship between these CLI modules:
  *
  *   index.js     : only calls bin.js's begin()
  *   cli-flags.js : leverages yargs to read argv, outputs LH.CliFlags
@@ -21,33 +18,38 @@ const path = require('path');
  *               cli-flags        lh-core/index
  */
 
-const commands = require('./commands/commands.js');
-const printer = require('./printer.js');
-const {getFlags} = require('./cli-flags.js');
-const {runLighthouse} = require('./run.js');
-const {generateConfig} = require('../lighthouse-core/index.js');
+import fs from 'fs';
+import path from 'path';
+import url from 'url';
+import module from 'module';
 
-const log = require('lighthouse-logger');
-const pkg = require('../package.json');
+import log from 'lighthouse-logger';
+
+import * as commands from './commands/commands.js';
+import * as Printer from './printer.js';
+import {getFlags} from './cli-flags.js';
+import {runLighthouse} from './run.js';
+import lighthouse from '../lighthouse-core/index.js';
+import {askPermission} from './sentry-prompt.js';
+import {LH_ROOT} from '../root.js';
+
+const pkg = JSON.parse(fs.readFileSync(LH_ROOT + '/package.json', 'utf-8'));
+
+// TODO(esmodules): use regular import when this file is esm.
+const require = module.createRequire(import.meta.url);
 const Sentry = require('../lighthouse-core/lib/sentry.js');
-
-const updateNotifier = require('update-notifier');
-const {askPermission} = require('./sentry-prompt.js');
 
 /**
  * @return {boolean}
  */
 function isDev() {
-  return fs.existsSync(path.join(__dirname, '../.git'));
+  return fs.existsSync(path.join(LH_ROOT, '/.git'));
 }
 
 /**
  * @return {Promise<LH.RunnerResult|void>}
  */
 async function begin() {
-  // Tell user if there's a newer version of LH.
-  updateNotifier({pkg}).notify();
-
   const cliFlags = getFlags();
 
   // Process terminating command
@@ -56,20 +58,31 @@ async function begin() {
   }
 
   // Process terminating command
+  if (cliFlags.listLocales) {
+    commands.listLocales();
+  }
+
+  // Process terminating command
   if (cliFlags.listTraceCategories) {
     commands.listTraceCategories();
   }
 
-  const url = cliFlags._[0];
+  const urlUnderTest = cliFlags._[0];
 
   /** @type {LH.Config.Json|undefined} */
   let configJson;
   if (cliFlags.configPath) {
     // Resolve the config file path relative to where cli was called.
     cliFlags.configPath = path.resolve(process.cwd(), cliFlags.configPath);
-    configJson = require(cliFlags.configPath);
+
+    if (cliFlags.configPath.endsWith('.json')) {
+      configJson = JSON.parse(fs.readFileSync(cliFlags.configPath, 'utf-8'));
+    } else {
+      const configModuleUrl = url.pathToFileURL(cliFlags.configPath).href;
+      configJson = (await import(configModuleUrl)).default;
+    }
   } else if (cliFlags.preset) {
-    configJson = require(`../lighthouse-core/config/${cliFlags.preset}-config.js`);
+    configJson = (await import(`../lighthouse-core/config/${cliFlags.preset}-config.js`)).default;
   }
 
   if (cliFlags.budgetPath) {
@@ -90,7 +103,7 @@ async function begin() {
 
   if (
     cliFlags.output.length === 1 &&
-    cliFlags.output[0] === printer.OutputMode.json &&
+    cliFlags.output[0] === Printer.OutputMode.json &&
     !cliFlags.outputPath
   ) {
     cliFlags.outputPath = 'stdout';
@@ -108,7 +121,7 @@ async function begin() {
   }
 
   if (cliFlags.printConfig) {
-    const config = generateConfig(configJson, cliFlags);
+    const config = lighthouse.generateConfig(configJson, cliFlags);
     process.stdout.write(config.getPrintString());
     return;
   }
@@ -121,7 +134,7 @@ async function begin() {
   }
   if (cliFlags.enableErrorReporting) {
     Sentry.init({
-      url,
+      url: urlUnderTest,
       flags: cliFlags,
       environmentData: {
         name: 'redacted', // prevent sentry from using hostname
@@ -134,9 +147,9 @@ async function begin() {
     });
   }
 
-  return runLighthouse(url, cliFlags, configJson);
+  return runLighthouse(urlUnderTest, cliFlags, configJson);
 }
 
-module.exports = {
+export {
   begin,
 };

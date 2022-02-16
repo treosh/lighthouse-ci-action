@@ -148,7 +148,7 @@ class Connection {
     } else {
       // In DevTools we receive responses to commands we did not send which we cannot act on, so we
       // just log these occurrences.
-      const error = object.error && object.error.message;
+      const error = object.error?.message;
       log.formatProtocol(`disowned method <= browser ${error ? 'ERR' : 'OK'}`,
           {method: 'UNKNOWN', params: error || object.result}, 'verbose');
     }

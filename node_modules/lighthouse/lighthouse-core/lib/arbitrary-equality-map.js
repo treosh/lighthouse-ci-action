@@ -40,7 +40,7 @@ class ArbitraryEqualityMap {
    */
   get(key) {
     const entry = this._entries[this._findIndexOf(key)];
-    return entry && entry.value;
+    return entry?.value;
   }
 
   /**

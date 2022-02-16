@@ -38,6 +38,7 @@ class AppleTouchIcon extends Audit {
       title: str_(UIStrings.title),
       failureTitle: str_(UIStrings.failureTitle),
       description: str_(UIStrings.description),
+      supportedModes: ['navigation'],
       requiredArtifacts: ['LinkElements'],
     };
   }
@@ -55,8 +56,8 @@ class AppleTouchIcon extends Audit {
     const passed = appleTouchIcons.length !== 0;
 
     const warnings = [];
-    if (appleTouchIcons.filter(el => el.rel === 'apple-touch-icon-precomposed').length !== 0
-      && appleTouchIcons.filter(el => el.rel === 'apple-touch-icon').length === 0) {
+    if (appleTouchIcons.filter(el => el.rel === 'apple-touch-icon-precomposed').length !== 0 &&
+      appleTouchIcons.filter(el => el.rel === 'apple-touch-icon').length === 0) {
       warnings.push(str_(UIStrings.precomposedWarning));
     }
 

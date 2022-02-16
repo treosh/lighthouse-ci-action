@@ -7,7 +7,7 @@
 
 const {isUnderTest} = require('../lib/lh-env.js');
 const statistics = require('../lib/statistics.js');
-const Util = require('../report/html/renderer/util.js');
+const {Util} = require('../util-commonjs.js');
 
 const DEFAULT_PASS = 'defaultPass';
 
@@ -73,13 +73,28 @@ class Audit {
    * considering a log-normal distribution governed by two control points (the 10th
    * percentile value and the median value) and represents the percentage of sites that are
    * greater than `value`.
+   *
+   * Score characteristics:
+   * - within [0, 1]
+   * - rounded to two digits
+   * - value must meet or beat a controlPoint value to meet or exceed its percentile score:
+   *   - value > median will give a score < 0.5; value ≤ median will give a score ≥ 0.5.
+   *   - value > p10 will give a score < 0.9; value ≤ p10 will give a score ≥ 0.9.
+   * - values < p10 will get a slight boost so a score of 1 is achievable by a
+   *   `value` other than those close to 0. Scores of > ~0.99524 end up rounded to 1.
    * @param {{median: number, p10: number}} controlPoints
    * @param {number} value
    * @return {number}
    */
   static computeLogNormalScore(controlPoints, value) {
-    const percentile = statistics.getLogNormalScore(controlPoints, value);
-    return clampTo2Decimals(percentile);
+    let percentile = statistics.getLogNormalScore(controlPoints, value);
+    // Add a boost to scores of 90+, linearly ramping from 0 at 0.9 to half a
+    // point (0.005) at 1. Expands scores in (0.9, 1] to (0.9, 1.005], so more top
+    // scores will be a perfect 1 after the two-digit `Math.floor()` rounding below.
+    if (percentile > 0.9) { // getLogNormalScore ensures `percentile` can't exceed 1.
+      percentile += 0.05 * (percentile - 0.9);
+    }
+    return Math.floor(percentile * 100) / 100;
   }
 
   /**
@@ -133,7 +148,7 @@ class Audit {
 
   /**
    * @param {LH.Audit.Details.List['items']} items
-   * @returns {LH.Audit.Details.List}
+   * @return {LH.Audit.Details.List}
    */
   static makeListDetails(items) {
     return {
@@ -180,7 +195,7 @@ class Audit {
   /**
    * @param {string} content
    * @param {number} maxLineLength
-   * @returns {LH.Audit.Details.SnippetValue['lines']}
+   * @return {LH.Audit.Details.SnippetValue['lines']}
    */
   static _makeSnippetLinesArray(content, maxLineLength) {
     return content.split('\n').map((line, lineIndex) => {
@@ -233,19 +248,51 @@ class Audit {
   }
 
   /**
-   * @param {LH.Artifacts.ConsoleMessage} entry
-   * @return {LH.Audit.Details.SourceLocationValue | undefined}
+   * @param {LH.Artifacts.Bundle} bundle
+   * @param {number} generatedLine
+   * @param {number} generatedColumn
+   * @return {LH.Audit.Details.SourceLocationValue['original']}
    */
-  static makeSourceLocationFromConsoleMessage(entry) {
-    if (!entry.url) return;
+  static _findOriginalLocation(bundle, generatedLine, generatedColumn) {
+    const entry = bundle?.map.findEntry(generatedLine, generatedColumn);
+    if (!entry) return;
 
     return {
-      type: 'source-location',
-      url: entry.url,
-      urlProvider: 'network',
-      line: entry.lineNumber || 0,
-      column: entry.columnNumber || 0,
+      file: entry.sourceURL || '',
+      line: entry.sourceLineNumber || 0,
+      column: entry.sourceColumnNumber || 0,
     };
+  }
+
+  /**
+   * @param {string} url
+   * @param {number} line 0-indexed
+   * @param {number} column 0-indexed
+   * @param {LH.Artifacts.Bundle=} bundle
+   * @return {LH.Audit.Details.SourceLocationValue}
+   */
+  static makeSourceLocation(url, line, column, bundle) {
+    return {
+      type: 'source-location',
+      url,
+      urlProvider: 'network',
+      line,
+      column,
+      original: bundle && this._findOriginalLocation(bundle, line, column),
+    };
+  }
+
+  /**
+   * @param {LH.Artifacts.ConsoleMessage} entry
+   * @param {LH.Artifacts.Bundle=} bundle
+   * @return {LH.Audit.Details.SourceLocationValue | undefined}
+   */
+  static makeSourceLocationFromConsoleMessage(entry, bundle) {
+    if (!entry.url) return;
+
+    const line = entry.lineNumber || 0;
+    const column = entry.columnNumber || 0;
+    return this.makeSourceLocation(entry.url, line, column, bundle);
   }
 
   /**
@@ -328,8 +375,8 @@ class Audit {
 
       score,
       scoreDisplayMode,
-      numericValue: numericProduct && numericProduct.numericValue,
-      numericUnit: numericProduct && numericProduct.numericUnit,
+      numericValue: numericProduct?.numericValue,
+      numericUnit: numericProduct?.numericUnit,
 
       displayValue: product.displayValue,
       explanation: product.explanation,

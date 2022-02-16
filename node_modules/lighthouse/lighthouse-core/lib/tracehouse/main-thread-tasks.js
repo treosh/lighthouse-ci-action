@@ -234,7 +234,7 @@ class MainThreadTasks {
       // Do bookkeeping on XHR requester data.
       if (nextTask.event.name === 'XHRReadyStateChange') {
         const data = nextTask.event.args.data;
-        const url = data && data.url;
+        const url = data?.url;
         if (data && url && data.readyState === 1) priorTaskData.xhrs.set(url, nextTask);
       }
 

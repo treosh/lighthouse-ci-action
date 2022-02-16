@@ -7,20 +7,19 @@
 
 /* eslint-disable no-console */
 
-const path = require('path');
-const psList = require('ps-list');
+import path from 'path';
 
-const Printer = require('./printer.js');
-const ChromeLauncher = require('chrome-launcher');
+import psList from 'ps-list';
+import * as ChromeLauncher from 'chrome-launcher';
+import yargsParser from 'yargs-parser';
+import log from 'lighthouse-logger';
+import open from 'open';
 
-const yargsParser = require('yargs-parser');
-const lighthouse = require('../lighthouse-core/index.js');
-const log = require('lighthouse-logger');
-const getFilenamePrefix = require('../lighthouse-core/lib/file-namer.js').getFilenamePrefix;
-const assetSaver = require('../lighthouse-core/lib/asset-saver.js');
-const URL = require('../lighthouse-core/lib/url-shim.js');
-
-const open = require('open');
+import * as Printer from './printer.js';
+import lighthouse from '../lighthouse-core/index.js';
+import {getLhrFilenamePrefix} from '../report/generator/file-namer.js';
+import * as assetSaver from '../lighthouse-core/lib/asset-saver.js';
+import URL from '../lighthouse-core/lib/url-shim.js';
 
 /** @typedef {Error & {code: string, friendlyMessage?: string}} ExitError */
 
@@ -138,7 +137,7 @@ async function saveResults(runnerResult, flags) {
   // Use the output path as the prefix for all generated files.
   // If no output path is set, generate a file prefix using the URL and date.
   const configuredPath = !flags.outputPath || flags.outputPath === 'stdout' ?
-      getFilenamePrefix(lhr) :
+      getLhrFilenamePrefix(lhr) :
       flags.outputPath.replace(/\.\w{2,4}$/, '');
   const resolvedPath = path.resolve(cwd, configuredPath);
 
@@ -176,7 +175,7 @@ async function potentiallyKillChrome(launchedChrome) {
   /** @type {NodeJS.Timeout} */
   let timeout;
   const timeoutPromise = new Promise((_, reject) => {
-    timeout = setTimeout(() => reject(new Error('Timed out waiting to kill Chrome')), 5000);
+    timeout = setTimeout(reject, 5000, new Error('Timed out waiting to kill Chrome'));
   });
 
   return Promise.race([
@@ -193,6 +192,23 @@ async function potentiallyKillChrome(launchedChrome) {
   }).finally(() => {
     clearTimeout(timeout);
   });
+}
+
+/**
+ * @param {string} url
+ * @param {LH.CliFlags} flags
+ * @param {LH.Config.Json|undefined} config
+ * @param {ChromeLauncher.LaunchedChrome} launchedChrome
+ * @return {Promise<LH.RunnerResult|undefined>}
+ */
+async function runLighthouseWithFraggleRock(url, flags, config, launchedChrome) {
+  const fraggleRock = (await import('../lighthouse-core/fraggle-rock/api.js')).default;
+  const puppeteer = (await import('puppeteer')).default;
+  const browser = await puppeteer.connect({browserURL: `http://localhost:${launchedChrome.port}`});
+  const page = await browser.newPage();
+  flags.channel = 'fraggle-rock-cli';
+  const configContext = {configPath: flags.configPath, settingsOverrides: flags};
+  return fraggleRock.navigation({url, page, config, configContext});
 }
 
 /**
@@ -216,6 +232,10 @@ async function runLighthouse(url, flags, config) {
   let launchedChrome;
 
   try {
+    if (url && flags.auditMode && !flags.gatherMode) {
+      log.warn('CLI', 'URL parameter is ignored if -A flag is used without -G flag');
+    }
+
     const shouldGather = flags.gatherMode || flags.gatherMode === flags.auditMode;
     const shouldUseLocalChrome = URL.isLikeLocalhost(flags.hostname);
     if (shouldGather && shouldUseLocalChrome) {
@@ -223,7 +243,9 @@ async function runLighthouse(url, flags, config) {
       flags.port = launchedChrome.port;
     }
 
-    const runnerResult = await lighthouse(url, flags, config);
+    const runnerResult = flags.fraggleRock && launchedChrome ?
+       await runLighthouseWithFraggleRock(url, flags, config, launchedChrome) :
+       await lighthouse(url, flags, config);
 
     // If in gatherMode only, there will be no runnerResult.
     if (runnerResult) {
@@ -236,7 +258,7 @@ async function runLighthouse(url, flags, config) {
     // Runtime errors indicate something was *very* wrong with the page result.
     // We don't want the user to have to parse the report to figure it out, so we'll still exit
     // with an error code after we saved the results.
-    if (runnerResult && runnerResult.lhr.runtimeError) {
+    if (runnerResult?.lhr.runtimeError) {
       const {runtimeError} = runnerResult.lhr;
       return printErrorAndExit({
         name: 'LHError',
@@ -253,7 +275,7 @@ async function runLighthouse(url, flags, config) {
   }
 }
 
-module.exports = {
+export {
   parseChromeFlags,
   saveResults,
   runLighthouse,

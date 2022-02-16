@@ -32,7 +32,7 @@ function rectContains(rect1, rect2) {
 
 /**
  * @param {LH.Artifacts.Rect[]} rects
- * @returns {LH.Artifacts.Rect[]}
+ * @return {LH.Artifacts.Rect[]}
  */
 function filterOutTinyRects(rects) {
   return rects.filter(
@@ -42,7 +42,7 @@ function filterOutTinyRects(rects) {
 
 /**
  * @param {LH.Artifacts.Rect[]} rects
- * @returns {LH.Artifacts.Rect[]}
+ * @return {LH.Artifacts.Rect[]}
  */
 function filterOutRectsContainedByOthers(rects) {
   const rectsToKeep = new Set(rects);
@@ -76,7 +76,7 @@ function getRectCenterPoint(rect) {
 /**
  * @param {LH.Artifacts.Rect} rectA
  * @param {LH.Artifacts.Rect} rectB
- * @returns {boolean}
+ * @return {boolean}
  */
 function rectsTouchOrOverlap(rectA, rectB) {
   // https://stackoverflow.com/questions/2752349/fast-rectangle-to-rectangle-intersection

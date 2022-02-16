@@ -144,4 +144,7 @@ class LanternSpeedIndex extends LanternMetric {
   }
 }
 
-module.exports = makeComputedArtifact(LanternSpeedIndex);
+module.exports = makeComputedArtifact(
+  LanternSpeedIndex,
+  ['devtoolsLog', 'gatherContext', 'settings', 'simulator', 'trace']
+);

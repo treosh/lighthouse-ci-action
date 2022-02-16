@@ -16,7 +16,12 @@ const Metrics = require('./traces/pwmetrics-events.js');
 const NetworkAnalysisComputed = require('../computed/network-analysis.js');
 const LoadSimulatorComputed = require('../computed/load-simulator.js');
 const LHError = require('../lib/lh-error.js');
-const pipeline = promisify(stream.pipeline);
+// TODO(esmodules): Rollup does not support `promisfy` or `stream.pipeline`. Bundled files
+// don't need anything in this file except for `stringifyReplacer`, so a check for
+// truthiness before using is enough.
+// TODO: Can remove promisify(pipeline) in Node 15.
+// https://nodejs.org/api/stream.html#streams-promises-api
+const pipeline = promisify && promisify(stream.pipeline);
 
 const artifactsFilename = 'artifacts.json';
 const traceSuffix = '.trace.json';
@@ -142,7 +147,7 @@ function saveLhr(lhr, basePath) {
 /**
  * Filter traces and extract screenshots to prepare for saving.
  * @param {LH.Artifacts} artifacts
- * @param {LH.Audit.Results} [audits]
+ * @param {LH.Result['audits']} [audits]
  * @return {Promise<Array<PreparedAssets>>}
  */
 async function prepareAssets(artifacts, audits) {
@@ -235,9 +240,7 @@ async function saveTrace(traceData, traceFilename) {
   const traceIter = traceJsonGenerator(traceData);
   const writeStream = fs.createWriteStream(traceFilename);
 
-  // TODO: Can remove Readable.from() in Node 13, promisify(pipeline) in Node 15.
-  // https://nodejs.org/api/stream.html#stream_stream_pipeline_streams_callback
-  return pipeline(stream.Readable.from(traceIter), writeStream);
+  return pipeline(traceIter, writeStream);
 }
 
 /**
@@ -247,10 +250,12 @@ async function saveTrace(traceData, traceFilename) {
  * @return {Promise<void>}
  */
 function saveDevtoolsLog(devtoolsLog, devtoolLogFilename) {
-  const logIter = arrayOfObjectsJsonGenerator(devtoolsLog);
   const writeStream = fs.createWriteStream(devtoolLogFilename);
 
-  return pipeline(stream.Readable.from(logIter), writeStream);
+  return pipeline(function* () {
+    yield* arrayOfObjectsJsonGenerator(devtoolsLog);
+    yield '\n';
+  }, writeStream);
 }
 
 /**
@@ -272,7 +277,7 @@ async function saveLanternDebugTraces(pathWithBasename) {
 /**
  * Writes trace(s) and associated asset(s) to disk.
  * @param {LH.Artifacts} artifacts
- * @param {LH.Audit.Results} audits
+ * @param {LH.Result['audits']} audits
  * @param {string} pathWithBasename
  * @return {Promise<void>}
  */

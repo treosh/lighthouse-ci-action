@@ -93,7 +93,7 @@ class ValidSourceMaps extends Audit {
       }
 
       // Sources content errors.
-      if (sourceMap && sourceMap.map) {
+      if (sourceMap?.map) {
         const sourcesContent = sourceMap.map.sourcesContent || [];
         let missingSourcesContentCount = 0;
         for (let i = 0; i < sourceMap.map.sources.length; i++) {
@@ -108,9 +108,9 @@ class ValidSourceMaps extends Audit {
       if (sourceMap || errors.length) {
         results.push({
           scriptUrl: scriptElement.src,
-          sourceMapUrl: sourceMap && sourceMap.sourceMapUrl,
+          sourceMapUrl: sourceMap?.sourceMapUrl,
           subItems: {
-            type: /** @type {'subitems'} */ ('subitems'),
+            type: /** @type {const} */ ('subitems'),
             items: errors,
           },
         });

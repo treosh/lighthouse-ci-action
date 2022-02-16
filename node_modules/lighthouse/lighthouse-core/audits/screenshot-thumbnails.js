@@ -9,7 +9,6 @@ const Audit = require('./audit.js');
 const LHError = require('../lib/lh-error.js');
 const jpeg = require('jpeg-js');
 const Speedline = require('../computed/speedline.js');
-const Interactive = require('../computed/metrics/interactive.js');
 
 const NUMBER_OF_THUMBNAILS = 10;
 const THUMBNAIL_WIDTH = 120;
@@ -26,7 +25,7 @@ class ScreenshotThumbnails extends Audit {
       scoreDisplayMode: Audit.SCORING_MODES.INFORMATIVE,
       title: 'Screenshot Thumbnails',
       description: 'This is what the load of your site looked like.',
-      requiredArtifacts: ['traces', 'devtoolsLogs'],
+      requiredArtifacts: ['traces', 'GatherContext'],
     };
   }
 
@@ -71,7 +70,7 @@ class ScreenshotThumbnails extends Audit {
    * @param {LH.Audit.Context} context
    * @return {Promise<LH.Audit.Product>}
    */
-  static async audit(artifacts, context) {
+  static async _audit(artifacts, context) {
     const trace = artifacts.traces[Audit.DEFAULT_PASS];
     /** @type {Map<SpeedlineFrame, string>} */
     const cachedThumbnails = new Map();
@@ -79,16 +78,7 @@ class ScreenshotThumbnails extends Audit {
     const speedline = await Speedline.request(trace, context);
 
     // Make the minimum time range 3s so sites that load super quickly don't get a single screenshot
-    let minimumTimelineDuration = context.options.minimumTimelineDuration || 3000;
-    // Ensure thumbnails cover the full range of the trace (TTI can be later than visually complete)
-    if (context.settings.throttlingMethod !== 'simulate') {
-      const devtoolsLog = artifacts.devtoolsLogs[Audit.DEFAULT_PASS];
-      const metricComputationData = {trace, devtoolsLog, settings: context.settings};
-      const tti = Interactive.request(metricComputationData, context);
-      try {
-        minimumTimelineDuration = Math.max((await tti).timing, minimumTimelineDuration);
-      } catch (_) {}
-    }
+    const minimumTimelineDuration = context.options.minimumTimelineDuration || 3000;
 
     const thumbnails = [];
     const analyzedFrames = speedline.frames.filter(frame => !frame.isProgressInterpolated());
@@ -142,6 +132,31 @@ class ScreenshotThumbnails extends Audit {
         items: thumbnails,
       },
     };
+  }
+
+  /**
+   * @param {LH.Artifacts} artifacts
+   * @param {LH.Audit.Context} context
+   * @return {Promise<LH.Audit.Product>}
+   */
+  static async audit(artifacts, context) {
+    try {
+      return await this._audit(artifacts, context);
+    } catch (err) {
+      const noFramesErrors = new Set([
+        LHError.errors.NO_SCREENSHOTS.code,
+        LHError.errors.SPEEDINDEX_OF_ZERO.code,
+        LHError.errors.NO_SPEEDLINE_FRAMES.code,
+        LHError.errors.INVALID_SPEEDLINE.code,
+      ]);
+
+      // If a timespan didn't happen to contain frames, that's fine. Just mark not applicable.
+      if (noFramesErrors.has(err.code) && artifacts.GatherContext.gatherMode === 'timespan') {
+        return {notApplicable: true, score: 1};
+      }
+
+      throw err;
+    }
   }
 }
 

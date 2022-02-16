@@ -4,7 +4,7 @@
     {
       "src": "package.json",
       "use": "@now/static-build",
-      "config": {"distDir": "dist/now"}
+      "config": {"distDir": "dist"}
     }
   ],
   "github": {

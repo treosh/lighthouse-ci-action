@@ -5,16 +5,33 @@
  */
 'use strict';
 
-const Gatherer = require('./gatherer.js');
+const FRGatherer = require('../../fraggle-rock/gather/base-gatherer.js');
 const serviceWorkers = require('../driver/service-workers.js');
 
-class ServiceWorker extends Gatherer {
+class ServiceWorker extends FRGatherer {
+  /** @type {LH.Gatherer.GathererMeta} */
+  meta = {
+    supportedModes: ['navigation'],
+  };
+
   /**
    * @param {LH.Gatherer.PassContext} passContext
    * @return {Promise<LH.Artifacts['ServiceWorker']>}
    */
   async beforePass(passContext) {
-    const session = passContext.driver.defaultSession;
+    return this.getArtifact({...passContext, dependencies: {}});
+  }
+
+  // This gatherer is run in a separate pass for legacy mode.
+  // Legacy compat code is in `beforePass`.
+  async afterPass() { }
+
+  /**
+   * @param {LH.Gatherer.FRTransitionalContext} context
+   * @return {Promise<LH.Artifacts['ServiceWorker']>}
+   */
+  async getArtifact(context) {
+    const session = context.driver.defaultSession;
     const {versions} = await serviceWorkers.getServiceWorkerVersions(session);
     const {registrations} = await serviceWorkers.getServiceWorkerRegistrations(session);
 

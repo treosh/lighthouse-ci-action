@@ -27,7 +27,7 @@ class TotalBlockingTime extends Audit {
       title: str_(i18n.UIStrings.totalBlockingTimeMetric),
       description: str_(UIStrings.description),
       scoreDisplayMode: Audit.SCORING_MODES.NUMERIC,
-      requiredArtifacts: ['traces', 'devtoolsLogs'],
+      requiredArtifacts: ['traces', 'devtoolsLogs', 'GatherContext'],
     };
   }
 
@@ -87,7 +87,15 @@ class TotalBlockingTime extends Audit {
   static async audit(artifacts, context) {
     const trace = artifacts.traces[Audit.DEFAULT_PASS];
     const devtoolsLog = artifacts.devtoolsLogs[Audit.DEFAULT_PASS];
-    const metricComputationData = {trace, devtoolsLog, settings: context.settings};
+    const gatherContext = artifacts.GatherContext;
+    const metricComputationData = {trace, devtoolsLog, gatherContext, settings: context.settings};
+    if (
+      gatherContext.gatherMode === 'timespan' &&
+      context.settings.throttlingMethod === 'simulate'
+    ) {
+      return {score: 1, notApplicable: true};
+    }
+
     const metricResult = await ComputedTBT.request(metricComputationData, context);
 
     const options = context.options[context.settings.formFactor];

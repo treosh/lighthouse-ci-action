@@ -109,7 +109,7 @@ module.exports = class ConnectionPool {
       }
 
       // This connection is a match and is available! Update our max if it has a larger congestionWindow
-      const currentMax = (maxConnection && maxConnection.congestionWindow) || -Infinity;
+      const currentMax = (maxConnection?.congestionWindow) || -Infinity;
       if (connection.congestionWindow > currentMax) maxConnection = connection;
     }
 

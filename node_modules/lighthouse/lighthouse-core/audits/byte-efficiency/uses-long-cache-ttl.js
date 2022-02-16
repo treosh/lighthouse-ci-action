@@ -45,7 +45,7 @@ class CacheHeaders extends Audit {
       failureTitle: str_(UIStrings.failureTitle),
       description: str_(UIStrings.description),
       scoreDisplayMode: Audit.SCORING_MODES.NUMERIC,
-      requiredArtifacts: ['devtoolsLogs', 'traces'],
+      requiredArtifacts: ['devtoolsLogs'],
     };
   }
 
@@ -167,7 +167,7 @@ class CacheHeaders extends Audit {
    * Returns true if headers suggest a record should not be cached for a long time.
    * @param {Map<string, string>} headers
    * @param {ReturnType<typeof parseCacheControl>} cacheControl
-   * @returns {boolean}
+   * @return {boolean}
    */
   static shouldSkipRecord(headers, cacheControl) {
     // The HTTP/1.0 Pragma header can disable caching if cache-control is not set, see https://tools.ietf.org/html/rfc7234#section-5.4

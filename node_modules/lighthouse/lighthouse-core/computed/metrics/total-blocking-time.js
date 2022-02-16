@@ -7,10 +7,10 @@
 
 const makeComputedArtifact = require('../computed-artifact.js');
 const ComputedMetric = require('./metric.js');
-const LHError = require('../../lib/lh-error.js');
-const TracingProcessor = require('../../lib/tracehouse/trace-processor.js');
+const TraceProcessor = require('../../lib/tracehouse/trace-processor.js');
 const LanternTotalBlockingTime = require('./lantern-total-blocking-time.js');
 const TimetoInteractive = require('./interactive.js');
+const {calculateSumOfBlockingTime} = require('./tbt-utils.js');
 
 /**
  * @fileoverview This audit determines Total Blocking Time.
@@ -27,63 +27,13 @@ const TimetoInteractive = require('./interactive.js');
  */
 class TotalBlockingTime extends ComputedMetric {
   /**
-   * @return {number}
-   */
-  static get BLOCKING_TIME_THRESHOLD() {
-    return 50;
-  }
-  /**
-   * @param {Array<{start: number, end: number, duration: number}>} topLevelEvents
-   * @param {number} fcpTimeInMs
-   * @param {number} interactiveTimeMs
-   * @return {number}
-   */
-  static calculateSumOfBlockingTime(topLevelEvents, fcpTimeInMs, interactiveTimeMs) {
-    if (interactiveTimeMs <= fcpTimeInMs) return 0;
-
-    const threshold = TotalBlockingTime.BLOCKING_TIME_THRESHOLD;
-    let sumBlockingTime = 0;
-    for (const event of topLevelEvents) {
-      // Early exit for small tasks, which should far outnumber long tasks.
-      if (event.duration < threshold) continue;
-
-      // We only want to consider tasks that fall between FCP and TTI.
-      // FCP is picked as the lower bound because there is little risk of user input happening
-      // before FCP so Long Queuing Qelay regions do not harm user experience. Developers should be
-      // optimizing to reach FCP as fast as possible without having to worry about task lengths.
-      if (event.end < fcpTimeInMs) continue;
-
-      // TTI is picked as the upper bound because we want a well defined end point so that the
-      // metric does not rely on how long we trace.
-      if (event.start > interactiveTimeMs) continue;
-
-      // We first perform the clipping, and then calculate Blocking Region. So if we have a 150ms
-      // task [0, 150] and FCP happens midway at 50ms, we first clip the task to [50, 150], and then
-      // calculate the Blocking Region to be [100, 150]. The rational here is that tasks before FCP
-      // are unimportant, so we care whether the main thread is busy more than 50ms at a time only
-      // after FCP.
-      const clippedStart = Math.max(event.start, fcpTimeInMs);
-      const clippedEnd = Math.min(event.end, interactiveTimeMs);
-      const clippedDuration = clippedEnd - clippedStart;
-      if (clippedDuration < threshold) continue;
-
-      // The duration of the task beyond 50ms at the beginning is considered the Blocking Region.
-      // Example:
-      //   [              250ms Task                   ]
-      //   | First 50ms |   Blocking Region (200ms)    |
-      sumBlockingTime += (clippedDuration - threshold);
-    }
-
-    return sumBlockingTime;
-  }
-
-  /**
    * @param {LH.Artifacts.MetricComputationData} data
    * @param {LH.Artifacts.ComputedContext} context
    * @return {Promise<LH.Artifacts.LanternMetric>}
    */
   static computeSimulatedMetric(data, context) {
-    return LanternTotalBlockingTime.request(data, context);
+    const metricData = ComputedMetric.getMetricComputationInput(data);
+    return LanternTotalBlockingTime.request(metricData, context);
   }
 
   /**
@@ -92,23 +42,33 @@ class TotalBlockingTime extends ComputedMetric {
    * @return {Promise<LH.Artifacts.Metric>}
    */
   static async computeObservedMetric(data, context) {
-    const {firstContentfulPaint} = data.traceOfTab.timings;
-    if (!firstContentfulPaint) {
-      throw new LHError(LHError.errors.NO_FCP);
+    const events = TraceProcessor.getMainThreadTopLevelEvents(data.processedTrace);
+
+    if (data.processedNavigation) {
+      const {firstContentfulPaint} = data.processedNavigation.timings;
+      const metricData = ComputedMetric.getMetricComputationInput(data);
+      const interactiveTimeMs = (await TimetoInteractive.request(metricData, context)).timing;
+
+      return {
+        timing: calculateSumOfBlockingTime(
+          events,
+          firstContentfulPaint,
+          interactiveTimeMs
+        ),
+      };
+    } else {
+      return {
+        timing: calculateSumOfBlockingTime(
+          events,
+          0,
+          data.processedTrace.timestamps.traceEnd
+        ),
+      };
     }
-
-    const interactiveTimeMs = (await TimetoInteractive.request(data, context)).timing;
-
-    const events = TracingProcessor.getMainThreadTopLevelEvents(data.traceOfTab);
-
-    return {
-      timing: TotalBlockingTime.calculateSumOfBlockingTime(
-        events,
-        firstContentfulPaint,
-        interactiveTimeMs
-      ),
-    };
   }
 }
 
-module.exports = makeComputedArtifact(TotalBlockingTime);
+module.exports = makeComputedArtifact(
+  TotalBlockingTime,
+  ['devtoolsLog', 'gatherContext', 'settings', 'simulator', 'trace']
+);

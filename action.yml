@@ -32,7 +32,7 @@ outputs:
   assertionResults:
     description: 'Assertion results (content of assertion-results.json)'
 runs:
-  using: 'node14'
+  using: 'node16'
   main: 'src/index.js'
 branding:
   icon: 'bar-chart-2'

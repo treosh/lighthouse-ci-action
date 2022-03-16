@@ -461,6 +461,45 @@ jobs:
 
 </details>
 
+<details>
+  <summary>Dynamically generate URLs</summary>
+  
+Use github-script or any other means to dynamically generate a list of URLs to test
+  
+#### main.yml  
+  
+```yml
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Generate URLs
+        id: urls
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const globber = await glob.create('elements/*/demo/*.html');
+            const files = await globber.glob();
+            const urls = files
+              .map(x => x.match(/([\w-]+)/)[1])
+              .map(x => `${${{ env.DOMAIN }}}/components/${x}/demo/`)
+              .join('\n');
+            core.setOutput('urls', urls);
+
+      - name: Lighthouse CI Action
+        id: lighthouse
+        uses: treosh/lighthouse-ci-action@v8
+        with:
+          urls: |
+            ${{ steps.urls.outputs.urls }}
+
+```
+
+</details>
+
 Explore more workflows in [public examples](./.github/workflows).
 Submit a pull request with a new one if they don't cover your use case.
 

@@ -463,11 +463,11 @@ jobs:
 
 <details>
   <summary>Dynamically generate URLs</summary>
-  
+
 Use github-script or any other means to dynamically generate a list of URLs to test
-  
-#### main.yml  
-  
+
+#### main.yml
+
 ```yml
 jobs:
   lighthouse:

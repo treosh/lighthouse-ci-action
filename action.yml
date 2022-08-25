@@ -24,6 +24,8 @@ inputs:
     description: 'Basic auth username for LHCI server'
   basicAuthPassword:
     description: 'Basic auth password for LHCI server'
+  uploadExtraArgs:
+    description: 'Upload command extra arguments'
 outputs:
   resultsPath:
     description: 'Path to the folder with LHCI results'

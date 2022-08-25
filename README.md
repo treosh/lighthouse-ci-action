@@ -517,6 +517,14 @@ Upload Lighthouse results as [action artifacts](https://help.github.com/en/actio
 uploadArtifacts: true
 ```
 
+#### `uploadExtraArgs`
+
+Add extra args to the [upload command](https://github.com/GoogleChrome/lighthouse-ci/blob/main/docs/configuration.md#upload).
+
+```yml
+uploadExtraArgs: "--extraHeaders.Authorization='Bearer X92sEo3n1J1F0k1E9' --extraHeaders.Foo='Bar'"
+```
+
 #### `temporaryPublicStorage` (default: false)
 
 Upload reports to the [_temporary public storage_](https://github.com/GoogleChrome/lighthouse-ci/blob/master/docs/getting-started.md#collect-lighthouse-results).

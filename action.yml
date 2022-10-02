@@ -31,6 +31,8 @@ outputs:
     description: 'Links to compare/result UI for each URL (content of links.json)'
   assertionResults:
     description: 'Assertion results (content of assertion-results.json)'
+  manifest:
+    description: 'Manifest results (content of manifest.json)'
 runs:
   using: 'node16'
   main: 'src/index.js'

@@ -6,6 +6,7 @@ const stackPacks = [
   require('./packs/joomla.js'),
   require('./packs/magento.js'),
   require('./packs/next.js'),
+  require('./packs/nuxt.js'),
   require('./packs/octobercms.js'),
   require('./packs/react.js'),
   require('./packs/wordpress.js'),

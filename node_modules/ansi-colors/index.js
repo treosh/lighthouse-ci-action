@@ -1,18 +1,25 @@
 'use strict';
 
 const isObject = val => val !== null && typeof val === 'object' && !Array.isArray(val);
-const identity = val => val;
 
 /* eslint-disable no-control-regex */
 // this is a modified version of https://github.com/chalk/ansi-regex (MIT License)
 const ANSI_REGEX = /[\u001b\u009b][[\]#;?()]*(?:(?:(?:[^\W_]*;?[^\W_]*)\u0007)|(?:(?:[0-9]{1,4}(;[0-9]{0,4})*)?[~0-9=<>cf-nqrtyA-PRZ]))/g;
 
-const create = () => {
-  const colors = { enabled: true, visible: true, styles: {}, keys: {} };
-
-  if ('FORCE_COLOR' in process.env) {
-    colors.enabled = process.env.FORCE_COLOR !== '0';
+const hasColor = () => {
+  if (typeof process !== 'undefined') {
+    return process.env.FORCE_COLOR !== '0';
   }
+  return false;
+};
+
+const create = () => {
+  const colors = {
+    enabled: hasColor(),
+    visible: true,
+    styles: {},
+    keys: {}
+  };
 
   const ansi = style => {
     let open = style.open = `\u001b[${style.codes[0]}m`;

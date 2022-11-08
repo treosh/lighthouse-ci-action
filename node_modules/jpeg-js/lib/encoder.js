@@ -535,6 +535,20 @@ function JPEGEncoder(quality) {
 				writeByte(std_ac_chrominance_values[p]);
 			}
 		}
+		
+		function writeCOM(comments)
+		{
+			if (typeof comments === "undefined" || comments.constructor !== Array) return;
+			comments.forEach(e => {
+				if (typeof e !== "string") return;
+				writeWord(0xFFFE); // marker
+				var l = e.length;
+				writeWord(l + 2); // length itself as well
+				var i;
+				for (i = 0; i < l; i++)
+					writeByte(e.charCodeAt(i));
+			});
+		}
 	
 		function writeSOS()
 		{
@@ -625,6 +639,7 @@ function JPEGEncoder(quality) {
 			// Add JPEG headers
 			writeWord(0xFFD8); // SOI
 			writeAPP0();
+			writeCOM(image.comments);
 			writeAPP1(image.exifBuffer);
 			writeDQT();
 			writeSOF0(image.width,image.height);
@@ -782,7 +797,7 @@ function encode(imgData, qu) {
   return {
     data: data,
     width: imgData.width,
-    height: imgData.height
+    height: imgData.height,
   };
 }
 

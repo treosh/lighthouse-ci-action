@@ -1,8 +1,8 @@
 'use strict';
 
-const isHyper = process.env.TERM_PROGRAM === 'Hyper';
-const isWindows = process.platform === 'win32';
-const isLinux = process.platform === 'linux';
+const isHyper = typeof process !== 'undefined' && process.env.TERM_PROGRAM === 'Hyper';
+const isWindows = typeof process !== 'undefined' && process.platform === 'win32';
+const isLinux = typeof process !== 'undefined' && process.platform === 'linux';
 
 const common = {
   ballotDisabled: '☒',
@@ -26,6 +26,7 @@ const common = {
   pilcrow2: '❡',
   pilcrow: '¶',
   plusMinus: '±',
+  question: '?',
   section: '§',
   starsOff: '☆',
   starsOn: '★',
@@ -38,7 +39,6 @@ const windows = Object.assign({}, common, {
   ellipsisLarge: '...',
   ellipsis: '...',
   info: 'i',
-  question: '?',
   questionSmall: '?',
   pointer: '>',
   pointerSmall: '»',
@@ -54,7 +54,6 @@ const other = Object.assign({}, common, {
   ellipsisLarge: '⋯',
   ellipsis: '…',
   info: 'ℹ',
-  question: '?',
   questionFull: '？',
   questionSmall: '﹖',
   pointer: isLinux ? '▸' : '❯',

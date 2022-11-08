@@ -54,24 +54,18 @@ function createError () {
   var props = {}
   for (var i = 0; i < arguments.length; i++) {
     var arg = arguments[i]
-    if (arg instanceof Error) {
+    var type = typeof arg
+    if (type === 'object' && arg instanceof Error) {
       err = arg
       status = err.status || err.statusCode || status
-      continue
-    }
-    switch (typeof arg) {
-      case 'string':
-        msg = arg
-        break
-      case 'number':
-        status = arg
-        if (i !== 0) {
-          deprecate('non-first-argument status code; replace with createError(' + arg + ', ...)')
-        }
-        break
-      case 'object':
-        props = arg
-        break
+    } else if (type === 'number' && i === 0) {
+      status = arg
+    } else if (type === 'string') {
+      msg = arg
+    } else if (type === 'object') {
+      props = arg
+    } else {
+      throw new TypeError('argument #' + (i + 1) + ' unsupported type ' + type)
     }
   }
 
@@ -80,7 +74,7 @@ function createError () {
   }
 
   if (typeof status !== 'number' ||
-    (!statuses[status] && (status < 400 || status >= 600))) {
+    (!statuses.message[status] && (status < 400 || status >= 600))) {
     status = 500
   }
 
@@ -91,7 +85,7 @@ function createError () {
     // create error
     err = HttpError
       ? new HttpError(msg)
-      : new Error(msg || statuses[status])
+      : new Error(msg || statuses.message[status])
     Error.captureStackTrace(err, createError)
   }
 
@@ -135,7 +129,7 @@ function createClientErrorConstructor (HttpError, name, code) {
 
   function ClientError (message) {
     // create the error object
-    var msg = message != null ? message : statuses[code]
+    var msg = message != null ? message : statuses.message[code]
     var err = new Error(msg)
 
     // capture a stack trace to the construction point
@@ -204,7 +198,7 @@ function createServerErrorConstructor (HttpError, name, code) {
 
   function ServerError (message) {
     // create the error object
-    var msg = message != null ? message : statuses[code]
+    var msg = message != null ? message : statuses.message[code]
     var err = new Error(msg)
 
     // capture a stack trace to the construction point
@@ -264,7 +258,7 @@ function nameFunc (func, name) {
 function populateConstructorExports (exports, codes, HttpError) {
   codes.forEach(function forEachCode (code) {
     var CodeError
-    var name = toIdentifier(statuses[code])
+    var name = toIdentifier(statuses.message[code])
 
     switch (codeClass(code)) {
       case 400:
@@ -281,10 +275,6 @@ function populateConstructorExports (exports, codes, HttpError) {
       exports[name] = CodeError
     }
   })
-
-  // backwards-compatibility
-  exports["I'mateapot"] = deprecate.function(exports.ImATeapot,
-    '"I\'mateapot"; use "ImATeapot" instead')
 }
 
 /**

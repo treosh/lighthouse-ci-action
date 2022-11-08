@@ -11,9 +11,9 @@
     "test": "prettier -c src/** package.json README.md && tsc -p ."
   },
   "dependencies": {
-    "@actions/artifact": "^0.6.1",
-    "@actions/core": "^1.6.0",
-    "@actions/github": "^5.0.0",
+    "@actions/artifact": "^1.1.0",
+    "@actions/core": "^1.10.0",
+    "@actions/github": "^5.1.1",
     "@lhci/cli": "^0.9.0",
     "@lhci/utils": "^0.9.0",
     "is-windows": "^1.0.2",
@@ -21,9 +21,9 @@
   },
   "devDependencies": {
     "@types/is-windows": "^1.0.0",
-    "@types/lodash": "^4.14.177",
+    "@types/lodash": "^4.14.188",
     "@types/node": "16.11.12",
-    "prettier": "^2.5.1",
-    "typescript": "^4.5.2"
+    "prettier": "^2.7.1",
+    "typescript": "^4.8.4"
   }
 }

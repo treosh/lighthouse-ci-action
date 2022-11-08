@@ -162,5 +162,9 @@ function parse(val) {
     unit = results[4].toLowerCase();
   }
 
+  if (isNaN(floatValue)) {
+    return null;
+  }
+
   return Math.floor(map[unit] * floatValue);
 }

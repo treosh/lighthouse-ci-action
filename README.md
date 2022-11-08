@@ -32,7 +32,7 @@ jobs:
   lighthouse:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Audit URLs using Lighthouse
         uses: treosh/lighthouse-ci-action@v9
         with:
@@ -83,7 +83,7 @@ jobs:
   lighthouse:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Run Lighthouse on urls and validate with lighthouserc
         uses: treosh/lighthouse-ci-action@v9
         with:
@@ -130,7 +130,7 @@ jobs:
   lighthouse:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Run Lighthouse on urls and upload data to private lhci server
         uses: treosh/lighthouse-ci-action@v9
         with:
@@ -160,7 +160,7 @@ jobs:
   lighthouse:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Run Lighthouse on urls with lighthouserc
         uses: treosh/lighthouse-ci-action@v9
         with:
@@ -237,7 +237,7 @@ jobs:
   static-dist-dir:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Run Lighthouse against a static dist dir
         uses: treosh/lighthouse-ci-action@v9
         with:
@@ -282,7 +282,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Use Node.js 12.x
         uses: actions/setup-node@v1
         with:
@@ -322,7 +322,7 @@ jobs:
   lighthouse:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Run Lighthouse and test budgets
         uses: treosh/lighthouse-ci-action@v9
         with:
@@ -353,7 +353,7 @@ jobs:
   lighthouse:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - run: npm install # install dependencies, that includes Lighthouse plugins
       - name: Audit URLs with Field Performance Plugin
         uses: treosh/lighthouse-ci-action@v9
@@ -407,7 +407,7 @@ jobs:
   output-webhook:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Use output for sending data to API.
         id: LHCIAction
         uses: ./
@@ -437,13 +437,13 @@ jobs:
   lighthouse:
     runs-on: [self-hosted, your-custom-label]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: install Node.js
 
       - uses: browser-actions/setup-chrome@latest
 
       - run: chrome --version
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: ${{YOUR_REQUIRED_NODE_JS_VERSION}}
 
@@ -473,7 +473,7 @@ jobs:
   lighthouse:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Generate URLs
         id: urls

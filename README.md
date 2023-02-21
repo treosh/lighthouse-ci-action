@@ -283,16 +283,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - name: Use Node.js 12.x
-        uses: actions/setup-node@v1
-        with:
-          node-version: 12.x
-      - name: Install & Build
-        run: |
-          yarn install
-          yarn build
       - name: Wait for the Netlify Preview
-        uses: jakepartusch/wait-for-netlify-action@v1
+        uses: jakepartusch/wait-for-netlify-action@v1.4
         id: netlify
         with:
           site_name: 'gallant-panini-bc8593'

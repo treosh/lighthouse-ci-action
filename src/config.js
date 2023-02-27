@@ -52,7 +52,7 @@ exports.getInput = function getInputArgs() {
   }
 
   // Get and interpolate URLs
-  urls = urls || interpolateProcessIntoUrls(getList('urls'))
+  urls = interpolateProcessIntoUrls(getList('urls')) || urls
 
   // Make sure we have either urls or a static-dist-dir
   if (!urls && !staticDistDir) {

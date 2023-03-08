@@ -59,7 +59,7 @@ describe('getEntity', () => {
   it('works for direct domain usage', () => {
     expect(getEntity('https://js.connect.facebook.net/lib.js')).toMatchInlineSnapshot(`
       Object {
-        "averageExecutionTime": 511.2148583807576,
+        "averageExecutionTime": 255.27054714829316,
         "categories": Array [
           "social",
         ],
@@ -101,8 +101,8 @@ describe('getEntity', () => {
             ],
           },
         ],
-        "totalExecutionTime": 1009060937,
-        "totalOccurrences": 1973849,
+        "totalExecutionTime": 532045851,
+        "totalOccurrences": 2084243,
       }
     `)
   })
@@ -110,7 +110,7 @@ describe('getEntity', () => {
   it('works for inferred domain usage', () => {
     expect(getEntity('https://unknown.typekit.net/fonts.css')).toMatchInlineSnapshot(`
       Object {
-        "averageExecutionTime": 144.01007955350076,
+        "averageExecutionTime": 161.59273366539702,
         "categories": Array [
           "cdn",
         ],
@@ -126,8 +126,8 @@ describe('getEntity', () => {
         "homepage": "https://fonts.adobe.com/",
         "name": "Adobe TypeKit",
         "products": Array [],
-        "totalExecutionTime": 10372614,
-        "totalOccurrences": 72027,
+        "totalExecutionTime": 4412128,
+        "totalOccurrences": 27304,
       }
     `)
   })

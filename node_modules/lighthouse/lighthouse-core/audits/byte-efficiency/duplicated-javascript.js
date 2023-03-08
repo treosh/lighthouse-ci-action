@@ -11,8 +11,8 @@
 
 const ByteEfficiencyAudit = require('./byte-efficiency-audit.js');
 const ModuleDuplication = require('../../computed/module-duplication.js');
-const NetworkAnalyzer = require('../../lib/dependency-graph/simulator/network-analyzer.js');
 const i18n = require('../../lib/i18n/i18n.js');
+const {getRequestForScript} = require('../../lib/script-helpers.js');
 
 const UIStrings = {
   /** Imperative title of a Lighthouse audit that tells the user to remove duplicate JavaScript from their code. This is displayed in a list of audit titles that Lighthouse generates. */
@@ -130,7 +130,6 @@ class DuplicatedJavascript extends ByteEfficiencyAudit {
       context.options?.ignoreThresholdInBytes || IGNORE_THRESHOLD_IN_BYTES;
     const duplication =
       await DuplicatedJavascript._getDuplicationGroupedByNodeModules(artifacts, context);
-    const mainDocumentRecord = NetworkAnalyzer.findOptionalMainDocument(networkRecords);
 
     /** @type {Map<string, number>} */
     const transferRatioByUrl = new Map();
@@ -162,9 +161,8 @@ class DuplicatedJavascript extends ByteEfficiencyAudit {
         /** @type {number|undefined} */
         let transferRatio = transferRatioByUrl.get(url);
         if (transferRatio === undefined) {
-          const networkRecord = url === artifacts.URL.finalUrl ?
-            mainDocumentRecord :
-            networkRecords.find(n => n.url === url);
+          const fakeScript = /** @type {LH.Artifacts.ScriptElement} */ ({src: url});
+          const networkRecord = getRequestForScript(networkRecords, fakeScript);
 
           const script = artifacts.ScriptElements.find(script => script.src === url);
           if (!script || script.content === null) {

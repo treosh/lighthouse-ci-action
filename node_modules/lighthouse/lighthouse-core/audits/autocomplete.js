@@ -195,12 +195,12 @@ class AutocompleteAudit extends Audit {
       title: str_(UIStrings.title),
       failureTitle: str_(UIStrings.failureTitle),
       description: str_(UIStrings.description),
-      requiredArtifacts: ['FormElements'],
+      requiredArtifacts: ['Inputs'],
     };
   }
 
   /**
-   * @param {LH.Artifacts.FormInput} input
+   * @param {LH.Artifacts.InputElement} input
    * @return {{hasValidTokens: boolean, isValidOrder?: boolean}}
    */
   static checkAttributeValidity(input) {
@@ -224,47 +224,44 @@ class AutocompleteAudit extends Audit {
    * @return {LH.Audit.Product}
    */
   static audit(artifacts) {
-    const forms = artifacts.FormElements;
     const failingFormsData = [];
     const warnings = [];
     let foundPrediction = false;
-    for (const form of forms) {
-      for (const input of form.inputs) {
-        const validity = this.checkAttributeValidity(input);
-        if (validity.hasValidTokens && validity.isValidOrder) continue;
-        if (!input.autocomplete.prediction) continue;
-        if (noPrediction.includes(input.autocomplete.prediction) &&
-          !input.autocomplete.attribute) continue;
+    for (const input of artifacts.Inputs.inputs) {
+      const validity = this.checkAttributeValidity(input);
+      if (validity.hasValidTokens && validity.isValidOrder) continue;
+      if (!input.autocomplete.prediction) continue;
+      if (noPrediction.includes(input.autocomplete.prediction) &&
+        !input.autocomplete.attribute) continue;
 
-        foundPrediction = true;
+      foundPrediction = true;
 
-        // @ts-ignore
-        let suggestion = predictionTypesToTokens[input.autocomplete.prediction];
-        // This is here to satisfy typescript because the possible null value of autocomplete.attribute is not compatible with Audit details.
-        if (!input.autocomplete.attribute) input.autocomplete.attribute = '';
-        // Warning is created because while there is an autocomplete attribute, the autocomplete property does not exsist, thus the attribute's value is invalid.
-        if (input.autocomplete.attribute) {
-          warnings.push(str_(UIStrings.warningInvalid, {token: input.autocomplete.attribute,
-            snippet: input.node.snippet}));
-        }
-        if (validity.isValidOrder === false) {
-          warnings.push(str_(UIStrings.warningOrder, {tokens: input.autocomplete.attribute,
-            snippet: input.node.snippet}));
-          suggestion = UIStrings.reviewOrder;
-        }
-        // If the autofill prediction is not in our autofill suggestion mapping, then we warn
-        if (!(input.autocomplete.prediction in predictionTypesToTokens) &&
-            validity.isValidOrder) {
-          log.warn(`Autocomplete prediction (${input.autocomplete.prediction})
-             not found in our mapping`);
-          continue;
-        }
-        failingFormsData.push({
-          node: Audit.makeNodeItem(input.node),
-          suggestion: suggestion,
-          current: input.autocomplete.attribute,
-        });
+      // @ts-ignore
+      let suggestion = predictionTypesToTokens[input.autocomplete.prediction];
+      // This is here to satisfy typescript because the possible null value of autocomplete.attribute is not compatible with Audit details.
+      if (!input.autocomplete.attribute) input.autocomplete.attribute = '';
+      // Warning is created because while there is an autocomplete attribute, the autocomplete property does not exsist, thus the attribute's value is invalid.
+      if (input.autocomplete.attribute) {
+        warnings.push(str_(UIStrings.warningInvalid, {token: input.autocomplete.attribute,
+          snippet: input.node.snippet}));
       }
+      if (validity.isValidOrder === false) {
+        warnings.push(str_(UIStrings.warningOrder, {tokens: input.autocomplete.attribute,
+          snippet: input.node.snippet}));
+        suggestion = UIStrings.reviewOrder;
+      }
+      // If the autofill prediction is not in our autofill suggestion mapping, then we warn
+      if (!(input.autocomplete.prediction in predictionTypesToTokens) &&
+          validity.isValidOrder) {
+        log.warn(`Autocomplete prediction (${input.autocomplete.prediction})
+            not found in our mapping`);
+        continue;
+      }
+      failingFormsData.push({
+        node: Audit.makeNodeItem(input.node),
+        suggestion: suggestion,
+        current: input.autocomplete.attribute,
+      });
     }
 
     /** @type {LH.Audit.Details.Table['headings']} */

@@ -50,8 +50,9 @@ class LargestContentfulPaintLazyLoaded extends Audit {
    * @return {LH.Audit.Product}
    */
   static audit(artifacts) {
-    const lcpElement = artifacts.TraceElements
-      .find(element => element.traceEventType === 'largest-contentful-paint');
+    const lcpElement = artifacts.TraceElements.find(element => {
+      return element.traceEventType === 'largest-contentful-paint' && element.type === 'image';
+    });
     const lcpElementImage = lcpElement ? artifacts.ImageElements.find(elem => {
       return elem.node.devtoolsNodePath === lcpElement.node.devtoolsNodePath;
     }) : undefined;
@@ -59,7 +60,7 @@ class LargestContentfulPaintLazyLoaded extends Audit {
 
     if (!lcpElementImage ||
       !this.isImageInViewport(lcpElementImage, artifacts.ViewportDimensions)) {
-      return {score: 1, notApplicable: true};
+      return {score: null, notApplicable: true};
     }
 
     /** @type {LH.Audit.Details.Table['headings']} */

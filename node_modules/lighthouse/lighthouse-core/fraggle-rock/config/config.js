@@ -30,7 +30,7 @@ const {
 } = require('../../config/config-helpers.js');
 const defaultConfigPath = path.join(__dirname, './default-config.js');
 
-/** @typedef {Omit<LH.Config.FRContext, 'gatherMode'> & {gatherMode: LH.Gatherer.GatherMode}} ConfigContext */
+/** @typedef {LH.Config.FRContext & {gatherMode: LH.Gatherer.GatherMode}} ConfigContext */
 
 /**
  * @param {LH.Config.Json|undefined} configJSON

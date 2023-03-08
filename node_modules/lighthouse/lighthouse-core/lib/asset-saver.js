@@ -313,6 +313,20 @@ async function saveLanternNetworkData(devtoolsLog, outputPath) {
   fs.writeFileSync(outputPath, JSON.stringify(lanternData));
 }
 
+/**
+ * Normalize timing data so it doesn't change every update.
+ * @param {LH.Result.MeasureEntry[]} timings
+ */
+function normalizeTimingEntries(timings) {
+  let baseTime = 0;
+  for (const timing of timings) {
+    // @ts-expect-error: Value actually is writeable at this point.
+    timing.startTime = baseTime++;
+    // @ts-expect-error: Value actually is writeable at this point.
+    timing.duration = 1;
+  }
+}
+
 module.exports = {
   saveArtifacts,
   saveLhr,
@@ -323,4 +337,5 @@ module.exports = {
   saveDevtoolsLog,
   saveLanternNetworkData,
   stringifyReplacer,
+  normalizeTimingEntries,
 };

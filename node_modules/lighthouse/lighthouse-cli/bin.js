@@ -137,12 +137,9 @@ async function begin() {
       url: urlUnderTest,
       flags: cliFlags,
       environmentData: {
-        name: 'redacted', // prevent sentry from using hostname
+        serverName: 'redacted', // prevent sentry from using hostname
         environment: isDev() ? 'development' : 'production',
         release: pkg.version,
-        tags: {
-          channel: 'cli',
-        },
       },
     });
   }

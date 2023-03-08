@@ -44,7 +44,7 @@ class NetworkNode extends BaseNode {
   }
 
   /**
-   * @return {?string}
+   * @return {string}
    */
   get initiatorType() {
     return this._record.initiator && this._record.initiator.type;

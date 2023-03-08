@@ -9,6 +9,7 @@ const ByteEfficiencyAudit = require('./byte-efficiency-audit.js');
 const UnusedJavaScriptSummary = require('../../computed/unused-javascript-summary.js');
 const JsBundles = require('../../computed/js-bundles.js');
 const i18n = require('../../lib/i18n/i18n.js');
+const {getRequestForScript} = require('../../lib/script-helpers.js');
 
 const UIStrings = {
   /** Imperative title of a Lighthouse audit that tells the user to reduce JavaScript that is never evaluated during page load. This is displayed in a list of audit titles that Lighthouse generates. */
@@ -87,7 +88,8 @@ class UnusedJavaScript extends ByteEfficiencyAudit {
 
     const items = [];
     for (const [url, scriptCoverages] of Object.entries(artifacts.JsUsage)) {
-      const networkRecord = networkRecords.find(record => record.url === url);
+      const fakeScript = /** @type {LH.Artifacts.ScriptElement} */ ({src: url});
+      const networkRecord = getRequestForScript(networkRecords, fakeScript);
       if (!networkRecord) continue;
       const bundle = bundles.find(b => b.script.src === url);
       const unusedJsSummary =

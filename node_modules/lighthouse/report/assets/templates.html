@@ -189,7 +189,8 @@ limitations under the License.
       animation: none;
     }
 
-    .lh-sticky-header .lh-gauge__label {
+    .lh-sticky-header .lh-gauge__label,
+    .lh-sticky-header .lh-fraction__label {
       display: none;
     }
 
@@ -210,8 +211,8 @@ limitations under the License.
   <div class="lh-scores-wrapper">
     <div class="lh-scores-container">
       <div class="lh-pyro">
-        <div class="lh-before"></div>
-        <div class="lh-after"></div>
+        <div class="lh-pyro-before"></div>
+        <div class="lh-pyro-after"></div>
       </div>
     </div>
   </div>
@@ -462,9 +463,6 @@ limitations under the License.
     .lh-pyro > .lh-pyro-after {
       animation-delay: 2.25s, 2.25s, 2.25s;
       animation-duration: 1.25s, 1.25s, 6.25s;
-    }
-    .lh-fireworks-paused .lh-pyro > div {
-      animation-play-state: paused;
     }
 
     @keyframes bang {

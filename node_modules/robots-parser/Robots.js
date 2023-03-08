@@ -274,7 +274,13 @@ function parseUrl(url) {
 		// Using non-existent subdomain so can never cause conflict unless
 		// trying to crawl it but doesn't exist and even if tried worst that can
 		// happen is it allows relative URLs on it.
-		return new URL(url, 'http://robots-relative.samclarke.com/');
+		var url = new URL(url, 'http://robots-relative.samclarke.com/');
+
+		if (!url.port) {
+			url.port = url.protocol === 'https:' ? 443 : 80;
+		}
+
+		return url;
 	} catch (e) {
 		return null;
 	}
@@ -282,8 +288,6 @@ function parseUrl(url) {
 
 function Robots(url, contents) {
 	this._url = parseUrl(url) || {};
-	this._url.port = this._url.port || 80;
-
 	this._rules = Object.create(null);
 	this._sitemaps = [];
 	this._preferredHost = null;
@@ -360,8 +364,6 @@ Robots.prototype.setPreferredHost = function (url) {
 Robots.prototype._getRule = function (url, ua) {
 	var parsedUrl = parseUrl(url) || {};
 	var userAgent = formatUserAgent(ua || '*');
-
-	parsedUrl.port = parsedUrl.port || 80;
 
 	// The base URL must match otherwise this robots.txt is not valid for it.
 	if (

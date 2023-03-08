@@ -315,24 +315,26 @@ class Util {
     }
 
     const MAX_LENGTH = 64;
-    // Always elide hexadecimal hash
-    name = name.replace(/([a-f0-9]{7})[a-f0-9]{13}[a-f0-9]*/g, `$1${ELLIPSIS}`);
-    // Also elide other hash-like mixed-case strings
-    name = name.replace(/([a-zA-Z0-9-_]{9})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9-_]{10,}/g,
-      `$1${ELLIPSIS}`);
-    // Also elide long number sequences
-    name = name.replace(/(\d{3})\d{6,}/g, `$1${ELLIPSIS}`);
-    // Merge any adjacent ellipses
-    name = name.replace(/\u2026+/g, ELLIPSIS);
+    if (parsedUrl.protocol !== 'data:') {
+      // Always elide hexadecimal hash
+      name = name.replace(/([a-f0-9]{7})[a-f0-9]{13}[a-f0-9]*/g, `$1${ELLIPSIS}`);
+      // Also elide other hash-like mixed-case strings
+      name = name.replace(/([a-zA-Z0-9-_]{9})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9-_]{10,}/g,
+        `$1${ELLIPSIS}`);
+      // Also elide long number sequences
+      name = name.replace(/(\d{3})\d{6,}/g, `$1${ELLIPSIS}`);
+      // Merge any adjacent ellipses
+      name = name.replace(/\u2026+/g, ELLIPSIS);
 
-    // Elide query params first
-    if (name.length > MAX_LENGTH && name.includes('?')) {
-      // Try to leave the first query parameter intact
-      name = name.replace(/\?([^=]*)(=)?.*/, `?$1$2${ELLIPSIS}`);
+      // Elide query params first
+      if (name.length > MAX_LENGTH && name.includes('?')) {
+        // Try to leave the first query parameter intact
+        name = name.replace(/\?([^=]*)(=)?.*/, `?$1$2${ELLIPSIS}`);
 
-      // Remove it all if it's still too long
-      if (name.length > MAX_LENGTH) {
-        name = name.replace(/\?.*/, `?${ELLIPSIS}`);
+        // Remove it all if it's still too long
+        if (name.length > MAX_LENGTH) {
+          name = name.replace(/\?.*/, `?${ELLIPSIS}`);
+        }
       }
     }
 
@@ -627,6 +629,10 @@ const UIStrings = {
   thirdPartyResourcesLabel: 'Show 3rd-party resources',
   /** This label is for a button that opens a new tab to a webapp called "Treemap", which is a nested visual representation of a heierarchy of data related to the reports (script bytes and coverage, resource breakdown, etc.) */
   viewTreemapLabel: 'View Treemap',
+  /** This label is for a button that will show the user a trace of the page. */
+  viewTraceLabel: 'View Trace',
+  /** This label is for a button that will show the user a trace of the page. */
+  viewOriginalTraceLabel: 'View Original Trace',
 
   /** Option in a dropdown menu that opens a small, summary report in a print dialog.  */
   dropdownPrintSummary: 'Print Summary',

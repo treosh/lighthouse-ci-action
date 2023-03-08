@@ -71,17 +71,17 @@ async function dismissJavaScriptDialogs(session) {
 
 /**
  * @param {LH.Gatherer.FRProtocolSession} session
- * @param {{url: string}} navigation
+ * @param {string} url
  * @return {Promise<{warnings: Array<LH.IcuMessage>}>}
  */
-async function resetStorageForNavigation(session, navigation) {
+async function resetStorageForUrl(session, url) {
   /** @type {Array<LH.IcuMessage>} */
   const warnings = [];
 
   // Reset the storage and warn if there appears to be other important data.
-  const warning = await storage.getImportantStorageWarning(session, navigation.url);
+  const warning = await storage.getImportantStorageWarning(session, url);
   if (warning) warnings.push(warning);
-  await storage.clearDataForOrigin(session, navigation.url);
+  await storage.clearDataForOrigin(session, url);
   await storage.clearBrowserCaches(session);
 
   return {warnings};
@@ -190,7 +190,7 @@ async function prepareTargetForNavigationMode(driver, settings) {
  *
  * @param {LH.Gatherer.FRProtocolSession} session
  * @param {LH.Config.Settings} settings
- * @param {Pick<LH.Config.NavigationDefn, 'disableThrottling'|'disableStorageReset'|'blockedUrlPatterns'> & {url: string}} navigation
+ * @param {Pick<LH.Config.NavigationDefn, 'disableThrottling'|'disableStorageReset'|'blockedUrlPatterns'> & {requestor: LH.NavigationRequestor}} navigation
  * @return {Promise<{warnings: Array<LH.IcuMessage>}>}
  */
 async function prepareTargetForIndividualNavigation(session, settings, navigation) {
@@ -200,9 +200,15 @@ async function prepareTargetForIndividualNavigation(session, settings, navigatio
   /** @type {Array<LH.IcuMessage>} */
   const warnings = [];
 
-  const shouldResetStorage = !settings.disableStorageReset && !navigation.disableStorageReset;
+  const {requestor} = navigation;
+  const shouldResetStorage =
+    !settings.disableStorageReset &&
+    !navigation.disableStorageReset &&
+    // Without prior knowledge of the destination, we cannot know which URL to clear storage for.
+    typeof requestor === 'string';
   if (shouldResetStorage) {
-    const {warnings: storageWarnings} = await resetStorageForNavigation(session, navigation);
+    const requestedUrl = requestor;
+    const {warnings: storageWarnings} = await resetStorageForUrl(session, requestedUrl);
     warnings.push(...storageWarnings);
   }
 

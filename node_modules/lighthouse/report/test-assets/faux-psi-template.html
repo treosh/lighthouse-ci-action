@@ -119,7 +119,7 @@ body {
   border-width: 1px 0;
   padding: 4px;
 }
-button {
+#reanalyze {
   background-color: hsl(216deg 100% 50%);
   border-radius: 4px;
   color: white;
@@ -133,8 +133,9 @@ button {
 </head>
 <body >
   <noscript>PSI requires JavaScript. Please enable.</noscript>
+  <button type=button id="translate">→ Español</button>
   <div class="page">
-    <button type=button>Reanalyze</button>
+    <button type=button id="reanalyze">Reanalyze</button>
     <div class="tabset">
       <input type="radio" name="tabset" id="tab1" aria-controls="mobile" checked />
       <label for="tab1">Mobile</label>

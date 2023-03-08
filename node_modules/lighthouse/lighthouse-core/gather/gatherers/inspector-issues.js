@@ -73,7 +73,7 @@ class InspectorIssues extends FRGatherer {
       mixedContentIssue: [],
       navigatorUserAgentIssue: [],
       quirksModeIssue: [],
-      sameSiteCookieIssue: [],
+      cookieIssue: [],
       sharedArrayBufferIssue: [],
       twaQualityEnforcement: [],
     };

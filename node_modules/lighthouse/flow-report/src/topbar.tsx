@@ -16,7 +16,7 @@ import {saveFile} from '../../report/renderer/api';
 
 function saveHtml(flowResult: LH.FlowResult, htmlStr: string) {
   const blob = new Blob([htmlStr], {type: 'text/html'});
-  const filename = getFlowResultFilenamePrefix(flowResult);
+  const filename = getFlowResultFilenamePrefix(flowResult) + '.html';
   saveFile(blob, filename);
 }
 

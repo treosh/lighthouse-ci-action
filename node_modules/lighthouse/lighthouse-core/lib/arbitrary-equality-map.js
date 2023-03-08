@@ -5,7 +5,7 @@
  */
 'use strict';
 
-const isEqual = require('lodash.isequal');
+const isDeepEqual = require('lodash/isEqual.js');
 
 /**
  * @fileoverview This class is designed to allow maps with arbitrary equality functions.
@@ -74,7 +74,7 @@ class ArbitraryEqualityMap {
    * @return {boolean}
    */
   static deepEquals(objA, objB) {
-    return isEqual(objA, objB);
+    return isDeepEqual(objA, objB);
   }
 }
 

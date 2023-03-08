@@ -70,12 +70,13 @@ export class ReportUIFeatures {
     this._setupThirdPartyFilter();
     this._setupElementScreenshotOverlay(this._dom.rootEl);
 
-    let turnOffTheLights = false;
     // Do not query the system preferences for DevTools - DevTools should only apply dark theme
     // if dark is selected in the settings panel.
-    const disableDarkMode = this._dom.isDevTools() || this._opts.disableAutoDarkModeAndFireworks;
+    // TODO: set `disableDarkMode` in devtools and delete this special case.
+    const disableDarkMode = this._dom.isDevTools() ||
+      this._opts.disableDarkMode || this._opts.disableAutoDarkModeAndFireworks;
     if (!disableDarkMode && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      turnOffTheLights = true;
+      toggleDarkTheme(this._dom, true);
     }
 
     // Fireworks!
@@ -85,13 +86,12 @@ export class ReportUIFeatures {
       const cat = lhr.categories[id];
       return cat && cat.score === 1;
     });
-    if (scoresAll100) {
-      turnOffTheLights = true;
+    const disableFireworks =
+      this._opts.disableFireworks || this._opts.disableAutoDarkModeAndFireworks;
+    if (scoresAll100 && !disableFireworks) {
       this._enableFireworks();
-    }
-
-    if (turnOffTheLights) {
-      toggleDarkTheme(this._dom, true);
+      // If dark mode is allowed, force it on because it looks so much better.
+      if (!disableDarkMode) toggleDarkTheme(this._dom, true);
     }
 
     // Show the metric descriptions by default when there is an error.
@@ -109,6 +109,15 @@ export class ReportUIFeatures {
         text: Util.i18n.strings.viewTreemapLabel,
         icon: 'treemap',
         onClick: () => openTreemap(this.json),
+      });
+    }
+
+    if (this._opts.onViewTrace) {
+      this.addButton({
+        text: lhr.configSettings.throttlingMethod === 'simulate' ?
+          Util.i18n.strings.viewOriginalTraceLabel :
+          Util.i18n.strings.viewTraceLabel,
+        onClick: () => this._opts.onViewTrace?.(),
       });
     }
 
@@ -180,9 +189,6 @@ export class ReportUIFeatures {
   _enableFireworks() {
     const scoresContainer = this._dom.find('.lh-scores-container', this._dom.rootEl);
     scoresContainer.classList.add('lh-score100');
-    scoresContainer.addEventListener('click', _ => {
-      scoresContainer.classList.toggle('lh-fireworks-paused');
-    });
   }
 
   _setupMediaQueryListeners() {
@@ -339,13 +345,15 @@ export class ReportUIFeatures {
   }
 
   /**
-   * DevTools uses its own file manager to download files, so it redefines this function.
-   * Wrapper is necessary so DevTools can still override this function.
-   *
    * @param {Blob|File} blob
    */
   _saveFile(blob) {
-    const filename = getLhrFilenamePrefix(this.json);
-    this._dom.saveFile(blob, filename);
+    const ext = blob.type.match('json') ? '.json' : '.html';
+    const filename = getLhrFilenamePrefix(this.json) + ext;
+    if (this._opts.onSaveFileOverride) {
+      this._opts.onSaveFileOverride(blob, filename);
+    } else {
+      this._dom.saveFile(blob, filename);
+    }
   }
 }

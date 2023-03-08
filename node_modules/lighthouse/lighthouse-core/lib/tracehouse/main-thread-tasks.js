@@ -561,9 +561,10 @@ class MainThreadTasks {
    * @param {LH.TraceEvent[]} mainThreadEvents
    * @param {Array<{id: string, url: string}>} frames
    * @param {number} traceEndTs
+   * @param {number} [traceStartTs] Optional time-0 ts for tasks. Tasks before this point will have negative start/end times. Defaults to the first task found.
    * @return {TaskNode[]}
    */
-  static getMainThreadTasks(mainThreadEvents, frames, traceEndTs) {
+  static getMainThreadTasks(mainThreadEvents, frames, traceEndTs, traceStartTs) {
     const timers = new Map();
     const xhrs = new Map();
     const frameURLsById = new Map();
@@ -587,8 +588,8 @@ class MainThreadTasks {
       priorTaskData.lastTaskURLs = task.attributableURLs;
     }
 
-    // Rebase all the times to be relative to start of trace in ms
-    const firstTs = (tasks[0] || {startTime: 0}).startTime;
+    // Rebase all the times to be relative to start of trace and covert to ms.
+    const firstTs = traceStartTs ?? tasks[0].startTime;
     for (const task of tasks) {
       task.startTime = (task.startTime - firstTs) / 1000;
       task.endTime = (task.endTime - firstTs) / 1000;

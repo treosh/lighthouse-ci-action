@@ -197,7 +197,7 @@ class ScriptTreemapDataAudit extends Audit {
 
         nodes.push({
           name,
-          resourceBytes: scriptElement.src.length,
+          resourceBytes: scriptElement.content?.length || 0,
         });
         continue;
       }

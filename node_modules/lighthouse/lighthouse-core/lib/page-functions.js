@@ -138,7 +138,17 @@ function getOuterHTMLSnippet(element, ignoreAttrs = [], snippetCharacterLimit = 
         dirty = true;
       }
 
-      if (dirty) clone.setAttribute(attributeName, attributeValue);
+      if (dirty) {
+        // Style attributes can be blocked by the CSP if they are set via `setAttribute`.
+        // If we are trying to set the style attribute, use `el.style.cssText` instead.
+        // https://github.com/GoogleChrome/lighthouse/issues/13630
+        if (attributeName === 'style') {
+          const elementWithStyle = /** @type {HTMLElement} */ (clone);
+          elementWithStyle.style.cssText = attributeValue;
+        } else {
+          clone.setAttribute(attributeName, attributeValue);
+        }
+      }
       charCount += attributeName.length + attributeValue.length;
     }
 

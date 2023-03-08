@@ -44,6 +44,8 @@ const traceEventsToAlwaysKeep = new Set([
   'EventDispatch',
   'LayoutShift',
   'FrameCommittedInBrowser',
+  'EventTiming',
+  'Responsiveness.Renderer.UserInteraction',
   // Not currently used by Lighthouse but might be used in the future for cross-frame LCP
   'NavStartToLargestContentfulPaint::Invalidate::AllFrames::UKM',
   'NavStartToLargestContentfulPaint::Candidate::AllFrames::UKM',

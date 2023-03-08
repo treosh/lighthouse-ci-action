@@ -181,6 +181,7 @@ class CacheHeaders extends Audit {
         cacheControl['must-revalidate'] ||
         cacheControl['no-cache'] ||
         cacheControl['no-store'] ||
+        cacheControl['stale-while-revalidate'] ||
         cacheControl['private'])) {
       return true;
     }

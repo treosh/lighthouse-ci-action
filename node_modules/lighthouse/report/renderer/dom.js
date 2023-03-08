@@ -293,10 +293,8 @@ export class DOM {
    * @param {string} filename
    */
   saveFile(blob, filename) {
-    const ext = blob.type.match('json') ? '.json' : '.html';
-
     const a = this.createElement('a');
-    a.download = `${filename}${ext}`;
+    a.download = filename;
     this.safelySetBlobHref(a, blob);
     this._document.body.appendChild(a); // Firefox requires anchor to be in the DOM.
     a.click();

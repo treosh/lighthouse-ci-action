@@ -133,18 +133,20 @@ class NetworkMonitor {
     this._sessions = new Map();
   }
 
-  /** @return {Promise<string | undefined>} */
-  async getFinalNavigationUrl() {
+  /** @return {Promise<{requestedUrl?: string, finalUrl?: string}>} */
+  async getNavigationUrls() {
     const frameNavigations = this._frameNavigations;
-    if (!frameNavigations.length) return undefined;
+    if (!frameNavigations.length) return {};
 
     const resourceTreeResponse = await this._session.sendCommand('Page.getResourceTree');
     const mainFrameId = resourceTreeResponse.frameTree.frame.id;
     const mainFrameNavigations = frameNavigations.filter(frame => frame.id === mainFrameId);
-    const finalNavigation = mainFrameNavigations[mainFrameNavigations.length - 1];
-    if (!finalNavigation) log.warn('NetworkMonitor', 'No detected navigations');
+    if (!mainFrameNavigations.length) log.warn('NetworkMonitor', 'No detected navigations');
 
-    return finalNavigation?.url;
+    return {
+      requestedUrl: mainFrameNavigations[0]?.url,
+      finalUrl: mainFrameNavigations[mainFrameNavigations.length - 1]?.url,
+    };
   }
 
   /**

@@ -48,9 +48,14 @@ const clsRelevantAudits = [
   // 'preload-fonts', // actually in BP, rather than perf
 ];
 
+const inpRelevantAudits = [
+  'work-during-interaction',
+];
+
 module.exports = {
   fcpRelevantAudits,
   lcpRelevantAudits,
   tbtRelevantAudits,
   clsRelevantAudits,
+  inpRelevantAudits,
 };

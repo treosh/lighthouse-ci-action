@@ -38,6 +38,7 @@ Array [
   "blockedByResponseIssueDetails",
   "clientHintIssueDetails",
   "contentSecurityPolicyIssueDetails",
+  "cookieIssueDetails",
   "corsIssueDetails",
   "deprecationIssueDetails",
   "federatedAuthRequestIssueDetails",
@@ -47,7 +48,6 @@ Array [
   "mixedContentIssueDetails",
   "navigatorUserAgentIssueDetails",
   "quirksModeIssueDetails",
-  "sameSiteCookieIssueDetails",
   "sharedArrayBufferIssueDetails",
   "twaQualityEnforcementDetails",
 ]

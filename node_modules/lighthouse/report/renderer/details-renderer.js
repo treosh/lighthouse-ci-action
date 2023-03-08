@@ -27,7 +27,6 @@
 
 import {Util} from './util.js';
 import {CriticalRequestChainRenderer} from './crc-details-renderer.js';
-import {SnippetRenderer} from './snippet-renderer.js';
 import {ElementScreenshotRenderer} from './element-screenshot-renderer.js';
 
 const URL_PREFIXES = ['http://', 'https://', 'data:'];
@@ -472,15 +471,16 @@ export class DetailsRenderer {
   }
 
   /**
-   * @param {LH.Audit.Details.List} details
+   * @param {LH.FormattedIcu<LH.Audit.Details.List>} details
    * @return {Element}
    */
   _renderList(details) {
     const listContainer = this._dom.createElement('div', 'lh-list');
 
     details.items.forEach(item => {
-      const snippetEl = SnippetRenderer.render(this._dom, item, this);
-      listContainer.appendChild(snippetEl);
+      const listItem = this.render(item);
+      if (!listItem) return;
+      listContainer.append(listItem);
     });
 
     return listContainer;

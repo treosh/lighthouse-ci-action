@@ -17,7 +17,8 @@ class MainThreadTasks {
    */
   static async compute_(trace, context) {
     const {mainThreadEvents, frames, timestamps} = await ProcessedTrace.request(trace, context);
-    return MainThreadTasks_.getMainThreadTasks(mainThreadEvents, frames, timestamps.traceEnd);
+    return MainThreadTasks_.getMainThreadTasks(mainThreadEvents, frames, timestamps.traceEnd,
+        timestamps.timeOrigin);
   }
 }
 

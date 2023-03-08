@@ -22,7 +22,7 @@ const ByteEfficiencyAudit = require('./byte-efficiency-audit.js');
 const JsBundles = require('../../computed/js-bundles.js');
 const i18n = require('../../lib/i18n/i18n.js');
 const thirdPartyWeb = require('../../lib/third-party-web.js');
-const NetworkAnalyzer = require('../../lib/dependency-graph/simulator/network-analyzer.js');
+const {getRequestForScript} = require('../../lib/script-helpers.js');
 
 const UIStrings = {
   /** Title of a Lighthouse audit that tells the user about legacy polyfills and transforms used on the page. This is displayed in a list of audit titles that Lighthouse generates. */
@@ -373,11 +373,8 @@ class LegacyJavascript extends ByteEfficiencyAudit {
     let transferRatio = transferRatioByUrl.get(url);
     if (transferRatio !== undefined) return transferRatio;
 
-    const mainDocumentRecord = NetworkAnalyzer.findOptionalMainDocument(networkRecords);
-    const networkRecord = url === artifacts.URL.finalUrl ?
-      mainDocumentRecord :
-      networkRecords.find(n => n.url === url);
     const script = artifacts.ScriptElements.find(script => script.src === url);
+    const networkRecord = getRequestForScript(networkRecords, script);
 
     if (!script || script.content === null) {
       // Can't find content, so just use 1.

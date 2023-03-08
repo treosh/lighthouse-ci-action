@@ -77,31 +77,37 @@ const nonWindowsMultipleCalls = async (options = {}) => {
 
 const ERROR_MESSAGE_PARSING_FAILED = 'ps output parsing failed';
 
-const psFields = 'pid,ppid,uid,%cpu,%mem,comm,args';
+const psOutputRegex = /^[ \t]*(?<pid>\d+)[ \t]+(?<ppid>\d+)[ \t]+(?<uid>[-\d]+)[ \t]+(?<cpu>\d+\.\d+)[ \t]+(?<memory>\d+\.\d+)[ \t]+(?<comm>.*)?/;
 
-const psOutputRegex = /^[ \t]*(?<pid>\d+)[ \t]+(?<ppid>\d+)[ \t]+(?<uid>\d+)[ \t]+(?<cpu>\d+\.\d+)[ \t]+(?<memory>\d+\.\d+)[ \t]+/;
-
-const nonWindowsSingleCall = async (options = {}) => {
+const nonWindowsCall = async (options = {}) => {
 	const flags = options.all === false ? 'wwxo' : 'awwxo';
 
-	const promise = execFile('ps', [flags, psFields], {maxBuffer: TEN_MEGABYTES});
-	const {stdout} = await promise;
-	const {pid: psPid} = promise.child;
+	const psPromises = [
+		execFile('ps', [flags, 'pid,ppid,uid,%cpu,%mem,comm'], {maxBuffer: TEN_MEGABYTES}),
+		execFile('ps', [flags, 'pid,args'], {maxBuffer: TEN_MEGABYTES}),
+	];
 
-	const lines = stdout.trim().split('\n');
-	lines.shift();
+	const [psLines, psArgsLines] = (await Promise.all(psPromises)).map(({stdout}) => stdout.trim().split('\n'));
 
-	let psIndex;
-	let commPosition;
-	let argsPosition;
+	const psPids = new Set(psPromises.map(promise => promise.child.pid));
 
-	const processes = lines.map((line, index) => {
+	psLines.shift();
+	psArgsLines.shift();
+
+	const processCmds = {};
+	for (const line of psArgsLines) {
+		const [pid, cmds] = line.trim().split(' ');
+		processCmds[pid] = cmds.join(' ');
+	}
+
+	const processes = psLines.map(line => {
 		const match = psOutputRegex.exec(line);
+
 		if (match === null) {
 			throw new Error(ERROR_MESSAGE_PARSING_FAILED);
 		}
 
-		const {pid, ppid, uid, cpu, memory} = match.groups;
+		const {pid, ppid, uid, cpu, memory, comm} = match.groups;
 
 		const processInfo = {
 			pid: Number.parseInt(pid, 10),
@@ -109,36 +115,19 @@ const nonWindowsSingleCall = async (options = {}) => {
 			uid: Number.parseInt(uid, 10),
 			cpu: Number.parseFloat(cpu),
 			memory: Number.parseFloat(memory),
-			name: undefined,
-			cmd: undefined,
+			name: path.basename(comm),
+			cmd: processCmds[pid],
 		};
 
-		if (processInfo.pid === psPid) {
-			psIndex = index;
-			commPosition = line.indexOf('ps', match[0].length);
-			argsPosition = line.indexOf('ps', commPosition + 2);
-		}
-
 		return processInfo;
-	});
+	}).filter(processInfo => !psPids.has(processInfo.pid));
 
-	if (psIndex === undefined || commPosition === -1 || argsPosition === -1) {
-		throw new Error(ERROR_MESSAGE_PARSING_FAILED);
-	}
-
-	const commLength = argsPosition - commPosition;
-	for (const [index, line] of lines.entries()) {
-		processes[index].name = line.slice(commPosition, commPosition + commLength).trim();
-		processes[index].cmd = line.slice(argsPosition).trim();
-	}
-
-	processes.splice(psIndex, 1);
 	return processes;
 };
 
 const nonWindows = async (options = {}) => {
 	try {
-		return await nonWindowsSingleCall(options);
+		return await nonWindowsCall(options);
 	} catch { // If the error is not a parsing error, it should manifest itself in multicall version too.
 		return nonWindowsMultipleCalls(options);
 	}

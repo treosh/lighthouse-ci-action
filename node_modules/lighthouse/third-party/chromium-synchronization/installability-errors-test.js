@@ -69,6 +69,7 @@ Array [
   "platform-not-supported-on-android",
   "prefer-related-applications",
   "prefer-related-applications-only-beta-stable",
+  "scheme-not-supported-for-webapk",
   "start-url-not-valid",
   "url-not-supported-for-webapk",
   "warn-not-offline-capable",

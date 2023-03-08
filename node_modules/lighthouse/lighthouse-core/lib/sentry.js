@@ -7,8 +7,10 @@
 
 const log = require('lighthouse-logger');
 
-/** @typedef {import('raven').CaptureOptions} CaptureOptions */
-/** @typedef {import('raven').ConstructorOptions} ConstructorOptions */
+/** @typedef {import('@sentry/node').Breadcrumb} Breadcrumb */
+/** @typedef {import('@sentry/node').NodeClient} NodeClient */
+/** @typedef {import('@sentry/node').NodeOptions} NodeOptions */
+/** @typedef {import('@sentry/node').Severity} Severity */
 
 const SENTRY_URL = 'https://a6bb0da87ee048cc9ae2a345fc09ab2e:63a7029f46f74265981b7e005e0f69f8@sentry.io/174697';
 
@@ -21,7 +23,7 @@ const SAMPLED_ERRORS = [
   // e.g.: {pattern: /No.*node with given id/, rate: 0.01},
 ];
 
-const noop = () => {};
+const noop = () => { };
 
 /**
  * A delegate for sentry so that environments without error reporting enabled will use
@@ -29,14 +31,14 @@ const noop = () => {};
  */
 const sentryDelegate = {
   init,
-  /** @type {(message: string, options?: CaptureOptions) => void} */
+  /** @type {(message: string, level?: Severity) => void} */
   captureMessage: noop,
-  /** @type {(breadcrumb: any) => void} */
+  /** @type {(breadcrumb: Breadcrumb) => void} */
   captureBreadcrumb: noop,
   /** @type {() => any} */
   getContext: noop,
-  /** @type {(error: Error, options?: CaptureOptions) => Promise<void>} */
-  captureException: async () => {},
+  /** @type {(error: Error, options: {level?: string, tags?: {[key: string]: any}, extra?: {[key: string]: any}}) => Promise<void>} */
+  captureException: async () => { },
   _shouldSample() {
     return SAMPLE_RATE >= Math.random();
   },
@@ -44,7 +46,7 @@ const sentryDelegate = {
 
 /**
  * When called, replaces noops with actual Sentry implementation.
- * @param {{url: string, flags: LH.CliFlags, environmentData: ConstructorOptions}} opts
+ * @param {{url: string, flags: LH.CliFlags, environmentData: NodeOptions}} opts
  */
 function init(opts) {
   // If error reporting is disabled, leave the functions as a noop
@@ -58,15 +60,25 @@ function init(opts) {
   }
 
   try {
-    const Sentry = require('raven');
-    const sentryConfig = Object.assign({}, opts.environmentData,
-      {captureUnhandledRejections: true});
-    Sentry.config(SENTRY_URL, sentryConfig).install();
+    const Sentry = require('@sentry/node');
+    Sentry.init({
+      ...opts.environmentData,
+      dsn: SENTRY_URL,
+    });
+
+    const extras = {
+      ...opts.flags.throttling,
+      channel: opts.flags.channel || 'cli',
+      url: opts.url,
+      formFactor: opts.flags.formFactor,
+      throttlingMethod: opts.flags.throttlingMethod,
+    };
+    Sentry.setExtras(extras);
 
     // Have each delegate function call the corresponding sentry function by default
     sentryDelegate.captureMessage = (...args) => Sentry.captureMessage(...args);
-    sentryDelegate.captureBreadcrumb = (...args) => Sentry.captureBreadcrumb(...args);
-    sentryDelegate.getContext = () => Sentry.getContext();
+    sentryDelegate.captureBreadcrumb = (...args) => Sentry.addBreadcrumb(...args);
+    sentryDelegate.getContext = () => extras;
 
     // Keep a record of exceptions per audit/gatherer so we can just report once
     const sentryExceptionCache = new Map();
@@ -107,21 +119,24 @@ function init(opts) {
         opts.tags.protocolMethod = err.protocolMethod;
       }
 
-      return new Promise(resolve => {
-        Sentry.captureException(err, opts, () => resolve());
+      Sentry.withScope(scope => {
+        if (opts.level) {
+          // @ts-expect-error - allow any string.
+          scope.setLevel(opts.level);
+        }
+        if (opts.tags) {
+          scope.setTags(opts.tags);
+        }
+        if (opts.extra) {
+          scope.setExtras(opts.extra);
+        }
+        Sentry.captureException(err);
       });
     };
-
-    const context = Object.assign({
-      url: opts.url,
-      formFactor: opts.flags.formFactor,
-      throttlingMethod: opts.flags.throttlingMethod,
-    }, opts.flags.throttling);
-    Sentry.mergeContext({extra: Object.assign({}, opts.environmentData.extra, context)});
   } catch (e) {
     log.warn(
       'sentry',
-      'Could not load raven library, errors will not be reported.'
+      'Could not load Sentry, errors will not be reported.'
     );
   }
 }

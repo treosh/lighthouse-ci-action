@@ -71,19 +71,19 @@ class IssuesPanelEntries extends Audit {
   }
 
   /**
-   * @param {Array<LH.Crdp.Audits.SameSiteCookieIssueDetails>} sameSiteCookieIssues
+   * @param {Array<LH.Crdp.Audits.CookieIssueDetails>} CookieIssues
    * @return {LH.Audit.Details.TableItem}
    */
-  static getSameSiteCookieRow(sameSiteCookieIssues) {
+  static getCookieRow(CookieIssues) {
     const requestUrls = new Set();
-    for (const issue of sameSiteCookieIssues) {
+    for (const issue of CookieIssues) {
       const requestUrl = (issue.request?.url) || issue.cookieUrl;
       if (requestUrl) {
         requestUrls.add(requestUrl);
       }
     }
     return {
-      issueType: 'SameSite cookie',
+      issueType: 'Cookie',
       subItems: {
         type: 'subitems',
         items: Array.from(requestUrls).map(url => {
@@ -164,8 +164,8 @@ class IssuesPanelEntries extends Audit {
     if (issues.mixedContentIssue.length) {
       items.push(this.getMixedContentRow(issues.mixedContentIssue));
     }
-    if (issues.sameSiteCookieIssue.length) {
-      items.push(this.getSameSiteCookieRow(issues.sameSiteCookieIssue));
+    if (issues.cookieIssue.length) {
+      items.push(this.getCookieRow(issues.cookieIssue));
     }
     if (issues.blockedByResponseIssue.length) {
       items.push(this.getBlockedByResponseRow(issues.blockedByResponseIssue));

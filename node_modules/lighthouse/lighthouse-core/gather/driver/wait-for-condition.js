@@ -114,7 +114,7 @@ function waitForFcp(session, pauseAfterFcpMs, maxWaitForFcpMs) {
  * `networkQuietThresholdMs` ms and a method to cancel internal network listeners/timeout.
  * @param {LH.Gatherer.FRProtocolSession} session
  * @param {NetworkMonitor} networkMonitor
- * @param {{networkQuietThresholdMs: number, busyEvent: NetworkMonitorEvent, idleEvent: NetworkMonitorEvent, isIdle(recorder: NetworkMonitor): boolean}} networkQuietOptions
+ * @param {{networkQuietThresholdMs: number, busyEvent: NetworkMonitorEvent, idleEvent: NetworkMonitorEvent, isIdle(recorder: NetworkMonitor): boolean, pretendDCLAlreadyFired?: boolean}} networkQuietOptions
  * @return {CancellableWait}
  */
 function waitForNetworkIdle(session, networkMonitor, networkQuietOptions) {
@@ -175,13 +175,20 @@ function waitForNetworkIdle(session, networkMonitor, networkQuietOptions) {
     networkMonitor.on('requestloaded', logStatus);
     networkMonitor.on(busyEvent, logStatus);
 
-    session.once('Page.domContentEventFired', domContentLoadedListener);
+    if (!networkQuietOptions.pretendDCLAlreadyFired) {
+      session.once('Page.domContentEventFired', domContentLoadedListener);
+    } else {
+      domContentLoadedListener();
+    }
+
     let canceled = false;
     cancel = () => {
       if (canceled) return;
       canceled = true;
-      idleTimeout && clearTimeout(idleTimeout);
-      session.off('Page.domContentEventFired', domContentLoadedListener);
+      if (idleTimeout) clearTimeout(idleTimeout);
+      if (!networkQuietOptions.pretendDCLAlreadyFired) {
+        session.off('Page.domContentEventFired', domContentLoadedListener);
+      }
       networkMonitor.removeListener(busyEvent, onBusy);
       networkMonitor.removeListener(idleEvent, onIdle);
       networkMonitor.removeListener('requeststarted', logStatus);

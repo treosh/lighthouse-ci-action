@@ -5,11 +5,13 @@
  */
 'use strict';
 
-/* globals window document getBoundingClientRect */
+/* globals window document getBoundingClientRect requestAnimationFrame */
 
 const FRGatherer = require('../../fraggle-rock/gather/base-gatherer.js');
 const emulation = require('../../lib/emulation.js');
 const pageFunctions = require('../../lib/page-functions.js');
+const NetworkMonitor = require('../driver/network-monitor.js');
+const {waitForNetworkIdle} = require('../driver/wait-for-condition.js');
 
 // JPEG quality setting
 // Exploration and examples of reports using different quality settings: https://docs.google.com/document/d/1ZSffucIca9XDW2eEwfoevrk-OTl7WQFeMf0CgeJAA8M/edit#
@@ -25,7 +27,6 @@ function kebabCaseToCamelCase(str) {
 
 /* c8 ignore start */
 
-// eslint-disable-next-line no-inner-declarations
 function getObservedDeviceMetrics() {
   // Convert the Web API's kebab case (landscape-primary) to camel case (landscapePrimary).
   const screenOrientationType = kebabCaseToCamelCase(window.screen.orientation.type);
@@ -38,6 +39,12 @@ function getObservedDeviceMetrics() {
     },
     deviceScaleFactor: window.devicePixelRatio,
   };
+}
+
+function waitForDoubleRaf() {
+  return new Promise((resolve) => {
+    requestAnimationFrame(() => requestAnimationFrame(resolve));
+  });
 }
 
 /* c8 ignore stop */
@@ -53,7 +60,7 @@ class FullPageScreenshot extends FRGatherer {
    * @return {Promise<number>}
    * @see https://bugs.chromium.org/p/chromium/issues/detail?id=770769
    */
-  async getMaxScreenshotHeight(context) {
+  async getMaxTextureSize(context) {
     return await context.driver.executionContext.evaluate(pageFunctions.getMaxTextureSize, {
       args: [],
       useIsolation: true,
@@ -63,35 +70,52 @@ class FullPageScreenshot extends FRGatherer {
 
   /**
    * @param {LH.Gatherer.FRTransitionalContext} context
+   * @param {{height: number, width: number, mobile: boolean}} deviceMetrics
    * @return {Promise<LH.Artifacts.FullPageScreenshot['screenshot']>}
    */
-  async _takeScreenshot(context) {
+  async _takeScreenshot(context, deviceMetrics) {
     const session = context.driver.defaultSession;
-    const maxScreenshotHeight = await this.getMaxScreenshotHeight(context);
+    const maxTextureSize = await this.getMaxTextureSize(context);
     const metrics = await session.sendCommand('Page.getLayoutMetrics');
 
-    // Width should match emulated width, without considering content overhang.
-    // Both layoutViewport and visualViewport capture this. visualViewport accounts
-    // for page zoom/scale, which we currently don't account for (or expect). So we use layoutViewport.width.
-    // Note: If the page is zoomed, many assumptions fail.
-    //
-    // Height should be as tall as the content. So we use contentSize.height
-    const width = Math.min(metrics.layoutViewport.clientWidth, maxScreenshotHeight);
-    const height = Math.min(metrics.contentSize.height, maxScreenshotHeight);
+    // Height should be as tall as the content.
+    // Scale the emulated height to reach the content height.
+    const fullHeight = Math.round(
+      deviceMetrics.height *
+      metrics.contentSize.height /
+      metrics.layoutViewport.clientHeight
+    );
+    const height = Math.min(fullHeight, maxTextureSize);
+
+    // Setup network monitor before we change the viewport.
+    const networkMonitor = new NetworkMonitor(session);
+    const waitForNetworkIdleResult = waitForNetworkIdle(session, networkMonitor, {
+      pretendDCLAlreadyFired: true,
+      networkQuietThresholdMs: 1000,
+      busyEvent: 'network-critical-busy',
+      idleEvent: 'network-critical-idle',
+      isIdle: recorder => recorder.isCriticalIdle(),
+    });
+    await networkMonitor.enable();
 
     await session.sendCommand('Emulation.setDeviceMetricsOverride', {
-      // If we're gathering with mobile screenEmulation on (overlay scrollbars, etc), continue to use that for this screenshot.
-      mobile: context.settings.screenEmulation.mobile,
-      height,
-      width,
+      mobile: deviceMetrics.mobile,
       deviceScaleFactor: 1,
-      scale: 1,
-      screenOrientation: {angle: 0, type: 'portraitPrimary'},
+      height,
+      width: 0, // Leave width unchanged
     });
 
-    // TODO: elements collected earlier in gathering are likely to have been shifted by now.
-    // The lower in the page, the more likely (footer elements especially).
-    // https://github.com/GoogleChrome/lighthouse/issues/11118
+    // Now that the viewport is taller, give the page some time to fetch new resources that
+    // are now in view.
+    await Promise.race([
+      new Promise(resolve => setTimeout(resolve, 1000 * 5)),
+      waitForNetworkIdleResult.promise,
+    ]);
+    waitForNetworkIdleResult.cancel();
+    await networkMonitor.disable();
+
+    // Now that new resources are (probably) fetched, wait long enough for a layout.
+    await context.driver.executionContext.evaluate(waitForDoubleRaf, {args: []});
 
     const result = await session.sendCommand('Page.captureScreenshot', {
       format: 'jpeg',
@@ -101,7 +125,7 @@ class FullPageScreenshot extends FRGatherer {
 
     return {
       data,
-      width,
+      width: deviceMetrics.width,
       height,
     };
   }
@@ -159,29 +183,37 @@ class FullPageScreenshot extends FRGatherer {
     const session = context.driver.defaultSession;
     const executionContext = context.driver.executionContext;
     const settings = context.settings;
-
-    // In case some other program is controlling emulation, remember what the device looks
-    // like now and reset after gatherer is done.
-    let observedDeviceMetrics;
     const lighthouseControlsEmulation = !settings.screenEmulation.disabled;
+
+    // Make a copy so we don't modify the config settings.
+    /** @type {{width: number, height: number, deviceScaleFactor: number, mobile: boolean}} */
+    const deviceMetrics = {...settings.screenEmulation};
+
+    // In case some other program is controlling emulation, remember what the device looks like now and reset after gatherer is done.
+    // If we're gathering with mobile screenEmulation on (overlay scrollbars, etc), continue to use that for this screenshot.
     if (!lighthouseControlsEmulation) {
-      observedDeviceMetrics = await executionContext.evaluate(getObservedDeviceMetrics, {
+      const observedDeviceMetrics = await executionContext.evaluate(getObservedDeviceMetrics, {
         args: [],
         useIsolation: true,
         deps: [kebabCaseToCamelCase],
       });
+      deviceMetrics.height = observedDeviceMetrics.height;
+      deviceMetrics.width = observedDeviceMetrics.width;
+      deviceMetrics.deviceScaleFactor = observedDeviceMetrics.deviceScaleFactor;
+      // If screen emulation is disabled, use formFactor to determine if we are on mobile.
+      deviceMetrics.mobile = settings.formFactor === 'mobile';
     }
 
     try {
       return {
-        screenshot: await this._takeScreenshot(context),
+        screenshot: await this._takeScreenshot(context, deviceMetrics),
         nodes: await this._resolveNodes(context),
       };
     } finally {
       // Revert resized page.
       if (lighthouseControlsEmulation) {
         await emulation.emulate(session, settings);
-      } else if (observedDeviceMetrics) {
+      } else {
         // Best effort to reset emulation to what it was.
         // https://github.com/GoogleChrome/lighthouse/pull/10716#discussion_r428970681
         // TODO: seems like this would be brittle. Should at least work for devtools, but what
@@ -190,8 +222,10 @@ class FullPageScreenshot extends FRGatherer {
         // and then just call that to reset?
         // https://github.com/GoogleChrome/lighthouse/issues/11122
         await session.sendCommand('Emulation.setDeviceMetricsOverride', {
-          mobile: settings.formFactor === 'mobile',
-          ...observedDeviceMetrics,
+          mobile: deviceMetrics.mobile,
+          deviceScaleFactor: deviceMetrics.deviceScaleFactor,
+          height: deviceMetrics.height,
+          width: 0, // Leave width unchanged
         });
       }
     }

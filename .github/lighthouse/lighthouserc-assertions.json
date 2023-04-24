@@ -10,7 +10,8 @@
         "render-blocking-resources": ["warn", { "numericValue": 0 }],
         "uses-rel-preconnect": ["warn", { "numericValue": 0 }],
         "maskable-icon": ["warn", { "minScore": 0.9 }],
-        "csp-xss": ["warn", { "minScore": 0 }]
+        "csp-xss": ["warn", { "minScore": 0 }],
+        "bf-cache": ["warn", { "minScore": 0 }]
       }
     }
   }

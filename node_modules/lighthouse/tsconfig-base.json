@@ -3,11 +3,16 @@
 {
   "compilerOptions": {
     "composite": true,
+
+    // Set up incremental builds. All sub-projects emit under outDir, maintaining
+    // directory structure relative to rootDir. No effect on include, exclude, etc.
     "emitDeclarationOnly": true,
     "declarationMap": true,
+    "outDir": ".tmp/tsbuildinfo/",
+    "rootDir": ".",
 
     "target": "es2020",
-    "module": "es2020",
+    "module": "es2022",
     "moduleResolution": "node",
     "esModuleInterop": true,
 

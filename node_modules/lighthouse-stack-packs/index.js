@@ -10,6 +10,7 @@ const stackPacks = [
   require('./packs/octobercms.js'),
   require('./packs/react.js'),
   require('./packs/wordpress.js'),
+  require('./packs/wp-rocket.js'),
 ];
 
 module.exports = stackPacks;

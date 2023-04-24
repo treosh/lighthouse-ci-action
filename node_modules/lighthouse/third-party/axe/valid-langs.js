@@ -107,4 +107,4 @@ function validLangs(langArray) {
   return codes;
 }
 
-module.exports = {isValidLang};
+export {isValidLang};

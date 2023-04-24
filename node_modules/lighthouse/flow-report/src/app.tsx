@@ -16,7 +16,7 @@ import {Header} from './header';
 import {I18nProvider} from './i18n/i18n';
 import {Styles} from './wrappers/styles';
 
-function getAnchorElement(hashState: LH.FlowResult.HashState|null) {
+function getAnchorElement(hashState: LH.HashState|null) {
   if (!hashState || !hashState.anchor) return null;
   return document.getElementById(hashState.anchor);
 }

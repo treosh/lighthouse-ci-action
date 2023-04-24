@@ -35,11 +35,11 @@ function getFilenamePrefix(name, fetchTime) {
 
 /**
  * Generate a filenamePrefix of hostname_YYYY-MM-DD_HH-MM-SS.
- * @param {{finalUrl: string, fetchTime: string}} lhr
+ * @param {{finalDisplayedUrl: string, fetchTime: string}} lhr
  * @return {string}
  */
 function getLhrFilenamePrefix(lhr) {
-  const hostname = new URL(lhr.finalUrl).hostname;
+  const hostname = new URL(lhr.finalDisplayedUrl).hostname;
   return getFilenamePrefix(hostname, lhr.fetchTime);
 }
 
@@ -54,4 +54,8 @@ function getFlowResultFilenamePrefix(flowResult) {
   return getFilenamePrefix(name, lhr.fetchTime);
 }
 
-module.exports = {getLhrFilenamePrefix, getFilenamePrefix, getFlowResultFilenamePrefix};
+export {
+  getLhrFilenamePrefix,
+  getFilenamePrefix,
+  getFlowResultFilenamePrefix,
+};

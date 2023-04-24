@@ -13,5 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+/**
+ * @internal
+ */
 export const isNode = !!(typeof process !== 'undefined' && process.version);
+/**
+ * @internal
+ */
+export const DEFERRED_PROMISE_DEBUG_TIMEOUT = typeof process !== 'undefined' &&
+    typeof process.env['PUPPETEER_DEFERRED_PROMISE_DEBUG_TIMEOUT'] !== 'undefined'
+    ? Number(process.env['PUPPETEER_DEFERRED_PROMISE_DEBUG_TIMEOUT'])
+    : -1;
 //# sourceMappingURL=environment.js.map

@@ -59,10 +59,11 @@ describe('getEntity', () => {
   it('works for direct domain usage', () => {
     expect(getEntity('https://js.connect.facebook.net/lib.js')).toMatchInlineSnapshot(`
       Object {
-        "averageExecutionTime": 255.27054714829316,
+        "averageExecutionTime": 410.6583262229093,
         "categories": Array [
           "social",
         ],
+        "category": "social",
         "company": "Facebook",
         "domains": Array [
           "*.facebook.com",
@@ -88,6 +89,7 @@ describe('getEntity', () => {
             "categories": Array [
               "social",
             ],
+            "category": "social",
             "company": "Facebook",
             "facades": Array [
               Object {
@@ -101,8 +103,8 @@ describe('getEntity', () => {
             ],
           },
         ],
-        "totalExecutionTime": 532045851,
-        "totalOccurrences": 2084243,
+        "totalExecutionTime": 1431828013,
+        "totalOccurrences": 3486665,
       }
     `)
   })
@@ -110,10 +112,11 @@ describe('getEntity', () => {
   it('works for inferred domain usage', () => {
     expect(getEntity('https://unknown.typekit.net/fonts.css')).toMatchInlineSnapshot(`
       Object {
-        "averageExecutionTime": 161.59273366539702,
+        "averageExecutionTime": 246.24096996129984,
         "categories": Array [
           "cdn",
         ],
+        "category": "cdn",
         "company": "Adobe",
         "domains": Array [
           "*.typekit.com",
@@ -126,8 +129,8 @@ describe('getEntity', () => {
         "homepage": "https://fonts.adobe.com/",
         "name": "Adobe TypeKit",
         "products": Array [],
-        "totalExecutionTime": 4412128,
-        "totalOccurrences": 27304,
+        "totalExecutionTime": 32068454,
+        "totalOccurrences": 130232,
       }
     `)
   })
@@ -167,6 +170,7 @@ describe('getProduct', () => {
     expect(getProduct('https://www.youtube.com/embed/alGcULGtiv8')).toMatchObject({
       name: 'YouTube Embedded Player',
       company: 'YouTube',
+      category: 'video',
       categories: ['video'],
       facades: [
         {

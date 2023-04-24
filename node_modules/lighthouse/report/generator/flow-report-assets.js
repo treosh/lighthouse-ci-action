@@ -5,16 +5,20 @@
  */
 'use strict';
 
-const fs = require('fs');
+import fs from 'fs';
+
+import {getModuleDirectory} from '../../esm-utils.js';
+
+const moduleDir = getModuleDirectory(import.meta);
 
 /* eslint-disable max-len */
-const FLOW_REPORT_TEMPLATE = fs.readFileSync(`${__dirname}/../../flow-report/assets/standalone-flow-template.html`, 'utf8');
-const REGULAR_REPORT_CSS = fs.readFileSync(__dirname + '/../assets/styles.css', 'utf8');
-const FLOW_REPORT_CSS = fs.readFileSync(`${__dirname}/../../flow-report/assets/styles.css`, 'utf8');
-const FLOW_REPORT_JAVASCRIPT = fs.readFileSync(`${__dirname}/../../dist/report/flow.js`, 'utf8');
+const FLOW_REPORT_TEMPLATE = fs.readFileSync(`${moduleDir}/../../flow-report/assets/standalone-flow-template.html`, 'utf8');
+const REGULAR_REPORT_CSS = fs.readFileSync(moduleDir + '/../assets/styles.css', 'utf8');
+const FLOW_REPORT_CSS = fs.readFileSync(`${moduleDir}/../../flow-report/assets/styles.css`, 'utf8');
+const FLOW_REPORT_JAVASCRIPT = fs.readFileSync(`${moduleDir}/../../dist/report/flow.js`, 'utf8');
 /* eslint-enable max-len */
 
-module.exports = {
+export const flowReportAssets = {
   FLOW_REPORT_TEMPLATE,
   FLOW_REPORT_CSS: [REGULAR_REPORT_CSS, FLOW_REPORT_CSS].join('\n'),
   FLOW_REPORT_JAVASCRIPT,

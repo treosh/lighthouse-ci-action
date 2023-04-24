@@ -7,11 +7,12 @@
 
 // Grabbed from https://github.com/ChromeDevTools/devtools-frontend/commit/26bb5ad91b147e9c918819711542ec2337d6b268
 
-const fs = require('fs');
-const path = require('path');
-const shell = require('child_process').execSync;
-const utils = require('./utils.js');
-const {LH_ROOT} = require('../../root.js');
+import fs from 'fs';
+
+import path from 'path';
+import { execSync as shell } from 'child_process';
+import * as utils from './utils.js';
+import { LH_ROOT } from '../../root.js';
 
 const TARGET = 'Release';
 const CONTENT_SHELL_ZIP = 'content-shell.zip';
@@ -34,7 +35,6 @@ function main() {
     console.log('Unable to download because of error:', error);
   }
 }
-main();
 
 function onUploadedCommitPosition(commitPosition) {
   const contentShellDirPath = path.resolve(CACHE_PATH, commitPosition, 'out', TARGET);
@@ -175,4 +175,10 @@ function getContentShellBinaryPath(dirPath) {
   if (process.platform === 'darwin') {
     return path.resolve(dirPath, 'Content Shell.app', 'Contents', 'MacOS', 'Content Shell');
   }
+}
+
+if (process.argv[2] === '--resolve-executable-path') {
+  console.log(getContentShellBinaryPath(process.argv[3]));
+} else {
+  main();
 }

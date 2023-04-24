@@ -13,4 +13,15 @@ describe('Entities', () => {
       }
     }
   })
+
+  it('should not have non-supported wilcards', () => {
+    for (const entity of entities) {
+      for (const domain of entity.domains) {
+        // Wildcards must be like `*.blah.com`
+        // Wildcards cannot be `*blah.com` or `blah*.com`
+        expect(domain).toEqual(expect.not.stringMatching(/\w\*/))
+        expect(domain).toEqual(expect.not.stringMatching(/\*\w/))
+      }
+    }
+  })
 })

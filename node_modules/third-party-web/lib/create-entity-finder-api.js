@@ -69,12 +69,14 @@ function cloneEntities(entities) {
   return entities.map(entity_ => {
     const entity = {
       company: entity_.name,
+      categories: [entity_.category],
       ...entity_,
     }
 
     const products = (entity_.products || []).map(product => ({
       company: entity.company,
-      categories: entity.categories,
+      category: entity.category,
+      categories: [entity.category],
       facades: [],
       ...product,
       urlPatterns: (product.urlPatterns || []).map(s =>

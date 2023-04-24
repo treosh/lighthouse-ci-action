@@ -5,15 +5,18 @@
  */
 'use strict';
 
-const fs = require('fs');
+import fs from 'fs';
 
-const flowReportAssets = require('./flow-report-assets.js');
+import {flowReportAssets} from './flow-report-assets.js';
+import {getModuleDirectory} from '../../esm-utils.js';
 
-const REPORT_TEMPLATE = fs.readFileSync(__dirname + '/../assets/standalone-template.html',
+const moduleDir = getModuleDirectory(import.meta);
+
+const REPORT_TEMPLATE = fs.readFileSync(moduleDir + '/../assets/standalone-template.html',
     'utf8');
-const REPORT_JAVASCRIPT = fs.readFileSync(__dirname + '/../../dist/report/standalone.js', 'utf8');
+const REPORT_JAVASCRIPT = fs.readFileSync(moduleDir + '/../../dist/report/standalone.js', 'utf8');
 
-module.exports = {
+export const reportAssets = {
   REPORT_TEMPLATE,
   REPORT_JAVASCRIPT,
   // Flow report assets are not needed for every bundle.

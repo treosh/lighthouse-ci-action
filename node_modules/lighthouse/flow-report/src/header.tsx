@@ -29,7 +29,7 @@ const HeaderThumbnail: FunctionComponent<{
   );
 };
 
-export const Header: FunctionComponent<{hashState: LH.FlowResult.HashState}> =
+export const Header: FunctionComponent<{hashState: LH.HashState}> =
 ({hashState}) => {
   const flowResult = useFlowResult();
   const {index} = hashState;

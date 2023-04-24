@@ -56,12 +56,12 @@ var UA1 = { deviceWidth: 320, deviceHeight: 480, minZoom: 0.25, maxZoom: 4};
 var UA2 = { deviceWidth: 640, deviceHeight: 960, minZoom: 0.25, maxZoom: 4};
 
 var viewportRenderingTests = [
-    {inp: "width=400, initial-scale=1", ua: UA1,  out:{zoom: 1, width: 400, height: 600, userZoom: "zoom"}},
-    {inp: "width=400, initial-scale=1", ua: UA2,  out:{zoom: 1, width: 640, height: 960, userZoom: "zoom"}},
-    {inp: "width=400", ua: UA1,  out:{zoom: null, width: 400, height: 600, userZoom: "zoom"}},
-    {inp: "initial-scale=1", ua: UA1,  out:{zoom: 1, width: 320, height: 480, userZoom: "zoom"}},
-    {inp: "initial-scale=2.0,height=device-width", ua: UA1,  out:{zoom: 2, width: 213, height: 320, userZoom: "zoom"}},
-    {inp: "width=480, initial-scale=2.0, user-scalable=no", ua: UA1,  out:{zoom: 2, width: 480, height: 720, userZoom: "fixed"}},
+    {inp: "width=400, initial-scale=1", ua: UA1,  out:{zoom: 1, width: 400, height: 600, userZoom: "zoom", interactiveWidget: "resizes-visual"}},
+    {inp: "width=400, initial-scale=1", ua: UA2,  out:{zoom: 1, width: 640, height: 960, userZoom: "zoom", interactiveWidget: "resizes-visual"}},
+    {inp: "width=400", ua: UA1,  out:{zoom: null, width: 400, height: 600, userZoom: "zoom", interactiveWidget: "resizes-visual"}},
+    {inp: "initial-scale=1", ua: UA1,  out:{zoom: 1, width: 320, height: 480, userZoom: "zoom", interactiveWidget: "resizes-visual"}},
+    {inp: "initial-scale=2.0,height=device-width", ua: UA1,  out:{zoom: 2, width: 213, height: 320, userZoom: "zoom", interactiveWidget: "resizes-visual"}},
+    {inp: "width=480, initial-scale=2.0, user-scalable=no, interactive-widget=overlays-content", ua: UA1,  out:{zoom: 2, width: 480, height: 720, userZoom: "fixed", interactiveWidget: "overlays-content"}},
 ];
 
 contentAttributeTests.forEach(function (test) {

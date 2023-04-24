@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-'use strict';
 
 import {TextEncoding} from './text-encoding.js';
 
@@ -25,7 +24,7 @@ function getAppsOrigin() {
   const isDev = new URLSearchParams(window.location.search).has('dev');
 
   if (isVercel) return `https://${window.location.host}/gh-pages`;
-  if (isDev) return 'http://localhost:8000';
+  if (isDev) return 'http://localhost:7333';
   return 'https://googlechrome.github.io/lighthouse';
 }
 
@@ -38,7 +37,7 @@ function computeWindowNameSuffix(json) {
   // @ts-expect-error - If this is a v2 LHR, use old `generatedTime`.
   const fallbackFetchTime = /** @type {string} */ (json.generatedTime);
   const fetchTime = json.fetchTime || fallbackFetchTime;
-  return `${json.lighthouseVersion}-${json.requestedUrl}-${fetchTime}`;
+  return `${json.lighthouseVersion}-${json.finalDisplayedUrl}-${fetchTime}`;
 }
 
 /**
@@ -120,8 +119,9 @@ function openTreemap(json) {
   /** @type {LH.Treemap.Options} */
   const treemapOptions = {
     lhr: {
-      requestedUrl: json.requestedUrl,
+      mainDocumentUrl: json.mainDocumentUrl,
       finalUrl: json.finalUrl,
+      finalDisplayedUrl: json.finalDisplayedUrl,
       audits: {
         'script-treemap-data': json.audits['script-treemap-data'],
       },

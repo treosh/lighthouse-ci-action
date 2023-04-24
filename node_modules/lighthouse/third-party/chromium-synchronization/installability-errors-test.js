@@ -5,18 +5,14 @@
  */
 'use strict';
 
-const fetch = require('node-fetch');
+import fetch from 'node-fetch';
 
-const InstallableManifestAudit = require('../../lighthouse-core/audits/installable-manifest.js');
-
-/* eslint-env jest */
-
-jest.setTimeout(20_000);
+import {UIStrings} from '../../core/audits/installable-manifest.js';
 
 describe('installabilityErrors', () => {
   let chromiumErrorIds;
 
-  beforeAll(async () => {
+  before(async () => {
     const installableLoggingGitTilesUrl =
       'https://chromium.googlesource.com/chromium/src/+/main/components/webapps/browser/installable/installable_logging.cc?format=TEXT';
     const resp = await fetch(installableLoggingGitTilesUrl);
@@ -78,7 +74,7 @@ Array [
   });
 
   it('are each handled explicitly in the gatherer', () => {
-    const errorStrings = Object.keys(InstallableManifestAudit.UIStrings)
+    const errorStrings = Object.keys(UIStrings)
       .filter(key => chromiumErrorIds.includes(key))
       .sort();
     expect(errorStrings).toEqual(chromiumErrorIds);

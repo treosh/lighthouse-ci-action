@@ -3,7 +3,7 @@ exports.getRenderingDataFromViewport = function (viewportProperties, uaDeviceWid
     var vw = uaDeviceWidth / 100;
     var vh = uaDeviceHeight / 100;
 
-    // Following http://dev.w3.org/csswg/css-device-adapt/#translation-into-atviewport-descriptors
+    // Following https://www.w3.org/TR/css-device-adapt/#handling-auto-zoom
     // 'auto' is mapped to null by convention
     var maxZoom = null;
     var minZoom = null;
@@ -16,6 +16,7 @@ exports.getRenderingDataFromViewport = function (viewportProperties, uaDeviceWid
     var initialWidth = uaDeviceWidth;
     var initialHeight = uaDeviceHeight;
     var userZoom = "zoom";
+    var interactiveWidget = "resizes-visual";
 
     if (viewportProperties["maximum-scale"] !== undefined) {
         maxZoom = translateZoomProperty(viewportProperties["maximum-scale"]);
@@ -47,7 +48,7 @@ exports.getRenderingDataFromViewport = function (viewportProperties, uaDeviceWid
         maxHeight = translateLengthProperty(viewportProperties["height"], vw, vh);
     }
 
-    // Following http://dev.w3.org/csswg/css-device-adapt/#user-scalable0
+    // Following https://www.w3.org/TR/css-device-adapt/#user-scalable
     if (viewportProperties["user-scalable"] !== undefined) {
         userZoom = viewportProperties["user-scalable"];
         if (typeof userZoom === "number") {
@@ -71,6 +72,20 @@ exports.getRenderingDataFromViewport = function (viewportProperties, uaDeviceWid
         }
     }
 
+    // Following https://w3c.github.io/csswg-drafts/css-viewport/#interactive-widget-section
+    if (viewportProperties["interactive-widget"] !== undefined) {
+        switch(viewportProperties["interactive-widget"]) {
+        case "overlays-content":
+        case "resizes-content":
+        case "resizes-visual":
+            interactiveWidget = viewportProperties["interactive-widget"];
+            break;
+        default:
+            interactiveWidget = "resizes-visual";
+            break;
+        }
+    }
+
     /* For a viewport META element that translates into an @viewport rule
        with a non-‘auto’ ‘zoom’ declaration and no ‘width’ declaration: */
     if (zoom !== null &&
@@ -87,7 +102,7 @@ exports.getRenderingDataFromViewport = function (viewportProperties, uaDeviceWid
     }
 
 
-    // Following http://dev.w3.org/csswg/css-device-adapt/#constraining-procedure
+    // Following https://www.w3.org/TR/css-device-adapt/#constraining
 
     // If min-zoom is not ‘auto’ and max-zoom is not ‘auto’,
     // set max-zoom = MAX(min-zoom, max-zoom)
@@ -162,7 +177,7 @@ exports.getRenderingDataFromViewport = function (viewportProperties, uaDeviceWid
         }
     }
 
-    return { zoom: zoom, width: width, height: height, userZoom: userZoom};
+    return { zoom: zoom, width: width, height: height, userZoom: userZoom, interactiveWidget: interactiveWidget};
 };
 
 function min(a, b) {
@@ -272,7 +287,7 @@ exports.parseMetaViewPortContent = function (S) {
     return parsedContent;
 };
 
-var propertyNames = ["width", "height", "initial-scale", "minimum-scale", "maximum-scale", "user-scalable", "shrink-to-fit", "viewport-fit"];
+var propertyNames = ["width", "height", "initial-scale", "minimum-scale", "maximum-scale", "user-scalable", "shrink-to-fit", "viewport-fit", "interactive-widget"];
 
 function parseProperty(parsedContent, S, i) {
     var start = i;
@@ -316,7 +331,10 @@ function setProperty(parsedContent, name, value) {
         if (string === "yes" || string === "no" || string === "device-width" || string === "device-height" ||
 
            // https://webkit.org/blog/7929/designing-websites-for-iphone-x/
-           (name.toLowerCase() === 'viewport-fit' && (string === 'auto' || string === 'cover'))) {
+           (name.toLowerCase() === 'viewport-fit' && (string === 'auto' || string === 'cover')) ||
+
+           (name.toLowerCase() === 'interactive-widget' && (exports.expectedValues["interactive-widget"].includes(string)))
+           ) {
 
             parsedContent.validProperties[name] = string;
             return;
@@ -337,5 +355,6 @@ exports.expectedValues = {
     "maximum-scale": ["a positive number"],
     "user-scalable": ["yes", "no", "0", "1"],
     "shrink-to-fit": ["yes", "no"],
-    "viewport-fit": ["auto", "cover"]
+    "viewport-fit": ["auto", "cover"],
+    "interactive-widget": ["overlays-content", "resizes-content", "resizes-visual"]
 };

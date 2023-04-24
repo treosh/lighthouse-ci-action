@@ -3,13 +3,13 @@
 // found in the LICENSE file.
 'use strict';
 
-const fs = require('fs');
-const http = require('http');
-const https = require('https');
-const path = require('path');
-const parseURL = require('url').parse;
-const shell = require('child_process').execSync;
-const Stream = require('stream').Transform;
+import fs from 'fs';
+import http from 'http';
+import https from 'https';
+import path from 'path';
+import { parse as parseURL } from 'url';
+import { execSync as shell } from 'child_process';
+import { Transform as Stream } from 'stream';
 
 function fetch(url) {
   return new Promise(fetchPromise);
@@ -115,7 +115,7 @@ function parseArgs(args) {
   return argObject;
 }
 
-module.exports = {
+export {
   fetch,
   atob,
   isFile,

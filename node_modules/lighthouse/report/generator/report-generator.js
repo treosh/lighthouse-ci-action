@@ -5,10 +5,10 @@
  */
 'use strict';
 
-const htmlReportAssets = require('./report-assets.js');
+import {reportAssets} from './report-assets.js';
 
 /** @typedef {import('../../types/lhr/lhr').default} LHResult */
-/** @typedef {import('../../types/lhr/flow').default} FlowResult */
+/** @typedef {import('../../types/lhr/flow-result').default} FlowResult */
 
 class ReportGenerator {
   /**
@@ -50,9 +50,9 @@ class ReportGenerator {
     const sanitizedJson = ReportGenerator.sanitizeJson(lhr);
     // terser does its own sanitization, but keep this basic replace for when
     // we want to generate a report without minification.
-    const sanitizedJavascript = htmlReportAssets.REPORT_JAVASCRIPT.replace(/<\//g, '\\u003c/');
+    const sanitizedJavascript = reportAssets.REPORT_JAVASCRIPT.replace(/<\//g, '\\u003c/');
 
-    return ReportGenerator.replaceStrings(htmlReportAssets.REPORT_TEMPLATE, [
+    return ReportGenerator.replaceStrings(reportAssets.REPORT_TEMPLATE, [
       {search: '%%LIGHTHOUSE_JSON%%', replacement: sanitizedJson},
       {search: '%%LIGHTHOUSE_JAVASCRIPT%%', replacement: sanitizedJavascript},
     ]);
@@ -65,11 +65,14 @@ class ReportGenerator {
    */
   static generateFlowReportHtml(flow) {
     const sanitizedJson = ReportGenerator.sanitizeJson(flow);
-    return ReportGenerator.replaceStrings(htmlReportAssets.FLOW_REPORT_TEMPLATE, [
+    // terser does its own sanitization, but keep this basic replace for when
+    // we want to generate a report without minification.
+    const sanitizedJavascript = reportAssets.FLOW_REPORT_JAVASCRIPT.replace(/<\//g, '\\u003c/');
+    return ReportGenerator.replaceStrings(reportAssets.FLOW_REPORT_TEMPLATE, [
       /* eslint-disable max-len */
       {search: '%%LIGHTHOUSE_FLOW_JSON%%', replacement: sanitizedJson},
-      {search: '%%LIGHTHOUSE_FLOW_JAVASCRIPT%%', replacement: htmlReportAssets.FLOW_REPORT_JAVASCRIPT},
-      {search: '/*%%LIGHTHOUSE_FLOW_CSS%%*/', replacement: htmlReportAssets.FLOW_REPORT_CSS},
+      {search: '%%LIGHTHOUSE_FLOW_JAVASCRIPT%%', replacement: sanitizedJavascript},
+      {search: '/*%%LIGHTHOUSE_FLOW_CSS%%*/', replacement: reportAssets.FLOW_REPORT_CSS},
       /* eslint-enable max-len */
     ]);
   }
@@ -93,53 +96,92 @@ class ReportGenerator {
     const separator = ',';
     /** @param {string} value @return {string} */
     const escape = value => `"${value.replace(/"/g, '""')}"`;
-    /** @param {Array<string | number>} row @return {string[]} */
-    const rowFormatter = row => row.map(value => value.toString()).map(escape);
+    /** @param {ReadonlyArray<string | number | null>} row @return {string[]} */
+    const rowFormatter = row => row.map(value => {
+      if (value === null) return 'null';
+      return value.toString();
+    }).map(escape);
 
-    // Possible TODO: tightly couple headers and row values
-    const header = ['requestedUrl', 'finalUrl', 'category', 'name', 'title', 'type', 'score'];
-    const table = Object.keys(lhr.categories).map(categoryId => {
-      const rows = [];
-      const category = lhr.categories[categoryId];
-      const overallCategoryScore = category.score === null ? -1 : category.score;
-      rows.push(rowFormatter([lhr.requestedUrl, lhr.finalUrl, category.title,
-        `${categoryId}-score`, `Overall ${category.title} Category Score`, 'numeric',
-        overallCategoryScore]));
-      return rows.concat(category.auditRefs.map(auditRef => {
+    const rows = [];
+    const topLevelKeys = /** @type {const} */(
+      ['requestedUrl', 'finalDisplayedUrl', 'fetchTime', 'gatherMode']);
+
+    // First we have metadata about the LHR.
+    rows.push(rowFormatter(topLevelKeys));
+    rows.push(rowFormatter(topLevelKeys.map(key => lhr[key] ?? null)));
+
+    // Some spacing.
+    rows.push([]);
+
+    // Categories.
+    rows.push(['category', 'score']);
+    for (const category of Object.values(lhr.categories)) {
+      rows.push(rowFormatter([
+        category.id,
+        category.score,
+      ]));
+    }
+
+    rows.push([]);
+
+    // Audits.
+    rows.push(['category', 'audit', 'score', 'displayValue', 'description']);
+    for (const category of Object.values(lhr.categories)) {
+      for (const auditRef of category.auditRefs) {
         const audit = lhr.audits[auditRef.id];
-        // CSV validator wants all scores to be numeric, use -1 for now
-        const numericScore = audit.score === null ? -1 : audit.score;
-        return rowFormatter([lhr.requestedUrl, lhr.finalUrl, category.title, audit.id, audit.title,
-          audit.scoreDisplayMode, numericScore]);
-      }));
-    });
+        if (!audit) continue;
 
-    return [header].concat(...table)
-      .map(row => row.join(separator)).join(CRLF);
+        rows.push(rowFormatter([
+          category.id,
+          auditRef.id,
+          audit.score,
+          audit.displayValue || '',
+          audit.description,
+        ]));
+      }
+    }
+
+    return rows
+      .map(row => row.join(separator))
+      .join(CRLF);
+  }
+
+  /**
+   * @param {LHResult|FlowResult} result
+   * @return {result is FlowResult}
+   */
+  static isFlowResult(result) {
+    return 'steps' in result;
   }
 
   /**
    * Creates the results output in a format based on the `mode`.
-   * @param {LHResult} lhr
+   * @param {LHResult|FlowResult} result
    * @param {LHResult['configSettings']['output']} outputModes
    * @return {string|string[]}
    */
-  static generateReport(lhr, outputModes) {
+  static generateReport(result, outputModes) {
     const outputAsArray = Array.isArray(outputModes);
     if (typeof outputModes === 'string') outputModes = [outputModes];
 
     const output = outputModes.map(outputMode => {
       // HTML report.
       if (outputMode === 'html') {
-        return ReportGenerator.generateReportHtml(lhr);
+        if (ReportGenerator.isFlowResult(result)) {
+          return ReportGenerator.generateFlowReportHtml(result);
+        }
+        return ReportGenerator.generateReportHtml(result);
       }
       // CSV report.
       if (outputMode === 'csv') {
-        return ReportGenerator.generateReportCSV(lhr);
+        if (ReportGenerator.isFlowResult(result)) {
+          throw new Error('CSV output is not support for user flows');
+        }
+        return ReportGenerator.generateReportCSV(result);
       }
       // JSON report.
       if (outputMode === 'json') {
-        return JSON.stringify(lhr, null, 2);
+        return JSON.stringify(result, null, 2);
       }
 
       throw new Error('Invalid output mode: ' + outputMode);
@@ -149,4 +191,4 @@ class ReportGenerator {
   }
 }
 
-module.exports = ReportGenerator;
+export {ReportGenerator};

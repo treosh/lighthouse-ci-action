@@ -9,7 +9,7 @@ import {useMemo} from 'preact/hooks';
 
 import {FlowSegment, FlowStepThumbnail, Separator} from '../common';
 import {getModeDescription, useFlowResult} from '../util';
-import {Util} from '../../../report/renderer/util';
+import {ReportUtils} from '../../../report/renderer/report-utils.js';
 import {SummaryCategory} from './category';
 import {useStringFormatter, useLocalizedStrings} from '../i18n/i18n';
 
@@ -23,7 +23,7 @@ const SummaryNavigationHeader: FunctionComponent<{lhr: LH.Result}> = ({lhr}) => 
     <div className="SummaryNavigationHeader" data-testid="SummaryNavigationHeader">
       <FlowSegment/>
       <div className="SummaryNavigationHeader__url">
-        <a rel="noopener" target="_blank" href={lhr.finalUrl}>{lhr.finalUrl}</a>
+        <a rel="noopener" target="_blank" href={lhr.finalDisplayedUrl}>{lhr.finalDisplayedUrl}</a>
       </div>
       <div className="SummaryNavigationHeader__category">
         {strings.categoryPerformance}
@@ -49,7 +49,7 @@ const SummaryFlowStep: FunctionComponent<{
   label: string,
   hashIndex: number,
 }> = ({lhr, label, hashIndex}) => {
-  const reportResult = useMemo(() => Util.prepareReportResult(lhr), [lhr]);
+  const reportResult = useMemo(() => ReportUtils.prepareReportResult(lhr), [lhr]);
   const strings = useLocalizedStrings();
   const modeDescription = getModeDescription(lhr.gatherMode, strings);
 
@@ -76,7 +76,7 @@ const SummaryFlowStep: FunctionComponent<{
             category={reportResult.categories[c]}
             href={`#index=${hashIndex}&anchor=${c}`}
             gatherMode={lhr.gatherMode}
-            finalUrl={lhr.finalUrl}
+            finalDisplayedUrl={lhr.finalDisplayedUrl}
           />
         ))
       }

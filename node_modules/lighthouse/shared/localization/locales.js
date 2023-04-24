@@ -3,7 +3,6 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
  */
-'use strict';
 
 /**
  * @fileoverview
@@ -22,61 +21,65 @@
 
 // TODO(paulirish): Centralize locale inheritance (combining this & i18n.lookupLocale()), adopt cldr parentLocale rules.
 
+import fs from 'fs';
+
+import {getModuleDirectory} from '../../esm-utils.js';
+
 /** @typedef {import('../../types/lhr/settings').Locale} Locale */
 /** @typedef {Record<string, {message: string}>} LhlMessages */
 
-const fs = require('fs');
+const moduleDir = getModuleDirectory(import.meta);
 
 /** @type {Record<string, LhlMessages>} */
 const files = {
-  'ar': JSON.parse(fs.readFileSync(`${__dirname}/locales/ar.json`, 'utf8')),
-  'ar-XB': JSON.parse(fs.readFileSync(`${__dirname}/locales/ar-XB.json`, 'utf8')),
-  'bg': JSON.parse(fs.readFileSync(`${__dirname}/locales/bg.json`, 'utf8')),
-  'ca': JSON.parse(fs.readFileSync(`${__dirname}/locales/ca.json`, 'utf8')),
-  'cs': JSON.parse(fs.readFileSync(`${__dirname}/locales/cs.json`, 'utf8')),
-  'da': JSON.parse(fs.readFileSync(`${__dirname}/locales/da.json`, 'utf8')),
-  'de': JSON.parse(fs.readFileSync(`${__dirname}/locales/de.json`, 'utf8')),
-  'el': JSON.parse(fs.readFileSync(`${__dirname}/locales/el.json`, 'utf8')),
-  'en-GB': JSON.parse(fs.readFileSync(`${__dirname}/locales/en-GB.json`, 'utf8')),
-  'en-US': JSON.parse(fs.readFileSync(`${__dirname}/locales/en-US.json`, 'utf8')),
-  'en-XA': JSON.parse(fs.readFileSync(`${__dirname}/locales/en-XA.json`, 'utf8')),
-  'en-XL': JSON.parse(fs.readFileSync(`${__dirname}/locales/en-XL.json`, 'utf8')),
-  'es': JSON.parse(fs.readFileSync(`${__dirname}/locales/es.json`, 'utf8')),
-  'es-419': JSON.parse(fs.readFileSync(`${__dirname}/locales/es-419.json`, 'utf8')),
-  'fi': JSON.parse(fs.readFileSync(`${__dirname}/locales/fi.json`, 'utf8')),
-  'fil': JSON.parse(fs.readFileSync(`${__dirname}/locales/fil.json`, 'utf8')),
-  'fr': JSON.parse(fs.readFileSync(`${__dirname}/locales/fr.json`, 'utf8')),
-  'he': JSON.parse(fs.readFileSync(`${__dirname}/locales/he.json`, 'utf8')),
-  'hi': JSON.parse(fs.readFileSync(`${__dirname}/locales/hi.json`, 'utf8')),
-  'hr': JSON.parse(fs.readFileSync(`${__dirname}/locales/hr.json`, 'utf8')),
-  'hu': JSON.parse(fs.readFileSync(`${__dirname}/locales/hu.json`, 'utf8')),
-  'id': JSON.parse(fs.readFileSync(`${__dirname}/locales/id.json`, 'utf8')),
-  'it': JSON.parse(fs.readFileSync(`${__dirname}/locales/it.json`, 'utf8')),
-  'ja': JSON.parse(fs.readFileSync(`${__dirname}/locales/ja.json`, 'utf8')),
-  'ko': JSON.parse(fs.readFileSync(`${__dirname}/locales/ko.json`, 'utf8')),
-  'lt': JSON.parse(fs.readFileSync(`${__dirname}/locales/lt.json`, 'utf8')),
-  'lv': JSON.parse(fs.readFileSync(`${__dirname}/locales/lv.json`, 'utf8')),
-  'nl': JSON.parse(fs.readFileSync(`${__dirname}/locales/nl.json`, 'utf8')),
-  'no': JSON.parse(fs.readFileSync(`${__dirname}/locales/no.json`, 'utf8')),
-  'pl': JSON.parse(fs.readFileSync(`${__dirname}/locales/pl.json`, 'utf8')),
-  'pt': JSON.parse(fs.readFileSync(`${__dirname}/locales/pt.json`, 'utf8')),
-  'pt-PT': JSON.parse(fs.readFileSync(`${__dirname}/locales/pt-PT.json`, 'utf8')),
-  'ro': JSON.parse(fs.readFileSync(`${__dirname}/locales/ro.json`, 'utf8')),
-  'ru': JSON.parse(fs.readFileSync(`${__dirname}/locales/ru.json`, 'utf8')),
-  'sk': JSON.parse(fs.readFileSync(`${__dirname}/locales/sk.json`, 'utf8')),
-  'sl': JSON.parse(fs.readFileSync(`${__dirname}/locales/sl.json`, 'utf8')),
-  'sr': JSON.parse(fs.readFileSync(`${__dirname}/locales/sr.json`, 'utf8')),
-  'sr-Latn': JSON.parse(fs.readFileSync(`${__dirname}/locales/sr-Latn.json`, 'utf8')),
-  'sv': JSON.parse(fs.readFileSync(`${__dirname}/locales/sv.json`, 'utf8')),
-  'ta': JSON.parse(fs.readFileSync(`${__dirname}/locales/ta.json`, 'utf8')),
-  'te': JSON.parse(fs.readFileSync(`${__dirname}/locales/te.json`, 'utf8')),
-  'th': JSON.parse(fs.readFileSync(`${__dirname}/locales/th.json`, 'utf8')),
-  'tr': JSON.parse(fs.readFileSync(`${__dirname}/locales/tr.json`, 'utf8')),
-  'uk': JSON.parse(fs.readFileSync(`${__dirname}/locales/uk.json`, 'utf8')),
-  'vi': JSON.parse(fs.readFileSync(`${__dirname}/locales/vi.json`, 'utf8')),
-  'zh': JSON.parse(fs.readFileSync(`${__dirname}/locales/zh.json`, 'utf8')),
-  'zh-HK': JSON.parse(fs.readFileSync(`${__dirname}/locales/zh-HK.json`, 'utf8')),
-  'zh-TW': JSON.parse(fs.readFileSync(`${__dirname}/locales/zh-TW.json`, 'utf8')),
+  'ar': JSON.parse(fs.readFileSync(`${moduleDir}/locales/ar.json`, 'utf8')),
+  'ar-XB': JSON.parse(fs.readFileSync(`${moduleDir}/locales/ar-XB.json`, 'utf8')),
+  'bg': JSON.parse(fs.readFileSync(`${moduleDir}/locales/bg.json`, 'utf8')),
+  'ca': JSON.parse(fs.readFileSync(`${moduleDir}/locales/ca.json`, 'utf8')),
+  'cs': JSON.parse(fs.readFileSync(`${moduleDir}/locales/cs.json`, 'utf8')),
+  'da': JSON.parse(fs.readFileSync(`${moduleDir}/locales/da.json`, 'utf8')),
+  'de': JSON.parse(fs.readFileSync(`${moduleDir}/locales/de.json`, 'utf8')),
+  'el': JSON.parse(fs.readFileSync(`${moduleDir}/locales/el.json`, 'utf8')),
+  'en-GB': JSON.parse(fs.readFileSync(`${moduleDir}/locales/en-GB.json`, 'utf8')),
+  'en-US': JSON.parse(fs.readFileSync(`${moduleDir}/locales/en-US.json`, 'utf8')),
+  'en-XA': JSON.parse(fs.readFileSync(`${moduleDir}/locales/en-XA.json`, 'utf8')),
+  'en-XL': JSON.parse(fs.readFileSync(`${moduleDir}/locales/en-XL.json`, 'utf8')),
+  'es': JSON.parse(fs.readFileSync(`${moduleDir}/locales/es.json`, 'utf8')),
+  'es-419': JSON.parse(fs.readFileSync(`${moduleDir}/locales/es-419.json`, 'utf8')),
+  'fi': JSON.parse(fs.readFileSync(`${moduleDir}/locales/fi.json`, 'utf8')),
+  'fil': JSON.parse(fs.readFileSync(`${moduleDir}/locales/fil.json`, 'utf8')),
+  'fr': JSON.parse(fs.readFileSync(`${moduleDir}/locales/fr.json`, 'utf8')),
+  'he': JSON.parse(fs.readFileSync(`${moduleDir}/locales/he.json`, 'utf8')),
+  'hi': JSON.parse(fs.readFileSync(`${moduleDir}/locales/hi.json`, 'utf8')),
+  'hr': JSON.parse(fs.readFileSync(`${moduleDir}/locales/hr.json`, 'utf8')),
+  'hu': JSON.parse(fs.readFileSync(`${moduleDir}/locales/hu.json`, 'utf8')),
+  'id': JSON.parse(fs.readFileSync(`${moduleDir}/locales/id.json`, 'utf8')),
+  'it': JSON.parse(fs.readFileSync(`${moduleDir}/locales/it.json`, 'utf8')),
+  'ja': JSON.parse(fs.readFileSync(`${moduleDir}/locales/ja.json`, 'utf8')),
+  'ko': JSON.parse(fs.readFileSync(`${moduleDir}/locales/ko.json`, 'utf8')),
+  'lt': JSON.parse(fs.readFileSync(`${moduleDir}/locales/lt.json`, 'utf8')),
+  'lv': JSON.parse(fs.readFileSync(`${moduleDir}/locales/lv.json`, 'utf8')),
+  'nl': JSON.parse(fs.readFileSync(`${moduleDir}/locales/nl.json`, 'utf8')),
+  'no': JSON.parse(fs.readFileSync(`${moduleDir}/locales/no.json`, 'utf8')),
+  'pl': JSON.parse(fs.readFileSync(`${moduleDir}/locales/pl.json`, 'utf8')),
+  'pt': JSON.parse(fs.readFileSync(`${moduleDir}/locales/pt.json`, 'utf8')),
+  'pt-PT': JSON.parse(fs.readFileSync(`${moduleDir}/locales/pt-PT.json`, 'utf8')),
+  'ro': JSON.parse(fs.readFileSync(`${moduleDir}/locales/ro.json`, 'utf8')),
+  'ru': JSON.parse(fs.readFileSync(`${moduleDir}/locales/ru.json`, 'utf8')),
+  'sk': JSON.parse(fs.readFileSync(`${moduleDir}/locales/sk.json`, 'utf8')),
+  'sl': JSON.parse(fs.readFileSync(`${moduleDir}/locales/sl.json`, 'utf8')),
+  'sr': JSON.parse(fs.readFileSync(`${moduleDir}/locales/sr.json`, 'utf8')),
+  'sr-Latn': JSON.parse(fs.readFileSync(`${moduleDir}/locales/sr-Latn.json`, 'utf8')),
+  'sv': JSON.parse(fs.readFileSync(`${moduleDir}/locales/sv.json`, 'utf8')),
+  'ta': JSON.parse(fs.readFileSync(`${moduleDir}/locales/ta.json`, 'utf8')),
+  'te': JSON.parse(fs.readFileSync(`${moduleDir}/locales/te.json`, 'utf8')),
+  'th': JSON.parse(fs.readFileSync(`${moduleDir}/locales/th.json`, 'utf8')),
+  'tr': JSON.parse(fs.readFileSync(`${moduleDir}/locales/tr.json`, 'utf8')),
+  'uk': JSON.parse(fs.readFileSync(`${moduleDir}/locales/uk.json`, 'utf8')),
+  'vi': JSON.parse(fs.readFileSync(`${moduleDir}/locales/vi.json`, 'utf8')),
+  'zh': JSON.parse(fs.readFileSync(`${moduleDir}/locales/zh.json`, 'utf8')),
+  'zh-HK': JSON.parse(fs.readFileSync(`${moduleDir}/locales/zh-HK.json`, 'utf8')),
+  'zh-TW': JSON.parse(fs.readFileSync(`${moduleDir}/locales/zh-TW.json`, 'utf8')),
 };
 
 // The keys within this const must exactly match the LH.Locale type in externs.d.ts
@@ -172,4 +175,4 @@ const locales = {
   'zh-TW': files['zh-TW'], // aka zh-Hant, zh-Hant-TW, Traditional Chinese
 };
 
-module.exports = locales;
+export {locales};

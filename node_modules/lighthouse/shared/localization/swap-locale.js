@@ -3,12 +3,11 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
  */
-'use strict';
 
-const _set = require('lodash/set.js');
-const _get = require('lodash/get.js');
+import _set from 'lodash/set.js';
+import _get from 'lodash/get.js';
 
-const format = require('./format.js');
+import * as format from './format.js';
 
 /**
  * @fileoverview Use the lhr.i18n.icuMessagePaths object to change locales.
@@ -20,10 +19,10 @@ const format = require('./format.js');
  *
  * An example:
     "icuMessagePaths": {
-    "lighthouse-core/audits/metrics/first-contentful-paint.js | title": [
+    "core/audits/metrics/first-contentful-paint.js | title": [
       "audits[first-contentful-paint].title"
     ],
-    "lighthouse-core/audits/server-response-time.js | displayValue": [
+    "core/audits/server-response-time.js | displayValue": [
       {
         "values": {
           "timeInMs": 570.5630000000001
@@ -31,7 +30,7 @@ const format = require('./format.js');
         "path": "audits[server-response-time].displayValue"
       }
     ],
-    "lighthouse-core/lib/i18n/i18n.js | columnTimeSpent": [
+    "core/lib/i18n/i18n.js | columnTimeSpent": [
       "audits[mainthread-work-breakdown].details.headings[1].text",
       "audits[network-rtt].details.headings[1].text",
       "audits[network-server-latency].details.headings[1].text"
@@ -110,4 +109,4 @@ function swapLocale(lhr, requestedLocale) {
   };
 }
 
-module.exports = swapLocale;
+export {swapLocale};

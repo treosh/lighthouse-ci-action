@@ -517,6 +517,14 @@ Upload Lighthouse results as [action artifacts](https://help.github.com/en/actio
 uploadArtifacts: true
 ```
 
+#### `artifactName` (default: lighthouse-results)
+
+Filename of the action artifact when using `uploadArtifacts`.
+
+```yml
+artifactName: my-custom-name
+```
+
 #### `artifactRetentionDays` (default: undefined)
 
 Number of days the action artifact should be retained for when using `uploadArtifacts`.

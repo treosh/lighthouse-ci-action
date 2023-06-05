@@ -12,6 +12,8 @@ inputs:
   artifactName:
     description: 'Name of the artifact group if using uploadArtifacts. default: lighthouse-results'
     default: lighthouse-results
+  artifactRetentionDays:
+    description: 'Number of days the action artifact should be retained for'
   temporaryPublicStorage:
     descripton: 'Opt-in to saving Lighthouse results to temporary public storage'
   runs:

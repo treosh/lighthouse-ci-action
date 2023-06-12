@@ -24,9 +24,10 @@ Expected <= 0, but found 1
 exports.setAnnotations = async function setAnnotations(resultsPath) {
   const links = await getLinks(resultsPath)
   const assertionResults = await getAssertionResults(resultsPath)
-  if (!assertionResults) return
+  const failedAssertions = assertionResults?.filter((a) => !a.passed)
+  if (!failedAssertions) return
 
-  const assertionResultsByUrl = mapValues(groupBy(assertionResults, 'url'), (assertions) => {
+  const assertionResultsByUrl = mapValues(groupBy(failedAssertions, 'url'), (assertions) => {
     return orderBy(assertions, (a) => (a.level === 'error' ? 0 : 1) + a.auditId)
   })
 

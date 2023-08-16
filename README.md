@@ -10,7 +10,7 @@ It is built in collaboration between Lighthouse Team, Treo (web performance moni
 
 **Features**:
 
-- ✅ Audit URLs using Lighthouse v9
+- ✅ Audit URLs using Lighthouse v10
 - 🎯 Test performance with Lighthouse CI assertions or performance budgets
 - 😻 See failed results in the action interface
 - 💾 Upload results to a private LHCI server, Temporary Public Storage, or as artifacts

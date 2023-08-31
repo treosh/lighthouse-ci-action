@@ -517,6 +517,24 @@ Upload Lighthouse results as [action artifacts](https://help.github.com/en/actio
 uploadArtifacts: true
 ```
 
+#### `artifactName` (default: lighthouse-results)
+
+Filename of the action artifact when using `uploadArtifacts`.
+
+```yml
+artifactName: my-custom-name
+```
+
+#### `artifactRetentionDays` (default: undefined)
+
+Number of days the action artifact should be retained for when using `uploadArtifacts`.
+
+This is based on the [`retention-days`](https://docs.github.com/en/actions/using-workflows/storing-workflow-data-as-artifacts#configuring-a-custom-artifact-retention-period) property from `actions/upload-artifact`, which defaults to 90 days.
+
+```yml
+artifactRetentionDays: 7
+```
+
 #### `temporaryPublicStorage` (default: false)
 
 Upload reports to the [_temporary public storage_](https://github.com/GoogleChrome/lighthouse-ci/blob/master/docs/getting-started.md#collect-lighthouse-results).

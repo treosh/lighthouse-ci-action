@@ -73,10 +73,11 @@ exports.getInput = function getInputArgs() {
     serverBaseUrl,
     serverToken,
     temporaryPublicStorage,
-    uploadArtifacts: core.getInput('uploadArtifacts') === 'true' ? true : false,
+    uploadArtifacts: core.getInput('uploadArtifacts') === 'true',
     basicAuthUsername: core.getInput('basicAuthUsername') || 'lighthouse',
     basicAuthPassword: core.getInput('basicAuthPassword'),
     artifactName: core.getInput('artifactName'),
+    artifactRetentionDays: core.getInput('artifactRetentionDays') ? parseInt(core.getInput('artifactRetentionDays'), 10) : undefined,
   }
 }
 

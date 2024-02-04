@@ -76,7 +76,7 @@ async function main() {
           '--target=lhci',
           `--serverBaseUrl=${input.serverBaseUrl}`,
           `--token=${input.serverToken}`,
-          '--ignoreDuplicateBuildFailure' // ignore failure on the same commit rerun
+          '--ignoreDuplicateBuildFailure', // ignore failure on the same commit rerun
         )
       } else if (input.temporaryPublicStorage) {
         uploadParams.push('--target=temporary-public-storage')
@@ -85,7 +85,7 @@ async function main() {
       if (input.basicAuthPassword) {
         uploadParams.push(
           `--basicAuth.username=${input.basicAuthUsername}`,
-          `--basicAuth.password=${input.basicAuthPassword}`
+          `--basicAuth.password=${input.basicAuthPassword}`,
         )
       }
 

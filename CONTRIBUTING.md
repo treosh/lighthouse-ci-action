@@ -51,6 +51,6 @@ Based on semver and https://github.com/actions/toolkit/blob/master/docs/action-v
 Update tag:
 
 ```bash
-git tag -fa v9 -m "Update v9 tag"
-git push origin v9 --force
+git tag -fa v11 -m "Update v11 tag"
+git push origin v11 --force
 ```

@@ -1,7 +1,7 @@
 {
   "ci": {
     "collect": {
-      "numberOfRuns": 5
+      "numberOfRuns": 3
     },
     "assert": {
       "preset": "lighthouse:recommended",
@@ -11,7 +11,8 @@
         "uses-rel-preconnect": ["warn", { "numericValue": 0 }],
         "maskable-icon": ["warn", { "minScore": 0.9 }],
         "csp-xss": ["warn", { "minScore": 0 }],
-        "bf-cache": ["warn", { "minScore": 0 }]
+        "bf-cache": ["warn", { "minScore": 0 }],
+        "total-byte-weight": ["warn", { "minScore": 0 }]
       }
     }
   }

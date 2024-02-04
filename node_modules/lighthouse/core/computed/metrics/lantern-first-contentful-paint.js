@@ -1,7 +1,7 @@
 /**
- * @license Copyright 2018 The Lighthouse Authors. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
- * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ * @license
+ * Copyright 2018 Google LLC
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 import {makeComputedArtifact} from '../computed-artifact.js';
@@ -25,25 +25,29 @@ class LanternFirstContentfulPaint extends LanternMetric {
   }
 
   /**
+   * @typedef FirstPaintBasedGraphOpts
+   * @property {number} cutoffTimestamp The timestamp used to filter out tasks that occured after
+   *    our paint of interest. Typically this is First Contentful Paint or First Meaningful Paint.
+   * @property {function(NetworkNode):boolean} treatNodeAsRenderBlocking The function that determines
+   *    which resources should be considered *possibly* render-blocking.
+   * @property {(function(CPUNode):boolean)=} additionalCpuNodesToTreatAsRenderBlocking The function that
+   *    determines which CPU nodes should also be included in our blocking node IDs set,
+   *    beyond what getRenderBlockingNodeData() already includes.
+   */
+
+  /**
    * This function computes the set of URLs that *appeared* to be render-blocking based on our filter,
    * *but definitely were not* render-blocking based on the timing of their EvaluateScript task.
    * It also computes the set of corresponding CPU node ids that were needed for the paint at the
    * given timestamp.
    *
    * @param {Node} graph
-   * @param {number} filterTimestamp The timestamp used to filter out tasks that occured after our
-   *    paint of interest. Typically this is First Contentful Paint or First Meaningful Paint.
-   * @param {function(NetworkNode):boolean} blockingScriptFilter The function that determines which scripts
-   *    should be considered *possibly* render-blocking.
-   * @param {(function(CPUNode):boolean)=} extraBlockingCpuNodesToIncludeFilter The function that determines which CPU nodes
-   *    should also be included in our blocking node IDs set.
-   * @return {{definitelyNotRenderBlockingScriptUrls: Set<string>, blockingCpuNodeIds: Set<string>}}
+   * @param {FirstPaintBasedGraphOpts} opts
+   * @return {{definitelyNotRenderBlockingScriptUrls: Set<string>, renderBlockingCpuNodeIds: Set<string>}}
    */
-  static getBlockingNodeData(
+  static getRenderBlockingNodeData(
       graph,
-      filterTimestamp,
-      blockingScriptFilter,
-      extraBlockingCpuNodesToIncludeFilter
+      {cutoffTimestamp, treatNodeAsRenderBlocking, additionalCpuNodesToTreatAsRenderBlocking}
   ) {
     /** @type {Map<string, CPUNode>} A map of blocking script URLs to the earliest EvaluateScript task node that executed them. */
     const scriptUrlToNodeMap = new Map();
@@ -52,9 +56,9 @@ class LanternFirstContentfulPaint extends LanternMetric {
     const cpuNodes = [];
     graph.traverse(node => {
       if (node.type === BaseNode.TYPES.CPU) {
-        // A task is *possibly* render blocking if it *started* before filterTimestamp.
+        // A task is *possibly* render blocking if it *started* before cutoffTimestamp.
         // We use startTime here because the paint event can be *inside* the task that was render blocking.
-        if (node.startTime <= filterTimestamp) cpuNodes.push(node);
+        if (node.startTime <= cutoffTimestamp) cpuNodes.push(node);
 
         // Build our script URL map to find the earliest EvaluateScript task node.
         const scriptUrls = node.getEvaluateScriptURLs();
@@ -68,16 +72,19 @@ class LanternFirstContentfulPaint extends LanternMetric {
 
     cpuNodes.sort((a, b) => a.startTime - b.startTime);
 
-    // A script is *possibly* render blocking if it finished loading before filterTimestamp.
+    // A script is *possibly* render blocking if it finished loading before cutoffTimestamp.
     const possiblyRenderBlockingScriptUrls = LanternMetric.getScriptUrls(graph, node => {
-      return node.endTime <= filterTimestamp && blockingScriptFilter(node);
+      // The optimistic LCP treatNodeAsRenderBlocking fn wants to exclude some images in the graph,
+      // but here it only receives scripts to evaluate. It's a no-op in this case, but it will
+      // matter below in the getFirstPaintBasedGraph clone operation.
+      return node.endTime <= cutoffTimestamp && treatNodeAsRenderBlocking(node);
     });
 
-    // A script is *definitely not* render blocking if its EvaluateScript task started after filterTimestamp.
+    // A script is *definitely not* render blocking if its EvaluateScript task started after cutoffTimestamp.
     /** @type {Set<string>} */
     const definitelyNotRenderBlockingScriptUrls = new Set();
     /** @type {Set<string>} */
-    const blockingCpuNodeIds = new Set();
+    const renderBlockingCpuNodeIds = new Set();
     for (const url of possiblyRenderBlockingScriptUrls) {
       // Lookup the CPU node that had the earliest EvaluateScript for this URL.
       const cpuNodeForUrl = scriptUrlToNodeMap.get(url);
@@ -85,9 +92,9 @@ class LanternFirstContentfulPaint extends LanternMetric {
       // If we can't find it at all, we can't conclude anything, so just skip it.
       if (!cpuNodeForUrl) continue;
 
-      // If we found it and it was in our `cpuNodes` set that means it finished before filterTimestamp, so it really is render-blocking.
+      // If we found it and it was in our `cpuNodes` set that means it finished before cutoffTimestamp, so it really is render-blocking.
       if (cpuNodes.includes(cpuNodeForUrl)) {
-        blockingCpuNodeIds.add(cpuNodeForUrl.id);
+        renderBlockingCpuNodeIds.add(cpuNodeForUrl.id);
         continue;
       }
 
@@ -99,22 +106,22 @@ class LanternFirstContentfulPaint extends LanternMetric {
     // The first layout, first paint, and first ParseHTML are almost always necessary for first paint,
     // so we always include those CPU nodes.
     const firstLayout = cpuNodes.find(node => node.didPerformLayout());
-    if (firstLayout) blockingCpuNodeIds.add(firstLayout.id);
+    if (firstLayout) renderBlockingCpuNodeIds.add(firstLayout.id);
     const firstPaint = cpuNodes.find(node => node.childEvents.some(e => e.name === 'Paint'));
-    if (firstPaint) blockingCpuNodeIds.add(firstPaint.id);
+    if (firstPaint) renderBlockingCpuNodeIds.add(firstPaint.id);
     const firstParse = cpuNodes.find(node => node.childEvents.some(e => e.name === 'ParseHTML'));
-    if (firstParse) blockingCpuNodeIds.add(firstParse.id);
+    if (firstParse) renderBlockingCpuNodeIds.add(firstParse.id);
 
     // If a CPU filter was passed in, we also want to include those extra nodes.
-    if (extraBlockingCpuNodesToIncludeFilter) {
+    if (additionalCpuNodesToTreatAsRenderBlocking) {
       cpuNodes
-        .filter(extraBlockingCpuNodesToIncludeFilter)
-        .forEach(node => blockingCpuNodeIds.add(node.id));
+        .filter(additionalCpuNodesToTreatAsRenderBlocking)
+        .forEach(node => renderBlockingCpuNodeIds.add(node.id));
     }
 
     return {
       definitelyNotRenderBlockingScriptUrls,
-      blockingCpuNodeIds,
+      renderBlockingCpuNodeIds,
     };
   }
 
@@ -122,35 +129,25 @@ class LanternFirstContentfulPaint extends LanternMetric {
    * This function computes the graph required for the first paint of interest.
    *
    * @param {Node} dependencyGraph
-   * @param {number} paintTs The timestamp used to filter out tasks that occured after our
-   *    paint of interest. Typically this is First Contentful Paint or First Meaningful Paint.
-   * @param {function(NetworkNode):boolean} blockingResourcesFilter The function that determines which resources
-   *    should be considered *possibly* render-blocking.
-   * @param {(function(CPUNode):boolean)=} extraBlockingCpuNodesToIncludeFilter The function that determines which CPU nodes
-   *    should also be included in our blocking node IDs set.
+   * @param {FirstPaintBasedGraphOpts} opts
    * @return {Node}
    */
   static getFirstPaintBasedGraph(
       dependencyGraph,
-      paintTs,
-      blockingResourcesFilter,
-      extraBlockingCpuNodesToIncludeFilter
+      {cutoffTimestamp, treatNodeAsRenderBlocking, additionalCpuNodesToTreatAsRenderBlocking}
   ) {
-    const {
-      definitelyNotRenderBlockingScriptUrls,
-      blockingCpuNodeIds,
-    } = this.getBlockingNodeData(
-      dependencyGraph,
-      paintTs,
-      blockingResourcesFilter,
-      extraBlockingCpuNodesToIncludeFilter
-    );
+    const rbData = this.getRenderBlockingNodeData(dependencyGraph, {
+      cutoffTimestamp,
+      treatNodeAsRenderBlocking,
+      additionalCpuNodesToTreatAsRenderBlocking,
+    });
+    const {definitelyNotRenderBlockingScriptUrls, renderBlockingCpuNodeIds} = rbData;
 
     return dependencyGraph.cloneWithRelationships(node => {
       if (node.type === BaseNode.TYPES.NETWORK) {
-        // Exclude all nodes that ended after paintTs (except for the main document which we always consider necessary)
-        // endTime is negative if request does not finish, make sure startTime isn't after paintTs in this case.
-        const endedAfterPaint = node.endTime > paintTs || node.startTime > paintTs;
+        // Exclude all nodes that ended after cutoffTimestamp (except for the main document which we always consider necessary)
+        // endTime is negative if request does not finish, make sure startTime isn't after cutoffTimestamp in this case.
+        const endedAfterPaint = node.endTime > cutoffTimestamp || node.startTime > cutoffTimestamp;
         if (endedAfterPaint && !node.isMainDocument()) return false;
 
         const url = node.record.url;
@@ -159,10 +156,11 @@ class LanternFirstContentfulPaint extends LanternMetric {
           return false;
         }
 
-        return blockingResourcesFilter(node);
+        // Lastly, build up the FCP graph of all nodes we consider render blocking
+        return treatNodeAsRenderBlocking(node);
       } else {
         // If it's a CPU node, just check if it was blocking.
-        return blockingCpuNodeIds.has(node.id);
+        return renderBlockingCpuNodeIds.has(node.id);
       }
     });
   }
@@ -173,14 +171,14 @@ class LanternFirstContentfulPaint extends LanternMetric {
    * @return {Node}
    */
   static getOptimisticGraph(dependencyGraph, processedNavigation) {
-    return this.getFirstPaintBasedGraph(
-      dependencyGraph,
-      processedNavigation.timestamps.firstContentfulPaint,
+    return this.getFirstPaintBasedGraph(dependencyGraph, {
+      cutoffTimestamp: processedNavigation.timestamps.firstContentfulPaint,
       // In the optimistic graph we exclude resources that appeared to be render blocking but were
       // initiated by a script. While they typically have a very high importance and tend to have a
       // significant impact on the page's content, these resources don't technically block rendering.
-      node => node.hasRenderBlockingPriority() && node.initiatorType !== 'script'
-    );
+      treatNodeAsRenderBlocking: node =>
+        node.hasRenderBlockingPriority() && node.initiatorType !== 'script',
+    });
   }
 
   /**
@@ -189,11 +187,10 @@ class LanternFirstContentfulPaint extends LanternMetric {
    * @return {Node}
    */
   static getPessimisticGraph(dependencyGraph, processedNavigation) {
-    return this.getFirstPaintBasedGraph(
-      dependencyGraph,
-      processedNavigation.timestamps.firstContentfulPaint,
-      node => node.hasRenderBlockingPriority()
-    );
+    return this.getFirstPaintBasedGraph(dependencyGraph, {
+      cutoffTimestamp: processedNavigation.timestamps.firstContentfulPaint,
+      treatNodeAsRenderBlocking: node => node.hasRenderBlockingPriority(),
+    });
   }
 }
 

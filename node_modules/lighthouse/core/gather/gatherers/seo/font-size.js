@@ -1,7 +1,7 @@
 /**
- * @license Copyright 2017 The Lighthouse Authors. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
- * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ * @license
+ * Copyright 2017 Google LLC
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 /**
@@ -15,14 +15,13 @@
  * This gatherer collects stylesheet metadata by itself, instead of relying on the styles gatherer which is slow (because it parses the stylesheet content).
  */
 
-import FRGatherer from '../../base-gatherer.js';
+import BaseGatherer from '../../base-gatherer.js';
 
 const FONT_SIZE_PROPERTY_NAME = 'font-size';
 const MINIMAL_LEGIBLE_FONT_SIZE_PX = 12;
 // limit number of protocol calls to make sure that gatherer doesn't take more than 1-2s
 const MAX_NODES_SOURCE_RULE_FETCHED = 50; // number of nodes to fetch the source font-size rule
 
-/** @typedef {import('../../../legacy/gather/driver.js')} Driver */
 /** @typedef {LH.Artifacts.FontSize['analyzedFailingNodesData'][0]} NodeFontData */
 /** @typedef {Map<number, {fontSize: number, textLength: number}>} BackendIdsToFontData */
 
@@ -117,7 +116,7 @@ function getTextLength(text) {
 }
 
 /**
- * @param {LH.Gatherer.FRProtocolSession} session
+ * @param {LH.Gatherer.ProtocolSession} session
  * @param {number} nodeId text node
  * @return {Promise<NodeFontData['cssRule']|undefined>}
  */
@@ -139,14 +138,14 @@ async function fetchSourceRule(session, nodeId) {
   };
 }
 
-class FontSize extends FRGatherer {
+class FontSize extends BaseGatherer {
   /** @type {LH.Gatherer.GathererMeta} */
   meta = {
     supportedModes: ['snapshot', 'navigation'],
   };
 
   /**
-   * @param {LH.Gatherer.FRProtocolSession} session
+   * @param {LH.Gatherer.ProtocolSession} session
    * @param {Array<NodeFontData>} failingNodes
    */
   static async fetchFailingNodeSourceRules(session, failingNodes) {
@@ -275,7 +274,7 @@ class FontSize extends FRGatherer {
   }
 
   /**
-   * @param {LH.Gatherer.FRTransitionalContext} passContext
+   * @param {LH.Gatherer.Context} passContext
    * @return {Promise<LH.Artifacts.FontSize>} font-size analysis
    */
   async getArtifact(passContext) {

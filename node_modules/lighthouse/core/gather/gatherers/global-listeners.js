@@ -1,7 +1,7 @@
 /**
- * @license Copyright 2020 The Lighthouse Authors. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
- * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ * @license
+ * Copyright 2020 Google LLC
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 /**
@@ -11,9 +11,11 @@
  * around page unload, but this can be expanded in the future.
  */
 
-import FRGatherer from '../base-gatherer.js';
+import log from 'lighthouse-logger';
 
-class GlobalListeners extends FRGatherer {
+import BaseGatherer from '../base-gatherer.js';
+
+class GlobalListeners extends BaseGatherer {
   /** @type {LH.Gatherer.GathererMeta} */
   meta = {
     supportedModes: ['snapshot', 'timespan', 'navigation'],
@@ -55,36 +57,51 @@ class GlobalListeners extends FRGatherer {
   }
 
   /**
-   * @param {LH.Gatherer.FRTransitionalContext} passContext
+   * @param {LH.Gatherer.Context} passContext
    * @return {Promise<LH.Artifacts['GlobalListeners']>}
    */
   async getArtifact(passContext) {
     const session = passContext.driver.defaultSession;
 
-    // Get a RemoteObject handle to `window`.
-    const {result: {objectId}} = await session.sendCommand('Runtime.evaluate', {
-      expression: 'window',
-      returnByValue: false,
-    });
-    if (!objectId) {
-      throw new Error('Error fetching information about the global object');
+    /** @type {Array<LH.Artifacts.GlobalListener>} */
+    const listeners = [];
+
+    for (const executionContext of passContext.driver.targetManager.mainFrameExecutionContexts()) {
+      // Get a RemoteObject handle to `window`.
+      let objectId;
+      try {
+        const {result} = await session.sendCommand('Runtime.evaluate', {
+          expression: 'window',
+          returnByValue: false,
+          uniqueContextId: executionContext.uniqueId,
+        });
+        if (!result.objectId) {
+          throw new Error('Error fetching information about the global object');
+        }
+        objectId = result.objectId;
+      } catch (err) {
+        // Execution context is no longer valid, but don't let that fail the gatherer.
+        log.warn('Execution context is no longer valid', executionContext, err);
+        continue;
+      }
+
+      // And get all its listeners of interest.
+      const response = await session.sendCommand('DOMDebugger.getEventListeners', {objectId});
+      for (const listener of response.listeners) {
+        if (GlobalListeners._filterForAllowlistedTypes(listener)) {
+          const {type, scriptId, lineNumber, columnNumber} = listener;
+          listeners.push({
+            type,
+            scriptId,
+            lineNumber,
+            columnNumber,
+          });
+        }
+      }
     }
 
-    // And get all its listeners of interest.
-    const {listeners} = await session.sendCommand('DOMDebugger.getEventListeners', {objectId});
-    const filteredListeners = listeners.filter(GlobalListeners._filterForAllowlistedTypes)
-    .map(listener => {
-      const {type, scriptId, lineNumber, columnNumber} = listener;
-      return {
-        type,
-        scriptId,
-        lineNumber,
-        columnNumber,
-      };
-    });
-
     // Dedupe listeners with same underlying data.
-    return this.dedupeListeners(filteredListeners);
+    return this.dedupeListeners(listeners);
   }
 }
 

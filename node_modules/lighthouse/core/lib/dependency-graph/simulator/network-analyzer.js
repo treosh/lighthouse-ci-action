@@ -1,7 +1,7 @@
 /**
- * @license Copyright 2018 The Lighthouse Authors. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
- * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ * @license
+ * Copyright 2018 Google LLC
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 import UrlUtils from '../../url-utils.js';
@@ -52,11 +52,22 @@ class NetworkAnalyzer {
   static getSummary(values) {
     values.sort((a, b) => a - b);
 
+    let median;
+    if (values.length === 0) {
+      median = values[0];
+    } else if (values.length % 2 === 0) {
+      const a = values[Math.floor((values.length - 1) / 2)];
+      const b = values[Math.floor((values.length - 1) / 2) + 1];
+      median = (a + b) / 2;
+    } else {
+      median = values[Math.floor((values.length - 1) / 2)];
+    }
+
     return {
       min: values[0],
       max: values[values.length - 1],
       avg: values.reduce((a, b) => a + b, 0) / values.length,
-      median: values[Math.floor((values.length - 1) / 2)],
+      median,
     };
   }
 
@@ -114,24 +125,39 @@ class NetworkAnalyzer {
   }
 
   /**
-   * Estimates the observed RTT to each origin based on how long the TCP handshake took.
+   * Estimates the observed RTT to each origin based on how long the connection setup.
+   * For h1 and h2, this could includes two estimates - one for the TCP handshake, another for
+   * SSL negotiation.
+   * For h3, we get only one estimate since QUIC establishes a secure connection in a
+   * single handshake.
    * This is the most accurate and preferred method of measurement when the data is available.
    *
-   * @param {LH.Artifacts.NetworkRequest[]} records
-   * @return {Map<string, number[]>}
+   * @param {RequestInfo} info
+   * @return {number[]|number|undefined}
    */
-  static _estimateRTTByOriginViaTCPTiming(records) {
-    return NetworkAnalyzer._estimateValueByOrigin(records, ({timing, connectionReused}) => {
-      if (connectionReused) return;
+  static _estimateRTTViaConnectionTiming(info) {
+    const {timing, connectionReused, record} = info;
+    if (connectionReused) return;
 
-      // If the request was SSL we get two estimates, one for the SSL negotiation and another for the
-      // regular handshake. SSL can also be more than 1 RT but assume False Start was used.
-      if (timing.sslStart > 0 && timing.sslEnd > 0) {
-        return [timing.connectEnd - timing.sslStart, timing.sslStart - timing.connectStart];
-      } else if (timing.connectStart > 0 && timing.connectEnd > 0) {
-        return timing.connectEnd - timing.connectStart;
+    // In LR, network records are missing connection timing, but we've smuggled it in via headers.
+    if (global.isLightrider && record.lrStatistics) {
+      if (record.protocol.startsWith('h3')) {
+        return record.lrStatistics.TCPMs;
+      } else {
+        return [record.lrStatistics.TCPMs / 2, record.lrStatistics.TCPMs / 2];
       }
-    });
+    }
+
+    const {connectStart, sslStart, sslEnd, connectEnd} = timing;
+    if (connectEnd >= 0 && connectStart >= 0 && record.protocol.startsWith('h3')) {
+      // These values are equal to sslStart and sslEnd for h3.
+      return connectEnd - connectStart;
+    } else if (sslStart >= 0 && sslEnd >= 0 && sslStart !== connectStart) {
+      // SSL can also be more than 1 RT but assume False Start was used.
+      return [connectEnd - sslStart, sslStart - connectStart];
+    } else if (connectStart >= 0 && connectEnd >= 0) {
+      return connectEnd - connectStart;
+    }
   }
 
   /**
@@ -139,26 +165,27 @@ class NetworkAnalyzer {
    * NOTE: this will tend to overestimate the actual RTT quite significantly as the download can be
    * slow for other reasons as well such as bandwidth constraints.
    *
-   * @param {LH.Artifacts.NetworkRequest[]} records
-   * @return {Map<string, number[]>}
+   * @param {RequestInfo} info
+   * @return {number|undefined}
    */
-  static _estimateRTTByOriginViaDownloadTiming(records) {
-    return NetworkAnalyzer._estimateValueByOrigin(records, ({record, timing, connectionReused}) => {
-      if (connectionReused) return;
-      // Only look at downloads that went past the initial congestion window
-      if (record.transferSize <= INITIAL_CWD) return;
-      if (!Number.isFinite(timing.receiveHeadersEnd) || timing.receiveHeadersEnd < 0) return;
+  static _estimateRTTViaDownloadTiming(info) {
+    const {timing, connectionReused, record} = info;
+    if (connectionReused) return;
 
-      // Compute the amount of time downloading everything after the first congestion window took
-      const totalTime = record.networkEndTime - record.networkRequestTime;
-      const downloadTimeAfterFirstByte = totalTime - timing.receiveHeadersEnd;
-      const numberOfRoundTrips = Math.log2(record.transferSize / INITIAL_CWD);
+    // Only look at downloads that went past the initial congestion window
+    if (record.transferSize <= INITIAL_CWD) return;
+    if (!Number.isFinite(timing.receiveHeadersEnd) || timing.receiveHeadersEnd < 0) return;
 
-      // Ignore requests that required a high number of round trips since bandwidth starts to play
-      // a larger role than latency
-      if (numberOfRoundTrips > 5) return;
-      return downloadTimeAfterFirstByte / numberOfRoundTrips;
-    });
+    // Compute the amount of time downloading everything after the first congestion window took
+    const totalTime = record.networkEndTime - record.networkRequestTime;
+    const downloadTimeAfterFirstByte = totalTime - timing.receiveHeadersEnd;
+    const numberOfRoundTrips = Math.log2(record.transferSize / INITIAL_CWD);
+
+    // Ignore requests that required a high number of round trips since bandwidth starts to play
+    // a larger role than latency
+    if (numberOfRoundTrips > 5) return;
+
+    return downloadTimeAfterFirstByte / numberOfRoundTrips;
   }
 
   /**
@@ -167,20 +194,21 @@ class NetworkAnalyzer {
    * NOTE: this will tend to overestimate the actual RTT as the request can be delayed for other
    * reasons as well such as more SSL handshakes if TLS False Start is not enabled.
    *
-   * @param {LH.Artifacts.NetworkRequest[]} records
-   * @return {Map<string, number[]>}
+   * @param {RequestInfo} info
+   * @return {number|undefined}
    */
-  static _estimateRTTByOriginViaSendStartTiming(records) {
-    return NetworkAnalyzer._estimateValueByOrigin(records, ({record, timing, connectionReused}) => {
-      if (connectionReused) return;
-      if (!Number.isFinite(timing.sendStart) || timing.sendStart < 0) return;
+  static _estimateRTTViaSendStartTiming(info) {
+    const {timing, connectionReused, record} = info;
+    if (connectionReused) return;
 
-      // Assume everything before sendStart was just DNS + (SSL)? + TCP handshake
-      // 1 RT for DNS, 1 RT (maybe) for SSL, 1 RT for TCP
-      let roundTrips = 2;
-      if (record.parsedURL.scheme === 'https') roundTrips += 1;
-      return timing.sendStart / roundTrips;
-    });
+    if (!Number.isFinite(timing.sendStart) || timing.sendStart < 0) return;
+
+    // Assume everything before sendStart was just DNS + (SSL)? + TCP handshake
+    // 1 RT for DNS, 1 RT (maybe) for SSL, 1 RT for TCP
+    let roundTrips = 1;
+    if (!record.protocol.startsWith('h3')) roundTrips += 1; // TCP
+    if (record.parsedURL.scheme === 'https') roundTrips += 1;
+    return timing.sendStart / roundTrips;
   }
 
   /**
@@ -189,34 +217,33 @@ class NetworkAnalyzer {
    * NOTE: this is the most inaccurate way to estimate the RTT, but in some environments it's all
    * we have access to :(
    *
-   * @param {LH.Artifacts.NetworkRequest[]} records
-   * @return {Map<string, number[]>}
+   * @param {RequestInfo} info
+   * @return {number|undefined}
    */
-  static _estimateRTTByOriginViaHeadersEndTiming(records) {
-    return NetworkAnalyzer._estimateValueByOrigin(records, ({record, timing, connectionReused}) => {
-      if (!Number.isFinite(timing.receiveHeadersEnd) || timing.receiveHeadersEnd < 0) return;
-      if (!record.resourceType) return;
+  static _estimateRTTViaHeadersEndTiming(info) {
+    const {timing, connectionReused, record} = info;
+    if (!Number.isFinite(timing.receiveHeadersEnd) || timing.receiveHeadersEnd < 0) return;
+    if (!record.resourceType) return;
 
-      const serverResponseTimePercentage =
-        SERVER_RESPONSE_PERCENTAGE_OF_TTFB[record.resourceType] ||
-        DEFAULT_SERVER_RESPONSE_PERCENTAGE;
-      const estimatedServerResponseTime = timing.receiveHeadersEnd * serverResponseTimePercentage;
+    const serverResponseTimePercentage =
+      SERVER_RESPONSE_PERCENTAGE_OF_TTFB[record.resourceType] ||
+      DEFAULT_SERVER_RESPONSE_PERCENTAGE;
+    const estimatedServerResponseTime = timing.receiveHeadersEnd * serverResponseTimePercentage;
 
-      // When connection was reused...
-      // TTFB = 1 RT for request + server response time
-      let roundTrips = 1;
+    // When connection was reused...
+    // TTFB = 1 RT for request + server response time
+    let roundTrips = 1;
 
-      // When connection was fresh...
-      // TTFB = DNS + (SSL)? + TCP handshake + 1 RT for request + server response time
-      if (!connectionReused) {
-        roundTrips += 1; // DNS
-        if (record.parsedURL.scheme === 'https') roundTrips += 1; // SSL
-        roundTrips += 1; // TCP handshake
-      }
+    // When connection was fresh...
+    // TTFB = DNS + (SSL)? + TCP handshake + 1 RT for request + server response time
+    if (!connectionReused) {
+      roundTrips += 1; // DNS
+      if (!record.protocol.startsWith('h3')) roundTrips += 1; // TCP
+      if (record.parsedURL.scheme === 'https') roundTrips += 1; // SSL
+    }
 
-      // subtract out our estimated server response time
-      return Math.max((timing.receiveHeadersEnd - estimatedServerResponseTime) / roundTrips, 3);
-    });
+    // subtract out our estimated server response time
+    return Math.max((timing.receiveHeadersEnd - estimatedServerResponseTime) / roundTrips, 3);
   }
 
   /**
@@ -228,6 +255,10 @@ class NetworkAnalyzer {
    */
   static _estimateResponseTimeByOrigin(records, rttByOrigin) {
     return NetworkAnalyzer._estimateValueByOrigin(records, ({record, timing}) => {
+      // Lightrider does not have timings for sendEnd, but we do have this timing which should be
+      // close to the response time.
+      if (global.isLightrider && record.lrStatistics) return record.lrStatistics.requestMs;
+
       if (!Number.isFinite(timing.receiveHeadersEnd) || timing.receiveHeadersEnd < 0) return;
       if (!Number.isFinite(timing.sendEnd) || timing.sendEnd < 0) return;
 
@@ -318,32 +349,61 @@ class NetworkAnalyzer {
       useHeadersEndEstimates = true,
     } = options || {};
 
-    let estimatesByOrigin = NetworkAnalyzer._estimateRTTByOriginViaTCPTiming(records);
-    if (!estimatesByOrigin.size || forceCoarseEstimates) {
-      estimatesByOrigin = new Map();
-      const estimatesViaDownload = NetworkAnalyzer._estimateRTTByOriginViaDownloadTiming(records);
-      const estimatesViaSendStart = NetworkAnalyzer._estimateRTTByOriginViaSendStartTiming(records);
-      const estimatesViaTTFB = NetworkAnalyzer._estimateRTTByOriginViaHeadersEndTiming(records);
+    const connectionWasReused = NetworkAnalyzer.estimateIfConnectionWasReused(records);
+    const groupedByOrigin = NetworkAnalyzer.groupByOrigin(records);
 
-      for (const [origin, estimates] of estimatesViaDownload.entries()) {
-        if (!useDownloadEstimates) continue;
-        estimatesByOrigin.set(origin, estimates);
+    const estimatesByOrigin = new Map();
+    for (const [origin, originRecords] of groupedByOrigin.entries()) {
+      /** @type {number[]} */
+      const originEstimates = [];
+
+      /**
+       * @param {(e: RequestInfo) => number[]|number|undefined} estimator
+       */
+      // eslint-disable-next-line no-inner-declarations
+      function collectEstimates(estimator, multiplier = 1) {
+        for (const record of originRecords) {
+          const timing = record.timing;
+          if (!timing) continue;
+
+          const estimates = estimator({
+            record,
+            timing,
+            connectionReused: connectionWasReused.get(record.requestId),
+          });
+          if (estimates === undefined) continue;
+
+          if (!Array.isArray(estimates)) {
+            originEstimates.push(estimates * multiplier);
+          } else {
+            originEstimates.push(...estimates.map(e => e * multiplier));
+          }
+        }
       }
 
-      for (const [origin, estimates] of estimatesViaSendStart.entries()) {
-        if (!useSendStartEstimates) continue;
-        const existing = estimatesByOrigin.get(origin) || [];
-        estimatesByOrigin.set(origin, existing.concat(estimates));
+      if (!forceCoarseEstimates) {
+        collectEstimates(this._estimateRTTViaConnectionTiming);
       }
 
-      for (const [origin, estimates] of estimatesViaTTFB.entries()) {
-        if (!useHeadersEndEstimates) continue;
-        const existing = estimatesByOrigin.get(origin) || [];
-        estimatesByOrigin.set(origin, existing.concat(estimates));
+      // Connection timing can be missing for a few reasons:
+      // - Origin was preconnected, which we don't have instrumentation for.
+      // - Trace began recording after a connection has already been established (for example, in timespan mode)
+      // - Perhaps Chrome established a connection already in the background (service worker? Just guessing here)
+      // - Not provided in LR netstack.
+      if (!originEstimates.length) {
+        if (useDownloadEstimates) {
+          collectEstimates(this._estimateRTTViaDownloadTiming, coarseEstimateMultiplier);
+        }
+        if (useSendStartEstimates) {
+          collectEstimates(this._estimateRTTViaSendStartTiming, coarseEstimateMultiplier);
+        }
+        if (useHeadersEndEstimates) {
+          collectEstimates(this._estimateRTTViaHeadersEndTiming, coarseEstimateMultiplier);
+        }
       }
 
-      for (const estimates of estimatesByOrigin.values()) {
-        estimates.forEach((x, i) => (estimates[i] = x * coarseEstimateMultiplier));
+      if (originEstimates.length) {
+        estimatesByOrigin.set(origin, originEstimates);
       }
     }
 
@@ -447,8 +507,24 @@ class NetworkAnalyzer {
   }
 
   /**
+   * @param {Array<LH.Artifacts.NetworkRequest>} records
+   * @param {string} resourceUrl
+   * @return {LH.Artifacts.NetworkRequest|undefined}
+   */
+  static findLastDocumentForUrl(records, resourceUrl) {
+    // equalWithExcludedFragments is expensive, so check that the resourceUrl starts with the request url first
+    const matchingRequests = records.filter(request =>
+      request.resourceType === 'Document' &&
+      // Note: `request.url` should never have a fragment, else this optimization gives wrong results.
+      resourceUrl.startsWith(request.url) &&
+      UrlUtils.equalWithExcludedFragments(request.url, resourceUrl)
+    );
+    return matchingRequests[matchingRequests.length - 1];
+  }
+
+  /**
    * Resolves redirect chain given a main document.
-   * See: {@link NetworkAnalyzer.findResourceForUrl}) for how to retrieve main document.
+   * See: {@link NetworkAnalyzer.findLastDocumentForUrl}) for how to retrieve main document.
    *
    * @param {LH.Artifacts.NetworkRequest} request
    * @return {LH.Artifacts.NetworkRequest}

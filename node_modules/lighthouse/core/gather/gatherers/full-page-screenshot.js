@@ -1,15 +1,13 @@
 /**
- * @license Copyright 2020 Google Inc. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
- * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ * @license Copyright 2020 Google LLC
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 /* globals window getBoundingClientRect requestAnimationFrame */
 
-import FRGatherer from '../base-gatherer.js';
+import BaseGatherer from '../base-gatherer.js';
 import * as emulation from '../../lib/emulation.js';
 import {pageFunctions} from '../../lib/page-functions.js';
-import {NetworkMonitor} from '../driver/network-monitor.js';
 import {waitForNetworkIdle} from '../driver/wait-for-condition.js';
 
 // JPEG quality setting
@@ -65,14 +63,14 @@ function waitForDoubleRaf() {
 
 /* c8 ignore stop */
 
-class FullPageScreenshot extends FRGatherer {
+class FullPageScreenshot extends BaseGatherer {
   /** @type {LH.Gatherer.GathererMeta} */
   meta = {
     supportedModes: ['snapshot', 'timespan', 'navigation'],
   };
 
   /**
-   * @param {LH.Gatherer.FRTransitionalContext} context
+   * @param {LH.Gatherer.Context} context
    * @param {{height: number, width: number, mobile: boolean}} deviceMetrics
    */
   async _resizeViewport(context, deviceMetrics) {
@@ -89,7 +87,7 @@ class FullPageScreenshot extends FRGatherer {
     const height = Math.min(fullHeight, MAX_WEBP_SIZE);
 
     // Setup network monitor before we change the viewport.
-    const networkMonitor = new NetworkMonitor(context.driver.targetManager);
+    const networkMonitor = context.driver.networkMonitor;
     const waitForNetworkIdleResult = waitForNetworkIdle(session, networkMonitor, {
       pretendDCLAlreadyFired: true,
       networkQuietThresholdMs: 1000,
@@ -97,7 +95,6 @@ class FullPageScreenshot extends FRGatherer {
       idleEvent: 'network-critical-idle',
       isIdle: recorder => recorder.isCriticalIdle(),
     });
-    await networkMonitor.enable();
 
     await session.sendCommand('Emulation.setDeviceMetricsOverride', {
       mobile: deviceMetrics.mobile,
@@ -113,14 +110,13 @@ class FullPageScreenshot extends FRGatherer {
       waitForNetworkIdleResult.promise,
     ]);
     waitForNetworkIdleResult.cancel();
-    await networkMonitor.disable();
 
     // Now that new resources are (probably) fetched, wait long enough for a layout.
     await context.driver.executionContext.evaluate(waitForDoubleRaf, {args: []});
   }
 
   /**
-   * @param {LH.Gatherer.FRTransitionalContext} context
+   * @param {LH.Gatherer.Context} context
    * @return {Promise<LH.Result.FullPageScreenshot['screenshot']>}
    */
   async _takeScreenshot(context) {
@@ -150,7 +146,7 @@ class FullPageScreenshot extends FRGatherer {
    * `getNodeDetails` maintains a collection of DOM objects in the page, which we can iterate
    * to re-collect the bounding client rectangle.
    * @see pageFunctions.getNodeDetails
-   * @param {LH.Gatherer.FRTransitionalContext} context
+   * @param {LH.Gatherer.Context} context
    * @return {Promise<LH.Result.FullPageScreenshot['nodes']>}
    */
   async _resolveNodes(context) {
@@ -189,7 +185,7 @@ class FullPageScreenshot extends FRGatherer {
   }
 
   /**
-   * @param {LH.Gatherer.FRTransitionalContext} context
+   * @param {LH.Gatherer.Context} context
    * @return {Promise<LH.Artifacts['FullPageScreenshot']>}
    */
   async getArtifact(context) {

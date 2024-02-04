@@ -1,7 +1,7 @@
 /**
- * @license Copyright 2017 The Lighthouse Authors. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
- * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ * @license
+ * Copyright 2017 Google LLC
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 /* eslint-disable no-console */
@@ -16,7 +16,7 @@ import log from 'lighthouse-logger';
 import open from 'open';
 
 import * as Printer from './printer.js';
-import lighthouse, {legacyNavigation} from '../core/index.js';
+import lighthouse from '../core/index.js';
 import {getLhrFilenamePrefix} from '../report/generator/file-namer.js';
 import * as assetSaver from '../core/lib/asset-saver.js';
 import UrlUtils from '../core/lib/url-utils.js';
@@ -238,16 +238,9 @@ async function runLighthouse(url, flags, config) {
       flags.port = launchedChrome.port;
     }
 
-    if (flags.legacyNavigation) {
-      log.warn('CLI', 'Legacy navigation CLI is deprecated');
-      flags.channel = 'legacy-navigation-cli';
-    } else if (!flags.channel) {
-      flags.channel = 'cli';
-    }
+    flags.channel = 'cli';
 
-    const runnerResult = flags.legacyNavigation ?
-       await legacyNavigation(url, flags, config) :
-       await lighthouse(url, flags, config);
+    const runnerResult = await lighthouse(url, flags, config);
 
     // If in gatherMode only, there will be no runnerResult.
     if (runnerResult) {

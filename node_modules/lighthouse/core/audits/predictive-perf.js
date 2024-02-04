@@ -1,7 +1,7 @@
 /**
- * @license Copyright 2017 The Lighthouse Authors. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
- * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ * @license
+ * Copyright 2017 Google LLC
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 import {Audit} from './audit.js';
@@ -11,6 +11,8 @@ import {LanternFirstMeaningfulPaint} from '../computed/metrics/lantern-first-mea
 import {LanternInteractive} from '../computed/metrics/lantern-interactive.js';
 import {LanternSpeedIndex} from '../computed/metrics/lantern-speed-index.js';
 import {LanternLargestContentfulPaint} from '../computed/metrics/lantern-largest-contentful-paint.js';
+import {TimingSummary} from '../computed/metrics/timing-summary.js';
+import {defaultSettings} from '../config/constants.js';
 
 // Parameters (in ms) for log-normal CDF scoring. To see the curve:
 //   https://www.desmos.com/calculator/bksgkihhj8
@@ -32,7 +34,7 @@ class PredictivePerf extends Audit {
         'a cellular connection on a mobile device.',
       scoreDisplayMode: Audit.SCORING_MODES.NUMERIC,
       supportedModes: ['navigation'],
-      requiredArtifacts: ['traces', 'devtoolsLogs', 'GatherContext'],
+      requiredArtifacts: ['traces', 'devtoolsLogs', 'GatherContext', 'URL'],
     };
   }
 
@@ -47,14 +49,15 @@ class PredictivePerf extends Audit {
     const devtoolsLog = artifacts.devtoolsLogs[Audit.DEFAULT_PASS];
     const URL = artifacts.URL;
     /** @type {LH.Config.Settings} */
-    // @ts-expect-error - TODO(bckenny): allow optional `throttling` settings
-    const settings = {}; // Use default settings.
+    const settings = JSON.parse(JSON.stringify(defaultSettings)); // Use default settings.
     const computationData = {trace, devtoolsLog, gatherContext, settings, URL};
     const fcp = await LanternFirstContentfulPaint.request(computationData, context);
     const fmp = await LanternFirstMeaningfulPaint.request(computationData, context);
     const tti = await LanternInteractive.request(computationData, context);
     const si = await LanternSpeedIndex.request(computationData, context);
     const lcp = await LanternLargestContentfulPaint.request(computationData, context);
+
+    const timingSummary = await TimingSummary.request(computationData, context);
 
     const values = {
       roughEstimateOfFCP: fcp.timing,
@@ -76,6 +79,10 @@ class PredictivePerf extends Audit {
       roughEstimateOfLCP: lcp.timing,
       optimisticLCP: lcp.optimisticEstimate.timeInMs,
       pessimisticLCP: lcp.pessimisticEstimate.timeInMs,
+
+      roughEstimateOfTTFB: timingSummary.metrics.timeToFirstByte,
+      roughEstimateOfLCPLoadStart: timingSummary.metrics.lcpLoadStart,
+      roughEstimateOfLCPLoadEnd: timingSummary.metrics.lcpLoadEnd,
     };
 
     const score = Audit.computeLogNormalScore(

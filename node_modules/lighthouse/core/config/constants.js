@@ -1,7 +1,7 @@
 /**
- * @license Copyright 2018 The Lighthouse Authors. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
- * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ * @license
+ * Copyright 2018 Google LLC
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 /**
@@ -17,7 +17,7 @@ const throttling = {
   DEVTOOLS_RTT_ADJUSTMENT_FACTOR,
   DEVTOOLS_THROUGHPUT_ADJUSTMENT_FACTOR,
   // These values align with WebPageTest's definition of "Fast 3G"
-  // But offer similar charateristics to roughly the 75th percentile of 4G connections.
+  // But offer similar characteristics to roughly the 75th percentile of 4G connections.
   mobileSlow4G: {
     rttMs: 150,
     throughputKbps: 1.6 * 1024,
@@ -80,8 +80,8 @@ const screenEmulationMetrics = {
 };
 
 
-const MOTOG4_USERAGENT = 'Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Mobile Safari/537.36'; // eslint-disable-line max-len
-const DESKTOP_USERAGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36'; // eslint-disable-line max-len
+const MOTOG4_USERAGENT = 'Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Mobile Safari/537.36'; // eslint-disable-line max-len
+const DESKTOP_USERAGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36'; // eslint-disable-line max-len
 
 const userAgents = {
   mobile: MOTOG4_USERAGENT,
@@ -106,6 +106,7 @@ const defaultSettings = {
 
   auditMode: false,
   gatherMode: false,
+  clearStorageTypes: ['file_systems', 'shader_cache', 'service_workers', 'cache_storage'],
   disableStorageReset: false,
   debugNavigation: false,
   channel: 'node',
@@ -113,6 +114,7 @@ const defaultSettings = {
   disableFullPageScreenshot: false,
   skipAboutBlank: false,
   blankPage: 'about:blank',
+  ignoreStatusCode: false,
 
   // the following settings have no defaults but we still want ensure that `key in settings`
   // in config will work in a typechecked way
@@ -127,37 +129,7 @@ const defaultSettings = {
   skipAudits: null,
 };
 
-/** @type {LH.Config.Pass} */
-const defaultPassConfig = {
-  passName: 'defaultPass',
-  loadFailureMode: 'fatal',
-  recordTrace: false,
-  useThrottling: false,
-  pauseAfterFcpMs: 0,
-  pauseAfterLoadMs: 0,
-  networkQuietThresholdMs: 0,
-  cpuQuietThresholdMs: 0,
-  blockedUrlPatterns: [],
-  blankPage: 'about:blank',
-  gatherers: [],
-};
-
-/** @type {Required<LH.Config.NavigationJson>} */
-const defaultNavigationConfig = {
-  id: 'default',
-  loadFailureMode: 'fatal',
-  disableThrottling: false,
-  disableStorageReset: false,
-  pauseAfterFcpMs: 0,
-  pauseAfterLoadMs: 0,
-  networkQuietThresholdMs: 0,
-  cpuQuietThresholdMs: 0,
-  blockedUrlPatterns: [],
-  blankPage: 'about:blank',
-  artifacts: [],
-};
-
-const nonSimulatedPassConfigOverrides = {
+const nonSimulatedSettingsOverrides = {
   pauseAfterFcpMs: 5250,
   pauseAfterLoadMs: 5250,
   networkQuietThresholdMs: 5250,
@@ -169,7 +141,5 @@ export {
   screenEmulationMetrics,
   userAgents,
   defaultSettings,
-  defaultPassConfig,
-  defaultNavigationConfig,
-  nonSimulatedPassConfigOverrides,
+  nonSimulatedSettingsOverrides,
 };

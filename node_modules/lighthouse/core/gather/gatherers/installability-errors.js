@@ -1,14 +1,14 @@
 /**
- * @license Copyright 2021 The Lighthouse Authors. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
- * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ * @license
+ * Copyright 2021 Google LLC
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 import log from 'lighthouse-logger';
 
-import FRGatherer from '../base-gatherer.js';
+import BaseGatherer from '../base-gatherer.js';
 
-class InstallabilityErrors extends FRGatherer {
+class InstallabilityErrors extends BaseGatherer {
   /** @type {LH.Gatherer.GathererMeta} */
   meta = {
     supportedModes: ['snapshot', 'navigation'],
@@ -17,7 +17,7 @@ class InstallabilityErrors extends FRGatherer {
   /**
    * Creates an Artifacts.InstallabilityErrors, tranforming data from the protocol
    * for old versions of Chrome.
-   * @param {LH.Gatherer.FRProtocolSession} session
+   * @param {LH.Gatherer.ProtocolSession} session
    * @return {Promise<LH.Artifacts['InstallabilityErrors']>}
    */
   static async getInstallabilityErrors(session) {
@@ -35,7 +35,7 @@ class InstallabilityErrors extends FRGatherer {
   }
 
   /**
-   * @param {LH.Gatherer.FRTransitionalContext} context
+   * @param {LH.Gatherer.Context} context
    * @return {Promise<LH.Artifacts['InstallabilityErrors']>}
    */
   async getArtifact(context) {

@@ -1,7 +1,7 @@
 /**
- * @license Copyright 2017 The Lighthouse Authors. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
- * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ * @license
+ * Copyright 2017 Google LLC
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 /**
@@ -12,7 +12,7 @@
 
 import log from 'lighthouse-logger';
 
-import FRGatherer from '../../base-gatherer.js';
+import BaseGatherer from '../../base-gatherer.js';
 import UrlUtils from '../../../lib/url-utils.js';
 import {NetworkRequest} from '../../../lib/network-request.js';
 import {Sentry} from '../../../lib/sentry.js';
@@ -34,7 +34,7 @@ const IMAGE_REGEX = /^image\/((x|ms|x-ms)-)?(png|bmp|jpeg)$/;
 
 /** @typedef {{requestId: string, url: string, mimeType: string, resourceSize: number}} SimplifiedNetworkRecord */
 
-class OptimizedImages extends FRGatherer {
+class OptimizedImages extends BaseGatherer {
   /** @type {LH.Gatherer.GathererMeta<'DevtoolsLog'>} */
   meta = {
     supportedModes: ['timespan', 'navigation'],
@@ -54,8 +54,8 @@ class OptimizedImages extends FRGatherer {
     /** @type {Set<string>} */
     const seenUrls = new Set();
     return networkRecords.reduce((prev, record) => {
-      // Skip records that we've seen before, never finished, or came from child targets (OOPIFS).
-      if (seenUrls.has(record.url) || !record.finished || record.sessionId) {
+      // Skip records that we've seen before, never finished, or came from OOPIFs/web workers.
+      if (seenUrls.has(record.url) || !record.finished || record.sessionTargetType !== 'page') {
         return prev;
       }
 
@@ -78,7 +78,7 @@ class OptimizedImages extends FRGatherer {
   }
 
   /**
-   * @param {LH.Gatherer.FRProtocolSession} session
+   * @param {LH.Gatherer.ProtocolSession} session
    * @param {string} requestId
    * @param {'jpeg'|'webp'} encoding Either webp or jpeg.
    * @return {Promise<LH.Crdp.Audits.GetEncodedResponseResponse>}
@@ -92,7 +92,7 @@ class OptimizedImages extends FRGatherer {
   }
 
   /**
-   * @param {LH.Gatherer.FRProtocolSession} session
+   * @param {LH.Gatherer.ProtocolSession} session
    * @param {SimplifiedNetworkRecord} networkRecord
    * @return {Promise<{originalSize: number, jpegSize?: number, webpSize?: number}>}
    */
@@ -116,7 +116,7 @@ class OptimizedImages extends FRGatherer {
   }
 
   /**
-   * @param {LH.Gatherer.FRProtocolSession} session
+   * @param {LH.Gatherer.ProtocolSession} session
    * @param {Array<SimplifiedNetworkRecord>} imageRecords
    * @return {Promise<LH.Artifacts['OptimizedImages']>}
    */
@@ -153,11 +153,13 @@ class OptimizedImages extends FRGatherer {
   }
 
   /**
-   * @param {LH.Gatherer.FRTransitionalContext} context
-   * @param {LH.Artifacts.NetworkRequest[]} networkRecords
+   * @param {LH.Gatherer.Context<'DevtoolsLog'>} context
    * @return {Promise<LH.Artifacts['OptimizedImages']>}
    */
-  async _getArtifact(context, networkRecords) {
+  async getArtifact(context) {
+    const devtoolsLog = context.dependencies.DevtoolsLog;
+    const networkRecords = await NetworkRecords.request(devtoolsLog, context);
+
     const imageRecords = OptimizedImages
       .filterImageRequests(networkRecords)
       .sort((a, b) => b.resourceSize - a.resourceSize);
@@ -168,25 +170,6 @@ class OptimizedImages extends FRGatherer {
       throw new Error('All image optimizations failed');
     }
     return results;
-  }
-
-  /**
-   * @param {LH.Gatherer.FRTransitionalContext<'DevtoolsLog'>} context
-   * @return {Promise<LH.Artifacts['OptimizedImages']>}
-   */
-  async getArtifact(context) {
-    const devtoolsLog = context.dependencies.DevtoolsLog;
-    const networkRecords = await NetworkRecords.request(devtoolsLog, context);
-    return this._getArtifact(context, networkRecords);
-  }
-
-  /**
-   * @param {LH.Gatherer.PassContext} passContext
-   * @param {LH.Gatherer.LoadData} loadData
-   * @return {Promise<LH.Artifacts['OptimizedImages']>}
-   */
-  async afterPass(passContext, loadData) {
-    return this._getArtifact({...passContext, dependencies: {}}, loadData.networkRecords);
   }
 }
 

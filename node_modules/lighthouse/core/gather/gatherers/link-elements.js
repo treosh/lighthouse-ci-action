@@ -1,15 +1,17 @@
 /**
- * @license Copyright 2018 The Lighthouse Authors. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
- * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ * @license
+ * Copyright 2018 Google LLC
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 import LinkHeader from 'http-link-header';
 
-import FRGatherer from '../base-gatherer.js';
+import BaseGatherer from '../base-gatherer.js';
 import {pageFunctions} from '../../lib/page-functions.js';
 import DevtoolsLog from './devtools-log.js';
 import {MainResource} from '../../computed/main-resource.js';
+import {Util} from '../../../shared/util.js';
+import * as i18n from '../../lib/i18n/i18n.js';
 
 /* globals HTMLLinkElement getNodeDetails */
 
@@ -18,6 +20,17 @@ import {MainResource} from '../../computed/main-resource.js';
  * This gatherer collects all the effect `link` elements, both in the page and declared in the
  * headers of the main resource.
  */
+
+const UIStrings = {
+  /**
+   * @description Warning message explaining that there was an error parsing a link header in an HTTP response. `error` will be an english string with more details on the error. `header` will be the value of the header that caused the error. `link` is a type of HTTP header and should not be translated.
+   * @example {Expected attribute delimiter at offset 94} error
+   * @example {<https://assets.calendly.com/assets/booking/css/booking-d0ac32b1.css>; rel=preload; as=style; nopush} error
+   */
+  headerParseWarning: 'Error parsing `link` header ({error}): `{header}`',
+};
+
+const str_ = i18n.createIcuMessageFn(import.meta.url, UIStrings);
 
 /**
  *
@@ -70,6 +83,7 @@ function getLinkElementsInDOM() {
       crossOrigin: link.crossOrigin,
       hrefRaw,
       source,
+      fetchPriority: link.fetchPriority,
       // @ts-expect-error - put into scope via stringification
       node: getNodeDetails(link),
     });
@@ -79,7 +93,7 @@ function getLinkElementsInDOM() {
 }
 /* c8 ignore stop */
 
-class LinkElements extends FRGatherer {
+class LinkElements extends BaseGatherer {
   constructor() {
     super();
     /**
@@ -94,7 +108,7 @@ class LinkElements extends FRGatherer {
   }
 
   /**
-   * @param {LH.Gatherer.FRTransitionalContext} context
+   * @param {LH.Gatherer.Context} context
    * @return {Promise<LH.Artifacts['LinkElements']>}
    */
   static getLinkElementsInDOM(context) {
@@ -111,7 +125,7 @@ class LinkElements extends FRGatherer {
   }
 
   /**
-   * @param {LH.Gatherer.FRTransitionalContext} context
+   * @param {LH.Gatherer.Context} context
    * @param {LH.Artifacts['DevtoolsLog']} devtoolsLog
    * @return {Promise<LH.Artifacts['LinkElements']>}
    */
@@ -125,7 +139,21 @@ class LinkElements extends FRGatherer {
     for (const header of mainDocument.responseHeaders) {
       if (header.name.toLowerCase() !== 'link') continue;
 
-      for (const link of LinkHeader.parse(header.value).refs) {
+      /** @type {LinkHeader.Reference[]} */
+      let parsedRefs = [];
+
+      try {
+        parsedRefs = LinkHeader.parse(header.value).refs;
+      } catch (err) {
+        const truncatedHeader = Util.truncate(header.value, 100);
+        const warning = str_(UIStrings.headerParseWarning, {
+          error: err.message,
+          header: truncatedHeader,
+        });
+        context.baseArtifacts.LighthouseRunWarnings.push(warning);
+      }
+
+      for (const link of parsedRefs) {
         linkElements.push({
           rel: link.rel || '',
           href: normalizeUrlOrNull(link.uri, context.baseArtifacts.URL.finalDisplayedUrl),
@@ -134,6 +162,7 @@ class LinkElements extends FRGatherer {
           as: link.as || '',
           crossOrigin: getCrossoriginFromHeader(link.crossorigin),
           source: 'headers',
+          fetchPriority: link.fetchpriority,
           node: null,
         });
       }
@@ -143,11 +172,11 @@ class LinkElements extends FRGatherer {
   }
 
   /**
-   * @param {LH.Gatherer.FRTransitionalContext} context
-   * @param {LH.Artifacts['DevtoolsLog']} devtoolsLog
+   * @param {LH.Gatherer.Context<'DevtoolsLog'>} context
    * @return {Promise<LH.Artifacts['LinkElements']>}
    */
-  async _getArtifact(context, devtoolsLog) {
+  async getArtifact(context) {
+    const devtoolsLog = context.dependencies.DevtoolsLog;
     const fromDOM = await LinkElements.getLinkElementsInDOM(context);
     const fromHeaders = await LinkElements.getLinkElementsInHeaders(context, devtoolsLog);
     const linkElements = fromDOM.concat(fromHeaders);
@@ -159,23 +188,7 @@ class LinkElements extends FRGatherer {
 
     return linkElements;
   }
-
-  /**
-   * @param {LH.Gatherer.PassContext} context
-   * @param {LH.Gatherer.LoadData} loadData
-   * @return {Promise<LH.Artifacts['LinkElements']>}
-   */
-  async afterPass(context, loadData) {
-    return this._getArtifact({...context, dependencies: {}}, loadData.devtoolsLog);
-  }
-
-  /**
-   * @param {LH.Gatherer.FRTransitionalContext<'DevtoolsLog'>} context
-   * @return {Promise<LH.Artifacts['LinkElements']>}
-   */
-  async getArtifact(context) {
-    return this._getArtifact(context, context.dependencies.DevtoolsLog);
-  }
 }
 
 export default LinkElements;
+export {UIStrings};

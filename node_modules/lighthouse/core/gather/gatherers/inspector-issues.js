@@ -1,7 +1,7 @@
 /**
- * @license Copyright 2020 The Lighthouse Authors. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
- * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ * @license
+ * Copyright 2020 Google LLC
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 /**
@@ -9,11 +9,11 @@
  */
 
 
-import FRGatherer from '../base-gatherer.js';
+import BaseGatherer from '../base-gatherer.js';
 import {NetworkRecords} from '../../computed/network-records.js';
 import DevtoolsLog from './devtools-log.js';
 
-class InspectorIssues extends FRGatherer {
+class InspectorIssues extends BaseGatherer {
   /** @type {LH.Gatherer.GathererMeta<'DevtoolsLog'>} */
   meta = {
     supportedModes: ['timespan', 'navigation'],
@@ -35,7 +35,7 @@ class InspectorIssues extends FRGatherer {
   }
 
   /**
-   * @param {LH.Gatherer.FRTransitionalContext} context
+   * @param {LH.Gatherer.Context} context
    */
   async startInstrumentation(context) {
     const session = context.driver.defaultSession;
@@ -44,7 +44,7 @@ class InspectorIssues extends FRGatherer {
   }
 
   /**
-   * @param {LH.Gatherer.FRTransitionalContext} context
+   * @param {LH.Gatherer.Context} context
    */
   async stopInstrumentation(context) {
     const session = context.driver.defaultSession;
@@ -53,16 +53,21 @@ class InspectorIssues extends FRGatherer {
   }
 
   /**
-   * @param {Array<LH.Artifacts.NetworkRequest>} networkRecords
+   * @param {LH.Gatherer.Context<'DevtoolsLog'>} context
    * @return {Promise<LH.Artifacts['InspectorIssues']>}
    */
-  async _getArtifact(networkRecords) {
+  async getArtifact(context) {
+    const devtoolsLog = context.dependencies.DevtoolsLog;
+    const networkRecords = await NetworkRecords.request(devtoolsLog, context);
+
     /** @type {LH.Artifacts.InspectorIssues} */
     const artifact = {
       attributionReportingIssue: [],
       blockedByResponseIssue: [],
+      bounceTrackingIssue: [],
       clientHintIssue: [],
       contentSecurityPolicyIssue: [],
+      cookieDeprecationMetadataIssue: [],
       corsIssue: [],
       deprecationIssue: [],
       federatedAuthRequestIssue: [],
@@ -71,10 +76,12 @@ class InspectorIssues extends FRGatherer {
       lowTextContrastIssue: [],
       mixedContentIssue: [],
       navigatorUserAgentIssue: [],
+      propertyRuleIssue: [],
       quirksModeIssue: [],
       cookieIssue: [],
       sharedArrayBufferIssue: [],
-      twaQualityEnforcement: [],
+      stylesheetLoadingIssue: [],
+      federatedAuthUserInfoRequestIssue: [],
     };
     const keys = /** @type {Array<keyof LH.Artifacts['InspectorIssues']>} */(Object.keys(artifact));
     for (const key of keys) {
@@ -100,26 +107,6 @@ class InspectorIssues extends FRGatherer {
     }
 
     return artifact;
-  }
-
-  /**
-   * @param {LH.Gatherer.FRTransitionalContext<'DevtoolsLog'>} context
-   * @return {Promise<LH.Artifacts['InspectorIssues']>}
-   */
-  async getArtifact(context) {
-    const devtoolsLog = context.dependencies.DevtoolsLog;
-    const networkRecords = await NetworkRecords.request(devtoolsLog, context);
-    return this._getArtifact(networkRecords);
-  }
-
-  /**
-   * @param {LH.Gatherer.PassContext} passContext
-   * @param {LH.Gatherer.LoadData} loadData
-   * @return {Promise<LH.Artifacts['InspectorIssues']>}
-   */
-  async afterPass(passContext, loadData) {
-    await this.stopInstrumentation({...passContext, dependencies: {}});
-    return this._getArtifact(loadData.networkRecords);
   }
 }
 

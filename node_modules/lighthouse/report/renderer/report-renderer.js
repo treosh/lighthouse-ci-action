@@ -1,18 +1,7 @@
 /**
  * @license
- * Copyright 2017 The Lighthouse Authors. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS-IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Copyright 2017 Google LLC
+ * SPDX-License-Identifier: Apache-2.0
  *
  * Dummy text for ensuring report robustness: </script> pre$`post %%LIGHTHOUSE_JSON%%
  * (this is handled by terser)
@@ -71,6 +60,10 @@ export class ReportRenderer {
 
     this._dom.rootEl.textContent = ''; // Remove previous report.
     this._dom.rootEl.append(this._renderReport(report));
+
+    if (this._opts.occupyEntireViewport) {
+      this._dom.rootEl.classList.add('lh-max-viewport');
+    }
 
     return this._dom.rootEl;
   }
@@ -139,6 +132,13 @@ export class ReportRenderer {
       devicesTooltipTextLines.push(`${Globals.strings.runtimeSettingsAxeVersion}: ${axeVersion}`);
     }
 
+    let stopwatchLabel = Globals.strings.runtimeAnalysisWindow;
+    if (report.gatherMode === 'timespan') {
+      stopwatchLabel = Globals.strings.runtimeAnalysisWindowTimespan;
+    } else if (report.gatherMode === 'snapshot') {
+      stopwatchLabel = Globals.strings.runtimeAnalysisWindowSnapshot;
+    }
+
     // [CSS icon class, textContent, tooltipText]
     const metaItems = [
       ['date',
@@ -150,7 +150,7 @@ export class ReportRenderer {
         Globals.strings.runtimeSingleLoad,
         Globals.strings.runtimeSingleLoadTooltip],
       ['stopwatch',
-        Globals.strings.runtimeAnalysisWindow],
+        stopwatchLabel],
       ['networkspeed',
         `${envValues.summary}`,
         `${Globals.strings.runtimeSettingsNetworkThrottling}: ${envValues.networkThrottling}`],

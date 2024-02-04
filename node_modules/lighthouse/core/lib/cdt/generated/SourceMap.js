@@ -8,7 +8,7 @@ const Platform = require('../Platform.js');
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TextSourceMap = exports.SourceMapEntry = exports.Offset = exports.Section = exports.SourceMapV3 = void 0;
+exports.SourceMap = exports.SourceMapEntry = exports.parseSourceMap = void 0;
 /*
  * Copyright (C) 2012 Google Inc. All rights reserved.
  *
@@ -41,42 +41,24 @@ exports.TextSourceMap = exports.SourceMapEntry = exports.Offset = exports.Sectio
 ;
 ;
 ;
-;
-;
-;
-;
-;
-;
-class SourceMapV3 {
-    version;
-    file;
-    sources;
-    sections;
-    mappings;
-    sourceRoot;
-    names;
-    sourcesContent;
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    x_google_ignoreList;
-    constructor() {
+/**
+ * Parses the {@link content} as JSON, ignoring BOM markers in the beginning, and
+ * also handling the CORB bypass prefix correctly.
+ *
+ * @param content the string representation of a sourcemap.
+ * @returns the {@link SourceMapV3} representation of the {@link content}.
+ */
+function parseSourceMap(content) {
+    if (content.startsWith(')]}')) {
+        content = content.substring(content.indexOf('\n'));
     }
-}
-exports.SourceMapV3 = SourceMapV3;
-class Section {
-    map;
-    offset;
-    url;
-    constructor() {
+    if (content.charCodeAt(0) === 0xFEFF) {
+        // Strip BOM at the beginning before parsing the JSON.
+        content = content.slice(1);
     }
+    return JSON.parse(content);
 }
-exports.Section = Section;
-class Offset {
-    line;
-    column;
-    constructor() {
-    }
-}
-exports.Offset = Offset;
+exports.parseSourceMap = parseSourceMap;
 class SourceMapEntry {
     lineNumber;
     columnNumber;
@@ -106,8 +88,7 @@ for (let i = 0; i < base64Digits.length; ++i) {
     base64Map.set(base64Digits.charAt(i), i);
 }
 const sourceMapToSourceList = new WeakMap();
-class TextSourceMap {
-    #initiator;
+class SourceMap {
     #json;
     #compiledURLInternal;
     #sourceMappingURL;
@@ -118,17 +99,15 @@ class TextSourceMap {
      * Implements Source Map V3 model. See https://github.com/google/closure-compiler/wiki/Source-Maps
      * for format description.
      */
-    constructor(compiledURL, sourceMappingURL, payload, initiator) {
-        this.#initiator = initiator;
+    constructor(compiledURL, sourceMappingURL, payload) {
         this.#json = payload;
         this.#compiledURLInternal = compiledURL;
         this.#sourceMappingURL = sourceMappingURL;
         this.#baseURL = (sourceMappingURL.startsWith('data:') ? compiledURL : sourceMappingURL);
         this.#mappingsInternal = null;
         this.#sourceInfos = new Map();
-        if (this.#json.sections) {
-            const sectionWithURL = Boolean(this.#json.sections.find(section => Boolean(section.url)));
-            if (sectionWithURL) {
+        if ('sections' in this.#json) {
+            if (this.#json.sections.find(section => 'url' in section)) {
                 console.warn(`SourceMap "${sourceMappingURL}" contains unsupported "URL" field in one of its sections.`);
             }
         }
@@ -266,6 +245,8 @@ class TextSourceMap {
         if (this.#mappingsInternal === null) {
             this.#mappingsInternal = [];
             this.eachSection(this.parseMap.bind(this));
+            // As per spec, mappings are not necessarily sorted.
+            this.mappings().sort(SourceMapEntry.compare);
             this.#computeReverseMappings(this.#mappingsInternal);
             this.#json = null;
         }
@@ -303,42 +284,43 @@ class TextSourceMap {
         if (!this.#json) {
             return;
         }
-        if (!this.#json.sections) {
-            callback(this.#json, 0, 0);
-            return;
+        if ('sections' in this.#json) {
+            for (const section of this.#json.sections) {
+                if ('map' in section) {
+                    callback(section.map, section.offset.line, section.offset.column);
+                }
+            }
         }
-        for (const section of this.#json.sections) {
-            callback(section.map, section.offset.line, section.offset.column);
+        else {
+            callback(this.#json, 0, 0);
         }
     }
     parseSources(sourceMap) {
         const sourcesList = [];
-        const sourceRoot = sourceMap.sourceRoot || Platform.DevToolsPath.EmptyUrlString;
+        const sourceRoot = sourceMap.sourceRoot ?? '';
         const ignoreList = new Set(sourceMap.x_google_ignoreList);
         for (let i = 0; i < sourceMap.sources.length; ++i) {
             let href = sourceMap.sources[i];
             // The source map v3 proposal says to prepend the sourceRoot to the source URL
             // and if the resulting URL is not absolute, then resolve the source URL against
-            // the source map URL. Appending the sourceRoot (if one exists) is not likely to
+            // the source map URL. Prepending the sourceRoot (if one exists) is not likely to
             // be meaningful or useful if the source URL is already absolute though. In this
             // case, use the source URL as is without prepending the sourceRoot.
             if (Common.ParsedURL.ParsedURL.isRelativeURL(href)) {
                 if (sourceRoot && !sourceRoot.endsWith('/') && href && !href.startsWith('/')) {
-                    href = Common.ParsedURL.ParsedURL.concatenate(sourceRoot, '/', href);
+                    href = sourceRoot.concat('/', href);
                 }
                 else {
-                    href = Common.ParsedURL.ParsedURL.concatenate(sourceRoot, href);
+                    href = sourceRoot.concat(href);
                 }
             }
-            let url = '' || href;
+            const url = '' || href;
             const source = sourceMap.sourcesContent && sourceMap.sourcesContent[i];
-            if (url === this.#compiledURLInternal && source) {
-            }
             sourcesList.push(url);
             if (!this.#sourceInfos.has(url)) {
                 const content = source ?? null;
                 const ignoreListHint = ignoreList.has(i);
-                this.#sourceInfos.set(url, new TextSourceMap.SourceInfo(content, ignoreListHint));
+                this.#sourceInfos.set(url, { content, ignoreListHint, reverseMappings: null });
             }
         }
         sourceMapToSourceList.set(sourceMap, sourcesList);
@@ -355,8 +337,8 @@ class TextSourceMap {
         // only reach this point when we are certain
         // we have the list available.
         const sources = sourceMapToSourceList.get(map);
-        const names = map.names || [];
-        const stringCharIterator = new TextSourceMap.StringCharIterator(map.mappings);
+        const names = map.names ?? [];
+        const stringCharIterator = new SourceMap.StringCharIterator(map.mappings);
         let sourceURL = sources && sources[sourceIndex];
         while (true) {
             if (stringCharIterator.peek() === ',') {
@@ -393,8 +375,6 @@ class TextSourceMap {
             nameIndex += this.decodeVLQ(stringCharIterator);
             this.mappings().push(new SourceMapEntry(lineNumber, columnNumber, sourceURL, sourceLineNumber, sourceColumnNumber, names[nameIndex]));
         }
-        // As per spec, mappings are not necessarily sorted.
-        this.mappings().sort(SourceMapEntry.compare);
     }
     isSeparator(char) {
         return char === ',' || char === ';';
@@ -403,37 +383,16 @@ class TextSourceMap {
         // Read unsigned value.
         let result = 0;
         let shift = 0;
-        let digit = TextSourceMap._VLQ_CONTINUATION_MASK;
-        while (digit & TextSourceMap._VLQ_CONTINUATION_MASK) {
+        let digit = SourceMap._VLQ_CONTINUATION_MASK;
+        while (digit & SourceMap._VLQ_CONTINUATION_MASK) {
             digit = base64Map.get(stringCharIterator.next()) || 0;
-            result += (digit & TextSourceMap._VLQ_BASE_MASK) << shift;
-            shift += TextSourceMap._VLQ_BASE_SHIFT;
+            result += (digit & SourceMap._VLQ_BASE_MASK) << shift;
+            shift += SourceMap._VLQ_BASE_SHIFT;
         }
         // Fix the sign.
         const negative = result & 1;
         result >>= 1;
         return negative ? -result : result;
-    }
-    reverseMapTextRange(url, textRange) {
-        function comparator(position, mappingIndex) {
-            if (position.lineNumber !== mappings[mappingIndex].sourceLineNumber) {
-                return position.lineNumber - mappings[mappingIndex].sourceLineNumber;
-            }
-            return position.columnNumber - mappings[mappingIndex].sourceColumnNumber;
-        }
-        const reverseMappings = this.reversedMappings(url);
-        const mappings = this.mappings();
-        if (!reverseMappings.length) {
-            return null;
-        }
-        const startIndex = Platform.ArrayUtilities.lowerBound(reverseMappings, { lineNumber: textRange.startLine, columnNumber: textRange.startColumn }, comparator);
-        const endIndex = Platform.ArrayUtilities.upperBound(reverseMappings, { lineNumber: textRange.endLine, columnNumber: textRange.endColumn }, comparator);
-        if (endIndex >= reverseMappings.length) {
-            return null;
-        }
-        const startMapping = mappings[reverseMappings[startIndex]];
-        const endMapping = mappings[reverseMappings[endIndex]];
-        return new TextUtils.TextRange.TextRange(startMapping.lineNumber, startMapping.columnNumber, endMapping.lineNumber, endMapping.columnNumber);
     }
     mapsOrigin() {
         const mappings = this.mappings();
@@ -482,17 +441,17 @@ class TextSourceMap {
         return ranges;
     }
 }
-exports.TextSourceMap = TextSourceMap;
-(function (TextSourceMap) {
+exports.SourceMap = SourceMap;
+(function (SourceMap) {
     // TODO(crbug.com/1172300) Ignored during the jsdoc to ts migration
     // eslint-disable-next-line @typescript-eslint/naming-convention
-    TextSourceMap._VLQ_BASE_SHIFT = 5;
+    SourceMap._VLQ_BASE_SHIFT = 5;
     // TODO(crbug.com/1172300) Ignored during the jsdoc to ts migration
     // eslint-disable-next-line @typescript-eslint/naming-convention
-    TextSourceMap._VLQ_BASE_MASK = (1 << 5) - 1;
+    SourceMap._VLQ_BASE_MASK = (1 << 5) - 1;
     // TODO(crbug.com/1172300) Ignored during the jsdoc to ts migration
     // eslint-disable-next-line @typescript-eslint/naming-convention
-    TextSourceMap._VLQ_CONTINUATION_MASK = 1 << 5;
+    SourceMap._VLQ_CONTINUATION_MASK = 1 << 5;
     class StringCharIterator {
         string;
         position;
@@ -510,18 +469,9 @@ exports.TextSourceMap = TextSourceMap;
             return this.position < this.string.length;
         }
     }
-    TextSourceMap.StringCharIterator = StringCharIterator;
-    class SourceInfo {
-        content;
-        ignoreListHint;
-        reverseMappings = null;
-        constructor(content, ignoreListHint) {
-            this.content = content;
-            this.ignoreListHint = ignoreListHint;
-        }
-    }
-    TextSourceMap.SourceInfo = SourceInfo;
-})(TextSourceMap = exports.TextSourceMap || (exports.TextSourceMap = {}));
+    SourceMap.StringCharIterator = StringCharIterator;
+})(SourceMap = exports.SourceMap || (exports.SourceMap = {}));
 
 
-module.exports = TextSourceMap;
+module.exports = SourceMap;
+SourceMap.parseSourceMap = parseSourceMap;

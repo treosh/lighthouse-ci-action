@@ -1,22 +1,22 @@
 /**
- * @license Copyright 2021 The Lighthouse Authors. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
- * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ * @license
+ * Copyright 2021 Google LLC
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 import log from 'lighthouse-logger';
 
 import {parseManifest} from '../../lib/manifest-parser.js';
-import FRGatherer from '../base-gatherer.js';
+import BaseGatherer from '../base-gatherer.js';
 
-class WebAppManifest extends FRGatherer {
+class WebAppManifest extends BaseGatherer {
   /** @type {LH.Gatherer.GathererMeta} */
   meta = {
     supportedModes: ['snapshot', 'navigation'],
   };
 
   /**
-   * @param {LH.Gatherer.FRProtocolSession} session
+   * @param {LH.Gatherer.ProtocolSession} session
    * @return {Promise<{url: string, data: string}|null>}
    */
   static async fetchAppManifest(session) {
@@ -74,7 +74,7 @@ class WebAppManifest extends FRGatherer {
    * was unparseable as JSON, manifest.value will be undefined and manifest.warning
    * will have the reason. See manifest-parser.js for more information.
    *
-   * @param {LH.Gatherer.FRProtocolSession} session
+   * @param {LH.Gatherer.ProtocolSession} session
    * @param {string} pageUrl
    * @return {Promise<LH.Artifacts.Manifest|null>}
    */
@@ -89,7 +89,7 @@ class WebAppManifest extends FRGatherer {
   }
 
   /**
-   * @param {LH.Gatherer.FRTransitionalContext} context
+   * @param {LH.Gatherer.Context} context
    * @return {Promise<LH.Artifacts['WebAppManifest']>}
    */
   async getArtifact(context) {

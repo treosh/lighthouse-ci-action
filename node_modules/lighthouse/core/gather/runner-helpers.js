@@ -1,7 +1,7 @@
 /**
- * @license Copyright 2021 The Lighthouse Authors. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
- * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ * @license
+ * Copyright 2021 Google LLC
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 /**
@@ -10,8 +10,8 @@
  * @property {LH.Puppeteer.Page} page
  * @property {Array<LH.Config.AnyArtifactDefn>} artifactDefinitions
  * @property {ArtifactState} artifactState
- * @property {LH.FRBaseArtifacts} baseArtifacts
- * @property {LH.Gatherer.FRGatherPhase} phase
+ * @property {LH.BaseArtifacts} baseArtifacts
+ * @property {LH.Gatherer.GatherPhase} phase
  * @property {LH.Gatherer.GatherMode} gatherMode
  * @property {Map<string, LH.ArbitraryEqualityMap>} computedCache
  * @property {LH.Config.Settings} settings
@@ -21,9 +21,11 @@
 
 /** @typedef {Record<CollectPhaseArtifactOptions['phase'], IntermediateArtifacts>} ArtifactState */
 
-/** @typedef {LH.Gatherer.FRTransitionalContext<LH.Gatherer.DependencyKey>['dependencies']} Dependencies */
+/** @typedef {LH.Gatherer.Context<LH.Gatherer.DependencyKey>['dependencies']} Dependencies */
 
 import log from 'lighthouse-logger';
+
+import {Sentry} from '../lib/sentry.js';
 
 /**
  *
@@ -78,19 +80,27 @@ async function collectPhaseArtifacts(options) {
   } = options;
   const priorPhase = phaseToPriorPhase[phase];
   const priorPhaseArtifacts = (priorPhase && artifactState[priorPhase]) || {};
+  const isFinalPhase = phase === 'getArtifact';
 
   for (const artifactDefn of artifactDefinitions) {
-    const logLevel = phase === 'getArtifact' ? 'log' : 'verbose';
-    log[logLevel](`artifacts:${phase}`, artifactDefn.id);
+    log.verbose(`artifacts:${phase}`, artifactDefn.id);
     const gatherer = artifactDefn.gatherer.instance;
 
     const priorArtifactPromise = priorPhaseArtifacts[artifactDefn.id] || Promise.resolve();
     const artifactPromise = priorArtifactPromise.then(async () => {
-      const dependencies = phase === 'getArtifact'
+      const dependencies = isFinalPhase
         ? await collectArtifactDependencies(artifactDefn, artifactState.getArtifact)
         : /** @type {Dependencies} */ ({});
 
-      return gatherer[phase]({
+      const status = {
+        msg: `Getting artifact: ${artifactDefn.id}`,
+        id: `lh:gather:getArtifact:${artifactDefn.id}`,
+      };
+      if (isFinalPhase) {
+        log.time(status);
+      }
+
+      const artifact = await gatherer[phase]({
         gatherMode,
         driver,
         page,
@@ -99,9 +109,21 @@ async function collectPhaseArtifacts(options) {
         computedCache,
         settings,
       });
+
+      if (isFinalPhase) {
+        log.timeEnd(status);
+      }
+
+      return artifact;
     });
 
-    await artifactPromise.catch(() => {});
+    await artifactPromise.catch((err) => {
+      Sentry.captureException(err, {
+        tags: {gatherer: artifactDefn.id, phase},
+        level: 'error',
+      });
+      log.error(artifactDefn.id, err.message);
+    });
     artifactState[phase][artifactDefn.id] = artifactPromise;
   }
 }

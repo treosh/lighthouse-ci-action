@@ -1,23 +1,13 @@
 /**
  * @license
- * Copyright 2017 The Lighthouse Authors. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS-IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Copyright 2017 Google LLC
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 /* eslint-env browser */
 
 /** @typedef {HTMLElementTagNameMap & {[id: string]: HTMLElement}} HTMLElementByTagName */
+/** @typedef {SVGElementTagNameMap & {[id: string]: SVGElement}} SVGElementByTagName */
 /** @template {string} T @typedef {import('typed-query-selector/parser').ParseSelector<T, Element>} ParseSelector */
 
 import {Util} from '../../shared/util.js';
@@ -70,6 +60,17 @@ export class DOM {
       }
     }
     return element;
+  }
+
+  /**
+   * @template {string} T
+   * @param {T} name
+   * @param {string=} className
+   * @return {SVGElementByTagName[T]}
+   */
+  createSVGElement(name, className) {
+    return /** @type {SVGElementByTagName[T]} */ (
+      this._document.createElementNS('http://www.w3.org/2000/svg', name, className));
   }
 
   /**
@@ -127,9 +128,10 @@ export class DOM {
 
   /**
    * @param {string} text
+   * @param {{alwaysAppendUtmSource?: boolean}} opts
    * @return {Element}
    */
-  convertMarkdownLinkSnippets(text) {
+  convertMarkdownLinkSnippets(text, opts = {}) {
     const element = this.createElement('span');
 
     for (const segment of Util.splitMarkdownLink(text)) {
@@ -147,7 +149,7 @@ export class DOM {
       const url = new URL(segment.linkHref);
 
       const DOCS_ORIGINS = ['https://developers.google.com', 'https://web.dev', 'https://developer.chrome.com'];
-      if (DOCS_ORIGINS.includes(url.origin)) {
+      if (DOCS_ORIGINS.includes(url.origin) || opts.alwaysAppendUtmSource) {
         url.searchParams.set('utm_source', 'lighthouse');
         url.searchParams.set('utm_medium', this._lighthouseChannel);
       }
@@ -249,23 +251,38 @@ export class DOM {
   }
 
   /**
-   * Guaranteed context.querySelector. Always returns an element or throws if
+   * Typed and guaranteed context.querySelector. Always returns an element or throws if
    * nothing matches query.
+   *
    * @template {string} T
    * @param {T} query
    * @param {ParentNode} context
    * @return {ParseSelector<T>}
    */
   find(query, context) {
-    const result = context.querySelector(query);
+    const result = this.maybeFind(query, context);
     if (result === null) {
       throw new Error(`query ${query} not found`);
     }
 
+    return result;
+  }
+
+  /**
+   * Typed context.querySelector.
+   *
+   * @template {string} T
+   * @param {T} query
+   * @param {ParentNode} context
+   * @return {ParseSelector<T> | null}
+   */
+  maybeFind(query, context) {
+    const result = context.querySelector(query);
+
     // Because we control the report layout and templates, use the simpler
     // `typed-query-selector` types that don't require differentiating between
     // e.g. HTMLAnchorElement and SVGAElement. See https://github.com/GoogleChrome/lighthouse/issues/12011
-    return /** @type {ParseSelector<T>} */ (result);
+    return /** @type {ParseSelector<T> | null} */ (result);
   }
 
   /**

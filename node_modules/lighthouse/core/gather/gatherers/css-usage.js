@@ -1,7 +1,7 @@
 /**
- * @license Copyright 2017 The Lighthouse Authors. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
- * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ * @license
+ * Copyright 2017 Google LLC
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 /**
@@ -10,13 +10,13 @@
 
 import log from 'lighthouse-logger';
 
-import FRGatherer from '../base-gatherer.js';
+import BaseGatherer from '../base-gatherer.js';
 import {Sentry} from '../../lib/sentry.js';
 
-class CSSUsage extends FRGatherer {
+class CSSUsage extends BaseGatherer {
   constructor() {
     super();
-    /** @type {LH.Gatherer.FRProtocolSession|undefined} */
+    /** @type {LH.Gatherer.ProtocolSession|undefined} */
     this._session = undefined;
     /** @type {Map<string, Promise<LH.Artifacts.CSSStyleSheetInfo|Error>>} */
     this._sheetPromises = new Map();
@@ -51,7 +51,7 @@ class CSSUsage extends FRGatherer {
         );
         Sentry.captureException(err, {
           tags: {
-            gatherer: this.name,
+            gatherer: 'CSSUsage',
           },
           extra: {
             url: event.header.sourceURL,
@@ -64,7 +64,7 @@ class CSSUsage extends FRGatherer {
   }
 
   /**
-   * @param {LH.Gatherer.FRTransitionalContext} context
+   * @param {LH.Gatherer.Context} context
    */
   async startCSSUsageTracking(context) {
     const session = context.driver.defaultSession;
@@ -78,7 +78,7 @@ class CSSUsage extends FRGatherer {
 
 
   /**
-   * @param {LH.Gatherer.FRTransitionalContext} context
+   * @param {LH.Gatherer.Context} context
    */
   async stopCSSUsageTracking(context) {
     const session = context.driver.defaultSession;
@@ -88,7 +88,7 @@ class CSSUsage extends FRGatherer {
   }
 
   /**
-   * @param {LH.Gatherer.FRTransitionalContext} context
+   * @param {LH.Gatherer.Context} context
    */
   async startInstrumentation(context) {
     if (context.gatherMode !== 'timespan') return;
@@ -96,7 +96,7 @@ class CSSUsage extends FRGatherer {
   }
 
   /**
-   * @param {LH.Gatherer.FRTransitionalContext} context
+   * @param {LH.Gatherer.Context} context
    */
   async stopInstrumentation(context) {
     if (context.gatherMode !== 'timespan') return;
@@ -104,7 +104,7 @@ class CSSUsage extends FRGatherer {
   }
 
   /**
-   * @param {LH.Gatherer.FRTransitionalContext} context
+   * @param {LH.Gatherer.Context} context
    * @return {Promise<LH.Artifacts['CSSUsage']>}
    */
   async getArtifact(context) {
@@ -129,6 +129,11 @@ class CSSUsage extends FRGatherer {
       // Erroneous sheets will be reported via sentry and the log.
       // We can ignore them here without throwing a fatal error.
       if (sheet instanceof Error) {
+        continue;
+      }
+
+      // Exclude empty stylesheets.
+      if (sheet.header.length === 0) {
         continue;
       }
 

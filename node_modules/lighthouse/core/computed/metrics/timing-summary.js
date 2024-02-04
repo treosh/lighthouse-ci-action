@@ -1,7 +1,7 @@
 /**
- * @license Copyright 2019 The Lighthouse Authors. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
- * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ * @license
+ * Copyright 2019 Google LLC
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 import {ProcessedTrace} from '../processed-trace.js';
@@ -18,6 +18,8 @@ import {SpeedIndex} from './speed-index.js';
 import {MaxPotentialFID} from './max-potential-fid.js';
 import {TotalBlockingTime} from './total-blocking-time.js';
 import {makeComputedArtifact} from '../computed-artifact.js';
+import {TimeToFirstByte} from './time-to-first-byte.js';
+import {LCPBreakdown} from './lcp-breakdown.js';
 
 class TimingSummary {
   /**
@@ -57,11 +59,12 @@ class TimingSummary {
     const maxPotentialFID = await requestOrUndefined(MaxPotentialFID, metricComputationData);
     const speedIndex = await requestOrUndefined(SpeedIndex, metricComputationData);
     const totalBlockingTime = await requestOrUndefined(TotalBlockingTime, metricComputationData);
+    const lcpBreakdown = await requestOrUndefined(LCPBreakdown, metricComputationData);
+    const ttfb = await requestOrUndefined(TimeToFirstByte, metricComputationData);
 
     const {
       cumulativeLayoutShift,
       cumulativeLayoutShiftMainFrame,
-      totalCumulativeLayoutShift,
     } = cumulativeLayoutShiftValues || {};
 
     /** @type {LH.Artifacts.TimingSummary} */
@@ -85,7 +88,12 @@ class TimingSummary {
       maxPotentialFID: maxPotentialFID?.timing,
       cumulativeLayoutShift,
       cumulativeLayoutShiftMainFrame,
-      totalCumulativeLayoutShift,
+
+      lcpLoadStart: lcpBreakdown?.loadStart,
+      lcpLoadEnd: lcpBreakdown?.loadEnd,
+
+      timeToFirstByte: ttfb?.timing,
+      timeToFirstByteTs: ttfb?.timestamp,
 
       // Include all timestamps of interest from the processed trace
       observedTimeOrigin: processedTrace.timings.timeOrigin,
@@ -113,7 +121,6 @@ class TimingSummary {
       observedDomContentLoadedTs: processedNavigation?.timestamps.domContentLoaded,
       observedCumulativeLayoutShift: cumulativeLayoutShift,
       observedCumulativeLayoutShiftMainFrame: cumulativeLayoutShiftMainFrame,
-      observedTotalCumulativeLayoutShift: totalCumulativeLayoutShift,
 
       // Include some visual metrics from speedline
       observedFirstVisualChange: speedline.first,

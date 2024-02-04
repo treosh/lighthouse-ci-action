@@ -1,18 +1,7 @@
 <!--
 @license
-Copyright 2018 The Lighthouse Authors. All Rights Reserved.
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS-IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+Copyright 2018 Google LLC
+SPDX-License-Identifier: Apache-2.0
 -->
 
 <!-- Lighthouse run warnings -->
@@ -105,41 +94,6 @@ limitations under the License.
   </div>
 </template>
 
-<!-- Lighthouse perf opportunity -->
-<template id="opportunity">
-  <div class="lh-audit lh-audit--load-opportunity">
-    <details class="lh-expandable-details">
-        <summary>
-          <div class="lh-audit__header">
-            <div class="lh-load-opportunity__cols">
-              <div class="lh-load-opportunity__col lh-load-opportunity__col--one">
-                <span class="lh-audit__score-icon"></span>
-                <div class="lh-audit__title"></div>
-              </div>
-              <div class="lh-load-opportunity__col lh-load-opportunity__col--two">
-                <div class="lh-load-opportunity__sparkline">
-                  <div class="lh-sparkline"><div class="lh-sparkline__bar"></div></div>
-                </div>
-                <div class="lh-audit__display-text"></div>
-                <div class="lh-chevron-container"></div>
-              </div>
-            </div>
-          </div>
-        </summary>
-      <div class="lh-audit__description"></div>
-      <div class="lh-audit__stackpacks"></div>
-    </details>
-  </div>
-</template>
-
-<!-- Lighthouse perf opportunity header -->
-<template id="opportunityHeader">
-  <div class="lh-load-opportunity__header lh-load-opportunity__cols">
-    <div class="lh-load-opportunity__col lh-load-opportunity__col--one"></div>
-    <div class="lh-load-opportunity__col lh-load-opportunity__col--two"></div>
-  </div>
-</template>
-
 <!-- Lighthouse score container -->
 <template id="scoresWrapper">
   <style>
@@ -168,7 +122,7 @@ limitations under the License.
       border-bottom: 1px solid var(--color-gray-200);
       padding-top: var(--score-container-padding);
       padding-bottom: 4px;
-      z-index: 1;
+      z-index: 2;
       pointer-events: none;
     }
 
@@ -202,10 +156,8 @@ limitations under the License.
       position: absolute;
       grid-column: 1;
       bottom: -1px;
-    }
-
-    .lh-gauge__wrapper:first-of-type {
-      contain: none;
+      left: 0px;
+      right: 0px;
     }
   </style>
   <div class="lh-scores-wrapper">
@@ -282,7 +234,7 @@ limitations under the License.
     }
     .lh-tools__button.lh-active + .lh-tools__dropdown {
       opacity: 1;
-      clip: rect(-1px, 194px, 242px, -3px);
+      clip: rect(-1px, 194px, 270px, -3px);
       visibility: visible;
     }
     .lh-tools__dropdown {
@@ -399,6 +351,8 @@ limitations under the License.
         <a role="menuitem" tabindex="-1" href="#" class="lh-report-icon lh-report-icon--download" data-i18n="dropdownSaveJSON" data-action="save-json"></a>
         <a role="menuitem" tabindex="-1" href="#" class="lh-report-icon lh-report-icon--open" data-i18n="dropdownViewer" data-action="open-viewer"></a>
         <a role="menuitem" tabindex="-1" href="#" class="lh-report-icon lh-report-icon--open" data-i18n="dropdownSaveGist" data-action="save-gist"></a>
+        <!-- Only enabled if Options.onViewTrace is set and we are on simulated throttling. -->
+        <a role="menuitem" tabindex="-1" href="#" class="lh-report-icon lh-report-icon--open lh-hidden" data-i18n="dropdownViewUnthrottledTrace" data-action="view-unthrottled-trace"></a>
         <a role="menuitem" tabindex="-1" href="#" class="lh-report-icon lh-report-icon--dark" data-i18n="dropdownDarkTheme" data-action="toggle-dark"></a>
       </div>
     </div>
@@ -443,10 +397,14 @@ limitations under the License.
 
     @keyframes bang {
       to {
+        opacity: 1;
         box-shadow: -70px -115.67px #47ebbc, -28px -99.67px #eb47a4, 58px -31.67px #7eeb47, 13px -141.67px #eb47c5, -19px 6.33px #7347eb, -2px -74.67px #ebd247, 24px -151.67px #eb47e0, 57px -138.67px #b4eb47, -51px -104.67px #479eeb, 62px 8.33px #ebcf47, -93px 0.33px #d547eb, -16px -118.67px #47bfeb, 53px -84.67px #47eb83, 66px -57.67px #eb47bf, -93px -65.67px #91eb47, 30px -13.67px #86eb47, -2px -59.67px #83eb47, -44px 1.33px #eb47eb, 61px -58.67px #47eb73, 5px -22.67px #47e8eb, -66px -28.67px #ebe247, 42px -123.67px #eb5547, -75px 26.33px #7beb47, 15px -52.67px #a147eb, 36px -51.67px #eb8347, -38px -12.67px #eb5547, -46px -59.67px #47eb81, 78px -114.67px #eb47ba, 15px -156.67px #eb47bf, -36px 1.33px #eb4783, -72px -86.67px #eba147, 31px -46.67px #ebe247, -68px 29.33px #47e2eb, -55px 19.33px #ebe047, -56px 27.33px #4776eb, -13px -91.67px #eb5547, -47px -138.67px #47ebc7, -18px -96.67px #eb47ac, 11px -88.67px #4783eb, -67px -28.67px #47baeb, 53px 10.33px #ba47eb, 11px 19.33px #5247eb, -5px -11.67px #eb4791, -68px -4.67px #47eba7, 95px -37.67px #eb478b, -67px -162.67px #eb5d47, -54px -120.67px #eb6847, 49px -12.67px #ebe047, 88px 8.33px #47ebda, 97px 33.33px #eb8147, 6px -71.67px #ebbc47;
       }
     }
     @keyframes gravity {
+      from {
+        opacity: 1;
+      }
       to {
         transform: translateY(80px);
         opacity: 0;
@@ -520,6 +478,28 @@ limitations under the License.
     <!-- TODO: should likely be an h2  -->
     <div class="lh-gauge__label"></div>
   </a>
+</template>
+
+<!-- Lighthouse score gauge - explodey version -->
+<template id="explodeyGauge">
+  <div class="lh-exp-gauge-component">
+    <div class="lh-exp-gauge__wrapper" target="_blank">
+      <div class="lh-exp-gauge__svg-wrapper">
+        <svg class="lh-exp-gauge">
+          <g class="lh-exp-gauge__inner">
+            <circle class="lh-exp-gauge__bg" />
+            <circle class="lh-exp-gauge__base lh-exp-gauge--faded" />
+            <circle class="lh-exp-gauge__arc" />
+            <text class="lh-exp-gauge__percentage"></text>
+          </g>
+          <g class="lh-exp-gauge__outer">
+            <circle class="lh-cover" />
+          </g>
+          <text class="lh-exp-gauge__label" text-anchor="middle" x="0" y="60"></text>
+        </svg>
+      </div>
+    </div>
+  </div>
 </template>
 
 <!-- Lighthouse category fraction -->

@@ -1,13 +1,14 @@
 /**
- * @license Copyright 2017 The Lighthouse Authors. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
- * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ * @license
+ * Copyright 2017 Google LLC
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 import {ByteEfficiencyAudit} from './byte-efficiency-audit.js';
 import {UnusedCSS} from '../../computed/unused-css.js';
 import * as i18n from '../../lib/i18n/i18n.js';
 import {computeCSSTokenLength as computeTokenLength} from '../../lib/minification-estimator.js';
+import {estimateTransferSize} from '../../lib/script-helpers.js';
 
 const UIStrings = {
   /** Imperative title of a Lighthouse audit that tells the user to minify (remove whitespace) the page's CSS code. This is displayed in a list of audit titles that Lighthouse generates. */
@@ -34,7 +35,8 @@ class UnminifiedCSS extends ByteEfficiencyAudit {
       id: 'unminified-css',
       title: str_(UIStrings.title),
       description: str_(UIStrings.description),
-      scoreDisplayMode: ByteEfficiencyAudit.SCORING_MODES.NUMERIC,
+      scoreDisplayMode: ByteEfficiencyAudit.SCORING_MODES.METRIC_SAVINGS,
+      guidanceLevel: 3,
       requiredArtifacts: ['CSSUsage', 'devtoolsLogs', 'traces', 'URL', 'GatherContext'],
     };
   }
@@ -64,8 +66,7 @@ class UnminifiedCSS extends ByteEfficiencyAudit {
       url = contentPreview;
     }
 
-    const totalBytes = ByteEfficiencyAudit.estimateTransferSize(networkRecord, content.length,
-      'Stylesheet');
+    const totalBytes = estimateTransferSize(networkRecord, content.length, 'Stylesheet');
     const wastedRatio = 1 - totalTokenLength / content.length;
     const wastedBytes = Math.round(totalBytes * wastedRatio);
 

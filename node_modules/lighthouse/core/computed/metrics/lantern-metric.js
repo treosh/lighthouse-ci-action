@@ -1,7 +1,7 @@
 /**
- * @license Copyright 2018 The Lighthouse Authors. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
- * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ * @license
+ * Copyright 2018 Google LLC
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 import {BaseNode} from '../../lib/dependency-graph/base-node.js';
@@ -26,18 +26,19 @@ import {LoadSimulator} from '../load-simulator.js';
 class LanternMetric {
   /**
    * @param {Node} dependencyGraph
-   * @param {function(NetworkNode):boolean=} condition
+   * @param {function(NetworkNode):boolean=} treatNodeAsRenderBlocking
    * @return {Set<string>}
    */
-  static getScriptUrls(dependencyGraph, condition) {
+  static getScriptUrls(dependencyGraph, treatNodeAsRenderBlocking) {
     /** @type {Set<string>} */
     const scriptUrls = new Set();
 
     dependencyGraph.traverse(node => {
-      if (node.type === BaseNode.TYPES.CPU) return;
+      if (node.type !== BaseNode.TYPES.NETWORK) return;
       if (node.record.resourceType !== NetworkRequest.TYPES.Script) return;
-      if (condition && !condition(node)) return;
-      scriptUrls.add(node.record.url);
+      if (treatNodeAsRenderBlocking?.(node)) {
+        scriptUrls.add(node.record.url);
+      }
     });
 
     return scriptUrls;

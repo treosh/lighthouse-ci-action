@@ -1,7 +1,7 @@
 /**
- * @license Copyright 2017 The Lighthouse Authors. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
- * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ * @license
+ * Copyright 2017 Google LLC
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 import {makeComputedArtifact} from './computed-artifact.js';
@@ -12,6 +12,7 @@ import {NetworkRequest} from '../lib/network-request.js';
 import {ProcessedTrace} from './processed-trace.js';
 import {NetworkRecords} from './network-records.js';
 import {NetworkAnalyzer} from '../lib/dependency-graph/simulator/network-analyzer.js';
+import {DocumentUrls} from './document-urls.js';
 
 /** @typedef {import('../lib/dependency-graph/base-node.js').Node} Node */
 /** @typedef {Omit<LH.Artifacts['URL'], 'finalDisplayedUrl'>} URLArtifact */
@@ -77,6 +78,7 @@ class PageDependencyGraph {
 
     networkRecords.forEach(record => {
       if (IGNORED_MIME_TYPES_REGEX.test(record.mimeType)) return;
+      if (record.sessionTargetType === 'worker') return;
 
       // Network record requestIds can be duplicated for an unknown reason
       // Suffix all subsequent records with `:duplicate` until it's unique
@@ -411,7 +413,8 @@ class PageDependencyGraph {
     const rootNode = networkNodeOutput.idToNodeMap.get(rootRequest.requestId);
     if (!rootNode) throw new Error('rootNode not found');
 
-    const mainDocumentRequest = NetworkAnalyzer.findResourceForUrl(networkRecords, mainDocumentUrl);
+    const mainDocumentRequest =
+      NetworkAnalyzer.findLastDocumentForUrl(networkRecords, mainDocumentUrl);
     if (!mainDocumentRequest) throw new Error('mainDocumentRequest not found');
     const mainDocumentNode = networkNodeOutput.idToNodeMap.get(mainDocumentRequest.requestId);
     if (!mainDocumentNode) throw new Error('mainDocumentNode not found');
@@ -460,37 +463,6 @@ class PageDependencyGraph {
   }
 
   /**
-   * Recalculate `artifacts.URL` for clients that don't provide it.
-   *
-   * @param {LH.DevtoolsLog} devtoolsLog
-   * @param {LH.Artifacts.NetworkRequest[]} networkRecords
-   * @param {LH.Artifacts.ProcessedTrace} processedTrace
-   * @return {URLArtifact}
-   */
-  static getDocumentUrls(devtoolsLog, networkRecords, processedTrace) {
-    const mainFrameId = processedTrace.mainFrameInfo.frameId;
-
-    /** @type {string|undefined} */
-    let requestedUrl;
-    /** @type {string|undefined} */
-    let mainDocumentUrl;
-    for (const event of devtoolsLog) {
-      if (event.method === 'Page.frameNavigated' && event.params.frame.id === mainFrameId) {
-        const {url} = event.params.frame;
-        // Only set requestedUrl on the first main frame navigation.
-        if (!requestedUrl) requestedUrl = url;
-        mainDocumentUrl = url;
-      }
-    }
-    if (!requestedUrl || !mainDocumentUrl) throw new Error('No main frame navigations found');
-
-    const initialRequest = NetworkAnalyzer.findResourceForUrl(networkRecords, requestedUrl);
-    if (initialRequest?.redirects?.length) requestedUrl = initialRequest.redirects[0].url;
-
-    return {requestedUrl, mainDocumentUrl};
-  }
-
-  /**
    * @param {{trace: LH.Trace, devtoolsLog: LH.DevtoolsLog, URL: LH.Artifacts['URL']}} data
    * @param {LH.Artifacts.ComputedContext} context
    * @return {Promise<Node>}
@@ -504,8 +476,7 @@ class PageDependencyGraph {
 
     // COMPAT: Backport for pre-10.0 clients that don't pass the URL artifact here (e.g. pubads).
     // Calculates the URL artifact from the processed trace and DT log.
-    const URL = data.URL ||
-      PageDependencyGraph.getDocumentUrls(devtoolsLog, networkRecords, processedTrace);
+    const URL = data.URL || await DocumentUrls.request(data, context);
 
     return PageDependencyGraph.createGraph(processedTrace, networkRecords, URL);
   }

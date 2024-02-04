@@ -1,7 +1,7 @@
 /**
- * @license Copyright 2020 The Lighthouse Authors. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
- * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ * @license
+ * Copyright 2020 Google LLC
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 import EventEmitter from 'events';
@@ -14,7 +14,7 @@ const DEFAULT_PROTOCOL_TIMEOUT = 30000;
 /** @typedef {LH.Protocol.StrictEventEmitterClass<LH.CrdpEvents>} CrdpEventMessageEmitter */
 const CrdpEventEmitter = /** @type {CrdpEventMessageEmitter} */ (EventEmitter);
 
-/** @implements {LH.Gatherer.FRProtocolSession} */
+/** @implements {LH.Gatherer.ProtocolSession} */
 class ProtocolSession extends CrdpEventEmitter {
   /**
    * @param {LH.Puppeteer.CDPSession} cdpSession
@@ -29,6 +29,7 @@ class ProtocolSession extends CrdpEventEmitter {
     this._nextProtocolTimeout = undefined;
 
     this._handleProtocolEvent = this._handleProtocolEvent.bind(this);
+    // @ts-expect-error Puppeteer expects the handler params to be type `unknown`
     this._cdpSession.on('*', this._handleProtocolEvent);
   }
 
@@ -106,6 +107,7 @@ class ProtocolSession extends CrdpEventEmitter {
    * @return {Promise<void>}
    */
   async dispose() {
+    // @ts-expect-error Puppeteer expects the handler params to be type `unknown`
     this._cdpSession.off('*', this._handleProtocolEvent);
     await this._cdpSession.detach();
   }

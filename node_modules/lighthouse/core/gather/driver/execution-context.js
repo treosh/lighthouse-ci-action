@@ -1,7 +1,7 @@
 /**
- * @license Copyright 2020 The Lighthouse Authors. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
- * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ * @license
+ * Copyright 2020 Google LLC
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 /* global window */
@@ -10,7 +10,7 @@ import * as LH from '../../../types/lh.js';
 import {pageFunctions} from '../../lib/page-functions.js';
 
 class ExecutionContext {
-  /** @param {LH.Gatherer.FRProtocolSession} session */
+  /** @param {LH.Gatherer.ProtocolSession} session */
   constructor(session) {
     this._session = session;
 
@@ -108,6 +108,7 @@ class ExecutionContext {
         ${ExecutionContext._cachedNativesPreamble};
         globalThis.__lighthouseExecutionContextUniqueIdentifier =
           ${uniqueExecutionContextIdentifier};
+        ${pageFunctions.esbuildFunctionWrapperString}
         return new Promise(function (resolve) {
           return Promise.resolve()
             .then(_ => ${expression})
@@ -125,14 +126,22 @@ class ExecutionContext {
 
     this._session.setNextProtocolTimeout(timeout);
     const response = await this._session.sendCommand('Runtime.evaluate', evaluationParams);
-    if (response.exceptionDetails) {
+
+    const ex = response.exceptionDetails;
+    if (ex) {
       // An error occurred before we could even create a Promise, should be *very* rare.
       // Also occurs when the expression is not valid JavaScript.
-      const errorMessage = response.exceptionDetails.exception ?
-        response.exceptionDetails.exception.description :
-        response.exceptionDetails.text;
-      return Promise.reject(new Error(`Evaluation exception: ${errorMessage}`));
+      const elidedExpression = expression.replace(/\s+/g, ' ').substring(0, 100);
+      const messageLines = [
+        'Runtime.evaluate exception',
+        `Expression: ${elidedExpression}\n---- (elided)`,
+        !ex.stackTrace ? `Parse error at: ${ex.lineNumber + 1}:${ex.columnNumber + 1}` : null,
+        ex.exception?.description || ex.text,
+      ].filter(Boolean);
+      const evaluationError = new Error(messageLines.join('\n'));
+      return Promise.reject(evaluationError);
     }
+
     // Protocol should always return a 'result' object, but it is sometimes undefined.  See #6026.
     if (response.result === undefined) {
       return Promise.reject(
@@ -188,7 +197,8 @@ class ExecutionContext {
    */
   evaluate(mainFn, options) {
     const argsSerialized = ExecutionContext.serializeArguments(options.args);
-    const depsSerialized = options.deps ? options.deps.join('\n') : '';
+    const depsSerialized = ExecutionContext.serializeDeps(options.deps);
+
     const expression = `(() => {
       ${depsSerialized}
       return (${mainFn})(${argsSerialized});
@@ -207,7 +217,7 @@ class ExecutionContext {
    */
   async evaluateOnNewDocument(mainFn, options) {
     const argsSerialized = ExecutionContext.serializeArguments(options.args);
-    const depsSerialized = options.deps ? options.deps.join('\n') : '';
+    const depsSerialized = ExecutionContext.serializeDeps(options.deps);
 
     const expression = `(() => {
       ${ExecutionContext._cachedNativesPreamble};
@@ -256,6 +266,35 @@ class ExecutionContext {
    */
   static serializeArguments(args) {
     return args.map(arg => arg === undefined ? 'undefined' : JSON.stringify(arg)).join(',');
+  }
+
+  /**
+   * Serializes an array of functions or strings.
+   *
+   * Also makes sure that an esbuild-bundled version of Lighthouse will
+   * continue to create working code to be executed within the browser.
+   * @param {Array<Function|string>=} deps
+   * @return {string}
+   */
+  static serializeDeps(deps) {
+    deps = [pageFunctions.esbuildFunctionWrapperString, ...deps || []];
+    return deps.map(dep => {
+      if (typeof dep === 'function') {
+        // esbuild will change the actual function name (ie. function actualName() {})
+        // always, and preserve the real name in `actualName.name`.
+        // See esbuildFunctionWrapperString.
+        const output = dep.toString();
+        const runtimeName = pageFunctions.getRuntimeFunctionName(dep);
+        if (runtimeName !== dep.name) {
+          // In addition to exposing the mangled name, also expose the original as an alias.
+          return `${output}; const ${dep.name} = ${runtimeName};`;
+        } else {
+          return output;
+        }
+      } else {
+        return dep;
+      }
+    }).join('\n');
   }
 }
 

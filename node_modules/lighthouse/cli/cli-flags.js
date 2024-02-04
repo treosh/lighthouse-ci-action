@@ -1,7 +1,7 @@
 /**
- * @license Copyright 2017 The Lighthouse Authors. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
- * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ * @license
+ * Copyright 2017 Google LLC
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 /* eslint-disable max-len */
@@ -12,7 +12,7 @@ import path from 'path';
 import yargs from 'yargs';
 import * as yargsHelpers from 'yargs/helpers';
 
-import {LH_ROOT} from '../root.js';
+import {LH_ROOT} from '../shared/root.js';
 import {isObjectOfUnknownValues} from '../shared/type-verifiers.js';
 
 /**
@@ -117,11 +117,6 @@ function getYargsParser(manualArgv) {
         type: 'boolean',
         describe: 'Pause after page load to wait for permission to continue the run, evaluate `continueLighthouseRun` in the console to continue.',
       },
-      'legacy-navigation': {
-        type: 'boolean',
-        default: false,
-        describe: '[DEPRECATED] Use the legacy navigation runner to gather results. Only use this if you are using a pre-10.0 custom Lighthouse config, or if Lighthouse unexpectedly fails after updating to 10.0. Please file a bug if you need this flag for Lighthouse to work.',
-      },
       'additional-trace-categories': {
         type: 'string',
         describe: 'Additional categories to capture with the trace (comma-delimited).',
@@ -209,12 +204,16 @@ function getYargsParser(manualArgv) {
         type: 'boolean',
         describe: 'Disables collection of the full page screenshot, which can be quite large',
       },
+      'ignore-status-code': {
+        type: 'boolean',
+        describe: 'Disables failing on all error status codes, and instead issues a warning.',
+      },
     })
     .group([
       'save-assets', 'list-all-audits', 'list-locales', 'list-trace-categories', 'additional-trace-categories',
       'config-path', 'preset', 'chrome-flags', 'port', 'hostname', 'form-factor', 'screenEmulation', 'emulatedUserAgent',
       'max-wait-for-load', 'enable-error-reporting', 'gather-mode', 'audit-mode',
-      'only-audits', 'only-categories', 'skip-audits', 'budget-path', 'disable-full-page-screenshot',
+      'only-audits', 'only-categories', 'skip-audits', 'budget-path', 'disable-full-page-screenshot', 'ignore-status-code',
     ], 'Configuration:')
 
     // Output

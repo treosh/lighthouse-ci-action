@@ -8,20 +8,7 @@ import {Audit} from './audit.js';
 import {ResourceSummary as ComputedResourceSummary} from '../computed/resource-summary.js';
 import * as i18n from '../lib/i18n/i18n.js';
 
-const UIStrings = {
-  /** Imperative title of a Lighthouse audit that tells the user to minimize the size and quantity of resources used to load the page. */
-  title: 'Keep request counts low and transfer sizes small',
-  /** Description of a Lighthouse audit that tells the user that they can setup a budgets for the quantity and size of page resources. No character length limits. The last sentence starting with 'Learn' becomes link text to additional documentation. */
-  description: 'To set budgets for the quantity and size of page resources,' +
-    ' add a budget.json file. ' +
-    '[Learn more about performance budgets](https://web.dev/use-lighthouse-for-performance-budgets/).',
-  /** [ICU Syntax] Label for an audit identifying the number of requests and kibibytes used to load the page. */
-  displayValue: `{requestCount, plural, ` +
-    `=1 {1 request • {byteCount, number, bytes} KiB} ` +
-    `other {# requests • {byteCount, number, bytes} KiB}}`,
-};
-
-const str_ = i18n.createIcuMessageFn(import.meta.url, UIStrings);
+const str_ = i18n.createIcuMessageFn(import.meta.url);
 
 class ResourceSummary extends Audit {
   /**
@@ -30,8 +17,8 @@ class ResourceSummary extends Audit {
   static get meta() {
     return {
       id: 'resource-summary',
-      title: str_(UIStrings.title),
-      description: str_(UIStrings.description),
+      title: 'Resources Summary',
+      description: 'Aggregates all network requests and groups them by type',
       scoreDisplayMode: Audit.SCORING_MODES.INFORMATIVE,
       requiredArtifacts: ['devtoolsLogs', 'URL'],
     };
@@ -91,14 +78,9 @@ class ResourceSummary extends Audit {
 
     return {
       details: tableDetails,
-      score: 1,
-      displayValue: str_(UIStrings.displayValue, {
-        requestCount: summary.total.count,
-        byteCount: summary.total.transferSize,
-      }),
+      score: null,
     };
   }
 }
 
 export default ResourceSummary;
-export {UIStrings};

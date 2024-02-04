@@ -1,7 +1,7 @@
 /**
- * @license Copyright 2018 The Lighthouse Authors. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
- * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ * @license
+ * Copyright 2018 Google LLC
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 /**
@@ -12,7 +12,6 @@
 import {Audit} from '../audit.js';
 import * as i18n from '../../lib/i18n/i18n.js';
 import {BaseNode} from '../../lib/dependency-graph/base-node.js';
-import {ByteEfficiencyAudit} from './byte-efficiency-audit.js';
 import {UnusedCSS} from '../../computed/unused-css.js';
 import {NetworkRequest} from '../../lib/network-request.js';
 import {ProcessedNavigation} from '../../computed/processed-navigation.js';
@@ -113,8 +112,9 @@ class RenderBlockingResources extends Audit {
       id: 'render-blocking-resources',
       title: str_(UIStrings.title),
       supportedModes: ['navigation'],
-      scoreDisplayMode: Audit.SCORING_MODES.NUMERIC,
+      scoreDisplayMode: Audit.SCORING_MODES.METRIC_SAVINGS,
       description: str_(UIStrings.description),
+      guidanceLevel: 2,
       // TODO: look into adding an `optionalArtifacts` property that captures the non-required nature
       // of CSSUsage
       requiredArtifacts: ['URL', 'TagsBlockingFirstPaint', 'traces', 'devtoolsLogs', 'CSSUsage',
@@ -295,10 +295,11 @@ class RenderBlockingResources extends Audit {
 
     return {
       displayValue,
-      score: ByteEfficiencyAudit.scoreForWastedMs(wastedMs),
+      score: results.length ? 0 : 1,
       numericValue: wastedMs,
       numericUnit: 'millisecond',
       details,
+      metricSavings: {FCP: wastedMs, LCP: wastedMs},
     };
   }
 }

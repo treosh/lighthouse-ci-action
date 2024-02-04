@@ -3,9 +3,12 @@
 // Append the node_modules of the github workspace and the node_modules of this action
 // to NODE_PATH. This supports lighthouse plugins - all the workspace needs to do is
 // `npm install` the plugin. The copy of lighthouse within this action will be used.
-const isWindows = require('is-windows')()
-const { join } = require('path')
+import isWindowsModule from 'is-windows'
+import { fileURLToPath } from 'node:url'
+import { join, dirname } from 'node:path'
 
+const isWindows = isWindowsModule()
+const __dirname = dirname(fileURLToPath(import.meta.url))
 const nodePathDelim = isWindows ? ';' : ':'
 const nodePathParts = [
   ...(process.env.NODE_PATH || '').split(nodePathDelim),

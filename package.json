@@ -4,8 +4,9 @@
   "license": "MIT",
   "description": "Run Lighthouse in CI using Github Actions",
   "repository": "treosh/lighthouse-ci-action",
+  "type": "module",
   "engines": {
-    "node": ">=16"
+    "node": ">=20"
   },
   "scripts": {
     "test": "prettier -c src/** package.json README.md && tsc -p ."
@@ -17,11 +18,11 @@
     "@lhci/cli": "^0.13.0",
     "@lhci/utils": "^0.13.0",
     "is-windows": "^1.0.2",
-    "lodash": "^4.17.21"
+    "lodash-es": "^4.17.21"
   },
   "devDependencies": {
     "@types/is-windows": "^1.0.2",
-    "@types/lodash": "^4.14.202",
+    "@types/lodash-es": "^4.17.12",
     "@types/node": "20.11.16",
     "prettier": "^3.2.5",
     "typescript": "^5.3.3"

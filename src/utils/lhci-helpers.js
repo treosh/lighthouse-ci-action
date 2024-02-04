@@ -1,6 +1,6 @@
-const { join } = require('path')
-const fs = require('fs').promises
-const { existsSync } = require('fs')
+import { join } from 'node:path'
+import fs from 'node:fs/promises'
+import { existsSync } from 'node:fs'
 
 /** @typedef {{ name: string, expected: number, actual: number, values: number[], operator: string, passed: boolean,
                 auditId: string, auditProperty: string, level: 'warn' | 'error', url: string, auditTitle: string, auditDocumentationLink: string }} LHCIAssertion */
@@ -14,7 +14,7 @@ const { existsSync } = require('fs')
  * @param {string} resultsPath
  */
 
-exports.getLinks = async function getLinks(resultsPath) {
+export async function getLinks(resultsPath) {
   const linksPath = join(resultsPath, 'links.json')
   if (!existsSync(linksPath)) return null
   return /** @type {Object<string,string>} */ (JSON.parse(await fs.readFile(linksPath, 'utf8')))
@@ -26,7 +26,7 @@ exports.getLinks = async function getLinks(resultsPath) {
  * @param {string} resultsPath
  */
 
-exports.getAssertionResults = async function getAssertionResults(resultsPath) {
+export async function getAssertionResults(resultsPath) {
   const assertionResultsPath = join(resultsPath, 'assertion-results.json')
   if (!existsSync(assertionResultsPath)) return null
   return /** @type {LHCIAssertion[]} **/ (JSON.parse(await fs.readFile(assertionResultsPath, 'utf8')))
@@ -38,7 +38,7 @@ exports.getAssertionResults = async function getAssertionResults(resultsPath) {
  * @param {string} resultsPath
  */
 
-exports.getManifest = async function getManifest(resultsPath) {
+export async function getManifest(resultsPath) {
   const manifestPath = join(resultsPath, 'manifest.json')
   if (!existsSync(manifestPath)) return null
   return /** @type {LHCIManifest[]} **/ (JSON.parse(await fs.readFile(manifestPath, 'utf8')))

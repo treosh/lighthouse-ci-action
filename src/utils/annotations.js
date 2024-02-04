@@ -1,6 +1,6 @@
-const { groupBy, mapValues, orderBy } = require('lodash')
-const core = require('@actions/core')
-const { getLinks, getAssertionResults } = require('./lhci-helpers')
+import { groupBy, mapValues, orderBy } from 'lodash-es'
+import core from '@actions/core'
+import { getLinks, getAssertionResults } from './lhci-helpers.js'
 
 /**
  * Set annotations for each failed URL.
@@ -21,7 +21,7 @@ Expected <= 0, but found 1
  * @param {string} resultsPath
  */
 
-exports.setAnnotations = async function setAnnotations(resultsPath) {
+export async function setAnnotations(resultsPath) {
   const links = await getLinks(resultsPath)
   const assertionResults = await getAssertionResults(resultsPath)
   if (!assertionResults) return

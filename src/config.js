@@ -1,9 +1,9 @@
-const core = require('@actions/core')
-const { loadRcFile } = require('@lhci/utils/src/lighthouserc')
-const { get } = require('lodash')
-const { resolve } = require('path')
+import { resolve } from 'node:path'
+import core from '@actions/core'
+import { loadRcFile } from '@lhci/utils/src/lighthouserc.js'
+import { get } from 'lodash-es'
 
-exports.getInput = function getInputArgs() {
+export function getInput() {
   // fallback to upload.serverBaseUrl + upload.token for previous API support
   const serverBaseUrl = core.getInput('serverBaseUrl') || core.getInput('upload.serverBaseUrl')
   const serverToken = core.getInput('serverToken') || core.getInput('upload.token')
@@ -87,7 +87,7 @@ exports.getInput = function getInputArgs() {
  * @param {string | null} configPath
  */
 
-exports.hasAssertConfig = function hasAssertConfig(configPath) {
+export function hasAssertConfig(configPath) {
   if (!configPath) return false
   const rcFileObj = loadRcFile(configPath)
   return Boolean(get(rcFileObj, 'ci.assert'))

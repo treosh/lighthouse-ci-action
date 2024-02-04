@@ -2,9 +2,9 @@
   "compilerOptions": {
     "noEmit": true,
     "moduleResolution": "node",
-    "module": "commonjs",
+    "module": "ES2022",
     "resolveJsonModule": true,
-    "target": "es2018",
+    "target": "ES2022",
     "allowJs": true,
     "checkJs": true,
     "strict": true,

@@ -1,12 +1,13 @@
-require('./utils/support-lh-plugins') // add automatic support for LH Plugins env
-const core = require('@actions/core')
-const { join } = require('path')
-const childProcess = require('child_process')
-const lhciCliPath = require.resolve('@lhci/cli/src/cli')
-const { getInput, hasAssertConfig } = require('./config')
-const { uploadArtifacts } = require('./utils/artifacts')
-const { setAnnotations } = require('./utils/annotations')
-const { setOutput } = require('./utils/output')
+import './utils/support-lh-plugins.js' // add automatic support for LH Plugins env
+import { join, resolve } from 'node:path'
+import childProcess from 'node:child_process'
+import core from '@actions/core'
+import { getInput, hasAssertConfig } from './config.js'
+import { uploadArtifacts } from './utils/artifacts.js'
+import { setAnnotations } from './utils/annotations.js'
+import { setOutput } from './utils/output.js'
+const lhciCliPath = resolve('./node_modules/@lhci/cli/src/cli.js')
+console.log(lhciCliPath)
 
 /**
  * Audit urls with Lighthouse CI in 3 stages:

@@ -1,5 +1,5 @@
-const core = require('@actions/core')
-const { getLinks, getAssertionResults, getManifest } = require('./lhci-helpers')
+import core from '@actions/core'
+import { getLinks, getAssertionResults, getManifest } from './lhci-helpers.js'
 
 /**
  * Set output: {
@@ -12,7 +12,7 @@ const { getLinks, getAssertionResults, getManifest } = require('./lhci-helpers')
  * @param {string} resultsPath
  */
 
-exports.setOutput = async function setOutput(resultsPath) {
+export async function setOutput(resultsPath) {
   const links = await getLinks(resultsPath)
   const assertionResults = await getAssertionResults(resultsPath)
   const manifestResults = await getManifest(resultsPath)

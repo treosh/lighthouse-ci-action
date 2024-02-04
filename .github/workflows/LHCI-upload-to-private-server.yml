@@ -5,7 +5,7 @@ jobs:
   populate-ci-server-data:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Run Lighthouse on a URL and upload data to a private LHCI server.
         uses: ./
         with:

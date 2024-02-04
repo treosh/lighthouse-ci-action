@@ -4,7 +4,7 @@ jobs:
   lighthouse-plugin:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - run: yarn add --no-lockfile lighthouse-plugin-field-performance
       - name: Audit URLs with Field Performance Plugin
         uses: ./

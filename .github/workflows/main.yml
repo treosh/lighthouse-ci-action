@@ -1,14 +1,44 @@
-name: CI
+name: Lighthouse CI
 on: push
 jobs:
-  build:
+  lighthouse:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Use node 20
-        uses: actions/setup-node@v4
+      - name: Audit URLs using Lighthouse
+        uses: treosh/lighthouse-ci-action@v11
+        env:
+          URL_DOMAIN: 'staging-mlp.zoomdoc.com'
         with:
-          node-version: '20'
-          cache: 'yarn'
-      - run: yarn install
-      - run: yarn test
+          urls: |
+            https://$URL_DOMAIN/start
+            https://$URL_DOMAIN/products/category/1
+            https://$URL_DOMAIN/products/5
+            https://$URL_DOMAIN/products/6
+            https://$URL_DOMAIN/products/10
+            https://$URL_DOMAIN/products/12
+            https://$URL_DOMAIN/products/14
+            https://$URL_DOMAIN/products/15
+            https://$URL_DOMAIN/products/17
+            https://$URL_DOMAIN/products/19
+            https://$URL_DOMAIN/products/category/2
+            https://$URL_DOMAIN/products/1
+            https://$URL_DOMAIN/products/3
+            https://$URL_DOMAIN/products/7
+            https://$URL_DOMAIN/products/category/3
+            https://$URL_DOMAIN/products/2
+            https://$URL_DOMAIN/products/9
+            https://$URL_DOMAIN/products/11
+            https://$URL_DOMAIN/products/18
+            https://$URL_DOMAIN/products/category/4
+            https://$URL_DOMAIN/products/8
+            https://$URL_DOMAIN/products/13
+            https://$URL_DOMAIN/products/16
+            https://$URL_DOMAIN/login
+            https://$URL_DOMAIN/page/terms
+            https://$URL_DOMAIN/page/privacy
+            https://$URL_DOMAIN/forgotpass"
+        budgetPath: ./budget.json # test performance budgets
+        uploadArtifacts: true # save results as an action artifacts
+        temporaryPublicStorage: true # upload lighthouse report to the temporary storage
+        configPath: './lighthouserc.json'

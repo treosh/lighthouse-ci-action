@@ -9,8 +9,33 @@ jobs:
       - name: Run Lighthouse on multiple URLs and interpolate env variables.
         uses: ./
         env:
-          URL_DOMAIN: 'treo.sh'
+          URL_DOMAIN: 'staging-mlp.zoomdoc.com'
         with:
           urls: |
-            https://$URL_DOMAIN/
-            https://$URL_DOMAIN/demo
+            https://$URL_DOMAIN/start
+            https://$URL_DOMAIN/products/category/1
+            https://$URL_DOMAIN/products/5
+            https://$URL_DOMAIN/products/6
+            https://$URL_DOMAIN/products/10
+            https://$URL_DOMAIN/products/12
+            https://$URL_DOMAIN/products/14
+            https://$URL_DOMAIN/products/15
+            https://$URL_DOMAIN/products/17
+            https://$URL_DOMAIN/products/19
+            https://$URL_DOMAIN/products/category/2
+            https://$URL_DOMAIN/products/1
+            https://$URL_DOMAIN/products/3
+            https://$URL_DOMAIN/products/7
+            https://$URL_DOMAIN/products/category/3
+            https://$URL_DOMAIN/products/2
+            https://$URL_DOMAIN/products/9
+            https://$URL_DOMAIN/products/11
+            https://$URL_DOMAIN/products/18
+            https://$URL_DOMAIN/products/category/4
+            https://$URL_DOMAIN/products/8
+            https://$URL_DOMAIN/products/13
+            https://$URL_DOMAIN/products/16
+            https://$URL_DOMAIN/login
+            https://$URL_DOMAIN/page/terms
+            https://$URL_DOMAIN/page/privacy
+            https://$URL_DOMAIN/forgotpass"

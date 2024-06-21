@@ -13,7 +13,10 @@ import {waitForNetworkIdle} from '../driver/wait-for-condition.js';
 // JPEG quality setting
 // Exploration and examples of reports using different quality settings: https://docs.google.com/document/d/1ZSffucIca9XDW2eEwfoevrk-OTl7WQFeMf0CgeJAA8M/edit#
 // Note: this analysis was done for JPEG, but now we use WEBP.
-const FULL_PAGE_SCREENSHOT_QUALITY = 30;
+const FULL_PAGE_SCREENSHOT_QUALITY = process.env.LH_FPS_TEST ? 100 : 30;
+// webp currently cant do lossless encoding, so to help tests switch to png
+// Remove when this is resolved: https://bugs.chromium.org/p/chromium/issues/detail?id=1469183
+const FULL_PAGE_SCREENSHOT_FORMAT = process.env.LH_FPS_TEST ? 'png' : 'webp';
 
 // https://developers.google.com/speed/webp/faq#what_is_the_maximum_size_a_webp_image_can_be
 const MAX_WEBP_SIZE = 16383;
@@ -44,17 +47,6 @@ function getObservedDeviceMetrics() {
   };
 }
 
-/**
- * The screenshot dimensions are sized to `window.outerHeight` / `window.outerWidth`,
- * however the bounding boxes of the elements are relative to `window.innerHeight` / `window.innerWidth`.
- */
-function getScreenshotAreaSize() {
-  return {
-    width: window.innerWidth,
-    height: window.innerHeight,
-  };
-}
-
 function waitForDoubleRaf() {
   return new Promise((resolve) => {
     requestAnimationFrame(() => requestAnimationFrame(resolve));
@@ -68,6 +60,21 @@ class FullPageScreenshot extends BaseGatherer {
   meta = {
     supportedModes: ['snapshot', 'timespan', 'navigation'],
   };
+
+  /**
+   * @param {LH.Gatherer.Context} context
+   */
+  waitForNetworkIdle(context) {
+    const session = context.driver.defaultSession;
+    const networkMonitor = context.driver.networkMonitor;
+    return waitForNetworkIdle(session, networkMonitor, {
+      pretendDCLAlreadyFired: true,
+      networkQuietThresholdMs: 1000,
+      busyEvent: 'network-critical-busy',
+      idleEvent: 'network-critical-idle',
+      isIdle: recorder => recorder.isCriticalIdle(),
+    });
+  }
 
   /**
    * @param {LH.Gatherer.Context} context
@@ -86,15 +93,7 @@ class FullPageScreenshot extends BaseGatherer {
     );
     const height = Math.min(fullHeight, MAX_WEBP_SIZE);
 
-    // Setup network monitor before we change the viewport.
-    const networkMonitor = context.driver.networkMonitor;
-    const waitForNetworkIdleResult = waitForNetworkIdle(session, networkMonitor, {
-      pretendDCLAlreadyFired: true,
-      networkQuietThresholdMs: 1000,
-      busyEvent: 'network-critical-busy',
-      idleEvent: 'network-critical-idle',
-      isIdle: recorder => recorder.isCriticalIdle(),
-    });
+    const waitForNetworkIdleResult = this.waitForNetworkIdle(context);
 
     await session.sendCommand('Emulation.setDeviceMetricsOverride', {
       mobile: deviceMetrics.mobile,
@@ -120,22 +119,19 @@ class FullPageScreenshot extends BaseGatherer {
    * @return {Promise<LH.Result.FullPageScreenshot['screenshot']>}
    */
   async _takeScreenshot(context) {
-    const result = await context.driver.defaultSession.sendCommand('Page.captureScreenshot', {
-      format: 'webp',
-      quality: FULL_PAGE_SCREENSHOT_QUALITY,
-    });
-    const data = 'data:image/webp;base64,' + result.data;
-
-    const screenshotAreaSize =
-      await context.driver.executionContext.evaluate(getScreenshotAreaSize, {
-        args: [],
-        useIsolation: true,
-      });
+    const [metrics, result] = await Promise.all([
+      context.driver.defaultSession.sendCommand('Page.getLayoutMetrics'),
+      context.driver.defaultSession.sendCommand('Page.captureScreenshot', {
+        format: FULL_PAGE_SCREENSHOT_FORMAT,
+        quality: FULL_PAGE_SCREENSHOT_QUALITY,
+      }),
+    ]);
+    const data = `data:image/${FULL_PAGE_SCREENSHOT_FORMAT};base64,` + result.data;
 
     return {
       data,
-      width: screenshotAreaSize.width,
-      height: screenshotAreaSize.height,
+      width: metrics.cssVisualViewport.clientWidth,
+      height: metrics.cssVisualViewport.clientHeight,
     };
   }
 
@@ -159,7 +155,7 @@ class FullPageScreenshot extends BaseGatherer {
       for (const [node, id] of lhIdToElements.entries()) {
         // @ts-expect-error - getBoundingClientRect put into scope via stringification
         const rect = getBoundingClientRect(node);
-        nodes[id] = rect;
+        nodes[id] = {id: node.id, ...rect};
       }
 
       return nodes;

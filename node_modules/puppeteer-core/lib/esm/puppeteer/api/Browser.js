@@ -3,9 +3,9 @@
  * Copyright 2017 Google Inc.
  * SPDX-License-Identifier: Apache-2.0
  */
-import { filterAsync, firstValueFrom, from, merge, raceWith, } from '../../third_party/rxjs/rxjs.js';
+import { firstValueFrom, from, merge, raceWith, } from '../../third_party/rxjs/rxjs.js';
 import { EventEmitter } from '../common/EventEmitter.js';
-import { debugError, fromEmitterEvent, timeout } from '../common/util.js';
+import { debugError, fromEmitterEvent, filterAsync, timeout, } from '../common/util.js';
 import { asyncDisposeSymbol, disposeSymbol } from '../util/disposable.js';
 /**
  * @internal
@@ -39,7 +39,7 @@ export const WEB_PERMISSION_TO_PROTOCOL_PERMISSION = new Map([
  * - connected to via {@link Puppeteer.connect} or
  * - launched by {@link PuppeteerNode.launch}.
  *
- * {@link Browser} {@link EventEmitter | emits} various events which are
+ * {@link Browser} {@link EventEmitter.emit | emits} various events which are
  * documented in the {@link BrowserEvent} enum.
  *
  * @example Using a {@link Browser} to create a {@link Page}:
@@ -127,11 +127,17 @@ export class Browser extends EventEmitter {
     }
     /** @internal */
     [disposeSymbol]() {
-        return void this.close().catch(debugError);
+        if (this.process()) {
+            return void this.close().catch(debugError);
+        }
+        return void this.disconnect().catch(debugError);
     }
     /** @internal */
     [asyncDisposeSymbol]() {
-        return this.close();
+        if (this.process()) {
+            return this.close();
+        }
+        return this.disconnect();
     }
 }
 //# sourceMappingURL=Browser.js.map

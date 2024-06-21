@@ -152,6 +152,12 @@ class LegacyJavascript extends ByteEfficiencyAudit {
     // Object.defineProperty(String.prototype, 'startsWith'
     expression += `|defineProperty\\(${object || 'window'},\\s?${qt(property)}`;
 
+    // es-shims
+    // no(Object,{entries:r},{entries:function
+    if (object) {
+      expression += `|\\(${object},\\s*{${property}:.*},\\s*{${property}`;
+    }
+
     // core-js
     if (object) {
       const objectWithoutPrototype = object.replace('.prototype', '');
@@ -234,6 +240,9 @@ class LegacyJavascript extends ByteEfficiencyAudit {
     ];
 
     for (const [name, coreJs2Module] of coreJsPolyfills) {
+      // es-shims follows a pattern for its packages.
+      // Tack it onto the corejs size estimation, as it is likely close in size.
+      const esShimModule = name.toLowerCase();
       data.push({
         name,
         modules: [
@@ -243,6 +252,7 @@ class LegacyJavascript extends ByteEfficiencyAudit {
             .replace('es6.', 'es.')
             .replace('es7.', 'es.')
             .replace('typed.', 'typed-array.'),
+          esShimModule,
         ],
         corejs: true,
       });
@@ -333,8 +343,9 @@ class LegacyJavascript extends ByteEfficiencyAudit {
           // Skip if the pattern matching found a match for this polyfill.
           if (matches.some(m => m.name === name)) continue;
 
-          const source = bundle.rawMap.sources.find(source =>
-            modules.some(module => source.endsWith(`${module}.js`)));
+          const source = bundle.rawMap.sources.find(source => modules.some(module => {
+            return source.endsWith(`/${module}.js`) || source.includes(`node_modules/${module}/`);
+          }));
           if (!source) continue;
 
           const mapping = bundle.map.mappings().find(m => m.sourceURL === source);

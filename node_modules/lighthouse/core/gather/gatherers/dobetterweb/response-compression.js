@@ -23,12 +23,6 @@ import {fetchResponseBodyFromCache} from '../../driver/network.js';
 import {NetworkRecords} from '../../../computed/network-records.js';
 
 const CHROME_EXTENSION_PROTOCOL = 'chrome-extension:';
-const compressionHeaders = [
-  'content-encoding',
-  'x-original-content-encoding',
-  'x-content-encoding-over-network',
-];
-const compressionTypes = ['gzip', 'br', 'deflate'];
 const binaryMimeTypes = ['image', 'audio', 'video'];
 /** @type {LH.Crdp.Network.ResourceType[]} */
 const textResourceTypes = [
@@ -71,12 +65,7 @@ class ResponseCompression extends BaseGatherer {
         return;
       }
 
-      const isContentEncoded = (record.responseHeaders || []).find(header =>
-        compressionHeaders.includes(header.name.toLowerCase()) &&
-        compressionTypes.includes(header.value)
-      );
-
-      if (!isContentEncoded) {
+      if (!NetworkRequest.isContentEncoded(record)) {
         unoptimizedResponses.push({
           requestId: record.requestId,
           url: record.url,

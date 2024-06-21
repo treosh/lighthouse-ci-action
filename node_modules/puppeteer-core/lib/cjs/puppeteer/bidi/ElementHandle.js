@@ -4,6 +4,22 @@
  * Copyright 2023 Google Inc.
  * SPDX-License-Identifier: Apache-2.0
  */
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
 var __runInitializers = (this && this.__runInitializers) || function (thisArg, initializers, value) {
     var useValue = arguments.length > 2;
     for (var i = 0; i < initializers.length; i++) {
@@ -37,6 +53,13 @@ var __esDecorate = (this && this.__esDecorate) || function (ctor, descriptorIn, 
     }
     if (target) Object.defineProperty(target, contextIn.name, descriptor);
     done = true;
+};
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
 };
 var __addDisposableResource = (this && this.__addDisposableResource) || function (env, value, async) {
     if (value !== null && value !== void 0) {
@@ -86,7 +109,7 @@ var __disposeResources = (this && this.__disposeResources) || (function (Suppres
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BidiElementHandle = void 0;
 const ElementHandle_js_1 = require("../api/ElementHandle.js");
-const Errors_js_1 = require("../common/Errors.js");
+const AsyncIterableUtil_js_1 = require("../util/AsyncIterableUtil.js");
 const decorators_js_1 = require("../util/decorators.js");
 const JSHandle_js_1 = require("./JSHandle.js");
 /**
@@ -107,21 +130,19 @@ let BidiElementHandle = (() => {
             __esDecorate(this, null, _contentFrame_decorators, { kind: "method", name: "contentFrame", static: false, private: false, access: { has: obj => "contentFrame" in obj, get: obj => obj.contentFrame }, metadata: _metadata }, null, _instanceExtraInitializers);
             if (_metadata) Object.defineProperty(this, Symbol.metadata, { enumerable: true, configurable: true, writable: true, value: _metadata });
         }
-        constructor(sandbox, remoteValue) {
-            super(new JSHandle_js_1.BidiJSHandle(sandbox, remoteValue));
+        static from(value, realm) {
+            return new BidiElementHandle(value, realm);
+        }
+        constructor(value, realm) {
+            super(JSHandle_js_1.BidiJSHandle.from(value, realm));
             __runInitializers(this, _instanceExtraInitializers);
         }
         get realm() {
+            // SAFETY: See the super call in the constructor.
             return this.handle.realm;
         }
         get frame() {
             return this.realm.environment;
-        }
-        context() {
-            return this.handle.context();
-        }
-        get isPrimitiveValue() {
-            return this.handle.isPrimitiveValue;
         }
         remoteValue() {
             return this.handle.remoteValue();
@@ -143,14 +164,20 @@ let BidiElementHandle = (() => {
             const env_1 = { stack: [], error: void 0, hasError: false };
             try {
                 const handle = __addDisposableResource(env_1, (await this.evaluateHandle(element => {
-                    if (element instanceof HTMLIFrameElement) {
+                    if (element instanceof HTMLIFrameElement ||
+                        element instanceof HTMLFrameElement) {
                         return element.contentWindow;
                     }
                     return;
                 })), false);
                 const value = handle.remoteValue();
                 if (value.type === 'window') {
-                    return this.frame.page().frame(value.value.context);
+                    return (this.frame
+                        .page()
+                        .frames()
+                        .find(frame => {
+                        return frame._id === value.value.context;
+                    }) ?? null);
                 }
                 return null;
             }
@@ -162,8 +189,41 @@ let BidiElementHandle = (() => {
                 __disposeResources(env_1);
             }
         }
-        uploadFile() {
-            throw new Errors_js_1.UnsupportedOperation();
+        async uploadFile(...files) {
+            // Locate all files and confirm that they exist.
+            // eslint-disable-next-line @typescript-eslint/consistent-type-imports
+            let path;
+            try {
+                path = await Promise.resolve().then(() => __importStar(require('path')));
+            }
+            catch (error) {
+                if (error instanceof TypeError) {
+                    throw new Error(`JSHandle#uploadFile can only be used in Node-like environments.`);
+                }
+                throw error;
+            }
+            files = files.map(file => {
+                if (path.win32.isAbsolute(file) || path.posix.isAbsolute(file)) {
+                    return file;
+                }
+                else {
+                    return path.resolve(file);
+                }
+            });
+            await this.frame.setFiles(this, files);
+        }
+        async *queryAXTree(name, role) {
+            const results = await this.frame.locateNodes(this, {
+                type: 'accessibility',
+                value: {
+                    role,
+                    name,
+                },
+            });
+            return yield* AsyncIterableUtil_js_1.AsyncIterableUtil.map(results, node => {
+                // TODO: maybe change ownership since the default ownership is probably none.
+                return Promise.resolve(BidiElementHandle.from(node, this.realm));
+            });
         }
     };
 })();

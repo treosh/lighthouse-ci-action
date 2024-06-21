@@ -62,7 +62,7 @@ class PreloadFontsAudit extends Audit {
    * @param {LH.Audit.Context} context
    * @return {Promise<LH.Audit.Product>}
    */
-  static async audit_(artifacts, context) {
+  static async audit(artifacts, context) {
     const devtoolsLog = artifacts.devtoolsLogs[this.DEFAULT_PASS];
     const networkRecords = await NetworkRecords.request(devtoolsLog, context);
 
@@ -90,15 +90,6 @@ class PreloadFontsAudit extends Audit {
       details: Audit.makeTableDetails(headings, results),
       notApplicable: optionalFontURLs.size === 0,
     };
-  }
-
-  /**
-   * @return {Promise<LH.Audit.Product>}
-   */
-  static async audit() {
-    // Preload advice is on hold until https://github.com/GoogleChrome/lighthouse/issues/11960
-    // is resolved.
-    return {score: 1, notApplicable: true};
   }
 }
 

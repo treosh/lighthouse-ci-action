@@ -4,8 +4,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import {lighthouseVersion} from '../../shared/root.js';
-
 const NO_THROTTLING_METRICS = {
   latency: 0,
   downloadThroughput: 0,
@@ -29,7 +27,6 @@ function parseUseragentIntoMetadata(userAgent, formFactor) {
   const brands = [
     {brand: 'Chromium', version},
     {brand: 'Google Chrome', version},
-    {brand: 'Lighthouse', version: lighthouseVersion},
   ];
 
   const motoGPowerDetails = {
@@ -131,7 +128,7 @@ function enableNetworkThrottling(session, throttlingSettings) {
  * @return {Promise<void>}
  */
 function clearNetworkThrottling(session) {
-  return session.sendCommand('Network.emulateNetworkConditions', NO_THROTTLING_METRICS);
+  return session.sendCommandAndIgnore('Network.emulateNetworkConditions', NO_THROTTLING_METRICS);
 }
 
 /**
@@ -149,7 +146,7 @@ function enableCPUThrottling(session, throttlingSettings) {
  * @return {Promise<void>}
  */
 function clearCPUThrottling(session) {
-  return session.sendCommand('Emulation.setCPUThrottlingRate', NO_CPU_THROTTLE_METRICS);
+  return session.sendCommandAndIgnore('Emulation.setCPUThrottlingRate', NO_CPU_THROTTLE_METRICS);
 }
 
 export {

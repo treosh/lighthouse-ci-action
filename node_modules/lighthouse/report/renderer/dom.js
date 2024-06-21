@@ -259,7 +259,7 @@ export class DOM {
    * @param {ParentNode} context
    * @return {ParseSelector<T>}
    */
-  find(query, context) {
+  find(query, context = this.rootEl ?? this._document) {
     const result = this.maybeFind(query, context);
     if (result === null) {
       throw new Error(`query ${query} not found`);

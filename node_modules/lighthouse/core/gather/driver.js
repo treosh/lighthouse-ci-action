@@ -26,7 +26,9 @@ const throwingSession = {
   once: throwNotConnectedFn,
   off: throwNotConnectedFn,
   sendCommand: throwNotConnectedFn,
+  sendCommandAndIgnore: throwNotConnectedFn,
   dispose: throwNotConnectedFn,
+  onCrashPromise: throwNotConnectedFn,
 };
 
 /** @implements {LH.Gatherer.Driver} */

@@ -92,7 +92,9 @@ async function _navigate(navigationContext) {
     return {requestedUrl, mainDocumentUrl, navigationError: undefined};
   } catch (err) {
     if (!(err instanceof LighthouseError)) throw err;
-    if (err.code !== 'NO_FCP' && err.code !== 'PAGE_HUNG') throw err;
+    if (err.code !== 'NO_FCP' && err.code !== 'PAGE_HUNG' && err.code !== 'TARGET_CRASHED') {
+      throw err;
+    }
     if (typeof requestor !== 'string') throw err;
 
     // TODO: Make the urls optional here so we don't need to throw an error with a callback requestor.
@@ -110,31 +112,19 @@ async function _navigate(navigationContext) {
  * @return {Promise<{devtoolsLog?: LH.DevtoolsLog, records?: Array<LH.Artifacts.NetworkRequest>, trace?: LH.Trace}>}
  */
 async function _collectDebugData(navigationContext, phaseState) {
-  const devtoolsLogArtifactDefn = phaseState.artifactDefinitions.find(
-    definition => definition.gatherer.instance.meta.symbol === DevtoolsLog.symbol
-  );
-  const traceArtifactDefn = phaseState.artifactDefinitions.find(
-    definition => definition.gatherer.instance.meta.symbol === Trace.symbol
-  );
+  let devtoolsLog;
+  let trace;
 
-  const artifactDefinitions = [devtoolsLogArtifactDefn, traceArtifactDefn].filter(
-    /**
-     * @param {LH.Config.AnyArtifactDefn | undefined} defn
-     * @return {defn is LH.Config.AnyArtifactDefn}
-     */
-    defn => Boolean(defn)
-  );
-  if (!artifactDefinitions.length) return {};
+  for (const definition of phaseState.artifactDefinitions) {
+    const {instance} = definition.gatherer;
+    if (instance instanceof DevtoolsLog) {
+      devtoolsLog = instance.getDebugData();
+    } else if (instance instanceof Trace) {
+      trace = instance.getDebugData();
+    }
+  }
 
-  await collectPhaseArtifacts({...phaseState, phase: 'getArtifact', artifactDefinitions});
-  const getArtifactState = phaseState.artifactState.getArtifact;
-
-  const devtoolsLogArtifactId = devtoolsLogArtifactDefn?.id;
-  const devtoolsLog = devtoolsLogArtifactId && (await getArtifactState[devtoolsLogArtifactId]);
   const records = devtoolsLog && (await NetworkRecords.request(devtoolsLog, navigationContext));
-
-  const traceArtifactId = traceArtifactDefn?.id;
-  const trace = traceArtifactId && (await getArtifactState[traceArtifactId]);
 
   return {devtoolsLog, records, trace};
 }
@@ -277,44 +267,43 @@ async function navigationGather(page, requestor, options = {}) {
   const isCallback = typeof requestor === 'function';
 
   const runnerOptions = {resolvedConfig, computedCache};
-  const artifacts = await Runner.gather(
-    async () => {
-      const normalizedRequestor = isCallback ? requestor : UrlUtils.normalizeUrl(requestor);
 
-      /** @type {LH.Puppeteer.Browser|undefined} */
-      let lhBrowser = undefined;
-      /** @type {LH.Puppeteer.Page|undefined} */
-      let lhPage = undefined;
+  const gatherFn = async () => {
+    const normalizedRequestor = isCallback ? requestor : UrlUtils.normalizeUrl(requestor);
 
-      // For navigation mode, we shouldn't connect to a browser in audit mode,
-      // therefore we connect to the browser in the gatherFn callback.
-      if (!page) {
-        const {hostname = DEFAULT_HOSTNAME, port = DEFAULT_PORT} = flags;
-        lhBrowser = await puppeteer.connect({browserURL: `http://${hostname}:${port}`, defaultViewport: null});
-        lhPage = await lhBrowser.newPage();
-        page = lhPage;
-      }
+    /** @type {LH.Puppeteer.Browser|undefined} */
+    let lhBrowser = undefined;
+    /** @type {LH.Puppeteer.Page|undefined} */
+    let lhPage = undefined;
 
-      const driver = new Driver(page);
-      const context = {
-        driver,
-        lhBrowser,
-        lhPage,
-        page,
-        resolvedConfig,
-        requestor: normalizedRequestor,
-        computedCache: new Map(),
-      };
-      const {baseArtifacts} = await _setup(context);
+    // For navigation mode, we shouldn't connect to a browser in audit mode,
+    // therefore we connect to the browser in the gatherFn callback.
+    if (!page) {
+      const {hostname = DEFAULT_HOSTNAME, port = DEFAULT_PORT} = flags;
+      lhBrowser = await puppeteer.connect({browserURL: `http://${hostname}:${port}`, defaultViewport: null});
+      lhPage = await lhBrowser.newPage();
+      page = lhPage;
+    }
 
-      const artifacts = await _navigation({...context, baseArtifacts});
+    const driver = new Driver(page);
+    const context = {
+      driver,
+      lhBrowser,
+      lhPage,
+      page,
+      resolvedConfig,
+      requestor: normalizedRequestor,
+      computedCache,
+    };
+    const {baseArtifacts} = await _setup(context);
 
-      await _cleanup(context);
+    const artifacts = await _navigation({...context, baseArtifacts});
 
-      return finalizeArtifacts(baseArtifacts, artifacts);
-    },
-    runnerOptions
-  );
+    await _cleanup(context);
+
+    return finalizeArtifacts(baseArtifacts, artifacts);
+  };
+  const artifacts = await Runner.gather(gatherFn, runnerOptions);
   return {artifacts, runnerOptions};
 }
 

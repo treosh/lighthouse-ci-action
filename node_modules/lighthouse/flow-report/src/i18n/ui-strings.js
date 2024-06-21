@@ -43,8 +43,6 @@ export const UIStrings = {
   categoryBestPractices: 'Best Practices',
   /** Title of the Search Engine Optimization (SEO) category of audits. This is displayed at the top of a list of audits focused on topics related to optimizing a website for indexing by search engines. Also used as a label of a score gauge; try to limit to 20 characters. */
   categorySeo: 'SEO',
-  /** Title of the Progressive Web Application (PWA) category of audits. This is displayed at the top of a list of audits focused on topics related to whether or not a site is a progressive web app, e.g. responds offline, uses a service worker, is on https, etc. Also used as a label of a score gauge. */
-  categoryProgressiveWebApp: 'Progressive Web App',
   /** Label for a report evaluating a web page. Label indicates that the report refers to the desktop version of the site. */
   desktop: 'Desktop',
   /** Label for a report evaluating a web page. Label indicates that the report refers to the mobile version of the site. */

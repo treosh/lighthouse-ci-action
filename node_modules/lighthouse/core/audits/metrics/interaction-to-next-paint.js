@@ -70,9 +70,7 @@ class InteractionToNextPaint extends Audit {
       return {score: null, notApplicable: true};
     }
 
-    // TODO: remove workaround once 103.0.5052.0 is sufficiently released.
-    const timing = interactionEvent.name === 'FallbackTiming' ?
-        interactionEvent.duration : interactionEvent.args.data.duration;
+    const timing = interactionEvent.args.data.duration;
 
     return {
       score: Audit.computeLogNormalScore({p10: context.options.p10, median: context.options.median},

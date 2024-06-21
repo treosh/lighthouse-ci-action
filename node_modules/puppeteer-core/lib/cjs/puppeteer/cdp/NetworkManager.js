@@ -19,11 +19,10 @@ const NetworkEventManager_js_1 = require("./NetworkEventManager.js");
  * @internal
  */
 class NetworkManager extends EventEmitter_js_1.EventEmitter {
-    #ignoreHTTPSErrors;
     #frameManager;
     #networkEventManager = new NetworkEventManager_js_1.NetworkEventManager();
     #extraHTTPHeaders;
-    #credentials;
+    #credentials = null;
     #attemptedAuthentications = new Set();
     #userRequestInterceptionEnabled = false;
     #protocolRequestInterceptionEnabled = false;
@@ -43,9 +42,8 @@ class NetworkManager extends EventEmitter_js_1.EventEmitter {
         [CDPSession_js_1.CDPSessionEvent.Disconnected, this.#removeClient],
     ];
     #clients = new Map();
-    constructor(ignoreHTTPSErrors, frameManager) {
+    constructor(frameManager) {
         super();
-        this.#ignoreHTTPSErrors = ignoreHTTPSErrors;
         this.#frameManager = frameManager;
     }
     async addClient(client) {
@@ -54,19 +52,13 @@ class NetworkManager extends EventEmitter_js_1.EventEmitter {
         }
         const subscriptions = new disposable_js_1.DisposableStack();
         this.#clients.set(client, subscriptions);
+        const clientEmitter = subscriptions.use(new EventEmitter_js_1.EventEmitter(client));
         for (const [event, handler] of this.#handlers) {
-            subscriptions.use(
-            // TODO: Remove any here.
-            new EventEmitter_js_1.EventSubscription(client, event, (arg) => {
+            clientEmitter.on(event, (arg) => {
                 return handler.bind(this)(client, arg);
-            }));
+            });
         }
         await Promise.all([
-            this.#ignoreHTTPSErrors
-                ? client.send('Security.setIgnoreCertificateErrors', {
-                    ignore: true,
-                })
-                : null,
             client.send('Network.enable'),
             this.#applyExtraHTTPHeaders(client),
             this.#applyNetworkConditions(client),
@@ -88,13 +80,13 @@ class NetworkManager extends EventEmitter_js_1.EventEmitter {
         this.#protocolRequestInterceptionEnabled = enabled;
         await this.#applyToAllClients(this.#applyProtocolRequestInterception.bind(this));
     }
-    async setExtraHTTPHeaders(extraHTTPHeaders) {
-        this.#extraHTTPHeaders = {};
-        for (const key of Object.keys(extraHTTPHeaders)) {
-            const value = extraHTTPHeaders[key];
+    async setExtraHTTPHeaders(headers) {
+        const extraHTTPHeaders = {};
+        for (const [key, value] of Object.entries(headers)) {
             (0, assert_js_1.assert)((0, util_js_1.isString)(value), `Expected value of header "${key}" to be String, but "${typeof value}" is found.`);
-            this.#extraHTTPHeaders[key.toLowerCase()] = value;
+            extraHTTPHeaders[key.toLowerCase()] = value;
         }
+        this.#extraHTTPHeaders = extraHTTPHeaders;
         await this.#applyToAllClients(this.#applyExtraHTTPHeaders.bind(this));
     }
     async #applyExtraHTTPHeaders(client) {
@@ -432,7 +424,7 @@ class NetworkManager extends EventEmitter_js_1.EventEmitter {
         this.#networkEventManager.responseExtraInfo(event.requestId).push(event);
     }
     #forgetRequest(request, events) {
-        const requestId = request._requestId;
+        const requestId = request.id;
         const interceptionId = request._interceptionId;
         this.#networkEventManager.forgetRequest(requestId);
         interceptionId !== undefined &&

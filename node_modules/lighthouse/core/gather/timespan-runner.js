@@ -72,31 +72,30 @@ async function startTimespanGather(page, options = {}) {
       const finalDisplayedUrl = await driver.url();
 
       const runnerOptions = {resolvedConfig, computedCache};
-      const artifacts = await Runner.gather(
-        async () => {
-          baseArtifacts.URL = {finalDisplayedUrl};
+      const gatherFn = async () => {
+        baseArtifacts.URL = {finalDisplayedUrl};
 
-          await collectPhaseArtifacts({phase: 'stopSensitiveInstrumentation', ...phaseOptions});
-          await collectPhaseArtifacts({phase: 'stopInstrumentation', ...phaseOptions});
+        await collectPhaseArtifacts({phase: 'stopSensitiveInstrumentation', ...phaseOptions});
+        await collectPhaseArtifacts({phase: 'stopInstrumentation', ...phaseOptions});
 
-          // bf-cache-failures can emit `Page.frameNavigated` at the end of the run.
-          // This can cause us to issue protocol commands after the target closes.
-          // We should disable our `Page.frameNavigated` handlers before that.
-          await disableAsyncStacks();
+        // bf-cache-failures can emit `Page.frameNavigated` at the end of the run.
+        // This can cause us to issue protocol commands after the target closes.
+        // We should disable our `Page.frameNavigated` handlers before that.
+        await disableAsyncStacks();
 
-          driver.defaultSession.off('Page.frameNavigated', onFrameNavigated);
-          if (pageNavigationDetected) {
-            baseArtifacts.LighthouseRunWarnings.push(str_(UIStrings.warningNavigationDetected));
-          }
+        driver.defaultSession.off('Page.frameNavigated', onFrameNavigated);
+        if (pageNavigationDetected) {
+          baseArtifacts.LighthouseRunWarnings.push(str_(UIStrings.warningNavigationDetected));
+        }
 
-          await collectPhaseArtifacts({phase: 'getArtifact', ...phaseOptions});
-          await driver.disconnect();
+        await collectPhaseArtifacts({phase: 'getArtifact', ...phaseOptions});
+        await driver.disconnect();
 
-          const artifacts = await awaitArtifacts(artifactState);
-          return finalizeArtifacts(baseArtifacts, artifacts);
-        },
-        runnerOptions
-      );
+        const artifacts = await awaitArtifacts(artifactState);
+        return finalizeArtifacts(baseArtifacts, artifacts);
+      };
+
+      const artifacts = await Runner.gather(gatherFn, runnerOptions);
       return {artifacts, runnerOptions};
     },
   };

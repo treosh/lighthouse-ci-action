@@ -6,6 +6,7 @@
  * https://github.com/archiverjs/node-compress-commons/blob/master/LICENSE-MIT
  */
 var inherits = require('util').inherits;
+var isStream = require('is-stream');
 var Transform = require('readable-stream').Transform;
 
 var ArchiveEntry = require('./archive-entry');
@@ -84,7 +85,7 @@ ArchiveOutputStream.prototype.entry = function(ae, source, callback) {
 
   if (Buffer.isBuffer(source)) {
     this._appendBuffer(ae, source, callback);
-  } else if (util.isStream(source)) {
+  } else if (isStream(source)) {
     this._appendStream(ae, source, callback);
   } else {
     this._archive.processing = false;

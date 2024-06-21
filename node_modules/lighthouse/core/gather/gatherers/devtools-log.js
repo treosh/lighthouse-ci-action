@@ -50,6 +50,13 @@ class DevtoolsLog extends BaseGatherer {
   }
 
   /**
+   * @return {LH.Artifacts['DevtoolsLog']}
+   */
+  getDebugData() {
+    return this._messageLog.messages;
+  }
+
+  /**
    * @return {Promise<LH.Artifacts['DevtoolsLog']>}
    */
   async getArtifact() {

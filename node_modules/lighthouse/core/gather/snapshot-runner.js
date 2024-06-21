@@ -30,35 +30,35 @@ async function snapshotGather(page, options = {}) {
   const url = await driver.url();
 
   const runnerOptions = {resolvedConfig, computedCache};
-  const artifacts = await Runner.gather(
-    async () => {
-      const baseArtifacts =
+
+  const gatherFn = async () => {
+    const baseArtifacts =
         await getBaseArtifacts(resolvedConfig, driver, {gatherMode: 'snapshot'});
-      baseArtifacts.URL = {
-        finalDisplayedUrl: url,
-      };
+    baseArtifacts.URL = {
+      finalDisplayedUrl: url,
+    };
 
-      const artifactDefinitions = resolvedConfig.artifacts || [];
-      const artifactState = getEmptyArtifactState();
-      await collectPhaseArtifacts({
-        phase: 'getArtifact',
-        gatherMode: 'snapshot',
-        driver,
-        page,
-        baseArtifacts,
-        artifactDefinitions,
-        artifactState,
-        computedCache,
-        settings: resolvedConfig.settings,
-      });
+    const artifactDefinitions = resolvedConfig.artifacts || [];
+    const artifactState = getEmptyArtifactState();
+    await collectPhaseArtifacts({
+      phase: 'getArtifact',
+      gatherMode: 'snapshot',
+      driver,
+      page,
+      baseArtifacts,
+      artifactDefinitions,
+      artifactState,
+      computedCache,
+      settings: resolvedConfig.settings,
+    });
 
-      await driver.disconnect();
+    await driver.disconnect();
 
-      const artifacts = await awaitArtifacts(artifactState);
-      return finalizeArtifacts(baseArtifacts, artifacts);
-    },
-    runnerOptions
-  );
+    const artifacts = await awaitArtifacts(artifactState);
+    return finalizeArtifacts(baseArtifacts, artifacts);
+  };
+
+  const artifacts = await Runner.gather(gatherFn, runnerOptions);
   return {artifacts, runnerOptions};
 }
 

@@ -45,7 +45,7 @@ async function enableAsyncStacks(session) {
   await enable();
 
   return async () => {
-    await session.sendCommand('Debugger.disable');
+    await session.sendCommandAndIgnore('Debugger.disable');
     session.off('Debugger.paused', onDebuggerPaused);
     session.off('Page.frameNavigated', onFrameNavigated);
   };

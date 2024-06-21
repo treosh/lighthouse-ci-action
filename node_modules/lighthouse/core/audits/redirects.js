@@ -90,6 +90,7 @@ class Redirects extends Audit {
 
     const processedTrace = await ProcessedTrace.request(trace, context);
     const networkRecords = await NetworkRecords.request(devtoolsLog, context);
+    const documentRequests = Redirects.getDocumentRequestChain(networkRecords, processedTrace);
 
     const metricComputationData = {trace, devtoolsLog, gatherContext, settings, URL: artifacts.URL};
     const metricResult = await LanternInteractive.request(metricComputationData, context);
@@ -98,11 +99,9 @@ class Redirects extends Audit {
     const nodeTimingsById = new Map();
     for (const [node, timing] of metricResult.pessimisticEstimate.nodeTimings.entries()) {
       if (node.type === 'network') {
-        nodeTimingsById.set(node.record.requestId, timing);
+        nodeTimingsById.set(node.request.requestId, timing);
       }
     }
-
-    const documentRequests = Redirects.getDocumentRequestChain(networkRecords, processedTrace);
 
     let totalWastedMs = 0;
     const tableRows = [];

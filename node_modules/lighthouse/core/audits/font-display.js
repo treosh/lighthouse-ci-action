@@ -50,7 +50,7 @@ class FontDisplay extends Audit {
       description: str_(UIStrings.description),
       supportedModes: ['navigation'],
       guidanceLevel: 3,
-      requiredArtifacts: ['devtoolsLogs', 'CSSUsage', 'URL'],
+      requiredArtifacts: ['devtoolsLogs', 'Stylesheets', 'URL'],
       scoreDisplayMode: Audit.SCORING_MODES.METRIC_SAVINGS,
     };
   }
@@ -67,7 +67,7 @@ class FontDisplay extends Audit {
     const failingURLs = new Set();
 
     // Go through all the stylesheets to find all @font-face declarations
-    for (const stylesheet of artifacts.CSSUsage.stylesheets) {
+    for (const stylesheet of artifacts.Stylesheets) {
       // Eliminate newlines so we can more easily scan through with a regex
       const newlinesStripped = stylesheet.content.replace(/(\r|\n)+/g, ' ');
       // Find the @font-faces

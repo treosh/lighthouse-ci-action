@@ -24,14 +24,10 @@
  * @property {number} interactionId
  */
 /** @typedef {LH.Trace.AsyncEvent & {name: 'EventTiming', args: {data: EventTimingData}}} EventTimingEvent */
-/**
- * A fallback EventTiming placeholder, used if updated EventTiming events are not available.
- * TODO: Remove once 103.0.5052.0 is sufficiently released.
- * @typedef {{name: 'FallbackTiming', duration: number}} FallbackTimingEvent
- */
 
 import {ProcessedTrace} from '../processed-trace.js';
 import {makeComputedArtifact} from '../computed-artifact.js';
+import {LighthouseError} from '../../lib/lh-error.js';
 
 const KEYBOARD_EVENTS = new Set(['keydown', 'keypress', 'keyup']);
 const CLICK_TAP_DRAG_EVENTS = new Set([
@@ -79,7 +75,7 @@ class Responsiveness {
    * one interaction had this duration by returning the first found.
    * @param {ResponsivenessEvent} responsivenessEvent
    * @param {LH.Trace} trace
-   * @return {EventTimingEvent|FallbackTimingEvent}
+   * @return {EventTimingEvent}
    */
   static findInteractionEvent(responsivenessEvent, {traceEvents}) {
     const candidates = traceEvents.filter(/** @return {evt is EventTimingEvent} */ evt => {
@@ -87,15 +83,15 @@ class Responsiveness {
       return evt.name === 'EventTiming' && evt.ph !== 'e';
     });
 
-    // If trace is from < m103, the timestamps cannot be trusted, so we craft a fallback
-    // <m103 traces (bad) had a   args.frame
+    // If trace is from < m103, the timestamps cannot be trusted
+    // <m103 traces (bad) had a   args.frame (we used to provide a fallback trace event, but not
+    //                                        any more)
     // m103+ traces (good) have a args.data.frame (https://crrev.com/c/3632661)
-    // TODO(compat): remove FallbackTiming handling when we don't care about <m103
     if (candidates.length && candidates.every(candidate => !candidate.args.data?.frame)) {
-      return {
-        name: 'FallbackTiming',
-        duration: responsivenessEvent.args.data.maxDuration,
-      };
+      throw new LighthouseError(
+        LighthouseError.errors.UNSUPPORTED_OLD_CHROME,
+        {featureName: 'detailed EventTiming trace events'}
+      );
     }
 
     const {maxDuration, interactionType} = responsivenessEvent.args.data;
@@ -136,7 +132,7 @@ class Responsiveness {
   /**
    * @param {{trace: LH.Trace, settings: LH.Audit.Context['settings']}} data
    * @param {LH.Artifacts.ComputedContext} context
-   * @return {Promise<EventTimingEvent|FallbackTimingEvent|null>}
+   * @return {Promise<EventTimingEvent|null>}
    */
   static async compute_(data, context) {
     const {settings, trace} = data;

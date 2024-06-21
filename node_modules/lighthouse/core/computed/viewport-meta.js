@@ -21,11 +21,13 @@ class ViewportMeta {
         hasViewportTag: false,
         isMobileOptimized: false,
         parserWarnings: [],
+        rawContentString: undefined,
       };
     }
 
     const warnings = [];
-    const parsedProps = Parser.parseMetaViewPortContent(viewportMeta.content || '');
+    const rawContentString = viewportMeta.content || '';
+    const parsedProps = Parser.parseMetaViewPortContent(rawContentString);
 
     if (Object.keys(parsedProps.unknownProperties).length) {
       warnings.push(`Invalid properties found: ${JSON.stringify(parsedProps.unknownProperties)}`);
@@ -42,6 +44,7 @@ class ViewportMeta {
         hasViewportTag: true,
         isMobileOptimized: false,
         parserWarnings: warnings,
+        rawContentString,
       };
     }
 
@@ -51,6 +54,7 @@ class ViewportMeta {
       hasViewportTag: true,
       isMobileOptimized,
       parserWarnings: warnings,
+      rawContentString,
     };
   }
 }
@@ -63,4 +67,5 @@ export {ViewportMetaComputed as ViewportMeta};
  * @property {boolean} hasViewportTag Whether the page has any viewport tag.
  * @property {boolean} isMobileOptimized Whether the viewport tag is optimized for mobile screens.
  * @property {Array<string>} parserWarnings Warnings if the parser encountered invalid content in the viewport tag.
+ * @property {string|undefined} rawContentString The `content` attribute value, if a viewport was defined.
  */

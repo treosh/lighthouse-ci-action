@@ -8,10 +8,10 @@
 var fs = require('graceful-fs');
 var path = require('path');
 
-var flatten = require('lodash.flatten');
-var difference = require('lodash.difference');
-var union = require('lodash.union');
-var isPlainObject = require('lodash.isplainobject');
+var flatten = require('lodash/flatten');
+var difference = require('lodash/difference');
+var union = require('lodash/union');
+var isPlainObject = require('lodash/isPlainObject');
 
 var glob = require('glob');
 

@@ -95,11 +95,11 @@ class PuppeteerNode extends Puppeteer_js_1.Puppeteer {
      * specified.
      *
      * When using with `puppeteer-core`,
-     * {@link LaunchOptions | options.executablePath} or
-     * {@link LaunchOptions | options.channel} must be provided.
+     * {@link LaunchOptions.executablePath | options.executablePath} or
+     * {@link LaunchOptions.channel | options.channel} must be provided.
      *
      * @example
-     * You can use {@link LaunchOptions | options.ignoreDefaultArgs}
+     * You can use {@link LaunchOptions.ignoreDefaultArgs | options.ignoreDefaultArgs}
      * to filter out `--mute-audio` from default arguments:
      *
      * ```ts
@@ -174,7 +174,7 @@ class PuppeteerNode extends Puppeteer_js_1.Puppeteer {
      * @internal
      */
     get defaultDownloadPath() {
-        return this.configuration.downloadPath ?? this.configuration.cacheDirectory;
+        return this.configuration.cacheDirectory;
     }
     /**
      * The name of the browser that was last launched.
@@ -228,7 +228,7 @@ class PuppeteerNode extends Puppeteer_js_1.Puppeteer {
         if (!platform) {
             throw new Error('The current platform is not supported.');
         }
-        const cacheDir = this.configuration.downloadPath ?? this.configuration.cacheDirectory;
+        const cacheDir = this.configuration.cacheDirectory;
         const installedBrowsers = await (0, browsers_1.getInstalledBrowsers)({
             cacheDir,
         });

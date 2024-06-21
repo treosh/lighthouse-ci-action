@@ -8,19 +8,19 @@ import {EntityClassification} from './entity-classification.js';
 import {makeComputedArtifact} from './computed-artifact.js';
 import {NetworkRecords} from './network-records.js';
 import {NetworkRequest} from '../lib/network-request.js';
-import {Budget} from '../config/budget.js';
 import UrlUtils from '../lib/url-utils.js';
 
 /** @typedef {{count: number, resourceSize: number, transferSize: number}} ResourceEntry */
+/** @typedef {'stylesheet'|'image'|'media'|'font'|'script'|'document'|'other'|'third-party'|'total'} ResourceType */
 
 class ResourceSummary {
   /**
    * @param {LH.Artifacts.NetworkRequest} record
-   * @return {LH.Budget.ResourceType}
+   * @return {ResourceType}
    */
   static determineResourceType(record) {
     if (!record.resourceType) return 'other';
-    /** @type {Partial<Record<LH.Crdp.Network.ResourceType, LH.Budget.ResourceType>>} */
+    /** @type {Partial<Record<LH.Crdp.Network.ResourceType, ResourceType>>} */
     const requestToResourceType = {
       'Stylesheet': 'stylesheet',
       'Image': 'image',
@@ -35,12 +35,11 @@ class ResourceSummary {
   /**
    * @param {Array<LH.Artifacts.NetworkRequest>} networkRecords
    * @param {LH.Artifacts.URL} URLArtifact
-   * @param {LH.Util.ImmutableObject<LH.Budget[]|null>} budgets
    * @param {LH.Artifacts.EntityClassification} classifiedEntities
-   * @return {Record<LH.Budget.ResourceType, ResourceEntry>}
+   * @return {Record<ResourceType, ResourceEntry>}
    */
-  static summarize(networkRecords, URLArtifact, budgets, classifiedEntities) {
-    /** @type {Record<LH.Budget.ResourceType, ResourceEntry>} */
+  static summarize(networkRecords, URLArtifact, classifiedEntities) {
+    /** @type {Record<ResourceType, ResourceEntry>} */
     const resourceSummary = {
       'stylesheet': {count: 0, resourceSize: 0, transferSize: 0},
       'image': {count: 0, resourceSize: 0, transferSize: 0},
@@ -52,15 +51,9 @@ class ResourceSummary {
       'total': {count: 0, resourceSize: 0, transferSize: 0},
       'third-party': {count: 0, resourceSize: 0, transferSize: 0},
     };
-    const budget = Budget.getMatchingBudget(budgets, URLArtifact.mainDocumentUrl);
     /** @type {ReadonlyArray<string>} */
-    let firstPartyHosts = [];
-    if (budget?.options?.firstPartyHostnames) {
-      firstPartyHosts = budget.options.firstPartyHostnames;
-    } else {
-      firstPartyHosts = classifiedEntities.firstParty?.domains.map(domain => `*.${domain}`) ||
-        [`*.${UrlUtils.getRootDomain(URLArtifact.finalDisplayedUrl)}`];
-    }
+    const firstPartyHosts = classifiedEntities.firstParty?.domains.map(domain => `*.${domain}`) ||
+      [`*.${UrlUtils.getRootDomain(URLArtifact.finalDisplayedUrl)}`];
 
     networkRecords.filter(record => {
       // Ignore favicon.co
@@ -101,18 +94,18 @@ class ResourceSummary {
   }
 
   /**
-   * @param {{URL: LH.Artifacts['URL'], devtoolsLog: LH.DevtoolsLog, budgets: LH.Util.ImmutableObject<LH.Budget[]|null>}} data
+   * @param {{URL: LH.Artifacts['URL'], devtoolsLog: LH.DevtoolsLog}} data
    * @param {LH.Artifacts.ComputedContext} context
-   * @return {Promise<Record<LH.Budget.ResourceType,ResourceEntry>>}
+   * @return {Promise<Record<ResourceType,ResourceEntry>>}
    */
   static async compute_(data, context) {
     const networkRecords = await NetworkRecords.request(data.devtoolsLog, context);
     const classifiedEntities = await EntityClassification.request(
       {URL: data.URL, devtoolsLog: data.devtoolsLog}, context);
-    return ResourceSummary.summarize(networkRecords, data.URL, data.budgets, classifiedEntities);
+    return ResourceSummary.summarize(networkRecords, data.URL, classifiedEntities);
   }
 }
 
 const ResourceSummaryComputed =
-  makeComputedArtifact(ResourceSummary, ['URL', 'devtoolsLog', 'budgets']);
+  makeComputedArtifact(ResourceSummary, ['URL', 'devtoolsLog']);
 export {ResourceSummaryComputed as ResourceSummary};

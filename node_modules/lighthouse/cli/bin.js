@@ -79,13 +79,6 @@ async function begin() {
     config = (await import(`../core/config/${cliFlags.preset}-config.js`)).default;
   }
 
-  if (cliFlags.budgetPath) {
-    cliFlags.budgetPath = path.resolve(process.cwd(), cliFlags.budgetPath);
-    /** @type {Array<LH.Budget>} */
-    const parsedBudget = JSON.parse(fs.readFileSync(cliFlags.budgetPath, 'utf8'));
-    cliFlags.budgets = parsedBudget;
-  }
-
   // set logging preferences
   cliFlags.logLevel = 'info';
   if (cliFlags.verbose) {

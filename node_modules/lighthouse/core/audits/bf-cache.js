@@ -61,7 +61,7 @@ class BFCache extends Audit {
       failureTitle: str_(UIStrings.failureTitle),
       description: str_(UIStrings.description),
       supportedModes: ['navigation', 'timespan'],
-      guidanceLevel: 2,
+      guidanceLevel: 4,
       requiredArtifacts: ['BFCacheFailures', 'HostProduct'],
       scoreDisplayMode: Audit.SCORING_MODES.BINARY,
     };

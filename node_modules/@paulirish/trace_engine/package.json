@@ -1,0 +1,16 @@
+{
+  "name": "@paulirish/trace_engine",
+  "version": "0.0.23",
+  "description": "",
+  "main": "models/trace/trace.js",
+  "scripts": {
+    "test": "node test/test-trace-engine.mjs",
+    "prepublishOnly": "npm test"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "BSD-3-Clause",
+  "dependencies": {},
+  "devDependencies": {}
+}

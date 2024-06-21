@@ -13,7 +13,6 @@ const baseArtifactKeySource = {
   fetchTime: '',
   LighthouseRunWarnings: '',
   BenchmarkIndex: '',
-  BenchmarkIndexes: '',
   settings: '',
   Timing: '',
   URL: '',

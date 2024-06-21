@@ -83,28 +83,44 @@ function processForProto(lhr) {
   }
 
   /**
-   * Remove any found empty strings, as they are dropped after round-tripping anyway
+   * Execute `cb(obj, key)` on every object property where obj[key] is a string, recursively.
    * @param {any} obj
+   * @param {(obj: Record<string, string>, key: string) => void} cb
    */
-  function removeStrings(obj) {
+  function iterateStrings(obj, cb) {
     if (obj && typeof obj === 'object' && !Array.isArray(obj)) {
       Object.keys(obj).forEach(key => {
-        if (typeof obj[key] === 'string' && obj[key] === '') {
-          delete obj[key];
-        } else if (typeof obj[key] === 'object' || Array.isArray(obj[key])) {
-          removeStrings(obj[key]);
+        if (typeof obj[key] === 'string') {
+          cb(obj, key);
+        } else {
+          iterateStrings(obj[key], cb);
         }
       });
     } else if (Array.isArray(obj)) {
       obj.forEach(item => {
         if (typeof item === 'object' || Array.isArray(item)) {
-          removeStrings(item);
+          iterateStrings(item, cb);
         }
       });
     }
   }
 
-  removeStrings(reportJson);
+  iterateStrings(reportJson, (obj, key) => {
+    const value = obj[key];
+
+    // Remove empty strings, as they are dropped after round-tripping anyway.
+    if (value === '') {
+      delete obj[key];
+      return;
+    }
+
+    // Sanitize lone surrogates.
+    // @ts-expect-error node 20
+    if (String.prototype.isWellFormed && !value.isWellFormed()) {
+      // @ts-expect-error node 20
+      obj[key] = value.toWellFormed();
+    }
+  });
 
   return reportJson;
 }

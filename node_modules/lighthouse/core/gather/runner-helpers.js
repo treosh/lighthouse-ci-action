@@ -33,7 +33,10 @@ import {Sentry} from '../lib/sentry.js';
  * @param {Error} error
  */
 function createDependencyError(dependency, error) {
-  return new Error(`Dependency "${dependency.id}" failed with exception: ${error.message}`);
+  const err = new Error(`Dependency "${dependency.id}" failed with exception: ${error.message}`);
+  // @ts-expect-error - We already reported the original error to Sentry, don't do it again.
+  err.expected = true;
+  return err;
 }
 
 /** @return {ArtifactState} */

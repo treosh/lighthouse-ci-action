@@ -63,12 +63,22 @@ class Viewport extends Audit {
       inpSavings = 0;
     }
 
+    /** @type {LH.Audit.Details.DebugData|undefined} */
+    let details;
+    if (viewportMeta.rawContentString !== undefined) {
+      details = {
+        type: 'debugdata',
+        viewportContent: viewportMeta.rawContentString,
+      };
+    }
+
     return {
       score: Number(viewportMeta.isMobileOptimized),
       metricSavings: {
         INP: inpSavings,
       },
       warnings: viewportMeta.parserWarnings,
+      details,
     };
   }
 }

@@ -28,13 +28,19 @@ export class Connection extends EventEmitter {
         super();
         this.#url = url;
         this.#delay = delay;
-        this.#timeout = timeout ?? 180000;
+        this.#timeout = timeout ?? 180_000;
         this.#transport = transport;
         this.#transport.onmessage = this.onMessage.bind(this);
         this.#transport.onclose = this.#onClose.bind(this);
     }
     static fromSession(session) {
         return session.connection();
+    }
+    /**
+     * @internal
+     */
+    get delay() {
+        return this.#delay;
     }
     get timeout() {
         return this.#timeout;
@@ -74,6 +80,9 @@ export class Connection extends EventEmitter {
      * @internal
      */
     _rawSend(callbacks, method, params, sessionId, options) {
+        if (this.#closed) {
+            return Promise.reject(new Error('Protocol error: Connection closed.'));
+        }
         return callbacks.create(method, options?.timeout ?? this.#timeout, id => {
             const stringifiedMessage = JSON.stringify({
                 method,

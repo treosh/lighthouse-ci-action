@@ -128,7 +128,7 @@ class OffscreenImages extends ByteEfficiencyAudit {
       if (node.type === 'cpu' && timing.duration >= 50) {
         lastLongTaskStartTime = Math.max(lastLongTaskStartTime, timing.startTime);
       } else if (node.type === 'network') {
-        startTimesByURL.set(node.record.url, timing.startTime);
+        startTimesByURL.set(node.request.url, timing.startTime);
       }
     }
 
@@ -154,21 +154,6 @@ class OffscreenImages extends ByteEfficiencyAudit {
       if (image.wastedPercent < IGNORE_THRESHOLD_IN_PERCENT) return false;
       return image.requestStartTime < interactiveTimestamp / 1000 - IGNORE_THRESHOLD_IN_MS;
     });
-  }
-
-  /**
-   * The default byte efficiency audit will report max(TTI, load), since lazy-loading offscreen
-   * images won't reduce the overall time and the wasted bytes are really only "wasted" for TTI,
-   * override the function to just look at TTI savings.
-   *
-   * @param {Array<LH.Audit.ByteEfficiencyItem>} results
-   * @param {LH.Gatherer.Simulation.GraphNode} graph
-   * @param {LH.Gatherer.Simulation.Simulator} simulator
-   * @return {number}
-   */
-  static computeWasteWithTTIGraph(results, graph, simulator) {
-    return super.computeWasteWithTTIGraph(results, graph, simulator,
-      {includeLoad: false});
   }
 
   /**

@@ -53,8 +53,8 @@ function getYargsParser(manualArgv) {
         'lighthouse <url> --extra-headers=./path/to/file.json',
         'Path to JSON file of HTTP Header key/value pairs to send in requests')
     .example(
-        'lighthouse <url> --only-categories=performance,pwa',
-        'Only run the specified categories. Available categories: accessibility, best-practices, performance, pwa, seo')
+        'lighthouse <url> --only-categories=performance,seo',
+        'Only run the specified categories. Available categories: accessibility, best-practices, performance, seo')
 
     // We only have the single string positional argument, the url.
     .option('_', {
@@ -188,17 +188,13 @@ function getYargsParser(manualArgv) {
         array: true,
         type: 'string',
         coerce: splitCommaSeparatedValues,
-        describe: 'Only run the specified categories. Available categories: accessibility, best-practices, performance, pwa, seo',
+        describe: 'Only run the specified categories. Available categories: accessibility, best-practices, performance, seo',
       },
       'skip-audits': {
         array: true,
         type: 'string',
         coerce: splitCommaSeparatedValues,
         describe: 'Run everything except these audits',
-      },
-      'budget-path': {
-        type: 'string',
-        describe: 'The path to the budget.json file for LightWallet.',
       },
       'disable-full-page-screenshot': {
         type: 'boolean',
@@ -213,7 +209,7 @@ function getYargsParser(manualArgv) {
       'save-assets', 'list-all-audits', 'list-locales', 'list-trace-categories', 'additional-trace-categories',
       'config-path', 'preset', 'chrome-flags', 'port', 'hostname', 'form-factor', 'screenEmulation', 'emulatedUserAgent',
       'max-wait-for-load', 'enable-error-reporting', 'gather-mode', 'audit-mode',
-      'only-audits', 'only-categories', 'skip-audits', 'budget-path', 'disable-full-page-screenshot', 'ignore-status-code',
+      'only-audits', 'only-categories', 'skip-audits', 'disable-full-page-screenshot', 'ignore-status-code',
     ], 'Configuration:')
 
     // Output

@@ -80,15 +80,10 @@ class ExecutionContext {
    * page without isolation.
    * @param {string} expression
    * @param {number|undefined} contextId
+   * @param {number} timeout
    * @return {Promise<*>}
    */
-  async _evaluateInContext(expression, contextId) {
-    // Use a higher than default timeout if the user hasn't specified a specific timeout.
-    // Otherwise, use whatever was requested.
-    const timeout = this._session.hasNextProtocolTimeout() ?
-      this._session.getNextProtocolTimeout() :
-      60000;
-
+  async _evaluateInContext(expression, contextId, timeout) {
     // `__lighthouseExecutionContextUniqueIdentifier` is only used by the FullPageScreenshot gatherer.
     // See `getNodeDetails` in page-functions.
     const uniqueExecutionContextIdentifier = contextId === undefined ?
@@ -166,17 +161,22 @@ class ExecutionContext {
    * @return {Promise<*>}
    */
   async evaluateAsync(expression, options = {}) {
+    // Use a higher than default timeout if the user hasn't specified a specific timeout.
+    // Otherwise, use whatever was requested.
+    const timeout = this._session.hasNextProtocolTimeout() ?
+      this._session.getNextProtocolTimeout() :
+      60000;
     const contextId = options.useIsolation ? await this._getOrCreateIsolatedContextId() : undefined;
 
     try {
       // `await` is not redundant here because we want to `catch` the async errors
-      return await this._evaluateInContext(expression, contextId);
+      return await this._evaluateInContext(expression, contextId, timeout);
     } catch (err) {
       // If we were using isolation and the context disappeared on us, retry one more time.
       if (contextId && err.message.includes('Cannot find context')) {
         this.clearContextId();
         const freshContextId = await this._getOrCreateIsolatedContextId();
-        return this._evaluateInContext(expression, freshContextId);
+        return this._evaluateInContext(expression, freshContextId, timeout);
       }
 
       throw err;

@@ -56,8 +56,12 @@ class Trace extends BaseGatherer {
       'disabled-by-default-devtools.timeline.frame',
       'latencyInfo',
 
-      // A bug introduced in M92 causes these categories to crash targets on Linux.
-      // See https://github.com/GoogleChrome/lighthouse/issues/12835 for full investigation.
+      // For CLS root causes.
+      'disabled-by-default-devtools.timeline.invalidationTracking',
+
+      // Not used by Lighthouse (yet) but included for users that want JS samples when looking at
+      // a trace collected by Lighthouse (e.g. "View Trace" workflow in DevTools)
+      // TODO: Re-enable after investigating b/325659693
       // 'disabled-by-default-v8.cpu_profiler',
     ];
   }
@@ -120,6 +124,10 @@ class Trace extends BaseGatherer {
    */
   async stopSensitiveInstrumentation({driver}) {
     this._trace = await Trace.endTraceAndCollectEvents(driver.defaultSession);
+  }
+
+  getDebugData() {
+    return this._trace;
   }
 
   getArtifact() {

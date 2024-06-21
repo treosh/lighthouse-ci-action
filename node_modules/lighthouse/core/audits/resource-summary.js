@@ -10,6 +10,8 @@ import * as i18n from '../lib/i18n/i18n.js';
 
 const str_ = i18n.createIcuMessageFn(import.meta.url);
 
+/** @typedef {import('../computed/resource-summary.js').ResourceType} ResourceType */
+
 class ResourceSummary extends Audit {
   /**
    * @return {LH.Audit.Meta}
@@ -32,7 +34,7 @@ class ResourceSummary extends Audit {
   static async audit(artifacts, context) {
     const devtoolsLog = artifacts.devtoolsLogs[Audit.DEFAULT_PASS];
     const summary = await ComputedResourceSummary
-      .request({devtoolsLog, URL: artifacts.URL, budgets: context.settings.budgets}, context);
+      .request({devtoolsLog, URL: artifacts.URL}, context);
 
     /** @type {LH.Audit.Details.Table['headings']} */
     const headings = [
@@ -41,8 +43,7 @@ class ResourceSummary extends Audit {
       {key: 'transferSize', valueType: 'bytes', label: str_(i18n.UIStrings.columnTransferSize)},
     ];
 
-
-    /** @type {Record<LH.Budget.ResourceType, LH.IcuMessage>} */
+    /** @type {Record<ResourceType, LH.IcuMessage>} */
     const strMappings = {
       'total': str_(i18n.UIStrings.totalResourceType),
       'document': str_(i18n.UIStrings.documentResourceType),
@@ -55,7 +56,7 @@ class ResourceSummary extends Audit {
       'third-party': str_(i18n.UIStrings.thirdPartyResourceType),
     };
 
-    const types = /** @type {Array<LH.Budget.ResourceType>} */ (Object.keys(summary));
+    const types = /** @type {Array<ResourceType>} */ (Object.keys(summary));
     const rows = types.map(type => {
       return {
         // ResourceType is included as an "id" for ease of use.

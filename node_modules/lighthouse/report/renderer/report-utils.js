@@ -39,18 +39,14 @@ class ReportUtils {
     // For convenience, smoosh all AuditResults into their auditRef (which has just weight & group)
     if (typeof clone.categories !== 'object') throw new Error('No categories provided.');
 
-    /** @type {Map<string, Array<LH.ReportResult.AuditRef>>} */
-    const relevantAuditToMetricsMap = new Map();
+    /** @type {Map<string, LH.ReportResult.AuditRef>} */
+    const acronymToMetricMap = new Map();
 
     for (const category of Object.values(clone.categories)) {
       // Make basic lookup table for relevantAudits
       category.auditRefs.forEach(metricRef => {
-        if (!metricRef.relevantAudits) return;
-        metricRef.relevantAudits.forEach(auditId => {
-          const arr = relevantAuditToMetricsMap.get(auditId) || [];
-          arr.push(metricRef);
-          relevantAuditToMetricsMap.set(auditId, arr);
-        });
+        if (!metricRef.acronym) return;
+        acronymToMetricMap.set(metricRef.acronym, metricRef);
       });
 
       category.auditRefs.forEach(auditRef => {
@@ -58,8 +54,15 @@ class ReportUtils {
         auditRef.result = result;
 
         // Attach any relevantMetric auditRefs
-        if (relevantAuditToMetricsMap.has(auditRef.id)) {
-          auditRef.relevantMetrics = relevantAuditToMetricsMap.get(auditRef.id);
+        const relevantAcronyms = Object.keys(auditRef.result.metricSavings || {});
+        if (relevantAcronyms.length) {
+          auditRef.relevantMetrics = [];
+          for (const acronym of relevantAcronyms) {
+            const metric = acronymToMetricMap.get(acronym);
+            if (!metric) continue;
+
+            auditRef.relevantMetrics.push(metric);
+          }
         }
 
         // attach the stackpacks to the auditRef object

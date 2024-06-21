@@ -34,7 +34,7 @@ class UnsizedImages extends Audit {
       title: str_(UIStrings.title),
       failureTitle: str_(UIStrings.failureTitle),
       description: str_(UIStrings.description),
-      guidanceLevel: 3,
+      guidanceLevel: 4,
       requiredArtifacts: ['ImageElements'],
       scoreDisplayMode: Audit.SCORING_MODES.METRIC_SAVINGS,
     };

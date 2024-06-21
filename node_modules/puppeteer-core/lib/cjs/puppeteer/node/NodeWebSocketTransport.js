@@ -20,6 +20,8 @@ class NodeWebSocketTransport {
             const ws = new ws_1.default(url, [], {
                 followRedirects: true,
                 perMessageDeflate: false,
+                // @ts-expect-error https://github.com/websockets/ws/blob/master/doc/ws.md#new-websocketaddress-protocols-options
+                allowSynchronousEvents: false,
                 maxPayload: 256 * 1024 * 1024, // 256Mb
                 headers: {
                     'User-Agent': `Puppeteer ${version_js_1.packageVersion}`,

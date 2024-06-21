@@ -37,7 +37,7 @@ class UnminifiedCSS extends ByteEfficiencyAudit {
       description: str_(UIStrings.description),
       scoreDisplayMode: ByteEfficiencyAudit.SCORING_MODES.METRIC_SAVINGS,
       guidanceLevel: 3,
-      requiredArtifacts: ['CSSUsage', 'devtoolsLogs', 'traces', 'URL', 'GatherContext'],
+      requiredArtifacts: ['Stylesheets', 'devtoolsLogs', 'traces', 'URL', 'GatherContext'],
     };
   }
 
@@ -85,7 +85,7 @@ class UnminifiedCSS extends ByteEfficiencyAudit {
    */
   static audit_(artifacts, networkRecords) {
     const items = [];
-    for (const stylesheet of artifacts.CSSUsage.stylesheets) {
+    for (const stylesheet of artifacts.Stylesheets) {
       const networkRecord = networkRecords
         .find(record => record.url === stylesheet.header.sourceURL);
       if (!stylesheet.content) continue;

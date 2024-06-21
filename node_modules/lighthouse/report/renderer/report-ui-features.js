@@ -70,7 +70,7 @@ export class ReportUIFeatures {
     }
 
     // Fireworks!
-    // To get fireworks you need 100 scores in all core categories, except PWA (because going the PWA route is discretionary).
+    // To get fireworks you need 100 scores in all core categories.
     const fireworksRequiredCategoryIds = ['performance', 'accessibility', 'best-practices', 'seo'];
     const scoresAll100 = fireworksRequiredCategoryIds.every(id => {
       const cat = lhr.categories[id];

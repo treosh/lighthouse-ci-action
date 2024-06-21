@@ -10,7 +10,7 @@ It is built in collaboration between Lighthouse Team, Treo (web performance moni
 
 **Features**:
 
-- ✅ Audit URLs using Lighthouse v11
+- ✅ Audit URLs using Lighthouse v12
 - 🎯 Test performance with Lighthouse CI assertions or performance budgets
 - 😻 See failed results in the action interface
 - 💾 Upload results to a private LHCI server, Temporary Public Storage, or as artifacts
@@ -34,7 +34,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Audit URLs using Lighthouse
-        uses: treosh/lighthouse-ci-action@v11
+        uses: treosh/lighthouse-ci-action@v12
         with:
           urls: |
             https://example.com/
@@ -85,7 +85,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run Lighthouse on urls and validate with lighthouserc
-        uses: treosh/lighthouse-ci-action@v11
+        uses: treosh/lighthouse-ci-action@v12
         with:
           urls: 'https://exterkamp.codes/'
           configPath: './lighthouserc.json'
@@ -132,7 +132,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run Lighthouse on urls and upload data to private lhci server
-        uses: treosh/lighthouse-ci-action@v11
+        uses: treosh/lighthouse-ci-action@v12
         with:
           urls: 'https://example.com/'
           serverBaseUrl: ${{ secrets.LHCI_SERVER_URL }}
@@ -162,7 +162,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run Lighthouse on urls with lighthouserc
-        uses: treosh/lighthouse-ci-action@v11
+        uses: treosh/lighthouse-ci-action@v12
         with:
           urls: 'https://example.com/'
           configPath: './lighthouserc.json'
@@ -239,7 +239,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run Lighthouse against a static dist dir
-        uses: treosh/lighthouse-ci-action@v11
+        uses: treosh/lighthouse-ci-action@v12
         with:
           # no urls needed, since it uses local folder to scan .html files
           configPath: './lighthouserc.json'
@@ -289,7 +289,7 @@ jobs:
         with:
           site_name: 'gallant-panini-bc8593'
       - name: Audit URLs using Lighthouse
-        uses: treosh/lighthouse-ci-action@v11
+        uses: treosh/lighthouse-ci-action@v12
         with:
           urls: |
             ${{ steps.netlify.outputs.url }}
@@ -316,7 +316,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run Lighthouse and test budgets
-        uses: treosh/lighthouse-ci-action@v11
+        uses: treosh/lighthouse-ci-action@v12
         with:
           urls: |
             https://pr-$PR_NUMBER.staging-example.com/
@@ -348,7 +348,7 @@ jobs:
       - uses: actions/checkout@v4
       - run: npm install # install dependencies, that includes Lighthouse plugins
       - name: Audit URLs with Field Performance Plugin
-        uses: treosh/lighthouse-ci-action@v11
+        uses: treosh/lighthouse-ci-action@v12
         with:
           urls: |
             https://www.example.com/
@@ -440,7 +440,7 @@ jobs:
           node-version: ${{YOUR_REQUIRED_NODE_JS_VERSION}}
 
       - name: Audit URLs using Lighthouse
-        uses: treosh/lighthouse-ci-action@v11
+        uses: treosh/lighthouse-ci-action@v12
         with:
           urls: |
             https://example.com/

@@ -37,6 +37,12 @@ async function main() {
       collectArgs.push(`--url=${url}`)
     }
   }
+
+  if (input.authBypassToken) {
+    const extraHeaders = `"{\"oxygen-auth-bypass-token\": \"${input.authBypassToken}\" }"`
+    collectArgs.push(`--extraHeaders=${extraHeaders}`)
+  }
+
   // else LHCI will panic with a non-zero exit code...
 
   if (input.configPath) collectArgs.push(`--config=${input.configPath}`)

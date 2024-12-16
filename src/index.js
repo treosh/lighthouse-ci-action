@@ -32,7 +32,9 @@ async function main() {
 
   if (input.staticDistDir) {
     collectArgs.push(`--static-dist-dir=${input.staticDistDir}`)
-  } else if (input.urls) {
+  }
+
+  if (input.urls) {
     for (const url of input.urls) {
       collectArgs.push(`--url=${url}`)
     }

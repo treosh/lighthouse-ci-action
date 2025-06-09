@@ -41,23 +41,36 @@ var __setFunctionName = (this && this.__setFunctionName) || function (f, name, p
     if (typeof name === "symbol") name = name.description ? "[".concat(name.description, "]") : "";
     return Object.defineProperty(f, "name", { configurable: true, value: prefix ? "".concat(prefix, " ", name) : name });
 };
-import * as Bidi from 'chromium-bidi/lib/cjs/protocol/protocol.js';
-import { combineLatest, defer, delayWhen, filter, first, firstValueFrom, map, of, raceWith, switchMap, } from '../../third_party/rxjs/rxjs.js';
+import { combineLatest, defer, delayWhen, filter, first, firstValueFrom, map, of, race, raceWith, switchMap, } from '../../third_party/rxjs/rxjs.js';
 import { Frame, throwIfDetached, } from '../api/Frame.js';
 import { Accessibility } from '../cdp/Accessibility.js';
 import { ConsoleMessage, } from '../common/ConsoleMessage.js';
 import { TargetCloseError, UnsupportedOperation } from '../common/Errors.js';
-import { debugError, fromEmitterEvent, timeout } from '../common/util.js';
+import { debugError, fromAbortSignal, fromEmitterEvent, timeout, } from '../common/util.js';
 import { isErrorLike } from '../util/ErrorLike.js';
 import { BidiCdpSession } from './CDPSession.js';
 import { BidiDeserializer } from './Deserializer.js';
 import { BidiDialog } from './Dialog.js';
-import { ExposeableFunction } from './ExposedFunction.js';
+import { ExposableFunction } from './ExposedFunction.js';
 import { BidiHTTPRequest, requests } from './HTTPRequest.js';
 import { BidiJSHandle } from './JSHandle.js';
 import { BidiFrameRealm } from './Realm.js';
 import { rewriteNavigationError } from './util.js';
 import { BidiWebWorker } from './WebWorker.js';
+// TODO: Remove this and map CDP the correct method.
+// Requires breaking change.
+function convertConsoleMessageLevel(method) {
+    switch (method) {
+        case 'group':
+            return 'startGroup';
+        case 'groupCollapsed':
+            return 'startGroupCollapsed';
+        case 'groupEnd':
+            return 'endGroup';
+        default:
+            return method;
+    }
+}
 let BidiFrame = (() => {
     var _a;
     let _classSuper = Frame;
@@ -165,7 +178,7 @@ let BidiFrame = (() => {
                 default: BidiFrameRealm.from(this.browsingContext.defaultRealm, this),
                 internal: BidiFrameRealm.from(this.browsingContext.createWindowRealm(`__puppeteer_internal_${Math.ceil(Math.random() * 10000)}`), this),
             };
-            this.accessibility = new Accessibility(this.realms.default);
+            this.accessibility = new Accessibility(this.realms.default, this._id);
         }
         #initialize() {
             for (const browsingContext of this.browsingContext.children) {
@@ -224,7 +237,7 @@ let BidiFrame = (() => {
                         return `${value} ${parsedValue}`;
                     }, '')
                         .slice(1);
-                    this.page().trustedEmitter.emit("console" /* PageEvent.Console */, new ConsoleMessage(entry.method, text, args, getStackTraceLocations(entry.stackTrace)));
+                    this.page().trustedEmitter.emit("console" /* PageEvent.Console */, new ConsoleMessage(convertConsoleMessageLevel(entry.method), text, args, getStackTraceLocations(entry.stackTrace), this));
                 }
                 else if (isJavaScriptLogEntry(entry)) {
                     const error = new Error(entry.text ?? '');
@@ -288,9 +301,6 @@ let BidiFrame = (() => {
             }
             return parent;
         }
-        isOOPFrame() {
-            throw new UnsupportedOperation();
-        }
         url() {
             return this.browsingContext.url;
         }
@@ -329,6 +339,12 @@ let BidiFrame = (() => {
                         error.message.includes('net::ERR_HTTP_RESPONSE_CODE_FAILURE')) {
                         return;
                     }
+                    if (error.message.includes('navigation canceled')) {
+                        return;
+                    }
+                    if (error.message.includes('Navigation was aborted by another navigation')) {
+                        return;
+                    }
                     throw error;
                 }),
             ]).catch(rewriteNavigationError(url, options.timeout ?? this.timeoutSettings.navigationTimeout()));
@@ -344,22 +360,30 @@ let BidiFrame = (() => {
             ]);
         }
         async waitForNavigation(options = {}) {
-            const { timeout: ms = this.timeoutSettings.navigationTimeout() } = options;
+            const { timeout: ms = this.timeoutSettings.navigationTimeout(), signal } = options;
             const frames = this.childFrames().map(frame => {
                 return frame.#detached$();
             });
             return await firstValueFrom(combineLatest([
-                fromEmitterEvent(this.browsingContext, 'navigation').pipe(switchMap(({ navigation }) => {
+                race(fromEmitterEvent(this.browsingContext, 'navigation'), fromEmitterEvent(this.browsingContext, 'historyUpdated').pipe(map(() => {
+                    return { navigation: null };
+                })))
+                    .pipe(first())
+                    .pipe(switchMap(({ navigation }) => {
+                    if (navigation === null) {
+                        return of(null);
+                    }
                     return this.#waitForLoad$(options).pipe(delayWhen(() => {
                         if (frames.length === 0) {
                             return of(undefined);
                         }
                         return combineLatest(frames);
-                    }), raceWith(fromEmitterEvent(navigation, 'fragment'), fromEmitterEvent(navigation, 'failed'), fromEmitterEvent(navigation, 'aborted').pipe(map(({ url }) => {
-                        throw new Error(`Navigation aborted: ${url}`);
-                    }))), switchMap(() => {
+                    }), raceWith(fromEmitterEvent(navigation, 'fragment'), fromEmitterEvent(navigation, 'failed'), fromEmitterEvent(navigation, 'aborted')), switchMap(() => {
                         if (navigation.request) {
                             function requestFinished$(request) {
+                                if (navigation === null) {
+                                    return of(null);
+                                }
                                 // Reduces flakiness if the response events arrive after
                                 // the load event.
                                 // Usually, the response or error is already there at this point.
@@ -382,6 +406,9 @@ let BidiFrame = (() => {
                 })),
                 this.#waitForNetworkIdle$(options),
             ]).pipe(map(([navigation]) => {
+                if (!navigation) {
+                    return null;
+                }
                 const request = navigation.request;
                 if (!request) {
                     return null;
@@ -389,7 +416,7 @@ let BidiFrame = (() => {
                 const lastRequest = request.lastRedirect ?? request;
                 const httpRequest = requests.get(lastRequest);
                 return httpRequest.response();
-            }), raceWith(timeout(ms), this.#detached$().pipe(map(() => {
+            }), raceWith(timeout(ms), fromAbortSignal(signal), this.#detached$().pipe(map(() => {
                 throw new TargetCloseError('Frame detached.');
             })))));
         }
@@ -404,8 +431,8 @@ let BidiFrame = (() => {
             if (this.#exposedFunctions.has(name)) {
                 throw new Error(`Failed to add page binding with name ${name}: globalThis['${name}'] already exists!`);
             }
-            const exposeable = await ExposeableFunction.from(this, name, apply);
-            this.#exposedFunctions.set(name, exposeable);
+            const exposable = await ExposableFunction.from(this, name, apply);
+            this.#exposedFunctions.set(name, exposable);
         }
         async removeExposedFunction(name) {
             const exposedFunction = this.#exposedFunctions.get(name);
@@ -416,12 +443,11 @@ let BidiFrame = (() => {
             await exposedFunction[Symbol.asyncDispose]();
         }
         async createCDPSession() {
-            const { sessionId } = await this.client.send('Target.attachToTarget', {
-                targetId: this._id,
-                flatten: true,
-            });
-            await this.browsingContext.subscribe([Bidi.ChromiumBidi.BiDiModule.Cdp]);
-            return new BidiCdpSession(this, sessionId);
+            if (!this.page().browser().cdpSupported) {
+                throw new UnsupportedOperation();
+            }
+            const cdpConnection = this.page().browser().cdpConnection;
+            return await cdpConnection._createSession({ targetId: this._id });
         }
         get #waitForLoad$() { return _private_waitForLoad$_descriptor.value; }
         get #waitForNetworkIdle$() { return _private_waitForNetworkIdle$_descriptor.value; }

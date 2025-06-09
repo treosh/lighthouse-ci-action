@@ -1,0 +1,908 @@
+{
+  "generated/Deprecation.ts | AuthorizationCoveredByWildcard": {
+    "message": "Metam\u00e4rk (*) CORS-i API Access-Control-Allow-Headers t\u00f6\u00f6tlemisel volitamise puhul ei kehti."
+  },
+  "generated/Deprecation.ts | CSSSelectorInternalMediaControlsOverlayCastButton": {
+    "message": "Vaike\u00fclekande integreerimise keelamiseks tuleks kasutada atribuuti disableRemotePlayback, mitte nupu -internal-media-controls-overlay-cast-button valijat."
+  },
+  "generated/Deprecation.ts | CSSValueAppearanceSliderVertical": {
+    "message": "CSS-i v\u00e4limuse v\u00e4\u00e4rtus slider-vertical ei ole standarditud ning see eemaldatakse."
+  },
+  "generated/Deprecation.ts | CanRequestURLHTTPContainingNewline": {
+    "message": "Ressursside taotlused, mille URL-id sisaldasid nii eemaldatud t\u00fchim\u00e4rgiga \\(n|r|t) t\u00e4hem\u00e4rke kui ka v\u00e4hem-kui-t\u00e4hem\u00e4rke (<), on blokeeritud. Nende ressursside laadimiseks eemaldage uue rea t\u00e4hem\u00e4rgid ja kodeerige v\u00e4hem-kui-t\u00e4hem\u00e4rgid kohtadest, nagu elementide atribuutide v\u00e4\u00e4rtused."
+  },
+  "generated/Deprecation.ts | CharsetAutoDetectionISO2022JP": {
+    "message": "ISO-2022-JP m\u00e4rgistiku automaatse tuvastamise tugi on katkestatud ja see keelatakse l\u00e4hitulevikus. T\u00e4psustage m\u00e4rgistikku sisut\u00fc\u00fcbi p\u00e4ises v\u00f5i metam\u00e4rgendi abil (https://developer.mozilla.org/en-US/docs/Glossary/Character_encoding)."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesConnectionInfo": {
+    "message": "API chrome.loadTimes() tugi on katkestatud. Kasutage selle asemel standardset API-t: Navigation Timing 2."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesFirstPaintAfterLoadTime": {
+    "message": "API chrome.loadTimes() tugi on katkestatud. Kasutage selle asemel standardset API-t: Paint Timing."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesWasAlternateProtocolAvailable": {
+    "message": "API chrome.loadTimes() tugi on katkestatud. Kasutage selle asemel standardset API-t nextHopProtocol funktsioonis Navigation Timing 2."
+  },
+  "generated/Deprecation.ts | CookieWithTruncatingChar": {
+    "message": "T\u00e4hem\u00e4rki \\(0|r|n) sisaldavad k\u00fcpsisefailid l\u00fckatakse l\u00fchendamise asemel tagasi."
+  },
+  "generated/Deprecation.ts | CrossOriginAccessBasedOnDocumentDomain": {
+    "message": "Sama l\u00e4htekohaga reegli l\u00f5dvendamise tugi seadega document.domain on katkestatud ja see keelatakse vaikimisi. See toe katkestamise hoiatus on mitme l\u00e4htekohaga juurdep\u00e4\u00e4su jaoks ja see lubati seadega document.domain."
+  },
+  "generated/Deprecation.ts | CrossOriginWindowAlert": {
+    "message": "Funktsiooni window.alert k\u00e4ivitamise tugi mitme p\u00e4ritoluga iframe'idest on katkestatud ja see eemaldatakse tulevikus."
+  },
+  "generated/Deprecation.ts | CrossOriginWindowConfirm": {
+    "message": "Funktsiooni window.confirm k\u00e4ivitamise tugi mitme p\u00e4ritoluga iframe'idest on katkestatud ja see eemaldatakse tulevikus."
+  },
+  "generated/Deprecation.ts | DOMMutationEvents": {
+    "message": "DOM-i mutatsioonis\u00fcndmuste (sh DOMSubtreeModified, DOMNodeInserted, DOMNodeRemoved, DOMNodeRemovedFromDocument, DOMNodeInsertedIntoDocument ja DOMCharacterDataModified) tugi katkestatakse (https://w3c.github.io/uievents/#legacy-event-types) ja need eemaldatakse. Kasutage selle asemel \u00fcksust MutationObserver."
+  },
+  "generated/Deprecation.ts | DataUrlInSvgUse": {
+    "message": "Andmete tugi: SVGUseElementi URL-ide tugi on katkestatud ja see eemaldatakse tulevikus."
+  },
+  "generated/Deprecation.ts | GeolocationInsecureOrigin": {
+    "message": "getCurrentPosition() ja watchPosition() ei t\u00f6\u00f6ta enam ebaturvalistes l\u00e4htekohtades. Selle funktsiooni kasutamiseks soovitame teil oma rakenduse \u00fcmber l\u00fclitada turvalisele l\u00e4htekohale, nt HTTPS-ile. Vaadake lisateavet aadressilt https://goo.gle/chrome-insecure-origins."
+  },
+  "generated/Deprecation.ts | GeolocationInsecureOriginDeprecatedNotRemoved": {
+    "message": "API-de getCurrentPosition() ja watchPosition() tugi on ebaturvalistes l\u00e4htekohtades katkestatud. Selle funktsiooni kasutamiseks soovitame teil oma rakenduse \u00fcmber l\u00fclitada turvalisele l\u00e4htekohale, nt HTTPS-ile. Vaadake lisateavet aadressilt https://goo.gle/chrome-insecure-origins."
+  },
+  "generated/Deprecation.ts | GetUserMediaInsecureOrigin": {
+    "message": "getUserMedia() ei t\u00f6\u00f6ta enam ebaturvalistes l\u00e4htekohtades. Selle funktsiooni kasutamiseks soovitame teil oma rakenduse \u00fcmber l\u00fclitada turvalisele l\u00e4htekohale, nt HTTPS-ile. Vaadake lisateavet aadressilt https://goo.gle/chrome-insecure-origins."
+  },
+  "generated/Deprecation.ts | H1UserAgentFontSizeInSection": {
+    "message": "Kohast <article>, <aside>, <nav> v\u00f5i <section> leiti m\u00e4rgend <h1>, millel pole m\u00e4\u00e4ratud fondisuurust. Selle pealkirjateksti suurust muudetakse l\u00e4hitulevikus selles brauseris. Lisateavet leiate lehelt https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#specifying_a_uniform_font_size_for_h1."
+  },
+  "generated/Deprecation.ts | HostCandidateAttributeGetter": {
+    "message": "V\u00e4lja RTCPeerConnectionIceErrorEvent.hostCandidate tugi on katkestatud. Kasutage selle asemel v\u00e4lja RTCPeerConnectionIceErrorEvent.address v\u00f5i RTCPeerConnectionIceErrorEvent.port."
+  },
+  "generated/Deprecation.ts | IdentityDigitalCredentials": {
+    "message": "Selle digitaalse mandaadi p\u00e4ringu navigator.credentials.get() vormingu tugi on katkestatud, v\u00e4rskendage uue vormingu kasutamiseks oma kutset."
+  },
+  "generated/Deprecation.ts | IdentityInCanMakePaymentEvent": {
+    "message": "Teenuse t\u00f6\u00f6lise s\u00fcndmuse canmakepayment m\u00fc\u00fcja l\u00e4htekoha ja juhuslike andmete tugi on katkestatud ja need eemaldatakse: topOrigin, paymentRequestOrigin, methodData, modifiers."
+  },
+  "generated/Deprecation.ts | InsecurePrivateNetworkSubresourceRequest": {
+    "message": "Veebisait taotles alamressurssi v\u00f5rgust, millele p\u00e4\u00e4seb juurde ainult see veebisait, kuna selle kasutajatel on v\u00f5rgus priviligeeritud positsioon. Need taotlused avalikustavad mitteavalikud seadmed ja serverid internetis, mis suurendab saidivaheliste taotluste v\u00f5ltsimise (CSRF) ja/v\u00f5i teabelekke riski. Nende riskide v\u00e4hendamiseks katkestab Chrome mitteavalike alamressursside taotlemise toe, kui need algatatakse ebaturvalises kontekstis, ja hakkab neid blokeerima."
+  },
+  "generated/Deprecation.ts | InterestGroupDailyUpdateUrl": {
+    "message": "V\u00e4li dailyUpdateUrl struktuurist InterestGroups, mis edastatakse struktuurile joinAdInterestGroup(), on \u00fcmber nimetatud v\u00e4ljaks updateUrl, et selle k\u00e4itumist t\u00e4psemini kajastada."
+  },
+  "generated/Deprecation.ts | IntlV8BreakIterator": {
+    "message": "API Intl.v8BreakIterator tugi on katkestatud. Kasutage selle asemel API-t Intl.Segmenter."
+  },
+  "generated/Deprecation.ts | LocalCSSFileExtensionRejected": {
+    "message": "CSS-i ei saa \u00fcksuse file: URL-idelt laadida, kui nende faililaiend pole .css."
+  },
+  "generated/Deprecation.ts | MediaSourceAbortRemove": {
+    "message": "Atribuudi SourceBuffer.abort() kasutamise tugi \u00fcksuse remove() as\u00fcnkroonse vahemiku eemaldamiseks on spetsifikatsiooni muudatuse t\u00f5ttu katkestatud. Tugi eemaldatakse tulevikus. Kuulake selle asemel \u00fcksuse updateend s\u00fcndmust. abort() on m\u00f5eldud ainult as\u00fcnkroonse meedia lisa katkestamiseks v\u00f5i parseri oleku l\u00e4htestamiseks."
+  },
+  "generated/Deprecation.ts | MediaSourceDurationTruncatingBuffered": {
+    "message": "Tugi \u00fcksuse MediaSource.duration seadistamiseks allapoole suurimat esitluse ajatemplit mis tahes puhverdatud kodeeritud kaadris on spetsifikatsiooni muudatuse t\u00f5ttu katkestatud. L\u00fchendatud puhverdatud meedia kaudse eemaldamise tugi eemaldatakse tulevikus. Selle asemel tehke s\u00f5naselge toiming remove(newDuration, oldDuration) k\u00f5igis \u00fcksustes sourceBuffers, kus: newDuration < oldDuration."
+  },
+  "generated/Deprecation.ts | NoSysexWebMIDIWithoutPermission": {
+    "message": "Web MIDI k\u00fcsib kasutamiseks luba ka siis, kui SysEx-i pole API-s MIDIOptions m\u00e4\u00e4ratud."
+  },
+  "generated/Deprecation.ts | NotificationInsecureOrigin": {
+    "message": "Notification API-t ei saa enam ebaturvalistest l\u00e4htekohtadest kasutada. Soovitame teil oma rakenduse \u00fcle viia turvalisele l\u00e4htekohale (nt HTTPS-ile). Vaadake lisateavet aadressilt https://goo.gle/chrome-insecure-origins."
+  },
+  "generated/Deprecation.ts | NotificationPermissionRequestedIframe": {
+    "message": "Notification API luba ei pruugita mitme p\u00e4ritoluga iframe'is enam taotleda. Soovitame teil luba taotleda \u00fclataseme kaadrist v\u00f5i avada selle asemel uue akna."
+  },
+  "generated/Deprecation.ts | ObsoleteCreateImageBitmapImageOrientationNone": {
+    "message": "Valiku imageOrientation: 'none' tugi atribuudis createImageBitmap on katkestatud. Kasutage selle asemel atribuuti createImageBitmap valikuga \u201e{imageOrientation: 'from-image'}\u201d."
+  },
+  "generated/Deprecation.ts | ObsoleteWebRtcCipherSuite": {
+    "message": "Teie partner kasutab aegunud (D)TLS-i versiooni. Paluge oma partneril see parandada."
+  },
+  "generated/Deprecation.ts | OverflowVisibleOnReplacedElement": {
+    "message": "Kui m\u00e4\u00e4rate m\u00e4rgenditele img, video ja canvas atribuudi overflow: visible, v\u00f5ivad need kuvada visuaalset sisu v\u00e4ljaspool elemendi piire. Vaadake veebilehte https://github.com/WICG/shared-element-transitions/blob/main/debugging_overflow_on_images.md."
+  },
+  "generated/Deprecation.ts | PaymentInstruments": {
+    "message": "API paymentManager.instruments tugi on katkestatud. Kasutage makset\u00f6\u00f6tlejate jaoks selle asemel vajadusp\u00f5hise installimisega funktsiooni Just In Time."
+  },
+  "generated/Deprecation.ts | PaymentRequestCSPViolation": {
+    "message": "Teie API PaymentRequest kutse l\u00e4ks m\u00f6\u00f6da sisu turvalisuse eeskirjade (CSP) direktiivistconnect-src. See m\u00f6\u00f6daminek on aegunud. Lisage oma CSP direktiivile connect-src API-st PaymentRequest makseviisi identifikaator (v\u00e4ljal supportedMethods)."
+  },
+  "generated/Deprecation.ts | PersistentQuotaType": {
+    "message": "API StorageType.persistent tugi on katkestatud. Kasutage selle asemel standardset API-t navigator.storage."
+  },
+  "generated/Deprecation.ts | PictureSourceSrc": {
+    "message": "Element <source src> vanematribuudiga <picture> on sobimatu ja seet\u00f5ttu seda eiratakse. Kasutage selle asemel atribuuti <source srcset>."
+  },
+  "generated/Deprecation.ts | PrefixedCancelAnimationFrame": {
+    "message": "webkitCancelAnimationFrame on teenusepakkujap\u00f5hine. Kasutage selle asemel standardset meetodit cancelAnimationFrame."
+  },
+  "generated/Deprecation.ts | PrefixedRequestAnimationFrame": {
+    "message": "webkitRequestAnimationFrame on teenusepakkujap\u00f5hine. Kasutage selle asemel standardset meetodit requestAnimationFrame."
+  },
+  "generated/Deprecation.ts | PrefixedVideoDisplayingFullscreen": {
+    "message": "API HTMLVideoElement.webkitDisplayingFullscreen tugi on katkestatud. Kasutage selle asemel API-t Document.fullscreenElement."
+  },
+  "generated/Deprecation.ts | PrefixedVideoEnterFullScreen": {
+    "message": "API HTMLVideoElement.webkitEnterFullscreen() tugi on katkestatud. Kasutage selle asemel API-t Element.requestFullscreen()."
+  },
+  "generated/Deprecation.ts | PrefixedVideoEnterFullscreen": {
+    "message": "API HTMLVideoElement.webkitEnterFullscreen() tugi on katkestatud. Kasutage selle asemel API-t Element.requestFullscreen()."
+  },
+  "generated/Deprecation.ts | PrefixedVideoExitFullScreen": {
+    "message": "API HTMLVideoElement.webkitExitFullscreen() tugi on katkestatud. Kasutage selle asemel API-t Document.exitFullscreen()."
+  },
+  "generated/Deprecation.ts | PrefixedVideoExitFullscreen": {
+    "message": "API HTMLVideoElement.webkitExitFullscreen() tugi on katkestatud. Kasutage selle asemel API-t Document.exitFullscreen()."
+  },
+  "generated/Deprecation.ts | PrefixedVideoSupportsFullscreen": {
+    "message": "API HTMLVideoElement.webkitSupportsFullscreen tugi on katkestatud. Kasutage selle asemel API-t Document.fullscreenEnabled."
+  },
+  "generated/Deprecation.ts | PrivacySandboxExtensionsAPI": {
+    "message": "Katkestame API chrome.privacy.websites.privacySandboxEnabled toe, kuid see j\u00e4\u00e4b tagasiulatuva \u00fchilduvuse pakkumiseks aktiivseks kuni versioonini M113. Kasutage selle asemel API-sid chrome.privacy.websites.topicsEnabled, chrome.privacy.websites.fledgeEnabled jachrome.privacy.websites.adMeasurementEnabled. Vt https://developer.chrome.com/docs/extensions/reference/privacy/#property-websites-privacySandboxEnabled."
+  },
+  "generated/Deprecation.ts | RTCConstraintEnableDtlsSrtpFalse": {
+    "message": "Piirang DtlsSrtpKeyAgreement on eemaldatud. Olete sellele piirangule m\u00e4\u00e4ranud v\u00e4\u00e4rtuse false, mida t\u00f5lgendatakse katsena kasutada eemaldatud meetodit SDES key negotiation. See funktsioon on eemaldatud; kasutage selle asemel teenust, mis toetab meetodit DTLS key negotiation."
+  },
+  "generated/Deprecation.ts | RTCConstraintEnableDtlsSrtpTrue": {
+    "message": "Piirang DtlsSrtpKeyAgreement on eemaldatud. M\u00e4\u00e4rasite sellele piirangule v\u00e4\u00e4rtuse true, millel ei olnud m\u00f5ju, kuid saate selle piirangu korrap\u00e4rasuse huvides eemaldada."
+  },
+  "generated/Deprecation.ts | RTCPeerConnectionGetStatsLegacyNonCompliant": {
+    "message": "Tagasihelistamisp\u00f5hise meetodi getStats() tugi on katkestatud ja see eemaldatakse. Kasutage selle asemel spetsifikatsioone j\u00e4rgivat meetodit getStats()."
+  },
+  "generated/Deprecation.ts | RangeExpand": {
+    "message": "API Range.expand() tugi on katkestatud. Kasutage selle asemel API-t Selection.modify()."
+  },
+  "generated/Deprecation.ts | RequestedSubresourceWithEmbeddedCredentials": {
+    "message": "Alamressursside taotlused, mille URL-id sisaldavad manustatud mandaate (nt https://user:pass@host/), on blokeeritud."
+  },
+  "generated/Deprecation.ts | RtcpMuxPolicyNegotiate": {
+    "message": "Valiku rtcpMuxPolicy tugi on katkestatud ja see eemaldatakse."
+  },
+  "generated/Deprecation.ts | SharedArrayBufferConstructedWithoutIsolation": {
+    "message": "SharedArrayBuffer n\u00f5uab l\u00e4htekoha\u00fclest isoleerimist. Vaadake lisateavet aadressilt https://developer.chrome.com/blog/enabling-shared-array-buffer/."
+  },
+  "generated/Deprecation.ts | TextToSpeech_DisallowedByAutoplay": {
+    "message": "API speechSynthesis.speak() kutsumise tugi ilma kasutajapoolse aktiveerimiseta on katkestatud ja see funktsioon eemaldatakse."
+  },
+  "generated/Deprecation.ts | UnloadHandler": {
+    "message": "Mahalaadimiss\u00fcndmuse kuulajate tugi on katkestatud ja need eemaldatakse."
+  },
+  "generated/Deprecation.ts | V8SharedArrayBufferConstructedInExtensionWithoutIsolation": {
+    "message": "Laiendused peavad lubama l\u00e4htekoha\u00fclese isoleerimise, et \u00fcksuse SharedArrayBuffer kasutamist j\u00e4tkata. Vt https://developer.chrome.com/docs/extensions/mv3/cross-origin-isolation/."
+  },
+  "generated/Deprecation.ts | XHRJSONEncodingDetection": {
+    "message": "JSON-vastus ei toeta vormingut UTF-16 atribuudis XMLHttpRequest"
+  },
+  "generated/Deprecation.ts | XMLHttpRequestSynchronousInNonWorkerOutsideBeforeUnload": {
+    "message": "S\u00fcnkroonse atribuudi XMLHttpRequest tugi p\u00f5hil\u00f5imes on katkestatud, kuna see m\u00f5jub negatiivselt l\u00f5ppkasutaja kasutuskogemusele. Lisaabi saamiseks k\u00fclastage saiti https://xhr.spec.whatwg.org/."
+  },
+  "models/trace/insights/CLSCulprits.ts | animation": {
+    "message": "Animatsioon"
+  },
+  "models/trace/insights/CLSCulprits.ts | description": {
+    "message": "Paigutuse nihked tekivad, kui elemendid liiguvad ilma kasutaja interaktsioonita. [Uurige paigutuse nihete p\u00f5hjusi](https://web.dev/articles/optimize-cls), nagu elementide lisamine ja eemaldamine v\u00f5i nende fontide muutumine lehe laadimise ajal."
+  },
+  "models/trace/insights/CLSCulprits.ts | fontRequest": {
+    "message": "Fonditaotlus"
+  },
+  "models/trace/insights/CLSCulprits.ts | injectedIframe": {
+    "message": "Sisestatud iframe"
+  },
+  "models/trace/insights/CLSCulprits.ts | layoutShiftCluster": {
+    "message": "Paigutuse nihete klaster @ {PH1}"
+  },
+  "models/trace/insights/CLSCulprits.ts | noCulprits": {
+    "message": "Paigutuse nihke s\u00fc\u00fcdlasi ei \u00f5nnestunud tuvastada"
+  },
+  "models/trace/insights/CLSCulprits.ts | noLayoutShifts": {
+    "message": "Paigutuse nihkeid pole"
+  },
+  "models/trace/insights/CLSCulprits.ts | title": {
+    "message": "Paigutuse nihke p\u00f5hjused"
+  },
+  "models/trace/insights/CLSCulprits.ts | topCulprits": {
+    "message": "Paigutuse nihete peamised p\u00f5hjused"
+  },
+  "models/trace/insights/CLSCulprits.ts | unsizedImages": {
+    "message": "M\u00e4\u00e4ramata suurusega pildid"
+  },
+  "models/trace/insights/CLSCulprits.ts | worstCluster": {
+    "message": "Halvim klaster"
+  },
+  "models/trace/insights/CLSCulprits.ts | worstLayoutShiftCluster": {
+    "message": "Halvimate paigutuse nihete klaster"
+  },
+  "models/trace/insights/Cache.ts | cacheTTL": {
+    "message": "Vahem\u00e4lu TTL"
+  },
+  "models/trace/insights/Cache.ts | description": {
+    "message": "Vahem\u00e4lu pikk eluiga v\u00f5ib teie lehel korduvaid k\u00fclastusi kiirendada. [Vaadake lisateavet](https://web.dev/uses-long-cache-ttl/)."
+  },
+  "models/trace/insights/Cache.ts | noRequestsToCache": {
+    "message": "Ebat\u00f5husate vahem\u00e4lueeskirjadega taotlusi pole"
+  },
+  "models/trace/insights/Cache.ts | others": {
+    "message": "{PH1} muud \u00fcksust"
+  },
+  "models/trace/insights/Cache.ts | requestColumn": {
+    "message": "Taotlus"
+  },
+  "models/trace/insights/Cache.ts | title": {
+    "message": "Vahem\u00e4lu t\u00f5husate eluigade kasutamine"
+  },
+  "models/trace/insights/DOMSize.ts | description": {
+    "message": "Suur DOM v\u00f5ib pikendada stiiliarvutuste ja paigutuste taaslaadimiste kestust ning m\u00f5jutada sellega lehe reageerimiskiirust. Suur DOM suurendab ka m\u00e4lukasutust. [Vaadake, kuidas v\u00e4ltida liiga suurt DOM-i](https://developer.chrome.com/docs/lighthouse/performance/dom-size/)."
+  },
+  "models/trace/insights/DOMSize.ts | element": {
+    "message": "Element"
+  },
+  "models/trace/insights/DOMSize.ts | maxChildren": {
+    "message": "Enamik alamelemente"
+  },
+  "models/trace/insights/DOMSize.ts | maxDOMDepth": {
+    "message": "DOM-i s\u00fcgavus"
+  },
+  "models/trace/insights/DOMSize.ts | statistic": {
+    "message": "Statistika"
+  },
+  "models/trace/insights/DOMSize.ts | title": {
+    "message": "DOM-i suuruse optimeerimine"
+  },
+  "models/trace/insights/DOMSize.ts | totalElements": {
+    "message": "Elemente kokku"
+  },
+  "models/trace/insights/DOMSize.ts | value": {
+    "message": "V\u00e4\u00e4rtus"
+  },
+  "models/trace/insights/DocumentLatency.ts | description": {
+    "message": "Teie esimene v\u00f5rgup\u00e4ring on k\u00f5ige t\u00e4htsam.  V\u00e4hendage selle latentsusaega, v\u00e4ltides \u00fcmbersuunamisi, tagades serveri kiire vastuse ja lubades teksti tihendamist."
+  },
+  "models/trace/insights/DocumentLatency.ts | failedRedirects": {
+    "message": "Esines \u00fcmbersuunamisi"
+  },
+  "models/trace/insights/DocumentLatency.ts | failedServerResponseTime": {
+    "message": "Server reageeris aeglaselt"
+  },
+  "models/trace/insights/DocumentLatency.ts | failedTextCompression": {
+    "message": "Tihendamist pole rakendatud"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingRedirects": {
+    "message": "V\u00e4ltige \u00fcmbersuunamisi"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingServerResponseTime": {
+    "message": "Server reageerib kiiresti"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingTextCompression": {
+    "message": "Rakendab teksti tihendamise"
+  },
+  "models/trace/insights/DocumentLatency.ts | redirectsLabel": {
+    "message": "\u00dcmbersuunamised"
+  },
+  "models/trace/insights/DocumentLatency.ts | serverResponseTimeLabel": {
+    "message": "Serveri reageerimisaeg"
+  },
+  "models/trace/insights/DocumentLatency.ts | title": {
+    "message": "Dokumendi taotluse latentsusaeg"
+  },
+  "models/trace/insights/DocumentLatency.ts | uncompressedDownload": {
+    "message": "Tihendamata s\u00fcndmuse allalaadimine"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | columnDuplicatedBytes": {
+    "message": "Duplikaatbaidid"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | columnSource": {
+    "message": "Allikas"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | description": {
+    "message": "Eemaldage pakettidest suured topelt JavaScripti moodulid, et v\u00e4hendada v\u00f5rgutegevuse tarbetut baidikulu."
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | title": {
+    "message": "Duplikaat-JavaScript"
+  },
+  "models/trace/insights/FontDisplay.ts | description": {
+    "message": "Kaaluge seade [font-display](https://developer.chrome.com/blog/font-display) m\u00e4\u00e4ramist v\u00e4\u00e4rtusele swap v\u00f5i optional, et tagada teksti \u00fchtlane n\u00e4htavus. Seadet swap saab veelgi optimeerida, et leevendada k\u00fcljenduse nihkeid [fondi m\u00f5\u00f5dikute alistamisega](https://developer.chrome.com/blog/font-fallbacks)."
+  },
+  "models/trace/insights/FontDisplay.ts | fontColumn": {
+    "message": "Font"
+  },
+  "models/trace/insights/FontDisplay.ts | title": {
+    "message": "Fontide kuvamine"
+  },
+  "models/trace/insights/FontDisplay.ts | wastedTimeColumn": {
+    "message": "Kulutatud aeg"
+  },
+  "models/trace/insights/ForcedReflow.ts | anonymous": {
+    "message": "(anon\u00fc\u00fcmne)"
+  },
+  "models/trace/insights/ForcedReflow.ts | description": {
+    "message": "Paljud API-d (mis tavaliselt loevad paigutuse geomeetriat) sunnivad stiili ja paigutuse arvutamiseks renderdusmootoril skripti k\u00e4itamise peatama. Vaadake lisateavet [sunnitud taaslaadimise](https://developers.google.com/web/fundamentals/performance/rendering/avoid-large-complex-layouts-and-layout-thrashing#avoid-forced-synchronous-layouts) ja selle leevendusmeetmete kohta."
+  },
+  "models/trace/insights/ForcedReflow.ts | relatedStackTrace": {
+    "message": "Virna j\u00e4lg"
+  },
+  "models/trace/insights/ForcedReflow.ts | title": {
+    "message": "J\u00f5ustatud tagasivoog"
+  },
+  "models/trace/insights/ForcedReflow.ts | topTimeConsumingFunctionCall": {
+    "message": "Peamine funktsioonikutse"
+  },
+  "models/trace/insights/ForcedReflow.ts | totalReflowTime": {
+    "message": "Taaslaadimise aeg kokku"
+  },
+  "models/trace/insights/ForcedReflow.ts | unattributed": {
+    "message": "[omistamata]"
+  },
+  "models/trace/insights/ImageDelivery.ts | description": {
+    "message": "Kujutiste allalaadimisaja l\u00fchendamine v\u00f5ib parandada lehe ja LCP tajutavat laadimisaega. [Lisateave piltreklaami suuruse optimeerimise kohta](https://developer.chrome.com/docs/lighthouse/performance/uses-optimized-images/)"
+  },
+  "models/trace/insights/ImageDelivery.ts | estimatedSavings": {
+    "message": "{PH1} (hinnanguliselt {PH2})"
+  },
+  "models/trace/insights/ImageDelivery.ts | noOptimizableImages": {
+    "message": "Optimeeritavaid kujutisi ei ole"
+  },
+  "models/trace/insights/ImageDelivery.ts | optimizeFile": {
+    "message": "Faili suuruse optimeerimine"
+  },
+  "models/trace/insights/ImageDelivery.ts | others": {
+    "message": "{PH1} muud \u00fcksust"
+  },
+  "models/trace/insights/ImageDelivery.ts | title": {
+    "message": "Kujutise saatmise parandamine"
+  },
+  "models/trace/insights/ImageDelivery.ts | useCompression": {
+    "message": "Pildi tihendusteguri suurendamine v\u00f5ib pildi allalaadimismahtu v\u00e4hendada."
+  },
+  "models/trace/insights/ImageDelivery.ts | useModernFormat": {
+    "message": "Pildi allalaadimismahu v\u00e4hendamiseks v\u00f5ite kasutada uuemat pildivormingut (WebP, AVIF) v\u00f5i suurendada pildi tihendust."
+  },
+  "models/trace/insights/ImageDelivery.ts | useResponsiveSize": {
+    "message": "See pildifail on kuvatavate m\u00f5\u00f5tmete ({PH1}) jaoks suurem kui vaja ({PH2}). Kasutage pildi allalaadimismahu v\u00e4hendamiseks automaatselt kohanduvaid kujutisi."
+  },
+  "models/trace/insights/ImageDelivery.ts | useVideoFormat": {
+    "message": "Videovormingute kasutamine GIF-ide asemel v\u00f5ib animeeritud sisu allalaadimismahtu v\u00e4hendada."
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | description": {
+    "message": "Alustage uurimist pikimast faasist. [Viivitusi saab minimeerida](https://web.dev/articles/optimize-inp#optimize_interactions). T\u00f6\u00f6tlemise kestuse v\u00e4hendamiseks [optimeerige p\u00f5hil\u00f5ime kulusid](https://web.dev/articles/optimize-long-tasks), sageli JS."
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | duration": {
+    "message": "Kestus"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | inputDelay": {
+    "message": "Sisendi viivitus"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | noInteractions": {
+    "message": "Interaktsioone ei tuvastatud"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | phase": {
+    "message": "Faas"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | presentationDelay": {
+    "message": "Esitamise viiteaeg"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | processingDuration": {
+    "message": "T\u00f6\u00f6tlemise kestus"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | title": {
+    "message": "INP faasi j\u00e4rgi"
+  },
+  "models/trace/insights/LCPDiscovery.ts | description": {
+    "message": "Optimeerige LCP-d, muutes LCP-pildi HTMList kohe [leitavaks](https://web.dev/articles/optimize-lcp#1_eliminate_resource_load_delay) ja [v\u00e4ltides laiska laadimist](https://web.dev/articles/lcp-lazy-loading)"
+  },
+  "models/trace/insights/LCPDiscovery.ts | fetchPriorityApplied": {
+    "message": "fetchpriority=high on rakendatud"
+  },
+  "models/trace/insights/LCPDiscovery.ts | fetchPriorityShouldBeApplied": {
+    "message": "Rakendatud peab olema fetchpriority=high"
+  },
+  "models/trace/insights/LCPDiscovery.ts | lazyLoadNotApplied": {
+    "message": "laiska laadimist pole rakendatud"
+  },
+  "models/trace/insights/LCPDiscovery.ts | lcpLoadDelay": {
+    "message": "LCP kujutis laaditi {PH1} p\u00e4rast k\u00f5ige varasemat alguspunkti."
+  },
+  "models/trace/insights/LCPDiscovery.ts | noLcp": {
+    "message": "LCP-d ei tuvastatud"
+  },
+  "models/trace/insights/LCPDiscovery.ts | noLcpResource": {
+    "message": "LCP ressursse ei tuvastatud, kuna LCP ei ole kujutis"
+  },
+  "models/trace/insights/LCPDiscovery.ts | requestDiscoverable": {
+    "message": "P\u00e4ring on algsest dokumendist leitav"
+  },
+  "models/trace/insights/LCPDiscovery.ts | title": {
+    "message": "Teave LCP taotluse kohta"
+  },
+  "models/trace/insights/LCPPhases.ts | description": {
+    "message": "Igal [etapil on konkreetsed parandamisstrateegiad](https://web.dev/articles/optimize-lcp#lcp-breakdown). Ideaalis tuleks suurem osa LCP-ajast kulutada allikate laadimisele, mitte viivitustele."
+  },
+  "models/trace/insights/LCPPhases.ts | duration": {
+    "message": "Kestus"
+  },
+  "models/trace/insights/LCPPhases.ts | elementRenderDelay": {
+    "message": "Elemendi renderdamise viivitus"
+  },
+  "models/trace/insights/LCPPhases.ts | fieldDuration": {
+    "message": "V\u00e4lja 75-protsentiil"
+  },
+  "models/trace/insights/LCPPhases.ts | noLcp": {
+    "message": "LCP-d ei tuvastatud"
+  },
+  "models/trace/insights/LCPPhases.ts | phase": {
+    "message": "Faas"
+  },
+  "models/trace/insights/LCPPhases.ts | resourceLoadDelay": {
+    "message": "Ressursi laadimise viivitus"
+  },
+  "models/trace/insights/LCPPhases.ts | resourceLoadDuration": {
+    "message": "Allika laadimise kestus"
+  },
+  "models/trace/insights/LCPPhases.ts | timeToFirstByte": {
+    "message": "Aeg esimese baidini"
+  },
+  "models/trace/insights/LCPPhases.ts | title": {
+    "message": "LCP faaside kaupa"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | columnScript": {
+    "message": "Skript"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | columnWastedBytes": {
+    "message": "Kulutatud baidid"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | description": {
+    "message": "Pol\u00fct\u00e4ited ja teisendused v\u00f5imaldavad p\u00e4randbrauseritel kasutada uusi JavaScripti funktsioone. Paljud neist ei ole aga t\u00e4nap\u00e4evaste brauserite jaoks vajalikud. Kaaluge oma JavaScripti arendusprotsessi muutmist selliselt, et mitte transpileerida [v\u00f5rdlusaluseks olevaid](https://web.dev/articles/baseline-and-polyfills) funktsioone (v\u00e4lja arvatud juhul, kui teate, et peate toetama p\u00e4randbrausereid). [Vaadake, miks enamik saite saavad juurutada ES6+ koodi ilma transpileerimata](https://philipwalton.com/articles/the-state-of-es5-on-the-web/)"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | title": {
+    "message": "P\u00e4rand-JavaScript"
+  },
+  "models/trace/insights/ModernHTTP.ts | description": {
+    "message": "HTTP/2 ja HTTP/3 pakuvad HTTP/1.1 ees mitmesuguseid eeliseid, nt multipleksimine. [Vaadake lisateavet t\u00e4nap\u00e4evase HTTP kasutamise kohta](https://developer.chrome.com/docs/lighthouse/best-practices/uses-http2/)."
+  },
+  "models/trace/insights/ModernHTTP.ts | noOldProtocolRequests": {
+    "message": "\u00dckski p\u00e4ring ei kasutanud HTTP/1.1"
+  },
+  "models/trace/insights/ModernHTTP.ts | protocol": {
+    "message": "Protokoll"
+  },
+  "models/trace/insights/ModernHTTP.ts | request": {
+    "message": "Taotlus"
+  },
+  "models/trace/insights/ModernHTTP.ts | title": {
+    "message": "T\u00e4nap\u00e4evane HTTP"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | description": {
+    "message": "[V\u00e4ltige kriitiliste taotluste aheldamist](https://developer.chrome.com/docs/lighthouse/performance/critical-request-chains), v\u00e4hendades ahelate pikkust ja ressursside allalaadimismahtu v\u00f5i l\u00fckates edasi tarbetute ressursside allalaadimist, et lehe laadimist t\u00e4iustada."
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | maxCriticalPathLatency": {
+    "message": "Kriitilise tee maksimaalne latentsusaeg:"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | noNetworkDependencyTree": {
+    "message": "V\u00f5rgust s\u00f5ltuvaid renderdustoiminguid ei ole"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | title": {
+    "message": "V\u00f5rgu s\u00f5ltuvuspuu"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | warningDescription": {
+    "message": "V\u00e4ltige kriitiliste taotluste aheldamist, v\u00e4hendades ahelate pikkust ja ressursside allalaadimismahtu v\u00f5i l\u00fckates edasi tarbetute ressursside allalaadimist, et lehe laadimist t\u00e4iustada."
+  },
+  "models/trace/insights/RenderBlocking.ts | description": {
+    "message": "Taotlused blokeerivad lehe algset renderdamist, mis v\u00f5ib LCP-d edasi l\u00fckata. [Edasil\u00fckkamine v\u00f5i tekstisisene kasutamine](https://web.dev/learn/performance/understanding-the-critical-path#render-blocking_resources/) v\u00f5ib liigutada need v\u00f5rgutaotlused kriitiliselt teelt v\u00e4lja."
+  },
+  "models/trace/insights/RenderBlocking.ts | duration": {
+    "message": "Kestus"
+  },
+  "models/trace/insights/RenderBlocking.ts | noRenderBlocking": {
+    "message": "Sellel navigeerimisel puuduvad renderdamise blokeerimise taotlused"
+  },
+  "models/trace/insights/RenderBlocking.ts | renderBlockingRequest": {
+    "message": "Taotlus"
+  },
+  "models/trace/insights/RenderBlocking.ts | title": {
+    "message": "Blokeerimistaotluste renderdamine"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | description": {
+    "message": "Kui stiili \u00fcmberarvutamise kulud j\u00e4\u00e4vad k\u00f5rgeks, v\u00f5ib valija optimeerimine neid v\u00e4hendada. [Optimeerige valijaid](https://developer.chrome.com/docs/devtools/performance/selector-stats) nii suure kulunud aja kui ka k\u00f5rge aeglase tee %-ga. Lihtsamad valijad, v\u00e4hem valijaid, v\u00e4iksem DOM ja madalam DOM v\u00e4hendavad vastendamiskulusid."
+  },
+  "models/trace/insights/SlowCSSSelector.ts | elapsed": {
+    "message": "Kulunud aeg"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | enableSelectorData": {
+    "message": "CSS-i valija andmeid ei leitud. CSS-i valija statistika peab olema toimivuse paneeli seadetes lubatud."
+  },
+  "models/trace/insights/SlowCSSSelector.ts | matchAttempts": {
+    "message": "Vastete katsed"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | matchCount": {
+    "message": "Vastete arv"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | title": {
+    "message": "CSSi valija kulud"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | topSelectors": {
+    "message": "Enim aega/pingutust n\u00f5udnud valijad"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | total": {
+    "message": "Kokku"
+  },
+  "models/trace/insights/ThirdParties.ts | columnMainThreadTime": {
+    "message": "P\u00f5hil\u00f5ime aeg"
+  },
+  "models/trace/insights/ThirdParties.ts | columnThirdParty": {
+    "message": "Kolmas osapool"
+  },
+  "models/trace/insights/ThirdParties.ts | columnTransferSize": {
+    "message": "Edastuse maht"
+  },
+  "models/trace/insights/ThirdParties.ts | description": {
+    "message": "Kolmanda osapoole kood v\u00f5ib laadimiskiirust m\u00e4rkimisv\u00e4\u00e4rselt m\u00f5jutada. Lehe sisu prioriseerimiseks v\u00f5ite [kolmanda osapoole koodi laadimist v\u00e4hendada ja edasi l\u00fckata](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/loading-third-party-javascript/)."
+  },
+  "models/trace/insights/ThirdParties.ts | noThirdParties": {
+    "message": "Kolmandaid osapooli ei leitud"
+  },
+  "models/trace/insights/ThirdParties.ts | title": {
+    "message": "Kolmandad osapooled"
+  },
+  "models/trace/insights/Viewport.ts | description": {
+    "message": "Kui vaatev\u00e4li pole mobiili jaoks optimeeritud, v\u00f5ivad puudutusinteraktsioonid [viibida kuni 300 ms](https://developer.chrome.com/blog/300ms-tap-delay-gone-away/)."
+  },
+  "models/trace/insights/Viewport.ts | title": {
+    "message": "Mobiili vaatev\u00e4lja optimeerimine"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | HTTPMethodNotGET": {
+    "message": "Tagasi-edasiliikumise vahem\u00e4lu jaoks on sobilikud ainult GET-p\u00e4ringu kaudu laaditud lehed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | HTTPStatusNotOK": {
+    "message": "Vahem\u00e4llu saab talletada ainult lehti, mille olekukood on 2XX."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | JavaScriptExecution": {
+    "message": "Chrome tuvastas JavaScripti k\u00e4ivitamise katse ajal, mil leht oli vahem\u00e4lus."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | appBanner": {
+    "message": "AppBannerit taotlenud lehed ei ole praegu tagasi-edasiliikumise vahem\u00e4lu jaoks sobilikud."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabled": {
+    "message": "Tagasi-edasiliikumise vahem\u00e4lu on lippudega keelatud. Minge aadressile chrome://flags/#back-forward-cache, et see selles seadmes kohalikult lubada."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledByCommandLine": {
+    "message": "Tagasi-edasiliikumise vahem\u00e4lu on k\u00e4sureal keelatud."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledByLowMemory": {
+    "message": "Tagasi-edasiliikumise vahem\u00e4lu on keelatud ebapiisava m\u00e4lumahu t\u00f5ttu."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledForDelegate": {
+    "message": "Delegaat ei toeta tagasi-edasiliikumise vahem\u00e4lu."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledForPrerender": {
+    "message": "Tagasi-edasiliikumise vahem\u00e4lu on eelrenderdaja jaoks keelatud."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | broadcastChannel": {
+    "message": "Lehte ei saa vahem\u00e4llu talletada, kuna sellel on registreeritud kuulajatega liidese BroadcastChannel eksemplar."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheControlNoStore": {
+    "message": "Lehed, millel on p\u00e4is cache-control:no-cache, ei saa tagasi-edasiliikumise vahem\u00e4llu siseneda."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheFlushed": {
+    "message": "Vahem\u00e4lu t\u00fchjendati tahtlikult."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheLimit": {
+    "message": "Leht eemaldati vahem\u00e4lust, et v\u00f5imaldada teist lehte vahem\u00e4llu talletada."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | containsPlugins": {
+    "message": "Pistikprogramme sisaldavad lehed ei ole praegu tagasi-edasiliikumise vahem\u00e4lu jaoks sobilikud."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentDiscarded": {
+    "message": "M\u00e4\u00e4ramata"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentFileChooser": {
+    "message": "FileChooser API-d kasutavad lehed ei ole tagasi-edasiliikumise vahem\u00e4lu jaoks sobilikud."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentFileSystemAccess": {
+    "message": "Failis\u00fcsteemi juurdep\u00e4\u00e4su API-d kasutavad lehed ei ole tagasi-edasiliikumise vahem\u00e4lu jaoks sobilikud."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaDevicesDispatcherHost": {
+    "message": "Media Device Dispatcherit kasutavad lehed ei ole tagasi-edasiliikumise vahem\u00e4lu jaoks sobilikud."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaPlay": {
+    "message": "Meediapleier t\u00f6\u00f6tas eemale navigeerimise ajal."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaSession": {
+    "message": "MediaSession API-d kasutavad ja taasesituse olekut m\u00e4\u00e4ravad lehed ei ole tagasi-edasiliikumise vahem\u00e4lu jaoks sobilikud."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaSessionService": {
+    "message": "MediaSession API-d kasutavad ja toimingut\u00f6\u00f6tlejaid m\u00e4\u00e4ravad lehed ei ole tagasi-edasiliikumise vahem\u00e4lu jaoks sobilikud."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentScreenReader": {
+    "message": "Tagasi-edasiliikumise vahem\u00e4lu on ekraanilugeja t\u00f5ttu keelatud."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentSecurityHandler": {
+    "message": "Objekti SecurityHandler kasutavad lehed ei ole tagasi-edasiliikumise vahem\u00e4lu jaoks sobilikud."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentSerial": {
+    "message": "Serial API-d kasutavad lehed ei ole tagasi-edasiliikumise vahem\u00e4lu jaoks sobilikud."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebAuthenticationAPI": {
+    "message": "WebAuthetication API-d kasutavad lehed ei ole tagasi-edasiliikumise vahem\u00e4lu jaoks sobilikud."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebBluetooth": {
+    "message": "WebBluetooth API-d kasutavad lehed ei ole tagasi-edasiliikumise vahem\u00e4lu jaoks sobilikud."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebUSB": {
+    "message": "WebUSB API-d kasutavad lehed ei ole tagasi-edasiliikumise vahem\u00e4lu jaoks sobilikud."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cookieDisabled": {
+    "message": "Tagasi-edasiliikumise vahem\u00e4lu on keelatud, sest k\u00fcpsisefailid on keelatud lehel, mis kasutab direktiivi Cache-Control: no-store."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | dedicatedWorkerOrWorklet": {
+    "message": "Spetsiaalset t\u00f6\u00f6tajat v\u00f5i t\u00f6\u00f6ki kasutavad lehed ei ole praegu tagasi-edasiliikumise vahem\u00e4lu jaoks sobilikud."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | documentLoaded": {
+    "message": "Dokumendi laadimine ei j\u00f5udnud enne eemale navigeerimist l\u00f5pule."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderAppBannerManager": {
+    "message": "Eemale navigeerimise ajal oli rakenduse b\u00e4nner aktiivne."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderChromePasswordManagerClientBindCredentialManager": {
+    "message": "Eemale navigeerimise ajal oli Chrome'i paroolihaldur aktiivne."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderDomDistillerSelfDeletingRequestDelegate": {
+    "message": "Eemale navigeerimise ajal oli DOM-destilleerimine pooleli."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderDomDistillerViewerSource": {
+    "message": "Eemale navigeerimise ajal oli DOM-destilleerija vaatur aktiivne."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionMessaging": {
+    "message": "Tagasi-edasiliikumise vahem\u00e4lu on keelatud, kuna laiendused kasutavad s\u00f5numside API-t."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionMessagingForOpenPort": {
+    "message": "Pikaajalise \u00fchendusega laiendused peaksid enne tagasi-edasiliikumise vahem\u00e4lu aktiveerimist \u00fchenduse katkestama."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionSentMessageToCachedFrame": {
+    "message": "Pikaajalise \u00fchendusega laiendused \u00fcritasid tagasi-edasiliikumise vahem\u00e4lus saata kaadritele s\u00f5numeid."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensions": {
+    "message": "Tagasi-edasiliikumise vahem\u00e4lu on laienduste t\u00f5ttu keelatud."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderModalDialog": {
+    "message": "Eemale navigeerimise ajal kuvati lehe puhul modaaldialoog, nt vormi uuesti esitamise v\u00f5i http-parooli dialoog."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderOfflinePage": {
+    "message": "Eemale navigeerimise ajal kuvati v\u00f5rgu\u00fchenduseta leht."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderOomInterventionTabHelper": {
+    "message": "Eemale navigeerimise ajal oli teaberiba M\u00e4lu on otsas aktiivne."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderPermissionRequestManager": {
+    "message": "Eemale navigeerimise ajal esitati lubade taotlused."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderPopupBlockerTabHelper": {
+    "message": "Eemale navigeerimise ajal oli kasutusel h\u00fcpikakende blokeerija."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderSafeBrowsingThreatDetails": {
+    "message": "Eemale navigeerimise ajal kuvati Google'i ohutu sirvimise \u00fcksikasjad."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderSafeBrowsingTriggeredPopupBlocker": {
+    "message": "Google'i ohutu sirvimine luges selle lehe pahatahtlikuks ja blokeeris h\u00fcpikakna."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | enteredBackForwardCacheBeforeServiceWorkerHostAdded": {
+    "message": "Teenuse t\u00f6\u00f6tleja aktiveeriti ajal, mil leht oli tagasi-edasiliikumise vahem\u00e4lus."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | errorDocument": {
+    "message": "Tagasi-edasiliikumise vahem\u00e4lu on dokumendivea t\u00f5ttu keelatud."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | fencedFramesEmbedder": {
+    "message": "Funktsiooni FencedFrames kasutavaid lehti ei saa talletada tagasi-edasiliikumise vahem\u00e4lus."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | foregroundCacheLimit": {
+    "message": "Leht eemaldati vahem\u00e4lust, et v\u00f5imaldada teist lehte vahem\u00e4llu talletada."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | grantedMediaStreamAccess": {
+    "message": "Lehed, mis on andnud meediasisu voogesitamise juurdep\u00e4\u00e4su, ei ole praegu tagasi-edasiliikumise vahem\u00e4lu jaoks sobilikud."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | haveInnerContents": {
+    "message": "Lehed, millel on teatud t\u00fc\u00fcpi manussisu (nt PDF-id), pole praegu vahem\u00e4lu tagasi-edasiliikumiseks sobilikud."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | idleManager": {
+    "message": "Liidest IdleManager kasutavad lehed ei ole praegu tagasi-edasiliikumise vahem\u00e4lu jaoks sobilikud."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | indexedDBConnection": {
+    "message": "Lehed, millel on avatud IndexedDB \u00fchendus, ei ole praegu tagasi-edasiliikumise vahem\u00e4lu jaoks sobilikud."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | indexedDBEvent": {
+    "message": "Vahem\u00e4lu tagasi-edasiliikumiseks on IndexedDB s\u00fcndmuse t\u00f5ttu keelatud."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | ineligibleAPI": {
+    "message": "Kasutati sobimatuid API-sid."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | injectedJavascript": {
+    "message": "Lehed, millele sisestatakse JavaScript laienduste kaudu, ei ole praegu tagasi-edasiliikumise vahem\u00e4lu jaoks sobilikud."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | injectedStyleSheet": {
+    "message": "Lehed, millele sisestatakse StyleSheet laienduste kaudu, ei ole praegu tagasi-edasiliikumise vahem\u00e4lu jaoks sobilikud."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | internalError": {
+    "message": "Sisemine viga."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | jsNetworkRequestReceivedCacheControlNoStoreResource": {
+    "message": "Tagasi-edasiliikumise vahem\u00e4lu on keelatud, sest m\u00f5ni JavaScripti v\u00f5rgutaotlus sai ressursi p\u00e4isega Cache-Control: no-store."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | keepaliveRequest": {
+    "message": "Tagasi-edasiliikumise vahem\u00e4lu on s\u00e4ilitamiss\u00f5numi taotluse t\u00f5ttu keelatud."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | keyboardLock": {
+    "message": "Klaviatuurilukku kasutavad lehed ei ole praegu tagasi-edasiliikumise vahem\u00e4lu jaoks sobilikud."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | loading": {
+    "message": "Lehe laadimine ei j\u00f5udnud enne eemale navigeerimist l\u00f5pule."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | mainResourceHasCacheControlNoCache": {
+    "message": "Lehed, mille peamine ressurss h\u00f5lmab atribuuti cache-control:no-cache, ei saa tagasi-edasiliikumise vahem\u00e4llu siseneda."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | mainResourceHasCacheControlNoStore": {
+    "message": "Lehed, mille peamine ressurss h\u00f5lmab atribuuti cache-control:no-store, ei saa tagasi-edasiliikumise vahem\u00e4llu siseneda."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | navigationCancelledWhileRestoring": {
+    "message": "Navigeerimine t\u00fchistati enne, kui leht tagasi-edasiliikumise vahem\u00e4lust taastati."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkExceedsBufferLimit": {
+    "message": "Leht eemaldati vahem\u00e4lust, kuna aktiivne v\u00f5rgu\u00fchendus v\u00f5ttis vastu liiga palju andmeid. Chrome piirab andmehulka, mida vahem\u00e4lus olev leht v\u00f5ib vastu v\u00f5tta."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestDatapipeDrainedAsBytesConsumer": {
+    "message": "Lehed, millel on pooleliolev fetch() v\u00f5i XHR, ei ole praegu tagasi-edasiliikumise vahem\u00e4lu jaoks sobilikud."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestRedirected": {
+    "message": "Leht eemaldati tagasi-edasiliikumise vahem\u00e4lust, kuna aktiivne v\u00f5rgutaotlus h\u00f5lmas \u00fcmbersuunamist."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestTimeout": {
+    "message": "Leht eemaldati vahem\u00e4lust, kuna v\u00f5rgu\u00fchendus oli liiga pikka aega avatud. Chrome piirab aega, mille jooksul vahem\u00e4lus olev leht v\u00f5ib andmeid vastu v\u00f5tta."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | noResponseHead": {
+    "message": "Lehed, millel puudub kehtiv vastuse p\u00e4is, ei saa tagasi-edasiliikumise vahem\u00e4llu siseneda."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | notMainFrame": {
+    "message": "Navigeerimine toimus raamis, mis ei ole peamine raam."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingIndexedDBTransaction": {
+    "message": "K\u00e4imasolevate indekseeritud andmebaasi tehingutega lehed ei ole praegu tagasi-edasiliikumise vahem\u00e4lu jaoks sobilikud."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestDirectSocket": {
+    "message": "Poolelioleva v\u00f5rgutaotlusega lehed ei ole praegu tagasi-edasiliikumise vahem\u00e4lu jaoks sobilikud."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestFetch": {
+    "message": "Poolelioleva toomise v\u00f5rgutaotlusega lehed ei ole praegu tagasi-edasiliikumise vahem\u00e4lu jaoks sobilikud."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestOthers": {
+    "message": "Poolelioleva v\u00f5rgutaotlusega lehed ei ole praegu tagasi-edasiliikumise vahem\u00e4lu jaoks sobilikud."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestXHR": {
+    "message": "Poolelioleva XHR-i v\u00f5rgutaotlusega lehed ei ole praegu tagasi-edasiliikumise vahem\u00e4lu jaoks sobilikud."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | paymentManager": {
+    "message": "Liidest PaymentManager kasutavad lehed ei ole praegu tagasi-edasiliikumise vahem\u00e4lu jaoks sobilikud."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | pictureInPicture": {
+    "message": "Funktsiooni Pilt pildis kasutavad lehed ei ole praegu tagasi-edasiliikumise vahem\u00e4lu jaoks sobilikud."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | printing": {
+    "message": "Lehed, mis n\u00e4itavad printimise kasutajaliidest, ei ole praegu tagasi-edasiliikumise vahem\u00e4lu jaoks sobilikud."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | relatedActiveContentsExist": {
+    "message": "Leht avati meetodiga \u201ewindow.open()\u201c ja teine vaheleht viitab sellele v\u00f5i leht avati aknas."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | rendererProcessCrashed": {
+    "message": "Tagasi-edasiliikumise vahem\u00e4lus oleva lehe renderdaja protsess jooksis kokku."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | rendererProcessKilled": {
+    "message": "Tagasi-edasiliikumise vahem\u00e4lus oleva lehe renderdaja protsess katkestati."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedAudioCapturePermission": {
+    "message": "Heli j\u00e4\u00e4dvustamise lube taotlenud lehed ei ole praegu tagasi-edasiliikumise vahem\u00e4lu jaoks sobilikud."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedBackForwardCacheBlockedSensors": {
+    "message": "Lehed, mis on taotlenud andurite lube, ei ole praegu tagasi-edasiliikumise vahem\u00e4lu jaoks sobilikud."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedBackgroundWorkPermission": {
+    "message": "Lehed, mis on taotlenud taustal s\u00fcnkroonimise v\u00f5i toomise lube, ei ole praegu tagasi-edasiliikumise vahem\u00e4lu jaoks sobilikud."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedMIDIPermission": {
+    "message": "MIDI lube taotlenud lehed ei ole praegu tagasi-edasiliikumise vahem\u00e4lu jaoks sobilikud."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedNotificationsPermission": {
+    "message": "M\u00e4rguannete lube taotlenud lehed ei ole praegu tagasi-edasiliikumise vahem\u00e4lu jaoks sobilikud."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedStorageAccessGrant": {
+    "message": "Lehed, mis on taotlenud juurdep\u00e4\u00e4su salvestusruumile, ei ole praegu tagasi-edasiliikumise vahem\u00e4lu jaoks sobilikud."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedVideoCapturePermission": {
+    "message": "Video j\u00e4\u00e4dvustamise lube taotlenud lehed ei ole praegu tagasi-edasiliikumise vahem\u00e4lu jaoks sobilikud."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | schemeNotHTTPOrHTTPS": {
+    "message": "Vahem\u00e4llu saab talletada ainult lehti, mille URL-i skeem on HTTP/HTTPS."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerClaim": {
+    "message": "Teenuse t\u00f6\u00f6tleja taotles seda lehte ajal, mil see oli tagasi-edasiliikumise vahem\u00e4lus."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerPostMessage": {
+    "message": "Teenuse t\u00f6\u00f6taja \u00fcritas saata tagasi-edasiliikumise vahem\u00e4lus olevale lehele atribuuti MessageEvent."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerUnregistration": {
+    "message": "ServiceWorker oli registreerimata ajal, mil leht oli tagasi-edasiliikumise vahem\u00e4lus."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerVersionActivation": {
+    "message": "Leht eemaldati tagasi-edasiliikumise vahem\u00e4lust teenuse t\u00f6\u00f6taja aktiveerimise t\u00f5ttu."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | sessionRestored": {
+    "message": "Chrome taask\u00e4ivitus ja t\u00fchjendas tagasi-edasiliikumise vahem\u00e4lu kirjed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | sharedWorker": {
+    "message": "Liidest SharedWorker kasutavad lehed ei ole praegu tagasi-edasiliikumise vahem\u00e4lu jaoks sobilikud."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | speechRecognizer": {
+    "message": "Liidest SpeechRecognizer kasutavad lehed ei ole praegu tagasi-edasiliikumise vahem\u00e4lu jaoks sobilikud."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | speechSynthesis": {
+    "message": "Liidest SpeechSynthesis kasutavad lehed ei ole praegu tagasi-edasiliikumise vahem\u00e4lu jaoks sobilikud."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subframeIsNavigating": {
+    "message": "Lehel olev iframe alustas navigeerimist, mida ei viidud l\u00f5pule."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subresourceHasCacheControlNoCache": {
+    "message": "Lehed, mille alamressurss h\u00f5lmab atribuuti cache-control:no-cache, ei saa tagasi-edasiliikumise vahem\u00e4llu siseneda."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subresourceHasCacheControlNoStore": {
+    "message": "Lehed, mille alamressurss h\u00f5lmab atribuuti cache-control:no-store, ei saa tagasi-edasiliikumise vahem\u00e4llu siseneda."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | timeout": {
+    "message": "Leht \u00fcletas tagasi-edasiliikumise vahem\u00e4lus viibimise maksimumaja ja aegus."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | timeoutPuttingInCache": {
+    "message": "Lehel ilmnes tagasi-edasiliikumise vahem\u00e4llu sisenemisel ajal\u00f5pp (t\u00f5en\u00e4oliselt kaua t\u00f6\u00f6tanud lehe peitmise t\u00f6\u00f6tlejate t\u00f5ttu)."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | unloadHandlerExistsInMainFrame": {
+    "message": "Lehe p\u00f5hiraam sisaldab mahalaadimise t\u00f6\u00f6tlejat."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | unloadHandlerExistsInSubFrame": {
+    "message": "Lehe alamraam h\u00f5lmab mahalaadimise t\u00f6\u00f6tlejat."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | userAgentOverrideDiffers": {
+    "message": "Brauser on kasutaja-agendi alistamise p\u00e4ist muutnud."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | wasGrantedMediaAccess": {
+    "message": "Lehed, mis on andnud juurdep\u00e4\u00e4su video v\u00f5i heli salvestamiseks, ei ole praegu tagasi-edasiliikumise vahem\u00e4lu jaoks sobilikud."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webDatabase": {
+    "message": "Liidest WebDatabase kasutavad lehed ei ole praegu tagasi-edasiliikumiseks m\u00f5eldud vahem\u00e4lu jaoks sobilikud."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webHID": {
+    "message": "Liidest WebHID kasutavad lehed ei ole praegu tagasi-edasiliikumiseks m\u00f5eldud vahem\u00e4lu jaoks sobilikud."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webLocks": {
+    "message": "Liidest WebLocks kasutavad lehed ei ole praegu tagasi-edasiliikumiseks m\u00f5eldud vahem\u00e4lu jaoks sobilikud."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webNfc": {
+    "message": "Liidest WebNfc kasutavad lehed ei ole praegu tagasi-edasiliikumise vahem\u00e4lu jaoks sobilikud."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webOTPService": {
+    "message": "Teenust WebOTPService kasutavad lehed ei ole praegu tagasi-edasiliikumise vahem\u00e4lu jaoks sobilikud."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webRTC": {
+    "message": "WebRTC-ga lehed ei saa tagasi-edasiliikumise vahem\u00e4llu siseneda."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webRTCSticky": {
+    "message": "Tagasi-edasiliikumise vahem\u00e4lu on keelatud, sest kasutatud on WebRTC-d."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webShare": {
+    "message": "Liidest WebShare kasutavad lehed ei ole praegu tagasi-edasiliikumise vahem\u00e4lu jaoks sobilikud."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webSocket": {
+    "message": "WebSocketiga lehed ei saa tagasi-edasiliikumise vahem\u00e4llu siseneda."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webSocketSticky": {
+    "message": "Tagasi-edasiliikumise vahem\u00e4lu on keelatud, sest kasutatud on WebSocketit."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webTransport": {
+    "message": "Liidest WebTransport h\u00f5lmavad lehed ei saa tagasi-edasiliikumise vahem\u00e4llu siseneda."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webTransportSticky": {
+    "message": "Tagasi-edasiliikumise vahem\u00e4lu on keelatud, sest kasutatud on WebTransporti."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webXR": {
+    "message": "Liidest WebXR kasutavad lehed ei ole praegu tagasi-edasiliikumiseks m\u00f5eldud vahem\u00e4lu jaoks sobilikud."
+  }
+}

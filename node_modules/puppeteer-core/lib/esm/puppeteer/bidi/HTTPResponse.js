@@ -34,6 +34,7 @@ var __esDecorate = (this && this.__esDecorate) || function (ctor, descriptorIn, 
 };
 import { HTTPResponse } from '../api/HTTPResponse.js';
 import { UnsupportedOperation } from '../common/Errors.js';
+import { SecurityDetails } from '../common/SecurityDetails.js';
 import { invokeAtMostOnceForArguments } from '../util/decorators.js';
 /**
  * @internal
@@ -49,20 +50,29 @@ let BidiHTTPResponse = (() => {
             __esDecorate(this, null, _remoteAddress_decorators, { kind: "method", name: "remoteAddress", static: false, private: false, access: { has: obj => "remoteAddress" in obj, get: obj => obj.remoteAddress }, metadata: _metadata }, null, _instanceExtraInitializers);
             if (_metadata) Object.defineProperty(this, Symbol.metadata, { enumerable: true, configurable: true, writable: true, value: _metadata });
         }
-        static from(data, request) {
-            const response = new BidiHTTPResponse(data, request);
+        static from(data, request, cdpSupported) {
+            const response = new BidiHTTPResponse(data, request, cdpSupported);
             response.#initialize();
             return response;
         }
         #data = __runInitializers(this, _instanceExtraInitializers);
         #request;
-        constructor(data, request) {
+        #securityDetails;
+        #cdpSupported = false;
+        constructor(data, request, cdpSupported) {
             super();
             this.#data = data;
             this.#request = request;
+            this.#cdpSupported = cdpSupported;
+            // @ts-expect-error non-standard property.
+            const securityDetails = data['goog:securityDetails'];
+            if (cdpSupported && securityDetails) {
+                this.#securityDetails = new SecurityDetails(securityDetails);
+            }
         }
         #initialize() {
             if (this.#data.fromCache) {
+                this.#request._fromMemoryCache = true;
                 this.#request
                     .frame()
                     ?.page()
@@ -87,8 +97,7 @@ let BidiHTTPResponse = (() => {
         }
         headers() {
             const headers = {};
-            // TODO: Remove once the Firefox implementation is compliant with https://w3c.github.io/webdriver-bidi/#get-the-response-data.
-            for (const header of this.#data.headers || []) {
+            for (const header of this.#data.headers) {
                 // TODO: How to handle Binary Headers
                 // https://w3c.github.io/webdriver-bidi/#type-network-Header
                 if (header.value.type === 'string') {
@@ -104,8 +113,30 @@ let BidiHTTPResponse = (() => {
             return this.#data.fromCache;
         }
         timing() {
-            // TODO: File and issue with BiDi spec
-            throw new UnsupportedOperation();
+            const bidiTiming = this.#request.timing();
+            return {
+                requestTime: bidiTiming.requestTime,
+                proxyStart: -1,
+                proxyEnd: -1,
+                dnsStart: bidiTiming.dnsStart,
+                dnsEnd: bidiTiming.dnsEnd,
+                connectStart: bidiTiming.connectStart,
+                connectEnd: bidiTiming.connectEnd,
+                sslStart: bidiTiming.tlsStart,
+                sslEnd: -1,
+                workerStart: -1,
+                workerReady: -1,
+                workerFetchStart: -1,
+                workerRespondWithSettled: -1,
+                workerRouterEvaluationStart: -1,
+                workerCacheLookupStart: -1,
+                sendStart: bidiTiming.requestStart,
+                sendEnd: -1,
+                pushStart: -1,
+                pushEnd: -1,
+                receiveHeadersStart: bidiTiming.responseStart,
+                receiveHeadersEnd: bidiTiming.responseEnd,
+            };
         }
         frame() {
             return this.#request.frame();
@@ -114,9 +145,12 @@ let BidiHTTPResponse = (() => {
             return false;
         }
         securityDetails() {
-            throw new UnsupportedOperation();
+            if (!this.#cdpSupported) {
+                throw new UnsupportedOperation();
+            }
+            return this.#securityDetails ?? null;
         }
-        buffer() {
+        content() {
             throw new UnsupportedOperation();
         }
     };

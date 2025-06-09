@@ -1,0 +1,908 @@
+{
+  "generated/Deprecation.ts | AuthorizationCoveredByWildcard": {
+    "message": "Ukugunyazwa ngeke kumbozwe uphawu lwe-wildcard (*) esibambini se-CORSAccess-Control-Allow-Headers."
+  },
+  "generated/Deprecation.ts | CSSSelectorInternalMediaControlsOverlayCastButton": {
+    "message": "Isibaluli se-disableRemotePlayback kufanele sisetshenziswe ukuze kukhutshazwe ukuhlanganiswa Kokusakaza okuzenzakalelayo esikhundleni sokusebenzisa isikhethi se--internal-media-controls-overlay-cast-button."
+  },
+  "generated/Deprecation.ts | CSSValueAppearanceSliderVertical": {
+    "message": "Inani lokubukeka kwe-CSS slider-vertical alenziwanga lafana futhi lizosuswa."
+  },
+  "generated/Deprecation.ts | CanRequestURLHTTPContainingNewline": {
+    "message": "Izicelo zezinsiza ama-URL azo aqukethe womabili ama-whitespace asusiwe wezinhlamvu ze-\\(n|r|t) nezinhlamvu ezingaphansi (<) zivinjiwe. Sicela ususe imigqa emisha futhi ufake ikhodi ngaphansi kwezinhlamvu ezindaweni ezifana namanani esibaluli sesakhi ukuze ulayishe lezi zinsiza."
+  },
+  "generated/Deprecation.ts | CharsetAutoDetectionISO2022JP": {
+    "message": "Ukutholwa okuzenzekelayo kwesethi yezinhlamvu ze-ISO-2022-JP kuhoxisiwe futhi kuzoyekiswa ukusebenza esikhathini esiseduze esizayo. Sicela ucacise isethi yezinhlamvu esihlokweni soHlobo Lwekhontenti noma ngokusebenzisa ithegi ye-meta (https://developer.mozilla.org/en-US/docs/Glossary/Character_encoding)."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesConnectionInfo": {
+    "message": "I-chrome.loadTimes() yehlisiwe, esikhundleni salokho sebenzisa i-API ejwayelekile: Isikhathi Sokufuna 2."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesFirstPaintAfterLoadTime": {
+    "message": "I-chrome.loadTimes() ihoxisiwe, esikhundleni salokho sebenzisa i-API ejwayelekile: Isikhathi Sopende 2."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesWasAlternateProtocolAvailable": {
+    "message": "I-chrome.loadTimes() ihoxisiwe, esikhundleni salokho sebenzisa i-API ejwayelekile: i-nextHopProtocol Esikhathini Sokufuna 2."
+  },
+  "generated/Deprecation.ts | CookieWithTruncatingChar": {
+    "message": "Amakhukhi aqukethe uhlamvu lwe-\\(0|r|n) azonqatshwa esikhundleni sokuncishiswa."
+  },
+  "generated/Deprecation.ts | CrossOriginAccessBasedOnDocumentDomain": {
+    "message": "Ukuphumuza inqubomgomo yemvelaphi efanayo ngokusetha i-document.domain kuhoxisiwe, futhi kuzokhutshazwa ngokuzenzakalela. Lesi sexwayiso sokuhoxisa singesokufinyelela kwe-cross-origin ehlukene okunikwe amandla okulungiselela i-document.domain."
+  },
+  "generated/Deprecation.ts | CrossOriginWindowAlert": {
+    "message": "Isexwayiso esiqalisa iwindi. esisuka kuma-iframe omsuka ophambene sihoxisiwe futhi sizosuswa ngokuzayo."
+  },
+  "generated/Deprecation.ts | CrossOriginWindowConfirm": {
+    "message": "Ukucupha i-window.confirm ukusuka kuma-iframe omsuka ophambene kuhoxisiwe futhi kuzosuswa ngokuzayo."
+  },
+  "generated/Deprecation.ts | DOMMutationEvents": {
+    "message": "Imicimbi Yokuguqulwa Kwe-DOM, kufaka phakathi i-DOMSubtreeModified, i-DOMNodeInserted, i-DOMNodeRemoved, i-DOMNodeRemovedFromDocument, i-DOMNodeInsertedIntoDocument, ne-DOMCharacterDataModified zihoxisiwe (https://w3c.github.io/uievents/#legacy-event-types) futhi zizosuswa. Kunalokho sicela usebenzise i-MutationObserver."
+  },
+  "generated/Deprecation.ts | DataUrlInSvgUse": {
+    "message": "Ukusekela idatha: Ama-URL ku-SVGUseElement ayahoxiswa futhi azosuswa esikhathini esizayo."
+  },
+  "generated/Deprecation.ts | GeolocationInsecureOrigin": {
+    "message": "I-getCurrentPosition() ne-watchPosition() azisasebenzi ngemisuka engavikelekile. Ukuze usebenzise lesi sakhi, kufanele ucabangele ukushintsha i-app yakho kumsuka ovikelekile, njenge-HTTPS. Bheka i-https://goo.gle/chrome-insecure-origins mayelana nemininingwane eminingi."
+  },
+  "generated/Deprecation.ts | GeolocationInsecureOriginDeprecatedNotRemoved": {
+    "message": "I-getCurrentPosition() ne-watchPosition() zihoxisiwe kumisuka engavikelekile. Ukuze usebenzise lesi sakhi, kufanele ucabangele ukushintsha i-app yakho kumsuka ovikelekile, njenge-HTTPS. Bheka i-https://goo.gle/chrome-insecure-origins mayelana nemininingwane eminingi."
+  },
+  "generated/Deprecation.ts | GetUserMediaInsecureOrigin": {
+    "message": "I-getUserMedia() ayisasebenzi ngemisuka engavikelekile. Ukuze usebenzise lesi sakhi, kufanele ucabangele ukushintsha i-app yakho kumsuka ovikelekile, njenge-HTTPS. Bheka i-https://goo.gle/chrome-insecure-origins mayelana nemininingwane eminingi."
+  },
+  "generated/Deprecation.ts | H1UserAgentFontSizeInSection": {
+    "message": "Kutholwe ithegi ye-<h1> phakathi kwe-<ndaba>, <eceleni>, <zulazula>, noma <isigaba> engenawo usayizi wefonti oshiwo. Usayizi walo mbhalo wesihloko uzoshintsha kule bhrawuza maduze nje. Bheka okuthi https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#specifying_a_uniform_font_size_for_h1 ukuze uthole ulwazi olwengeziwe."
+  },
+  "generated/Deprecation.ts | HostCandidateAttributeGetter": {
+    "message": "I-RTCPeerConnectionIceErrorEvent.hostCandidate ihoxisiwe. Sicela usebenzise i-RTCPeerConnectionIceErrorEvent.address noma i-RTCPeerConnectionIceErrorEvent.port kunalokho."
+  },
+  "generated/Deprecation.ts | IdentityDigitalCredentials": {
+    "message": "Le fomethi yesicelo se-navigator.credentials.get() sezimfanelo zedijithali ihoxisiwe, sicela ubuyekeze ikholi yakho ukuze usebenzise ifomethi entsha."
+  },
+  "generated/Deprecation.ts | IdentityInCanMakePaymentEvent": {
+    "message": "Umsuka womthengisi kanye nedatha engafanele evela kumcimbi wesisebenzi sesevisi ye-canmakepayment wehlisiwe futhi uzosuswa: topOrigin, paymentRequestOrigin, methodData, modifiers."
+  },
+  "generated/Deprecation.ts | InsecurePrivateNetworkSubresourceRequest": {
+    "message": "Iwebhusayithi icele insiza engaphansi kunethiwekhi engayifinyelela kuphela ngenxa yesikhundla senethiwekhi esikhethekile sabasebenzisi. Lezi zicelo zidalula amathuluzi namaseva angewona asesidlangalaleni ku-inthanethi, okwandisa ingcuphe yokuhlaselwa komgunyathi we-cross-site request forgery (CSRF), kanye/noma ukuvezwa kolwazi. Ukuze kuncishiswe lezi zingozi, i-Chrome ihoxisa izicelo kwimithombo engaphansi okungeyona eyomphakathi uma iqalwa kusukela kokuqukethwe okungavikelekile, futhi izoqala ukuzivimba."
+  },
+  "generated/Deprecation.ts | InterestGroupDailyUpdateUrl": {
+    "message": "Inkambu ye-dailyUpdateUrl ye-InterestGroups idlule ku-joinAdInterestGroup() iqanjwe kabusha kuya ku-updateUrl, ukubonisa kahle ukuziphatha."
+  },
+  "generated/Deprecation.ts | IntlV8BreakIterator": {
+    "message": "I-Intl.v8BreakIterator ihoxisiwe. Kunalokho sicela usebenzise i-Intl.Segmenter."
+  },
+  "generated/Deprecation.ts | LocalCSSFileExtensionRejected": {
+    "message": "I-CSS ayikwazi ukulayishwa kusukela kuma-URL we-file: ngaphandle kwalapho uma ephela ngesijobelelo sefayela le-.css."
+  },
+  "generated/Deprecation.ts | MediaSourceAbortRemove": {
+    "message": "Ukusebenzisa i-SourceBuffer.abort() ukukhansela ukususwa kobubanzi obuvumelanayo be-remove() kuhoxisiwe ngenxa yoshintsho lwezicaciso. Usekelo luzosuswa esikhathini esizayo. Kunalokho kufanele ulalele umcimbi we-updateend. I-abort() ihloselwe ukukhansela kuphela isithasiselo semidiya esingavunyelanisiwe noma ukusetha kabusha isimo somhlahleli."
+  },
+  "generated/Deprecation.ts | MediaSourceDurationTruncatingBuffered": {
+    "message": "Ukusetha i-MediaSource.duration ngezansi kwesitembu sesikhathi esiphezulu sephrezentheshini sanoma yiziphi izinhlaka ezinekhodi ebhafiwe kuyehliswa ngenxa yoshintsho lwezicaciso. Ukusekela ukususwa okucacile kwemidiya ebhafiwe kuzosuswa ngokuzayo. Kunalokho kufanele wenze i-remove(newDuration, oldDuration) esobala kuwo wonke ama-sourceBuffers, lapho kune-newDuration < oldDuration."
+  },
+  "generated/Deprecation.ts | NoSysexWebMIDIWithoutPermission": {
+    "message": "I-Web MIDI izocela imvume yokusebenzisa noma ngabe i-sysex ingacacisiwe ku-MIDIOptions."
+  },
+  "generated/Deprecation.ts | NotificationInsecureOrigin": {
+    "message": "Isaziso se-API singase singasasetshenziswa kumisuka engavikelekile. Kufanele ucabangele ukushintsha i-app yakho kumsuka ovikelekile, njenge-HTTPS. Bheka i-https://goo.gle/chrome-insecure-origins mayelana nemininingwane eminingi."
+  },
+  "generated/Deprecation.ts | NotificationPermissionRequestedIframe": {
+    "message": "Imvume Yesaziso se-API ingase ingasacelwa ku-iframe ye-cross-origin. Kufanele ucabangele ukucela imvume kuhlaka lwezinga eliphezulu noma ukuvula iwindi elisha esikhundleni salokho."
+  },
+  "generated/Deprecation.ts | ObsoleteCreateImageBitmapImageOrientationNone": {
+    "message": "Ongakukhetha kwe-imageOrientation: 'none' ku-createImageBitmap kuhoxisiwe. Sicela usebenzise i-createImageBitmap ngokungakhethwa kukho kwe-{imageOrientation: 'from-image'} esikhundleni salokho."
+  },
+  "generated/Deprecation.ts | ObsoleteWebRtcCipherSuite": {
+    "message": "Uzakwenu uxoxisana ngohlobo oluphelelwe yisikhathi (D)TLS. Sicela uhlole nozakwenu ukuze kulungiswe lokhu."
+  },
+  "generated/Deprecation.ts | OverflowVisibleOnReplacedElement": {
+    "message": "Ukucacisa i-overflow: visible ku-img, ividiyo nomaka bekhanvasi kungase kubangele ukuthi bakhiqize okuqukethwe okubukwayo ngaphandle kwemingcele ye-elementi. Bheka ku-https://github.com/WICG/shared-element-transitions/blob/main/debugging_overflow_on_images.md."
+  },
+  "generated/Deprecation.ts | PaymentInstruments": {
+    "message": "I-paymentManager.instruments ihoxisiwe. Sicela usebenzise ukufaka okufika ngesikhathi kwezibambi zokukhokha."
+  },
+  "generated/Deprecation.ts | PaymentRequestCSPViolation": {
+    "message": "Ikholi yakho ye-PaymentRequest idlule i-Content-Security-Policy (CSP) yomyalelo we-connect-src. Lokhu kudlula kuhoxisiwe. Sicela ungeze isihlonzi sendlela yokukhokha esivela ku-PaymentRequest API (kwinkambu ye-supportedMethods) kumyalelo wakho we-CSP ye-connect-src."
+  },
+  "generated/Deprecation.ts | PersistentQuotaType": {
+    "message": "I-StorageType.persistent ihoxisiwe. Sicela usebenzise i-navigator.storage ejwayelekile kunalokho."
+  },
+  "generated/Deprecation.ts | PictureSourceSrc": {
+    "message": "I-<source src> enomzali we-<picture> ayivumelekile futhi izozitshwa. Kunalokho sicela usebenzise i-<source srcset>."
+  },
+  "generated/Deprecation.ts | PrefixedCancelAnimationFrame": {
+    "message": "I-webkitCancelAnimationFrame iqondene ngqo nomthengisi. Sicela usebenzise i-cancelAnimationFrame evamile esikhundleni salokho."
+  },
+  "generated/Deprecation.ts | PrefixedRequestAnimationFrame": {
+    "message": "i-webkitRequestAnimationFrame iqondene ngqo nomthengisi. Sicela usebenzise isicelo esijwayelekileAnimationFrame esikhundleni salokho."
+  },
+  "generated/Deprecation.ts | PrefixedVideoDisplayingFullscreen": {
+    "message": "I-HTMLVideoElement.webkitDisplayingFullscreen ihoxisiwe. Sicela usebenzise i-Document.fullscreenElement esikhundleni salokho."
+  },
+  "generated/Deprecation.ts | PrefixedVideoEnterFullScreen": {
+    "message": "I-HTMLVideoElement.webkitEnterFullScreen() ihoxisiwe. Sicela usebenzise i-Element.requestFullscreen() esikhundleni salokho."
+  },
+  "generated/Deprecation.ts | PrefixedVideoEnterFullscreen": {
+    "message": "I-HTMLVideoElement.webkitEnterFullscreen() ihoxisiwe. Sicela usebenzise i-Element.requestFullscreen() esikhundleni salokho."
+  },
+  "generated/Deprecation.ts | PrefixedVideoExitFullScreen": {
+    "message": "I-HTMLVideoElement.webkitExitFullScreen() ihoxisiwe. Sicela usebenzise i-Document.exitFullscreen() esikhundleni salokho."
+  },
+  "generated/Deprecation.ts | PrefixedVideoExitFullscreen": {
+    "message": "I-HTMLVideoElement.webkitExitFullscreen() ihoxisiwe. Sicela usebenzise i-Document.exitFullscreen() esikhundleni salokho."
+  },
+  "generated/Deprecation.ts | PrefixedVideoSupportsFullscreen": {
+    "message": "I-HTMLVideoElement.webkitSupportsFullscreen ihoxisiwe. Sicela usebenzise i-Document.fullscreenKuvunyelwe esikhundleni."
+  },
+  "generated/Deprecation.ts | PrivacySandboxExtensionsAPI": {
+    "message": "Sihoxisa i-API ye-chrome.privacy.websites.privacySandboxEnabled, nakuba izohlala isebenza mayelana nokuhambelana kwasemuva kuze kube yilapho kukhishwa i-M113. Kunalokho, sicela usebenzise i-chrome.privacy.websites.topicsEnabled, i-chrome.privacy.websites.fledgeEnabled ne-chrome.privacy.websites.adMeasurementEnabled. Bheka ku-https://developer.chrome.com/docs/extensions/reference/privacy/#property-websites-privacySandboxEnabled."
+  },
+  "generated/Deprecation.ts | RTCConstraintEnableDtlsSrtpFalse": {
+    "message": "Ingqinamba ye-DtlsSrtpKeyAgreement isusiwe. Ucacise inani le-false kulesi sibophezelo, esihunyushwa njengomzamo wokusebenzisa indlela esusiwe ye-SDES key negotiation. Lokhu kusebenza kuyasuswa; sebenzisa isevisi esekela i-DTLS key negotiation esikhundleni salokho."
+  },
+  "generated/Deprecation.ts | RTCConstraintEnableDtlsSrtpTrue": {
+    "message": "Ingqinamba ye-DtlsSrtpKeyAgreement isusiwe. Ucacise inani lalesi sibophezelo se-true, esingazange sibe nomthelela, kodwa ungakwazi ukususa lesi sibophezelo ukuze uhlanzeke."
+  },
+  "generated/Deprecation.ts | RTCPeerConnectionGetStatsLegacyNonCompliant": {
+    "message": "I-getback-based getStats() yehlisiwe futhi izosuswa. Kunalokho sebenzisa i-getStats() ehambisanayo."
+  },
+  "generated/Deprecation.ts | RangeExpand": {
+    "message": "I-Range.expand() yehlisiwe. Sicela usebenzise i-Selection.modify() esikhundleni salokho."
+  },
+  "generated/Deprecation.ts | RequestedSubresourceWithEmbeddedCredentials": {
+    "message": "Izicelo zezinsiza ezingaphansi ama-URL azo aqukethe izimfanelo ezishumekiwe (isb. https://user:pass@host/) zivinjiwe."
+  },
+  "generated/Deprecation.ts | RtcpMuxPolicyNegotiate": {
+    "message": "Le nketho ye-rtcpMuxPolicy ihoxisiwe futhi izosuswa."
+  },
+  "generated/Deprecation.ts | SharedArrayBufferConstructedWithoutIsolation": {
+    "message": "I-SharedArrayBuffer izodinga ukuhlukaniswa kwemvelaphi ehlukene. Bheka i-https://developer.chrome.com/blog/enabling-shared-array-buffer/ mayelana nolwazi olubanzi."
+  },
+  "generated/Deprecation.ts | TextToSpeech_DisallowedByAutoplay": {
+    "message": "I-speechSynthesis.speak() ngaphandle kokwenza kusebenze komsebenzisi ihoxisiwe futhi iuzosuswa."
+  },
+  "generated/Deprecation.ts | UnloadHandler": {
+    "message": "Abalaleli bomcimbi abehlisiwe bahoxisiwe futhi bazosuswa."
+  },
+  "generated/Deprecation.ts | V8SharedArrayBufferConstructedInExtensionWithoutIsolation": {
+    "message": "Izandiso kufanele zingene ekuhlukaniseni imvelaphi ehlukene ukuze ziqhubeke nokusebenzisa i-SharedArrayBuffer. Bheka i-https://developer.chrome.com/docs/extensions/mv3/cross-origin-isolation/."
+  },
+  "generated/Deprecation.ts | XHRJSONEncodingDetection": {
+    "message": "I-UTF-16 ayisekelwe yimpendulo ye-json ku-XMLHttpRequest"
+  },
+  "generated/Deprecation.ts | XMLHttpRequestSynchronousInNonWorkerOutsideBeforeUnload": {
+    "message": "Ukuvumelanisa i-XMLHttpRequest kuchungechunge oluyinhloko kuhoxisiwe ngenxa yemiphumela yako elimazayo kumuzwa womsebenzisi wokugcina. Mayelana nosizo olubanzi, hlola i-https://xhr.spec.whatwg.org/."
+  },
+  "models/trace/insights/CLSCulprits.ts | animation": {
+    "message": "Opopayi"
+  },
+  "models/trace/insights/CLSCulprits.ts | description": {
+    "message": "Ukushintsha kwesakhiwo kwenzeka lapho ama-elementi enza ukuxhumana komsebenzisi kungabi khona. [Phenya ngezimbangela zokushintsha kohlaka](https://web.dev/articles/optimize-cls), njengezinto ezengezwayo, ezikhishwayo, noma amafonti awo ashintshayo njengoba ikhasi lilayisha."
+  },
+  "models/trace/insights/CLSCulprits.ts | fontRequest": {
+    "message": "Isicelo sefonti"
+  },
+  "models/trace/insights/CLSCulprits.ts | injectedIframe": {
+    "message": "I-iframe efakiwe"
+  },
+  "models/trace/insights/CLSCulprits.ts | layoutShiftCluster": {
+    "message": "Iqoqo leshift yohlaka ngo-{PH1}"
+  },
+  "models/trace/insights/CLSCulprits.ts | noCulprits": {
+    "message": "Akutholakalanga lutho olugudluza uhlaka"
+  },
+  "models/trace/insights/CLSCulprits.ts | noLayoutShifts": {
+    "message": "Alukho uhlaka lwama-shift"
+  },
+  "models/trace/insights/CLSCulprits.ts | title": {
+    "message": "Izimbangela zeshift yohlaka"
+  },
+  "models/trace/insights/CLSCulprits.ts | topCulprits": {
+    "message": "Izimbangela eziphezulu zokushintsha kohlaka"
+  },
+  "models/trace/insights/CLSCulprits.ts | unsizedImages": {
+    "message": "Izithombe ezingenabo osayizi"
+  },
+  "models/trace/insights/CLSCulprits.ts | worstCluster": {
+    "message": "Iqoqo elibi kakhulu"
+  },
+  "models/trace/insights/CLSCulprits.ts | worstLayoutShiftCluster": {
+    "message": "Iqoqo lokushintsha uhlaka olubi kakhulu"
+  },
+  "models/trace/insights/Cache.ts | cacheTTL": {
+    "message": "Inqolobane ye-TTL"
+  },
+  "models/trace/insights/Cache.ts | description": {
+    "message": "Ukuphila kwenqolobane okude kungasheshisa ukuvakasha okuphindiwe ekhasini lakho. [Funda kabanzi](https://web.dev/uses-long-cache-ttl/)."
+  },
+  "models/trace/insights/Cache.ts | noRequestsToCache": {
+    "message": "Azikho izicelo ezinezinqubomgomo zenqolobane ezingasebenzi kahle"
+  },
+  "models/trace/insights/Cache.ts | others": {
+    "message": "Okunye okungu-{PH1}"
+  },
+  "models/trace/insights/Cache.ts | requestColumn": {
+    "message": "Isicelo"
+  },
+  "models/trace/insights/Cache.ts | title": {
+    "message": "Sebenzisa isikhathi sokuphila kwenqolobane esebenzayo"
+  },
+  "models/trace/insights/DOMSize.ts | description": {
+    "message": "I-DOM enkulu ingakhulisa ubude besikhathi sezibalo zesitayela nereflow yohlaka, okuthinta ukuphendula kwekhasi. I-DOM enkulu izophinde yandise ukusetshenziswa kwenkumbulo. [Funda indlela yokugwema usayizi oweqile we-DOM](https://developer.chrome.com/docs/lighthouse/performance/dom-size/)."
+  },
+  "models/trace/insights/DOMSize.ts | element": {
+    "message": "I-elementi"
+  },
+  "models/trace/insights/DOMSize.ts | maxChildren": {
+    "message": "Izingane eziningi"
+  },
+  "models/trace/insights/DOMSize.ts | maxDOMDepth": {
+    "message": "Ukujula kwe-DOM"
+  },
+  "models/trace/insights/DOMSize.ts | statistic": {
+    "message": "Isibalo"
+  },
+  "models/trace/insights/DOMSize.ts | title": {
+    "message": "Lungiselela usayizi weDOM"
+  },
+  "models/trace/insights/DOMSize.ts | totalElements": {
+    "message": "Isamba sama-elementi"
+  },
+  "models/trace/insights/DOMSize.ts | value": {
+    "message": "Inani"
+  },
+  "models/trace/insights/DocumentLatency.ts | description": {
+    "message": "Isicelo sakho sokuqala senethiwekhi sibaluleke kakhulu.  Nciphisa ukubambezeleka kwayo ngokugwema ukuqondiswa kabusha, okuqinisekisa impendulo esheshayo yeseva, nokunika amandla ukuminyaniswa kombhalo."
+  },
+  "models/trace/insights/DocumentLatency.ts | failedRedirects": {
+    "message": "Kuye kwaqondiswa kabusha"
+  },
+  "models/trace/insights/DocumentLatency.ts | failedServerResponseTime": {
+    "message": "Iseva ayisabelanga ngokushesha"
+  },
+  "models/trace/insights/DocumentLatency.ts | failedTextCompression": {
+    "message": "Akukho ukuminyanisa okusetshenzisiwe"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingRedirects": {
+    "message": "Kugwema ukuqondisa kabusha"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingServerResponseTime": {
+    "message": "Iseva isabela ngokushesha"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingTextCompression": {
+    "message": "Ifaka ukuminyaniswa kombhalo"
+  },
+  "models/trace/insights/DocumentLatency.ts | redirectsLabel": {
+    "message": "Iqondisa kabusha"
+  },
+  "models/trace/insights/DocumentLatency.ts | serverResponseTimeLabel": {
+    "message": "Isikhathi sokuphendula seseva"
+  },
+  "models/trace/insights/DocumentLatency.ts | title": {
+    "message": "Ukubambezeleka kwesicelo sedokhumenti"
+  },
+  "models/trace/insights/DocumentLatency.ts | uncompressedDownload": {
+    "message": "Ukudawuniloda okungacindezelwe"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | columnDuplicatedBytes": {
+    "message": "Amabhayithi ayimpinda"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | columnSource": {
+    "message": "Umthombo"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | description": {
+    "message": "Susa amamojula amakhulu, ayimpinda we-JavaScript kwizinqwaba ukuze unciphise amabhayithi angadingekile adliwa ngumsebenzi wenethiwekhi."
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | title": {
+    "message": "IJavaScript ephindiwe"
+  },
+  "models/trace/insights/FontDisplay.ts | description": {
+    "message": "Cabanga ukusetha i-[font-display](https://developer.chrome.com/blog/font-display) ibe yi-swap noma i-optional ukuze uqinisekise ukuthi umbhalo ubonakala ngokulandelanayo. I-swap ingaqhubeka ilungiselelwe ukuze kungenelelwe ekushintsheni kohlaka [ngokukhishwa kwemethrikhi yefonti](https://developer.chrome.com/blog/font-fallbacks)."
+  },
+  "models/trace/insights/FontDisplay.ts | fontColumn": {
+    "message": "Ifonti"
+  },
+  "models/trace/insights/FontDisplay.ts | title": {
+    "message": "Ukubonisa ifonti"
+  },
+  "models/trace/insights/FontDisplay.ts | wastedTimeColumn": {
+    "message": "Isikhathi esichithiwe"
+  },
+  "models/trace/insights/ForcedReflow.ts | anonymous": {
+    "message": "(akwaziwa)"
+  },
+  "models/trace/insights/ForcedReflow.ts | description": {
+    "message": "Ama-API amaningi, ngokuvamile ukufunda ijiyomethri yohlaka, aphoqa injini yokunikezela ukuba imise ukusetshenziswa kwesikriphti ukuze abale isitayela nohlaka. Funda kabanzi mayelana [nereflow ephoqelelwe](https://developers.google.com/web/fundamentals/performance/rendering/avoid-large-complex-layouts-and-layout-thrashing#avoid-forced-synchronous-layouts) kanye nezixazululo zayo."
+  },
+  "models/trace/insights/ForcedReflow.ts | relatedStackTrace": {
+    "message": "Ukulandelela istaki"
+  },
+  "models/trace/insights/ForcedReflow.ts | title": {
+    "message": "Ireflow ephoqelelwe"
+  },
+  "models/trace/insights/ForcedReflow.ts | topTimeConsumingFunctionCall": {
+    "message": "Okukhethwayo okuphambili kokufona"
+  },
+  "models/trace/insights/ForcedReflow.ts | totalReflowTime": {
+    "message": "Isamba sesikhathi sereflow"
+  },
+  "models/trace/insights/ForcedReflow.ts | unattributed": {
+    "message": "[akwabelwanga]"
+  },
+  "models/trace/insights/ImageDelivery.ts | description": {
+    "message": "Ukunciphisa isikhathi sokudawuniloda izithobe kungathuthukisa isikhathi sokulayisha sekhasi esilindelekile kanye ne-LCP. [Funda kabanzi ngokulungiselela ubungakho besithombe](https://developer.chrome.com/docs/lighthouse/performance/uses-optimized-images/)"
+  },
+  "models/trace/insights/ImageDelivery.ts | estimatedSavings": {
+    "message": "{PH1} (Isilinganiso {PH2})"
+  },
+  "models/trace/insights/ImageDelivery.ts | noOptimizableImages": {
+    "message": "Azikho izithombe ezingathuthukiswa"
+  },
+  "models/trace/insights/ImageDelivery.ts | optimizeFile": {
+    "message": "Lungiselela usayizi wefayela"
+  },
+  "models/trace/insights/ImageDelivery.ts | others": {
+    "message": "Okunye okungu-{PH1}"
+  },
+  "models/trace/insights/ImageDelivery.ts | title": {
+    "message": "Thuthukisa ukudilivwa kwesithombe"
+  },
+  "models/trace/insights/ImageDelivery.ts | useCompression": {
+    "message": "Ukwandisa isici sokuminyanisa isithombe kungase kuthuthukise usayizi wokudawuniloda lesi sithombe."
+  },
+  "models/trace/insights/ImageDelivery.ts | useModernFormat": {
+    "message": "Ukusebenzisa ifomethi yomfanekiso wesimanje (i-WebP, i-AVIF) noma ukwandisa ukuminyaniswa kwesithombe ukuze uthuthukise ukudawunilodwa kukasayizi walesi sithombe."
+  },
+  "models/trace/insights/ImageDelivery.ts | useResponsiveSize": {
+    "message": "Leli fayela lesithombe likhulu kunalokho okudingeka libe yikho ({PH1}) ngokwezibalo zalo ezibonisiwe ({PH2}). Sebenzisa izithombe ezisabelayo ukuze unciphise usayizi wokudawunilodwa kwesithombe."
+  },
+  "models/trace/insights/ImageDelivery.ts | useVideoFormat": {
+    "message": "Ukusebenzisa amafomethi evidiyo esikhundleni sama-GIF kungathuthukisa usayizi wokudawunilodwayo kokuqukethwe kopopayi."
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | description": {
+    "message": "Qala ukuphenya ngesigaba eside kakhulu. [Ukulibaziseka kungancishiswa](https://web.dev/articles/optimize-inp#optimize_interactions). Ukuze unciphise ukucubungula ubude besikhathi, [lungiselela izindleko zochungechunge olukhulu](https://web.dev/articles/optimize-long-tasks), ngokuvamile i-JS."
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | duration": {
+    "message": "Ubude besikhathi"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | inputDelay": {
+    "message": "Okokufaka okubambezelekile"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | noInteractions": {
+    "message": "Akukho ukuxhumana okutholakele"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | phase": {
+    "message": "Isigaba"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | presentationDelay": {
+    "message": "Ukubambezeleka kwephrezentheshini"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | processingDuration": {
+    "message": "Isikhathi sokucubungula"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | title": {
+    "message": "I-INP ngokwesigaba"
+  },
+  "models/trace/insights/LCPDiscovery.ts | description": {
+    "message": "Lungiselela i-LCP ngokwenza isithombe se-LCP [sitholakale](https://web.dev/articles/optimize-lcp#1_eliminate_resource_load_delay) ku-HTML ngokushesha, futhi [ugweme ukulayisha okulengayo](https://web.dev/articles/lcp-lazy-loading)"
+  },
+  "models/trace/insights/LCPDiscovery.ts | fetchPriorityApplied": {
+    "message": "fetchpriority=high kuyasebenza"
+  },
+  "models/trace/insights/LCPDiscovery.ts | fetchPriorityShouldBeApplied": {
+    "message": "fetchpriority=high should be applied"
+  },
+  "models/trace/insights/LCPDiscovery.ts | lazyLoadNotApplied": {
+    "message": "ukulayisha okulengayo akusebenzi"
+  },
+  "models/trace/insights/LCPDiscovery.ts | lcpLoadDelay": {
+    "message": "Isithombe se-LCP silayishwe kokuthi {PH1} ngemva kwephoyinti lokuqalisa lasekuqaleni."
+  },
+  "models/trace/insights/LCPDiscovery.ts | noLcp": {
+    "message": "Ayikho i-LCP etholakele"
+  },
+  "models/trace/insights/LCPDiscovery.ts | noLcpResource": {
+    "message": "Akutholakalanga mthombo we-LCP ngenxa yokuthi i-LCP ayisona isithombe"
+  },
+  "models/trace/insights/LCPDiscovery.ts | requestDiscoverable": {
+    "message": "Isicelo siyabonakala kudokhumenti yokuqala"
+  },
+  "models/trace/insights/LCPDiscovery.ts | title": {
+    "message": "Ukutholwa kwesicelo se-LCP"
+  },
+  "models/trace/insights/LCPPhases.ts | description": {
+    "message": "Isigaba [ngasinye sinamasu athile okuthuthukiswa](https://web.dev/articles/optimize-lcp#lcp-breakdown). Ngokufanelekile, iningi lesikhathi se-LCP kumele lichithwe ekulayisheni izinsiza, hhayi ngaphakathi kokulibaziseka."
+  },
+  "models/trace/insights/LCPPhases.ts | duration": {
+    "message": "Ubude besikhathi"
+  },
+  "models/trace/insights/LCPPhases.ts | elementRenderDelay": {
+    "message": "Ukwephuza kokunikeza isakhi"
+  },
+  "models/trace/insights/LCPPhases.ts | fieldDuration": {
+    "message": "Amaphesenti angu-75 enkundla"
+  },
+  "models/trace/insights/LCPPhases.ts | noLcp": {
+    "message": "Ayikho i-LCP etholakele"
+  },
+  "models/trace/insights/LCPPhases.ts | phase": {
+    "message": "Isigaba"
+  },
+  "models/trace/insights/LCPPhases.ts | resourceLoadDelay": {
+    "message": "Ukwephuza kokulayisha insiza"
+  },
+  "models/trace/insights/LCPPhases.ts | resourceLoadDuration": {
+    "message": "Ubude besikhathi sokulayisha insiza"
+  },
+  "models/trace/insights/LCPPhases.ts | timeToFirstByte": {
+    "message": "Isikhathi sebhayithi lokuqala"
+  },
+  "models/trace/insights/LCPPhases.ts | title": {
+    "message": "I-LCP ngesigaba"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | columnScript": {
+    "message": "Iskripthi"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | columnWastedBytes": {
+    "message": "Amabhayithi amoshiwe"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | description": {
+    "message": "Ama-polyfill neziguquli kuvumela amabhrawuza wefa ukuthi asebenzise izakhi zeJavaScript ezintsha. Nokho, okuningi akudingekile kumabhrawuza wesimanje. Cabangela ukulungisa inqubo yokwakhiwa kweJavaScript yakho ukuze ingaguquli izakhi [zeBaseline](https://web.dev/articles/baseline-and-polyfills), ngaphandle uma wazi ukuthi kumele usekele amabhrawuza efa. [Funda ukuthi kungani iningi lamasayithi lingathumela ikhodi ye-ES6+ ngaphandle kokuguqula](https://philipwalton.com/articles/the-state-of-es5-on-the-web/)"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | title": {
+    "message": "IJavaScript eyifa"
+  },
+  "models/trace/insights/ModernHTTP.ts | description": {
+    "message": "I-HTTP/2 ne-HTTP/3 zinikeza izinzuzo eziningi nge-HTTP/1.1, ezifana nemidwaminingi. [Funda kabanzi mayelana nokusebenzisa i-HTTP yesimanje](https://developer.chrome.com/docs/lighthouse/best-practices/uses-http2/)."
+  },
+  "models/trace/insights/ModernHTTP.ts | noOldProtocolRequests": {
+    "message": "Azikho izicelo ezisetshenziswe i-HTTP/1.1"
+  },
+  "models/trace/insights/ModernHTTP.ts | protocol": {
+    "message": "Iphrothokholi"
+  },
+  "models/trace/insights/ModernHTTP.ts | request": {
+    "message": "Isicelo"
+  },
+  "models/trace/insights/ModernHTTP.ts | title": {
+    "message": "I-HTTP yesimanje"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | description": {
+    "message": "[Gwema ukulandelanisa eduze izicelo ezibucayi](https://developer.chrome.com/docs/lighthouse/performance/critical-request-chains) ngokunciphisa ubude bokulandelana, ukunciphisa usayizi wezinsiza ezidawunilodwayo, noma ukuhlehliswa kokudawunilodwa kwezinsiza ezingadingeki ukuze uthuthukise ukulayisha kwekhasi."
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | maxCriticalPathLatency": {
+    "message": "Ukubambezeleka kwendlela ebalulekile enkulu:"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | noNetworkDependencyTree": {
+    "message": "Ayikho imisebenzi enikeziwe ethintwe okuncike kunethiwekhi"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | title": {
+    "message": "Isihlahla sokuncika kunethiwekhi"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | warningDescription": {
+    "message": "Gwema ukuxhumanisa izicelo ezibucayi ngokunciphisa ubude bokuxhumanisa, ukwehlisa usayizi wokudawuniloda wezinsiza, noma ukuhlehlisa ukudawunilodwa kwezinsiza ezingadingekile ukuze kuthuthukiswe ukulayishwa kwekhasi."
+  },
+  "models/trace/insights/RenderBlocking.ts | description": {
+    "message": "Izicelo zivimbela umnikezi wasekuqaleni wekhasi, okungase kubambezele i-LCP. [Ukuhlehlisa noma ukuqondanisa](https://web.dev/learn/performance/understanding-the-critical-path#render-blocking_resources/) kungasusa lezi zicelo zenethiwekhi emzileni obucayi."
+  },
+  "models/trace/insights/RenderBlocking.ts | duration": {
+    "message": "Ubude besikhathi"
+  },
+  "models/trace/insights/RenderBlocking.ts | noRenderBlocking": {
+    "message": "Akukho ukuvinjelwa kwezicelo ezinikezelwe kwalokhu kufuna"
+  },
+  "models/trace/insights/RenderBlocking.ts | renderBlockingRequest": {
+    "message": "Isicelo"
+  },
+  "models/trace/insights/RenderBlocking.ts | title": {
+    "message": "Nikeza izicelo zokuvimbela"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | description": {
+    "message": "Uma izindleko Zesitayela Sokuphinda kubalwe sihlala siphezulu, ukulungiselelwa kwesikhethi kungazinciphisa. [Lungiselela izikhethi](https://developer.chrome.com/docs/devtools/performance/selector-stats) nakho kokubili isikhathi esedlule esiphezulu nendlela ehamba kancane ephezulu engu-%. Izikhethi ezilula, izikhethi ezimbalwa, i-DOM encane, kanye ne-DOM engajulile konke kuzonciphisa izindleko ezifanayo."
+  },
+  "models/trace/insights/SlowCSSSelector.ts | elapsed": {
+    "message": "Isikhathi esedlule"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | enableSelectorData": {
+    "message": "Ayikho idatha yesikhethi se-CSS etholakele. Isibalo sesikhethi se-CSS kudingeka sinikwe amandla kumasethingi okusebenza kwephaneli."
+  },
+  "models/trace/insights/SlowCSSSelector.ts | matchAttempts": {
+    "message": "Imizamo yokuqhathanisa"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | matchCount": {
+    "message": "Isibalo sokufanayo"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | title": {
+    "message": "Izindleko Zesikhethi se-CSS"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | topSelectors": {
+    "message": "Izikhethi eziphezulu"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | total": {
+    "message": "Ingqikithi"
+  },
+  "models/trace/insights/ThirdParties.ts | columnMainThreadTime": {
+    "message": "Isikhathi esikhulu sochungechunge"
+  },
+  "models/trace/insights/ThirdParties.ts | columnThirdParty": {
+    "message": "Inkampani engahlangene ngqo"
+  },
+  "models/trace/insights/ThirdParties.ts | columnTransferSize": {
+    "message": "Usayizi wokudlulisela"
+  },
+  "models/trace/insights/ThirdParties.ts | description": {
+    "message": "Ikhodi yenkampani engahlangene ngqo ingathinta ukusebenza kokulayisha. [Nciphisa uphinde uhlehlise ukulayishwa kwekhodi yenkampani engahlangene ngqo](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/loading-third-party-javascript/) ukuze wenze kubaluleke ikhontenti yekhasi lakho."
+  },
+  "models/trace/insights/ThirdParties.ts | noThirdParties": {
+    "message": "Ayikho inhlangano engahlangene ngqo etholakele"
+  },
+  "models/trace/insights/ThirdParties.ts | title": {
+    "message": "Izinkampani ezingahlangene ngqo"
+  },
+  "models/trace/insights/Viewport.ts | description": {
+    "message": "Ukuxhumana okuthephwayo kungenzeka [kubambezeleke ngo-300\u00a0ms](https://developer.chrome.com/blog/300ms-tap-delay-gone-away/) uma kuwukuthi imbobo yokubuka ayilungiselelwanga kuselula."
+  },
+  "models/trace/insights/Viewport.ts | title": {
+    "message": "Lungiselela imbobo yokubuka yeselula"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | HTTPMethodNotGET": {
+    "message": "Amakhasi alayishwe ngesicelo se-GET kuphela afanelekela inqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | HTTPStatusNotOK": {
+    "message": "Amakhasi anekhodi yesimo engu-2XX kuphela angagcinwa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | JavaScriptExecution": {
+    "message": "I-Chrome ithole umzamo wokusebenzisa i-JavaScript ngenkathi ikunqolobane."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | appBanner": {
+    "message": "Amakhasi acele i-AppBanner awafaneleki okwamanje kwinqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabled": {
+    "message": "Inqolobane yasemuva/phambili ikhutshazwe amamaka. Vakashela i-chrome://flags/#back-forward-cache ukuze uyinike amandla endaweni kule divayisi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledByCommandLine": {
+    "message": "Inqolobane yasemuva/phambili ikhutshazwe ulayini womyalo."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledByLowMemory": {
+    "message": "Inqolobane yasemuva/phambili ivaliwe ngenxa yenkumbulo enganele."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledForDelegate": {
+    "message": "Inqolobane yasemuva/phambili ayisekelwa yinxusa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledForPrerender": {
+    "message": "Inqolobane yasemuva/phambili ikhutshazelwe umnikezeli wangaphambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | broadcastChannel": {
+    "message": "Ikhasi alinakugcinwa kwinqolobane ngoba linesenzakalo se-BroadcastChannel enabalaleli ababhalisiwe."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheControlNoStore": {
+    "message": "Amakhasi ane-cache-control:no-store awakwazi ukungena kwinqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheFlushed": {
+    "message": "Inqolobane isulwe ngamabomu."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheLimit": {
+    "message": "Ikhasi likhishiwe kunqolobane ukuze kuvunyelwe elinye ikhasi ukuthi libe kwinqolobane."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | containsPlugins": {
+    "message": "Amakhasi aqukethe ama-plugin awafaneleki okwamanje kwinqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentDiscarded": {
+    "message": "Akwaziwa"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentFileChooser": {
+    "message": "Amakhasi asebenzisa i-FileChooser API awafaneleki ukuthola inqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentFileSystemAccess": {
+    "message": "Amakhasi asebenzisa i-File System Access API awakufanelekeli ukuthola inqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaDevicesDispatcherHost": {
+    "message": "Amakhasi asebenzisa i-Media Device Dispatcher awafaneleki ukuthola inqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaPlay": {
+    "message": "I-Media Player beydlala lapho izulazulela ekuhambeni."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaSession": {
+    "message": "Amakhasi asebenzisa i-MediaSession API futhi asetha isimo sokudlala awafaneleki kwinqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaSessionService": {
+    "message": "Amakhasi asebenzisa i-MediaSession API futhi asetha izibambi zesenzo awafaneleki kwinqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentScreenReader": {
+    "message": "Inqolobane yasemuva-phambili ikhutshaziwe ngenxa yesifundi sesikrini."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentSecurityHandler": {
+    "message": "Amakhasi asebenzisa i-SecurityHandler awakufanelekeli ukuthola inqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentSerial": {
+    "message": "Amakhasi asebenzisa i-Serial API awafaneleki ukuthola inqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebAuthenticationAPI": {
+    "message": "Amakhasi asebenzisa i-WebAuthetication API awafaneleki ukuthola inqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebBluetooth": {
+    "message": "Amakhasi asebenzisa i-WebBluetooth API awafaneleki ukuthola inqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebUSB": {
+    "message": "Amakhasi asebenzisa i-WebUSB API awafaneleki ukuthola inqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cookieDisabled": {
+    "message": "Inqolobane yasemuva/phambili ikhutshaziwe ngoba amakhukhi akhutshaziwe ekhasini elisebenzisa i-Cache-Control: no-store."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | dedicatedWorkerOrWorklet": {
+    "message": "Amakhasi asebenzisa isisebenzi esizinikezele noma umsebenzi awakufanelekeli okwamanje ukuthola inqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | documentLoaded": {
+    "message": "Idokhumenti aliqedanga ukulayisha ngaphambi kokuthi lizulazulele ekuhambeni."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderAppBannerManager": {
+    "message": "Isibhengezo se-App besikhona ngenkathi yokuzulazula kude."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderChromePasswordManagerClientBindCredentialManager": {
+    "message": "Isiphathi sephasiwedi ye-Chrome besikhona ngenkathi yokuzulazula kude."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderDomDistillerSelfDeletingRequestDelegate": {
+    "message": "I-DOM distillation kade iqhubeka ngenkathi kokuzulazula kude."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderDomDistillerViewerSource": {
+    "message": "Isibukeli se-DOM Distiller besikhona ngenkathi yokuzulazula kude."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionMessaging": {
+    "message": "Inqolobane yasemuva-phambili ikhutshaziwe ngenxa yazandiso ezisebenzisa i-API yokulayeza."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionMessagingForOpenPort": {
+    "message": "Izandiso ezinoxhumano lwesikhathi eside kufanele zivale uxhumano ngaphambi kokungena kwinqolobane yasemuva phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionSentMessageToCachedFrame": {
+    "message": "Izandiso ezinoxhumano lwesikhathi eside zizame ukuthumela imiyalezo kwizinhlaka kwinqolobane yasemuva-phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensions": {
+    "message": "Inqolobane yasemuva-phambili ikhutshaziwe ngenxa yezandiso."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderModalDialog": {
+    "message": "Ibhokisi le-Modal njengokuthumela kabusha ifomu noma ibhokisi lephasiwedi ye-http kuboniswe ekhasini ngenkathi yokuzulazula kude."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderOfflinePage": {
+    "message": "Ikhasi lokungaxhunyiwe kwi-inthanethi liboniswe ngenkathi yokuzulazula kude."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderOomInterventionTabHelper": {
+    "message": "Ibha ye-Out-Of-Memory Intervention beyikhona ngenkathi yokuzulazula kude."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderPermissionRequestManager": {
+    "message": "Kube khona izicelo zemvuma ngemva kokuzulazula kude."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderPopupBlockerTabHelper": {
+    "message": "Isivimbeli se-popup besikhona ngenkathi yokuzulazula kude"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderSafeBrowsingThreatDetails": {
+    "message": "Imininingwane Yokubhrawuza Okuphephile iboniswe ngenkathi yokuzulazula kude"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderSafeBrowsingTriggeredPopupBlocker": {
+    "message": "Ukubhrawuza Okuphephile kubheke leli khasi njengelihlukumezayo futhi kuvimbele i-popup."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | enteredBackForwardCacheBeforeServiceWorkerHostAdded": {
+    "message": "Isisebenzi sesevisi senziwe sasebenza ngenkathi ikhasi likwinqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | errorDocument": {
+    "message": "Inqolobane yasemuva/phambili ivaliwe ngenxa yephutha ledokhumenti."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | fencedFramesEmbedder": {
+    "message": "Amakhasi asebenzisa i-FencedFrames awakwazi ukugcinwa ku-bfcache."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | foregroundCacheLimit": {
+    "message": "Ikhasi likhishiwe kunqolobane ukuze kuvunyelwe elinye ikhasi ukuthi libe kwinqolobane."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | grantedMediaStreamAccess": {
+    "message": "Amakhasi anikeze ukufinyelela kokusakaza kwemidiya awafaneleki okwamanje kwinqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | haveInnerContents": {
+    "message": "Amakhasi anohlobo oluthile lokuqukethwe okushumekiwe (isib. ama-PDF) okwamanje awafanelekeli inqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | idleManager": {
+    "message": "Amakhasi asebenzisa i-IdleManager awafaneleki okwamanje kwinqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | indexedDBConnection": {
+    "message": "Amakhasi anoxhumano oluvulekile lwe-IndexedDB okwamanje awafaneleki kwinqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | indexedDBEvent": {
+    "message": "Inqolobane yasemuva/phambili ivaliwe ngenxa yomcimbi we-IndexedDB."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | ineligibleAPI": {
+    "message": "Kusetshenziswe ama-API angafanelekile."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | injectedJavascript": {
+    "message": "Amakhasi i-JavaScript ejovwe kuwo ngezandiso awafaneleki okwamanje kwinqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | injectedStyleSheet": {
+    "message": "Amakhasi okujovwe kuwo i-StyleSheet ngezandiso awafaneleki okwamanje kwinqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | internalError": {
+    "message": "Iphutha langaphakathi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | jsNetworkRequestReceivedCacheControlNoStoreResource": {
+    "message": "Inqolobane yasemuva/phambili ikhutshaziwe ngenxa yokuthi isicelo senethiwekhi ye-JavaScript sithole insiza ngesihloko se-Cache-Control: no-store."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | keepaliveRequest": {
+    "message": "Inqolobane yasemuva-phambili ikhutshaziwe ngenxa yesicelo se-keepalive."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | keyboardLock": {
+    "message": "Amakhasi asebenzisa ukukhiya Kwekhibhodi okwamanje awafaneleki kwinqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | loading": {
+    "message": "Ikhasi aliqedanga ukulayisha ngaphambi kokuthi lizulazulele ekuhambeni."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | mainResourceHasCacheControlNoCache": {
+    "message": "Amakhasi isisetshenziswa sawo esiyinhloko esine-cache-control:no-cache awakwazi ukungena kwinqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | mainResourceHasCacheControlNoStore": {
+    "message": "Amakhasi isisetshenziswa sawo esiyinhloko esine-cache-control:no-store awakwazi ukungena kwinqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | navigationCancelledWhileRestoring": {
+    "message": "Ukuzulazula kukhanseliwe ngaphambi kokuthi ikhasi libuyiselwe kwinqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkExceedsBufferLimit": {
+    "message": "Ikhasi likhishiwe kwinqolobane ngoba ukuxhumeka kwenethiwekhi okusebenzayo kwamukele idatha eningi kakhulu. I-Chrome ikhawulela inani ledatha ikhasi elingayithola ngenkathi ligcinwe enqolobaneni."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestDatapipeDrainedAsBytesConsumer": {
+    "message": "Amakhasi ane-inflight fetch() noma i-XHR awakufanelekeli okwamanje ukuthola inqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestRedirected": {
+    "message": "Ikhasi likhishiwe kwinqolobane yasemuva/phambili ngoba isicelo senethiwekhi esisebenzayo sibandakanya ukuqondisa kabusha."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestTimeout": {
+    "message": "Ikhasi likhishiwe enqolobaneni ngoba uxhumano lenethiwekhi beluvuliwe isikhathi eside kakhulu. I-Chrome ikhawulela inani lesikhathi ikhasi elingathola ngaso idatha ngenkathi ligcinwe enqolobaneni."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | noResponseHead": {
+    "message": "Amakhasi angenalo ikhanda lokuphendula elivumelekile awakwazi ukungena enqolobaneni yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | notMainFrame": {
+    "message": "Ukuzulazula kwenzeke ohlakeni ngaphandle kohlaka oluyinhloko."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingIndexedDBTransaction": {
+    "message": "Ikhasi elinokwenziwe kwe-DB okunenkomba eqhubekayo okwamanje alifaneleki ukuthola inqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestDirectSocket": {
+    "message": "Amakhasi anesicelo senethiwekhi endizeni awakufanelekeli okwamanje ukuthola inqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestFetch": {
+    "message": "Amakhasi anesicelo senethiwekhi yokulanda ngaphakathi kwendiza awakufanelekeli okwamanje ukuthola inqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestOthers": {
+    "message": "Amakhasi anesicelo senethiwekhi endizeni awakufanelekeli okwamanje ukuthola inqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestXHR": {
+    "message": "Amakhasi anesicelo senethiwekhi ye-XHR endizeni awakufanelekeli okwamanje ukuthola inqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | paymentManager": {
+    "message": "Amakhasi asebenzisa i-PaymentManager awafaneleki okwamanje kwinqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | pictureInPicture": {
+    "message": "Amakhasi asebenzisa Isithombe-Esithombeni awafaneleki okwamanje kwinqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | printing": {
+    "message": "Amakhasi abonise i-UI Yokuphrinta okwamanje awafaneleki kwinqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | relatedActiveContentsExist": {
+    "message": "Ikhasi belivuliwe kusetshenziswa i-'window.open()' futhi enye ithebhu inereferensi kuyo, noma ikhasi livule iwindi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | rendererProcessCrashed": {
+    "message": "Inqubo yomnikezeli wekhasi elikwinqolobane yasemuva/phambili iphahlazekile."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | rendererProcessKilled": {
+    "message": "Inqubo yomnikezeli wekhasi elikwinqolobane yasemuva/phambili ibulewe."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedAudioCapturePermission": {
+    "message": "Amakhasi acele izimvume zokuthatha umsindo awafaneleki okwamanje kwinqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedBackForwardCacheBlockedSensors": {
+    "message": "Amakhasi acele izimvume zenzwa okwamanje awafaneleki kwinqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedBackgroundWorkPermission": {
+    "message": "Amakhasi acele izimvume zokuvumelanisa kwangemuva noma ukulanda awafaneleki okwamanje kwinqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedMIDIPermission": {
+    "message": "Amakhasi acele izimvume ze-MIDI okwamanje awafaneleki kwinqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedNotificationsPermission": {
+    "message": "Amakhasi acele izimvume zezaziso okwamanje awafaneleki kwinqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedStorageAccessGrant": {
+    "message": "Amakhasi acele ukufinyelela kwisitoreji okwamanje awafaneleki kwinqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedVideoCapturePermission": {
+    "message": "Amakhasi acele izimvume zokuthatha ividiyo awafaneleki okwamanje kwinqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | schemeNotHTTPOrHTTPS": {
+    "message": "Amakhasi isikimu sawo se-URL esiyi-HTTP / HTTPS kuphela angafakwa kwinqolobane."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerClaim": {
+    "message": "Ikhasi lifunwe isisebenzi sesevisi ngenkathi likwinqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerPostMessage": {
+    "message": "Isisebenzi sesevisi sizame ukuthumela ikhasi kwinqolobane yasemuva/phambili i-MessageEvent."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerUnregistration": {
+    "message": "I-ServiceWorker ibingabhalisiwe ngenkathi ikhasi likwinqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerVersionActivation": {
+    "message": "Ikhasi likhishiwe kwinqolobane yasemuva/phambili ngenxa yokusebenzisa isisebenzi sesevisi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | sessionRestored": {
+    "message": "I-Chrome iqale kabusha futhi yasula okufakiwe kwenqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | sharedWorker": {
+    "message": "Amakhasi asebenzisa i-SharedWorker awafaneleki okwamanje kwinqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | speechRecognizer": {
+    "message": "Amakhasi asebenzisa i-SpeechRecognizer awafaneleki okwamanje kwinqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | speechSynthesis": {
+    "message": "Amakhasi asebenzisa i-SpeechSynthesis awafaneleki okwamanje kwinqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subframeIsNavigating": {
+    "message": "I-iframe ekhasini iqale ukuzulazula okungaqedanga."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subresourceHasCacheControlNoCache": {
+    "message": "Amakhasi isisetshenziswa sawo esingaphansi esine-cache-control:no-cache awakwazi ukungena kwinqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subresourceHasCacheControlNoStore": {
+    "message": "Amakhasi isisetshenziswa sawo esingaphansi esine-cache-control:no-store awakwazi ukungena kwinqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | timeout": {
+    "message": "Ikhasi lidlule isikhathi esiphezulu kwinqolobane yasemuva/phambili futhi liphelelwe yisikhathi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | timeoutPuttingInCache": {
+    "message": "Ikhasi liphelelwe yisikhathi ukungena kwinqolobane yasemuva/phambili (okungenzeka ngenxa yezibambi ezifihla ikhasi ezihlala isikhathi eside)."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | unloadHandlerExistsInMainFrame": {
+    "message": "Ikhasi linesibambi sokukhipha kuhlaka oluyinhloko."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | unloadHandlerExistsInSubFrame": {
+    "message": "Ikhasi linesibambi sokukhipha kuhlaka olungaphansi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | userAgentOverrideDiffers": {
+    "message": "Isiphequluli siguqule isihloko esibhalwe ngaphezulu se-ejenti yomsebenzisi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | wasGrantedMediaAccess": {
+    "message": "Amakhasi anikeze ukufinyelela kokurekhoda ividiyo noma umsindo okwamanje awafaneleki kwinqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webDatabase": {
+    "message": "Amakhasi asebenzisa i-WebDatabase awafaneleki okwamanje kwinqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webHID": {
+    "message": "Amakhasi asebenzisa i-WebHID awafaneleki okwamanje kwinqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webLocks": {
+    "message": "Amakhasi asebenzisa i-WebLocks awafaneleki okwamanje kwinqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webNfc": {
+    "message": "Amakhasi asebenzisa i-WebNfc awakufanelekeli okwamanje ukuthola inqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webOTPService": {
+    "message": "Amakhasi asebenzisa i-WebOTPService okwamanje awafaneleki ku-bfcache."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webRTC": {
+    "message": "Amakhasi ane-WebRTC awakwazi ukungena kwinqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webRTCSticky": {
+    "message": "Inqolobane yasemuva/phambili ikhutshaziwe ngoba i-WebRTC isetshenzisiwe."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webShare": {
+    "message": "Amakhasi asebenzisa i-WebShare awakufanelekeli okwamanje ukuthola inqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webSocket": {
+    "message": "Amakhasi ane-WebSocket awakwazi ukungena kwinqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webSocketSticky": {
+    "message": "Inqolobane yasemuva/phambili ikhutshaziwe ngoba i-WebSocket isetshenzisiwe."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webTransport": {
+    "message": "Amakhasi ane-WebTransport awakwazi ukungena kwinqolobane yasemuva/phambili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webTransportSticky": {
+    "message": "Inqolobane yasemuva/phambili ikhutshaziwe ngoba i-WebTransport isetshenzisiwe."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webXR": {
+    "message": "Amakhasi asebenzisa i-WebXR awafaneleki okwamanje kwinqolobane yasemuva/phambili."
+  }
+}

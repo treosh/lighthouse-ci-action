@@ -20,15 +20,28 @@ var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (
 }) : function(o, v) {
     o["default"] = v;
 });
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
+var __importStar = (this && this.__importStar) || (function () {
+    var ownKeys = function(o) {
+        ownKeys = Object.getOwnPropertyNames || function (o) {
+            var ar = [];
+            for (var k in o) if (Object.prototype.hasOwnProperty.call(o, k)) ar[ar.length] = k;
+            return ar;
+        };
+        return ownKeys(o);
+    };
+    return function (mod) {
+        if (mod && mod.__esModule) return mod;
+        var result = {};
+        if (mod != null) for (var k = ownKeys(mod), i = 0; i < k.length; i++) if (k[i] !== "default") __createBinding(result, mod, k[i]);
+        __setModuleDefault(result, mod);
+        return result;
+    };
+})();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getCapturedLogs = exports.setLogCapture = exports.debug = exports.importDebug = void 0;
+exports.debug = void 0;
+exports.importDebug = importDebug;
+exports.setLogCapture = setLogCapture;
+exports.getCapturedLogs = getCapturedLogs;
 const environment_js_1 = require("../environment.js");
 /**
  * @internal
@@ -43,7 +56,6 @@ async function importDebug() {
     }
     return debugModule;
 }
-exports.importDebug = importDebug;
 /**
  * A debug function that can be used in any environment.
  *
@@ -109,7 +121,6 @@ const debug = (prefix) => {
         if (!prefixMatchesDebugLevel) {
             return;
         }
-        // eslint-disable-next-line no-console
         console.log(`${prefix}:`, ...logArgs);
     };
 };
@@ -129,12 +140,10 @@ function setLogCapture(value) {
     capturedLogs = [];
     captureLogs = value;
 }
-exports.setLogCapture = setLogCapture;
 /**
  * @internal
  */
 function getCapturedLogs() {
     return capturedLogs;
 }
-exports.getCapturedLogs = getCapturedLogs;
 //# sourceMappingURL=Debug.js.map

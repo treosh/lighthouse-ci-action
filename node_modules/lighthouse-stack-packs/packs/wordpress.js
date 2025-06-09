@@ -28,7 +28,7 @@ const UIStrings = {
   /** Additional description of a Lighthouse audit that tells the user how they can improve performance by using responsive images in the context of the Wordpress CMS platform. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
   'uses-responsive-images': "Upload images directly through the [media library](https://wordpress.org/support/article/media-library-screen/) to ensure that the required image sizes are available, and then insert them from the media library or use the image widget to ensure the optimal image sizes are used (including those for the responsive breakpoints). Avoid using `Full Size` images unless the dimensions are adequate for their usage. [Learn More](https://wordpress.org/support/article/inserting-images-into-posts-and-pages/).",
   /** Additional description of a Lighthouse audit that tells the user how they can improve the time to first byte speed metric, in the context of the Wordpress CMS platform. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
-  'server-response-time': "Themes, plugins, and server specifications all contribute to server response time. Consider finding a more optimized theme, carefully selecting an optimization plugin, and/or upgrading your server.",
+  'server-response-time': "Choose a lightweight theme (ideally a block theme) and implement full-page caching or a static site solution. Disable unnecessary plugins to minimize server overhead. Consider upgrading your hosting to managed or dedicated service.",
 };
 
 module.exports = {

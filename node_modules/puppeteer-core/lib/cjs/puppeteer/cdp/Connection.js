@@ -5,14 +5,15 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.isTargetClosedError = exports.Connection = void 0;
+exports.Connection = void 0;
+exports.isTargetClosedError = isTargetClosedError;
 const CDPSession_js_1 = require("../api/CDPSession.js");
 const CallbackRegistry_js_1 = require("../common/CallbackRegistry.js");
 const Debug_js_1 = require("../common/Debug.js");
 const Errors_js_1 = require("../common/Errors.js");
 const EventEmitter_js_1 = require("../common/EventEmitter.js");
 const ErrorLike_js_1 = require("../util/ErrorLike.js");
-const CDPSession_js_2 = require("./CDPSession.js");
+const CdpSession_js_1 = require("./CdpSession.js");
 const debugProtocolSend = (0, Debug_js_1.debug)('puppeteer:protocol:SEND ►');
 const debugProtocolReceive = (0, Debug_js_1.debug)('puppeteer:protocol:RECV ◀');
 /**
@@ -26,9 +27,12 @@ class Connection extends EventEmitter_js_1.EventEmitter {
     #sessions = new Map();
     #closed = false;
     #manuallyAttached = new Set();
-    #callbacks = new CallbackRegistry_js_1.CallbackRegistry();
-    constructor(url, transport, delay = 0, timeout) {
+    #callbacks;
+    #rawErrors = false;
+    constructor(url, transport, delay = 0, timeout, rawErrors = false) {
         super();
+        this.#rawErrors = rawErrors;
+        this.#callbacks = new CallbackRegistry_js_1.CallbackRegistry();
         this.#url = url;
         this.#delay = delay;
         this.#timeout = timeout ?? 180_000;
@@ -61,11 +65,17 @@ class Connection extends EventEmitter_js_1.EventEmitter {
         return this.#sessions;
     }
     /**
+     * @internal
+     */
+    _session(sessionId) {
+        return this.#sessions.get(sessionId) || null;
+    }
+    /**
      * @param sessionId - The session id
      * @returns The current CDP session if it exists
      */
     session(sessionId) {
-        return this.#sessions.get(sessionId) || null;
+        return this._session(sessionId);
     }
     url() {
         return this.#url;
@@ -116,7 +126,7 @@ class Connection extends EventEmitter_js_1.EventEmitter {
         const object = JSON.parse(message);
         if (object.method === 'Target.attachedToTarget') {
             const sessionId = object.params.sessionId;
-            const session = new CDPSession_js_2.CdpCDPSession(this, object.params.targetInfo.type, sessionId, object.sessionId);
+            const session = new CdpSession_js_1.CdpCDPSession(this, object.params.targetInfo.type, sessionId, object.sessionId, this.#rawErrors);
             this.#sessions.set(sessionId, session);
             this.emit(CDPSession_js_1.CDPSessionEvent.SessionAttached, session);
             const parentSession = this.#sessions.get(object.sessionId);
@@ -127,7 +137,7 @@ class Connection extends EventEmitter_js_1.EventEmitter {
         else if (object.method === 'Target.detachedFromTarget') {
             const session = this.#sessions.get(object.params.sessionId);
             if (session) {
-                session._onClosed();
+                session.onClosed();
                 this.#sessions.delete(object.params.sessionId);
                 this.emit(CDPSession_js_1.CDPSessionEvent.SessionDetached, session);
                 const parentSession = this.#sessions.get(object.sessionId);
@@ -139,12 +149,17 @@ class Connection extends EventEmitter_js_1.EventEmitter {
         if (object.sessionId) {
             const session = this.#sessions.get(object.sessionId);
             if (session) {
-                session._onMessage(object);
+                session.onMessage(object);
             }
         }
         else if (object.id) {
             if (object.error) {
-                this.#callbacks.reject(object.id, (0, ErrorLike_js_1.createProtocolErrorMessage)(object), object.error.message);
+                if (this.#rawErrors) {
+                    this.#callbacks.rejectRaw(object.id, object.error);
+                }
+                else {
+                    this.#callbacks.reject(object.id, (0, ErrorLike_js_1.createProtocolErrorMessage)(object), object.error.message);
+                }
             }
             else {
                 this.#callbacks.resolve(object.id, object.result);
@@ -163,7 +178,7 @@ class Connection extends EventEmitter_js_1.EventEmitter {
         this.#transport.onclose = undefined;
         this.#callbacks.clear();
         for (const session of this.#sessions.values()) {
-            session._onClosed();
+            session.onClosed();
         }
         this.#sessions.clear();
         this.emit(CDPSession_js_1.CDPSessionEvent.Disconnected, undefined);
@@ -222,5 +237,4 @@ exports.Connection = Connection;
 function isTargetClosedError(error) {
     return error instanceof Errors_js_1.TargetCloseError;
 }
-exports.isTargetClosedError = isTargetClosedError;
 //# sourceMappingURL=Connection.js.map

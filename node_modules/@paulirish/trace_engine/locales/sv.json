@@ -1,0 +1,908 @@
+{
+  "generated/Deprecation.ts | AuthorizationCoveredByWildcard": {
+    "message": "Auktorisering omfattas inte av jokertecknet (*) i CORS Access-Control-Allow-Headers-hantering."
+  },
+  "generated/Deprecation.ts | CSSSelectorInternalMediaControlsOverlayCastButton": {
+    "message": "Attributet disableRemotePlayback ska anv\u00e4ndas f\u00f6r att inaktivera standardintegreringen av Cast i st\u00e4llet f\u00f6r v\u00e4ljaren -internal-media-controls-overlay-cast-button."
+  },
+  "generated/Deprecation.ts | CSSValueAppearanceSliderVertical": {
+    "message": "CSS-utseendev\u00e4rdet slider-vertical \u00e4r inte standardiserat och kommer att tas bort."
+  },
+  "generated/Deprecation.ts | CanRequestURLHTTPContainingNewline": {
+    "message": "Resursf\u00f6rfr\u00e5gningar vars webbadresser inneh\u00f6ll b\u00e5de de borttagna blankstegstecknen \\(n|r|t) och mindre \u00e4n-tecknen (<) blockeras. Ta bort radbrytningstecken och koda mindre \u00e4n-tecken fr\u00e5n t.ex. v\u00e4rden f\u00f6r elementattribut om du vill l\u00e4sa in dessa resurser."
+  },
+  "generated/Deprecation.ts | CharsetAutoDetectionISO2022JP": {
+    "message": "Automatisk identifiering av teckenupps\u00e4ttningen ISO-2022-JP har fasats ut och inaktiveras inom kort. Ange teckenupps\u00e4ttningen i rubriken f\u00f6r inneh\u00e5llstyp eller med en metatagg (https://developer.mozilla.org/en-US/docs/Glossary/Character_encoding)."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesConnectionInfo": {
+    "message": "chrome.loadTimes() \u00e4r utfasad. Anv\u00e4nd det standardiserade API:et Navigation Timing 2 i st\u00e4llet."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesFirstPaintAfterLoadTime": {
+    "message": "chrome.loadTimes() \u00e4r utfasad. Anv\u00e4nd i st\u00e4llet det standardiserade API:et Paint Timing."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesWasAlternateProtocolAvailable": {
+    "message": "chrome.loadTimes() \u00e4r utfasad. Anv\u00e4nd det standardiserade API:et nextHopProtocol i Navigation Timing 2 i st\u00e4llet."
+  },
+  "generated/Deprecation.ts | CookieWithTruncatingChar": {
+    "message": "Cookies som inneh\u00e5ller ett \\(0|r|n)-tecken avvisas i st\u00e4llet f\u00f6r att trunkeras."
+  },
+  "generated/Deprecation.ts | CrossOriginAccessBasedOnDocumentDomain": {
+    "message": "Funktionen f\u00f6r att l\u00e4tta p\u00e5 principen g\u00e4llande samma ursprung genom att ange document.domain \u00e4r utfasad och inaktiveras som standard. Denna varning om utfasning g\u00e4ller \u00e5tkomst via korsursprung som aktiverades genom inst\u00e4llning av document.domain."
+  },
+  "generated/Deprecation.ts | CrossOriginWindowAlert": {
+    "message": "Aktivering av window.alert fr\u00e5n iframes f\u00f6r korsursprung har fasats ut och kommer att tas bort."
+  },
+  "generated/Deprecation.ts | CrossOriginWindowConfirm": {
+    "message": "Aktivering av window.confirm fr\u00e5n iframes f\u00f6r korsursprung har fasats ut och kommer att tas bort."
+  },
+  "generated/Deprecation.ts | DOMMutationEvents": {
+    "message": "DOM-mutationsh\u00e4ndelser, inklusive DOMSubtreeModified, DOMNodeInserted, DOMNodeRemoved, DOMNodeRemovedFromDocument, DOMNodeInsertedIntoDocument och DOMCharacterDataModified, har fasats ut (https://w3c.github.io/uievents/#legacy-event-types) och kommer att tas bort. Anv\u00e4nd MutationObserver i st\u00e4llet."
+  },
+  "generated/Deprecation.ts | DataUrlInSvgUse": {
+    "message": "St\u00f6d f\u00f6r data: webbadresser i SVGUseElement har fasats ut och tas bort i framtiden."
+  },
+  "generated/Deprecation.ts | GeolocationInsecureOrigin": {
+    "message": "getCurrentPosition() och watchPosition() fungerar inte l\u00e4ngre i os\u00e4kra ursprung. Om du vill anv\u00e4nda den h\u00e4r funktionen rekommenderar vi att du flyttar appen till ett s\u00e4kert ursprung, till exempel HTTPS. L\u00e4s mer p\u00e5 https://goo.gle/chrome-insecure-origins."
+  },
+  "generated/Deprecation.ts | GeolocationInsecureOriginDeprecatedNotRemoved": {
+    "message": "getCurrentPosition() och watchPosition() \u00e4r utfasade i os\u00e4kra ursprung. Om du vill anv\u00e4nda den h\u00e4r funktionen rekommenderar vi att du flyttar appen till ett s\u00e4kert ursprung, till exempel HTTPS. L\u00e4s mer p\u00e5 https://goo.gle/chrome-insecure-origins."
+  },
+  "generated/Deprecation.ts | GetUserMediaInsecureOrigin": {
+    "message": "getUserMedia() fungerar inte l\u00e4ngre i os\u00e4kra ursprung. Om du vill anv\u00e4nda den h\u00e4r funktionen rekommenderar vi att du flyttar appen till ett s\u00e4kert ursprung, till exempel HTTPS. L\u00e4s mer p\u00e5 https://goo.gle/chrome-insecure-origins."
+  },
+  "generated/Deprecation.ts | H1UserAgentFontSizeInSection": {
+    "message": "En <h1>-tagg hittades i en <article>, <aside>, <nav> eller <section> som inte har en angiven teckensnittsstorlek. Storleken p\u00e5 den h\u00e4r rubriken \u00e4ndras i webbl\u00e4saren inom en snar framtid. Mer information finns p\u00e5 https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#specifying_a_uniform_font_size_for_h1."
+  },
+  "generated/Deprecation.ts | HostCandidateAttributeGetter": {
+    "message": "RTCPeerConnectionIceErrorEvent.hostCandidate \u00e4r utfasad. Anv\u00e4nd RTCPeerConnectionIceErrorEvent.address eller RTCPeerConnectionIceErrorEvent.port i st\u00e4llet."
+  },
+  "generated/Deprecation.ts | IdentityDigitalCredentials": {
+    "message": "Det h\u00e4r formatet f\u00f6r GET-beg\u00e4ran navigator.credentials.get() om digitala certifikat har fasats ut. Uppdatera anropet s\u00e5 att det nya formatet anv\u00e4nds."
+  },
+  "generated/Deprecation.ts | IdentityInCanMakePaymentEvent": {
+    "message": "S\u00e4ljarursprunget och arbitr\u00e4r data fr\u00e5n tj\u00e4nstefunktionens canmakepayment-h\u00e4ndelse har fasats ut och tas bort: topOrigin, paymentRequestOrigin, methodData, modifiers."
+  },
+  "generated/Deprecation.ts | InsecurePrivateNetworkSubresourceRequest": {
+    "message": "Webbplatsen beg\u00e4rde en underresurs fr\u00e5n ett n\u00e4tverk som den enbart hade \u00e5tkomst till p\u00e5 grund av att anv\u00e4ndaren hade s\u00e4rskild n\u00e4tverksbeh\u00f6righet. Med dessa f\u00f6rfr\u00e5gningar f\u00e5r enheter och servrar som inte \u00e4r offentliga \u00e5tkomst till internet, vilket \u00f6kar risken f\u00f6r bedr\u00e4gerier med beg\u00e4ran mellan webbplatser och/eller l\u00e4ckage av uppgifter. I syfte att minska dessa risker fasar Chrome ut f\u00f6rfr\u00e5gningar till icke-offentliga underresurser som har startats i os\u00e4kra kontexter och kommer att blockera dem."
+  },
+  "generated/Deprecation.ts | InterestGroupDailyUpdateUrl": {
+    "message": "F\u00e4ltet dailyUpdateUrl i InterestGroups som vidarebefordrats till joinAdInterestGroup() har d\u00f6pts om till updateUrl f\u00f6r att b\u00e4ttre motsvara dess beteende."
+  },
+  "generated/Deprecation.ts | IntlV8BreakIterator": {
+    "message": "Intl.v8BreakIterator \u00e4r utfasad. Anv\u00e4nd Intl.Segmenter i st\u00e4llet."
+  },
+  "generated/Deprecation.ts | LocalCSSFileExtensionRejected": {
+    "message": "CSS g\u00e5r inte att l\u00e4sas in fr\u00e5n file:-webbadresser om de inte slutar med ett .css-filnamnstill\u00e4gg."
+  },
+  "generated/Deprecation.ts | MediaSourceAbortRemove": {
+    "message": "Anv\u00e4ndning av SourceBuffer.abort() i syfte att avbryta borttagning av asynkrona intervall med remove() har fasats ut p\u00e5 grund av en \u00e4ndring av specifikation. St\u00f6det tas bort i framtiden. Lyssna efter h\u00e4ndelsen updateend i\u00a0st\u00e4llet. abort() ska endast anv\u00e4ndas till att avbryta en asynkron mediebilaga eller \u00e5terst\u00e4lla analyseringsl\u00e4get."
+  },
+  "generated/Deprecation.ts | MediaSourceDurationTruncatingBuffered": {
+    "message": "Funktionen f\u00f6r att st\u00e4lla in MediaSource.duration under den h\u00f6gsta visningstidsst\u00e4mpeln f\u00f6r buffrade kodade ramar har fasats ut p\u00e5 grund av en \u00e4ndring av specifikation. St\u00f6det f\u00f6r implicit borttagning av trunkerad buffrad media tas bort i framtiden. Du ska i st\u00e4llet genomf\u00f6ra uttrycklig remove(newDuration, oldDuration) f\u00f6r alla sourceBuffers, om newDuration < oldDuration."
+  },
+  "generated/Deprecation.ts | NoSysexWebMIDIWithoutPermission": {
+    "message": "Webb-MIDI ber om beh\u00f6righet om anv\u00e4ndning \u00e4ven om SysEx inte har angetts i MIDIOptions."
+  },
+  "generated/Deprecation.ts | NotificationInsecureOrigin": {
+    "message": "Aviserings-API:et f\u00e5r inte l\u00e4ngre anv\u00e4ndas fr\u00e5n os\u00e4kra ursprung. Vi rekommenderar att du flyttar appen till ett s\u00e4kert ursprung, till exempel HTTPS. L\u00e4s mer p\u00e5 https://goo.gle/chrome-insecure-origins."
+  },
+  "generated/Deprecation.ts | NotificationPermissionRequestedIframe": {
+    "message": "Beh\u00f6righet f\u00f6r aviserings-API:et kan inte l\u00e4ngre beg\u00e4ras via en iframe f\u00f6r korsursprung. Vi rekommenderar att du beg\u00e4r beh\u00f6righet fr\u00e5n en ram p\u00e5 toppniv\u00e5 eller \u00f6ppnar ett nytt f\u00f6nster i st\u00e4llet."
+  },
+  "generated/Deprecation.ts | ObsoleteCreateImageBitmapImageOrientationNone": {
+    "message": "Alternativet imageOrientation: 'none' i createImageBitmap har fasats ut. Anv\u00e4nd createImageBitmap med alternativet {imageOrientation: 'from-image'} i st\u00e4llet."
+  },
+  "generated/Deprecation.ts | ObsoleteWebRtcCipherSuite": {
+    "message": "Partnern f\u00f6rhandlar med en f\u00f6r\u00e5ldrad version av (D)TLS. Kontakta partnern om att \u00e5tg\u00e4rda detta."
+  },
+  "generated/Deprecation.ts | OverflowVisibleOnReplacedElement": {
+    "message": "Om du anger overflow: visible f\u00f6r img-, video- och canvas-taggar kan det leda till att visuellt inneh\u00e5ll visas utanf\u00f6r elementets gr\u00e4nser. L\u00e4s mer p\u00e5 https://github.com/WICG/shared-element-transitions/blob/main/debugging_overflow_on_images.md."
+  },
+  "generated/Deprecation.ts | PaymentInstruments": {
+    "message": "paymentManager.instruments \u00e4r utfasat. Anv\u00e4nd just-in-time-installation f\u00f6r betalningshanterare i\u00a0st\u00e4llet."
+  },
+  "generated/Deprecation.ts | PaymentRequestCSPViolation": {
+    "message": "PaymentRequest-anropet \u00e5sidosatte CSP-direktivet connect-src. Denna \u00e5sidos\u00e4ttning \u00e4r utfasad. L\u00e4gg till betalningsmetodens identifierare fr\u00e5n PaymentRequest API (i f\u00e4ltet supportedMethods) i CSP-direktivet connect-src."
+  },
+  "generated/Deprecation.ts | PersistentQuotaType": {
+    "message": "StorageType.persistent \u00e4r utfasad. Anv\u00e4nd navigator.storage i st\u00e4llet."
+  },
+  "generated/Deprecation.ts | PictureSourceSrc": {
+    "message": "<source src> med <picture> som \u00f6verordnat element \u00e4r ogiltigt och ignoreras d\u00e4rf\u00f6r. Anv\u00e4nd <source srcset> i st\u00e4llet."
+  },
+  "generated/Deprecation.ts | PrefixedCancelAnimationFrame": {
+    "message": "webkitCancelAnimationFrame \u00e4r leverant\u00f6rsspecifik. Anv\u00e4nd standardmetoden cancelAnimationFrame i\u00a0st\u00e4llet."
+  },
+  "generated/Deprecation.ts | PrefixedRequestAnimationFrame": {
+    "message": "webkitRequestAnimationFrame \u00e4r leverant\u00f6rsspecifik. Anv\u00e4nd standardmetoden requestAnimationFrame i\u00a0st\u00e4llet"
+  },
+  "generated/Deprecation.ts | PrefixedVideoDisplayingFullscreen": {
+    "message": "HTMLVideoElement.webkitDisplayingFullscreen har fasats ut. Anv\u00e4nd Docs.fullscreenElement i\u00a0st\u00e4llet."
+  },
+  "generated/Deprecation.ts | PrefixedVideoEnterFullScreen": {
+    "message": "HTMLVideoElement.webkitEnterFullScreen() har fasats ut. Anv\u00e4nd Element.requestFullscreen() i\u00a0st\u00e4llet."
+  },
+  "generated/Deprecation.ts | PrefixedVideoEnterFullscreen": {
+    "message": "HTMLVideoElement.webkitEnterFullscreen() har fasats ut. Anv\u00e4nd Element.requestFullscreen() i\u00a0st\u00e4llet."
+  },
+  "generated/Deprecation.ts | PrefixedVideoExitFullScreen": {
+    "message": "HTMLVideoElement.webkitExitFullScreen() har fasats ut. Anv\u00e4nd Document.exitFullscreen() i\u00a0st\u00e4llet."
+  },
+  "generated/Deprecation.ts | PrefixedVideoExitFullscreen": {
+    "message": "HTMLVideoElement.webkitExitFullscreen() har fasats ut. Anv\u00e4nd Document.exitFullscreen() i\u00a0st\u00e4llet."
+  },
+  "generated/Deprecation.ts | PrefixedVideoSupportsFullscreen": {
+    "message": "HTMLVideoElement.webkitSupportsFullscreen har fasats ut. Anv\u00e4nd Document.fullscreenEnabled i\u00a0st\u00e4llet."
+  },
+  "generated/Deprecation.ts | PrivacySandboxExtensionsAPI": {
+    "message": "Vi fasar ut API:et chrome.privacy.websites.privacySandboxEnabled, men det f\u00f6rblir aktivt f\u00f6r bak\u00e5tkompatibilitet tills version M113 lanseras. Anv\u00e4nd i\u00a0st\u00e4llet chrome.privacy.websites.topicsEnabled, chrome.privacy.websites.fledgeEnabled och chrome.privacy.websites.adMeasurementEnabled. L\u00e4s mer p\u00e5 https://developer.chrome.com/docs/extensions/reference/privacy/#property-websites-privacySandboxEnabled."
+  },
+  "generated/Deprecation.ts | RTCConstraintEnableDtlsSrtpFalse": {
+    "message": "Begr\u00e4nsningen DtlsSrtpKeyAgreement har tagits bort. Du har angett ett false-v\u00e4rde f\u00f6r denna begr\u00e4nsning, vilket tolkas som ett f\u00f6rs\u00f6k att anv\u00e4nda den borttagna SDES key negotiation-metoden. Denna funktion har tagits bort. Anv\u00e4nd i st\u00e4llet en tj\u00e4nst med st\u00f6d f\u00f6r DTLS key negotiation."
+  },
+  "generated/Deprecation.ts | RTCConstraintEnableDtlsSrtpTrue": {
+    "message": "Begr\u00e4nsningen DtlsSrtpKeyAgreement har tagits bort. Du har angett ett true-v\u00e4rde f\u00f6r denna begr\u00e4nsning, vilket inte hade n\u00e5gon inverkan, men du kan ta bort begr\u00e4nsningen f\u00f6r att g\u00f6ra det tydligare."
+  },
+  "generated/Deprecation.ts | RTCPeerConnectionGetStatsLegacyNonCompliant": {
+    "message": "\u00c5teranropsbaserade getStats() har utfasats ut och kommer att tas bort. Anv\u00e4nd getStats() som uppfyller specifikationerna i\u00a0st\u00e4llet."
+  },
+  "generated/Deprecation.ts | RangeExpand": {
+    "message": "Range.expand() har fasats ut. Anv\u00e4nd Selection.modify() i\u00a0st\u00e4llet."
+  },
+  "generated/Deprecation.ts | RequestedSubresourceWithEmbeddedCredentials": {
+    "message": "F\u00f6rfr\u00e5gningar fr\u00e5n underresurser vars webbadresser inneh\u00e5ller inb\u00e4ddade anv\u00e4ndaruppgifter (t.ex. https://user:pass@host/) blockeras."
+  },
+  "generated/Deprecation.ts | RtcpMuxPolicyNegotiate": {
+    "message": "Alternativet rtcpMuxPolicy \u00e4r utfasat och kommer att tas bort."
+  },
+  "generated/Deprecation.ts | SharedArrayBufferConstructedWithoutIsolation": {
+    "message": "SharedArrayBuffer kr\u00e4ver isolering f\u00f6r korsursprung. L\u00e4s mer p\u00e5 https://developer.chrome.com/blog/enabling-shared-array-buffer/."
+  },
+  "generated/Deprecation.ts | TextToSpeech_DisallowedByAutoplay": {
+    "message": "speechSynthesis.speak() utan anv\u00e4ndaraktivering har fasats ut och kommer att tas bort."
+  },
+  "generated/Deprecation.ts | UnloadHandler": {
+    "message": "Borttagning av h\u00e4ndelselyssnare har fasats ut och tas bort."
+  },
+  "generated/Deprecation.ts | V8SharedArrayBufferConstructedInExtensionWithoutIsolation": {
+    "message": "Till\u00e4gg m\u00e5ste isoleras f\u00f6r korsursprung om du vill forts\u00e4tta anv\u00e4nda SharedArrayBuffer. L\u00e4s mer p\u00e5 https://developer.chrome.com/docs/extensions/mv3/cross-origin-isolation/."
+  },
+  "generated/Deprecation.ts | XHRJSONEncodingDetection": {
+    "message": "UTF-16 st\u00f6ds inte av json-svar i XMLHttpRequest"
+  },
+  "generated/Deprecation.ts | XMLHttpRequestSynchronousInNonWorkerOutsideBeforeUnload": {
+    "message": "Synkron XMLHttpRequest i huvudtr\u00e5den har fasats ut p\u00e5 grund av dess negativa effekt p\u00e5 slutanv\u00e4ndarens upplevelse. Bes\u00f6k https://xhr.spec.whatwg.org/ om du beh\u00f6ver hj\u00e4lp."
+  },
+  "models/trace/insights/CLSCulprits.ts | animation": {
+    "message": "Animation"
+  },
+  "models/trace/insights/CLSCulprits.ts | description": {
+    "message": "Layoutf\u00f6rskjutningar uppst\u00e5r n\u00e4r element flyttas utan anv\u00e4ndarinteraktion. [Unders\u00f6k orsakerna till layoutf\u00f6r\u00e4ndringar](https://web.dev/articles/optimize-cls), till exempel om element har lagts till, tagits bort eller om teckensnittet \u00e4ndras f\u00f6r dem vid sidh\u00e4mtningen."
+  },
+  "models/trace/insights/CLSCulprits.ts | fontRequest": {
+    "message": "Teckensnittsbeg\u00e4ran"
+  },
+  "models/trace/insights/CLSCulprits.ts | injectedIframe": {
+    "message": "Injicerad iframe"
+  },
+  "models/trace/insights/CLSCulprits.ts | layoutShiftCluster": {
+    "message": "Kluster med layoutf\u00f6rskjutningar p\u00e5 {PH1}"
+  },
+  "models/trace/insights/CLSCulprits.ts | noCulprits": {
+    "message": "Det gick inte att identifiera n\u00e5gra orsaker till layoutf\u00f6rskjutningar"
+  },
+  "models/trace/insights/CLSCulprits.ts | noLayoutShifts": {
+    "message": "Inga layoutf\u00f6rskjutningar"
+  },
+  "models/trace/insights/CLSCulprits.ts | title": {
+    "message": "Orsaker till layoutf\u00f6rskjutningar"
+  },
+  "models/trace/insights/CLSCulprits.ts | topCulprits": {
+    "message": "De vanligaste orsakerna till layoutf\u00f6rskjutningar"
+  },
+  "models/trace/insights/CLSCulprits.ts | unsizedImages": {
+    "message": "Bilder utan angiven storlek"
+  },
+  "models/trace/insights/CLSCulprits.ts | worstCluster": {
+    "message": "S\u00e4msta klustret"
+  },
+  "models/trace/insights/CLSCulprits.ts | worstLayoutShiftCluster": {
+    "message": "Kluster med den s\u00e4msta layoutf\u00f6rskjutningen"
+  },
+  "models/trace/insights/Cache.ts | cacheTTL": {
+    "message": "Lagringstid i cacheminnet"
+  },
+  "models/trace/insights/Cache.ts | description": {
+    "message": "Om filerna cachelagras under l\u00e4ngre tid kan upprepade bes\u00f6k p\u00e5 sidan g\u00e5 snabbare. [L\u00e4s mer](https://web.dev/uses-long-cache-ttl/)."
+  },
+  "models/trace/insights/Cache.ts | noRequestsToCache": {
+    "message": "Inga f\u00f6rfr\u00e5gningar med ineffektiva cachepolicyer"
+  },
+  "models/trace/insights/Cache.ts | others": {
+    "message": "{PH1} andra"
+  },
+  "models/trace/insights/Cache.ts | requestColumn": {
+    "message": "Beg\u00e4ran"
+  },
+  "models/trace/insights/Cache.ts | title": {
+    "message": "Anv\u00e4nd effektiva cachelivsl\u00e4ngder"
+  },
+  "models/trace/insights/DOMSize.ts | description": {
+    "message": "En stor DOM kan f\u00f6rl\u00e4nga tiden f\u00f6r formatber\u00e4kningar och fl\u00f6desomformningar av layouten, vilket p\u00e5verkar sidans responsivitet. En stor DOM \u00f6kar \u00e4ven minnesanv\u00e4ndningen. [L\u00e4s om hur du undviker en f\u00f6r stor DOM-storlek](https://developer.chrome.com/docs/lighthouse/performance/dom-size/)."
+  },
+  "models/trace/insights/DOMSize.ts | element": {
+    "message": "Element"
+  },
+  "models/trace/insights/DOMSize.ts | maxChildren": {
+    "message": "Flest underordnade element"
+  },
+  "models/trace/insights/DOMSize.ts | maxDOMDepth": {
+    "message": "DOM-djup"
+  },
+  "models/trace/insights/DOMSize.ts | statistic": {
+    "message": "Statistik"
+  },
+  "models/trace/insights/DOMSize.ts | title": {
+    "message": "Optimera DOM-storlek"
+  },
+  "models/trace/insights/DOMSize.ts | totalElements": {
+    "message": "Totalt antal element"
+  },
+  "models/trace/insights/DOMSize.ts | value": {
+    "message": "V\u00e4rde"
+  },
+  "models/trace/insights/DocumentLatency.ts | description": {
+    "message": "Den f\u00f6rsta n\u00e4tverksbeg\u00e4ran \u00e4r den viktigaste.  Minska latensen genom att undvika omdirigeringar (s\u00e5 att servern svarar snabbt) och aktivera textkomprimering."
+  },
+  "models/trace/insights/DocumentLatency.ts | failedRedirects": {
+    "message": "Inneh\u00f6ll omdirigeringar"
+  },
+  "models/trace/insights/DocumentLatency.ts | failedServerResponseTime": {
+    "message": "Servern svarade l\u00e5ngsamt"
+  },
+  "models/trace/insights/DocumentLatency.ts | failedTextCompression": {
+    "message": "Ingen komprimering har till\u00e4mpats"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingRedirects": {
+    "message": "Undviker omdirigeringar"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingServerResponseTime": {
+    "message": "Servern svarar snabbt"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingTextCompression": {
+    "message": "Till\u00e4mpar textkomprimering"
+  },
+  "models/trace/insights/DocumentLatency.ts | redirectsLabel": {
+    "message": "Omdirigeringar"
+  },
+  "models/trace/insights/DocumentLatency.ts | serverResponseTimeLabel": {
+    "message": "Serversvarstid"
+  },
+  "models/trace/insights/DocumentLatency.ts | title": {
+    "message": "F\u00f6rdr\u00f6jning av dokumentbeg\u00e4ran"
+  },
+  "models/trace/insights/DocumentLatency.ts | uncompressedDownload": {
+    "message": "Okomprimerad nedladdning"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | columnDuplicatedBytes": {
+    "message": "Dubbletter av bytes"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | columnSource": {
+    "message": "K\u00e4lla"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | description": {
+    "message": "Ta bort stora, duplicerade JavaScript-moduler fr\u00e5n paket s\u00e5 att f\u00e4rre on\u00f6diga byte skickas via n\u00e4tverket."
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | title": {
+    "message": "Duplicerad JavaScript"
+  },
+  "models/trace/insights/FontDisplay.ts | description": {
+    "message": "Du kan g\u00f6ra s\u00e5 att texten alltid \u00e4r synlig genom att st\u00e4lla in [font-display](https://developer.chrome.com/blog/font-display) p\u00e5 swap eller optional. swap kan optimeras ytterligare f\u00f6r att minska layoutf\u00f6rskjutningar med [\u00e5sidos\u00e4ttanden av teckensnittsv\u00e4rden](https://developer.chrome.com/blog/font-fallbacks)."
+  },
+  "models/trace/insights/FontDisplay.ts | fontColumn": {
+    "message": "Teckensnitt"
+  },
+  "models/trace/insights/FontDisplay.ts | title": {
+    "message": "Teckensnittsvisning"
+  },
+  "models/trace/insights/FontDisplay.ts | wastedTimeColumn": {
+    "message": "Bortsl\u00f6sad tid"
+  },
+  "models/trace/insights/ForcedReflow.ts | anonymous": {
+    "message": "(anonym)"
+  },
+  "models/trace/insights/ForcedReflow.ts | description": {
+    "message": "M\u00e5nga API:er, vanligtvis n\u00e4r de l\u00e4ser layoutgeometri, tvingar renderingsmotorn att pausa skriptk\u00f6rningen f\u00f6r att ber\u00e4kna format och layout. L\u00e4s mer om [framtvingad fl\u00f6desomformning](https://developers.google.com/web/fundamentals/performance/rendering/avoid-large-complex-layouts-and-layout-thrashing#avoid-forced-synchronous-layouts) och hur det kan begr\u00e4nsas."
+  },
+  "models/trace/insights/ForcedReflow.ts | relatedStackTrace": {
+    "message": "Stacksp\u00e5rning"
+  },
+  "models/trace/insights/ForcedReflow.ts | title": {
+    "message": "Framtvingad fl\u00f6desomformning"
+  },
+  "models/trace/insights/ForcedReflow.ts | topTimeConsumingFunctionCall": {
+    "message": "Toppfunktionsanrop"
+  },
+  "models/trace/insights/ForcedReflow.ts | totalReflowTime": {
+    "message": "Total tid f\u00f6r fl\u00f6desomformning"
+  },
+  "models/trace/insights/ForcedReflow.ts | unattributed": {
+    "message": "[utan attribut]"
+  },
+  "models/trace/insights/ImageDelivery.ts | description": {
+    "message": "Om du minskar nedladdningstiden f\u00f6r bilder kan du f\u00f6rb\u00e4ttra den upplevda h\u00e4mtningstiden f\u00f6r sidan och LCP. [L\u00e4s mer om att optimera bildstorlek](https://developer.chrome.com/docs/lighthouse/performance/uses-optimized-images/)"
+  },
+  "models/trace/insights/ImageDelivery.ts | estimatedSavings": {
+    "message": "{PH1} (uppsk. {PH2})"
+  },
+  "models/trace/insights/ImageDelivery.ts | noOptimizableImages": {
+    "message": "Inga bilder som kan optimeras"
+  },
+  "models/trace/insights/ImageDelivery.ts | optimizeFile": {
+    "message": "Optimera filstorlek"
+  },
+  "models/trace/insights/ImageDelivery.ts | others": {
+    "message": "{PH1} andra"
+  },
+  "models/trace/insights/ImageDelivery.ts | title": {
+    "message": "F\u00f6rb\u00e4ttra bildleveransen"
+  },
+  "models/trace/insights/ImageDelivery.ts | useCompression": {
+    "message": "Om du \u00f6kar bildkomprimeringsfaktorn kan du minska nedladdningsstorleken f\u00f6r bilden."
+  },
+  "models/trace/insights/ImageDelivery.ts | useModernFormat": {
+    "message": "Du kan minska nedladdningsstorleken p\u00e5 den h\u00e4r bilden genom att anv\u00e4nda ett modernt bildformat (WebP, AVIF) eller \u00f6ka bildkomprimeringen."
+  },
+  "models/trace/insights/ImageDelivery.ts | useResponsiveSize": {
+    "message": "Den h\u00e4r bildfilen \u00e4r st\u00f6rre \u00e4n n\u00f6dv\u00e4ndigt ({PH1}) f\u00f6r de visade m\u00e5tten ({PH2}). Anv\u00e4nd responsiva bilder f\u00f6r att minska nedladdningsstorleken f\u00f6r bilden."
+  },
+  "models/trace/insights/ImageDelivery.ts | useVideoFormat": {
+    "message": "Om du anv\u00e4nder videoformat i st\u00e4llet f\u00f6r giffar kan du minska nedladdningsstorleken f\u00f6r animerat inneh\u00e5ll."
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | description": {
+    "message": "B\u00f6rja unders\u00f6ka med den l\u00e4ngsta fasen. [F\u00f6rdr\u00f6jningar kan minimeras](https://web.dev/articles/optimize-inp#optimize_interactions). F\u00f6r att minska bearbetningstiden kan du [optimera kostnaderna f\u00f6r huvudtr\u00e5dar](https://web.dev/articles/optimize-long-tasks), ofta JS."
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | duration": {
+    "message": "L\u00e4ngd"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | inputDelay": {
+    "message": "Inmatningsf\u00f6rdr\u00f6jning"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | noInteractions": {
+    "message": "Inga interaktioner har identifierats"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | phase": {
+    "message": "Fas"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | presentationDelay": {
+    "message": "Presentationsf\u00f6rdr\u00f6jning"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | processingDuration": {
+    "message": "Behandlingstid"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | title": {
+    "message": "INP per fas"
+  },
+  "models/trace/insights/LCPDiscovery.ts | description": {
+    "message": "Optimera LCP genom att g\u00f6ra LCP-bilden [synlig](https://web.dev/articles/optimize-lcp#1_eliminate_resource_load_delay) fr\u00e5n HTML direkt och [undvika uppskjuten inl\u00e4sning](https://web.dev/articles/lcp-lazy-loading)"
+  },
+  "models/trace/insights/LCPDiscovery.ts | fetchPriorityApplied": {
+    "message": "fetchpriority=high har till\u00e4mpats"
+  },
+  "models/trace/insights/LCPDiscovery.ts | fetchPriorityShouldBeApplied": {
+    "message": "fetchpriority=high b\u00f6r till\u00e4mpas"
+  },
+  "models/trace/insights/LCPDiscovery.ts | lazyLoadNotApplied": {
+    "message": "uppskjuten inl\u00e4sning till\u00e4mpas inte"
+  },
+  "models/trace/insights/LCPDiscovery.ts | lcpLoadDelay": {
+    "message": "LCP-bilden l\u00e4ses in {PH1} efter den tidigaste startpunkten."
+  },
+  "models/trace/insights/LCPDiscovery.ts | noLcp": {
+    "message": "Ingen LCP uppt\u00e4cktes"
+  },
+  "models/trace/insights/LCPDiscovery.ts | noLcpResource": {
+    "message": "Ingen LCP-resurs har identifierats eftersom LCP inte \u00e4r en bild"
+  },
+  "models/trace/insights/LCPDiscovery.ts | requestDiscoverable": {
+    "message": "Beg\u00e4ran kan hittas i det ursprungliga dokumentet"
+  },
+  "models/trace/insights/LCPDiscovery.ts | title": {
+    "message": "Uppt\u00e4cka LCP-beg\u00e4ran"
+  },
+  "models/trace/insights/LCPPhases.ts | description": {
+    "message": "Varje [fas har specifika f\u00f6rb\u00e4ttringsstrategier](https://web.dev/articles/optimize-lcp#lcp-breakdown). LCP-tiden b\u00f6r helst anv\u00e4ndas till att l\u00e4sa in resurser, inte till f\u00f6rdr\u00f6jningar."
+  },
+  "models/trace/insights/LCPPhases.ts | duration": {
+    "message": "L\u00e4ngd"
+  },
+  "models/trace/insights/LCPPhases.ts | elementRenderDelay": {
+    "message": "F\u00f6rdr\u00f6jning av elementrendering"
+  },
+  "models/trace/insights/LCPPhases.ts | fieldDuration": {
+    "message": "75:e percentilen i f\u00e4ltet"
+  },
+  "models/trace/insights/LCPPhases.ts | noLcp": {
+    "message": "Ingen LCP uppt\u00e4cktes"
+  },
+  "models/trace/insights/LCPPhases.ts | phase": {
+    "message": "Fas"
+  },
+  "models/trace/insights/LCPPhases.ts | resourceLoadDelay": {
+    "message": "F\u00f6rdr\u00f6jning av resursinl\u00e4sning"
+  },
+  "models/trace/insights/LCPPhases.ts | resourceLoadDuration": {
+    "message": "Inl\u00e4sningstid f\u00f6r resurs"
+  },
+  "models/trace/insights/LCPPhases.ts | timeToFirstByte": {
+    "message": "Time to First Byte"
+  },
+  "models/trace/insights/LCPPhases.ts | title": {
+    "message": "LCP per fas"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | columnScript": {
+    "message": "Skript"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | columnWastedBytes": {
+    "message": "Bortkastade bytes"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | description": {
+    "message": "Med polyfill-koder och transformeringar g\u00e5r det att anv\u00e4nda nya JavaScript-funktioner i \u00e4ldre webbl\u00e4sare. M\u00e5nga av dem beh\u00f6vs dock inte f\u00f6r moderna webbl\u00e4sare. \u00d6verv\u00e4g att \u00e4ndra JavaScript-byggprocessen s\u00e5 att du inte transpilerar [Baseline](https://web.dev/articles/baseline-and-polyfills)-funktioner, f\u00f6rutom om du vet att du m\u00e5ste ha st\u00f6d f\u00f6r \u00e4ldre webbl\u00e4sare. [L\u00e4s mer om varf\u00f6r de flesta webbplatser kan implementera ES6+-kod utan transpilering](https://philipwalton.com/articles/the-state-of-es5-on-the-web/)"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | title": {
+    "message": "\u00c4ldre JavaScript"
+  },
+  "models/trace/insights/ModernHTTP.ts | description": {
+    "message": "HTTP/2 och HTTP/3 ger m\u00e5nga f\u00f6rdelar j\u00e4mf\u00f6rt med HTTP/1.1, till exempel multiplexering. [L\u00e4s mer om hur du anv\u00e4nder modern HTTP](https://developer.chrome.com/docs/lighthouse/best-practices/uses-http2/)."
+  },
+  "models/trace/insights/ModernHTTP.ts | noOldProtocolRequests": {
+    "message": "Inga beg\u00e4randen anv\u00e4nde HTTP/1.1"
+  },
+  "models/trace/insights/ModernHTTP.ts | protocol": {
+    "message": "Protokoll"
+  },
+  "models/trace/insights/ModernHTTP.ts | request": {
+    "message": "Beg\u00e4ran"
+  },
+  "models/trace/insights/ModernHTTP.ts | title": {
+    "message": "Modern HTTP"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | description": {
+    "message": "[Undvik att kedjekoppla kritiska beg\u00e4randen](https://developer.chrome.com/docs/lighthouse/performance/critical-request-chains) genom att g\u00f6ra kedjorna kortare, minska storleken p\u00e5 resurser som laddas ned eller skjut upp nedladdningen av on\u00f6diga resurser f\u00f6r att f\u00f6rb\u00e4ttra sidh\u00e4mtningstiden."
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | maxCriticalPathLatency": {
+    "message": "H\u00f6gsta latens f\u00f6r kritisk kedja:"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | noNetworkDependencyTree": {
+    "message": "Inga renderingsuppgifter p\u00e5verkades av n\u00e4tverksberoenden"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | title": {
+    "message": "N\u00e4tverksberoendetr\u00e4d"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | warningDescription": {
+    "message": "Undvik att kedjekoppla kritiska beg\u00e4randen genom att g\u00f6ra kedjorna kortare, minska storleken p\u00e5 resurser som laddas ned eller skjuta upp nedladdningen av on\u00f6diga resurser f\u00f6r att f\u00f6rb\u00e4ttra sidh\u00e4mtningstiden."
+  },
+  "models/trace/insights/RenderBlocking.ts | description": {
+    "message": "Beg\u00e4randen blockerar sidans f\u00f6rsta rendering, vilket kan f\u00f6rdr\u00f6ja LCP. [Anv\u00e4nd uppskjutning eller infogning](https://web.dev/learn/performance/understanding-the-critical-path#render-blocking_resources/) f\u00f6r att flytta bort dessa n\u00e4tverksbeg\u00e4randen fr\u00e5n den kritiska v\u00e4gen."
+  },
+  "models/trace/insights/RenderBlocking.ts | duration": {
+    "message": "L\u00e4ngd"
+  },
+  "models/trace/insights/RenderBlocking.ts | noRenderBlocking": {
+    "message": "Inga renderingsblockerande beg\u00e4randen f\u00f6r denna navigering"
+  },
+  "models/trace/insights/RenderBlocking.ts | renderBlockingRequest": {
+    "message": "Beg\u00e4ran"
+  },
+  "models/trace/insights/RenderBlocking.ts | title": {
+    "message": "Beg\u00e4randen om renderingsblockering"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | description": {
+    "message": "Om kostnaderna f\u00f6r att ber\u00e4kna om stilar f\u00f6rblir h\u00f6ga kan du minska dem genom att optimera v\u00e4ljare. [Optimera v\u00e4ljare](https://developer.chrome.com/docs/devtools/performance/selector-stats) med b\u00e5de h\u00f6g f\u00f6rfluten tid och h\u00f6g procentandel l\u00e5ngsam s\u00f6kv\u00e4g. Enklare v\u00e4ljare, f\u00e4rre v\u00e4ljare, en mindre DOM och en grundare DOM minskar alla matchningskostnader."
+  },
+  "models/trace/insights/SlowCSSSelector.ts | elapsed": {
+    "message": "F\u00f6rfluten tid"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | enableSelectorData": {
+    "message": "Ingen CSS-v\u00e4ljardata hittades. Statistik f\u00f6r CSS-v\u00e4ljare m\u00e5ste aktiveras i inst\u00e4llningarna f\u00f6r resultatpanelen."
+  },
+  "models/trace/insights/SlowCSSSelector.ts | matchAttempts": {
+    "message": "Matchningsf\u00f6rs\u00f6k"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | matchCount": {
+    "message": "Antal matchningar"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | title": {
+    "message": "Kostnader f\u00f6r CSS-v\u00e4ljare"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | topSelectors": {
+    "message": "Vanligaste v\u00e4ljarna"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | total": {
+    "message": "Totalt"
+  },
+  "models/trace/insights/ThirdParties.ts | columnMainThreadTime": {
+    "message": "Tid f\u00f6r huvudtr\u00e5d"
+  },
+  "models/trace/insights/ThirdParties.ts | columnThirdParty": {
+    "message": "Tredje part"
+  },
+  "models/trace/insights/ThirdParties.ts | columnTransferSize": {
+    "message": "\u00d6verf\u00f6ringsstorlek"
+  },
+  "models/trace/insights/ThirdParties.ts | description": {
+    "message": "Kod fr\u00e5n tredje part kan p\u00e5verka inl\u00e4sningsprestandan betydligt. [Minska och skjut upp inl\u00e4sningen av kod fr\u00e5n tredje part](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/loading-third-party-javascript/) f\u00f6r att prioritera sidans inneh\u00e5ll."
+  },
+  "models/trace/insights/ThirdParties.ts | noThirdParties": {
+    "message": "Inga tredje parter hittades"
+  },
+  "models/trace/insights/ThirdParties.ts | title": {
+    "message": "Tredje part"
+  },
+  "models/trace/insights/Viewport.ts | description": {
+    "message": "Tryckinteraktioner kan [f\u00f6rdr\u00f6jas med upp till 300\u00a0ms](https://developer.chrome.com/blog/300ms-tap-delay-gone-away/) om visningsomr\u00e5det inte \u00e4r optimerat f\u00f6r mobila enheter."
+  },
+  "models/trace/insights/Viewport.ts | title": {
+    "message": "Optimera visningsomr\u00e5de f\u00f6r mobila enheter"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | HTTPMethodNotGET": {
+    "message": "Bara sidor som l\u00e4sts in via en GET-beg\u00e4ran kan placeras i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | HTTPStatusNotOK": {
+    "message": "Bara sidor med statuskoden 2XX kan cachelagras."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | JavaScriptExecution": {
+    "message": "Ett f\u00f6rs\u00f6k att k\u00f6ra JavaScript i cacheminnet uppt\u00e4cktes."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | appBanner": {
+    "message": "Sidor som har beg\u00e4rt en AppBanner kan f\u00f6r n\u00e4rvarande inte placeras i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabled": {
+    "message": "Vilocacheminnet har inaktiverats med hj\u00e4lp av en flagga. \u00d6ppna chrome://flags/#back-forward-cache om du vill aktivera det lokalt p\u00e5 enheten."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledByCommandLine": {
+    "message": "Vilocacheminnet har inaktiverats fr\u00e5n kommandoraden."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledByLowMemory": {
+    "message": "Vilocacheminnet har inaktiverats d\u00e4rf\u00f6r att minnet inte r\u00e4ckte till."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledForDelegate": {
+    "message": "Vilocacheminnet st\u00f6ds inte vid delegering."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledForPrerender": {
+    "message": "Vilocacheminnet har inaktiverats f\u00f6r f\u00f6rrendering."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | broadcastChannel": {
+    "message": "Sidan kan inte cachelagras eftersom den har en BroadcastChannel-instans med registrerade lyssnare."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheControlNoStore": {
+    "message": "Sidor med f\u00e4ltet cache-control:no-store i huvudet kan inte lagras i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheFlushed": {
+    "message": "Cacheminnet rensades avsiktligen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheLimit": {
+    "message": "Sidan togs bort fr\u00e5n cacheminnet s\u00e5 att en annan sida skulle kunna cachelagras."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | containsPlugins": {
+    "message": "Sidor som anv\u00e4nder en plugin kan f\u00f6r n\u00e4rvarande inte placeras i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentDiscarded": {
+    "message": "Odefinierad"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentFileChooser": {
+    "message": "Sidor som anv\u00e4nder FileChooser API kan inte placeras i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentFileSystemAccess": {
+    "message": "Sidor som anv\u00e4nder File System Access API kan inte placeras i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaDevicesDispatcherHost": {
+    "message": "Sidor som anv\u00e4nder Media Device Dispatcher kan inte placeras i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaPlay": {
+    "message": "Uppspelning p\u00e5gick i en mediespelare n\u00e4r anv\u00e4ndaren navigerade bort fr\u00e5n sidan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaSession": {
+    "message": "Sidor som anv\u00e4nder MediaSession API och st\u00e4ller in en uppspelningsstatus kan inte placeras i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaSessionService": {
+    "message": "Sidor som anv\u00e4nder MediaSession API och st\u00e4ller in \u00e5tg\u00e4rdshanterare kan inte placeras i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentScreenReader": {
+    "message": "Vilocacheminne har inaktiverats p\u00e5 grund av att sk\u00e4rml\u00e4sare anv\u00e4nds."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentSecurityHandler": {
+    "message": "Sidor som anv\u00e4nder SecurityHandler kan inte placeras i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentSerial": {
+    "message": "Sidor som anv\u00e4nder Serial API kan inte placeras i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebAuthenticationAPI": {
+    "message": "Sidor som anv\u00e4nder WebAuthentication API kan inte placeras i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebBluetooth": {
+    "message": "Sidor som anv\u00e4nder WebBluetooth API kan inte placeras i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebUSB": {
+    "message": "Sidor som anv\u00e4nder WebUSB API kan inte placeras i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cookieDisabled": {
+    "message": "Vilocacheminnet har inaktiverats eftersom cookies har inaktiverats p\u00e5 en sida d\u00e4r Cache-Control: no-store anv\u00e4nds."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | dedicatedWorkerOrWorklet": {
+    "message": "Sidor som anv\u00e4nder en dedikerad tj\u00e4nstefunktion eller worklet kan f\u00f6r n\u00e4rvarande inte placeras i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | documentLoaded": {
+    "message": "Dokumentet l\u00e4stes inte in helt innan anv\u00e4ndaren navigerade bort fr\u00e5n det."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderAppBannerManager": {
+    "message": "Appbanner visades n\u00e4r anv\u00e4ndaren navigerade bort fr\u00e5n sidan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderChromePasswordManagerClientBindCredentialManager": {
+    "message": "Chrome L\u00f6senordshantering k\u00f6rdes n\u00e4r anv\u00e4ndaren navigerade bort fr\u00e5n sidan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderDomDistillerSelfDeletingRequestDelegate": {
+    "message": "DOM-destillering p\u00e5gick n\u00e4r anv\u00e4ndaren navigerade bort fr\u00e5n sidan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderDomDistillerViewerSource": {
+    "message": "DOM Distiller Viewer k\u00f6rdes n\u00e4r anv\u00e4ndaren navigerade bort fr\u00e5n sidan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionMessaging": {
+    "message": "Vilocacheminnet har inaktiverats p\u00e5 grund av att till\u00e4gg anv\u00e4nder API:et f\u00f6r meddelanden."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionMessagingForOpenPort": {
+    "message": "Till\u00e4gg med l\u00e5ngvarig anslutning ska koppla fr\u00e5n innan lagras i vilocacheminne."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionSentMessageToCachedFrame": {
+    "message": "Till\u00e4gg med l\u00e5ngvarig anslutning f\u00f6rs\u00f6kte skicka meddelanden till bildrutor i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensions": {
+    "message": "Vilocacheminnet har inaktiverats p\u00e5 grund av till\u00e4gg."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderModalDialog": {
+    "message": "En modal dialogruta, till exempel en \u00e5ters\u00e4ndning av ett formul\u00e4r eller en dialogruta f\u00f6r http-autentisering, visades n\u00e4r anv\u00e4ndaren navigerade bort fr\u00e5n sidan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderOfflinePage": {
+    "message": "Offlinesidan visades n\u00e4r anv\u00e4ndaren navigerade bort fr\u00e5n sidan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderOomInterventionTabHelper": {
+    "message": "F\u00e4ltet Out-Of-Memory Intervention visades n\u00e4r anv\u00e4ndaren navigerade bort fr\u00e5n sidan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderPermissionRequestManager": {
+    "message": "Det fanns en aktiv beg\u00e4ran om beh\u00f6righet n\u00e4r anv\u00e4ndaren navigerade bort fr\u00e5n sidan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderPopupBlockerTabHelper": {
+    "message": "Popupblockerare k\u00f6rdes n\u00e4r anv\u00e4ndaren navigerade bort fr\u00e5n sidan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderSafeBrowsingThreatDetails": {
+    "message": "Information fr\u00e5n S\u00e4ker webbs\u00f6kning visades n\u00e4r anv\u00e4ndaren navigerade bort fr\u00e5n sidan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderSafeBrowsingTriggeredPopupBlocker": {
+    "message": "S\u00e4ker webbs\u00f6kning identifierade den h\u00e4r sidan som ol\u00e4mplig och blockerade popupf\u00f6nstret."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | enteredBackForwardCacheBeforeServiceWorkerHostAdded": {
+    "message": "En tj\u00e4nstefunktion aktiverades medan sidan lagrades i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | errorDocument": {
+    "message": "Vilocacheminnet har inaktiverats p\u00e5 grund av dokumentfel."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | fencedFramesEmbedder": {
+    "message": "Det g\u00e5r inte att lagra sidor med FencedFrames i bfcache."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | foregroundCacheLimit": {
+    "message": "Sidan togs bort fr\u00e5n cacheminnet s\u00e5 att en annan sida skulle kunna cachelagras."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | grantedMediaStreamAccess": {
+    "message": "Sidor med \u00e5tkomstbeh\u00f6righet till en mediestream kan f\u00f6r n\u00e4rvarande inte placeras i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | haveInnerContents": {
+    "message": "Sidor med vissa typer av inb\u00e4ddat inneh\u00e5ll (t.ex. PDF-filer) kan f\u00f6r n\u00e4rvarande inte placeras i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | idleManager": {
+    "message": "Sidor som anv\u00e4nder IdleManager kan f\u00f6r n\u00e4rvarande inte placeras i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | indexedDBConnection": {
+    "message": "Sidor med en \u00f6ppen IndexedDB-anslutning kan f\u00f6r n\u00e4rvarande inte placeras i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | indexedDBEvent": {
+    "message": "Vilocacheminnet har inaktiverats p\u00e5 grund av en IndexedDB-h\u00e4ndelse."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | ineligibleAPI": {
+    "message": "Otill\u00e5tna API:er anv\u00e4ndes."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | injectedJavascript": {
+    "message": "Sidor med ett JavaScript som injicerats av ett till\u00e4gg kan f\u00f6r n\u00e4rvarande inte placeras i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | injectedStyleSheet": {
+    "message": "Sidor med ett StyleSheet som injicerats av ett till\u00e4gg kan f\u00f6r n\u00e4rvarande inte placeras i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | internalError": {
+    "message": "Internt fel."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | jsNetworkRequestReceivedCacheControlNoStoreResource": {
+    "message": "Vilocacheminnet har inaktiverats eftersom en viss JavaScript-n\u00e4tverksbeg\u00e4ran tog emot en resurs med rubriken Cache-Control: no-store."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | keepaliveRequest": {
+    "message": "Vilocacheminnet har inaktiverats p\u00e5 grund av en keepalive-beg\u00e4ran."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | keyboardLock": {
+    "message": "Sidor som anv\u00e4nder tangentbordsl\u00e5s kan f\u00f6r n\u00e4rvarande inte placeras i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | loading": {
+    "message": "Sidan hade inte l\u00e4sts in helt innan anv\u00e4ndaren navigerade bort fr\u00e5n den."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | mainResourceHasCacheControlNoCache": {
+    "message": "Sidor vars huvudresurs har cache-control:no-cache kan inte lagras i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | mainResourceHasCacheControlNoStore": {
+    "message": "Sidor vars huvudresurs har cache-control:no-store kan inte lagras i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | navigationCancelledWhileRestoring": {
+    "message": "Navigeringen avbr\u00f6ts innan sidan kunde \u00e5terst\u00e4llas fr\u00e5n vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkExceedsBufferLimit": {
+    "message": "Sidan togs bort fr\u00e5n cacheminnet eftersom f\u00f6r mycket data skickades till den via en aktiv n\u00e4tverksanslutning. Det finns en gr\u00e4ns f\u00f6r hur mycket data en cachelagrad sida f\u00e5r ta emot i Chrome."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestDatapipeDrainedAsBytesConsumer": {
+    "message": "Sidor med utest\u00e5ende fetch() eller XHR kan f\u00f6r n\u00e4rvarande inte placeras i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestRedirected": {
+    "message": "Sidan togs bort fr\u00e5n vilocacheminnet eftersom en aktiv n\u00e4tverksbeg\u00e4ran medf\u00f6rde en omdirigering."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestTimeout": {
+    "message": "Sidan togs bort fr\u00e5n cacheminnet eftersom en n\u00e4tverksanslutning f\u00f6rblev \u00f6ppen f\u00f6r l\u00e4nge. Det finns en gr\u00e4ns f\u00f6r hur l\u00e4nge en cachelagrad sida f\u00e5r ta emot data i Chrome."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | noResponseHead": {
+    "message": "Sidor utan giltigt svarshuvud kan inte lagras i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | notMainFrame": {
+    "message": "Navigeringen gjordes i en annan ram \u00e4n den \u00f6verordnade ramen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingIndexedDBTransaction": {
+    "message": "Sidor med p\u00e5g\u00e5ende transaktioner i en indexerad databas kan f\u00f6r n\u00e4rvarande inte placeras i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestDirectSocket": {
+    "message": "Sidor med en utest\u00e5ende n\u00e4tverksbeg\u00e4ran kan f\u00f6r n\u00e4rvarande inte placeras i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestFetch": {
+    "message": "Sidor med en utest\u00e5ende h\u00e4mtningsbeg\u00e4ran i n\u00e4tverket kan f\u00f6r n\u00e4rvarande inte placeras i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestOthers": {
+    "message": "Sidor med en utest\u00e5ende n\u00e4tverksbeg\u00e4ran kan f\u00f6r n\u00e4rvarande inte placeras i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestXHR": {
+    "message": "Sidor med en utest\u00e5ende XHR-n\u00e4tverksbeg\u00e4ran kan f\u00f6r n\u00e4rvarande inte placeras i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | paymentManager": {
+    "message": "Sidor som anv\u00e4nder PaymentManager kan f\u00f6r n\u00e4rvarande inte placeras i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | pictureInPicture": {
+    "message": "Sidor som anv\u00e4nder bild-i-bild kan f\u00f6r n\u00e4rvarande inte placeras i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | printing": {
+    "message": "Sidor d\u00e4r anv\u00e4ndargr\u00e4nssnittet f\u00f6r utskrift visas kan f\u00f6r n\u00e4rvarande inte placeras i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | relatedActiveContentsExist": {
+    "message": "Sidan \u00f6ppnades med window.open() och en annan flik refererar till den, eller ocks\u00e5 \u00f6ppnade sidan ett f\u00f6nster."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | rendererProcessCrashed": {
+    "message": "Renderingen av sidan i vilocacheminnet kraschade."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | rendererProcessKilled": {
+    "message": "Renderingsprocessen f\u00f6r sidan i vilocacheminnet avslutades."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedAudioCapturePermission": {
+    "message": "Sidor som har beg\u00e4rt beh\u00f6righet att spela in ljud kan f\u00f6r n\u00e4rvarande inte placeras i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedBackForwardCacheBlockedSensors": {
+    "message": "Sidor som har beg\u00e4rt sensorbeh\u00f6righet kan f\u00f6r n\u00e4rvarande inte placeras i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedBackgroundWorkPermission": {
+    "message": "Sidor som har beg\u00e4rt synkronisering i bakgrunden eller h\u00e4mtningsbeh\u00f6righet kan f\u00f6r n\u00e4rvarande inte placeras i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedMIDIPermission": {
+    "message": "Sidor som har beg\u00e4rt MIDI-beh\u00f6righet kan f\u00f6r n\u00e4rvarande inte placeras i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedNotificationsPermission": {
+    "message": "Sidor som har beg\u00e4rt aviseringsbeh\u00f6righet kan f\u00f6r n\u00e4rvarande inte placeras i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedStorageAccessGrant": {
+    "message": "Sidor som har beg\u00e4rt \u00e5tkomst till lagringsutrymme kan f\u00f6r n\u00e4rvarande inte placeras i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedVideoCapturePermission": {
+    "message": "Sidor som har beg\u00e4rt beh\u00f6righet till videoinspelning kan f\u00f6r n\u00e4rvarande inte placeras i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | schemeNotHTTPOrHTTPS": {
+    "message": "Bara sidor med webbprotokollet HTTP eller HTTPS kan cachelagras."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerClaim": {
+    "message": "En tj\u00e4nstefunktion gjorde anspr\u00e5k p\u00e5 sidan medan den lagrades i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerPostMessage": {
+    "message": "En tj\u00e4nstefunktion f\u00f6rs\u00f6kte skicka MessageEvent till sidan i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerUnregistration": {
+    "message": "En ServiceWorker avregistrerades medan sidan lagrades i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerVersionActivation": {
+    "message": "Sidan togs bort fr\u00e5n vilocacheminnet d\u00e4rf\u00f6r att en tj\u00e4nstefunktion aktiverades."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | sessionRestored": {
+    "message": "Chrome har startats om och vilocacheminnet nollst\u00e4llts."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | sharedWorker": {
+    "message": "Sidor som anv\u00e4nder SharedWorker kan f\u00f6r n\u00e4rvarande inte placeras i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | speechRecognizer": {
+    "message": "Sidor som anv\u00e4nder SpeechRecognizer kan f\u00f6r n\u00e4rvarande inte placeras i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | speechSynthesis": {
+    "message": "Sidor som anv\u00e4nder SpeechSynthesis kan f\u00f6r n\u00e4rvarande inte placeras i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subframeIsNavigating": {
+    "message": "En iframe p\u00e5 sidan initierade en navigering som aldrig slutf\u00f6rdes."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subresourceHasCacheControlNoCache": {
+    "message": "Sidor som har en underresurs med cache-control:no-cache kan inte lagras i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subresourceHasCacheControlNoStore": {
+    "message": "Sidor som har en underresurs med cache-control:no-store kan inte lagras i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | timeout": {
+    "message": "Sidan finns inte kvar eftersom tidsgr\u00e4nsen f\u00f6r lagring i vilocacheminnet \u00f6verskreds."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | timeoutPuttingInCache": {
+    "message": "Tidsgr\u00e4nsen \u00f6verskreds n\u00e4r sidan skulle lagras i vilocacheminnet (troligen p\u00e5 grund av en pagehide-hanterare som k\u00f6rdes under l\u00e5ng tid)."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | unloadHandlerExistsInMainFrame": {
+    "message": "Det finns en unload-hanterare i sidans \u00f6verordnade ram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | unloadHandlerExistsInSubFrame": {
+    "message": "Sidan har en unload-hanterare i en underordnad ram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | userAgentOverrideDiffers": {
+    "message": "Webbl\u00e4saren har \u00e4ndrat f\u00e4ltet f\u00f6r \u00e5sidos\u00e4ttning av anv\u00e4ndaragent."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | wasGrantedMediaAccess": {
+    "message": "Sidor med beh\u00f6righet att spela in video eller ljud kan f\u00f6r n\u00e4rvarande inte placeras i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webDatabase": {
+    "message": "Sidor som anv\u00e4nder WebDatabase kan f\u00f6r n\u00e4rvarande inte placeras i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webHID": {
+    "message": "Sidor som anv\u00e4nder WebHID kan f\u00f6r n\u00e4rvarande inte placeras i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webLocks": {
+    "message": "Sidor som anv\u00e4nder WebLocks kan f\u00f6r n\u00e4rvarande inte placeras i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webNfc": {
+    "message": "Sidor som anv\u00e4nder WebNfc kan f\u00f6r n\u00e4rvarande inte placeras i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webOTPService": {
+    "message": "Sidor som anv\u00e4nder WebOTPService kan f\u00f6r n\u00e4rvarande inte placeras i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webRTC": {
+    "message": "Sidor med WebRTC kan inte lagras i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webRTCSticky": {
+    "message": "Vilocacheminnet har inaktiverats eftersom WebRTC har anv\u00e4nts."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webShare": {
+    "message": "Sidor som anv\u00e4nder WebShare kan f\u00f6r n\u00e4rvarande inte placeras i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webSocket": {
+    "message": "Sidor med WebSocket kan inte lagras i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webSocketSticky": {
+    "message": "Vilocacheminnet har inaktiverats eftersom WebSocket har anv\u00e4nts."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webTransport": {
+    "message": "Sidor med WebTransport kan inte lagras i vilocacheminnet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webTransportSticky": {
+    "message": "Vilocacheminnet har inaktiverats eftersom WebTransport har anv\u00e4nts."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webXR": {
+    "message": "Sidor som anv\u00e4nder WebXR kan f\u00f6r n\u00e4rvarande inte placeras i vilocacheminnet."
+  }
+}

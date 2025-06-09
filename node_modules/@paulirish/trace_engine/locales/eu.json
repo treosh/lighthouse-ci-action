@@ -1,0 +1,908 @@
+{
+  "generated/Deprecation.ts | AuthorizationCoveredByWildcard": {
+    "message": "CORSeko Access-Control-Allow-Headers kudeatzean komodinaren ikurrak (*) ez du estaliko baimena."
+  },
+  "generated/Deprecation.ts | CSSSelectorInternalMediaControlsOverlayCastButton": {
+    "message": "-internal-media-controls-overlay-cast-button hautatzailea erabili beharrean disableRemotePlayback atributua erabili beharko litzateke Cast-en integrazio lehenetsia desgaitzeko."
+  },
+  "generated/Deprecation.ts | CSSValueAppearanceSliderVertical": {
+    "message": "CSSren slider-vertical itxura-balioa estandarizatu gabe dago eta kendu egingo da."
+  },
+  "generated/Deprecation.ts | CanRequestURLHTTPContainingNewline": {
+    "message": "Baliabideen eskaerei dagozkien URLek kendutako zuriuneen \\(n|r|t) karaktereak eta \"baino gutxiago\" karaktereak (<) badituzte, eskaera horiek blokeatuta egongo dira. Baliabide horiek kargatzeko, kendu lerro-jauziak eta kodetu \"baino gutxiago\" karaktereak elementuen atributuen balioetan eta antzeko tokietan."
+  },
+  "generated/Deprecation.ts | CharsetAutoDetectionISO2022JP": {
+    "message": "ISO-2022-JP karaktere multzoaren hautemate automatikoa zaharkituta dago eta laster desgaituko da. Zehaztu karaktere multzoa Eduki mota goiburuan edo metaetiketa bat erabilita (https://developer.mozilla.org/en-US/docs/Glossary/Character_encoding)."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesConnectionInfo": {
+    "message": "chrome.loadTimes() zaharkituta dago; haren ordez, erabili API estandar hau: Navigation Timing-en 2. maila."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesFirstPaintAfterLoadTime": {
+    "message": "chrome.loadTimes() zaharkituta dago; haren ordez, erabili API estandar hau: Paint Timing."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesWasAlternateProtocolAvailable": {
+    "message": "chrome.loadTimes() zaharkituta dago; haren ordez, erabili API estandar hau: Navigation Timing-en 2. mailako nextHopProtocol."
+  },
+  "generated/Deprecation.ts | CookieWithTruncatingChar": {
+    "message": "\\(0|r|n) karaktereak dituzten cookieak baztertu egingo dira, moztu beharrean."
+  },
+  "generated/Deprecation.ts | CrossOriginAccessBasedOnDocumentDomain": {
+    "message": "document.domain ezartzearen ondorioz jatorri bereko gidalerroa erlaxatzeko aukera zaharkituta dago eta desgaitu egingo da modu lehenetsian. document.domain ezartzearen ondorioz gaitu zen sarbide baterako (jatorri berekoa) balio du zaharkitze-abisu honek."
+  },
+  "generated/Deprecation.ts | CrossOriginWindowAlert": {
+    "message": "Jatorri anitzeko iframe-etatik window.alert abiarazteko aukera zaharkituta dago eta kendu egingo da etorkizunean."
+  },
+  "generated/Deprecation.ts | CrossOriginWindowConfirm": {
+    "message": "Jatorri anitzeko iframe-etatik window.confirm abiarazteko aukera zaharkituta dago eta kendu egingo da etorkizunean."
+  },
+  "generated/Deprecation.ts | DOMMutationEvents": {
+    "message": "DOMaren mutazio-gertaerak, DOMSubtreeModified, DOMNodeInserted, DOMNodeRemoved, DOMNodeRemovedFromDocument, DOMNodeInsertedIntoDocument eta DOMCharacterDataModified barne, zaharkituta daude (https://w3c.github.io/uievents/#legacy-event-types) eta kendu egingo dira. Haien ordez, erabili MutationObserver."
+  },
+  "generated/Deprecation.ts | DataUrlInSvgUse": {
+    "message": "Onartzen diren datuak: SVGUseElement-eko URLak zaharkituta daude, eta kendu egingo dira etorkizunean."
+  },
+  "generated/Deprecation.ts | GeolocationInsecureOrigin": {
+    "message": "getCurrentPosition() eta watchPosition() metodoek jada ez dute funtzionatzen jatorri ez-seguruetan. Eginbidea erabiltzeko, aplikazioa jatorri seguru batera eramatea gomendatzen dugu (adibidez, HTTPSra). Xehetasun gehiago ikusteko, joan https://goo.gle/chrome-insecure-origins helbidera."
+  },
+  "generated/Deprecation.ts | GeolocationInsecureOriginDeprecatedNotRemoved": {
+    "message": "getCurrentPosition() eta watchPosition() zaharkituta daude jatorri ez-seguruetan. Eginbidea erabiltzeko, aplikazioa jatorri seguru batera eramatea gomendatzen dugu (adibidez, HTTPSra). Xehetasun gehiago ikusteko, joan https://goo.gle/chrome-insecure-origins helbidera."
+  },
+  "generated/Deprecation.ts | GetUserMediaInsecureOrigin": {
+    "message": "getUserMedia() metodoak jada ez du funtzionatzen jatorri ez-seguruetan. Eginbidea erabiltzeko, aplikazioa jatorri seguru batera eramatea gomendatzen dugu (adibidez, HTTPSra). Xehetasun gehiago ikusteko, joan https://goo.gle/chrome-insecure-origins helbidera."
+  },
+  "generated/Deprecation.ts | H1UserAgentFontSizeInSection": {
+    "message": "<h1> etiketa bat aurkitu da letra-tamainarik zehaztuta ez daukan <article>, <aside>, <nav> edo <section> batean. Laster, goiburu-testu horren tamaina aldatu egingo da arakatzaile honetan. Informazio gehiago lortzeko, irakurri https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#specifying_a_uniform_font_size_for_h1."
+  },
+  "generated/Deprecation.ts | HostCandidateAttributeGetter": {
+    "message": "RTCPeerConnectionIceErrorEvent.hostCandidate zaharkituta dago. Haren ordez, erabili RTCPeerConnectionIceErrorEvent.address edo RTCPeerConnectionIceErrorEvent.port."
+  },
+  "generated/Deprecation.ts | IdentityDigitalCredentials": {
+    "message": "Kredentzial digitaletarako navigator.credentials.get() eskaeraren formatu hau zaharkituta geratu da. Formatu berria erabiltzeko, eguneratu deia."
+  },
+  "generated/Deprecation.ts | IdentityInCanMakePaymentEvent": {
+    "message": "Saltzailearen jatorria eta canmakepayment zerbitzuko langilearen gertaeraren datu arbitrarioak zaharkituta daude eta kendu egingo dira: topOrigin, paymentRequestOrigin, methodData, modifiers."
+  },
+  "generated/Deprecation.ts | InsecurePrivateNetworkSubresourceRequest": {
+    "message": "Erabiltzaileen sareko posizio pribilegiatuarengatik soilik atzi zezakeen sare bateko azpibaliabide bat eskatu du webguneak. Eskaera horiek publikoak ez diren gailuak eta zerbitzariak ikusgai ezartzen dituzte Interneten. Hala, webgunearteko eskaera faltsifikatuta (CSRF) eraso egiteko eta/edo informazio-ihes bat egoteko arriskua handitzen da. Arriskuok murrizteko, publikoak ez diren azpibaliabideei egiten zaizkien eskaerak zaharkitzen ditu Chrome-k (testuinguru ez-seguruetatik egin badira) eta haiek blokeatzen hasten da."
+  },
+  "generated/Deprecation.ts | InterestGroupDailyUpdateUrl": {
+    "message": "InterestGroups egituraren dailyUpdateUrl eremua joinAdInterestGroup() egiturara eraman da, eta izena aldatu zaio (updateUrl), haren portaera hobeto azaltzeko."
+  },
+  "generated/Deprecation.ts | IntlV8BreakIterator": {
+    "message": "Intl.v8BreakIterator zaharkituta dago. Haren ordez, erabili Intl.Segmenter."
+  },
+  "generated/Deprecation.ts | LocalCSSFileExtensionRejected": {
+    "message": "CSSa ezin da kargatu file: motako URLetatik, haiek amaieran .css fitxategi-luzapena izan ezean."
+  },
+  "generated/Deprecation.ts | MediaSourceAbortRemove": {
+    "message": "remove() metodoaren barruti ez-sinkronikoa kentzeko prozesua bertan behera uzte aldera SourceBuffer.abort() erabiltzeko aukera zaharkituta dago zehaztapenak aldatu direlako. Etorkizunean, aukera horren bateragarritasuna kenduko da. Hori erabili beharrean, itxaron updateend gertaera osatu arte. Multimedia-eduki ez-sinkronikoaren eranskina bertan behera uzteko edo analizatzailearen egoera berrezartzeko helburua du soilik abort() metodoak."
+  },
+  "generated/Deprecation.ts | MediaSourceDurationTruncatingBuffered": {
+    "message": "Buferrean gordetako marko kodetuen aurkezpenerako denbora-zigilu altuenaren azpitik MediaSource.duration ezartzeko aukera zaharkituta dago zehaztapenak aldatu direlako. Etorkizunean, buferrean gordetako multimedia-eduki moztuak inplizituki kentzeko aukeraren bateragarritasuna kenduko da. Horren ordez, newDuration < oldDuration baldintza betetzen denean, aplikatu remove(newDuration, oldDuration) esplizitua sourceBuffers guztietan."
+  },
+  "generated/Deprecation.ts | NoSysexWebMIDIWithoutPermission": {
+    "message": "Web MIDIk erabiltzeko baimena eskatuko du nahiz eta SysEx-a MIDIOptions aukeretan ez egon."
+  },
+  "generated/Deprecation.ts | NotificationInsecureOrigin": {
+    "message": "Hemendik aurrera, agian ezingo duzu erabili Notification APIa jatorri ez-seguruekin. Aplikazioa jatorri seguru batera aldatzea gomendatzen dugu (adibidez, HTTPSra). Xehetasun gehiago ikusteko, joan https://goo.gle/chrome-insecure-origins helbidera."
+  },
+  "generated/Deprecation.ts | NotificationPermissionRequestedIframe": {
+    "message": "Baliteke Notification APIrako baimena jatorri anitzeko iframe batetik ez eskatzea jada. Baimena goi-mailako marko batetik eskatzea edo beste leiho bat irekitzea gomendatzen dugu."
+  },
+  "generated/Deprecation.ts | ObsoleteCreateImageBitmapImageOrientationNone": {
+    "message": "createImageBitmap-eko imageOrientation: 'none' aukera zaharkituta dago. Haren ordez, erabili createImageBitmap {imageOrientation: 'from-image'} aukerarekin."
+  },
+  "generated/Deprecation.ts | ObsoleteWebRtcCipherSuite": {
+    "message": "Zure bazkidea (D)TLSaren bertsio zaharkitu bat negoziatzen ari da. Arazo hori konpontzeko, jarri harekin harremanetan."
+  },
+  "generated/Deprecation.ts | OverflowVisibleOnReplacedElement": {
+    "message": "img, video eta canvas etiketetan overflow: visible zehazten bada, baliteke etiketa horiek ikusizko edukia sortzea elementuen mugetatik kanpo. Ikusi https://github.com/WICG/shared-element-transitions/blob/main/debugging_overflow_on_images.md."
+  },
+  "generated/Deprecation.ts | PaymentInstruments": {
+    "message": "paymentManager.instruments zaharkituta dago. Haren ordez, erabili ordainketa-kudeatzaileen berehalako instalazioa."
+  },
+  "generated/Deprecation.ts | PaymentRequestCSPViolation": {
+    "message": "Edukiaren segurtasun-gidalerroen (CSP) connect-src sasiagindu artezkaria saihestu du PaymentRequest deiak. Saiheste hori zaharkituta dago. Gehitu ordainketa-metodoaren identifikatzailea (PaymentRequest APIkosupportedMethods eremuan dagoena) CSPen connect-src sasiagindu artezkarian."
+  },
+  "generated/Deprecation.ts | PersistentQuotaType": {
+    "message": "StorageType.persistent zaharkituta dago. Haren ordez, erabili navigator.storage estandarra."
+  },
+  "generated/Deprecation.ts | PictureSourceSrc": {
+    "message": "<picture> duen <source src> elementuak ez du balio elementu nagusi gisa. Beraz, ez ikusi egingo zaio. Haren ordez, erabili <source srcset>."
+  },
+  "generated/Deprecation.ts | PrefixedCancelAnimationFrame": {
+    "message": "webkitCancelAnimationFrame saltzailearen berariazko metodo bat da. Haren ordez, erabili cancelAnimationFrame estandarra."
+  },
+  "generated/Deprecation.ts | PrefixedRequestAnimationFrame": {
+    "message": "webkitRequestAnimationFrame saltzailearen berariazko metodo bat da. Haren ordez, erabili requestAnimationFrame estandarra."
+  },
+  "generated/Deprecation.ts | PrefixedVideoDisplayingFullscreen": {
+    "message": "HTMLVideoElement.webkitDisplayingFullscreen zaharkituta dago. Haren ordez, erabili Document.fullscreenElement."
+  },
+  "generated/Deprecation.ts | PrefixedVideoEnterFullScreen": {
+    "message": "HTMLVideoElement.webkitEnterFullScreen() zaharkituta dago. Haren ordez, erabili Element.requestFullscreen()."
+  },
+  "generated/Deprecation.ts | PrefixedVideoEnterFullscreen": {
+    "message": "HTMLVideoElement.webkitEnterFullscreen() zaharkituta dago. Haren ordez, erabili Element.requestFullscreen()."
+  },
+  "generated/Deprecation.ts | PrefixedVideoExitFullScreen": {
+    "message": "HTMLVideoElement.webkitExitFullScreen() zaharkituta dago. Haren ordez, erabili Document.exitFullscreen()."
+  },
+  "generated/Deprecation.ts | PrefixedVideoExitFullscreen": {
+    "message": "HTMLVideoElement.webkitExitFullscreen() zaharkituta dago. Haren ordez, erabili Document.exitFullscreen()."
+  },
+  "generated/Deprecation.ts | PrefixedVideoSupportsFullscreen": {
+    "message": "HTMLVideoElement.webkitSupportsFullscreen zaharkituta dago. Haren ordez, erabili Document.fullscreenEnabled."
+  },
+  "generated/Deprecation.ts | PrivacySandboxExtensionsAPI": {
+    "message": "chrome.privacy.websites.privacySandboxEnabled APIa zaharkituta geldituko da, baina M113 bertsiora arte aktibo egongo da, aurreko bertsioekiko bateragarritasuna lortzeko. Horren ordez, erabili chrome.privacy.websites.topicsEnabled, chrome.privacy.websites.fledgeEnabled eta chrome.privacy.websites.adMeasurementEnabled. Joan https://developer.chrome.com/docs/extensions/reference/privacy/#property-websites-privacySandboxEnabled helbidera."
+  },
+  "generated/Deprecation.ts | RTCConstraintEnableDtlsSrtpFalse": {
+    "message": "DtlsSrtpKeyAgreement murrizketa kenduta dago. false balioa zehaztu duzu murrizketa horretarako, eta kendutako SDES key negotiation metodoa erabiltzeko saiakera gisa interpretatu da balio hori. Funtzio hori kenduta dago. Haren ordez, erabili DTLS key negotiation onartzen duen zerbitzu bat."
+  },
+  "generated/Deprecation.ts | RTCConstraintEnableDtlsSrtpTrue": {
+    "message": "DtlsSrtpKeyAgreement murrizketa kenduta dago. true balioa zehaztu duzu murrizketa horretarako, baina ez du eraginik izan. Alabaina, gauzak modu txukunean ager daitezen, murrizketa hori ken dezakezu."
+  },
+  "generated/Deprecation.ts | RTCPeerConnectionGetStatsLegacyNonCompliant": {
+    "message": "Dei bidezko erantzunetan oinarritutako getStats() metodoa zaharkituta dago eta kendu egingo da. Haren ordez, erabili spec-compliant getStats()."
+  },
+  "generated/Deprecation.ts | RangeExpand": {
+    "message": "Range.expand() zaharkituta dago. Haren ordez, erabili Selection.modify()."
+  },
+  "generated/Deprecation.ts | RequestedSubresourceWithEmbeddedCredentials": {
+    "message": "Azpibaliabideen eskaerei dagozkien URLek kapsulatutako kredentzialak badituzte (adibidez, https://user:pass@host/), eskaera horiek blokeatuta egongo dira."
+  },
+  "generated/Deprecation.ts | RtcpMuxPolicyNegotiate": {
+    "message": "rtcpMuxPolicy aukera zaharkituta dago eta kendu egingo da."
+  },
+  "generated/Deprecation.ts | SharedArrayBufferConstructedWithoutIsolation": {
+    "message": "SharedArrayBuffer objektuak jatorri anitzeko isolamendua beharko du. Xehetasun gehiago ikusteko, joan https://developer.chrome.com/blog/enabling-shared-array-buffer/ helbidera."
+  },
+  "generated/Deprecation.ts | TextToSpeech_DisallowedByAutoplay": {
+    "message": "Erabiltzailearen aktibaziorik gabe speechSynthesis.speak() metodoari deitzeko aukera zaharkituta dago eta kendu egingo da."
+  },
+  "generated/Deprecation.ts | UnloadHandler": {
+    "message": "Deskargatze-gertaeren hautemaileak zaharkituta daude eta kendu egingo dira."
+  },
+  "generated/Deprecation.ts | V8SharedArrayBufferConstructedInExtensionWithoutIsolation": {
+    "message": "SharedArrayBuffer erabiltzen jarraitzeko, jatorri anitzeko isolamenduaren aukera gaitu behar dute luzapenek. Joan https://developer.chrome.com/docs/extensions/mv3/cross-origin-isolation/ helbidera."
+  },
+  "generated/Deprecation.ts | XHRJSONEncodingDetection": {
+    "message": "XMLHttpRequest eskaerarako erantzun gisa balio duen JSON formatuko fitxategiak ez ditu onartzen UTF-16 formatuko karaktereak"
+  },
+  "generated/Deprecation.ts | XMLHttpRequestSynchronousInNonWorkerOutsideBeforeUnload": {
+    "message": "Hari nagusiko XMLHttpRequest sinkronikoa zaharkituta dago, azken erabiltzaileak haren ondorio kaltegarriak ikus ditzakeelako. Laguntza gehiago jasotzeko, joan https://xhr.spec.whatwg.org/ helbidera."
+  },
+  "models/trace/insights/CLSCulprits.ts | animation": {
+    "message": "Animazioa"
+  },
+  "models/trace/insights/CLSCulprits.ts | description": {
+    "message": "Erabiltzailearen interakziorik gabe elementuak mugitzen direnean gertatzen dira diseinu-aldaketak. [Ikertu diseinu-aldaketen kausak](https://web.dev/articles/optimize-cls); besteak beste, elementuak gehitzea, kentzea edo haien letra orria kargatu bitartean aldatzea."
+  },
+  "models/trace/insights/CLSCulprits.ts | fontRequest": {
+    "message": "Letra-eskaera"
+  },
+  "models/trace/insights/CLSCulprits.ts | injectedIframe": {
+    "message": "Iframe txertatua"
+  },
+  "models/trace/insights/CLSCulprits.ts | layoutShiftCluster": {
+    "message": "Diseinu-aldaketen lukuaren hasiera-ordua: {PH1}"
+  },
+  "models/trace/insights/CLSCulprits.ts | noCulprits": {
+    "message": "Ezin izan dira hauteman diseinu-aldaketen errudunak"
+  },
+  "models/trace/insights/CLSCulprits.ts | noLayoutShifts": {
+    "message": "Ez dago diseinu-aldaketarik"
+  },
+  "models/trace/insights/CLSCulprits.ts | title": {
+    "message": "Diseinu-aldaketen errudunak"
+  },
+  "models/trace/insights/CLSCulprits.ts | topCulprits": {
+    "message": "Diseinu-aldaketaren errudun nagusiak"
+  },
+  "models/trace/insights/CLSCulprits.ts | unsizedImages": {
+    "message": "Tamainarik gabeko irudiak"
+  },
+  "models/trace/insights/CLSCulprits.ts | worstCluster": {
+    "message": "Txarrenen lukua"
+  },
+  "models/trace/insights/CLSCulprits.ts | worstLayoutShiftCluster": {
+    "message": "Diseinu-aldaketa txarrenen lukua"
+  },
+  "models/trace/insights/Cache.ts | cacheTTL": {
+    "message": "Cachearen TTLa"
+  },
+  "models/trace/insights/Cache.ts | description": {
+    "message": "Cachearen bizi-zikloa luzea bada, bizkorrago kargatuko zaie orria hara itzultzen diren erabiltzaileei. [Lortu informazio gehiago](https://web.dev/uses-long-cache-ttl/)."
+  },
+  "models/trace/insights/Cache.ts | noRequestsToCache": {
+    "message": "Ez dago cache-gidalerro ez-eraginkorrak dituen eskaerarik"
+  },
+  "models/trace/insights/Cache.ts | others": {
+    "message": "beste {PH1}"
+  },
+  "models/trace/insights/Cache.ts | requestColumn": {
+    "message": "Eskatu"
+  },
+  "models/trace/insights/Cache.ts | title": {
+    "message": "Erabili cachearen bizitza-ziklo eraginkorrak"
+  },
+  "models/trace/insights/DOMSize.ts | description": {
+    "message": "DOM handi batek estilo-kalkuluen eta diseinuaren edukiaren doikuntza dinamikoen iraupena luza dezake, eta horrek orrien moldagarritasunari eragiten dio. Gainera, DOM handi batek memoria gehiago erabiliko du. [Lortu DOMa handiegia izaten saihesteko argibideak](https://developer.chrome.com/docs/lighthouse/performance/dom-size/)."
+  },
+  "models/trace/insights/DOMSize.ts | element": {
+    "message": "Elementua"
+  },
+  "models/trace/insights/DOMSize.ts | maxChildren": {
+    "message": "Bigarren mailako elementu gehienak"
+  },
+  "models/trace/insights/DOMSize.ts | maxDOMDepth": {
+    "message": "DOMaren sakonera"
+  },
+  "models/trace/insights/DOMSize.ts | statistic": {
+    "message": "Estatistika"
+  },
+  "models/trace/insights/DOMSize.ts | title": {
+    "message": "Optimizatu DOMaren tamaina"
+  },
+  "models/trace/insights/DOMSize.ts | totalElements": {
+    "message": "Elementuak, guztira"
+  },
+  "models/trace/insights/DOMSize.ts | value": {
+    "message": "Balioa"
+  },
+  "models/trace/insights/DocumentLatency.ts | description": {
+    "message": "Sareko zure lehen eskaera da garrantzitsuena.  Murriztu latentzia birbideratzeak saihestuz, zerbitzariak azkarrago erantzutea bermatuz eta testuaren konprimatzea gaituz."
+  },
+  "models/trace/insights/DocumentLatency.ts | failedRedirects": {
+    "message": "Birbideratzeak zituen"
+  },
+  "models/trace/insights/DocumentLatency.ts | failedServerResponseTime": {
+    "message": "Zerbitzariak motel erantzun du"
+  },
+  "models/trace/insights/DocumentLatency.ts | failedTextCompression": {
+    "message": "Ez da aplikatu konprimatzerik"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingRedirects": {
+    "message": "Birbideratzeak ekiditen ditu"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingServerResponseTime": {
+    "message": "Zerbitzariak bizkor erantzuten du"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingTextCompression": {
+    "message": "Testuaren konprimatzea aplikatzen du"
+  },
+  "models/trace/insights/DocumentLatency.ts | redirectsLabel": {
+    "message": "Birbideratzeak"
+  },
+  "models/trace/insights/DocumentLatency.ts | serverResponseTimeLabel": {
+    "message": "Zerbitzariaren erantzun-denbora"
+  },
+  "models/trace/insights/DocumentLatency.ts | title": {
+    "message": "Dokumentu-eskaeraren latentzia"
+  },
+  "models/trace/insights/DocumentLatency.ts | uncompressedDownload": {
+    "message": "Konprimatu gabeko deskarga"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | columnDuplicatedBytes": {
+    "message": "Byte bikoiztuak"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | columnSource": {
+    "message": "Iturburua"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | description": {
+    "message": "Kendu JavaScript darabilten modulu handi eta bikoiztuak multzoetatik, sareko jarduerek kontsumitutako alferrikako byteak murrizteko."
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | title": {
+    "message": "JavaScript bikoiztua"
+  },
+  "models/trace/insights/FontDisplay.ts | description": {
+    "message": "[font-display](https://developer.chrome.com/blog/font-display) swap edo optional gisa ezartzea gomendatzen da, testua beti ikusgai dagoela ziurtatzeko. swap gehiago optimiza daiteke diseinu-aldaketak gutxitzeko [letra-neurketen ordezkapenarekin](https://developer.chrome.com/blog/font-fallbacks)."
+  },
+  "models/trace/insights/FontDisplay.ts | fontColumn": {
+    "message": "Letra"
+  },
+  "models/trace/insights/FontDisplay.ts | title": {
+    "message": "Letren bistaratzea"
+  },
+  "models/trace/insights/FontDisplay.ts | wastedTimeColumn": {
+    "message": "Alferrik galdutako denbora"
+  },
+  "models/trace/insights/ForcedReflow.ts | anonymous": {
+    "message": "(anonimoa)"
+  },
+  "models/trace/insights/ForcedReflow.ts | description": {
+    "message": "API askok, normalean diseinuaren geometria irakurtzen dutenak, errendatze-motorrari scripten exekuzioa pausarazten diote estiloa eta diseinua kalkulatzeko. Lortu [edukiaren doikuntza dinamiko behartuari](https://developers.google.com/web/fundamentals/performance/rendering/avoid-large-complex-layouts-and-layout-thrashing#avoid-forced-synchronous-layouts) eta hura gutxitzeko moduari buruzko informazio gehiago."
+  },
+  "models/trace/insights/ForcedReflow.ts | relatedStackTrace": {
+    "message": "Pilaren arrasto-txostena"
+  },
+  "models/trace/insights/ForcedReflow.ts | title": {
+    "message": "Edukiaren doikuntza dinamiko behartua"
+  },
+  "models/trace/insights/ForcedReflow.ts | topTimeConsumingFunctionCall": {
+    "message": "Funtzio-dei nagusia"
+  },
+  "models/trace/insights/ForcedReflow.ts | totalReflowTime": {
+    "message": "Edukiaren doikuntza dinamikoa egiteko denbora, guztira"
+  },
+  "models/trace/insights/ForcedReflow.ts | unattributed": {
+    "message": "[egilerik gabea]"
+  },
+  "models/trace/insights/ImageDelivery.ts | description": {
+    "message": "Irudien deskarga-denbora murrizten baduzu, orriaren hautemandako kargatze-denbora eta LCPa hobetuko dira. [Lortu irudiaren tamaina hobetzeari buruzko informazio gehiago](https://developer.chrome.com/docs/lighthouse/performance/uses-optimized-images/)"
+  },
+  "models/trace/insights/ImageDelivery.ts | estimatedSavings": {
+    "message": "{PH1} (estimazioa: {PH2})"
+  },
+  "models/trace/insights/ImageDelivery.ts | noOptimizableImages": {
+    "message": "Irudiak ezin dira optimizatu"
+  },
+  "models/trace/insights/ImageDelivery.ts | optimizeFile": {
+    "message": "Optimizatu fitxategi-tamaina"
+  },
+  "models/trace/insights/ImageDelivery.ts | others": {
+    "message": "beste {PH1}"
+  },
+  "models/trace/insights/ImageDelivery.ts | title": {
+    "message": "Hobetu irudien entrega"
+  },
+  "models/trace/insights/ImageDelivery.ts | useCompression": {
+    "message": "Irudia konprimatzeko faktorea handitzen bada, irudiaren deskarga-tamaina hobetuko da agian."
+  },
+  "models/trace/insights/ImageDelivery.ts | useModernFormat": {
+    "message": "Irudi-formatu moderno bat (WebP, AVIF) erabiltzen edo irudia are gehiago konprimatzen bada, irudiaren deskarga-tamaina hobetuko da agian."
+  },
+  "models/trace/insights/ImageDelivery.ts | useResponsiveSize": {
+    "message": "Irudi-fitxategia behar baino handiagoa da ({PH1}) bistaratutako dimentsioetarako ({PH2}). Erabili irudi moldagarriak irudiaren deskarga-tamaina txikitzeko."
+  },
+  "models/trace/insights/ImageDelivery.ts | useVideoFormat": {
+    "message": "GIFen ordez bideo-formatuak erabiltzen badira, eduki animatuaren deskarga-tamaina hobetuko da agian."
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | description": {
+    "message": "Hasi fase luzeenarekin ikertzen. [Atzerapenak minimizatu egin daitezke](https://web.dev/articles/optimize-inp#optimize_interactions). Prozesamenduaren iraupena murrizteko, [optimizatu elkarrizketa-hari nagusiaren kostuak](https://web.dev/articles/optimize-long-tasks), askotan JS."
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | duration": {
+    "message": "Iraupena"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | inputDelay": {
+    "message": "Sarreraren atzerapena"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | noInteractions": {
+    "message": "Ez da interakziorik hauteman"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | phase": {
+    "message": "Fasea"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | presentationDelay": {
+    "message": "Aurkezpenaren atzerapena"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | processingDuration": {
+    "message": "Prozesamenduaren iraupena"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | title": {
+    "message": "INPa fasearen arabera"
+  },
+  "models/trace/insights/LCPDiscovery.ts | description": {
+    "message": "Optimizatu LCPa, LCP irudia HTMLtik berehala [ikusgai](https://web.dev/articles/optimize-lcp#1_eliminate_resource_load_delay) eginez eta [kargatze motela saihestuz](https://web.dev/articles/lcp-lazy-loading)"
+  },
+  "models/trace/insights/LCPDiscovery.ts | fetchPriorityApplied": {
+    "message": "fetchpriority=high aplikatu da"
+  },
+  "models/trace/insights/LCPDiscovery.ts | fetchPriorityShouldBeApplied": {
+    "message": "fetchpriority=high aplikatu behar da"
+  },
+  "models/trace/insights/LCPDiscovery.ts | lazyLoadNotApplied": {
+    "message": "kargatze motela ez da aplikatu"
+  },
+  "models/trace/insights/LCPDiscovery.ts | lcpLoadDelay": {
+    "message": "LCP irudia kargatu da ({PH1}), lehenengo abiapuntuaren ondoren."
+  },
+  "models/trace/insights/LCPDiscovery.ts | noLcp": {
+    "message": "Ez da LCPrik hauteman"
+  },
+  "models/trace/insights/LCPDiscovery.ts | noLcpResource": {
+    "message": "Ez da LCP baliabiderik hauteman, LCPa ez baita irudi bat"
+  },
+  "models/trace/insights/LCPDiscovery.ts | requestDiscoverable": {
+    "message": "Eskaera hasierako dokumentuan ikusgai dago"
+  },
+  "models/trace/insights/LCPDiscovery.ts | title": {
+    "message": "LCP eskaeren ezagutza"
+  },
+  "models/trace/insights/LCPPhases.ts | description": {
+    "message": "[Fase bakoitzak hobekuntza-estrategia zehatzak dauzka](https://web.dev/articles/optimize-lcp#lcp-breakdown). Posible bada, LCP denbora gehiena baliabideak kargatzen erabili beharko litzateke, ez atzerapenetan."
+  },
+  "models/trace/insights/LCPPhases.ts | duration": {
+    "message": "Iraupena"
+  },
+  "models/trace/insights/LCPPhases.ts | elementRenderDelay": {
+    "message": "Elementua errendatzeko prozesuaren atzerapena"
+  },
+  "models/trace/insights/LCPPhases.ts | fieldDuration": {
+    "message": "Eremuko 75. pertzentila"
+  },
+  "models/trace/insights/LCPPhases.ts | noLcp": {
+    "message": "Ez da LCPrik hauteman"
+  },
+  "models/trace/insights/LCPPhases.ts | phase": {
+    "message": "Fasea"
+  },
+  "models/trace/insights/LCPPhases.ts | resourceLoadDelay": {
+    "message": "Baliabideak kargatzeko atzerapena"
+  },
+  "models/trace/insights/LCPPhases.ts | resourceLoadDuration": {
+    "message": "Baliabideak kargatzeko denbora"
+  },
+  "models/trace/insights/LCPPhases.ts | timeToFirstByte": {
+    "message": "Lehen bytea kargatzen hasteko denbora"
+  },
+  "models/trace/insights/LCPPhases.ts | title": {
+    "message": "LCPa fasearen arabera"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | columnScript": {
+    "message": "Scripta"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | columnWastedBytes": {
+    "message": "Alferrik galdutako byteak"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | description": {
+    "message": "Polyfill eta transform-ei esker, arakatzaile zaharrek JavaScript-en eginbide berriak erabil ditzakete. Hala ere, haietako asko ez dira beharrezkoak arakatzaile modernoetarako. Aldatu JavaScript-en garatzeko prozesua [Baseline](https://web.dev/articles/baseline-and-polyfills) eginbideak ez transpilatzeko, aurreko bertsioko arakatzaileekiko bateragarritasuna gorde behar duzula jakin ezean. [Jakin zergatik webgune gehienek ES6+ kodea transpilatu gabe inplementatu ahal duten](https://philipwalton.com/articles/the-state-of-es5-on-the-web/)"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | title": {
+    "message": "Aurreko bertsioko JavaScript"
+  },
+  "models/trace/insights/ModernHTTP.ts | description": {
+    "message": "HTTP/2 eta HTTP/3 protokoloek hainbat abantaila dituzte HTTP/1.1 protokoloarekin alderatuta; adibidez, multiplexazioa. [Lortu HTTP modernoaren erabilerari buruzko informazio gehiago](https://developer.chrome.com/docs/lighthouse/best-practices/uses-http2/)."
+  },
+  "models/trace/insights/ModernHTTP.ts | noOldProtocolRequests": {
+    "message": "Eskaera batek ere ez du erabili HTTP/1.1"
+  },
+  "models/trace/insights/ModernHTTP.ts | protocol": {
+    "message": "Protokoloa"
+  },
+  "models/trace/insights/ModernHTTP.ts | request": {
+    "message": "Eskatu"
+  },
+  "models/trace/insights/ModernHTTP.ts | title": {
+    "message": "HTTP modernoa"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | description": {
+    "message": "Orrien kargatzea hobetzeko, [saihestu funtsezko eskaerak kateatzea](https://developer.chrome.com/docs/lighthouse/performance/critical-request-chains) kateen luzera edo baliabideen deskarga-tamaina murriztuz, edo beharrezkoak ez diren baliabideen deskarga atzeratuz."
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | maxCriticalPathLatency": {
+    "message": "Bide-izenaren funtsezko gehieneko latentzia:"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | noNetworkDependencyTree": {
+    "message": "Ez dago sarearen menpekotasunek eragindako errendatze-zereginik"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | title": {
+    "message": "Sarearen menpekotasun-zuhaitza"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | warningDescription": {
+    "message": "Orrien kargatzea hobetzeko, saihestu funtsezko eskaerak kateatzea kateen luzera edo baliabideen deskarga-tamaina murriztuz, edo beharrezkoak ez diren baliabideen deskarga atzeratuz."
+  },
+  "models/trace/insights/RenderBlocking.ts | description": {
+    "message": "Eskaerek orriaren hasierako errendatzea blokeatzen dute; beraz, baliteke LCPa atzeratzea. [Gerorako utziz edo txertatuz](https://web.dev/learn/performance/understanding-the-critical-path#render-blocking_resources/) gero, baliteke sareko eskaera horiek funtsezko bidetik ateratzea."
+  },
+  "models/trace/insights/RenderBlocking.ts | duration": {
+    "message": "Iraupena"
+  },
+  "models/trace/insights/RenderBlocking.ts | noRenderBlocking": {
+    "message": "Ez dago errendatzea blokeatzeko eskaerarik nabigazioan"
+  },
+  "models/trace/insights/RenderBlocking.ts | renderBlockingRequest": {
+    "message": "Eskaera"
+  },
+  "models/trace/insights/RenderBlocking.ts | title": {
+    "message": "Errendatzea blokeatu duten eskaerak"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | description": {
+    "message": "Estiloa berriro kalkulatzeko eginbidearen kostuak altu mantentzen badira, hautatzailearen optimizazioak murritz ditzake. [Optimizatu hautatzaileak](https://developer.chrome.com/docs/devtools/performance/selector-stats) igarotako denbora altua eta bide mantsoaren ehuneko altua badute. Parekatze-kostuak murrizteko, erabili hautatzaile sinpleagoak, hautatzaile gutxiago, DOM txikiago bat eta sakonera txikiagoko DOM bat."
+  },
+  "models/trace/insights/SlowCSSSelector.ts | elapsed": {
+    "message": "Igarotako denbora"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | enableSelectorData": {
+    "message": "Ez da CSS hautatzailearen daturik aurkitu. CSS hautatzailearen estatistikak gaitu egin behar dira errendimendu-panelaren ezarpenetan."
+  },
+  "models/trace/insights/SlowCSSSelector.ts | matchAttempts": {
+    "message": "Bat-etortzeko saiakerak"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | matchCount": {
+    "message": "Bat-etortze kopurua"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | title": {
+    "message": "CSS hautatzailearen kostuak"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | topSelectors": {
+    "message": "Hautatzaile nagusiak"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | total": {
+    "message": "Guztira"
+  },
+  "models/trace/insights/ThirdParties.ts | columnMainThreadTime": {
+    "message": "Hari nagusian emandako denbora"
+  },
+  "models/trace/insights/ThirdParties.ts | columnThirdParty": {
+    "message": "Hirugarren hornitzailea"
+  },
+  "models/trace/insights/ThirdParties.ts | columnTransferSize": {
+    "message": "Transferentziaren tamaina"
+  },
+  "models/trace/insights/ThirdParties.ts | description": {
+    "message": "Baliteke hirugarrenen kodeak eragin handia izatea kargatzeko errendimenduan. [Murriztu eta atzeratu hirugarrenen kodea kargatzea](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/loading-third-party-javascript/) zure webguneko edukia lehenesteko."
+  },
+  "models/trace/insights/ThirdParties.ts | noThirdParties": {
+    "message": "Ez da hirugarrenik aurkitu"
+  },
+  "models/trace/insights/ThirdParties.ts | title": {
+    "message": "Hirugarrenena"
+  },
+  "models/trace/insights/Viewport.ts | description": {
+    "message": "Baliteke sakatze bidezko interakzioak [gehienez 300\u00a0ms atzeratzea](https://developer.chrome.com/blog/300ms-tap-delay-gone-away/) bistaratze-eremua mugikorretarako optimizatuta ez badago."
+  },
+  "models/trace/insights/Viewport.ts | title": {
+    "message": "Optimizatu bistaratze-eremua mugikorretarako"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | HTTPMethodNotGET": {
+    "message": "Aurreko orria cachean gordetzeko eginbidea GET eskaera baten bidez kargatutako orrietan bakarrik dago erabilgarri."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | HTTPStatusNotOK": {
+    "message": "2XX egoera-kodea duten orriak bakarrik gorde daitezke cachean."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | JavaScriptExecution": {
+    "message": "Chrome-k JavaScript exekutatzeko saiakera bat hauteman du cachean gordeta zegoen bitartean."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | appBanner": {
+    "message": "Une honetan, aurreko orria cachean gordetzeko eginbidea ez dago erabilgarri AppBanner bat eskatu duten orrietan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabled": {
+    "message": "Eginbide esperimentalek aurreko orria cachean gordetzeko eginbidea desaktibatu dute. Joan chrome://flags/#back-forward-cache ezarpenera eginbidea gailu honetan gaitzeko."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledByCommandLine": {
+    "message": "Agindu-lerroak desgaitu du aurreko orria cachean gordetzeko eginbidea."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledByLowMemory": {
+    "message": "Aurreko orria cachean gordetzeko eginbidea desaktibatuta dago ez dagoelako behar adina memoria."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledForDelegate": {
+    "message": "Kapsulatzeko tresnak ez du onartzen aurreko orria cachean gordetzeko eginbidea."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledForPrerender": {
+    "message": "Aurreko orria cachean gordetzeko eginbidea desgaitu da aurrez errendatzeko prozesua gauzatzeko."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | broadcastChannel": {
+    "message": "Ezin da gorde orria cachean, erregistratutako hautemaileak dituen BroadcastChannel instantzia bat duelako."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheControlNoStore": {
+    "message": "Aurreko orria cachean gordetzeko eginbidea ez dago erabilgarri goiburua cache-control:no-store gisa ezarrita daukaten orrietan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheFlushed": {
+    "message": "Cachea berariaz garbitu da."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheLimit": {
+    "message": "Orria cachetik kendu da, cachean beste orri bat gorde ahal izateko."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | containsPlugins": {
+    "message": "Une honetan, aurreko orria cachean gordetzeko eginbidea ez dago erabilgarri pluginak erabiltzen dituzten orrietan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentDiscarded": {
+    "message": "Zehaztugabea"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentFileChooser": {
+    "message": "Aurreko orria cachean gordetzeko eginbidea ez dago erabilgarri FileChooser APIa erabiltzen duten orrietan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentFileSystemAccess": {
+    "message": "Aurreko orria cachean gordetzeko eginbidea ez dago erabilgarri File System Access APIa erabiltzen duten orrietan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaDevicesDispatcherHost": {
+    "message": "Aurreko orria cachean gordetzeko eginbidea ez dago erabilgarri Media Device Dispatcher erabiltzen duten orrietan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaPlay": {
+    "message": "Multimedia-erreproduzigailu bat zerbait erreproduzitzen ari zen orritik irtetean."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaSession": {
+    "message": "Aurreko orria cachean gordetzeko eginbidea ez dago erabilgarri MediaSession APIa erabiltzen duten eta erreprodukzio-egoera bat ezarri duten orrietan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaSessionService": {
+    "message": "Aurreko orria cachean gordetzeko eginbidea ez dago erabilgarri MediaSession APIa erabiltzen duten eta ekintza-kudeatzaileak ezartzen dituzten orrietan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentScreenReader": {
+    "message": "Aurreko orria cachean gordetzeko eginbidea desgaituta dago pantaila-irakurgailua dela-eta."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentSecurityHandler": {
+    "message": "Aurreko orria cachean gordetzeko eginbidea ez dago erabilgarri SecurityHandler erabiltzen duten orrietan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentSerial": {
+    "message": "Aurreko orria cachean gordetzeko eginbidea ez dago erabilgarri Serial APIa erabiltzen duten orrietan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebAuthenticationAPI": {
+    "message": "Aurreko orria cachean gordetzeko eginbidea ez dago erabilgarri WebAuthetication APIa erabiltzen duten orrietan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebBluetooth": {
+    "message": "Aurreko orria cachean gordetzeko eginbidea ez dago erabilgarri WebBluetooth APIa erabiltzen duten orrietan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebUSB": {
+    "message": "Aurreko orria cachean gordetzeko eginbidea ez dago erabilgarri WebUSB APIa erabiltzen duten orrietan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cookieDisabled": {
+    "message": "Aurreko orria cachean gordetzeko eginbidea desgaituta dago, Cache-Control: no-store darabilen orri batean cookieak desgaituta daudelako."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | dedicatedWorkerOrWorklet": {
+    "message": "Une honetan, aurreko orria cachean gordetzeko eginbidea ez dago erabilgarri worker dedikatu bat edo worklet bat erabiltzen duten orrietan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | documentLoaded": {
+    "message": "Dokumentua ez zegoen guztiz kargatuta handik irtetean."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderAppBannerManager": {
+    "message": "Orritik irtetean, aplikazioaren goiburuko mezu bat zegoen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderChromePasswordManagerClientBindCredentialManager": {
+    "message": "Orritik irtetean, Chrome-ren Pasahitz-kudeatzailea zegoen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderDomDistillerSelfDeletingRequestDelegate": {
+    "message": "Orritik irtetean, DOMaren destilazioa abian zen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderDomDistillerViewerSource": {
+    "message": "Orritik irtetean, DOMaren destilatzailearen ikustailea zegoen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionMessaging": {
+    "message": "Aurreko orria cachean gordetzeko eginbidea desgaituta dago luzapenek mezularitza APIak erabiltzen dituztelako."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionMessagingForOpenPort": {
+    "message": "Etengabeko konexioak darabiltzaten luzapenek konexio horiek amaiarazi behar dituzte aurreko orria cachean gordetzeko eginbidea erabili aurretik."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionSentMessageToCachedFrame": {
+    "message": "Etengabeko konexioak darabiltzaten luzapenak aurreko orria cachean gordetzeko eginbidea erabili duten markoei mezuak bidaltzen saiatu dira."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensions": {
+    "message": "Aurreko orria cachean gordetzeko eginbidea desgaituta dago luzapenak direla-eta."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderModalDialog": {
+    "message": "Orritik irtetean, leiho gainerakor bat ikusgai zegoen orrian (adibidez, inprimakiak berriro bidaltzeko edo http motako pasahitzak idazteko leiho bat)."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderOfflinePage": {
+    "message": "Orritik irtetean, konexiorik gabeko orria ikusgai zegoen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderOomInterventionTabHelper": {
+    "message": "Orritik irtetean, memoriarik gabeko esku-hartzearen barra zegoen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderPermissionRequestManager": {
+    "message": "Orritik irtetean, baimen-eskaerak zeuden."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderPopupBlockerTabHelper": {
+    "message": "Orritik irtetean, leiho gainerakorren blokeatzailea zegoen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderSafeBrowsingThreatDetails": {
+    "message": "Orritik irtetean, Arakatze segurua eginbidearen xehetasunak ikusgai zeuden."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderSafeBrowsingTriggeredPopupBlocker": {
+    "message": "Arakatze segurua eginbideak leiho gainerakor bat blokeatu du erabiltzaileak orria oker erabiltzen ari zelako."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | enteredBackForwardCacheBeforeServiceWorkerHostAdded": {
+    "message": "Service worker bat aktibatu da orria aurreko orria cachean gordeta zegoen bitartean."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | errorDocument": {
+    "message": "Aurreko orria cachean gordetzeko eginbidea desgaituta dago errore bat gertatu delako dokumentuan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | fencedFramesEmbedder": {
+    "message": "FencedFrames darabilten orriak ezin dira gorde aurreko orria cachean gordetzeko eginbidearen bidez."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | foregroundCacheLimit": {
+    "message": "Orria cachetik kendu da, cachean beste orri bat gorde ahal izateko."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | grantedMediaStreamAccess": {
+    "message": "Une honetan, aurreko orria cachean gordetzeko eginbidea ez dago erabilgarri multimedia-edukia zuzenean erreproduzitzeko sarbidea ematen duten orrietan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | haveInnerContents": {
+    "message": "Une honetan, kapsulatutako eduki mota jakin batzuk (adibidez, PDFak) dauzkaten orriek ez dituzte betetzen aurreko orria cachean gordetzeko baldintzak."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | idleManager": {
+    "message": "Une honetan, aurreko orria cachean gordetzeko eginbidea ez dago erabilgarri IdleManager erabiltzen duten orrietan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | indexedDBConnection": {
+    "message": "Une honetan, aurreko orria cachean gordetzeko eginbidea ez dago erabilgarri IndexedDB motako konexio ireki bat duten orrietan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | indexedDBEvent": {
+    "message": "Aurreko orria cachean gordetzeko eginbidea desgaituta dago, IndexedDB-ko gertaera bat dela eta."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | ineligibleAPI": {
+    "message": "API desegokiak erabili dira."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | injectedJavascript": {
+    "message": "Une honetan, aurreko orria cachean gordetzeko eginbidea ez dago erabilgarri JavaScript luzapenen bidez txertatu den orrietan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | injectedStyleSheet": {
+    "message": "Une honetan, aurreko orria cachean gordetzeko eginbidea ez dago erabilgarri StyleSheet luzapenen bidez txertatu den orrietan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | internalError": {
+    "message": "Barneko errorea."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | jsNetworkRequestReceivedCacheControlNoStoreResource": {
+    "message": "Aurreko orria cachean gordetzeko eginbidea desgaituta dago, JavaScript darabilen sareko eskaeraren batek Cache-Control: no-store goiburua duen baliabide bat jaso duelako."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | keepaliveRequest": {
+    "message": "Aurreko orria cachean gordetzeko eginbidea desgaituta dago, aktibo mantenarazteko eskaera bat dela eta."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | keyboardLock": {
+    "message": "Une honetan, aurreko orria cachean gordetzeko eginbidea ez dago erabilgarri teklatuaren blokeoa erabiltzen duten orrietan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | loading": {
+    "message": "Orria ez zegoen guztiz kargatuta handik irtetean."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | mainResourceHasCacheControlNoCache": {
+    "message": "Aurreko orria cachean gordetzeko eginbidea ez dago erabilgarri baliabide nagusia cache-control:no-cache gisa ezarrita daukaten orrietan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | mainResourceHasCacheControlNoStore": {
+    "message": "Aurreko orria cachean gordetzeko eginbidea ez dago erabilgarri baliabide nagusia cache-control:no-store gisa ezarrita daukaten orrietan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | navigationCancelledWhileRestoring": {
+    "message": "Orria aurreko orria cachean gordetzeko eginbidearen bidez leheneratu aurretik, bertan behera utzi da nabigazioa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkExceedsBufferLimit": {
+    "message": "Orria cachetik kendu da, sareko konexio aktibo batek datu gehiegi jaso dituelako. Chrome-k mugatu egiten du orri batek cachean gordeta dagoen bitartean jaso dezakeen datu kopurua."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestDatapipeDrainedAsBytesConsumer": {
+    "message": "Une honetan, aurreko orria cachean gordetzeko eginbidea ez dago erabilgarri fetch() edo XHR abian duten orrietan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestRedirected": {
+    "message": "Aurreko orria cachean gordetzeko eginbidetik kendu da orria, sareko eskaera aktibo batek birbideratze bat eragin duelako."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestTimeout": {
+    "message": "Orria cachetik kendu da sareko konexio bat luzaroegi egon delako irekita. Chrome-k mugatu egiten du orri batek cachean gordeta dagoen bitartean datuak jasotzeko duen denbora."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | noResponseHead": {
+    "message": "Aurreko orria cachean gordetzeko eginbidea ez dago erabilgarri balio duen erantzun-goibururik ez duten orrietan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | notMainFrame": {
+    "message": "Nabigazioa marko nagusia ez den marko batean egin da."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingIndexedDBTransaction": {
+    "message": "Une honetan, aurreko orria cachean gordetzeko eginbidea ez dago erabilgarri indexatutako datu-baseetako transakzioak dituzten orrietan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestDirectSocket": {
+    "message": "Une honetan, aurreko orria cachean gordetzeko eginbidea ez dago erabilgarri sareko eskaera bat abian duten orrietan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestFetch": {
+    "message": "Une honetan, aurreko orria cachean gordetzeko eginbidea ez dago erabilgarri fetch sareko eskaera bat abian duten orrietan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestOthers": {
+    "message": "Une honetan, aurreko orria cachean gordetzeko eginbidea ez dago erabilgarri sareko eskaera bat abian duten orrietan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestXHR": {
+    "message": "Une honetan, aurreko orria cachean gordetzeko eginbidea ez dago erabilgarri XHR sareko eskaera bat abian duten orrietan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | paymentManager": {
+    "message": "Une honetan, aurreko orria cachean gordetzeko eginbidea ez dago erabilgarri PaymentManager erabiltzen duten orrietan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | pictureInPicture": {
+    "message": "Une honetan, aurreko orria cachean gordetzeko eginbidea ez dago erabilgarri pantaila txiki gainjarriko modua erabiltzen duten orrietan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | printing": {
+    "message": "Une honetan, aurreko orria cachean gordetzeko eginbidea ez dago erabilgarri inprimatze-interfazea erakusten duten orrietan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | relatedActiveContentsExist": {
+    "message": "Orria window.open() erabilita ireki da, eta beste fitxa batek hari egiten dio erreferentzia, edo orriak leiho bat ireki du."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | rendererProcessCrashed": {
+    "message": "Aurreko orria cachean gordetzeko eginbidearen bidez gordetako orriaren errendatze-prozesuak huts egin du."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | rendererProcessKilled": {
+    "message": "Geldiarazi egin da aurreko orria cachean gordetzeko eginbidearen bidez gordetako orriaren errendatze-prozesua."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedAudioCapturePermission": {
+    "message": "Une honetan, aurreko orria cachean gordetzeko eginbidea ez dago erabilgarri audioa grabatzeko baimenak eskatu dituzten orrietan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedBackForwardCacheBlockedSensors": {
+    "message": "Une honetan, aurreko orria cachean gordetzeko eginbidea ez dago erabilgarri sentsore-baimenak eskatu dituzten orrietan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedBackgroundWorkPermission": {
+    "message": "Une honetan, aurreko orria cachean gordetzeko eginbidea ez dago erabilgarri atzeko planoko sinkronizazioa edo eskuratze-baimenak eskatu dituzten orrietan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedMIDIPermission": {
+    "message": "Une honetan, aurreko orria cachean gordetzeko eginbidea ez dago erabilgarri MIDI baimenak eskatu dituzten orrietan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedNotificationsPermission": {
+    "message": "Une honetan, aurreko orria cachean gordetzeko eginbidea ez dago erabilgarri jakinarazpenak bidaltzeko baimenak eskatu dituzten orrietan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedStorageAccessGrant": {
+    "message": "Une honetan, aurreko orria cachean gordetzeko eginbidea ez dago erabilgarri memoriarako sarbidea eskatu duten orrietan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedVideoCapturePermission": {
+    "message": "Une honetan, aurreko orria cachean gordetzeko eginbidea ez dago erabilgarri bideoa grabatzeko baimenak eskatu dituzten orrietan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | schemeNotHTTPOrHTTPS": {
+    "message": "HTTP edo HTTPS URL eskema duten orriak bakarrik gorde daitezke cachean."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerClaim": {
+    "message": "Service worker batek erreklamatu du orria, hura aurreko orria cachean gordetzeko eginbidearen bidez gordeta zegoen bitartean."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerPostMessage": {
+    "message": "Service worker bat MessageEvent bat bidaltzen saiatu da aurreko orria cachean gordetzeko eginbidearen bidez gordetako orrira."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerUnregistration": {
+    "message": "Orri bat aurreko orria cachean gordetzeko eginbidearen bidez gordeta zegoela, ServiceWorker erregistratu gabe zegoen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerVersionActivation": {
+    "message": "Service worker-aren aktibazio bat dela eta, aurreko orria cachean gordetzeko eginbidetik kendu da orria."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | sessionRestored": {
+    "message": "Chrome berrabiarazi egin da, eta aurreko orria cachean gordetzeko eginbidearen sarrerak garbitu ditu."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | sharedWorker": {
+    "message": "Une honetan, aurreko orria cachean gordetzeko eginbidea ez dago erabilgarri SharedWorker erabiltzen duten orrietan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | speechRecognizer": {
+    "message": "Une honetan, aurreko orria cachean gordetzeko eginbidea ez dago erabilgarri SpeechRecognizer erabiltzen duten orrietan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | speechSynthesis": {
+    "message": "Une honetan, aurreko orria cachean gordetzeko eginbidea ez dago erabilgarri SpeechSynthesis erabiltzen duten orrietan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subframeIsNavigating": {
+    "message": "Orriko iframe batek osatu gabe zegoen nabigazio bat abiarazi du."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subresourceHasCacheControlNoCache": {
+    "message": "Aurreko orria cachean gordetzeko eginbidea ez dago erabilgarri azpibaliabidea cache-control:no-cache gisa ezarrita daukaten orrietan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subresourceHasCacheControlNoStore": {
+    "message": "Aurreko orria cachean gordetzeko eginbidea ez dago erabilgarri azpibaliabidea cache-control:no-store gisa ezarrita daukaten orrietan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | timeout": {
+    "message": "Aurreko orria cachean gordetzeko eginbidearen bidez gordetako orrien gehieneko denbora gainditu du orriak, eta iraungi egin da."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | timeoutPuttingInCache": {
+    "message": "Aurreko orria cachean gordetzeko eginbidea erabiltzeko denbora-muga gainditu du orriak (ziurrenik, iraupen luzeko pagehide kudeatzaileen ondorioz)."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | unloadHandlerExistsInMainFrame": {
+    "message": "Orriak deskarga-kudeatzaile bat dauka marko nagusian."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | unloadHandlerExistsInSubFrame": {
+    "message": "Orriak deskarga-kudeatzaile bat du azpimarko batean."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | userAgentOverrideDiffers": {
+    "message": "Arakatzaileak erabiltzaile-agentearen ordezkapen-goiburua aldatu du."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | wasGrantedMediaAccess": {
+    "message": "Une honetan, aurreko orria cachean gordetzeko eginbidea ez dago erabilgarri bideoa edo audioa grabatzeko sarbidea eman duten orrietan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webDatabase": {
+    "message": "Une honetan, aurreko orria cachean gordetzeko eginbidea ez dago erabilgarri WebDatabase erabiltzen duten orrietan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webHID": {
+    "message": "Une honetan, aurreko orria cachean gordetzeko eginbidea ez dago erabilgarri WebHID erabiltzen duten orrietan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webLocks": {
+    "message": "Une honetan, aurreko orria cachean gordetzeko eginbidea ez dago erabilgarri WebLocks erabiltzen duten orrietan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webNfc": {
+    "message": "Une honetan, aurreko orria cachean gordetzeko eginbidea ez dago erabilgarri WebNfc erabiltzen duten orrietan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webOTPService": {
+    "message": "Une honetan, aurreko orria cachean gordetzeko eginbidea ez dago erabilgarri WebOTPService erabiltzen duten orrietan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webRTC": {
+    "message": "Aurreko orria cachean gordetzeko eginbidea ez dago erabilgarri WebRTC erabiltzen duten orrietan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webRTCSticky": {
+    "message": "Aurreko orria cachean gordetzeko eginbidea desgaituta dago, WebRTC erabili delako."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webShare": {
+    "message": "Une honetan, aurreko orria cachean gordetzeko eginbidea ez dago erabilgarri WebShare erabiltzen duten orrietan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webSocket": {
+    "message": "Aurreko orria cachean gordetzeko eginbidea ez dago erabilgarri WebSocket erabiltzen duten orrietan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webSocketSticky": {
+    "message": "Aurreko orria cachean gordetzeko eginbidea desgaituta dago, WebSocket erabili delako."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webTransport": {
+    "message": "Aurreko orria cachean gordetzeko eginbidea ez dago erabilgarri WebTransport erabiltzen duten orrietan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webTransportSticky": {
+    "message": "Aurreko orria cachean gordetzeko eginbidea desgaituta dago, WebTransport erabili delako."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webXR": {
+    "message": "Une honetan, aurreko orria cachean gordetzeko eginbidea ez dago erabilgarri WebXR erabiltzen duten orrietan."
+  }
+}

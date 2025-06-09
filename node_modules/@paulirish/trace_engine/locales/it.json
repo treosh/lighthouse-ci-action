@@ -1,0 +1,908 @@
+{
+  "generated/Deprecation.ts | AuthorizationCoveredByWildcard": {
+    "message": "L'autorizzazione non verr\u00e0 coperta dal carattere jolly (*) nella gestione di Access-Control-Allow-Headers CORS."
+  },
+  "generated/Deprecation.ts | CSSSelectorInternalMediaControlsOverlayCastButton": {
+    "message": "Per disattivare l'integrazione predefinita di Cast, utilizza l'attributo disableRemotePlayback invece del selettore -internal-media-controls-overlay-cast-button."
+  },
+  "generated/Deprecation.ts | CSSValueAppearanceSliderVertical": {
+    "message": "Il valore di aspetto CSS slider-vertical non \u00e8 standardizzato e verr\u00e0 rimosso."
+  },
+  "generated/Deprecation.ts | CanRequestURLHTTPContainingNewline": {
+    "message": "Le richieste di risorse i cui URL contenevano sia caratteri \\(n|r|t) con spazi vuoti rimossi sia caratteri con un numero inferiore (<) sono bloccati. Rimuovi i ritorni a capo e codifica i caratteri con un numero inferiore da posizioni come valori dell'attributo dell'elemento per caricare queste risorse."
+  },
+  "generated/Deprecation.ts | CharsetAutoDetectionISO2022JP": {
+    "message": "Il rilevamento automatico del set di caratteri ISO-2022-JP \u00e8 deprecato e verr\u00e0 disattivato a breve. Specifica l'insieme di caratteri nell'intestazione Tipo di contenuto o utilizzando un meta tag (https://developer.mozilla.org/it/docs/Glossario/Character_encoding)."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesConnectionInfo": {
+    "message": "L'elemento chrome.loadTimes() \u00e8 deprecato, utilizza invece l'API standardizzata: Navigation Timing 2."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesFirstPaintAfterLoadTime": {
+    "message": "L'elemento chrome.loadTimes() \u00e8 deprecato, utilizza invece l'API standardizzata: Paint Timing."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesWasAlternateProtocolAvailable": {
+    "message": "L'elemento chrome.loadTimes() \u00e8 deprecato, utilizza invece l'API standardizzata: nextHopProtocol in Navigation Timing 2."
+  },
+  "generated/Deprecation.ts | CookieWithTruncatingChar": {
+    "message": "I cookie che contengono un carattere \\(0|r|n) verranno rifiutati e non troncati."
+  },
+  "generated/Deprecation.ts | CrossOriginAccessBasedOnDocumentDomain": {
+    "message": "Il rilascio della policy della stessa origine impostando document.domain \u00e8 deprecato e verr\u00e0 disattivato per impostazione predefinita. Questo avviso di ritiro riguarda un accesso multiorigine che \u00e8 stato attivato impostando document.domain."
+  },
+  "generated/Deprecation.ts | CrossOriginWindowAlert": {
+    "message": "L'attivazione di window.alert da iframe multiorigine \u00e8 stata deprecata e verr\u00e0 rimossa in futuro."
+  },
+  "generated/Deprecation.ts | CrossOriginWindowConfirm": {
+    "message": "L'attivazione di window.confirm da iframe multiorigine \u00e8 stata deprecata e verr\u00e0 rimossa in futuro."
+  },
+  "generated/Deprecation.ts | DOMMutationEvents": {
+    "message": "Gli eventi Mutazione del DOM, inclusi DOMSubtreeModified, DOMNodeInserted, DOMNodeRemoved, DOMNodeRemovedFromDocument, DOMNodeInsertedIntoDocument e DOMCharacterDataModified, sono deprecati (https://w3c.github.io/uievents/#legacy-event-types) e verranno rimossi. Usa invece MutationObserver."
+  },
+  "generated/Deprecation.ts | DataUrlInSvgUse": {
+    "message": "Supporto dei dati: gli URL in SVGUseElement sono deprecati e verranno rimossi in futuro."
+  },
+  "generated/Deprecation.ts | GeolocationInsecureOrigin": {
+    "message": "getCurrentPosition() e watchPosition() non funzionano pi\u00f9 su origini non sicure. Per utilizzare questa funzionalit\u00e0, considera di far passare la tua applicazione a un'origine sicura, come HTTPS. Vedi https://goo.gle/chrome-insecure-origins per maggiori dettagli."
+  },
+  "generated/Deprecation.ts | GeolocationInsecureOriginDeprecatedNotRemoved": {
+    "message": "Gli elementi getCurrentPosition() e watchPosition() sono deprecati su origini non sicure. Per utilizzare questa funzionalit\u00e0, considera di far passare la tua applicazione a un'origine sicura, come HTTPS. Vedi https://goo.gle/chrome-insecure-origins per maggiori dettagli."
+  },
+  "generated/Deprecation.ts | GetUserMediaInsecureOrigin": {
+    "message": "getUserMedia() non funziona pi\u00f9 su origini non sicure. Per utilizzare questa funzionalit\u00e0, considera di far passare la tua applicazione a un'origine sicura, come HTTPS. Vedi https://goo.gle/chrome-insecure-origins per maggiori dettagli."
+  },
+  "generated/Deprecation.ts | H1UserAgentFontSizeInSection": {
+    "message": "\u00c8 stato trovato un tag <h1> all'interno di un elemento <article>, <aside>, <nav> o <section> che non ha una dimensione del carattere specificata. Prossimamente la dimensione di questo testo dell'intestazione in questo browser verr\u00e0 modificata. Per saperne di pi\u00f9, consulta la pagina https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#specifying_a_uniform_font_size_for_h1"
+  },
+  "generated/Deprecation.ts | HostCandidateAttributeGetter": {
+    "message": "RTCPeerConnectionIceErrorEvent.hostCandidate \u00e8 deprecato. Utilizza invece RTCPeerConnectionIceErrorEvent.address o RTCPeerConnectionIceErrorEvent.port."
+  },
+  "generated/Deprecation.ts | IdentityDigitalCredentials": {
+    "message": "Questo formato per la richiesta navigator.credentials.get() delle credenziali digitali \u00e8 stato ritirato. Aggiorna la chiamata per utilizzare il nuovo formato."
+  },
+  "generated/Deprecation.ts | IdentityInCanMakePaymentEvent": {
+    "message": "L'origine del commerciante e i dati arbitrari dell'evento del service worker di canmakepayment sono obsoleti e verranno rimossi: topOrigin, paymentRequestOrigin, methodData, modifiers."
+  },
+  "generated/Deprecation.ts | InsecurePrivateNetworkSubresourceRequest": {
+    "message": "Il sito web ha richiesto una sottorisorsa da una rete a cui pu\u00f2 accedere solo a causa della posizione di rete privilegiata dei relativi utenti. Queste richieste espongono dispositivi e servizi non pubblici a Internet, aumentando il rischio di un attacco Cross-Site Request Forgery (CSRF) e/o una fuga di informazioni. Per limitare questi rischi, Chrome depreca le richieste a sottorisorse non pubbliche quando iniziate da contesti non sicuri e le blocca."
+  },
+  "generated/Deprecation.ts | InterestGroupDailyUpdateUrl": {
+    "message": "Il campo dailyUpdateUrl di InterestGroups passato a joinAdInterestGroup() \u00e8 stato rinominato in updateUrl per rispecchiare in modo pi\u00f9 preciso il suo comportamento."
+  },
+  "generated/Deprecation.ts | IntlV8BreakIterator": {
+    "message": "L'API Intl.v8BreakIterator \u00e8 deprecata. Utilizza invece Intl.Segmenter."
+  },
+  "generated/Deprecation.ts | LocalCSSFileExtensionRejected": {
+    "message": "Non \u00e8 possibile caricare il CSS dagli URL difile: a meno che questi non terminino in un'estensione del file .css."
+  },
+  "generated/Deprecation.ts | MediaSourceAbortRemove": {
+    "message": "L'utilizzo dell'elemento SourceBuffer.abort() per interrompere la rimozione dell'intervallo asincrono di remove() \u00e8 deprecato a causa di una modifica di specifica. Il relativo supporto verr\u00e0 rimosso in futuro. Dovrai invece ascoltare l'evento updateend. L'elemento abort() \u00e8 destinato solo a interrompere un allegato multimediale asincrono o a reimpostare lo stato del parser."
+  },
+  "generated/Deprecation.ts | MediaSourceDurationTruncatingBuffered": {
+    "message": "L'impostazione di MediaSource.duration al di sotto del timestamp di presentazione pi\u00f9 alto di qualsiasi frame codificato con buffer \u00e8 deprecata a causa di una modifica di specifica. Il supporto della rimozione implicita di contenuti multimediali con buffer troncati verr\u00e0 rimosso in futuro. Dovresti invece eseguire l'elemento esplicito remove(newDuration, oldDuration) su tutti gli elementi sourceBuffers, in cui si trovanewDuration < oldDuration."
+  },
+  "generated/Deprecation.ts | NoSysexWebMIDIWithoutPermission": {
+    "message": "Web MIDI richieder\u00e0 l'autorizzazione per l'utilizzo anche se il valore sysex non \u00e8 specificato nell'elemento MIDIOptions."
+  },
+  "generated/Deprecation.ts | NotificationInsecureOrigin": {
+    "message": "L'API Notification potrebbe non essere pi\u00f9 utilizzata da origini non sicure. Considera di far passare la tua applicazione a un'origine sicura, come HTTPS. Vedi https://goo.gle/chrome-insecure-origins per maggiori dettagli."
+  },
+  "generated/Deprecation.ts | NotificationPermissionRequestedIframe": {
+    "message": "L'autorizzazione per l'API Notification potrebbe non essere pi\u00f9 richiesta da un iframe multiorigine. Considera di richiedere l'autorizzazione da un frame di primo livello o aprire invece una nuova finestra."
+  },
+  "generated/Deprecation.ts | ObsoleteCreateImageBitmapImageOrientationNone": {
+    "message": "L'opzione imageOrientation: 'none' in createImageBitmap \u00e8 deprecata. Usa invece createImageBitmap con l'opzione \"{imageOrientation: 'from-image'}\"."
+  },
+  "generated/Deprecation.ts | ObsoleteWebRtcCipherSuite": {
+    "message": "Il tuo partner sta negoziando una versione (D)TLS obsoleta. Rivolgiti al tuo partner per correggere questo problema."
+  },
+  "generated/Deprecation.ts | OverflowVisibleOnReplacedElement": {
+    "message": "Se specifichi overflow: visible nei tag img, video e canvas, gli spettatori potrebbero produrre contenuti visivi al di fuori dei limiti dell'elemento. Vedi https://github.com/WICG/shared-element-transitions/blob/main/debugging_overflow_on_images.md."
+  },
+  "generated/Deprecation.ts | PaymentInstruments": {
+    "message": "L'API paymentManager.instruments \u00e8 deprecata. Utilizza l'installazione just-in-time per i gestori dei pagamenti."
+  },
+  "generated/Deprecation.ts | PaymentRequestCSPViolation": {
+    "message": "La tua chiamata PaymentRequest ha ignorato l'istruzione connect-src di Content Security Policy (CSP). L'esclusione \u00e8 stata ritirata. Aggiungi all'istruzione CSP connect-src l'identificatore del metodo di pagamento dall'API PaymentRequest (nel campo supportedMethods)."
+  },
+  "generated/Deprecation.ts | PersistentQuotaType": {
+    "message": "L'API StorageType.persistent \u00e8 deprecata. Utilizza invece la policy navigator.storage standardizzata."
+  },
+  "generated/Deprecation.ts | PictureSourceSrc": {
+    "message": "L'elemento <source src> con un attributo principale <picture> non \u00e8 valido e pertanto viene ignorato. Utilizza invece l'attributo <source srcset>."
+  },
+  "generated/Deprecation.ts | PrefixedCancelAnimationFrame": {
+    "message": "Il metodo webkitCancelAnimationFrame \u00e8 specifico del fornitore. Usa invece il metodo cancelAnimationFrame standard."
+  },
+  "generated/Deprecation.ts | PrefixedRequestAnimationFrame": {
+    "message": "Il metodo webkitRequestAnimationFrame \u00e8 specifico del fornitore. Usa invece il metodo requestAnimationFrame standard."
+  },
+  "generated/Deprecation.ts | PrefixedVideoDisplayingFullscreen": {
+    "message": "L'API HTMLVideoElement.webkitDisplayingFullscreen \u00e8 deprecata. Usa invece Document.fullscreenElement."
+  },
+  "generated/Deprecation.ts | PrefixedVideoEnterFullScreen": {
+    "message": "L'API HTMLVideoElement.webkitEnterFullScreen() \u00e8 deprecata. Usa invece Element.requestFullscreen()."
+  },
+  "generated/Deprecation.ts | PrefixedVideoEnterFullscreen": {
+    "message": "L'API HTMLVideoElement.webkitEnterFullscreen() \u00e8 deprecata. Usa invece Element.requestFullscreen()."
+  },
+  "generated/Deprecation.ts | PrefixedVideoExitFullScreen": {
+    "message": "L'API HTMLVideoElement.webkitExitFullScreen() \u00e8 deprecata. Usa invece Document.exitFullscreen()."
+  },
+  "generated/Deprecation.ts | PrefixedVideoExitFullscreen": {
+    "message": "L'API HTMLVideoElement.webkitExitFullscreen() \u00e8 deprecata. Usa invece Document.exitFullscreen()."
+  },
+  "generated/Deprecation.ts | PrefixedVideoSupportsFullscreen": {
+    "message": "L'API HTMLVideoElement.webkitSupportsFullscreen \u00e8 deprecata. Usa invece Document.fullscreenEnabled."
+  },
+  "generated/Deprecation.ts | PrivacySandboxExtensionsAPI": {
+    "message": "Stiamo ritirando l'API chrome.privacy.websites.privacySandboxEnabled, ma rimarr\u00e0 attiva per garantire la compatibilit\u00e0 con le versioni precedenti fino alla release M113. Usa invece i criteri chrome.privacy.websites.topicsEnabled, chrome.privacy.websites.fledgeEnabled e chrome.privacy.websites.adMeasurementEnabled. Vedi https://developer.chrome.com/docs/extensions/reference/privacy/#property-websites-privacySandboxEnabled."
+  },
+  "generated/Deprecation.ts | RTCConstraintEnableDtlsSrtpFalse": {
+    "message": "Il vincolo DtlsSrtpKeyAgreement \u00e8 stato rimosso. Hai specificato un valore false per questo vincolo, il che viene interpretato come un tentativo di utilizzo del metodo SDES key negotiation rimosso. Questa funzionalit\u00e0 \u00e8 stata rimossa; utilizza invece un servizio che supporti DTLS key negotiation."
+  },
+  "generated/Deprecation.ts | RTCConstraintEnableDtlsSrtpTrue": {
+    "message": "Il vincolo DtlsSrtpKeyAgreement \u00e8 stato rimosso. Hai specificato un valore true per questo vincolo, il che non ha avuto alcun effetto, ma puoi rimuovere il vincolo per fare ordine."
+  },
+  "generated/Deprecation.ts | RTCPeerConnectionGetStatsLegacyNonCompliant": {
+    "message": "Il metodo getStats() basato su callback \u00e8 deprecato e verr\u00e0 rimosso. Usa invece il metodo getStats() conforme alle specifiche."
+  },
+  "generated/Deprecation.ts | RangeExpand": {
+    "message": "L'API Range.expand() \u00e8 deprecata. Usa invece Selection.modify()."
+  },
+  "generated/Deprecation.ts | RequestedSubresourceWithEmbeddedCredentials": {
+    "message": "Le richieste di sottorisorse i cui URL contengono credenziali incorporate (ad es. https://user:pass@host/) sono bloccate."
+  },
+  "generated/Deprecation.ts | RtcpMuxPolicyNegotiate": {
+    "message": "L'opzione rtcpMuxPolicy \u00e8 deprecata e verr\u00e0 rimossa."
+  },
+  "generated/Deprecation.ts | SharedArrayBufferConstructedWithoutIsolation": {
+    "message": "SharedArrayBuffer richieder\u00e0 l'isolamento multiorigine. Vedi https://developer.chrome.com/blog/enabling-shared-array-buffer/ per maggiori dettagli."
+  },
+  "generated/Deprecation.ts | TextToSpeech_DisallowedByAutoplay": {
+    "message": "L'API speechSynthesis.speak() senza attivazione utente \u00e8 deprecata e verr\u00e0 rimossa."
+  },
+  "generated/Deprecation.ts | UnloadHandler": {
+    "message": "I listener di eventi di unload sono deprecati e verranno rimossi."
+  },
+  "generated/Deprecation.ts | V8SharedArrayBufferConstructedInExtensionWithoutIsolation": {
+    "message": "Le estensioni dovrebbero attivare l'isolamento multiorigine per continuare a utilizzare SharedArrayBuffer. Vedi https://developer.chrome.com/docs/extensions/mv3/cross-origin-isolation/."
+  },
+  "generated/Deprecation.ts | XHRJSONEncodingDetection": {
+    "message": "L'elemento UTF-16 non \u00e8 supportato dal file json di risposta in XMLHttpRequest"
+  },
+  "generated/Deprecation.ts | XMLHttpRequestSynchronousInNonWorkerOutsideBeforeUnload": {
+    "message": "L'elemento XMLHttpRequest sincrono nel thread principale \u00e8 deprecato a causa dei suoi effetti negativi sull'esperienza utente finale. Vai all'indirizzo https://xhr.spec.whatwg.org/ per maggiore assistenza."
+  },
+  "models/trace/insights/CLSCulprits.ts | animation": {
+    "message": "Animazione"
+  },
+  "models/trace/insights/CLSCulprits.ts | description": {
+    "message": "Le variazioni del layout si verificano quando gli elementi si spostano senza alcuna interazione da parte dell'utente. [Esamina le cause delle variazioni del layout](https://web.dev/articles/optimize-cls), come l'aggiunta o la rimozione di elementi o la modifica dei relativi caratteri durante il caricamento della pagina."
+  },
+  "models/trace/insights/CLSCulprits.ts | fontRequest": {
+    "message": "Richiesta di caratteri"
+  },
+  "models/trace/insights/CLSCulprits.ts | injectedIframe": {
+    "message": "\u00c8 stato inserito un iframe"
+  },
+  "models/trace/insights/CLSCulprits.ts | layoutShiftCluster": {
+    "message": "Cluster variazione del layout a {PH1}"
+  },
+  "models/trace/insights/CLSCulprits.ts | noCulprits": {
+    "message": "Impossibile rilevare i responsabili delle variazioni del layout"
+  },
+  "models/trace/insights/CLSCulprits.ts | noLayoutShifts": {
+    "message": "Nessuna variazione del layout"
+  },
+  "models/trace/insights/CLSCulprits.ts | title": {
+    "message": "Responsabili delle variazioni del layout"
+  },
+  "models/trace/insights/CLSCulprits.ts | topCulprits": {
+    "message": "Principali responsabili delle variazioni del layout"
+  },
+  "models/trace/insights/CLSCulprits.ts | unsizedImages": {
+    "message": "Immagini senza dimensioni impostate"
+  },
+  "models/trace/insights/CLSCulprits.ts | worstCluster": {
+    "message": "Cluster peggiore"
+  },
+  "models/trace/insights/CLSCulprits.ts | worstLayoutShiftCluster": {
+    "message": "Cluster peggiore per variazione del layout"
+  },
+  "models/trace/insights/Cache.ts | cacheTTL": {
+    "message": "TTL cache"
+  },
+  "models/trace/insights/Cache.ts | description": {
+    "message": "La memorizzazione nella cache per un lungo periodo di tempo pu\u00f2 velocizzare le visite abituali alla tua pagina. [Scopri di pi\u00f9](https://web.dev/uses-long-cache-ttl/)."
+  },
+  "models/trace/insights/Cache.ts | noRequestsToCache": {
+    "message": "Nessuna richiesta con policy relative alla cache inefficienti"
+  },
+  "models/trace/insights/Cache.ts | others": {
+    "message": "Altre {PH1}"
+  },
+  "models/trace/insights/Cache.ts | requestColumn": {
+    "message": "Richiesta"
+  },
+  "models/trace/insights/Cache.ts | title": {
+    "message": "Utilizza durate della memorizzazione nella cache efficienti"
+  },
+  "models/trace/insights/DOMSize.ts | description": {
+    "message": "Un DOM di grandi dimensioni pu\u00f2 aumentare la durata dei calcoli di stile e degli adattamenti dinamici del layout, con ripercussioni sull'adattabilit\u00e0 della pagina. Inoltre, un DOM di grandi dimensioni aumenta la memoria utilizzata. [Scopri come evitare dimensioni eccessive del DOM](https://developer.chrome.com/docs/lighthouse/performance/dom-size/)."
+  },
+  "models/trace/insights/DOMSize.ts | element": {
+    "message": "Elemento"
+  },
+  "models/trace/insights/DOMSize.ts | maxChildren": {
+    "message": "Pi\u00f9 elementi secondari"
+  },
+  "models/trace/insights/DOMSize.ts | maxDOMDepth": {
+    "message": "Profondit\u00e0 DOM"
+  },
+  "models/trace/insights/DOMSize.ts | statistic": {
+    "message": "Statistica"
+  },
+  "models/trace/insights/DOMSize.ts | title": {
+    "message": "Ottimizza le dimensioni del DOM"
+  },
+  "models/trace/insights/DOMSize.ts | totalElements": {
+    "message": "Elementi totali"
+  },
+  "models/trace/insights/DOMSize.ts | value": {
+    "message": "Valore"
+  },
+  "models/trace/insights/DocumentLatency.ts | description": {
+    "message": "La prima richiesta di rete \u00e8 la pi\u00f9 importante.  Riduci la latenza evitando i reindirizzamenti, assicurando una risposta rapida del server e attivando la compressione del testo."
+  },
+  "models/trace/insights/DocumentLatency.ts | failedRedirects": {
+    "message": "Con reindirizzamenti"
+  },
+  "models/trace/insights/DocumentLatency.ts | failedServerResponseTime": {
+    "message": "Il server ha risposto lentamente"
+  },
+  "models/trace/insights/DocumentLatency.ts | failedTextCompression": {
+    "message": "Nessuna compressione applicata"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingRedirects": {
+    "message": "Evita i reindirizzamenti"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingServerResponseTime": {
+    "message": "Il server risponde rapidamente"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingTextCompression": {
+    "message": "Applica la compressione del testo"
+  },
+  "models/trace/insights/DocumentLatency.ts | redirectsLabel": {
+    "message": "Reindirizzamenti"
+  },
+  "models/trace/insights/DocumentLatency.ts | serverResponseTimeLabel": {
+    "message": "Tempo di risposta del server"
+  },
+  "models/trace/insights/DocumentLatency.ts | title": {
+    "message": "Latenza di richiesta di download del documento"
+  },
+  "models/trace/insights/DocumentLatency.ts | uncompressedDownload": {
+    "message": "Download non compresso"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | columnDuplicatedBytes": {
+    "message": "Byte duplicati"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | columnSource": {
+    "message": "Origine"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | description": {
+    "message": "Rimuovi i moduli JavaScript duplicati di grandi dimensioni dai bundle per ridurre i byte superflui consumati dall'attivit\u00e0 di rete."
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | title": {
+    "message": "JavaScript duplicato"
+  },
+  "models/trace/insights/FontDisplay.ts | description": {
+    "message": "Valuta la possibilit\u00e0 di impostare [font-display](https://developer.chrome.com/blog/font-display) su swap o optional per assicurarti che il testo sia visibile in modo coerente. swap pu\u00f2 essere ulteriormente ottimizzato per ridurre gli spostamenti del layout con [override delle metriche dei caratteri](https://developer.chrome.com/blog/font-fallbacks)."
+  },
+  "models/trace/insights/FontDisplay.ts | fontColumn": {
+    "message": "Carattere"
+  },
+  "models/trace/insights/FontDisplay.ts | title": {
+    "message": "Carattere visualizzato"
+  },
+  "models/trace/insights/FontDisplay.ts | wastedTimeColumn": {
+    "message": "Tempo perso"
+  },
+  "models/trace/insights/ForcedReflow.ts | anonymous": {
+    "message": "(anonime)"
+  },
+  "models/trace/insights/ForcedReflow.ts | description": {
+    "message": "Molte API, in genere leggendo la geometria del layout, costringono il motore di rendering a mettere in pausa l'esecuzione dello script per calcolare lo stile e il layout. Scopri di pi\u00f9 sull'[adattamento dinamico forzato del contenuto](https://developers.google.com/web/fundamentals/performance/rendering/avoid-large-complex-layouts-and-layout-thrashing#avoid-forced-synchronous-layouts) e sulle relative mitigazioni."
+  },
+  "models/trace/insights/ForcedReflow.ts | relatedStackTrace": {
+    "message": "Analisi dello stack"
+  },
+  "models/trace/insights/ForcedReflow.ts | title": {
+    "message": "Adattamento dinamico forzato del contenuto"
+  },
+  "models/trace/insights/ForcedReflow.ts | topTimeConsumingFunctionCall": {
+    "message": "Chiamata di funzione principale"
+  },
+  "models/trace/insights/ForcedReflow.ts | totalReflowTime": {
+    "message": "Tempo totale di adattamento dinamico del contenuto"
+  },
+  "models/trace/insights/ForcedReflow.ts | unattributed": {
+    "message": "[senza attributi]"
+  },
+  "models/trace/insights/ImageDelivery.ts | description": {
+    "message": "La riduzione del tempo di download delle immagini pu\u00f2 migliorare il tempo di caricamento percepito della pagina e il l'LCP. [Scopri di pi\u00f9 sull'ottimizzazione delle dimensioni delle immagini](https://developer.chrome.com/docs/lighthouse/performance/uses-optimized-images/)"
+  },
+  "models/trace/insights/ImageDelivery.ts | estimatedSavings": {
+    "message": "{PH1} (previsti {PH2})"
+  },
+  "models/trace/insights/ImageDelivery.ts | noOptimizableImages": {
+    "message": "Nessuna immagine ottimizzabile"
+  },
+  "models/trace/insights/ImageDelivery.ts | optimizeFile": {
+    "message": "Ottimizza le dimensioni dei file"
+  },
+  "models/trace/insights/ImageDelivery.ts | others": {
+    "message": "Altre {PH1}"
+  },
+  "models/trace/insights/ImageDelivery.ts | title": {
+    "message": "Migliora il caricamento delle immagini"
+  },
+  "models/trace/insights/ImageDelivery.ts | useCompression": {
+    "message": "Aumentare il fattore di compressione dell'immagine potrebbe migliorare le dimensioni del download di questa immagine."
+  },
+  "models/trace/insights/ImageDelivery.ts | useModernFormat": {
+    "message": "L'utilizzo di un formato dell'immagine moderno (WebP, AVIF) o l'aumento della compressione dell'immagine potrebbero migliorare le dimensioni di download di questa immagine."
+  },
+  "models/trace/insights/ImageDelivery.ts | useResponsiveSize": {
+    "message": "Questo file immagine \u00e8 pi\u00f9 grande del necessario ({PH1}) per le dimensioni visualizzate ({PH2}). Utilizza le immagini adattabili per ridurre le dimensioni di download delle immagini."
+  },
+  "models/trace/insights/ImageDelivery.ts | useVideoFormat": {
+    "message": "L'utilizzo di formati video anzich\u00e9 di GIF pu\u00f2 migliorare le dimensioni di download dei contenuti animati."
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | description": {
+    "message": "Inizia a indagare con la fase pi\u00f9 lunga. [I ritardi possono essere ridotti al minimo](https://web.dev/articles/optimize-inp#optimize_interactions). Per ridurre la durata dell'elaborazione, [ottimizza i costi del thread principale](https://web.dev/articles/optimize-long-tasks), spesso JavaScript."
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | duration": {
+    "message": "Durata"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | inputDelay": {
+    "message": "Ritardo input"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | noInteractions": {
+    "message": "Nessuna interazione rilevata"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | phase": {
+    "message": "Fase"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | presentationDelay": {
+    "message": "Ritardo presentazione"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | processingDuration": {
+    "message": "Elaborazione durata in corso\u2026"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | title": {
+    "message": "INP per fase"
+  },
+  "models/trace/insights/LCPDiscovery.ts | description": {
+    "message": "Ottimizza la metrica LCP rendendo l'immagine LCP immediatamente [rilevabile](https://web.dev/articles/optimize-lcp#1_eliminate_resource_load_delay) dall'HTML ed [evitando il caricamento lento](https://web.dev/articles/lcp-lazy-loading)"
+  },
+  "models/trace/insights/LCPDiscovery.ts | fetchPriorityApplied": {
+    "message": "fetchpriority=high applicata"
+  },
+  "models/trace/insights/LCPDiscovery.ts | fetchPriorityShouldBeApplied": {
+    "message": "Deve essere applicata fetchpriority=high"
+  },
+  "models/trace/insights/LCPDiscovery.ts | lazyLoadNotApplied": {
+    "message": "caricamento lento non applicato"
+  },
+  "models/trace/insights/LCPDiscovery.ts | lcpLoadDelay": {
+    "message": "Immagine LCP caricata {PH1} dopo il primo punto di inizio."
+  },
+  "models/trace/insights/LCPDiscovery.ts | noLcp": {
+    "message": "Nessun LCP rilevato"
+  },
+  "models/trace/insights/LCPDiscovery.ts | noLcpResource": {
+    "message": "Nessuna risorsa LCP rilevata perch\u00e9 l'LCP non \u00e8 un'immagine"
+  },
+  "models/trace/insights/LCPDiscovery.ts | requestDiscoverable": {
+    "message": "La richiesta \u00e8 rilevabile nel documento iniziale"
+  },
+  "models/trace/insights/LCPDiscovery.ts | title": {
+    "message": "Rilevamento della richiesta LCP"
+  },
+  "models/trace/insights/LCPPhases.ts | description": {
+    "message": "Ogni [fase prevede strategie di miglioramento specifiche](https://web.dev/articles/optimize-lcp#lcp-breakdown). Idealmente, la maggior parte del tempo LCP dovrebbe essere impiegato per caricare le risorse, non nei ritardi."
+  },
+  "models/trace/insights/LCPPhases.ts | duration": {
+    "message": "Durata"
+  },
+  "models/trace/insights/LCPPhases.ts | elementRenderDelay": {
+    "message": "Ritardo di rendering dell'elemento"
+  },
+  "models/trace/insights/LCPPhases.ts | fieldDuration": {
+    "message": "75\u00b0 percentile nel campo"
+  },
+  "models/trace/insights/LCPPhases.ts | noLcp": {
+    "message": "Nessun LCP rilevato"
+  },
+  "models/trace/insights/LCPPhases.ts | phase": {
+    "message": "Fase"
+  },
+  "models/trace/insights/LCPPhases.ts | resourceLoadDelay": {
+    "message": "Ritardo del caricamento delle risorse"
+  },
+  "models/trace/insights/LCPPhases.ts | resourceLoadDuration": {
+    "message": "Durata caricamento risorse"
+  },
+  "models/trace/insights/LCPPhases.ts | timeToFirstByte": {
+    "message": "Time to first byte"
+  },
+  "models/trace/insights/LCPPhases.ts | title": {
+    "message": "LCP per fase"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | columnScript": {
+    "message": "Script"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | columnWastedBytes": {
+    "message": "Byte sprecati"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | description": {
+    "message": "Polyfill e trasformazioni consentono ai browser precedenti di usare nuove funzionalit\u00e0 JavaScript. Tanti non sono per\u00f2 necessari per i browser moderni. Valuta la possibilit\u00e0 di modificare il processo di compilazione di JavaScript in modo da non transcompilare le funzionalit\u00e0 [di base](https://web.dev/articles/baseline-and-polyfills), a meno che non sia necessario supportare i browser precedenti. [Scopri perch\u00e9 la maggior parte dei siti pu\u00f2 eseguire il deployment del codice ES6+ senza transcompilazione](https://philipwalton.com/articles/the-state-of-es5-on-the-web/)"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | title": {
+    "message": "JavaScript precedente"
+  },
+  "models/trace/insights/ModernHTTP.ts | description": {
+    "message": "HTTP/2 e HTTP/3 offrono molti vantaggi rispetto a HTTP/1.1, come il multiplexing. [Scopri di pi\u00f9 sull'utilizzo di HTTP moderno](https://developer.chrome.com/docs/lighthouse/best-practices/uses-http2/)."
+  },
+  "models/trace/insights/ModernHTTP.ts | noOldProtocolRequests": {
+    "message": "Nessuna richiesta ha utilizzato HTTP/1.1"
+  },
+  "models/trace/insights/ModernHTTP.ts | protocol": {
+    "message": "Protocollo"
+  },
+  "models/trace/insights/ModernHTTP.ts | request": {
+    "message": "Richiesta"
+  },
+  "models/trace/insights/ModernHTTP.ts | title": {
+    "message": "HTTP moderno"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | description": {
+    "message": "[Evita di concatenare le richieste fondamentali](https://developer.chrome.com/docs/lighthouse/performance/critical-request-chains) riducendo la lunghezza delle catene e le dimensioni del download delle risorse oppure rimandando il download delle risorse non necessarie per velocizzare il caricamento pagina."
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | maxCriticalPathLatency": {
+    "message": "Latenza massima del percorso critico:"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | noNetworkDependencyTree": {
+    "message": "Nessuna attivit\u00e0 di rendering interessata dalle dipendenze di rete"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | title": {
+    "message": "Albero delle dipendenze di rete"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | warningDescription": {
+    "message": "Evita di concatenare le richieste fondamentali riducendo la lunghezza delle catene e le dimensioni del download delle risorse oppure rimandando il download delle risorse non necessarie per velocizzare il caricamento pagina."
+  },
+  "models/trace/insights/RenderBlocking.ts | description": {
+    "message": "Le richieste stanno bloccando il rendering iniziale della pagina, il che potrebbe ritardare l'LCP. [Rimandare o incorporare](https://web.dev/learn/performance/understanding-the-critical-path#render-blocking_resources/) pu\u00f2 spostare queste richieste di rete fuori dal percorso critico."
+  },
+  "models/trace/insights/RenderBlocking.ts | duration": {
+    "message": "Durata"
+  },
+  "models/trace/insights/RenderBlocking.ts | noRenderBlocking": {
+    "message": "Nessuna richiesta di blocco del rendering per questa navigazione"
+  },
+  "models/trace/insights/RenderBlocking.ts | renderBlockingRequest": {
+    "message": "Richiesta"
+  },
+  "models/trace/insights/RenderBlocking.ts | title": {
+    "message": "Richieste di blocco del rendering"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | description": {
+    "message": "Se i costi di Ricalcola stile rimangono elevati, l'ottimizzazione del selettore pu\u00f2 ridurli. [Ottimizza i selettori](https://developer.chrome.com/docs/devtools/performance/selector-stats) con un tempo trascorso elevato e una percentuale elevata di percorsi lenti. Selettori pi\u00f9 semplici, meno selettori, un DOM pi\u00f9 piccolo e un DOM pi\u00f9 basso riducono i costi di corrispondenza."
+  },
+  "models/trace/insights/SlowCSSSelector.ts | elapsed": {
+    "message": "Tempo trascorso"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | enableSelectorData": {
+    "message": "Nessun dato del selettore CSS trovato. Le statistiche del selettore CSS devono essere abilitate nelle impostazioni del riquadro Rendimento."
+  },
+  "models/trace/insights/SlowCSSSelector.ts | matchAttempts": {
+    "message": "Tentativi di corrispondenze"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | matchCount": {
+    "message": "Numero di corrispondenze"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | title": {
+    "message": "Costi del selettore CSS"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | topSelectors": {
+    "message": "Selettori principali"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | total": {
+    "message": "Totale"
+  },
+  "models/trace/insights/ThirdParties.ts | columnMainThreadTime": {
+    "message": "Tempo thread principale"
+  },
+  "models/trace/insights/ThirdParties.ts | columnThirdParty": {
+    "message": "Di terze parti"
+  },
+  "models/trace/insights/ThirdParties.ts | columnTransferSize": {
+    "message": "Dimensioni trasferimento"
+  },
+  "models/trace/insights/ThirdParties.ts | description": {
+    "message": "Il codice di terze parti pu\u00f2 incidere notevolmente sulle prestazioni del caricamento. [Riduci e posticipa il caricamento del codice di terze parti](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/loading-third-party-javascript/) per dare la priorit\u00e0 ai contenuti della pagina."
+  },
+  "models/trace/insights/ThirdParties.ts | noThirdParties": {
+    "message": "Nessuna terza parte trovata"
+  },
+  "models/trace/insights/ThirdParties.ts | title": {
+    "message": "Terze parti"
+  },
+  "models/trace/insights/Viewport.ts | description": {
+    "message": "Le interazioni con i tocchi potrebbero essere [ritardate fino a 300\u00a0ms](https://developer.chrome.com/blog/300ms-tap-delay-gone-away/) se l'area visibile non \u00e8 ottimizzata per i dispositivi mobili."
+  },
+  "models/trace/insights/Viewport.ts | title": {
+    "message": "Ottimizza l'area visibile per i dispositivi mobili"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | HTTPMethodNotGET": {
+    "message": "Solo le pagine caricate tramite una richiesta GET possono essere memorizzate nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | HTTPStatusNotOK": {
+    "message": "Solo le pagine con il codice di stato 2XX possono essere memorizzate nella cache."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | JavaScriptExecution": {
+    "message": "Chrome ha rilevato un tentativo di eseguire JavaScript mentre la pagina si trovava nella cache."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | appBanner": {
+    "message": "Al momento le pagine che hanno richiesto un AppBanner non possono essere memorizzate nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabled": {
+    "message": "La cache back-forward \u00e8 stata disattivata in chrome://flags. Visita la pagina chrome://flags/#back-forward-cache per attivarla localmente su questo dispositivo."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledByCommandLine": {
+    "message": "La cache back-forward \u00e8 stata disattivata dalla riga di comando."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledByLowMemory": {
+    "message": "La cache back-forward \u00e8 stata disattivata a causa dell'insufficienza di memoria."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledForDelegate": {
+    "message": "La cache back-forward non \u00e8 supportata dall'incorporamento."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledForPrerender": {
+    "message": "La cache back-forward \u00e8 stata disattivata per lo strumento di prerenderering."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | broadcastChannel": {
+    "message": "La pagina non pu\u00f2 essere memorizzata nella cache perch\u00e9 contiene un'istanza BroadcastChannel con listener registrati."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheControlNoStore": {
+    "message": "Le pagine che presentano l'intestazione cache-control:no-store non possono essere memorizzate nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheFlushed": {
+    "message": "La cache \u00e8 stata eliminata intenzionalmente."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheLimit": {
+    "message": "La pagina \u00e8 stata eliminata dalla cache per consentire a un'altra pagina di essere memorizzata nella cache."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | containsPlugins": {
+    "message": "Al momento le pagine che contengono plug-in non possono essere memorizzate nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentDiscarded": {
+    "message": "Non definito"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentFileChooser": {
+    "message": "Le pagine che utilizzano l'API FileChooser non possono essere memorizzate nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentFileSystemAccess": {
+    "message": "Le pagine che utilizzano l'API File System Access non possono essere memorizzate nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaDevicesDispatcherHost": {
+    "message": "Le pagine che utilizzano un dispositivo multimediale non possono essere memorizzate nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaPlay": {
+    "message": "L'utente \u00e8 uscito dalla pagina mentre un media player era in riproduzione."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaSession": {
+    "message": "Le pagine che utilizzano l'API MediaSession e impostano uno stato di riproduzione non possono essere memorizzate nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaSessionService": {
+    "message": "Le pagine che utilizzano l'API MediaSession e impostano gestori per le azioni non possono essere memorizzate nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentScreenReader": {
+    "message": "La cache back/forward \u00e8 stata disattivata a causa dello screen reader."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentSecurityHandler": {
+    "message": "Le pagine che utilizzano SecurityHandler non possono essere memorizzate nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentSerial": {
+    "message": "Le pagine che utilizzano l'API Serial non possono essere memorizzate nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebAuthenticationAPI": {
+    "message": "Le pagine che utilizzano l'API WebAuthetication non possono essere memorizzate nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebBluetooth": {
+    "message": "Le pagine che utilizzano l'API WebBluetooth non possono essere memorizzate nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebUSB": {
+    "message": "Le pagine che utilizzano l'API WebUSB non possono essere memorizzate nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cookieDisabled": {
+    "message": "La cache back-forward \u00e8 disattivata perch\u00e9 i cookie sono disattivati in una pagina che usa Cache-Control: no-store."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | dedicatedWorkerOrWorklet": {
+    "message": "Al momento le pagine che utilizzano un worker o worklet dedicato non possono essere memorizzate nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | documentLoaded": {
+    "message": "L'utente \u00e8 uscito dal documento prima che venisse completato il caricamento."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderAppBannerManager": {
+    "message": "Era presente App Banner al momento dell'uscita."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderChromePasswordManagerClientBindCredentialManager": {
+    "message": "Era presente Gestore delle password di Chrome al momento dell'uscita."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderDomDistillerSelfDeletingRequestDelegate": {
+    "message": "Era in corso la distillazione DOM al momento dell'uscita."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderDomDistillerViewerSource": {
+    "message": "Era presente il visualizzatore DOM Distiller al momento dell'uscita."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionMessaging": {
+    "message": "La cache back/forward \u00e8 stata disattivata a causa di estensioni che usano l'API Messaging."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionMessagingForOpenPort": {
+    "message": "Le estensioni con connessione di lunga durata devono chiudere la connessione prima di poter essere memorizzate nella cache back/forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionSentMessageToCachedFrame": {
+    "message": "Le estensioni con connessione di lunga durata hanno cercato di inviare messaggi ai frame nella cache back/forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensions": {
+    "message": "La cache back/forward \u00e8 stata disattivata a causa delle estensioni."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderModalDialog": {
+    "message": "Al momento dell'uscita era mostrata una finestra di dialogo modale come un nuovo invio di un modulo o la finestra di dialogo di una password http."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderOfflinePage": {
+    "message": "Era mostrata la pagina offline al momento dell'uscita."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderOomInterventionTabHelper": {
+    "message": "Era presente la barra Out-Of-Memory Intervention al momento dell'uscita."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderPermissionRequestManager": {
+    "message": "Erano presenti richieste di autorizzazione al momento dell'uscita."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderPopupBlockerTabHelper": {
+    "message": "Era presente il blocco popup al momento dell'uscita."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderSafeBrowsingThreatDetails": {
+    "message": "Erano mostrati dettagli di Navigazione sicura al momento dell'uscita."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderSafeBrowsingTriggeredPopupBlocker": {
+    "message": "Navigazione sicura ha considerato illecita questa pagina e ha bloccato il popup."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | enteredBackForwardCacheBeforeServiceWorkerHostAdded": {
+    "message": "\u00c8 stato attivato un service worker mentre la pagina si trovava nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | errorDocument": {
+    "message": "La cache back-forward \u00e8 stata disattivata a causa di un errore del documento."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | fencedFramesEmbedder": {
+    "message": "Le pagine che usano FencedFrames non possono essere memorizzate nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | foregroundCacheLimit": {
+    "message": "La pagina \u00e8 stata eliminata dalla cache per consentire a un'altra pagina di essere memorizzata nella cache."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | grantedMediaStreamAccess": {
+    "message": "Al momento le pagine che hanno concesso l'accesso alla riproduzione in streaming di contenuti multimediali non possono essere memorizzate nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | haveInnerContents": {
+    "message": "Al momento le pagine che hanno determinati tipi di contenuti incorporati (ad es. PDF) non possono essere memorizzate nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | idleManager": {
+    "message": "Al momento le pagine che utilizzano IdleManager non possono essere memorizzate nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | indexedDBConnection": {
+    "message": "Al momento le pagine che hanno una connessione IndexedDB aperta non possono essere memorizzate nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | indexedDBEvent": {
+    "message": "La cache back-forward \u00e8 stata disattivata a causa di un evento IndexedDB."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | ineligibleAPI": {
+    "message": "Sono state usate API non idonee."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | injectedJavascript": {
+    "message": "Al momento le pagine in cui l'elemento JavaScript viene inserito dalle estensioni non possono essere memorizzate nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | injectedStyleSheet": {
+    "message": "Al momento le pagine in cui un elemento StyleSheet viene inserito dalle estensioni non possono essere memorizzate nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | internalError": {
+    "message": "Errore interno."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | jsNetworkRequestReceivedCacheControlNoStoreResource": {
+    "message": "La cache back/forward \u00e8 stata disattivata perch\u00e9 alcune richieste di rete JavaScript hanno ricevuto una risorsa con intestazione Cache-Control: no-store."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | keepaliveRequest": {
+    "message": "La cache back-forward \u00e8 stata disattivata a causa di una richiesta keepalive."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | keyboardLock": {
+    "message": "Al momento le pagine che utilizzano il blocco della tastiera non possono essere memorizzate nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | loading": {
+    "message": "L'utente \u00e8 uscito dalla pagina prima che venisse completato il caricamento."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | mainResourceHasCacheControlNoCache": {
+    "message": "Le pagine la cui risorsa principale presenta l'intestazione cache-control:no-cache non possono essere memorizzate nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | mainResourceHasCacheControlNoStore": {
+    "message": "Le pagine la cui principale risorsa presenta l'intestazione cache-control:no-store non possono essere memorizzate nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | navigationCancelledWhileRestoring": {
+    "message": "La navigazione \u00e8 stata annullata prima che la pagina potesse essere ripristinata dalla cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkExceedsBufferLimit": {
+    "message": "La pagina \u00e8 stata eliminata dalla cache perch\u00e9 una connessione di rete attiva ha ricevuto troppi dati. Chrome limita la quantit\u00e0 di dati che una pagina pu\u00f2 ricevere mentre \u00e8 memorizzata nella cache."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestDatapipeDrainedAsBytesConsumer": {
+    "message": "Al momento le pagine con una richiesta di rete XHR o fetch() in corso non possono essere memorizzate nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestRedirected": {
+    "message": "La pagina \u00e8 stata eliminata dalla cache back-forward perch\u00e9 una richiesta di rete attiva ha coinvolto un reindirizzamento."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestTimeout": {
+    "message": "La pagina \u00e8 stata eliminata dalla cache perch\u00e9 una connessione di rete \u00e8 stata aperta troppo a lungo. Chrome limita l'intervallo di tempo durante il quale una pagina pu\u00f2 ricevere dati mentre \u00e8 memorizzata nella cache."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | noResponseHead": {
+    "message": "Le pagine che non hanno un'intestazione di risposta valida non possono essere memorizzate nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | notMainFrame": {
+    "message": "La navigazione \u00e8 avvenuta in un frame diverso da quello principale."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingIndexedDBTransaction": {
+    "message": "Al momento le pagine con transazioni DB indicizzate in corso non possono essere memorizzate nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestDirectSocket": {
+    "message": "Al momento le pagine con una richiesta di rete in corso non possono essere memorizzate nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestFetch": {
+    "message": "Al momento le pagine con una richiesta di rete fetch() in corso non possono essere memorizzate nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestOthers": {
+    "message": "Al momento le pagine con una richiesta di rete in corso non possono essere memorizzate nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestXHR": {
+    "message": "Al momento le pagine con una richiesta di rete XHR in corso non possono essere memorizzate nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | paymentManager": {
+    "message": "Al momento le pagine che utilizzano PaymentManager non possono essere memorizzate nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | pictureInPicture": {
+    "message": "Al momento le pagine che utilizzano Picture in picture non possono essere memorizzate nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | printing": {
+    "message": "Al momento le pagine che mostrano le UI di stampa non possono essere memorizzate nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | relatedActiveContentsExist": {
+    "message": "La pagina \u00e8 stata aperta usando \"window.open()\" e un'altra scheda contiene un riferimento alla pagina oppure la pagina ha aperto una finestra."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | rendererProcessCrashed": {
+    "message": "Si \u00e8 verificato un arresto anomalo nel processo di rendering della pagina nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | rendererProcessKilled": {
+    "message": "Il processo di rendering della pagina nella cache back-forward \u00e8 stato interrotto."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedAudioCapturePermission": {
+    "message": "Al momento le pagine che hanno richiesto autorizzazioni relative all'acquisizione di audio non possono essere memorizzate nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedBackForwardCacheBlockedSensors": {
+    "message": "Al momento le pagine che hanno richiesto autorizzazioni relative ai sensori non possono essere memorizzate nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedBackgroundWorkPermission": {
+    "message": "Al momento le pagine che hanno richiesto autorizzazioni relative al fetch o alla sincronizzazione in background non possono essere memorizzate nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedMIDIPermission": {
+    "message": "Al momento le pagine che hanno richiesto autorizzazioni per accedere a dispositivi MIDI non possono essere memorizzate nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedNotificationsPermission": {
+    "message": "Al momento le pagine che hanno richiesto autorizzazioni relative alle notifiche non possono essere memorizzate nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedStorageAccessGrant": {
+    "message": "Al momento le pagine che hanno richiesto l'accesso allo spazio di archiviazione non possono essere memorizzate nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedVideoCapturePermission": {
+    "message": "Al momento le pagine che hanno richiesto autorizzazioni relative all'acquisizione di video non possono essere memorizzate nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | schemeNotHTTPOrHTTPS": {
+    "message": "Solo le pagine il cui schema dell'URL \u00e8 HTTP o HTTPS possono essere memorizzate nella cache."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerClaim": {
+    "message": "La pagina \u00e8 stata rivendicata da un service worker mentre si trovava nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerPostMessage": {
+    "message": "Un service worker ha tentato di inviare un MessageEvent alla pagina nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerUnregistration": {
+    "message": "La registrazione di ServiceWorker \u00e8 stata annullata mentre una pagina si trovava nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerVersionActivation": {
+    "message": "La pagina \u00e8 stata eliminata dalla cache back-forward a causa dell'attivazione di un service worker."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | sessionRestored": {
+    "message": "Chrome \u00e8 stato riavviato e le voci della cache back-forward sono state eliminate."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | sharedWorker": {
+    "message": "Al momento le pagine che utilizzano SharedWorker non possono essere memorizzate nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | speechRecognizer": {
+    "message": "Al momento le pagine che utilizzano SpeechRecognizer non possono essere memorizzate nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | speechSynthesis": {
+    "message": "Al momento le pagine che utilizzano SpeechSynthesis non possono essere memorizzate nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subframeIsNavigating": {
+    "message": "Un iframe sulla pagina ha avviato una navigazione che non \u00e8 stata completata."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subresourceHasCacheControlNoCache": {
+    "message": "Le pagine le cui sottorisorse presentano l'intestazione cache-control:no-cache non possono essere memorizzate nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subresourceHasCacheControlNoStore": {
+    "message": "Le pagine le cui sottorisorse presentano l'intestazione cache-control:no-store non possono essere memorizzate nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | timeout": {
+    "message": "La pagina ha superato il tempo massimo nella cache back-forward ed \u00e8 scaduta."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | timeoutPuttingInCache": {
+    "message": "Si \u00e8 verificato il timeout della pagina durante la memorizzazione nella cache back-forward (probabilmente a causa dell'esecuzione prolungata di gestori pagehide)."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | unloadHandlerExistsInMainFrame": {
+    "message": "La pagina ha un gestore dell'unload nel frame principale."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | unloadHandlerExistsInSubFrame": {
+    "message": "La pagina ha un gestore dell'unload in un frame secondario."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | userAgentOverrideDiffers": {
+    "message": "Il browser ha modificato l'intestazione di override dello user agent."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | wasGrantedMediaAccess": {
+    "message": "Al momento le pagine che hanno concesso l'accesso alla registrazione di video o audio non possono essere memorizzate nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webDatabase": {
+    "message": "Al momento le pagine che utilizzano WebDatabase non possono essere memorizzate nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webHID": {
+    "message": "Al momento le pagine che utilizzano WebHID non possono essere memorizzate nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webLocks": {
+    "message": "Al momento le pagine che utilizzano WebLocks non possono essere memorizzate nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webNfc": {
+    "message": "Al momento le pagine che utilizzano WebNfc non possono essere memorizzate nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webOTPService": {
+    "message": "Al momento le pagine che utilizzano WebOTPService non possono essere memorizzate nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webRTC": {
+    "message": "Le pagine con WebRTC non possono essere memorizzate nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webRTCSticky": {
+    "message": "La cache back-forward \u00e8 stata disattivata perch\u00e9 \u00e8 stato utilizzato WebRTC."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webShare": {
+    "message": "Al momento le pagine che utilizzano WebShare non possono essere memorizzate nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webSocket": {
+    "message": "Le pagine con WebSocket non possono essere memorizzate nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webSocketSticky": {
+    "message": "La cache back-forward \u00e8 stata disattivata perch\u00e9 \u00e8 stato utilizzato WebSocket."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webTransport": {
+    "message": "Le pagine con WebTransport non possono essere memorizzate nella cache back-forward."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webTransportSticky": {
+    "message": "La cache back-forward \u00e8 stata disattivata perch\u00e9 \u00e8 stato utilizzato WebTransport."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webXR": {
+    "message": "Al momento le pagine che utilizzano WebXR non possono essere memorizzate nella cache back-forward."
+  }
+}

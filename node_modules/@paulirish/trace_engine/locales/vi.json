@@ -1,0 +1,908 @@
+{
+  "generated/Deprecation.ts | AuthorizationCoveredByWildcard": {
+    "message": "K\u00fd t\u1ef1 \u0111\u1ea1i di\u1ec7n (*) s\u1ebd kh\u00f4ng bao g\u1ed3m vi\u1ec7c u\u1ef7 quy\u1ec1n khi x\u1eed l\u00fdAccess-Control-Allow-Headers CORS."
+  },
+  "generated/Deprecation.ts | CSSSelectorInternalMediaControlsOverlayCastButton": {
+    "message": "N\u1ec1n s\u1eed d\u1ee5ng thu\u1ed9c t\u00ednh disableRemotePlaybacknh\u1eb1m t\u1eaft ch\u1ebf \u0111\u1ed9 t\u00edch h\u1ee3p Truy\u1ec1n m\u1eb7c \u0111\u1ecbnh thay v\u00ec s\u1eed d\u1ee5ng b\u1ed9 ch\u1ecdn -internal-media-controls-overlay-cast-button."
+  },
+  "generated/Deprecation.ts | CSSValueAppearanceSliderVertical": {
+    "message": "Gi\u00e1 tr\u1ecb c\u1ee7a giao di\u1ec7n CSS slider-vertical kh\u00f4ng \u0111\u01b0\u1ee3c chu\u1ea9n ho\u00e1 v\u00e0 s\u1ebd b\u1ecb xo\u00e1."
+  },
+  "generated/Deprecation.ts | CanRequestURLHTTPContainingNewline": {
+    "message": "C\u00e1c y\u00eau c\u1ea7u t\u00e0i nguy\u00ean c\u00f3 URL ch\u1ee9a c\u1ea3 k\u00fd t\u1ef1 \\(n|r|t) kho\u1ea3ng tr\u1eafng \u0111\u00e3 b\u1ecb xo\u00e1 v\u00e0 k\u00fd t\u1ef1 nh\u1ecf h\u01a1n (<) s\u1ebd b\u1ecb ch\u1eb7n. Vui l\u00f2ng xo\u00e1 c\u00e1c d\u00f2ng m\u1edbi v\u00e0 m\u00e3 ho\u00e1 k\u00fd t\u1ef1 nh\u1ecf h\u01a1n kh\u1ecfi c\u00e1c v\u1ecb tr\u00ed nh\u01b0 gi\u00e1 tr\u1ecb thu\u1ed9c t\u00ednh ph\u1ea7n t\u1eed \u0111\u1ec3 t\u1ea3i nh\u1eefng t\u00e0i nguy\u00ean nh\u01b0 v\u1eady."
+  },
+  "generated/Deprecation.ts | CharsetAutoDetectionISO2022JP": {
+    "message": "T\u00ednh n\u0103ng t\u1ef1 \u0111\u1ed9ng ph\u00e1t hi\u1ec7n b\u1ed9 k\u00fd t\u1ef1 ISO-2022-JP kh\u00f4ng \u0111\u01b0\u1ee3c d\u00f9ng n\u1eefa v\u00e0 s\u1ebd b\u1ecb t\u1eaft trong t\u01b0\u01a1ng lai g\u1ea7n. Vui l\u00f2ng ch\u1ec9 \u0111\u1ecbnh b\u1ed9 k\u00fd t\u1ef1 trong ti\u00eau \u0111\u1ec1 Lo\u1ea1i n\u1ed9i dung ho\u1eb7c b\u1eb1ng c\u00e1ch s\u1eed d\u1ee5ng th\u1ebb meta (https://developer.mozilla.org/en-US/docs/Glossary/Character_encoding)."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesConnectionInfo": {
+    "message": "chrome.loadTimes() kh\u00f4ng \u0111\u01b0\u1ee3c d\u00f9ng n\u1eefa; thay v\u00e0o \u0111\u00f3, h\u00e3y s\u1eed d\u1ee5ng API \u0111\u00e3 chu\u1ea9n ho\u00e1: Navigation Timing 2."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesFirstPaintAfterLoadTime": {
+    "message": "chrome.loadTimes() kh\u00f4ng \u0111\u01b0\u1ee3c d\u00f9ng n\u1eefa; thay v\u00e0o \u0111\u00f3, h\u00e3y s\u1eed d\u1ee5ng API \u0111\u00e3 chu\u1ea9n ho\u00e1: Paint Timing."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesWasAlternateProtocolAvailable": {
+    "message": "chrome.loadTimes() kh\u00f4ng \u0111\u01b0\u1ee3c d\u00f9ng n\u1eefa; thay v\u00e0o \u0111\u00f3, h\u00e3y s\u1eed d\u1ee5ng API \u0111\u00e3 chu\u1ea9n ho\u00e1: nextHopProtocol trong Navigation Timing 2."
+  },
+  "generated/Deprecation.ts | CookieWithTruncatingChar": {
+    "message": "Cookie c\u00f3 ch\u1ee9a k\u00fd t\u1ef1 \\(0|r|n) s\u1ebd b\u1ecb t\u1eeb ch\u1ed1i thay v\u00ec c\u1eaft b\u1edbt."
+  },
+  "generated/Deprecation.ts | CrossOriginAccessBasedOnDocumentDomain": {
+    "message": "H\u1ec7 th\u1ed1ng kh\u00f4ng c\u00f2n thi\u1ebft l\u1eadp document.domain \u0111\u1ec3 n\u1edbi l\u1ecfng ch\u00ednh s\u00e1ch c\u00f9ng ngu\u1ed3n g\u1ed1c n\u1eefa v\u00e0 t\u00ednh n\u0103ng n\u00e0y s\u1ebd b\u1ecb t\u1eaft theo m\u1eb7c \u0111\u1ecbnh. C\u1ea3nh b\u1ea3o v\u1ec1 vi\u1ec7c kh\u00f4ng d\u00f9ng n\u1eefa n\u00e0y l\u00e0 d\u00e0nh cho quy\u1ec1n truy c\u1eadp nhi\u1ec1u ngu\u1ed3n g\u1ed1c \u0111\u00e3 \u0111\u01b0\u1ee3c b\u1eadt b\u1eb1ng c\u00e1ch thi\u1ebft l\u1eadp document.domain."
+  },
+  "generated/Deprecation.ts | CrossOriginWindowAlert": {
+    "message": "T\u00ednh n\u0103ng k\u00edch ho\u1ea1t window.alert qua c\u00e1c iframe tr\u00ean nhi\u1ec1u ngu\u1ed3n g\u1ed1c kh\u00f4ng \u0111\u01b0\u1ee3c d\u00f9ng n\u1eefa v\u00e0 s\u1ebd b\u1ecb lo\u1ea1i b\u1ecf trong t\u01b0\u01a1ng lai."
+  },
+  "generated/Deprecation.ts | CrossOriginWindowConfirm": {
+    "message": "T\u00ednh n\u0103ng k\u00edch ho\u1ea1t window.confirm qua c\u00e1c iframe tr\u00ean nhi\u1ec1u ngu\u1ed3n g\u1ed1c kh\u00f4ng \u0111\u01b0\u1ee3c d\u00f9ng n\u1eefa v\u00e0 s\u1ebd b\u1ecb lo\u1ea1i b\u1ecf trong t\u01b0\u01a1ng lai."
+  },
+  "generated/Deprecation.ts | DOMMutationEvents": {
+    "message": "C\u00e1c S\u1ef1 ki\u1ec7n \u0111\u1ed9t bi\u1ebfn DOM, trong \u0111\u00f3 c\u00f3 DOMSubtreeModified, DOMNodeInserted, DOMNodeRemoved, DOMNodeRemovedFromDocument, DOMNodeInsertedIntoDocument v\u00e0 DOMCharacterDataModified, kh\u00f4ng \u0111\u01b0\u1ee3c d\u00f9ng n\u1eefa (https://w3c.github.io/uievents/#legacy-event-types) v\u00e0 s\u1ebd b\u1ecb lo\u1ea1i b\u1ecf. Thay v\u00e0o \u0111\u00f3, vui l\u00f2ng s\u1eed d\u1ee5ng MutationObserver."
+  },
+  "generated/Deprecation.ts | DataUrlInSvgUse": {
+    "message": "H\u1ed7 tr\u1ee3 v\u1ec1 d\u1eef li\u1ec7u: C\u00e1c URL trong SVGUseElement kh\u00f4ng \u0111\u01b0\u1ee3c d\u00f9ng n\u1eefa v\u00e0 s\u1ebd b\u1ecb lo\u1ea1i b\u1ecf trong t\u01b0\u01a1ng lai."
+  },
+  "generated/Deprecation.ts | GeolocationInsecureOrigin": {
+    "message": "getCurrentPosition() v\u00e0 watchPosition() kh\u00f4ng c\u00f2n ho\u1ea1t \u0111\u1ed9ng tr\u00ean c\u00e1c ngu\u1ed3n g\u1ed1c kh\u00f4ng an to\u00e0n. \u0110\u1ec3 d\u00f9ng t\u00ednh n\u0103ng n\u00e0y, b\u1ea1n n\u00ean c\u00e2n nh\u1eafc vi\u1ec7c chuy\u1ec3n \u1ee9ng d\u1ee5ng sang m\u1ed9t ngu\u1ed3n g\u1ed1c an to\u00e0n, ch\u1eb3ng h\u1ea1n nh\u01b0 HTTPS. Xem https://goo.gle/chrome-insecure-origins \u0111\u1ec3 bi\u1ebft th\u00eam th\u00f4ng tin."
+  },
+  "generated/Deprecation.ts | GeolocationInsecureOriginDeprecatedNotRemoved": {
+    "message": "getCurrentPosition() v\u00e0 watchPosition() kh\u00f4ng \u0111\u01b0\u1ee3c d\u00f9ng n\u1eefa tr\u00ean c\u00e1c ngu\u1ed3n g\u1ed1c kh\u00f4ng an to\u00e0n. \u0110\u1ec3 d\u00f9ng t\u00ednh n\u0103ng n\u00e0y, b\u1ea1n n\u00ean c\u00e2n nh\u1eafc vi\u1ec7c chuy\u1ec3n \u1ee9ng d\u1ee5ng sang m\u1ed9t ngu\u1ed3n g\u1ed1c an to\u00e0n, ch\u1eb3ng h\u1ea1n nh\u01b0 HTTPS. Xem https://goo.gle/chrome-insecure-origins \u0111\u1ec3 bi\u1ebft th\u00eam th\u00f4ng tin."
+  },
+  "generated/Deprecation.ts | GetUserMediaInsecureOrigin": {
+    "message": "getUserMedia() kh\u00f4ng c\u00f2n ho\u1ea1t \u0111\u1ed9ng tr\u00ean c\u00e1c ngu\u1ed3n g\u1ed1c kh\u00f4ng an to\u00e0n. \u0110\u1ec3 d\u00f9ng t\u00ednh n\u0103ng n\u00e0y, b\u1ea1n n\u00ean c\u00e2n nh\u1eafc vi\u1ec7c chuy\u1ec3n \u1ee9ng d\u1ee5ng sang m\u1ed9t ngu\u1ed3n g\u1ed1c an to\u00e0n, ch\u1eb3ng h\u1ea1n nh\u01b0 HTTPS. Xem https://goo.gle/chrome-insecure-origins \u0111\u1ec3 bi\u1ebft th\u00eam th\u00f4ng tin."
+  },
+  "generated/Deprecation.ts | H1UserAgentFontSizeInSection": {
+    "message": "\u0110\u00e3 t\u00ecm th\u1ea5y th\u1ebb <h1> trong <article>, <aside>, <nav> ho\u1eb7c <section> kh\u00f4ng c\u00f3 c\u1ee1 ch\u1eef \u0111\u01b0\u1ee3c ch\u1ec9 \u0111\u1ecbnh. K\u00edch c\u1ee1 c\u1ee7a v\u0103n b\u1ea3n ti\u00eau \u0111\u1ec1 n\u00e0y s\u1ebd thay \u0111\u1ed5i trong tr\u00ecnh duy\u1ec7t n\u00e0y trong th\u1eddi gian s\u1eafp t\u1edbi. H\u00e3y truy c\u1eadp v\u00e0o https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#specifying_a_uniform_font_size_for_h1 \u0111\u1ec3 bi\u1ebft th\u00eam th\u00f4ng tin."
+  },
+  "generated/Deprecation.ts | HostCandidateAttributeGetter": {
+    "message": "RTCPeerConnectionIceErrorEvent.hostCandidate kh\u00f4ng c\u00f2n ho\u1ea1t \u0111\u1ed9ng. Thay v\u00e0o \u0111\u00f3, h\u00e3y s\u1eed d\u1ee5ng RTCPeerConnectionIceErrorEvent.address ho\u1eb7c RTCPeerConnectionIceErrorEvent.port."
+  },
+  "generated/Deprecation.ts | IdentityDigitalCredentials": {
+    "message": "\u0110\u1ecbnh d\u1ea1ng n\u00e0y d\u00f9ng cho y\u00eau c\u1ea7u cung c\u1ea5p th\u00f4ng tin \u0111\u0103ng nh\u1eadp k\u1ef9 thu\u1eadt s\u1ed1 navigator.credentials.get() kh\u00f4ng c\u00f2n \u0111\u01b0\u1ee3c d\u00f9ng n\u1eefa. Vui l\u00f2ng c\u1eadp nh\u1eadt l\u1ec7nh g\u1ecdi \u0111\u1ec3 s\u1eed d\u1ee5ng \u0111\u1ecbnh d\u1ea1ng m\u1edbi."
+  },
+  "generated/Deprecation.ts | IdentityInCanMakePaymentEvent": {
+    "message": "Ngu\u1ed3n g\u1ed1c c\u1ee7a b\u00ean b\u00e1n v\u00e0 d\u1eef li\u1ec7u b\u1ea5t k\u1ef3 trong s\u1ef1 ki\u1ec7n canmakepayment c\u1ee7a tr\u00ecnh ch\u1ea1y d\u1ecbch v\u1ee5 kh\u00f4ng \u0111\u01b0\u1ee3c d\u00f9ng n\u1eefa v\u00e0 s\u1ebd b\u1ecb lo\u1ea1i b\u1ecf: topOrigin, paymentRequestOrigin, methodData, modifiers."
+  },
+  "generated/Deprecation.ts | InsecurePrivateNetworkSubresourceRequest": {
+    "message": "Trang web n\u00e0y \u0111\u00e3 y\u00eau c\u1ea7u m\u1ed9t t\u00e0i nguy\u00ean ph\u1ee5 qua m\u1ed9t m\u1ea1ng m\u00e0 trang web n\u00e0y ch\u1ec9 truy c\u1eadp \u0111\u01b0\u1ee3c do c\u00f3 v\u1ecb th\u1ebf m\u1ea1ng \u0111\u1eb7c quy\u1ec1n c\u1ee7a ng\u01b0\u1eddi d\u00f9ng. Nh\u1eefng y\u00eau c\u1ea7u nh\u01b0 v\u1eady l\u00e0m l\u1ed9 c\u00e1c thi\u1ebft b\u1ecb v\u00e0 m\u00e1y ch\u1ee7 kh\u00f4ng c\u00f4ng khai tr\u00ean Internet, l\u00e0m t\u0103ng nguy c\u01a1 b\u1ecb t\u1ea5n c\u00f4ng gi\u1ea3 m\u1ea1o y\u00eau c\u1ea7u tr\u00ean nhi\u1ec1u trang web (CSRF) v\u00e0/ho\u1eb7c r\u00f2 r\u1ec9 th\u00f4ng tin. \u0110\u1ec3 gi\u1ea3m thi\u1ec3u nh\u1eefng r\u1ee7i ro n\u00e0y, Chrome s\u1ebd ng\u1eebng y\u00eau c\u1ea7u c\u00e1c ngu\u1ed3n ph\u1ee5 kh\u00f4ng c\u00f4ng khai khi \u0111\u01b0\u1ee3c kh\u1edfi t\u1ea1o t\u1eeb c\u00e1c ng\u1eef c\u1ea3nh kh\u00f4ng an to\u00e0n v\u00e0 s\u1ebd b\u1eaft \u0111\u1ea7u ch\u1eb7n nh\u1eefng y\u00eau c\u1ea7u \u0111\u00f3."
+  },
+  "generated/Deprecation.ts | InterestGroupDailyUpdateUrl": {
+    "message": "Tr\u01b0\u1eddng dailyUpdateUrl c\u1ee7a InterestGroups \u0111\u01b0\u1ee3c truy\u1ec1n \u0111\u1ebfn joinAdInterestGroup() \u0111\u00e3 \u0111\u01b0\u1ee3c \u0111\u1ed5i t\u00ean th\u00e0nh updateUrl \u0111\u1ec3 ph\u1ea3n \u00e1nh ch\u00ednh x\u00e1c h\u01a1n h\u00e0nh vi c\u1ee7a tr\u01b0\u1eddng n\u00e0y."
+  },
+  "generated/Deprecation.ts | IntlV8BreakIterator": {
+    "message": "Intl.v8BreakIterator kh\u00f4ng \u0111\u01b0\u1ee3c d\u00f9ng n\u1eefa. Thay v\u00e0o \u0111\u00f3, h\u00e3y s\u1eed d\u1ee5ng Intl.Segmenter."
+  },
+  "generated/Deprecation.ts | LocalCSSFileExtensionRejected": {
+    "message": "Kh\u00f4ng t\u1ea3i \u0111\u01b0\u1ee3c CSS qua c\u00e1c URL file: tr\u1eeb phi ch\u00fang k\u1ebft th\u00fac b\u1eb1ng \u0111u\u00f4i t\u1ec7p .css."
+  },
+  "generated/Deprecation.ts | MediaSourceAbortRemove": {
+    "message": "H\u1ec7 th\u1ed1ng kh\u00f4ng d\u00f9ng SourceBuffer.abort() \u0111\u1ec3 hu\u1ef7 vi\u1ec7c xo\u00e1 kho\u1ea3ng kh\u00f4ng \u0111\u1ed3ng b\u1ed9 c\u1ee7a remove() n\u1eefa do thay \u0111\u1ed5i v\u1ec1 quy c\u00e1ch. Sau n\u00e0y ch\u1ebf \u0111\u1ed9 h\u1ed7 tr\u1ee3 c\u0169ng s\u1ebd b\u1ecb xo\u00e1. Thay v\u00e0o \u0111\u00f3, b\u1ea1n n\u00ean nghe s\u1ef1 ki\u1ec7n updateend. M\u1ee5c \u0111\u00edch c\u1ee7a abort() ch\u1ec9 l\u00e0 hu\u1ef7 l\u1ec7nh th\u00eam n\u1ed9i dung nghe nh\u00ecn kh\u00f4ng \u0111\u1ed3ng b\u1ed9 (asynchronous media append) ho\u1eb7c \u0111\u1eb7t l\u1ea1i tr\u1ea1ng th\u00e1i c\u1ee7a tr\u00ecnh ph\u00e2n t\u00edch c\u00fa ph\u00e1p."
+  },
+  "generated/Deprecation.ts | MediaSourceDurationTruncatingBuffered": {
+    "message": "Do thay \u0111\u1ed5i v\u1ec1 quy c\u00e1ch, h\u1ec7 th\u1ed1ng kh\u00f4ng c\u00f2n d\u00f9ng ch\u1ebf \u0111\u1ed9 \u0111\u1eb7t gi\u00e1 tr\u1ecb d\u01b0\u1edbi d\u1ea5u th\u1eddi gian tr\u00ecnh b\u00e0y cao nh\u1ea5t cho MediaSource.duration n\u1eefa \u0111\u1ed1i v\u1edbi m\u1ecdi khung \u0111\u00e3 m\u00e3 ho\u00e1 v\u00e0 l\u01b0u v\u00e0o v\u00f9ng \u0111\u1ec7m. Ch\u1ebf \u0111\u1ed9 h\u1ed7 tr\u1ee3 y\u00eau c\u1ea7u xo\u00e1 t\u01b0\u1eddng minh cho n\u1ed9i dung ph\u01b0\u01a1ng ti\u1ec7n l\u01b0u trong b\u1ed9 \u0111\u1ec7m b\u1ecb c\u1eaft b\u1edbt sau n\u00e0y c\u0169ng s\u1ebd b\u1ecb xo\u00e1. B\u1ea1n n\u00ean tri\u1ec3n khai l\u1ec7nh remove(newDuration, oldDuration) t\u01b0\u1eddng minh tr\u00ean m\u1ecdi sourceBuffers, khi newDuration < oldDuration."
+  },
+  "generated/Deprecation.ts | NoSysexWebMIDIWithoutPermission": {
+    "message": "Web MIDI s\u1ebd y\u00eau c\u1ea7u c\u1ea5p quy\u1ec1n s\u1eed d\u1ee5ng ngay c\u1ea3 khi MIDIOptions kh\u00f4ng ch\u1ec9 r\u00f5 sysex."
+  },
+  "generated/Deprecation.ts | NotificationInsecureOrigin": {
+    "message": "C\u00f3 th\u1ec3 Notification API kh\u00f4ng \u0111\u01b0\u1ee3c d\u00f9ng n\u1eefa qua c\u00e1c ngu\u1ed3n g\u1ed1c kh\u00f4ng an to\u00e0n. B\u1ea1n n\u00ean c\u00e2n nh\u1eafc vi\u1ec7c chuy\u1ec3n \u1ee9ng d\u1ee5ng sang m\u1ed9t ngu\u1ed3n g\u1ed1c an to\u00e0n, ch\u1eb3ng h\u1ea1n nh\u01b0 HTTPS. Xem https://goo.gle/chrome-insecure-origins \u0111\u1ec3 bi\u1ebft th\u00eam th\u00f4ng tin."
+  },
+  "generated/Deprecation.ts | NotificationPermissionRequestedIframe": {
+    "message": "C\u00f3 th\u1ec3 quy\u1ec1n cho Notification API kh\u00f4ng c\u00f2n \u0111\u01b0\u1ee3c y\u00eau c\u1ea7u qua m\u1ed9t iframe nhi\u1ec1u ngu\u1ed3n g\u1ed1c n\u1eefa. Thay v\u00e0o \u0111\u00f3, b\u1ea1n n\u00ean c\u00e2n nh\u1eafc vi\u1ec7c y\u00eau c\u1ea7u quy\u1ec1n qua m\u1ed9t khung c\u1ea5p cao ho\u1eb7c m\u1edf m\u1ed9t c\u1eeda s\u1ed5 m\u1edbi."
+  },
+  "generated/Deprecation.ts | ObsoleteCreateImageBitmapImageOrientationNone": {
+    "message": "Tu\u1ef3 ch\u1ecdn imageOrientation: 'none' trong createImageBitmap kh\u00f4ng \u0111\u01b0\u1ee3c d\u00f9ng n\u1eefa. Thay v\u00e0o \u0111\u00f3, vui l\u00f2ng s\u1eed d\u1ee5ng createImageBitmap b\u1eb1ng tu\u1ef3 ch\u1ecdn '{imageOrientation: 'from-image'}'."
+  },
+  "generated/Deprecation.ts | ObsoleteWebRtcCipherSuite": {
+    "message": "\u0110\u1ed1i t\u00e1c c\u1ee7a b\u1ea1n \u0111ang \u0111\u00e0m ph\u00e1n m\u1ed9t phi\u00ean b\u1ea3n (D)TLS \u0111\u00e3 l\u1ed7i th\u1eddi. Vui l\u00f2ng trao \u0111\u1ed5i v\u1edbi \u0111\u1ed1i t\u00e1c c\u1ee7a b\u1ea1n \u0111\u1ec3 kh\u1eafc ph\u1ee5c."
+  },
+  "generated/Deprecation.ts | OverflowVisibleOnReplacedElement": {
+    "message": "Vi\u1ec7c ch\u1ec9 \u0111\u1ecbnh overflow: visible tr\u00ean th\u1ebb img, video v\u00e0 canvas c\u00f3 th\u1ec3 khi\u1ebfn c\u00e1c th\u1ebb n\u00e0y t\u1ea1o ra n\u1ed9i dung h\u00ecnh \u1ea3nh b\u00ean ngo\u00e0i ranh gi\u1edbi th\u00e0nh ph\u1ea7n. Xem t\u1ea1i https://github.com/WICG/shared-element-transitions/blob/main/debugging_overflow_on_images.md."
+  },
+  "generated/Deprecation.ts | PaymentInstruments": {
+    "message": "paymentManager.instruments kh\u00f4ng \u0111\u01b0\u1ee3c d\u00f9ng n\u1eefa. Vui l\u00f2ng s\u1eed d\u1ee5ng ch\u1ebf \u0111\u1ed9 c\u00e0i \u0111\u1eb7t \u0111\u00fang th\u1eddi \u0111i\u1ec3m cho tr\u00ecnh x\u1eed l\u00fd thanh to\u00e1n."
+  },
+  "generated/Deprecation.ts | PaymentRequestCSPViolation": {
+    "message": "L\u1ec7nh g\u1ecdi PaymentRequest c\u1ee7a b\u1ea1n \u0111\u00e3 b\u1ecf qua ch\u1ec9 th\u1ecb connect-src c\u1ee7a Ch\u00ednh s\u00e1ch b\u1ea3o m\u1eadt n\u1ed9i dung (CSP). Ch\u1ebf \u0111\u1ed9 b\u1ecf qua n\u00e0y kh\u00f4ng \u0111\u01b0\u1ee3c d\u00f9ng n\u1eefa. Vui l\u00f2ng th\u00eam gi\u00e1 tr\u1ecb nh\u1eadn d\u1ea1ng ph\u01b0\u01a1ng th\u1ee9c thanh to\u00e1n t\u1eeb API PaymentRequest (trong tr\u01b0\u1eddng supportedMethods) v\u00e0o ch\u1ec9 th\u1ecb connect-src c\u1ee7a CSP."
+  },
+  "generated/Deprecation.ts | PersistentQuotaType": {
+    "message": "StorageType.persistent kh\u00f4ng c\u00f2n ho\u1ea1t \u0111\u1ed9ng. Thay v\u00e0o \u0111\u00f3, vui l\u00f2ng s\u1eed d\u1ee5ng navigator.storage \u0111\u00e3 chu\u1ea9n ho\u00e1."
+  },
+  "generated/Deprecation.ts | PictureSourceSrc": {
+    "message": "<source src> c\u00f3 ph\u1ea7n t\u1eed m\u1eb9 <picture> l\u00e0 kh\u00f4ng h\u1ee3p l\u1ec7 n\u00ean s\u1ebd b\u1ecb b\u1ecf qua. Thay v\u00e0o \u0111\u00f3, vui l\u00f2ng s\u1eed d\u1ee5ng <source srcset>."
+  },
+  "generated/Deprecation.ts | PrefixedCancelAnimationFrame": {
+    "message": "webkitCancelAnimationFrame l\u00e0 ph\u01b0\u01a1ng th\u1ee9c c\u00f3 ti\u1ec1n t\u1ed1 nh\u00e0 cung c\u1ea5p. Thay v\u00e0o \u0111\u00f3, vui l\u00f2ng s\u1eed d\u1ee5ng cancelAnimationFrame ti\u00eau chu\u1ea9n."
+  },
+  "generated/Deprecation.ts | PrefixedRequestAnimationFrame": {
+    "message": "webkitRequestAnimationFrame l\u00e0 ph\u01b0\u01a1ng th\u1ee9c c\u00f3 ti\u1ec1n t\u1ed1 nh\u00e0 cung c\u1ea5p. Thay v\u00e0o \u0111\u00f3, vui l\u00f2ng s\u1eed d\u1ee5ng requestAnimationFrame ti\u00eau chu\u1ea9n."
+  },
+  "generated/Deprecation.ts | PrefixedVideoDisplayingFullscreen": {
+    "message": "HTMLVideoElement.webkitDisplayingFullscreen kh\u00f4ng \u0111\u01b0\u1ee3c d\u00f9ng n\u1eefa. Thay v\u00e0o \u0111\u00f3, vui l\u00f2ng s\u1eed d\u1ee5ng Document.fullscreenElement."
+  },
+  "generated/Deprecation.ts | PrefixedVideoEnterFullScreen": {
+    "message": "HTMLVideoElement.webkitEnterFullScreen() kh\u00f4ng \u0111\u01b0\u1ee3c d\u00f9ng n\u1eefa. Thay v\u00e0o \u0111\u00f3, vui l\u00f2ng s\u1eed d\u1ee5ng Element.requestFullscreen()."
+  },
+  "generated/Deprecation.ts | PrefixedVideoEnterFullscreen": {
+    "message": "HTMLVideoElement.webkitEnterFullscreen() kh\u00f4ng \u0111\u01b0\u1ee3c d\u00f9ng n\u1eefa. Thay v\u00e0o \u0111\u00f3, vui l\u00f2ng s\u1eed d\u1ee5ng Element.requestFullscreen()."
+  },
+  "generated/Deprecation.ts | PrefixedVideoExitFullScreen": {
+    "message": "HTMLVideoElement.webkitExitFullScreen() kh\u00f4ng \u0111\u01b0\u1ee3c d\u00f9ng n\u1eefa. Thay v\u00e0o \u0111\u00f3, vui l\u00f2ng s\u1eed d\u1ee5ng Document.exitFullscreen()."
+  },
+  "generated/Deprecation.ts | PrefixedVideoExitFullscreen": {
+    "message": "HTMLVideoElement.webkitExitFullscreen() kh\u00f4ng \u0111\u01b0\u1ee3c d\u00f9ng n\u1eefa. Thay v\u00e0o \u0111\u00f3, vui l\u00f2ng s\u1eed d\u1ee5ng Document.exitFullscreen()."
+  },
+  "generated/Deprecation.ts | PrefixedVideoSupportsFullscreen": {
+    "message": "HTMLVideoElement.webkitSupportsFullscreen kh\u00f4ng c\u00f2n \u0111\u01b0\u1ee3c d\u00f9ng n\u1eefa. Thay v\u00e0o \u0111\u00f3, vui l\u00f2ng s\u1eed d\u1ee5ng Document.fullscreenEnabled."
+  },
+  "generated/Deprecation.ts | PrivacySandboxExtensionsAPI": {
+    "message": "Ch\u00fang t\u00f4i s\u1ebd kh\u00f4ng d\u00f9ng API chrome.privacy.websites.privacySandboxEnabled n\u1eefa. Tuy nhi\u00ean, API n\u00e0y s\u1ebd v\u1eabn ho\u1ea1t \u0111\u1ed9ng nh\u1eb1m \u0111\u1ea3m b\u1ea3o kh\u1ea3 n\u0103ng t\u01b0\u01a1ng th\u00edch ng\u01b0\u1ee3c cho \u0111\u1ebfn khi ph\u00e1t h\u00e0nh phi\u00ean b\u1ea3n M113. Thay v\u00e0o \u0111\u00f3, vui l\u00f2ng s\u1eed d\u1ee5ng chrome.privacy.websites.topicsEnabled, chrome.privacy.websites.fledgeEnabled v\u00e0 chrome.privacy.websites.adMeasurementEnabled. Truy c\u1eadp v\u00e0o https://developer.chrome.com/docs/extensions/reference/privacy/#property-websites-privacySandboxEnabled."
+  },
+  "generated/Deprecation.ts | RTCConstraintEnableDtlsSrtpFalse": {
+    "message": "\u0110i\u1ec1u ki\u1ec7n h\u1ea1n ch\u1ebf DtlsSrtpKeyAgreement \u0111\u00e3 b\u1ecb xo\u00e1. B\u1ea1n \u0111\u00e3 ch\u1ec9 \u0111\u1ecbnh m\u1ed9t gi\u00e1 tr\u1ecb false cho \u0111i\u1ec1u ki\u1ec7n h\u1ea1n ch\u1ebf n\u00e0y, \u0111\u00e2y \u0111\u01b0\u1ee3c coi l\u00e0 n\u1ed7 l\u1ef1c s\u1eed d\u1ee5ng ph\u01b0\u01a1ng th\u1ee9c SDES key negotiation \u0111\u00e3 b\u1ecb xo\u00e1. Ch\u1ee9c n\u0103ng n\u00e0y \u0111\u00e3 b\u1ecb xo\u00e1; thay v\u00e0o \u0111\u00f3, h\u00e3y s\u1eed d\u1ee5ng m\u1ed9t d\u1ecbch v\u1ee5 c\u00f3 h\u1ed7 tr\u1ee3 DTLS key negotiation."
+  },
+  "generated/Deprecation.ts | RTCConstraintEnableDtlsSrtpTrue": {
+    "message": "\u0110i\u1ec1u ki\u1ec7n h\u1ea1n ch\u1ebf DtlsSrtpKeyAgreement \u0111\u00e3 b\u1ecb xo\u00e1. B\u1ea1n \u0111\u00e3 ch\u1ec9 \u0111\u1ecbnh m\u1ed9t gi\u00e1 tr\u1ecb true cho \u0111i\u1ec1u ki\u1ec7n h\u1ea1n ch\u1ebf n\u00e0y, vi\u1ec7c n\u00e0y kh\u00f4ng c\u00f3 t\u00e1c d\u1ee5ng g\u00ec nh\u01b0ng b\u1ea1n c\u00f3 th\u1ec3 xo\u00e1 \u0111i\u1ec1u ki\u1ec7n h\u1ea1n ch\u1ebf n\u00e0y cho g\u1ecdn g\u00e0ng."
+  },
+  "generated/Deprecation.ts | RTCPeerConnectionGetStatsLegacyNonCompliant": {
+    "message": "Ph\u01b0\u01a1ng th\u1ee9c getStats() d\u1ef1a tr\u00ean l\u1ec7nh g\u1ecdi l\u1ea1i kh\u00f4ng \u0111\u01b0\u1ee3c d\u00f9ng n\u1eefa v\u00e0 s\u1ebd b\u1ecb lo\u1ea1i b\u1ecf. Thay v\u00e0o \u0111\u00f3, h\u00e3y s\u1eed d\u1ee5ng getStats() tu\u00e2n th\u1ee7 quy c\u00e1ch."
+  },
+  "generated/Deprecation.ts | RangeExpand": {
+    "message": "Range.expand() kh\u00f4ng \u0111\u01b0\u1ee3c d\u00f9ng n\u1eefa. Thay v\u00e0o \u0111\u00f3, vui l\u00f2ng s\u1eed d\u1ee5ng Selection.modify()."
+  },
+  "generated/Deprecation.ts | RequestedSubresourceWithEmbeddedCredentials": {
+    "message": "Y\u00eau c\u1ea7u t\u00e0i nguy\u00ean ph\u1ee5 c\u00f3 URL ch\u1ee9a th\u00f4ng tin x\u00e1c th\u1ef1c \u0111\u01b0\u1ee3c nh\u00fang (v\u00ed d\u1ee5: https://user:pass@host/) s\u1ebd b\u1ecb ch\u1eb7n."
+  },
+  "generated/Deprecation.ts | RtcpMuxPolicyNegotiate": {
+    "message": "Tu\u1ef3 ch\u1ecdn rtcpMuxPolicy kh\u00f4ng \u0111\u01b0\u1ee3c d\u00f9ng n\u1eefa v\u00e0 s\u1ebd b\u1ecb xo\u00e1."
+  },
+  "generated/Deprecation.ts | SharedArrayBufferConstructedWithoutIsolation": {
+    "message": "SharedArrayBuffer s\u1ebd \u0111\u00f2i h\u1ecfi vi\u1ec7c t\u00e1ch bi\u1ec7t nhi\u1ec1u ngu\u1ed3n g\u1ed1c. Xem https://developer.chrome.com/blog/enabling-shared-array-buffer/ \u0111\u1ec3 bi\u1ebft th\u00eam th\u00f4ng tin."
+  },
+  "generated/Deprecation.ts | TextToSpeech_DisallowedByAutoplay": {
+    "message": "Khi kh\u00f4ng c\u00f3 ho\u1ea1t \u0111\u1ed9ng c\u1ee7a ng\u01b0\u1eddi d\u00f9ng, speechSynthesis.speak() kh\u00f4ng \u0111\u01b0\u1ee3c d\u00f9ng n\u1eefa v\u00e0 s\u1ebd \u0111\u01b0\u1ee3c lo\u1ea1i b\u1ecf."
+  },
+  "generated/Deprecation.ts | UnloadHandler": {
+    "message": "Tr\u00ecnh nghe s\u1ef1 ki\u1ec7n hu\u1ef7 t\u1ea3i kh\u00f4ng d\u00f9ng \u0111\u01b0\u1ee3c n\u1eefa v\u00e0 s\u1ebd b\u1ecb lo\u1ea1i b\u1ecf."
+  },
+  "generated/Deprecation.ts | V8SharedArrayBufferConstructedInExtensionWithoutIsolation": {
+    "message": "C\u00e1c ti\u1ec7n \u00edch ph\u1ea3i ch\u1ecdn s\u1eed d\u1ee5ng ch\u1ebf \u0111\u1ed9 t\u00e1ch bi\u1ec7t nhi\u1ec1u ngu\u1ed3n g\u1ed1c \u0111\u1ebb c\u00f3 th\u1ec3 ti\u1ebfp t\u1ee5c s\u1eed d\u1ee5ng SharedArrayBuffer. Xem https://developer.chrome.com/docs/extensions/mv3/cross-origin-isolation/."
+  },
+  "generated/Deprecation.ts | XHRJSONEncodingDetection": {
+    "message": "JSON ph\u1ea3n h\u1ed3i kh\u00f4ng h\u1ed7 tr\u1ee3 UTF-16 trong XMLHttpRequest"
+  },
+  "generated/Deprecation.ts | XMLHttpRequestSynchronousInNonWorkerOutsideBeforeUnload": {
+    "message": "T\u00ednh n\u0103ng XMLHttpRequest \u0111\u1ed3ng b\u1ed9 tr\u00ean lu\u1ed3ng ch\u00ednh kh\u00f4ng \u0111\u01b0\u1ee3c d\u00f9ng n\u1eefa do c\u00f3 t\u00e1c \u0111\u1ed9ng kh\u00f4ng t\u1ed1t \u0111\u1ed1i v\u1edbi tr\u1ea3i nghi\u1ec7m c\u1ee7a ng\u01b0\u1eddi d\u00f9ng cu\u1ed1i. \u0110\u1ec3 xem th\u00eam th\u00f4ng tin tr\u1ee3 gi\u00fap, h\u00e3y tham kh\u1ea3o https://xhr.spec.whatwg.org/."
+  },
+  "models/trace/insights/CLSCulprits.ts | animation": {
+    "message": "\u1ea2nh \u0111\u1ed9ng"
+  },
+  "models/trace/insights/CLSCulprits.ts | description": {
+    "message": "B\u1ed1 c\u1ee5c thay \u0111\u1ed5i khi ph\u1ea7n t\u1eed di chuy\u1ec3n m\u00e0 kh\u00f4ng c\u00f3 s\u1ef1 t\u01b0\u01a1ng t\u00e1c c\u1ee7a ng\u01b0\u1eddi d\u00f9ng. [H\u00e3y t\u00ecm hi\u1ec3u nguy\u00ean nh\u00e2n b\u1ed1 c\u1ee5c thay \u0111\u1ed5i](https://web.dev/articles/optimize-cls), ch\u1eb3ng h\u1ea1n nh\u01b0 ph\u1ea7n t\u1eed \u0111\u01b0\u1ee3c th\u00eam, b\u1ecb xo\u00e1 ho\u1eb7c ph\u00f4ng ch\u1eef c\u1ee7a ph\u1ea7n t\u1eed thay \u0111\u1ed5i khi trang t\u1ea3i."
+  },
+  "models/trace/insights/CLSCulprits.ts | fontRequest": {
+    "message": "Y\u00eau c\u1ea7u ph\u00f4ng ch\u1eef"
+  },
+  "models/trace/insights/CLSCulprits.ts | injectedIframe": {
+    "message": "iframe \u0111\u01b0\u1ee3c ch\u00e8n"
+  },
+  "models/trace/insights/CLSCulprits.ts | layoutShiftCluster": {
+    "message": "C\u1ee5m thay \u0111\u1ed5i b\u1ed1 c\u1ee5c @ {PH1}"
+  },
+  "models/trace/insights/CLSCulprits.ts | noCulprits": {
+    "message": "Kh\u00f4ng ph\u00e1t hi\u1ec7n ra nguy\u00ean nh\u00e2n thay \u0111\u1ed5i b\u1ed1 c\u1ee5c"
+  },
+  "models/trace/insights/CLSCulprits.ts | noLayoutShifts": {
+    "message": "Kh\u00f4ng c\u00f3 s\u1ef1 thay \u0111\u1ed5i b\u1ed1 c\u1ee5c"
+  },
+  "models/trace/insights/CLSCulprits.ts | title": {
+    "message": "Nguy\u00ean nh\u00e2n l\u00e0m thay \u0111\u1ed5i b\u1ed1 c\u1ee5c"
+  },
+  "models/trace/insights/CLSCulprits.ts | topCulprits": {
+    "message": "Nguy\u00ean nh\u00e2n l\u00e0m thay \u0111\u1ed5i b\u1ed1 c\u1ee5c th\u01b0\u1eddng g\u1eb7p nh\u1ea5t"
+  },
+  "models/trace/insights/CLSCulprits.ts | unsizedImages": {
+    "message": "H\u00ecnh \u1ea3nh ch\u01b0a x\u00e1c \u0111\u1ecbnh k\u00edch th\u01b0\u1edbc"
+  },
+  "models/trace/insights/CLSCulprits.ts | worstCluster": {
+    "message": "C\u1ee5m t\u1ec7 nh\u1ea5t"
+  },
+  "models/trace/insights/CLSCulprits.ts | worstLayoutShiftCluster": {
+    "message": "C\u1ee5m thay \u0111\u1ed5i b\u1ed1 c\u1ee5c t\u1ec7 nh\u1ea5t"
+  },
+  "models/trace/insights/Cache.ts | cacheTTL": {
+    "message": "Th\u1eddi gian t\u1ed3n t\u1ea1i (TTL) c\u1ee7a b\u1ed9 nh\u1edb \u0111\u1ec7m"
+  },
+  "models/trace/insights/Cache.ts | description": {
+    "message": "B\u1ed9 nh\u1edb \u0111\u1ec7m c\u00f3 th\u1eddi gian h\u1eefu d\u1ee5ng d\u00e0i c\u00f3 th\u1ec3 gi\u00fap t\u0103ng t\u1ed1c s\u1ed1 l\u01b0\u1ee3t truy c\u1eadp l\u1eb7p l\u1ea1i v\u00e0o trang c\u1ee7a b\u1ea1n. [T\u00ecm hi\u1ec3u th\u00eam](https://web.dev/uses-long-cache-ttl/)"
+  },
+  "models/trace/insights/Cache.ts | noRequestsToCache": {
+    "message": "Kh\u00f4ng y\u00eau c\u1ea7u n\u00e0o c\u00f3 ch\u00ednh s\u00e1ch b\u1ed9 nh\u1edb \u0111\u1ec7m kh\u00f4ng hi\u1ec7u qu\u1ea3"
+  },
+  "models/trace/insights/Cache.ts | others": {
+    "message": "{PH1} m\u1ee5c kh\u00e1c"
+  },
+  "models/trace/insights/Cache.ts | requestColumn": {
+    "message": "Y\u00eau c\u1ea7u"
+  },
+  "models/trace/insights/Cache.ts | title": {
+    "message": "S\u1eed d\u1ee5ng th\u1eddi gian h\u1eefu d\u1ee5ng c\u1ee7a b\u1ed9 nh\u1edb \u0111\u1ec7m hi\u1ec7u qu\u1ea3"
+  },
+  "models/trace/insights/DOMSize.ts | description": {
+    "message": "DOM l\u1edbn c\u00f3 th\u1ec3 l\u00e0m c\u00e1c ph\u00e9p t\u00ednh v\u1ec1 ki\u1ec3u v\u00e0 quy tr\u00ecnh tr\u00ecnh b\u00e0y l\u1ea1i b\u1ed1 c\u1ee5c d\u00e0i h\u01a1n, \u1ea3nh h\u01b0\u1edfng \u0111\u1ebfn t\u1ed1c \u0111\u1ed9 ph\u1ea3n h\u1ed3i c\u1ee7a trang. DOM l\u1edbn c\u0169ng s\u1ebd l\u00e0m t\u0103ng m\u1ee9c s\u1eed d\u1ee5ng b\u1ed9 nh\u1edb. [T\u00ecm hi\u1ec3u c\u00e1ch tr\u00e1nh k\u00edch th\u01b0\u1edbc DOM qu\u00e1 l\u1edbn](https://developer.chrome.com/docs/lighthouse/performance/dom-size/)."
+  },
+  "models/trace/insights/DOMSize.ts | element": {
+    "message": "Ph\u1ea7n t\u1eed"
+  },
+  "models/trace/insights/DOMSize.ts | maxChildren": {
+    "message": "H\u1ea7u h\u1ebft tr\u1ebb em"
+  },
+  "models/trace/insights/DOMSize.ts | maxDOMDepth": {
+    "message": "Chi\u1ec1u s\u00e2u DOM"
+  },
+  "models/trace/insights/DOMSize.ts | statistic": {
+    "message": "Th\u1ed1ng k\u00ea"
+  },
+  "models/trace/insights/DOMSize.ts | title": {
+    "message": "T\u1ed1i \u01b0u ho\u00e1 k\u00edch th\u01b0\u1edbc DOM"
+  },
+  "models/trace/insights/DOMSize.ts | totalElements": {
+    "message": "T\u1ed5ng s\u1ed1 ph\u1ea7n t\u1eed"
+  },
+  "models/trace/insights/DOMSize.ts | value": {
+    "message": "Gi\u00e1 tr\u1ecb"
+  },
+  "models/trace/insights/DocumentLatency.ts | description": {
+    "message": "Y\u00eau c\u1ea7u m\u1ea1ng \u0111\u1ea7u ti\u00ean l\u00e0 quan tr\u1ecdng nh\u1ea5t.  Gi\u1ea3m \u0111\u1ed9 tr\u1ec5 b\u1eb1ng c\u00e1ch tr\u00e1nh d\u00f9ng \u0111\u01b0\u1eddng li\u00ean k\u1ebft chuy\u1ec3n h\u01b0\u1edbng, \u0111\u1ea3m b\u1ea3o m\u00e1y ch\u1ee7 ph\u1ea3n h\u1ed3i nhanh v\u00e0 b\u1eadt t\u00ednh n\u0103ng n\u00e9n v\u0103n b\u1ea3n."
+  },
+  "models/trace/insights/DocumentLatency.ts | failedRedirects": {
+    "message": "C\u00f3 chuy\u1ec3n h\u01b0\u1edbng"
+  },
+  "models/trace/insights/DocumentLatency.ts | failedServerResponseTime": {
+    "message": "M\u00e1y ch\u1ee7 ph\u1ea3n h\u1ed3i ch\u1eadm"
+  },
+  "models/trace/insights/DocumentLatency.ts | failedTextCompression": {
+    "message": "Kh\u00f4ng \u00e1p d\u1ee5ng t\u00ednh n\u0103ng n\u00e9n"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingRedirects": {
+    "message": "Tr\u00e1nh chuy\u1ec3n h\u01b0\u1edbng"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingServerResponseTime": {
+    "message": "M\u00e1y ch\u1ee7 ph\u1ea3n h\u1ed3i nhanh"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingTextCompression": {
+    "message": "\u00c1p d\u1ee5ng t\u00ednh n\u0103ng n\u00e9n v\u0103n b\u1ea3n"
+  },
+  "models/trace/insights/DocumentLatency.ts | redirectsLabel": {
+    "message": "Chuy\u1ec3n h\u01b0\u1edbng"
+  },
+  "models/trace/insights/DocumentLatency.ts | serverResponseTimeLabel": {
+    "message": "Th\u1eddi gian ph\u1ea3n h\u1ed3i c\u1ee7a m\u00e1y ch\u1ee7"
+  },
+  "models/trace/insights/DocumentLatency.ts | title": {
+    "message": "\u0110\u1ed9 tr\u1ec5 khi y\u00eau c\u1ea7u t\u00e0i li\u1ec7u"
+  },
+  "models/trace/insights/DocumentLatency.ts | uncompressedDownload": {
+    "message": "T\u1ea3i xu\u1ed1ng b\u1ea3n kh\u00f4ng n\u00e9n"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | columnDuplicatedBytes": {
+    "message": "S\u1ed1 byte tr\u00f9ng l\u1eb7p"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | columnSource": {
+    "message": "Ngu\u1ed3n"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | description": {
+    "message": "Xo\u00e1 c\u00e1c m\u00f4-\u0111un JavaScript tr\u00f9ng l\u1eb7p l\u1edbn kh\u1ecfi g\u00f3i \u0111\u1ec3 gi\u1ea3m s\u1ed1 byte m\u00e0 ho\u1ea1t \u0111\u1ed9ng m\u1ea1ng ti\u00eau th\u1ee5 kh\u00f4ng c\u1ea7n thi\u1ebft."
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | title": {
+    "message": "JavaScript tr\u00f9ng l\u1eb7p"
+  },
+  "models/trace/insights/FontDisplay.ts | description": {
+    "message": "H\u00e3y c\u00e2n nh\u1eafc \u0111\u1eb7t [font-display](https://developer.chrome.com/blog/font-display) th\u00e0nh swap ho\u1eb7c optional \u0111\u1ec3 \u0111\u1ea3m b\u1ea3o v\u0103n b\u1ea3n hi\u1ec3n th\u1ecb nh\u1ea5t qu\u00e1n. C\u00f3 th\u1ec3 t\u1ed1i \u01b0u ho\u00e1 swap h\u01a1n n\u1eefa \u0111\u1ec3 gi\u1ea3m thi\u1ec3u thay \u0111\u1ed5i b\u1ed1 c\u1ee5c b\u1eb1ng thu\u1ed9c t\u00ednh [ghi \u0111\u00e8 ch\u1ec9 s\u1ed1 ph\u00f4ng ch\u1eef](https://developer.chrome.com/blog/font-fallbacks)."
+  },
+  "models/trace/insights/FontDisplay.ts | fontColumn": {
+    "message": "Ph\u00f4ng ch\u1eef"
+  },
+  "models/trace/insights/FontDisplay.ts | title": {
+    "message": "Hi\u1ec3n th\u1ecb ph\u00f4ng ch\u1eef"
+  },
+  "models/trace/insights/FontDisplay.ts | wastedTimeColumn": {
+    "message": "Th\u1eddi gian b\u1ecb l\u00e3ng ph\u00ed"
+  },
+  "models/trace/insights/ForcedReflow.ts | anonymous": {
+    "message": "(\u1ea9n danh)"
+  },
+  "models/trace/insights/ForcedReflow.ts | description": {
+    "message": "Nhi\u1ec1u API, th\u01b0\u1eddng \u0111\u1ecdc h\u00ecnh h\u1ecdc b\u1ed1 c\u1ee5c, bu\u1ed9c c\u00f4ng c\u1ee5 k\u1ebft xu\u1ea5t ph\u1ea3i t\u1ea1m d\u1eebng th\u1ef1c thi t\u1eadp l\u1ec7nh \u0111\u1ec3 t\u00ednh to\u00e1n ki\u1ec3u v\u00e0 b\u1ed1 c\u1ee5c. T\u00ecm hi\u1ec3u th\u00eam v\u1ec1 [ch\u1ebf \u0111\u1ed9 bu\u1ed9c ch\u1ec9nh l\u1ea1i lu\u1ed3ng](https://developers.google.com/web/fundamentals/performance/rendering/avoid-large-complex-layouts-and-layout-thrashing#avoid-forced-synchronous-layouts) v\u00e0 c\u00e1ch gi\u1ea3m thi\u1ec3u t\u00e1c \u0111\u1ed9ng c\u1ee7a ch\u1ebf \u0111\u1ed9 n\u00e0y."
+  },
+  "models/trace/insights/ForcedReflow.ts | relatedStackTrace": {
+    "message": "D\u1ea5u v\u1ebft ng\u0103n x\u1ebfp"
+  },
+  "models/trace/insights/ForcedReflow.ts | title": {
+    "message": "Bu\u1ed9c chi\u0309nh la\u0323i lu\u1ed3ng"
+  },
+  "models/trace/insights/ForcedReflow.ts | topTimeConsumingFunctionCall": {
+    "message": "L\u1ec7nh g\u1ecdi h\u00e0m h\u00e0ng \u0111\u1ea7u"
+  },
+  "models/trace/insights/ForcedReflow.ts | totalReflowTime": {
+    "message": "T\u1ed5ng th\u1eddi gian chi\u0309nh la\u0323i lu\u1ed3ng"
+  },
+  "models/trace/insights/ForcedReflow.ts | unattributed": {
+    "message": "[ch\u01b0a \u0111\u01b0\u1ee3c ph\u00e2n b\u1ed5]"
+  },
+  "models/trace/insights/ImageDelivery.ts | description": {
+    "message": "Vi\u1ec7c gi\u1ea3m th\u1eddi gian t\u1ea3i h\u00ecnh \u1ea3nh xu\u1ed1ng c\u00f3 th\u1ec3 c\u1ea3i thi\u1ec7n th\u1eddi gian t\u1ea3i trang v\u00e0 LCP \u0111\u01b0\u1ee3c c\u1ea3m nh\u1eadn. [T\u00ecm hi\u1ec3u th\u00eam v\u1ec1 c\u00e1ch t\u1ed1i \u01b0u ho\u00e1 k\u00edch th\u01b0\u1edbc h\u00ecnh \u1ea3nh](https://developer.chrome.com/docs/lighthouse/performance/uses-optimized-images/)"
+  },
+  "models/trace/insights/ImageDelivery.ts | estimatedSavings": {
+    "message": "{PH1} (\u01af\u1edbc t\u00ednh l\u00e0 {PH2})"
+  },
+  "models/trace/insights/ImageDelivery.ts | noOptimizableImages": {
+    "message": "Kh\u00f4ng c\u00f3 h\u00ecnh \u1ea3nh n\u00e0o c\u00f3 th\u1ec3 t\u1ed1i \u01b0u ho\u00e1"
+  },
+  "models/trace/insights/ImageDelivery.ts | optimizeFile": {
+    "message": "T\u1ed1i \u01b0u ho\u00e1 k\u00edch th\u01b0\u1edbc t\u1ec7p"
+  },
+  "models/trace/insights/ImageDelivery.ts | others": {
+    "message": "{PH1} m\u1ee5c kh\u00e1c"
+  },
+  "models/trace/insights/ImageDelivery.ts | title": {
+    "message": "C\u1ea3i thi\u1ec7n vi\u1ec7c ph\u00e2n ph\u1ed1i h\u00ecnh \u1ea3nh"
+  },
+  "models/trace/insights/ImageDelivery.ts | useCompression": {
+    "message": "Vi\u1ec7c t\u0103ng h\u1ec7 s\u1ed1 n\u00e9n c\u1ee7a h\u00ecnh \u1ea3nh c\u00f3 th\u1ec3 c\u1ea3i thi\u1ec7n k\u00edch th\u01b0\u1edbc t\u1ea3i xu\u1ed1ng c\u1ee7a h\u00ecnh \u1ea3nh n\u00e0y."
+  },
+  "models/trace/insights/ImageDelivery.ts | useModernFormat": {
+    "message": "Vi\u1ec7c s\u1eed d\u1ee5ng \u0111\u1ecbnh d\u1ea1ng h\u00ecnh \u1ea3nh hi\u1ec7n \u0111\u1ea1i (WebP, AVIF) ho\u1eb7c t\u0103ng \u0111\u1ed9 n\u00e9n c\u1ee7a h\u00ecnh \u1ea3nh c\u00f3 th\u1ec3 c\u1ea3i thi\u1ec7n k\u00edch th\u01b0\u1edbc t\u1ea3i xu\u1ed1ng c\u1ee7a h\u00ecnh \u1ea3nh n\u00e0y."
+  },
+  "models/trace/insights/ImageDelivery.ts | useResponsiveSize": {
+    "message": "T\u1ec7p h\u00ecnh \u1ea3nh n\u00e0y l\u1edbn h\u01a1n m\u1ee9c c\u1ea7n thi\u1ebft ({PH1}) so v\u1edbi k\u00edch th\u01b0\u1edbc hi\u1ec3n th\u1ecb ({PH2}). H\u00e3y s\u1eed d\u1ee5ng h\u00ecnh \u1ea3nh th\u00edch \u1ee9ng \u0111\u1ec3 gi\u1ea3m k\u00edch th\u01b0\u1edbc t\u1ea3i xu\u1ed1ng c\u1ee7a h\u00ecnh \u1ea3nh."
+  },
+  "models/trace/insights/ImageDelivery.ts | useVideoFormat": {
+    "message": "Vi\u1ec7c s\u1eed d\u1ee5ng \u0111\u1ecbnh d\u1ea1ng video thay v\u00ec GIF c\u00f3 th\u1ec3 c\u1ea3i thi\u1ec7n k\u00edch th\u01b0\u1edbc t\u1ea3i xu\u1ed1ng c\u1ee7a n\u1ed9i dung \u0111\u1ed9ng."
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | description": {
+    "message": "B\u1eaft \u0111\u1ea7u ki\u1ec3m tra giai \u0111o\u1ea1n d\u00e0i nh\u1ea5t. [C\u00f3 th\u1ec3 gi\u1ea3m thi\u1ec3u s\u1ef1 ch\u1eadm tr\u1ec5](https://web.dev/articles/optimize-inp#optimize_interactions). \u0110\u1ec3 gi\u1ea3m th\u1eddi gian x\u1eed l\u00fd, [h\u00e3y t\u1ed1i \u01b0u ho\u00e1 hi\u1ec7u su\u1ea5t c\u1ee7a lu\u1ed3ng ch\u00ednh](https://web.dev/articles/optimize-long-tasks), th\u01b0\u1eddng l\u00e0 JS."
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | duration": {
+    "message": "Th\u1eddi l\u01b0\u1ee3ng"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | inputDelay": {
+    "message": "\u0110\u1ed9 tr\u1ec5 khi nh\u1eadp th\u00f4ng tin"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | noInteractions": {
+    "message": "Kh\u00f4ng ph\u00e1t hi\u1ec7n ra ho\u1ea1t \u0111\u1ed9ng t\u01b0\u01a1ng t\u00e1c n\u00e0o"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | phase": {
+    "message": "Pha"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | presentationDelay": {
+    "message": "\u0110\u1ed9 tr\u1ec5 khi tr\u00ecnh b\u00e0y"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | processingDuration": {
+    "message": "Th\u1eddi gian x\u1eed l\u00fd"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | title": {
+    "message": "INP theo pha"
+  },
+  "models/trace/insights/LCPDiscovery.ts | description": {
+    "message": "T\u1ed1i \u01b0u ho\u00e1 LCP (N\u1ed9i dung l\u1edbn nh\u1ea5t hi\u1ec3n th\u1ecb) b\u1eb1ng c\u00e1ch gi\u00fap tr\u00ecnh duy\u1ec7t [c\u00f3 th\u1ec3 t\u00ecm th\u1ea5y](https://web.dev/articles/optimize-lcp#1_eliminate_resource_load_delay) h\u00ecnh \u1ea3nh LCP d\u1ef1a v\u00e0o HTML ngay l\u1eadp t\u1ee9c v\u00e0 [tr\u00e1nh t\u1ea3i t\u1eebng ph\u1ea7n](https://web.dev/articles/lcp-lazy-loading)"
+  },
+  "models/trace/insights/LCPDiscovery.ts | fetchPriorityApplied": {
+    "message": "\u0110\u00e3 \u00e1p d\u1ee5ng gi\u00e1 tr\u1ecb \"high\" c\u1ee7a thu\u1ed9c t\u00ednh fetchpriority"
+  },
+  "models/trace/insights/LCPDiscovery.ts | fetchPriorityShouldBeApplied": {
+    "message": "B\u1ea1n n\u00ean \u00e1p d\u1ee5ng fetchpriority=high"
+  },
+  "models/trace/insights/LCPDiscovery.ts | lazyLoadNotApplied": {
+    "message": "ch\u01b0a \u00e1p d\u1ee5ng ph\u01b0\u01a1ng th\u1ee9c ta\u0309i t\u1eebng ph\u1ea7n"
+  },
+  "models/trace/insights/LCPDiscovery.ts | lcpLoadDelay": {
+    "message": "H\u00ecnh \u1ea3nh LCP \u0111\u01b0\u1ee3c t\u1ea3i sau {PH1} k\u1ec3 t\u1eeb th\u1eddi \u0111i\u1ec3m b\u1eaft \u0111\u1ea7u s\u1edbm nh\u1ea5t."
+  },
+  "models/trace/insights/LCPDiscovery.ts | noLcp": {
+    "message": "Kh\u00f4ng ph\u00e1t hi\u1ec7n ra LCP"
+  },
+  "models/trace/insights/LCPDiscovery.ts | noLcpResource": {
+    "message": "Kh\u00f4ng ph\u00e1t hi\u1ec7n ra t\u00e0i nguy\u00ean LCP v\u00ec LCP kh\u00f4ng ph\u1ea3i l\u00e0 h\u00ecnh \u1ea3nh"
+  },
+  "models/trace/insights/LCPDiscovery.ts | requestDiscoverable": {
+    "message": "C\u00f3 th\u1ec3 t\u00ecm th\u1ea5y y\u00eau c\u1ea7u trong t\u00e0i li\u1ec7u ban \u0111\u1ea7u"
+  },
+  "models/trace/insights/LCPDiscovery.ts | title": {
+    "message": "Ph\u00e1t hi\u1ec7n y\u00eau c\u1ea7u LCP"
+  },
+  "models/trace/insights/LCPPhases.ts | description": {
+    "message": "M\u1ed7i [giai \u0111o\u1ea1n c\u00f3 m\u1ed9t chi\u1ebfn l\u01b0\u1ee3c c\u1ea3i thi\u1ec7n c\u1ee5 th\u1ec3](https://web.dev/articles/optimize-lcp#lcp-breakdown). T\u1ed1t nh\u1ea5t l\u00e0 th\u1eddi gian hi\u1ec3n th\u1ecb LCP (N\u1ed9i dung l\u1edbn nh\u1ea5t hi\u1ec3n th\u1ecb) n\u00ean \u0111\u01b0\u1ee3c d\u00f9ng \u0111\u1ec3 t\u1ea3i c\u00e1c t\u00e0i nguy\u00ean thay v\u00ec b\u1ecb ch\u1eadm tr\u1ec5."
+  },
+  "models/trace/insights/LCPPhases.ts | duration": {
+    "message": "Th\u1eddi l\u01b0\u1ee3ng"
+  },
+  "models/trace/insights/LCPPhases.ts | elementRenderDelay": {
+    "message": "\u0110\u1ed9 tr\u1ec5 khi hi\u1ec3n th\u1ecb ph\u1ea7n t\u1eed"
+  },
+  "models/trace/insights/LCPPhases.ts | fieldDuration": {
+    "message": "Nh\u00f3m 75 ph\u1ea7n tr\u0103m c\u1ee7a d\u1eef li\u1ec7u th\u1ef1c \u0111\u1ecba"
+  },
+  "models/trace/insights/LCPPhases.ts | noLcp": {
+    "message": "Kh\u00f4ng ph\u00e1t hi\u1ec7n ra LCP"
+  },
+  "models/trace/insights/LCPPhases.ts | phase": {
+    "message": "Pha"
+  },
+  "models/trace/insights/LCPPhases.ts | resourceLoadDelay": {
+    "message": "\u0110\u1ed9 tr\u1ec5 khi t\u1ea3i t\u00e0i nguy\u00ean"
+  },
+  "models/trace/insights/LCPPhases.ts | resourceLoadDuration": {
+    "message": "Th\u1eddi l\u01b0\u1ee3ng t\u1ea3i t\u00e0i nguy\u00ean"
+  },
+  "models/trace/insights/LCPPhases.ts | timeToFirstByte": {
+    "message": "Th\u1eddi gian cho byte \u0111\u1ea7u ti\u00ean"
+  },
+  "models/trace/insights/LCPPhases.ts | title": {
+    "message": "LCP theo pha"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | columnScript": {
+    "message": "T\u1eadp l\u1ec7nh"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | columnWastedBytes": {
+    "message": "S\u1ed1 byte b\u1ecb l\u00e3ng ph\u00ed"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | description": {
+    "message": "M\u00e3 Polyfill v\u00e0 Transform cho ph\u00e9p tr\u00ecnh duy\u1ec7t c\u0169 d\u00f9ng c\u00e1c t\u00ednh n\u0103ng m\u1edbi c\u1ee7a JavaScript. Tuy nhi\u00ean, nhi\u1ec1u t\u00ednh n\u0103ng kh\u00f4ng c\u1ea7n thi\u1ebft cho tr\u00ecnh duy\u1ec7t hi\u1ec7n \u0111\u1ea1i. H\u00e3y c\u00e2n nh\u1eafc s\u1eeda \u0111\u1ed5i quy tr\u00ecnh x\u00e2y d\u1ef1ng JavaScript \u0111\u1ec3 kh\u00f4ng chuy\u1ec3n \u0111\u1ed5i m\u00e3 ngu\u1ed3n c\u00e1c t\u00ednh n\u0103ng [\u0110\u01b0\u1eddng c\u01a1 s\u1edf](https://web.dev/articles/baseline-and-polyfills), tr\u1eeb phi b\u1ea1n bi\u1ebft r\u1eb1ng m\u00ecnh ph\u1ea3i h\u1ed7 tr\u1ee3 c\u00e1c tr\u00ecnh duy\u1ec7t c\u0169. [T\u00ecm hi\u1ec3u l\u00fd do h\u1ea7u h\u1ebft c\u00e1c trang web c\u00f3 th\u1ec3 tri\u1ec3n khai m\u00e3 ES6+ m\u00e0 kh\u00f4ng c\u1ea7n chuy\u1ec3n \u0111\u1ed5i m\u00e3 ngu\u1ed3n](https://philipwalton.com/articles/the-state-of-es5-on-the-web/)"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | title": {
+    "message": "JavaScript c\u0169"
+  },
+  "models/trace/insights/ModernHTTP.ts | description": {
+    "message": "HTTP/2 v\u00e0 HTTP/3 mang l\u1ea1i nhi\u1ec1u l\u1ee3i \u00edch h\u01a1n HTTP/1.1, ch\u1eb3ng h\u1ea1n nh\u01b0 gh\u00e9p k\u00eanh. [T\u00ecm hi\u1ec3u th\u00eam v\u1ec1 c\u00e1ch s\u1eed d\u1ee5ng HTTP hi\u1ec7n \u0111\u1ea1i](https://developer.chrome.com/docs/lighthouse/best-practices/uses-http2/)."
+  },
+  "models/trace/insights/ModernHTTP.ts | noOldProtocolRequests": {
+    "message": "Kh\u00f4ng c\u00f3 y\u00eau c\u1ea7u n\u00e0o s\u1eed d\u1ee5ng HTTP/1.1"
+  },
+  "models/trace/insights/ModernHTTP.ts | protocol": {
+    "message": "Giao th\u1ee9c"
+  },
+  "models/trace/insights/ModernHTTP.ts | request": {
+    "message": "Y\u00eau c\u1ea7u"
+  },
+  "models/trace/insights/ModernHTTP.ts | title": {
+    "message": "HTTP hi\u1ec7n \u0111\u1ea1i"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | description": {
+    "message": "[Tr\u00e1nh t\u1ea1o chu\u1ed7i c\u00e1c y\u00eau c\u1ea7u quan tr\u1ecdng](https://developer.chrome.com/docs/lighthouse/performance/critical-request-chains) b\u1eb1ng c\u00e1ch gi\u1ea3m \u0111\u1ed9 d\u00e0i chu\u1ed7i, gi\u1ea3m k\u00edch th\u01b0\u1edbc t\u00e0i nguy\u00ean t\u1ea3i xu\u1ed1ng ho\u1eb7c tr\u00ec ho\u00e3n t\u1ea3i xu\u1ed1ng c\u00e1c t\u00e0i nguy\u00ean kh\u00f4ng c\u1ea7n thi\u1ebft \u0111\u1ec3 c\u1ea3i thi\u1ec7n t\u1ed1c \u0111\u1ed9 t\u1ea3i trang."
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | maxCriticalPathLatency": {
+    "message": "\u0110\u1ed9 tr\u1ec5 t\u1ed1i \u0111a c\u1ee7a \u0111\u01b0\u1eddng d\u1eabn quan tr\u1ecdng:"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | noNetworkDependencyTree": {
+    "message": "Kh\u00f4ng c\u00f3 t\u00e1c v\u1ee5 k\u1ebft xu\u1ea5t n\u00e0o ch\u1ecbu \u1ea3nh h\u01b0\u1edfng c\u1ee7a ph\u1ea7n ph\u1ee5 thu\u1ed9c m\u1ea1ng"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | title": {
+    "message": "C\u00e2y ph\u1ea7n ph\u1ee5 thu\u1ed9c m\u1ea1ng"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | warningDescription": {
+    "message": "Tr\u00e1nh t\u1ea1o chu\u1ed7i c\u00e1c y\u00eau c\u1ea7u quan tr\u1ecdng b\u1eb1ng c\u00e1ch gi\u1ea3m \u0111\u1ed9 d\u00e0i chu\u1ed7i, gi\u1ea3m k\u00edch th\u01b0\u1edbc t\u00e0i nguy\u00ean t\u1ea3i xu\u1ed1ng ho\u1eb7c tr\u00ec ho\u00e3n t\u1ea3i xu\u1ed1ng c\u00e1c t\u00e0i nguy\u00ean kh\u00f4ng c\u1ea7n thi\u1ebft \u0111\u1ec3 c\u1ea3i thi\u1ec7n t\u1ed1c \u0111\u1ed9 t\u1ea3i trang."
+  },
+  "models/trace/insights/RenderBlocking.ts | description": {
+    "message": "C\u00e1c y\u00eau c\u1ea7u \u0111ang ch\u1eb7n qu\u00e1 tr\u00ecnh k\u1ebft xu\u1ea5t ban \u0111\u1ea7u c\u1ee7a trang, \u0111i\u1ec1u n\u00e0y c\u00f3 th\u1ec3 l\u00e0m tr\u1ec5 LCP. [Vi\u1ec7c ho\u00e3n ho\u1eb7c d\u00f9ng c\u00f9ng d\u00f2ng](https://web.dev/learn/performance/understanding-the-critical-path#render-blocking_resources/) c\u00f3 th\u1ec3 di chuy\u1ec3n c\u00e1c y\u00eau c\u1ea7u m\u1ea1ng n\u00e0y ra kh\u1ecfi \u0111\u01b0\u1eddng d\u1eabn quan tr\u1ecdng."
+  },
+  "models/trace/insights/RenderBlocking.ts | duration": {
+    "message": "Th\u1eddi l\u01b0\u1ee3ng"
+  },
+  "models/trace/insights/RenderBlocking.ts | noRenderBlocking": {
+    "message": "Kh\u00f4ng c\u00f3 y\u00eau c\u1ea7u ch\u1eb7n hi\u1ec3n th\u1ecb cho thao t\u00e1c \u0111i\u1ec1u h\u01b0\u1edbng n\u00e0y"
+  },
+  "models/trace/insights/RenderBlocking.ts | renderBlockingRequest": {
+    "message": "Y\u00eau c\u1ea7u"
+  },
+  "models/trace/insights/RenderBlocking.ts | title": {
+    "message": "Y\u00eau c\u1ea7u ch\u1eb7n qu\u00e1 tr\u00ecnh hi\u1ec3n th\u1ecb"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | description": {
+    "message": "N\u1ebfu th\u1ea5y chi ph\u00ed c\u1ee7a T\u00ednh to\u00e1n l\u1ea1i ki\u1ec3u v\u1eabn cao, b\u1ea1n c\u00f3 th\u1ec3 t\u1ed1i \u01b0u ho\u00e1 b\u1ed9 ch\u1ecdn \u0111\u1ec3 gi\u1ea3m chi ph\u00ed. [T\u1ed1i \u01b0u ho\u00e1 b\u1ed9 ch\u1ecdn](https://developer.chrome.com/docs/devtools/performance/selector-stats) c\u00f3 t\u1ef7 l\u1ec7 ph\u1ea7n tr\u0103m \u0111\u01b0\u1eddng d\u1eabn ch\u1eadm v\u00e0 th\u1eddi gian tr\u00f4i qua \u0111\u1ec1u cao. B\u1ed9 ch\u1ecdn \u0111\u01a1n gi\u1ea3n h\u01a1n, s\u1ed1 l\u01b0\u1ee3ng b\u1ed9 ch\u1ecdn \u00edt h\u01a1n, DOM nh\u1ecf h\u01a1n v\u00e0 DOM n\u00f4ng h\u01a1n s\u1ebd gi\u00fap gi\u1ea3m chi ph\u00ed kh\u1edbp."
+  },
+  "models/trace/insights/SlowCSSSelector.ts | elapsed": {
+    "message": "Th\u1eddi gian \u0111\u00e3 tr\u00f4i qua"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | enableSelectorData": {
+    "message": "Kh\u00f4ng t\u00ecm th\u1ea5y d\u1eef li\u1ec7u v\u1ec1 b\u1ed9 ch\u1ecdn CSS. B\u1ea1n c\u1ea7n b\u1eadt s\u1ed1 li\u1ec7u th\u1ed1ng k\u00ea v\u1ec1 b\u1ed9 ch\u1ecdn CSS trong ph\u1ea7n c\u00e0i \u0111\u1eb7t b\u1ea3ng \u0111i\u1ec1u khi\u1ec3n hi\u1ec7u su\u1ea5t."
+  },
+  "models/trace/insights/SlowCSSSelector.ts | matchAttempts": {
+    "message": "S\u1ed1 l\u1ea7n kh\u1edbp"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | matchCount": {
+    "message": "S\u1ed1 l\u01b0\u1ee3ng tr\u00f9ng kh\u1edbp"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | title": {
+    "message": "Hi\u1ec7u su\u1ea5t c\u1ee7a B\u1ed9 ch\u1ecdn CSS"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | topSelectors": {
+    "message": "B\u1ed9 ch\u1ecdn h\u00e0ng \u0111\u1ea7u"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | total": {
+    "message": "T\u00f4\u0309ng"
+  },
+  "models/trace/insights/ThirdParties.ts | columnMainThreadTime": {
+    "message": "Th\u1eddi gian th\u1ef1c thi tr\u00ean chu\u1ed7i ch\u00ednh"
+  },
+  "models/trace/insights/ThirdParties.ts | columnThirdParty": {
+    "message": "B\u00ean th\u1ee9 ba"
+  },
+  "models/trace/insights/ThirdParties.ts | columnTransferSize": {
+    "message": "K\u00edch th\u01b0\u1edbc c\u1ea7n chuy\u1ec3n"
+  },
+  "models/trace/insights/ThirdParties.ts | description": {
+    "message": "M\u00e3 c\u1ee7a b\u00ean th\u1ee9 ba c\u00f3 th\u1ec3 t\u00e1c \u0111\u1ed9ng \u0111\u00e1ng k\u1ec3 \u0111\u1ebfn hi\u1ec7u su\u1ea5t t\u1ea3i. [Gi\u1ea3m v\u00e0 tr\u00ec ho\u00e3n vi\u1ec7c t\u1ea3i m\u00e3 c\u1ee7a b\u00ean th\u1ee9 ba](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/loading-third-party-javascript/) \u0111\u1ec3 \u01b0u ti\u00ean n\u1ed9i dung tr\u00ean trang c\u1ee7a b\u1ea1n."
+  },
+  "models/trace/insights/ThirdParties.ts | noThirdParties": {
+    "message": "Kh\u00f4ng t\u00ecm th\u1ea5y b\u00ean th\u1ee9 ba n\u00e0o"
+  },
+  "models/trace/insights/ThirdParties.ts | title": {
+    "message": "b\u00ean th\u1ee9 ba"
+  },
+  "models/trace/insights/Viewport.ts | description": {
+    "message": "Ho\u1ea1t \u0111\u1ed9ng t\u01b0\u01a1ng t\u00e1c nh\u1ea5n c\u00f3 th\u1ec3 [b\u1ecb ch\u1eadm t\u1edbi 300\u00a0mili gi\u00e2y](https://developer.chrome.com/blog/300ms-tap-delay-gone-away/) n\u1ebfu khung nh\u00ecn ch\u01b0a \u0111\u01b0\u1ee3c t\u1ed1i \u01b0u ho\u00e1 cho thi\u1ebft b\u1ecb di \u0111\u1ed9ng."
+  },
+  "models/trace/insights/Viewport.ts | title": {
+    "message": "T\u1ed1i \u01b0u ho\u00e1 khung nh\u00ecn cho thi\u1ebft b\u1ecb di \u0111\u1ed9ng"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | HTTPMethodNotGET": {
+    "message": "Ch\u1ec9 nh\u1eefng trang \u0111\u01b0\u1ee3c t\u1ea3i qua y\u00eau c\u1ea7u GET m\u1edbi \u0111\u1ee7 \u0111i\u1ec1u ki\u1ec7n d\u00f9ng b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | HTTPStatusNotOK": {
+    "message": "Ch\u1ec9 nh\u1eefng trang c\u00f3 m\u00e3 tr\u1ea1ng th\u00e1i l\u00e0 2XX m\u1edbi c\u00f3 th\u1ec3 l\u01b0u v\u00e0o b\u1ed9 nh\u1edb \u0111\u00ea\u0323m."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | JavaScriptExecution": {
+    "message": "Chrome \u0111\u00e3 ph\u00e1t hi\u1ec7n th\u1ea5y m\u1ed9t l\u1ea7n th\u1eed th\u1ef1c thi JavaScript khi \u0111ang \u1edf b\u1ed9 nh\u1edb \u0111\u00ea\u0323m."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | appBanner": {
+    "message": "Nh\u1eefng trang \u0111\u00e3 y\u00eau c\u1ea7u AppBanner hi\u1ec7n kh\u00f4ng \u0111\u1ee7 \u0111i\u1ec1u ki\u1ec7n d\u00f9ng b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabled": {
+    "message": "B\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i \u0111\u00e3 b\u1ecb t\u1eaft do c\u1edd. H\u00e3y truy c\u1eadp chrome://flags/#back-forward-cache \u0111\u1ec3 b\u1eadt t\u00ednh n\u0103ng \u0111\u00f3 tr\u00ean thi\u1ebft b\u1ecb n\u00e0y."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledByCommandLine": {
+    "message": "B\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i \u0111\u00e3 b\u1ecb t\u1eaft do d\u00f2ng l\u1ec7nh."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledByLowMemory": {
+    "message": "B\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i \u0111\u00e3 b\u1ecb t\u1eaft do thi\u1ebfu b\u1ed9 nh\u1edb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledForDelegate": {
+    "message": "Trang \u0111\u01b0\u1ee3c u\u1ef7 quy\u1ec1n kh\u00f4ng h\u1ed7 tr\u1ee3 b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledForPrerender": {
+    "message": "B\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i \u0111\u00e3 b\u1ecb t\u1eaft \u0111\u1ed1i v\u1edbi tr\u00ecnh k\u1ebft xu\u1ea5t tr\u01b0\u1edbc."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | broadcastChannel": {
+    "message": "Kh\u00f4ng th\u1ec3 l\u01b0u trang n\u00e0y v\u00e0o b\u1ed9 nh\u1edb \u0111\u00ea\u0323m v\u00ec trang c\u00f3 m\u1ed9t th\u1ef1c th\u1ec3 BroadcastChannel ch\u1ee9a c\u00e1c tr\u00ecnh nghe \u0111\u00e3 \u0111\u0103ng k\u00fd."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheControlNoStore": {
+    "message": "Nh\u1eefng trang c\u00f3 ti\u00eau \u0111\u1ec1 cache-control:no-store kh\u00f4ng th\u1ec3 chuy\u1ec3n sang b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheFlushed": {
+    "message": "B\u1ed9 nh\u1edb \u0111\u1ec7m n\u00e0y \u0111\u00e3 b\u1ecb xo\u00e1 m\u1ed9t c\u00e1ch c\u00f3 ch\u1ee7 \u0111\u00edch."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheLimit": {
+    "message": "Trang n\u00e0y \u0111\u00e3 b\u1ecb lo\u1ea1i kh\u1ecfi b\u1ed9 nh\u1edb \u0111\u00ea\u0323m \u0111\u1ec3 cho ph\u00e9p l\u01b0u m\u1ed9t trang kh\u00e1c v\u00e0o b\u1ed9 nh\u1edb \u0111\u00ea\u0323m."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | containsPlugins": {
+    "message": "Nh\u1eefng trang c\u00f3 ch\u1ee9a tr\u00ecnh b\u1ed5 tr\u1ee3 hi\u1ec7n kh\u00f4ng \u0111\u1ee7 \u0111i\u1ec1u ki\u1ec7n d\u00f9ng b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentDiscarded": {
+    "message": "Kh\u00f4ng x\u00e1c \u0111\u1ecbnh"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentFileChooser": {
+    "message": "Nh\u1eefng trang s\u1eed d\u1ee5ng API FileChooser kh\u00f4ng \u0111\u1ee7 \u0111i\u1ec1u ki\u1ec7n d\u00f9ng b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentFileSystemAccess": {
+    "message": "Nh\u1eefng trang s\u1eed d\u1ee5ng API Truy c\u1eadp h\u1ec7 th\u1ed1ng t\u1ec7p kh\u00f4ng \u0111\u1ee7 \u0111i\u1ec1u ki\u1ec7n d\u00f9ng b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaDevicesDispatcherHost": {
+    "message": "Nh\u1eefng trang s\u1eed d\u1ee5ng Tr\u00ecnh \u0111i\u1ec1u ph\u1ed1i thi\u1ebft b\u1ecb truy\u1ec1n th\u00f4ng kh\u00f4ng \u0111\u1ee7 \u0111i\u1ec1u ki\u1ec7n d\u00f9ng b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaPlay": {
+    "message": "M\u1ed9t tr\u00ecnh ph\u00e1t \u0111a ph\u01b0\u01a1ng ti\u1ec7n \u0111ang ph\u00e1t khi r\u1eddi kh\u1ecfi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaSession": {
+    "message": "Nh\u1eefng trang s\u1eed d\u1ee5ng API MediaSession v\u00e0 \u0111\u1eb7t m\u1ed9t tr\u1ea1ng th\u00e1i ph\u00e1t kh\u00f4ng \u0111\u1ee7 \u0111i\u1ec1u ki\u1ec7n d\u00f9ng b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaSessionService": {
+    "message": "Nh\u1eefng trang s\u1eed d\u1ee5ng API MediaSession v\u00e0 \u0111\u1eb7t c\u00e1c tr\u00ecnh x\u1eed l\u00fd h\u00e0nh \u0111\u1ed9ng hi\u1ec7n kh\u00f4ng \u0111\u1ee7 \u0111i\u1ec1u ki\u1ec7n d\u00f9ng b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentScreenReader": {
+    "message": "B\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i b\u1ecb t\u1eaft do tr\u00ecnh \u0111\u1ecdc m\u00e0n h\u00ecnh."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentSecurityHandler": {
+    "message": "Nh\u1eefng trang s\u1eed d\u1ee5ng SecurityHandler kh\u00f4ng \u0111\u1ee7 \u0111i\u1ec1u ki\u1ec7n d\u00f9ng b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentSerial": {
+    "message": "Nh\u1eefng trang s\u1eed d\u1ee5ng API n\u1ed1i ti\u1ebfp kh\u00f4ng \u0111\u1ee7 \u0111i\u1ec1u ki\u1ec7n d\u00f9ng b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebAuthenticationAPI": {
+    "message": "Nh\u1eefng trang s\u1eed d\u1ee5ng API WebAuthetication kh\u00f4ng \u0111\u1ee7 \u0111i\u1ec1u ki\u1ec7n d\u00f9ng b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebBluetooth": {
+    "message": "Nh\u1eefng trang s\u1eed d\u1ee5ng API WebBluetooth kh\u00f4ng \u0111\u1ee7 \u0111i\u1ec1u ki\u1ec7n d\u00f9ng b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebUSB": {
+    "message": "Nh\u1eefng trang s\u1eed d\u1ee5ng API WebUSB kh\u00f4ng \u0111\u1ee7 \u0111i\u1ec1u ki\u1ec7n d\u00f9ng b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cookieDisabled": {
+    "message": "B\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i b\u1ecb t\u1eaft do c\u00e1c cookie b\u1ecb t\u1eaft tr\u00ean m\u1ed9t trang s\u1eed d\u1ee5ng Cache-Control: no-store."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | dedicatedWorkerOrWorklet": {
+    "message": "Nh\u1eefng trang s\u1eed d\u1ee5ng m\u1ed9t tr\u00ecnh x\u1eed l\u00fd ho\u1eb7c worklet ri\u00eang hi\u1ec7n kh\u00f4ng \u0111\u1ee7 \u0111i\u1ec1u ki\u1ec7n d\u00f9ng b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | documentLoaded": {
+    "message": "T\u00e0i li\u1ec7u n\u00e0y ch\u01b0a t\u1ea3i xong tr\u01b0\u1edbc khi r\u1eddi kh\u1ecfi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderAppBannerManager": {
+    "message": "App Banner \u0111ang xu\u1ea5t hi\u1ec7n trong khi r\u01a1\u0300i \u0111i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderChromePasswordManagerClientBindCredentialManager": {
+    "message": "Tr\u00ecnh qu\u1ea3n l\u00fd m\u1eadt kh\u1ea9u c\u1ee7a Chrome \u0111ang xu\u1ea5t hi\u1ec7n trong khi r\u01a1\u0300i \u0111i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderDomDistillerSelfDeletingRequestDelegate": {
+    "message": "Quy tri\u0300nh lo\u0323c DOM \u0111ang di\u00ea\u0303n ra trong khi r\u01a1\u0300i \u0111i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderDomDistillerViewerSource": {
+    "message": "DOM Distiller Viewer \u0111ang xu\u1ea5t hi\u1ec7n trong khi r\u01a1\u0300i \u0111i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionMessaging": {
+    "message": "B\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i b\u1ecb t\u1eaft do c\u00e1c ti\u1ec7n \u00edch s\u1eed d\u1ee5ng API nh\u1eafn tin."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionMessagingForOpenPort": {
+    "message": "C\u00e1c ti\u1ec7n \u00edch c\u00f3 k\u1ebft n\u1ed1i li\u00ean tu\u0323c pha\u0309i ng\u0103\u0301t k\u1ebft n\u1ed1i tr\u01b0\u1edbc khi chuy\u00ea\u0309n sang b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionSentMessageToCachedFrame": {
+    "message": "C\u00e1c ti\u1ec7n \u00edch c\u00f3 k\u1ebft n\u1ed1i li\u00ean tu\u0323c \u0111\u00e3 c\u1ed1 g\u1eafng g\u1eedi th\u00f4ng ba\u0301o \u0111\u1ebfn c\u00e1c khung trong b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensions": {
+    "message": "B\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i b\u1ecb t\u1eaft do c\u00e1c ti\u1ec7n \u00edch."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderModalDialog": {
+    "message": "H\u1ed9p tho\u1ea1i ph\u01b0\u01a1ng th\u1ee9c (ch\u0103\u0309ng ha\u0323n nh\u01b0 g\u1eedi l\u1ea1i bi\u1ec3u m\u1eabu) ho\u1eb7c h\u1ed9p tho\u1ea1i m\u1eadt kh\u1ea9u http \u0111ang xu\u00e2\u0301t hi\u00ea\u0323n tr\u00ean trang trong khi r\u01a1\u0300i \u0111i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderOfflinePage": {
+    "message": "Trang ngo\u1ea1i tuy\u1ebfn \u0111ang xu\u1ea5t hi\u1ec7n trong khi r\u01a1\u0300i \u0111i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderOomInterventionTabHelper": {
+    "message": "Thanh Out-Of-Memory Intervention \u0111ang xu\u1ea5t hi\u1ec7n trong khi r\u01a1\u0300i \u0111i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderPermissionRequestManager": {
+    "message": "C\u00f3 y\u00eau c\u1ea7u c\u00e2\u0301p quy\u1ec1n trong khi r\u1eddi \u0111i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderPopupBlockerTabHelper": {
+    "message": "Tr\u00ecnh ch\u1eb7n c\u1eeda s\u1ed5 b\u1eadt l\u00ean \u0111ang xu\u1ea5t hi\u1ec7n trong khi r\u01a1\u0300i \u0111i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderSafeBrowsingThreatDetails": {
+    "message": "Th\u00f4ng tin chi ti\u1ebft v\u1ec1 c\u00f4ng c\u1ee5 Duy\u1ec7t web an to\u00e0n \u0111ang xu\u00e2\u0301t hi\u00ea\u0323n trong khi r\u01a1\u0300i \u0111i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderSafeBrowsingTriggeredPopupBlocker": {
+    "message": "C\u00f4ng c\u1ee5 Duy\u1ec7t web an to\u00e0n coi trang n\u00e0y l\u00e0 m\u1ed9t c\u1eeda s\u1ed5 b\u1eadt l\u00ean sai m\u1ee5c \u0111\u00edch v\u00e0 b\u1ecb ch\u1eb7n."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | enteredBackForwardCacheBeforeServiceWorkerHostAdded": {
+    "message": "M\u1ed9t tr\u00ecnh ch\u1ea1y d\u1ecbch v\u1ee5 \u0111\u00e3 \u0111\u01b0\u1ee3c k\u00edch ho\u1ea1t khi trang n\u00e0y \u0111ang \u1edf b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | errorDocument": {
+    "message": "\u0110\u00e3 t\u1eaft b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i do l\u1ed7i t\u00e0i li\u1ec7u"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | fencedFramesEmbedder": {
+    "message": "Kh\u00f4ng l\u01b0u tr\u1eef \u0111\u01b0\u1ee3c trang d\u00f9ng FencedFrames v\u00e0o bfcache."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | foregroundCacheLimit": {
+    "message": "Trang n\u00e0y \u0111\u00e3 b\u1ecb lo\u1ea1i kh\u1ecfi b\u1ed9 nh\u1edb \u0111\u00ea\u0323m \u0111\u1ec3 cho ph\u00e9p l\u01b0u m\u1ed9t trang kh\u00e1c v\u00e0o b\u1ed9 nh\u1edb \u0111\u00ea\u0323m."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | grantedMediaStreamAccess": {
+    "message": "Nh\u1eefng trang \u0111\u00e3 c\u1ea5p quy\u1ec1n truy c\u1eadp lu\u1ed3ng \u0111a ph\u01b0\u01a1ng ti\u1ec7n hi\u1ec7n kh\u00f4ng \u0111\u1ee7 \u0111i\u1ec1u ki\u1ec7n d\u00f9ng b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | haveInnerContents": {
+    "message": "Nh\u1eefng trang c\u00f3 m\u1ed9t s\u1ed1 lo\u1ea1i n\u1ed9i dung \u0111\u01b0\u1ee3c nh\u00fang nh\u1ea5t \u0111\u1ecbnh (v\u00ed d\u1ee5: PDF) hi\u1ec7n kh\u00f4ng \u0111\u1ee7 \u0111i\u1ec1u ki\u1ec7n d\u00f9ng b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | idleManager": {
+    "message": "Nh\u1eefng trang s\u1eed d\u1ee5ng IdleManager hi\u1ec7n kh\u00f4ng \u0111\u1ee7 \u0111i\u1ec1u ki\u1ec7n d\u00f9ng b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | indexedDBConnection": {
+    "message": "Nh\u1eefng trang c\u00f3 k\u1ebft n\u1ed1i IndexedDB m\u1edf hi\u1ec7n kh\u00f4ng \u0111\u1ee7 \u0111i\u1ec1u ki\u1ec7n d\u00f9ng b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | indexedDBEvent": {
+    "message": "B\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i b\u1ecb t\u1eaft do s\u1ef1 ki\u1ec7n IndexedDB."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | ineligibleAPI": {
+    "message": "C\u00e1c API \u0111\u01b0\u1ee3c s\u1eed d\u1ee5ng kh\u00f4ng \u0111\u1ee7 \u0111i\u1ec1u ki\u1ec7n."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | injectedJavascript": {
+    "message": "Nh\u1eefng trang c\u00f3 JavaScript \u0111\u01b0\u1ee3c ch\u00e8n v\u00e0o b\u1eb1ng ti\u1ec7n \u00edch hi\u1ec7n kh\u00f4ng \u0111\u1ee7 \u0111i\u1ec1u ki\u1ec7n d\u00f9ng b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | injectedStyleSheet": {
+    "message": "Nh\u1eefng trang c\u00f3 StyleSheet \u0111\u01b0\u1ee3c ch\u00e8n v\u00e0o b\u1eb1ng ti\u1ec7n \u00edch hi\u1ec7n kh\u00f4ng \u0111\u1ee7 \u0111i\u1ec1u ki\u1ec7n d\u00f9ng b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | internalError": {
+    "message": "L\u1ed7i n\u1ed9i b\u1ed9."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | jsNetworkRequestReceivedCacheControlNoStoreResource": {
+    "message": "B\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i b\u1ecb t\u1eaft do m\u1ed9t s\u1ed1 y\u00eau c\u1ea7u m\u1ea1ng JavaScript nh\u1eadn \u0111\u01b0\u1ee3c t\u00e0i nguy\u00ean c\u00f3 ti\u00eau \u0111\u1ec1 Cache-Control: no-store."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | keepaliveRequest": {
+    "message": "B\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i \u0111\u00e3 b\u1ecb t\u1eaft do c\u00f3 y\u00eau c\u1ea7u duy tr\u00ec ho\u1ea1t \u0111\u1ed9ng."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | keyboardLock": {
+    "message": "Nh\u1eefng trang s\u1eed d\u1ee5ng t\u00ednh n\u0103ng Kh\u00f3a b\u00e0n ph\u00edm hi\u1ec7n kh\u00f4ng \u0111\u1ee7 \u0111i\u1ec1u ki\u1ec7n d\u00f9ng b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | loading": {
+    "message": "Trang n\u00e0y ch\u01b0a t\u1ea3i xong tr\u01b0\u1edbc khi r\u1eddi kh\u1ecfi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | mainResourceHasCacheControlNoCache": {
+    "message": "Nh\u1eefng trang c\u00f3 t\u00e0i nguy\u00ean ch\u00ednh ch\u1ee9a cache-control:no-cache kh\u00f4ng th\u1ec3 chuy\u1ec3n sang b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | mainResourceHasCacheControlNoStore": {
+    "message": "Nh\u1eefng trang c\u00f3 t\u00e0i nguy\u00ean ch\u00ednh ch\u1ee9a cache-control:no-store kh\u00f4ng th\u1ec3 chuy\u1ec3n sang b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | navigationCancelledWhileRestoring": {
+    "message": "Ho\u1ea1t \u0111\u1ed9ng \u0111i\u1ec1u h\u01b0\u1edbng \u0111\u00e3 b\u1ecb hu\u1ef7 tr\u01b0\u1edbc khi c\u00f3 th\u1ec3 kh\u00f4i ph\u1ee5c trang t\u1eeb b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkExceedsBufferLimit": {
+    "message": "Trang n\u00e0y \u0111\u00e3 b\u1ecb lo\u1ea1i kh\u1ecfi b\u1ed9 nh\u1edb \u0111\u00ea\u0323m v\u00ec m\u1ed9t k\u1ebft n\u1ed1i m\u1ea1ng \u0111ang ho\u1ea1t \u0111\u1ed9ng \u0111\u00e3 nh\u1eadn qu\u00e1 nhi\u1ec1u d\u1eef li\u1ec7u. Chrome gi\u1edbi h\u1ea1n l\u01b0\u1ee3ng d\u1eef li\u1ec7u m\u00e0 m\u1ed9t trang c\u00f3 th\u1ec3 nh\u1eadn trong khi \u0111\u01b0\u1ee3c l\u01b0u v\u00e0o b\u1ed9 nh\u1edb \u0111\u1ec7m."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestDatapipeDrainedAsBytesConsumer": {
+    "message": "Nh\u1eefng trang c\u00f3 t\u00ednh n\u0103ng t\u00ecm n\u1ea1p() ho\u1eb7c XHR \u0111ang ti\u1ebfn h\u00e0nh hi\u1ec7n kh\u00f4ng \u0111\u1ee7 \u0111i\u1ec1u ki\u1ec7n d\u00f9ng b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestRedirected": {
+    "message": "Trang n\u00e0y \u0111\u00e3 b\u1ecb lo\u1ea1i kh\u1ecfi b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i v\u00ec m\u1ed9t y\u00eau c\u1ea7u m\u1ea1ng \u0111ang ho\u1ea1t \u0111\u1ed9ng \u0111\u00e3 d\u1eabn \u0111\u1ebfn l\u1ec7nh chuy\u1ec3n h\u01b0\u1edbng."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestTimeout": {
+    "message": "Trang n\u00e0y \u0111\u00e3 b\u1ecb lo\u1ea1i kh\u1ecfi b\u1ed9 nh\u1edb \u0111\u00ea\u0323m v\u00ec m\u1ed9t k\u1ebft n\u1ed1i m\u1ea1ng \u1edf tr\u1ea1ng th\u00e1i m\u1edf qu\u00e1 l\u00e2u. Chrome gi\u1edbi h\u1ea1n kho\u1ea3ng th\u1eddi gian m\u00e0 m\u1ed9t trang c\u00f3 th\u1ec3 nh\u1eadn d\u1eef li\u1ec7u trong khi \u0111\u01b0\u1ee3c l\u01b0u v\u00e0o b\u1ed9 nh\u1edb \u0111\u1ec7m."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | noResponseHead": {
+    "message": "Nh\u1eefng trang kh\u00f4ng c\u00f3 ti\u00eau \u0111\u1ec1 ph\u1ea3n h\u1ed3i h\u1ee3p l\u1ec7 kh\u00f4ng th\u1ec3 chuy\u1ec3n sang b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | notMainFrame": {
+    "message": "Ho\u1ea1t \u0111\u1ed9ng \u0111i\u1ec1u h\u01b0\u1edbng \u0111\u00e3 di\u1ec5n ra trong m\u1ed9t khung kh\u00f4ng ph\u1ea3i khung ch\u00ednh."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingIndexedDBTransaction": {
+    "message": "Trang c\u00f3 c\u00e1c giao d\u1ecbch \u0111ang di\u1ec5n ra tr\u00ean c\u01a1 s\u1edf d\u1eef li\u1ec7u \u0111\u00e3 l\u1eadp ch\u1ec9 m\u1ee5c hi\u1ec7n kh\u00f4ng \u0111\u1ee7 \u0111i\u1ec1u ki\u1ec7n d\u00f9ng b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestDirectSocket": {
+    "message": "Nh\u1eefng trang c\u00f3 m\u1ed9t y\u00eau c\u1ea7u m\u1ea1ng \u0111ang ti\u1ebfn h\u00e0nh hi\u1ec7n kh\u00f4ng \u0111\u1ee7 \u0111i\u1ec1u ki\u1ec7n d\u00f9ng b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestFetch": {
+    "message": "Nh\u1eefng trang c\u00f3 m\u1ed9t y\u00eau c\u1ea7u m\u1ea1ng t\u00ecm n\u1ea1p \u0111ang ti\u1ebfn h\u00e0nh hi\u1ec7n kh\u00f4ng \u0111\u1ee7 \u0111i\u1ec1u ki\u1ec7n d\u00f9ng b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestOthers": {
+    "message": "Nh\u1eefng trang c\u00f3 m\u1ed9t y\u00eau c\u1ea7u m\u1ea1ng \u0111ang ti\u1ebfn h\u00e0nh hi\u1ec7n kh\u00f4ng \u0111\u1ee7 \u0111i\u1ec1u ki\u1ec7n d\u00f9ng b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestXHR": {
+    "message": "Nh\u1eefng trang c\u00f3 m\u1ed9t y\u00eau c\u1ea7u m\u1ea1ng XHR \u0111ang ti\u1ebfn h\u00e0nh hi\u1ec7n kh\u00f4ng \u0111\u1ee7 \u0111i\u1ec1u ki\u1ec7n d\u00f9ng b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | paymentManager": {
+    "message": "Nh\u1eefng trang s\u1eed d\u1ee5ng PaymentManager hi\u1ec7n kh\u00f4ng \u0111\u1ee7 \u0111i\u1ec1u ki\u1ec7n d\u00f9ng b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | pictureInPicture": {
+    "message": "Nh\u1eefng trang s\u1eed d\u1ee5ng t\u00ednh n\u0103ng Hi\u0300nh trong hi\u0300nh hi\u1ec7n kh\u00f4ng \u0111\u1ee7 \u0111i\u1ec1u ki\u1ec7n d\u00f9ng b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | printing": {
+    "message": "Nh\u1eefng trang hi\u1ec3n th\u1ecb Giao di\u1ec7n ng\u01b0\u1eddi d\u00f9ng cho thao t\u00e1c in hi\u1ec7n kh\u00f4ng \u0111\u1ee7 \u0111i\u1ec1u ki\u1ec7n d\u00f9ng b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | relatedActiveContentsExist": {
+    "message": "Trang n\u00e0y \u0111\u00e3 \u0111\u01b0\u1ee3c m\u1edf b\u1eb1ng \"window.open()\" v\u00e0 c\u00f3 m\u1ed9t th\u1ebb kh\u00e1c tham chi\u1ebfu \u0111\u1ebfn th\u00e0nh ph\u1ea7n \u0111\u00f3, ho\u1eb7c trang n\u00e0y \u0111\u00e3 m\u1edf m\u1ed9t c\u1eeda s\u1ed5."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | rendererProcessCrashed": {
+    "message": "Quy tr\u00ecnh k\u1ebft xu\u1ea5t \u0111\u1ed3 ho\u1ea1 cho trang trong b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i \u0111\u00e3 g\u1eb7p s\u1ef1 c\u1ed1."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | rendererProcessKilled": {
+    "message": "Quy tr\u00ecnh k\u1ebft xu\u1ea5t \u0111\u1ed3 ho\u1ea1 cho trang trong b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i \u0111\u00e3 b\u1ecb t\u1eaft."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedAudioCapturePermission": {
+    "message": "Nh\u1eefng trang \u0111\u00e3 y\u00eau c\u1ea7u quy\u1ec1n ghi \u00e2m hi\u1ec7n kh\u00f4ng \u0111\u1ee7 \u0111i\u1ec1u ki\u1ec7n d\u00f9ng b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedBackForwardCacheBlockedSensors": {
+    "message": "Nh\u1eefng trang \u0111\u00e3 y\u00eau c\u1ea7u quy\u1ec1n truy c\u1eadp c\u1ea3m bi\u1ebfn hi\u1ec7n kh\u00f4ng \u0111\u1ee7 \u0111i\u1ec1u ki\u1ec7n d\u00f9ng b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedBackgroundWorkPermission": {
+    "message": "Nh\u1eefng trang \u0111\u00e3 y\u00eau c\u1ea7u quy\u1ec1n t\u00ecm n\u1ea1p ho\u1eb7c \u0111\u1ed3ng b\u1ed9 ho\u00e1 d\u01b0\u1edbi n\u1ec1n hi\u1ec7n kh\u00f4ng \u0111\u1ee7 \u0111i\u1ec1u ki\u1ec7n d\u00f9ng b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedMIDIPermission": {
+    "message": "Nh\u1eefng trang \u0111\u00e3 y\u00eau c\u1ea7u quy\u1ec1n MIDI hi\u1ec7n kh\u00f4ng \u0111\u1ee7 \u0111i\u1ec1u ki\u1ec7n d\u00f9ng b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedNotificationsPermission": {
+    "message": "Nh\u1eefng trang \u0111\u00e3 y\u00eau c\u1ea7u quy\u1ec1n th\u00f4ng b\u00e1o hi\u1ec7n kh\u00f4ng \u0111\u1ee7 \u0111i\u1ec1u ki\u1ec7n d\u00f9ng b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedStorageAccessGrant": {
+    "message": "Nh\u1eefng trang \u0111\u00e3 y\u00eau c\u1ea7u quy\u1ec1n truy c\u1eadp b\u1ed9 nh\u1edb hi\u1ec7n kh\u00f4ng \u0111\u1ee7 \u0111i\u1ec1u ki\u1ec7n d\u00f9ng b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedVideoCapturePermission": {
+    "message": "Nh\u1eefng trang \u0111\u00e3 y\u00eau c\u1ea7u quy\u1ec1n quay video hi\u1ec7n kh\u00f4ng \u0111\u1ee7 \u0111i\u1ec1u ki\u1ec7n d\u00f9ng b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | schemeNotHTTPOrHTTPS": {
+    "message": "Ch\u1ec9 nh\u1eefng trang c\u00f3 l\u01b0\u1ee3c \u0111\u1ed3 URL l\u00e0 HTTP/HTTPS m\u1edbi c\u00f3 th\u1ec3 l\u01b0u v\u00e0o b\u1ed9 nh\u1edb \u0111\u00ea\u0323m."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerClaim": {
+    "message": "Trang n\u00e0y \u0111\u00e3 \u0111\u01b0\u1ee3c m\u1ed9t tr\u00ecnh ch\u1ea1y d\u1ecbch v\u1ee5 x\u00e1c nh\u1eadn khi \u0111ang \u1edf b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerPostMessage": {
+    "message": "M\u1ed9t tr\u00ecnh ch\u1ea1y d\u1ecbch v\u1ee5 \u0111\u00e3 c\u1ed1 g\u1eedi m\u1ed9t MessageEvent cho trang trong b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerUnregistration": {
+    "message": "ServiceWorker \u0111\u00e3 b\u1ecb hu\u1ef7 \u0111\u0103ng k\u00fd khi m\u1ed9t trang \u0111ang \u1edf b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerVersionActivation": {
+    "message": "Trang n\u00e0y \u0111\u00e3 b\u1ecb lo\u1ea1i kh\u1ecfi b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i do vi\u1ec7c k\u00edch ho\u1ea1t m\u1ed9t tr\u00ecnh ch\u1ea1y d\u1ecbch v\u1ee5."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | sessionRestored": {
+    "message": "Chrome \u0111\u00e3 kh\u1edfi \u0111\u1ed9ng l\u1ea1i v\u00e0 xo\u00e1 c\u00e1c m\u1ee5c trong b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | sharedWorker": {
+    "message": "Nh\u1eefng trang s\u1eed d\u1ee5ng SharedWorker hi\u1ec7n kh\u00f4ng \u0111\u1ee7 \u0111i\u1ec1u ki\u1ec7n d\u00f9ng b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | speechRecognizer": {
+    "message": "Nh\u1eefng trang s\u1eed d\u1ee5ng SpeechRecognizer hi\u1ec7n kh\u00f4ng \u0111\u1ee7 \u0111i\u1ec1u ki\u1ec7n d\u00f9ng b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | speechSynthesis": {
+    "message": "Nh\u1eefng trang s\u1eed d\u1ee5ng SpeechSynthesis hi\u1ec7n kh\u00f4ng \u0111\u1ee7 \u0111i\u1ec1u ki\u1ec7n d\u00f9ng b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subframeIsNavigating": {
+    "message": "M\u1ed9t iframe tr\u00ean trang n\u00e0y \u0111\u00e3 b\u1eaft \u0111\u1ea7u m\u1ed9t ho\u1ea1t \u0111\u1ed9ng \u0111i\u1ec1u h\u01b0\u1edbng ch\u01b0a ho\u00e0n t\u1ea5t."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subresourceHasCacheControlNoCache": {
+    "message": "Nh\u1eefng trang c\u00f3 t\u00e0i nguy\u00ean ph\u1ee5 ch\u1ee9a cache-control:no-cache kh\u00f4ng th\u1ec3 chuy\u1ec3n sang b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subresourceHasCacheControlNoStore": {
+    "message": "Nh\u1eefng trang c\u00f3 t\u00e0i nguy\u00ean ph\u1ee5 ch\u1ee9a cache-control:no-store kh\u00f4ng th\u1ec3 chuy\u1ec3n sang b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | timeout": {
+    "message": "Trang n\u00e0y \u0111\u00e3 v\u01b0\u1ee3t qu\u00e1 th\u1eddi gian t\u1ed1i \u0111a trong b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i v\u00e0 \u0111\u00e3 h\u1ebft h\u1ea1n."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | timeoutPuttingInCache": {
+    "message": "Trang n\u00e0y \u0111\u00e3 h\u1ebft th\u1eddi gian ch\u1edd chuy\u1ec3n sang b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i (kh\u1ea3 n\u0103ng l\u00e0 do c\u00e1c tr\u00ecnh x\u1eed l\u00fd \u1ea9n trang ch\u1ea1y trong th\u1eddi gian d\u00e0i)."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | unloadHandlerExistsInMainFrame": {
+    "message": "Trang n\u00e0y c\u00f3 m\u1ed9t tr\u00ecnh x\u1eed l\u00fd hu\u1ef7 t\u1ea3i trong khung ch\u00ednh."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | unloadHandlerExistsInSubFrame": {
+    "message": "Trang n\u00e0y c\u00f3 m\u1ed9t tr\u00ecnh x\u1eed l\u00fd hu\u1ef7 t\u1ea3i trong khung ph\u1ee5."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | userAgentOverrideDiffers": {
+    "message": "Tr\u00ecnh duy\u1ec7t \u0111\u00e3 thay \u0111\u1ed5i ti\u00eau \u0111\u1ec1 ghi \u0111\u00e8 t\u00e1c nh\u00e2n ng\u01b0\u1eddi d\u00f9ng."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | wasGrantedMediaAccess": {
+    "message": "Nh\u1eefng trang \u0111\u00e3 c\u1ea5p quy\u1ec1n quay video ho\u1eb7c ghi \u00e2m hi\u1ec7n kh\u00f4ng \u0111\u1ee7 \u0111i\u1ec1u ki\u1ec7n d\u00f9ng b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webDatabase": {
+    "message": "Nh\u1eefng trang s\u1eed d\u1ee5ng WebDatabase hi\u1ec7n kh\u00f4ng \u0111\u1ee7 \u0111i\u1ec1u ki\u1ec7n d\u00f9ng b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webHID": {
+    "message": "Nh\u1eefng trang s\u1eed d\u1ee5ng WebHID hi\u1ec7n kh\u00f4ng \u0111\u1ee7 \u0111i\u1ec1u ki\u1ec7n d\u00f9ng b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webLocks": {
+    "message": "Nh\u1eefng trang s\u1eed d\u1ee5ng WebLocks hi\u1ec7n kh\u00f4ng \u0111\u1ee7 \u0111i\u1ec1u ki\u1ec7n d\u00f9ng b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webNfc": {
+    "message": "Nh\u1eefng trang s\u1eed d\u1ee5ng WebNfc hi\u1ec7n kh\u00f4ng \u0111\u1ee7 \u0111i\u1ec1u ki\u1ec7n d\u00f9ng b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webOTPService": {
+    "message": "Nh\u1eefng trang s\u1eed d\u1ee5ng WebOTPService hi\u1ec7n kh\u00f4ng \u0111\u1ee7 \u0111i\u1ec1u ki\u1ec7n d\u00f9ng b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webRTC": {
+    "message": "Nh\u1eefng trang c\u00f3 WebRTC kh\u00f4ng th\u1ec3 chuy\u1ec3n sang b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webRTCSticky": {
+    "message": "B\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i b\u1ecb t\u1eaft v\u00ec WebRTC \u0111\u00e3 \u0111\u01b0\u1ee3c d\u00f9ng."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webShare": {
+    "message": "Nh\u1eefng trang s\u1eed d\u1ee5ng WebShare hi\u1ec7n kh\u00f4ng \u0111\u1ee7 \u0111i\u1ec1u ki\u1ec7n d\u00f9ng b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webSocket": {
+    "message": "Nh\u1eefng trang c\u00f3 WebSocket kh\u00f4ng th\u1ec3 chuy\u1ec3n sang b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webSocketSticky": {
+    "message": "B\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i b\u1ecb t\u1eaft v\u00ec WebSocket \u0111\u00e3 \u0111\u01b0\u1ee3c d\u00f9ng."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webTransport": {
+    "message": "Nh\u1eefng trang c\u00f3 WebTransport kh\u00f4ng th\u1ec3 chuy\u1ec3n sang b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webTransportSticky": {
+    "message": "B\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i b\u1ecb t\u1eaft v\u00ec WebTransport \u0111\u00e3 \u0111\u01b0\u1ee3c d\u00f9ng."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webXR": {
+    "message": "Nh\u1eefng trang s\u1eed d\u1ee5ng WebXR hi\u1ec7n kh\u00f4ng \u0111\u1ee7 \u0111i\u1ec1u ki\u1ec7n d\u00f9ng b\u1ed9 nh\u1edb \u0111\u1ec7m cho thao t\u00e1c ti\u1ebfn/l\u00f9i."
+  }
+}

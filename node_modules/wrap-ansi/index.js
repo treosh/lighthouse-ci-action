@@ -10,14 +10,7 @@ const ESCAPES = new Set([
 
 const END_CODE = 39;
 
-const ANSI_ESCAPE_BELL = '\u0007';
-const ANSI_CSI = '[';
-const ANSI_OSC = ']';
-const ANSI_SGR_TERMINATOR = 'm';
-const ANSI_ESCAPE_LINK = `${ANSI_OSC}8;;`;
-
-const wrapAnsi = code => `${ESCAPES.values().next().value}${ANSI_CSI}${code}${ANSI_SGR_TERMINATOR}`;
-const wrapAnsiHyperlink = uri => `${ESCAPES.values().next().value}${ANSI_ESCAPE_LINK}${uri}${ANSI_ESCAPE_BELL}`;
+const wrapAnsi = code => `${ESCAPES.values().next().value}[${code}m`;
 
 // Calculate the length of words split on ' ', ignoring
 // the extra characters added by ansi escape codes
@@ -29,7 +22,6 @@ const wrapWord = (rows, word, columns) => {
 	const characters = [...word];
 
 	let isInsideEscape = false;
-	let isInsideLinkEscape = false;
 	let visible = stringWidth(stripAnsi(rows[rows.length - 1]));
 
 	for (const [index, character] of characters.entries()) {
@@ -44,19 +36,12 @@ const wrapWord = (rows, word, columns) => {
 
 		if (ESCAPES.has(character)) {
 			isInsideEscape = true;
-			isInsideLinkEscape = characters.slice(index + 1).join('').startsWith(ANSI_ESCAPE_LINK);
+		} else if (isInsideEscape && character === 'm') {
+			isInsideEscape = false;
+			continue;
 		}
 
 		if (isInsideEscape) {
-			if (isInsideLinkEscape) {
-				if (character === ANSI_ESCAPE_BELL) {
-					isInsideEscape = false;
-					isInsideLinkEscape = false;
-				}
-			} else if (character === ANSI_SGR_TERMINATOR) {
-				isInsideEscape = false;
-			}
-
 			continue;
 		}
 
@@ -76,8 +61,8 @@ const wrapWord = (rows, word, columns) => {
 };
 
 // Trims spaces from a string ignoring invisible sequences
-const stringVisibleTrimSpacesRight = string => {
-	const words = string.split(' ');
+const stringVisibleTrimSpacesRight = str => {
+	const words = str.split(' ');
 	let last = words.length;
 
 	while (last > 0) {
@@ -89,7 +74,7 @@ const stringVisibleTrimSpacesRight = string => {
 	}
 
 	if (last === words.length) {
-		return string;
+		return str;
 	}
 
 	return words.slice(0, last).join(' ') + words.slice(last).join('');
@@ -105,16 +90,16 @@ const exec = (string, columns, options = {}) => {
 		return '';
 	}
 
-	let returnValue = '';
+	let pre = '';
+	let ret = '';
 	let escapeCode;
-	let escapeUrl;
 
 	const lengths = wordLengths(string);
 	let rows = [''];
 
 	for (const [index, word] of string.split(' ').entries()) {
 		if (options.trim !== false) {
-			rows[rows.length - 1] = rows[rows.length - 1].trimStart();
+			rows[rows.length - 1] = rows[rows.length - 1].trimLeft();
 		}
 
 		let rowLength = stringWidth(rows[rows.length - 1]);
@@ -166,43 +151,28 @@ const exec = (string, columns, options = {}) => {
 		rows = rows.map(stringVisibleTrimSpacesRight);
 	}
 
-	const pre = [...rows.join('\n')];
+	pre = rows.join('\n');
 
-	for (const [index, character] of pre.entries()) {
-		returnValue += character;
+	for (const [index, character] of [...pre].entries()) {
+		ret += character;
 
 		if (ESCAPES.has(character)) {
-			const {groups} = new RegExp(`(?:\\${ANSI_CSI}(?<code>\\d+)m|\\${ANSI_ESCAPE_LINK}(?<uri>.*)${ANSI_ESCAPE_BELL})`).exec(pre.slice(index).join('')) || {groups: {}};
-			if (groups.code !== undefined) {
-				const code = Number.parseFloat(groups.code);
-				escapeCode = code === END_CODE ? undefined : code;
-			} else if (groups.uri !== undefined) {
-				escapeUrl = groups.uri.length === 0 ? undefined : groups.uri;
-			}
+			const code = parseFloat(/\d[^m]*/.exec(pre.slice(index, index + 4)));
+			escapeCode = code === END_CODE ? null : code;
 		}
 
 		const code = ansiStyles.codes.get(Number(escapeCode));
 
-		if (pre[index + 1] === '\n') {
-			if (escapeUrl) {
-				returnValue += wrapAnsiHyperlink('');
-			}
-
-			if (escapeCode && code) {
-				returnValue += wrapAnsi(code);
-			}
-		} else if (character === '\n') {
-			if (escapeCode && code) {
-				returnValue += wrapAnsi(escapeCode);
-			}
-
-			if (escapeUrl) {
-				returnValue += wrapAnsiHyperlink(escapeUrl);
+		if (escapeCode && code) {
+			if (pre[index + 1] === '\n') {
+				ret += wrapAnsi(code);
+			} else if (character === '\n') {
+				ret += wrapAnsi(escapeCode);
 			}
 		}
 	}
 
-	return returnValue;
+	return ret;
 };
 
 // For each newline, invoke the method separately

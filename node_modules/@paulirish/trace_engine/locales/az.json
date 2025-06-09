@@ -1,0 +1,908 @@
+{
+  "generated/Deprecation.ts | AuthorizationCoveredByWildcard": {
+    "message": "CORS Access-Control-Allow-Headers i\u015fl\u0259nm\u0259sind\u0259 avtorizasiya (*) simvolu il\u0259 qeyd edilm\u0259y\u0259c\u0259k."
+  },
+  "generated/Deprecation.ts | CSSSelectorInternalMediaControlsOverlayCastButton": {
+    "message": "Defolt Yay\u0131m inteqrasiyas\u0131n\u0131 deaktiv etm\u0259k \u00fc\u00e7\u00fcn-internal-media-controls-overlay-cast-button se\u00e7icisind\u0259n istifad\u0259 etm\u0259k \u0259v\u0259zin\u0259 disableRemotePlayback atributu istifad\u0259 edilm\u0259lidir."
+  },
+  "generated/Deprecation.ts | CSSValueAppearanceSliderVertical": {
+    "message": "CSS g\u00f6r\u00fcn\u00fc\u015f d\u0259y\u0259ri (slider-vertical) standart deyil v\u0259 silin\u0259c\u0259k."
+  },
+  "generated/Deprecation.ts | CanRequestURLHTTPContainingNewline": {
+    "message": "URL-l\u0259rind\u0259 h\u0259m silinmi\u015f bo\u015fluq \\(n|r|t) simvollar\u0131, h\u0259m d\u0259 ki\u00e7ikdir simvollar\u0131 (<) olan resurs sor\u011fular\u0131 bloklan\u0131b. Bu resurslar\u0131 y\u00fckl\u0259m\u0259k \u00fc\u00e7\u00fcn element atribut d\u0259y\u0259rl\u0259ri kimi yerl\u0259rd\u0259n yeni s\u0259tirl\u0259ri silin v\u0259 ki\u00e7ikdir simvollar\u0131n\u0131 kodla\u015fd\u0131r\u0131n."
+  },
+  "generated/Deprecation.ts | CharsetAutoDetectionISO2022JP": {
+    "message": "ISO-2022-JP simvol d\u0259stinin avtomatik a\u015fkarlanmas\u0131 k\u00f6hn\u0259lib v\u0259 yax\u0131n g\u0259l\u0259c\u0259kd\u0259 deaktiv edil\u0259c\u0259k. Kontent n\u00f6v\u00fc ba\u015fl\u0131\u011f\u0131nda v\u0259 ya meta teqd\u0259n istifad\u0259 ed\u0259r\u0259k simvol d\u0259stini g\u00f6st\u0259rin (https://developer.mozilla.org/en-US/docs/Glossary/Character_encoding)."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesConnectionInfo": {
+    "message": "chrome.loadTimes() k\u00f6hn\u0259lib, onun \u0259v\u0259zin\u0259 standart API istifad\u0259 edin: Naviqasiya Zamanlamas\u0131 2."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesFirstPaintAfterLoadTime": {
+    "message": "chrome.loadTimes() k\u00f6hn\u0259lib, onun \u0259v\u0259zin\u0259 standart API istifad\u0259 edin: R\u0259sm Zamanlamas\u0131."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesWasAlternateProtocolAvailable": {
+    "message": "chrome.loadTimes() k\u00f6hn\u0259lib, onun \u0259v\u0259zin\u0259 standart API istifad\u0259 edin: Naviqasiya Zamanlamas\u0131 2-d\u0259 nextHopProtocol."
+  },
+  "generated/Deprecation.ts | CookieWithTruncatingChar": {
+    "message": "\\(0|r|n) simvolunu ehtiva ed\u0259n kukil\u0259r k\u0259silm\u0259k \u0259v\u0259zin\u0259 r\u0259dd edil\u0259c\u0259k."
+  },
+  "generated/Deprecation.ts | CrossOriginAccessBasedOnDocumentDomain": {
+    "message": "document.domain ayarlamaqla eyni m\u0259n\u015f\u0259li siyas\u0259tin icras\u0131 k\u00f6hn\u0259lib v\u0259 defolt olaraq deaktiv edil\u0259c\u0259k. Bu k\u00f6hn\u0259lm\u0259 x\u0259b\u0259rdarl\u0131\u011f\u0131 document.domain ayar\u0131 il\u0259 aktivl\u0259\u015fdirilmi\u015f \u00e7arpaz m\u0259n\u015f\u0259li giri\u015f \u00fc\u00e7\u00fcnd\u00fcr."
+  },
+  "generated/Deprecation.ts | CrossOriginWindowAlert": {
+    "message": "\u00c7arpaz m\u0259n\u015f\u0259li iFrame-d\u0259n window.alert funksiyas\u0131n\u0131n i\u015f\u0259 sal\u0131nmas\u0131 l\u0259\u011fv edilib v\u0259 g\u0259l\u0259c\u0259kd\u0259 silin\u0259c\u0259k."
+  },
+  "generated/Deprecation.ts | CrossOriginWindowConfirm": {
+    "message": "\u00c7arpaz m\u0259n\u015f\u0259li iFrame-d\u0259n window.confirm funksiyas\u0131n\u0131n i\u015f\u0259 sal\u0131nmas\u0131 l\u0259\u011fv edilib v\u0259 g\u0259l\u0259c\u0259kd\u0259 silin\u0259c\u0259k."
+  },
+  "generated/Deprecation.ts | DOMMutationEvents": {
+    "message": "DOMSubtreeModified, DOMNodeInserted, DOMNodeRemoved, DOMNodeRemovedFromDocument, DOMNodeInsertedIntoDocument, DOMCharacterDataModified daxil olmaqla DOM \u00e7evrilm\u0259 hadis\u0259l\u0259ri k\u00f6hn\u0259lib (https://w3c.github.io/uievents/#legacy-event-types) v\u0259 silin\u0259c\u0259k. MutationObserver istifad\u0259 edin."
+  },
+  "generated/Deprecation.ts | DataUrlInSvgUse": {
+    "message": "Data d\u0259st\u0259yi: SVGUseElement-d\u0259ki URL-l\u0259r k\u00f6hn\u0259lib v\u0259 silin\u0259c\u0259k."
+  },
+  "generated/Deprecation.ts | GeolocationInsecureOrigin": {
+    "message": "getCurrentPosition() v\u0259 watchPosition() art\u0131q g\u00fcv\u0259nsiz m\u0259n\u015f\u0259l\u0259rd\u0259 i\u015fl\u0259mir. Bu funksiyadan istifad\u0259 etm\u0259k \u00fc\u00e7\u00fcn t\u0259tbiqinizi HTTPS kimi g\u00fcv\u0259nli m\u0259nb\u0259y\u0259 ke\u00e7irm\u0259yi d\u00fc\u015f\u00fcnm\u0259lisiniz. \u018ftrafl\u0131 m\u0259lumat \u00fc\u00e7\u00fcn bax\u0131n: https://goo.gle/chrome-insecure-origins."
+  },
+  "generated/Deprecation.ts | GeolocationInsecureOriginDeprecatedNotRemoved": {
+    "message": "getCurrentPosition() v\u0259 watchPosition() g\u00fcv\u0259nsiz m\u0259n\u015f\u0259l\u0259rd\u0259 k\u00f6hn\u0259lib. Bu funksiyadan istifad\u0259 etm\u0259k \u00fc\u00e7\u00fcn t\u0259tbiqinizi HTTPS kimi g\u00fcv\u0259nli m\u0259nb\u0259y\u0259 ke\u00e7irm\u0259yi d\u00fc\u015f\u00fcnm\u0259lisiniz. \u018ftrafl\u0131 m\u0259lumat \u00fc\u00e7\u00fcn bax\u0131n: https://goo.gle/chrome-insecure-origins."
+  },
+  "generated/Deprecation.ts | GetUserMediaInsecureOrigin": {
+    "message": "getUserMedia() art\u0131q g\u00fcv\u0259nsiz m\u0259n\u015f\u0259l\u0259rd\u0259 i\u015fl\u0259mir. Bu funksiyadan istifad\u0259 etm\u0259k \u00fc\u00e7\u00fcn t\u0259tbiqinizi HTTPS kimi g\u00fcv\u0259nli m\u0259nb\u0259y\u0259 ke\u00e7irm\u0259yi d\u00fc\u015f\u00fcnm\u0259lisiniz. \u018ftrafl\u0131 m\u0259lumat \u00fc\u00e7\u00fcn bax\u0131n: https://goo.gle/chrome-insecure-origins."
+  },
+  "generated/Deprecation.ts | H1UserAgentFontSizeInSection": {
+    "message": "M\u00fc\u0259yy\u0259n \u015frift \u00f6l\u00e7\u00fcs\u00fc olmayan <article>, <aside>, <nav> v\u0259 ya <section> daxilind\u0259 <h1> teqi a\u015fkarland\u0131. Bu ba\u015fl\u0131q m\u0259tninin \u00f6l\u00e7\u00fcs\u00fc yax\u0131n g\u0259l\u0259c\u0259kd\u0259 bu brauzerd\u0259 d\u0259yi\u015f\u0259c\u0259k. \u018ftrafl\u0131 m\u0259lumat \u00fc\u00e7\u00fcn n\u0259z\u0259r sal\u0131n: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#specifying_a_uniform_font_size_for_h1."
+  },
+  "generated/Deprecation.ts | HostCandidateAttributeGetter": {
+    "message": "RTCPeerConnectionIceErrorEvent.hostCandidate k\u00f6hn\u0259lib. Onun \u0259v\u0259zin\u0259 RTCPeerConnectionIceErrorEvent.address v\u0259 ya RTCPeerConnectionIceErrorEvent.port istifad\u0259 edin."
+  },
+  "generated/Deprecation.ts | IdentityDigitalCredentials": {
+    "message": "R\u0259q\u0259msal giri\u015f m\u0259lumatlar\u0131 \u00fc\u00e7\u00fcn n\u0259z\u0259rd\u0259 tutulan navigator.credentials.get() sor\u011fusu \u00fc\u00e7\u00fcn bu format k\u00f6hn\u0259lib, yeni formatdan istifad\u0259 etm\u0259k \u00fc\u00e7\u00fcn \u00e7a\u011f\u0131r\u0131\u015f\u0131 yenil\u0259yin."
+  },
+  "generated/Deprecation.ts | IdentityInCanMakePaymentEvent": {
+    "message": "canmakepayment xidm\u0259t i\u015f\u00e7isi t\u0259dbirind\u0259n sat\u0131c\u0131 m\u0259n\u015f\u0259yi v\u0259 ixtiyari data k\u00f6hn\u0259lib v\u0259 silin\u0259c\u0259k: topOrigin, paymentRequestOrigin, methodData, modifiers."
+  },
+  "generated/Deprecation.ts | InsecurePrivateNetworkSubresourceRequest": {
+    "message": "Veb sayt yaln\u0131z istifad\u0259\u00e7il\u0259rinin imtiyazl\u0131 \u015f\u0259b\u0259k\u0259 m\u00f6vqeyin\u0259 g\u00f6r\u0259 daxil ola bil\u0259c\u0259yi bir \u015f\u0259b\u0259k\u0259d\u0259n subresurs t\u0259l\u0259b edib. Bu sor\u011fular ictimai olmayan cihazlar\u0131 v\u0259 serverl\u0259ri internetd\u0259 g\u00f6st\u0259r\u0259r\u0259k saytlararas\u0131 sor\u011fu saxtakarl\u0131\u011f\u0131 (CSRF) h\u00fccumu v\u0259/yaxud m\u0259lumat s\u0131zmas\u0131 riskini art\u0131r\u0131r. Bu riskl\u0259ri azaltmaq \u00fc\u00e7\u00fcn Chrome g\u00fcv\u0259nsiz kontekstl\u0259rd\u0259n icra edil\u0259n ictimai olmayan subresurslara sor\u011fular\u0131 l\u0259\u011fv edir v\u0259 onlar\u0131 bloklama\u011fa ba\u015flayacaq."
+  },
+  "generated/Deprecation.ts | InterestGroupDailyUpdateUrl": {
+    "message": "joinAdInterestGroup() strukturuna ke\u00e7irilmi\u015f InterestGroups \u00fczr\u0259 dailyUpdateUrl sah\u0259si f\u0259aliyy\u0259tini daha d\u0259qiq \u0259ks etdirm\u0259k \u00fc\u00e7\u00fcn updateUrl olaraq yenid\u0259n adland\u0131r\u0131l\u0131b."
+  },
+  "generated/Deprecation.ts | IntlV8BreakIterator": {
+    "message": "Intl.v8BreakIterator k\u00f6hn\u0259lib. Onun \u0259v\u0259zin\u0259 Intl.Segmenter istifad\u0259 edin."
+  },
+  "generated/Deprecation.ts | LocalCSSFileExtensionRejected": {
+    "message": ".css fayl art\u0131rmas\u0131 il\u0259 bitm\u0259s\u0259, CSS file: URL-l\u0259rind\u0259n y\u00fckl\u0259n\u0259 bilm\u0259z."
+  },
+  "generated/Deprecation.ts | MediaSourceAbortRemove": {
+    "message": "remove() elementinin asinxron aral\u0131\u011f\u0131n\u0131n silinm\u0259sini dayand\u0131rmaq \u00fc\u00e7\u00fcn SourceBuffer.abort() istifad\u0259si spesifikasiya d\u0259yi\u015fikliyin\u0259 g\u00f6r\u0259 k\u00f6hn\u0259lib. G\u0259l\u0259c\u0259kd\u0259 d\u0259st\u0259k silin\u0259c\u0259k. \u018fv\u0259zind\u0259 updateend t\u0259dbirini dinl\u0259m\u0259lisiniz. abort() yaln\u0131z asinxron media \u0259lav\u0259sini dayand\u0131rmaq v\u0259 ya t\u0259hliledici v\u0259ziyy\u0259tini s\u0131f\u0131rlamaq \u00fc\u00e7\u00fcn n\u0259z\u0259rd\u0259 tutulub."
+  },
+  "generated/Deprecation.ts | MediaSourceDurationTruncatingBuffered": {
+    "message": "MediaSource.duration d\u0259y\u0259rinin h\u0259r hans\u0131 buferli kodlanm\u0131\u015f \u00e7\u0259r\u00e7iv\u0259l\u0259rin \u0259n y\u00fcks\u0259k t\u0259qdimat vaxt ni\u015fan\u0131ndan a\u015fa\u011f\u0131 t\u0259yin edilm\u0259si spesifikasiya d\u0259yi\u015fikliyin\u0259 g\u00f6r\u0259 k\u00f6hn\u0259lmi\u015fdir. K\u0259silmi\u015f buferli median\u0131n gizli silinm\u0259si \u00fc\u00e7\u00fcn d\u0259st\u0259k g\u0259l\u0259c\u0259kd\u0259 silin\u0259c\u0259k. newDuration < oldDuration olan b\u00fct\u00fcn sourceBuffers \u00fcz\u0259rind\u0259 a\u00e7\u0131q remove(newDuration, oldDuration) icra etm\u0259lisiniz."
+  },
+  "generated/Deprecation.ts | NoSysexWebMIDIWithoutPermission": {
+    "message": "MIDIOptions \u00fcz\u0259rind\u0259 siseks t\u0259yin edilm\u0259s\u0259 bel\u0259, Veb MIDI istifad\u0259 etm\u0259k \u00fc\u00e7\u00fcn icaz\u0259 ist\u0259y\u0259c\u0259k."
+  },
+  "generated/Deprecation.ts | NotificationInsecureOrigin": {
+    "message": "Bildiri\u015f API art\u0131q g\u00fcv\u0259nsiz m\u0259nb\u0259d\u0259n istifad\u0259 edil\u0259 bilm\u0259z. T\u0259tbiqinizi HTTPS kimi g\u00fcv\u0259nli m\u0259nb\u0259y\u0259 ke\u00e7irm\u0259yi d\u00fc\u015f\u00fcnm\u0259lisiniz. \u018ftrafl\u0131 m\u0259lumat \u00fc\u00e7\u00fcn bax\u0131n: https://goo.gle/chrome-insecure-origins."
+  },
+  "generated/Deprecation.ts | NotificationPermissionRequestedIframe": {
+    "message": "Bildiri\u015f API \u00fc\u00e7\u00fcn icaz\u0259 art\u0131q \u00e7arpaz m\u0259n\u015f\u0259li iFrame-d\u0259n t\u0259l\u0259b oluna bilm\u0259z. Yuxar\u0131 s\u0259viyy\u0259li \u00e7\u0259r\u00e7iv\u0259d\u0259n icaz\u0259 t\u0259l\u0259b etm\u0259yi v\u0259 ya yeni p\u0259nc\u0259r\u0259 a\u00e7ma\u011f\u0131 d\u00fc\u015f\u00fcnm\u0259lisiniz."
+  },
+  "generated/Deprecation.ts | ObsoleteCreateImageBitmapImageOrientationNone": {
+    "message": "createImageBitmap-d\u0259 imageOrientation: 'none' se\u00e7imi k\u00f6hn\u0259lib. \u018fv\u0259zind\u0259 {imageOrientation: 'from-image'} il\u0259 createImageBitmap istifad\u0259 edin."
+  },
+  "generated/Deprecation.ts | ObsoleteWebRtcCipherSuite": {
+    "message": "Partnyorunuz k\u00f6hn\u0259lmi\u015f (D)TLS versiyas\u0131n\u0131 m\u00fczakir\u0259 edir. Bunun d\u00fcz\u0259ldilm\u0259si \u00fc\u00e7\u00fcn partnyorunuzla \u0259laq\u0259 saxlay\u0131n."
+  },
+  "generated/Deprecation.ts | OverflowVisibleOnReplacedElement": {
+    "message": "Img, video v\u0259 k\u0259tan teql\u0259rind\u0259 overflow: visible elementinin g\u00f6st\u0259rilm\u0259si onlar\u0131n element h\u00fcdudlar\u0131ndan k\u0259narda vizual kontent yaratmas\u0131na s\u0259b\u0259b ola bil\u0259r. Bax\u0131n: https://github.com/WICG/shared-element-transitions/blob/main/debugging_overflow_on_images.md."
+  },
+  "generated/Deprecation.ts | PaymentInstruments": {
+    "message": "paymentManager.instruments k\u00f6hn\u0259lib. \u018fv\u0259zind\u0259 \u00f6d\u0259ni\u015f idar\u0259\u00e7il\u0259ri \u00fc\u00e7\u00fcn vaxt\u0131nda qura\u015fd\u0131rmadan istifad\u0259 edin."
+  },
+  "generated/Deprecation.ts | PaymentRequestCSPViolation": {
+    "message": "PaymentRequest z\u0259nginiz Kontent-G\u00fcv\u0259nlik-Siyas\u0259ti (CSP) connect-src direktivini yan ke\u00e7ib. Bu yan ke\u00e7m\u0259 k\u00f6hn\u0259lib. PaymentRequest API-d\u0259n (supportedMethods sah\u0259sind\u0259) \u00f6d\u0259ni\u015f metodu identifikatorunu CSP connect-src direktivin\u0259 \u0259lav\u0259 edin."
+  },
+  "generated/Deprecation.ts | PersistentQuotaType": {
+    "message": "StorageType.persistent k\u00f6hn\u0259lib. Onun \u0259v\u0259zin\u0259 standart navigator.storage istifad\u0259 edin."
+  },
+  "generated/Deprecation.ts | PictureSourceSrc": {
+    "message": "<picture> \u0259sas elementi il\u0259 <source src> yanl\u0131\u015fd\u0131r v\u0259 bu s\u0259b\u0259bd\u0259n n\u0259z\u0259r\u0259 al\u0131nm\u0131r. Onun \u0259v\u0259zin\u0259 <source srcset> istifad\u0259 edin."
+  },
+  "generated/Deprecation.ts | PrefixedCancelAnimationFrame": {
+    "message": "webkitCancelAnimationFrame t\u0259chizat\u00e7\u0131ya \u00f6z\u0259ldir. \u018fv\u0259zind\u0259 standart cancelAnimationFrame istifad\u0259 edin."
+  },
+  "generated/Deprecation.ts | PrefixedRequestAnimationFrame": {
+    "message": "webkitRequestAnimationFrame t\u0259chizat\u00e7\u0131ya \u00f6z\u0259ldir. \u018fv\u0259zind\u0259 standart requestAnimationFrame istifad\u0259 edin."
+  },
+  "generated/Deprecation.ts | PrefixedVideoDisplayingFullscreen": {
+    "message": "HTMLVideoElement.webkitDisplayingFullscreen istifad\u0259d\u0259n \u00e7\u0131xar\u0131l\u0131b. \u018fv\u0259zind\u0259 Document.fullscreenElement istifad\u0259 edin."
+  },
+  "generated/Deprecation.ts | PrefixedVideoEnterFullScreen": {
+    "message": "HTMLVideoElement.webkitEnterFullScreen() istifad\u0259d\u0259n \u00e7\u0131xar\u0131l\u0131b. \u018fv\u0259zind\u0259 Element.requestFullscreen() istifad\u0259 edin."
+  },
+  "generated/Deprecation.ts | PrefixedVideoEnterFullscreen": {
+    "message": "HTMLVideoElement.webkitEnterFullscreen() istifad\u0259d\u0259n \u00e7\u0131xar\u0131l\u0131b. \u018fv\u0259zind\u0259 Element.requestFullscreen() istifad\u0259 edin."
+  },
+  "generated/Deprecation.ts | PrefixedVideoExitFullScreen": {
+    "message": "HTMLVideoElement.webkitExitFullScreen() istifad\u0259d\u0259n \u00e7\u0131xar\u0131l\u0131b. \u018fv\u0259zind\u0259 Document.exitFullscreen() istifad\u0259 edin."
+  },
+  "generated/Deprecation.ts | PrefixedVideoExitFullscreen": {
+    "message": "HTMLVideoElement.webkitExitFullscreen() istifad\u0259d\u0259n \u00e7\u0131xar\u0131l\u0131b. \u018fv\u0259zind\u0259 Document.exitFullscreen() istifad\u0259 edin."
+  },
+  "generated/Deprecation.ts | PrefixedVideoSupportsFullscreen": {
+    "message": "HTMLVideoElement.webkitSupportsFullscreen istifad\u0259d\u0259n \u00e7\u0131xar\u0131l\u0131b. \u018fv\u0259zind\u0259 Document.fullscreenEnabled istifad\u0259 edin."
+  },
+  "generated/Deprecation.ts | PrivacySandboxExtensionsAPI": {
+    "message": "API chrome.privacy.websites.privacySandboxEnabled istifad\u0259d\u0259n \u00e7\u0131xar\u0131l\u0131r, lakin M113 burax\u0131l\u0131\u015f\u0131na q\u0259d\u0259r geriy\u0259 uy\u011funluq \u00fc\u00e7\u00fcn aktiv qalacaq. \u018fv\u0259zind\u0259 chrome.privacy.websites.topicsEnabled, chrome.privacy.websites.fledgeEnabled v\u0259 chrome.privacy.websites.adMeasurementEnabled istifad\u0259 edin. Bax\u0131n: https://developer.chrome.com/docs/extensions/reference/privacy/#property-websites-privacySandboxEnabled."
+  },
+  "generated/Deprecation.ts | RTCConstraintEnableDtlsSrtpFalse": {
+    "message": "DtlsSrtpKeyAgreement m\u0259hdudiyy\u0259ti silinib. Silinmi\u015f SDES key negotiation metodundan istifad\u0259 c\u0259hdi kimi \u015f\u0259rh edil\u0259n bu m\u0259hdudiyy\u0259t \u00fc\u00e7\u00fcn false d\u0259y\u0259ri t\u0259yin etmisiniz. Bu funksionall\u0131q silinib; onun \u0259v\u0259zin\u0259 DTLS key negotiation funksiyas\u0131n\u0131 d\u0259st\u0259kl\u0259y\u0259n xidm\u0259td\u0259n istifad\u0259 edin."
+  },
+  "generated/Deprecation.ts | RTCConstraintEnableDtlsSrtpTrue": {
+    "message": "DtlsSrtpKeyAgreement m\u0259hdudiyy\u0259ti silinib. Bu m\u0259hdudiyy\u0259t \u00fc\u00e7\u00fcn he\u00e7 bir t\u0259siri olmayan true d\u0259y\u0259ri t\u0259yin etmisiniz, lakin s\u0259liq\u0259 \u00fc\u00e7\u00fcn bu m\u0259hdudiyy\u0259ti sil\u0259 bil\u0259rsiniz."
+  },
+  "generated/Deprecation.ts | RTCPeerConnectionGetStatsLegacyNonCompliant": {
+    "message": "Geri \u00e7a\u011fr\u0131 \u0259sasl\u0131 getStats() istifad\u0259d\u0259n \u00e7\u0131xar\u0131l\u0131b v\u0259 silin\u0259c\u0259k. \u018fv\u0259zind\u0259 spesifikasiyaya uy\u011fun getStats() istifad\u0259 edin."
+  },
+  "generated/Deprecation.ts | RangeExpand": {
+    "message": "Range.expand() istifad\u0259d\u0259n \u00e7\u0131xar\u0131l\u0131b. \u018fv\u0259zind\u0259 Selection.modify() istifad\u0259 edin."
+  },
+  "generated/Deprecation.ts | RequestedSubresourceWithEmbeddedCredentials": {
+    "message": "URL-l\u0259rind\u0259 daxil edilmi\u015f giri\u015f m\u0259lumatlar\u0131 (m\u0259s\u0259l\u0259n, https://user:pass@host/) olan subresurs sor\u011fular\u0131 bloklan\u0131b."
+  },
+  "generated/Deprecation.ts | RtcpMuxPolicyNegotiate": {
+    "message": "rtcpMuxPolicy se\u00e7imi k\u00f6hn\u0259lib v\u0259 silin\u0259c\u0259k."
+  },
+  "generated/Deprecation.ts | SharedArrayBufferConstructedWithoutIsolation": {
+    "message": "SharedArrayBuffer \u00e7apraz m\u0259n\u015f\u0259li izolyasiya t\u0259l\u0259b ed\u0259c\u0259k. \u018ftrafl\u0131 m\u0259lumat \u00fc\u00e7\u00fcn bax\u0131n: https://developer.chrome.com/blog/enabling-shared-array-buffer/."
+  },
+  "generated/Deprecation.ts | TextToSpeech_DisallowedByAutoplay": {
+    "message": "\u0130stifad\u0259\u00e7ini aktivl\u0259\u015fdirm\u0259d\u0259n speechSynthesis.speak() k\u00f6hn\u0259lib v\u0259 silin\u0259c\u0259k."
+  },
+  "generated/Deprecation.ts | UnloadHandler": {
+    "message": "Bo\u015faltma hadis\u0259si dinl\u0259yicil\u0259ri k\u00f6hn\u0259lib v\u0259 silin\u0259c\u0259k."
+  },
+  "generated/Deprecation.ts | V8SharedArrayBufferConstructedInExtensionWithoutIsolation": {
+    "message": "Art\u0131rmalar SharedArrayBuffer istifad\u0259sin\u0259 davam etm\u0259k \u00fc\u00e7\u00fcn \u00e7arpaz m\u0259n\u015f\u0259li izolyasiyaya \u00fcst\u00fcnl\u00fck verm\u0259lidir. Bu \u00fcnvana bax\u0131n: https://developer.chrome.com/docs/extensions/mv3/cross-origin-isolation/."
+  },
+  "generated/Deprecation.ts | XHRJSONEncodingDetection": {
+    "message": "UTF-16 XMLHttpRequest \u00fczr\u0259 json cavab\u0131 il\u0259 d\u0259st\u0259kl\u0259nmir"
+  },
+  "generated/Deprecation.ts | XMLHttpRequestSynchronousInNonWorkerOutsideBeforeUnload": {
+    "message": "\u018fsas m\u00f6vzudak\u0131 sinxron XMLHttpRequest son istifad\u0259\u00e7inin t\u0259cr\u00fcb\u0259sin\u0259 z\u0259r\u0259r vurdu\u011fu \u00fc\u00e7\u00fcn istifad\u0259d\u0259n \u00e7\u0131xar\u0131l\u0131b. \u018ftrafl\u0131 m\u0259lumat \u00fc\u00e7\u00fcn bax\u0131n: https://xhr.spec.whatwg.org/."
+  },
+  "models/trace/insights/CLSCulprits.ts | animation": {
+    "message": "Animasiya"
+  },
+  "models/trace/insights/CLSCulprits.ts | description": {
+    "message": "D\u00fcz\u0259n d\u0259yi\u015fm\u0259si elementl\u0259r h\u0259r hans\u0131 istifad\u0259\u00e7i qar\u015f\u0131l\u0131ql\u0131 \u0259laq\u0259si olmadan h\u0259r\u0259k\u0259t etdikd\u0259 meydana g\u0259lir. S\u0259hif\u0259 y\u00fckl\u0259ndikc\u0259 elementl\u0259rin \u0259lav\u0259 edilm\u0259si, silinm\u0259si v\u0259 ya \u015friftl\u0259rinin d\u0259yi\u015fm\u0259si kimi [d\u00fcz\u0259nin d\u0259yi\u015fm\u0259sinin s\u0259b\u0259bl\u0259rini ara\u015fd\u0131r\u0131n](https://web.dev/articles/optimize-cls)."
+  },
+  "models/trace/insights/CLSCulprits.ts | fontRequest": {
+    "message": "\u015erift sor\u011fusu"
+  },
+  "models/trace/insights/CLSCulprits.ts | injectedIframe": {
+    "message": "Daxil edilmi\u015f iFrame"
+  },
+  "models/trace/insights/CLSCulprits.ts | layoutShiftCluster": {
+    "message": "D\u00fcz\u0259nin d\u0259yi\u015fm\u0259si klasteri @ {PH1}"
+  },
+  "models/trace/insights/CLSCulprits.ts | noCulprits": {
+    "message": "D\u00fcz\u0259n d\u0259yi\u015fm\u0259 s\u0259b\u0259bi a\u015fkar edilm\u0259di"
+  },
+  "models/trace/insights/CLSCulprits.ts | noLayoutShifts": {
+    "message": "D\u00fcz\u0259n d\u0259yi\u015fikliyi yoxdur"
+  },
+  "models/trace/insights/CLSCulprits.ts | title": {
+    "message": "D\u00fcz\u0259n t\u0259nziml\u0259m\u0259si \u00fczr\u0259 probleml\u0259rin s\u0259b\u0259bl\u0259ri"
+  },
+  "models/trace/insights/CLSCulprits.ts | topCulprits": {
+    "message": "D\u00fcz\u0259nin d\u0259yi\u015fm\u0259si \u00fczr\u0259 \u0259n m\u0259\u015fhur probleml\u0259rin s\u0259b\u0259bl\u0259ri"
+  },
+  "models/trace/insights/CLSCulprits.ts | unsizedImages": {
+    "message": "\u00d6l\u00e7\u00fcs\u00fcz t\u0259svirl\u0259r"
+  },
+  "models/trace/insights/CLSCulprits.ts | worstCluster": {
+    "message": "\u018fn pis klaster"
+  },
+  "models/trace/insights/CLSCulprits.ts | worstLayoutShiftCluster": {
+    "message": "\u018fn pis d\u00fcz\u0259n d\u0259yi\u015fm\u0259si klasteri"
+  },
+  "models/trace/insights/Cache.ts | cacheTTL": {
+    "message": "TTL ke\u015fi"
+  },
+  "models/trace/insights/Cache.ts | description": {
+    "message": "Uzun ke\u015f \u00f6mr\u00fc s\u0259hif\u0259niz\u0259 t\u0259krar daxilolmalar\u0131 s\u00fcr\u0259tl\u0259ndir\u0259 bil\u0259r. [\u018ftrafl\u0131 m\u0259lumat](https://web.dev/uses-long-cache-ttl/)."
+  },
+  "models/trace/insights/Cache.ts | noRequestsToCache": {
+    "message": "S\u0259m\u0259r\u0259siz ke\u015f siyas\u0259tl\u0259rin\u0259 malik sor\u011fu yoxdur"
+  },
+  "models/trace/insights/Cache.ts | others": {
+    "message": "Dig\u0259r {PH1}"
+  },
+  "models/trace/insights/Cache.ts | requestColumn": {
+    "message": "Sor\u011fu"
+  },
+  "models/trace/insights/Cache.ts | title": {
+    "message": "Effektiv ke\u015f istifad\u0259 m\u00fcdd\u0259tind\u0259n istifad\u0259 edin"
+  },
+  "models/trace/insights/DOMSize.ts | description": {
+    "message": "B\u00f6y\u00fck DOM \u00fcslub hesablamalar\u0131n\u0131n v\u0259 d\u00fcz\u0259nin t\u0259krar d\u00f6vriyy\u0259sinin m\u00fcdd\u0259tini art\u0131ra bil\u0259r, bu da s\u0259hif\u0259nin responsivliyin\u0259 t\u0259sir g\u00f6st\u0259rir. B\u00f6y\u00fck DOM yadda\u015f istifad\u0259sini d\u0259 art\u0131racaq. [H\u0259ddind\u0259n art\u0131q DOM \u00f6l\u00e7\u00fcs\u00fcnd\u0259n yay\u0131nma\u011f\u0131 \u00f6yr\u0259nin](https://developer.chrome.com/docs/lighthouse/performance/dom-size/)."
+  },
+  "models/trace/insights/DOMSize.ts | element": {
+    "message": "Element"
+  },
+  "models/trace/insights/DOMSize.ts | maxChildren": {
+    "message": "\u018fks\u0259r t\u00f6r\u0259m\u0259l\u0259r"
+  },
+  "models/trace/insights/DOMSize.ts | maxDOMDepth": {
+    "message": "DOM d\u0259rinliyi"
+  },
+  "models/trace/insights/DOMSize.ts | statistic": {
+    "message": "Statistik"
+  },
+  "models/trace/insights/DOMSize.ts | title": {
+    "message": "DOM \u00f6l\u00e7\u00fcs\u00fcn\u00fc optimalla\u015fd\u0131r\u0131n"
+  },
+  "models/trace/insights/DOMSize.ts | totalElements": {
+    "message": "\u00dcmumi element say\u0131"
+  },
+  "models/trace/insights/DOMSize.ts | value": {
+    "message": "D\u0259y\u0259r"
+  },
+  "models/trace/insights/DocumentLatency.ts | description": {
+    "message": "\u0130lk \u015f\u0259b\u0259k\u0259 sor\u011funuz \u0259n vacibdir.  Y\u00f6nl\u0259ndirm\u0259l\u0259rd\u0259n yay\u0131naraq s\u00fcr\u0259tli server cavab\u0131 v\u0259 m\u0259tn s\u0131x\u0131lmas\u0131 t\u0259min etm\u0259kl\u0259 gecikm\u0259 m\u00fcdd\u0259tini azald\u0131n."
+  },
+  "models/trace/insights/DocumentLatency.ts | failedRedirects": {
+    "message": "Y\u00f6nl\u0259ndirm\u0259l\u0259r olub"
+  },
+  "models/trace/insights/DocumentLatency.ts | failedServerResponseTime": {
+    "message": "Server l\u0259ng cavab verdi"
+  },
+  "models/trace/insights/DocumentLatency.ts | failedTextCompression": {
+    "message": "S\u0131x\u0131lma t\u0259tbiq edilm\u0259yib"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingRedirects": {
+    "message": "Y\u00f6nl\u0259ndirm\u0259l\u0259rin qar\u015f\u0131s\u0131n\u0131 al\u0131r"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingServerResponseTime": {
+    "message": "Server tez cavab verir"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingTextCompression": {
+    "message": "M\u0259tn s\u0131x\u0131lmas\u0131n\u0131 t\u0259tbiq edir"
+  },
+  "models/trace/insights/DocumentLatency.ts | redirectsLabel": {
+    "message": "Y\u00f6nl\u0259ndirir"
+  },
+  "models/trace/insights/DocumentLatency.ts | serverResponseTimeLabel": {
+    "message": "Serverin cavab m\u00fcdd\u0259ti"
+  },
+  "models/trace/insights/DocumentLatency.ts | title": {
+    "message": "S\u0259n\u0259d sor\u011fusunun gecikm\u0259si"
+  },
+  "models/trace/insights/DocumentLatency.ts | uncompressedDownload": {
+    "message": "Y\u0131\u011fcamla\u015fd\u0131r\u0131lmam\u0131\u015f endirm\u0259"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | columnDuplicatedBytes": {
+    "message": "Dublikat baytlar"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | columnSource": {
+    "message": "M\u0259nb\u0259"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | description": {
+    "message": "\u015e\u0259b\u0259k\u0259 f\u0259aliyy\u0259tinin s\u0259rf etdiyi laz\u0131ms\u0131z bayt miqdar\u0131n\u0131 azaltmaq \u00fc\u00e7\u00fcn b\u00f6y\u00fck, dublikat JavaScript modullar\u0131n\u0131 paketl\u0259rd\u0259n \u00e7\u0131xar\u0131n."
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | title": {
+    "message": "Dublikat JavaScript"
+  },
+  "models/trace/insights/FontDisplay.ts | description": {
+    "message": "M\u0259tnin davaml\u0131 g\u00f6r\u00fcnm\u0259sini t\u0259min etm\u0259k \u00fc\u00e7\u00fcn [font-display](https://developer.chrome.com/blog/font-display) elementini swap v\u0259 ya optional olaraq ayarlay\u0131n. [\u015erift g\u00f6st\u0259rici \u0259v\u0259zl\u0259m\u0259l\u0259ri](https://developer.chrome.com/blog/font-fallbacks) il\u0259 d\u00fcz\u0259n t\u0259nziml\u0259m\u0259l\u0259rini azaltmaq \u00fc\u00e7\u00fcn swap daha da optimalla\u015fd\u0131r\u0131la bil\u0259r."
+  },
+  "models/trace/insights/FontDisplay.ts | fontColumn": {
+    "message": "\u015erift"
+  },
+  "models/trace/insights/FontDisplay.ts | title": {
+    "message": "\u015erift displeyi"
+  },
+  "models/trace/insights/FontDisplay.ts | wastedTimeColumn": {
+    "message": "Vaxt itkisi"
+  },
+  "models/trace/insights/ForcedReflow.ts | anonymous": {
+    "message": "(anonim)"
+  },
+  "models/trace/insights/ForcedReflow.ts | description": {
+    "message": "Bir \u00e7ox API (\u0259sas\u0259n d\u00fcz\u0259n h\u0259nd\u0259s\u0259sini oxuyanlar) \u00fcslub v\u0259 d\u00fcz\u0259ni hesablamaq \u00fc\u00e7\u00fcn vizualizasiya m\u00fch\u0259rrikini skriptin icras\u0131n\u0131 dayand\u0131rma\u011fa m\u0259cbur edir. [M\u0259cburi t\u0259krar d\u00f6vriyy\u0259](https://developers.google.com/web/fundamentals/performance/rendering/avoid-large-complex-layouts-and-layout-thrashing#avoid-forced-synchronous-layouts) v\u0259 onun azald\u0131lmas\u0131 haqq\u0131nda \u0259trafl\u0131 m\u0259lumat \u0259ld\u0259 edin."
+  },
+  "models/trace/insights/ForcedReflow.ts | relatedStackTrace": {
+    "message": "X\u0259ta izi"
+  },
+  "models/trace/insights/ForcedReflow.ts | title": {
+    "message": "T\u0259krar d\u00f6vriyy\u0259y\u0259 m\u0259cbur edilib"
+  },
+  "models/trace/insights/ForcedReflow.ts | topTimeConsumingFunctionCall": {
+    "message": "\u018fsas funksiya \u00e7a\u011f\u0131r\u0131\u015f\u0131"
+  },
+  "models/trace/insights/ForcedReflow.ts | totalReflowTime": {
+    "message": "\u00dcmumi t\u0259krar d\u00f6vriyy\u0259 vaxt\u0131"
+  },
+  "models/trace/insights/ForcedReflow.ts | unattributed": {
+    "message": "[atributsuz]"
+  },
+  "models/trace/insights/ImageDelivery.ts | description": {
+    "message": "\u015e\u0259kill\u0259rin endirilm\u0259 vaxt\u0131n\u0131n azald\u0131lmas\u0131 s\u0259hif\u0259nin v\u0259 LCP-nin q\u0259bul edil\u0259n y\u00fckl\u0259m\u0259 m\u00fcdd\u0259tini t\u0259kmill\u0259\u015fdir\u0259 bil\u0259r. [T\u0259svir \u00f6l\u00e7\u00fcs\u00fcn\u00fc optimalla\u015fd\u0131rmaq haqq\u0131nda \u0259trafl\u0131 m\u0259lumat \u0259ld\u0259 edin](https://developer.chrome.com/docs/lighthouse/performance/uses-optimized-images/)"
+  },
+  "models/trace/insights/ImageDelivery.ts | estimatedSavings": {
+    "message": "{PH1} (T\u0259xmini {PH2})"
+  },
+  "models/trace/insights/ImageDelivery.ts | noOptimizableImages": {
+    "message": "Optimalla\u015fd\u0131r\u0131la bil\u0259n t\u0259svir yoxdur"
+  },
+  "models/trace/insights/ImageDelivery.ts | optimizeFile": {
+    "message": "Fayl \u00f6l\u00e7\u00fcs\u00fcn\u00fc optimalla\u015fd\u0131r\u0131n"
+  },
+  "models/trace/insights/ImageDelivery.ts | others": {
+    "message": "Dig\u0259r {PH1}"
+  },
+  "models/trace/insights/ImageDelivery.ts | title": {
+    "message": "T\u0259svir yay\u0131mlanmas\u0131n\u0131n t\u0259kmill\u0259\u015fdirilm\u0259si"
+  },
+  "models/trace/insights/ImageDelivery.ts | useCompression": {
+    "message": "T\u0259svirin s\u0131x\u0131lma \u0259msal\u0131n\u0131n art\u0131r\u0131lmas\u0131 bu t\u0259svirin endirilm\u0259 \u00f6l\u00e7\u00fcs\u00fcn\u00fc yax\u015f\u0131la\u015fd\u0131ra bil\u0259r."
+  },
+  "models/trace/insights/ImageDelivery.ts | useModernFormat": {
+    "message": "M\u00fcasir t\u0259svir format\u0131ndan (WebP, AVIF) istifad\u0259 etm\u0259k v\u0259 ya t\u0259svirin s\u0131x\u0131lmas\u0131n\u0131 art\u0131rmaq bu t\u0259svirin y\u00fckl\u0259nm\u0259 \u00f6l\u00e7\u00fcs\u00fcn\u00fc t\u0259kmill\u0259\u015fdir\u0259 bil\u0259r."
+  },
+  "models/trace/insights/ImageDelivery.ts | useResponsiveSize": {
+    "message": "Bu t\u0259svir fayl\u0131 g\u00f6st\u0259ril\u0259n \u00f6l\u00e7\u00fcl\u0259r ({PH2}) \u00fc\u00e7\u00fcn laz\u0131m olandan daha b\u00f6y\u00fckd\u00fcr ({PH1}). T\u0259svir endirm\u0259 \u00f6l\u00e7\u00fcs\u00fcn\u00fc azaltmaq \u00fc\u00e7\u00fcn responsiv t\u0259svirl\u0259rd\u0259n istifad\u0259 edin."
+  },
+  "models/trace/insights/ImageDelivery.ts | useVideoFormat": {
+    "message": "GIF \u0259v\u0259zin\u0259 video formatlar\u0131ndan istifad\u0259 etm\u0259k animasiyal\u0131 kontentin endirilm\u0259 \u00f6l\u00e7\u00fcs\u00fcn\u00fc t\u0259kmill\u0259\u015fdir\u0259 bil\u0259r."
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | description": {
+    "message": "\u018fn uzun m\u0259rh\u0259l\u0259d\u0259n ara\u015fd\u0131rma\u011fa ba\u015flay\u0131n. [Gecikm\u0259l\u0259r minimalla\u015fd\u0131r\u0131la bil\u0259r](https://web.dev/articles/optimize-inp#optimize_interactions). Emal m\u00fcdd\u0259tini azaltmaq \u00fc\u00e7\u00fcn [\u0259sas m\u00f6vzu x\u0259rcl\u0259rini](https://web.dev/articles/optimize-long-tasks) (\u0259sas\u0259n JS) optimalla\u015fd\u0131r\u0131n."
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | duration": {
+    "message": "M\u00fcdd\u0259t"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | inputDelay": {
+    "message": "Daxiletm\u0259 l\u0259ngim\u0259si"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | noInteractions": {
+    "message": "Qar\u015f\u0131l\u0131ql\u0131 \u0259laq\u0259 a\u015fkarlanmad\u0131"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | phase": {
+    "message": "M\u0259rh\u0259l\u0259"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | presentationDelay": {
+    "message": "T\u0259qdimat gecikm\u0259si"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | processingDuration": {
+    "message": "Emal m\u00fcdd\u0259ti"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | title": {
+    "message": "Fazaya g\u00f6r\u0259 INP"
+  },
+  "models/trace/insights/LCPDiscovery.ts | description": {
+    "message": "LCP \u015f\u0259klini d\u0259rhal HTML-d\u0259n [k\u0259\u015ff edil\u0259 bil\u0259n](https://web.dev/articles/optimize-lcp#1_eliminate_resource_load_delay) ed\u0259r\u0259k LCP-ni optimalla\u015fd\u0131r\u0131n v\u0259 [gec y\u00fckl\u0259nm\u0259d\u0259n \u00e7\u0259kinin](https://web.dev/articles/lcp-lazy-loading)"
+  },
+  "models/trace/insights/LCPDiscovery.ts | fetchPriorityApplied": {
+    "message": "fetchpriority=high t\u0259tbiq edildi"
+  },
+  "models/trace/insights/LCPDiscovery.ts | fetchPriorityShouldBeApplied": {
+    "message": "fetchpriority=high t\u0259tbiq edilm\u0259lidir"
+  },
+  "models/trace/insights/LCPDiscovery.ts | lazyLoadNotApplied": {
+    "message": "gec y\u00fckl\u0259nm\u0259 t\u0259tbiq edilm\u0259di"
+  },
+  "models/trace/insights/LCPDiscovery.ts | lcpLoadDelay": {
+    "message": "LCP \u015f\u0259kli \u0259n erk\u0259n ba\u015flan\u011f\u0131c n\u00f6qt\u0259sind\u0259n {PH1} sonra y\u00fckl\u0259ndi."
+  },
+  "models/trace/insights/LCPDiscovery.ts | noLcp": {
+    "message": "LCP a\u015fkarlanmad\u0131"
+  },
+  "models/trace/insights/LCPDiscovery.ts | noLcpResource": {
+    "message": "LCP t\u0259svir olmad\u0131\u011f\u0131 \u00fc\u00e7\u00fcn he\u00e7 bir LCP resursu a\u015fkarlanmad\u0131"
+  },
+  "models/trace/insights/LCPDiscovery.ts | requestDiscoverable": {
+    "message": "Sor\u011fu ilkin s\u0259n\u0259dd\u0259 a\u015fkar edil\u0259 bil\u0259ndir"
+  },
+  "models/trace/insights/LCPDiscovery.ts | title": {
+    "message": "LCP sor\u011funun k\u0259\u015ffi"
+  },
+  "models/trace/insights/LCPPhases.ts | description": {
+    "message": "H\u0259r [fazan\u0131n \u00f6z spesifik t\u0259kmill\u0259\u015fm\u0259 strategiyalar\u0131 var](https://web.dev/articles/optimize-lcp#lcp-breakdown). \u0130deal olaraq LCP vaxt\u0131n\u0131n \u00e7ox hiss\u0259si gecikm\u0259l\u0259r\u0259 deyil, resurslar\u0131n y\u00fckl\u0259nm\u0259sin\u0259 s\u0259rf edilm\u0259lidir."
+  },
+  "models/trace/insights/LCPPhases.ts | duration": {
+    "message": "M\u00fcdd\u0259t"
+  },
+  "models/trace/insights/LCPPhases.ts | elementRenderDelay": {
+    "message": "Element vizualizasiyas\u0131n\u0131n gecikm\u0259si"
+  },
+  "models/trace/insights/LCPPhases.ts | fieldDuration": {
+    "message": "75-ci sah\u0259 faizi"
+  },
+  "models/trace/insights/LCPPhases.ts | noLcp": {
+    "message": "LCP a\u015fkarlanmad\u0131"
+  },
+  "models/trace/insights/LCPPhases.ts | phase": {
+    "message": "M\u0259rh\u0259l\u0259"
+  },
+  "models/trace/insights/LCPPhases.ts | resourceLoadDelay": {
+    "message": "Resurs y\u00fckl\u0259m\u0259nin l\u0259ngim\u0259si"
+  },
+  "models/trace/insights/LCPPhases.ts | resourceLoadDuration": {
+    "message": "Resurs y\u00fckl\u0259m\u0259 m\u00fcdd\u0259ti"
+  },
+  "models/trace/insights/LCPPhases.ts | timeToFirstByte": {
+    "message": "\u0130lk bayta q\u0259d\u0259r ke\u00e7\u0259n vaxt"
+  },
+  "models/trace/insights/LCPPhases.ts | title": {
+    "message": "M\u0259rh\u0259l\u0259 \u00fczr\u0259 LCP"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | columnScript": {
+    "message": "Skript"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | columnWastedBytes": {
+    "message": "Bo\u015fa ged\u0259n baytlar"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | description": {
+    "message": "Polifil v\u0259 transformasiyalar k\u00f6hn\u0259 brauzerl\u0259r\u0259 yeni JavaScript funksiyalar\u0131ndan istifad\u0259 etm\u0259y\u0259 imkan verir. Ancaq m\u00fcasir brauzerl\u0259r \u00fc\u00e7\u00fcn bir \u00e7oxu laz\u0131m deyil. K\u00f6hn\u0259 brauzerl\u0259ri d\u0259st\u0259kl\u0259m\u0259li olub-olmad\u0131\u011f\u0131n\u0131z\u0131 bilmirsinizs\u0259, JavaScript qurma prosesini [Baseline](https://web.dev/articles/baseline-and-polyfills) x\u00fcsusiyy\u0259tl\u0259rini \u00e7evirm\u0259y\u0259c\u0259k \u015f\u0259kild\u0259 d\u0259yi\u015fin. [Niy\u0259 \u0259ks\u0259r saytlar\u0131n ES6+ kodunu \u00e7evirm\u0259d\u0259n yerl\u0259\u015fdir\u0259 bildiyini \u00f6yr\u0259nin](https://philipwalton.com/articles/the-state-of-es5-on-the-web/)"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | title": {
+    "message": "K\u00f6hn\u0259 JavaScript"
+  },
+  "models/trace/insights/ModernHTTP.ts | description": {
+    "message": "HTTP/2 HTTP/2 v\u0259 HTTP/3 HTTP/1.1 \u0259sas\u0131nda multipleksl\u0259\u015fdirm\u0259 kimi bir \u00e7ox \u00fcst\u00fcnl\u00fckl\u0259r t\u0259klif edir. [M\u00fcasir HTTP-d\u0259n istifad\u0259 haqq\u0131nda \u0259trafl\u0131 m\u0259lumat \u0259ld\u0259 edin](https://developer.chrome.com/docs/lighthouse/best-practices/uses-http2/)."
+  },
+  "models/trace/insights/ModernHTTP.ts | noOldProtocolRequests": {
+    "message": "He\u00e7 bir sor\u011fu HTTP/1.1 istifad\u0259 etm\u0259yib"
+  },
+  "models/trace/insights/ModernHTTP.ts | protocol": {
+    "message": "Protokol"
+  },
+  "models/trace/insights/ModernHTTP.ts | request": {
+    "message": "Sor\u011fu"
+  },
+  "models/trace/insights/ModernHTTP.ts | title": {
+    "message": "M\u00fcasir HTTP"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | description": {
+    "message": "Z\u0259ncirl\u0259rin uzunlu\u011funu azaltmaqla, resurslar\u0131n endirm\u0259 \u00f6l\u00e7\u00fcs\u00fcn\u00fc azaltmaqla v\u0259 ya s\u0259hif\u0259 y\u00fck\u00fcn\u00fc yax\u015f\u0131la\u015fd\u0131rmaq \u00fc\u00e7\u00fcn laz\u0131ms\u0131z resurslar\u0131n endirilm\u0259sini t\u0259xir\u0259 salmaqla [kritik sor\u011fular\u0131 z\u0259ncirl\u0259m\u0259kd\u0259n \u00e7\u0259kinin](https://developer.chrome.com/docs/lighthouse/performance/critical-request-chains)."
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | maxCriticalPathLatency": {
+    "message": "Maksimum kritik yol gecikm\u0259si:"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | noNetworkDependencyTree": {
+    "message": "\u015e\u0259b\u0259k\u0259 as\u0131l\u0131l\u0131qlar\u0131 he\u00e7 bir vizualizasiya tap\u015f\u0131r\u0131\u011f\u0131na t\u0259sir etm\u0259yib"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | title": {
+    "message": "\u015e\u0259b\u0259k\u0259 as\u0131l\u0131l\u0131\u011f\u0131 strukturu"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | warningDescription": {
+    "message": "Z\u0259ncirl\u0259rin uzunlu\u011funu azaltmaqla, resurslar\u0131n endirilm\u0259 \u00f6l\u00e7\u00fcs\u00fcn\u00fc azaltmaqla v\u0259 ya s\u0259hif\u0259 y\u00fck\u00fcn\u00fc yax\u015f\u0131la\u015fd\u0131rmaq \u00fc\u00e7\u00fcn laz\u0131ms\u0131z resurslar\u0131n endirilm\u0259sini t\u0259xir\u0259 salmaqla kritik sor\u011fular\u0131 z\u0259ncir hal\u0131nda t\u0259qdim etm\u0259kd\u0259n \u00e7\u0259kinin."
+  },
+  "models/trace/insights/RenderBlocking.ts | description": {
+    "message": "Sor\u011fular s\u0259hif\u0259nin ilkin vizualizasiyas\u0131n\u0131 bloklay\u0131r, bu da LCP-ni gecikdir\u0259 bil\u0259r. [T\u0259xir\u0259 sal\u0131nma v\u0259 ya aktivl\u0259\u015fdirm\u0259](https://web.dev/learn/performance/understanding-the-critical-path#render-blocking_resources/) bu \u015f\u0259b\u0259k\u0259 sor\u011fular\u0131n\u0131 kritik yoldan k\u0259narla\u015fd\u0131ra bil\u0259r."
+  },
+  "models/trace/insights/RenderBlocking.ts | duration": {
+    "message": "M\u00fcdd\u0259t"
+  },
+  "models/trace/insights/RenderBlocking.ts | noRenderBlocking": {
+    "message": "Bu naviqasiya \u00fc\u00e7\u00fcn vizualizasiya bloklama sor\u011fusu yoxdur"
+  },
+  "models/trace/insights/RenderBlocking.ts | renderBlockingRequest": {
+    "message": "Sor\u011fu"
+  },
+  "models/trace/insights/RenderBlocking.ts | title": {
+    "message": "Bloklama sor\u011fular\u0131n\u0131 g\u00f6st\u0259rin"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | description": {
+    "message": "Yenid\u0259n hesablama stili x\u0259rcl\u0259ri y\u00fcks\u0259k olaraq qal\u0131rsa, se\u00e7ici optimalla\u015fd\u0131rmas\u0131 onlar\u0131 azalda bil\u0259r. H\u0259m y\u00fcks\u0259k ke\u00e7\u0259n vaxt, h\u0259m d\u0259 y\u00fcks\u0259k asta yol % il\u0259 [se\u00e7icil\u0259rin optimalla\u015fd\u0131r\u0131lmas\u0131](https://developer.chrome.com/docs/devtools/performance/selector-stats). Daha sad\u0259 se\u00e7icil\u0259r, daha az se\u00e7ici, daha ki\u00e7ik DOM v\u0259 daha dayaz DOM uy\u011funla\u015fma x\u0259rcl\u0259rini azaldacaq."
+  },
+  "models/trace/insights/SlowCSSSelector.ts | elapsed": {
+    "message": "Ke\u00e7\u0259n vaxt"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | enableSelectorData": {
+    "message": "CSS se\u00e7ici datas\u0131 tap\u0131lmad\u0131. Performans paneli ayarlar\u0131nda CSS se\u00e7ici statistikas\u0131 aktivl\u0259\u015fdirilm\u0259lidir."
+  },
+  "models/trace/insights/SlowCSSSelector.ts | matchAttempts": {
+    "message": "Uy\u011funluq c\u0259hdl\u0259ri"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | matchCount": {
+    "message": "Uy\u011funluq say\u0131"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | title": {
+    "message": "CSS Se\u00e7ici x\u0259rcl\u0259ri"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | topSelectors": {
+    "message": "\u018fn yax\u015f\u0131 se\u00e7icil\u0259r"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | total": {
+    "message": "\u00dcmumi"
+  },
+  "models/trace/insights/ThirdParties.ts | columnMainThreadTime": {
+    "message": "\u018fsas m\u00f6vzu m\u00fcdd\u0259ti"
+  },
+  "models/trace/insights/ThirdParties.ts | columnThirdParty": {
+    "message": "3-c\u00fc t\u0259r\u0259f"
+  },
+  "models/trace/insights/ThirdParties.ts | columnTransferSize": {
+    "message": "\u00d6t\u00fcr\u00fclm\u0259 \u00f6l\u00e7\u00fcs\u00fc"
+  },
+  "models/trace/insights/ThirdParties.ts | description": {
+    "message": "3-c\u00fc t\u0259r\u0259f kod y\u00fckl\u0259nm\u0259 performans\u0131na \u0259h\u0259miyy\u0259tli d\u0259r\u0259c\u0259d\u0259 t\u0259sir g\u00f6st\u0259r\u0259 bil\u0259r. S\u0259hif\u0259nin kontentini prioritet etm\u0259k \u00fc\u00e7\u00fcn [3-c\u00fc t\u0259r\u0259f kodunun y\u00fckl\u0259nm\u0259sini azald\u0131n v\u0259 t\u0259xir\u0259 sal\u0131n](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/loading-third-party-javascript/)."
+  },
+  "models/trace/insights/ThirdParties.ts | noThirdParties": {
+    "message": "\u00dc\u00e7\u00fcnc\u00fc t\u0259r\u0259f a\u015fkarlanmad\u0131"
+  },
+  "models/trace/insights/ThirdParties.ts | title": {
+    "message": "3-c\u00fc t\u0259r\u0259fl\u0259r"
+  },
+  "models/trace/insights/Viewport.ts | description": {
+    "message": "Bax\u0131\u015f portu mobil \u00fc\u00e7\u00fcn optimalla\u015fd\u0131r\u0131lmay\u0131bsa, toxunma interaksiyas\u0131 [300\u00a0ms-\u0259 q\u0259d\u0259r gecik\u0259 bil\u0259r](https://developer.chrome.com/blog/300ms-tap-delay-gone-away/)."
+  },
+  "models/trace/insights/Viewport.ts | title": {
+    "message": "Mobil \u00fc\u00e7\u00fcn bax\u0131\u015f portunu optimalla\u015fd\u0131r\u0131n"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | HTTPMethodNotGET": {
+    "message": "Yaln\u0131z GET sor\u011fusu il\u0259 y\u00fckl\u0259nmi\u015f s\u0259hif\u0259l\u0259r geri/ir\u0259li ke\u015f \u00fc\u00e7\u00fcn uy\u011fundur."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | HTTPStatusNotOK": {
+    "message": "Yaln\u0131z status kodu 2XX olan s\u0259hif\u0259l\u0259r ke\u015fl\u0259n\u0259 bil\u0259r."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | JavaScriptExecution": {
+    "message": "Chrome ke\u015fd\u0259 olark\u0259n JavaScript icra etm\u0259k c\u0259hdi a\u015fkarlay\u0131b."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | appBanner": {
+    "message": "AppBanner t\u0259l\u0259b ed\u0259n s\u0259hif\u0259l\u0259r haz\u0131rda geri/ir\u0259li ke\u015f \u00fc\u00e7\u00fcn uy\u011fun deyil."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabled": {
+    "message": "Geri/ir\u0259li ke\u015f i\u015far\u0259l\u0259r vasit\u0259sil\u0259 deaktiv edilib. Bu cihazda lokal olaraq aktiv etm\u0259k \u00fc\u00e7\u00fcn chrome://flags/#back-forward-cache \u00fcnvan\u0131na ke\u00e7in."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledByCommandLine": {
+    "message": "Geri/ir\u0259li ke\u015f \u0259mr s\u0259tri vasit\u0259sil\u0259 deaktiv edilib."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledByLowMemory": {
+    "message": "Yadda\u015fda kifay\u0259t q\u0259d\u0259r yer olmad\u0131\u011f\u0131na g\u00f6r\u0259 geri/ir\u0259li ke\u015f deaktiv edilib."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledForDelegate": {
+    "message": "Geri/ir\u0259li ke\u015f n\u00fcmay\u0259nd\u0259 t\u0259r\u0259find\u0259n d\u0259st\u0259kl\u0259nmir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledForPrerender": {
+    "message": "Geri/ir\u0259li ke\u015f \u00f6n vizualla\u015fd\u0131r\u0131c\u0131 vasit\u0259sil\u0259 deaktiv edilib."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | broadcastChannel": {
+    "message": "S\u0259hif\u0259d\u0259 qeydiyyatdan ke\u00e7mi\u015f dinl\u0259yicil\u0259ri olan BroadcastChannel n\u00fcmun\u0259si oldu\u011funa g\u00f6r\u0259 onu ke\u015fl\u0259m\u0259k m\u00fcmk\u00fcn deyil."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheControlNoStore": {
+    "message": "Saxlanmayan ke\u015f\u0259 n\u0259zar\u0259t ba\u015fl\u0131\u011f\u0131 olan s\u0259hif\u0259l\u0259r geri/ir\u0259li ke\u015f\u0259 daxil ola bilmir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheFlushed": {
+    "message": "Ke\u015f q\u0259sd\u0259n t\u0259mizl\u0259nib."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheLimit": {
+    "message": "Dig\u0259r s\u0259hif\u0259nin ke\u015fl\u0259nm\u0259sin\u0259 icaz\u0259 verm\u0259k \u00fc\u00e7\u00fcn s\u0259hif\u0259 ke\u015fd\u0259n \u00e7\u0131xar\u0131l\u0131b."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | containsPlugins": {
+    "message": "Qo\u015fmalar\u0131 olan s\u0259hif\u0259l\u0259r haz\u0131rda geri/ir\u0259li ke\u015f \u00fc\u00e7\u00fcn uy\u011fun deyil."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentDiscarded": {
+    "message": "T\u0259yin edilm\u0259yib"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentFileChooser": {
+    "message": "FileChooser API istifad\u0259 ed\u0259n s\u0259hif\u0259l\u0259r haz\u0131rda geri/ir\u0259li ke\u015f \u00fc\u00e7\u00fcn uy\u011fun deyil."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentFileSystemAccess": {
+    "message": "File System Access API istifad\u0259 ed\u0259n s\u0259hif\u0259l\u0259r geri/ir\u0259li ke\u015f \u00fc\u00e7\u00fcn uy\u011fun deyil."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaDevicesDispatcherHost": {
+    "message": "Media Cihaz Dispet\u00e7erind\u0259n istifad\u0259 ed\u0259n s\u0259hif\u0259l\u0259r geri/ir\u0259li ke\u015f \u00fc\u00e7\u00fcn uy\u011fun deyil."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaPlay": {
+    "message": "Uzaqla\u015fd\u0131qda media pleyer oxudulurdu."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaSession": {
+    "message": "MediaSession API istifad\u0259 ed\u0259n v\u0259 oxutma v\u0259ziyy\u0259ti ayarlayan s\u0259hif\u0259l\u0259r geri/ir\u0259li ke\u015f \u00fc\u00e7\u00fcn uy\u011fun deyil."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaSessionService": {
+    "message": "MediaSession API istifad\u0259 ed\u0259n v\u0259 \u0259m\u0259liyyat idar\u0259\u00e7il\u0259ri ayarlayan s\u0259hif\u0259l\u0259r geri/ir\u0259li ke\u015f \u00fc\u00e7\u00fcn uy\u011fun deyil."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentScreenReader": {
+    "message": "Ekran oxuyucusuna g\u00f6r\u0259 geri/ir\u0259li ke\u015f deaktiv edilib."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentSecurityHandler": {
+    "message": "SecurityHandler istifad\u0259 ed\u0259n s\u0259hif\u0259l\u0259r geri/ir\u0259li ke\u015f \u00fc\u00e7\u00fcn uy\u011fun deyil."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentSerial": {
+    "message": "Serial API istifad\u0259 ed\u0259n s\u0259hif\u0259l\u0259r haz\u0131rda geri/ir\u0259li ke\u015f \u00fc\u00e7\u00fcn uy\u011fun deyil."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebAuthenticationAPI": {
+    "message": "WebAuthetication API istifad\u0259 ed\u0259n s\u0259hif\u0259l\u0259r haz\u0131rda geri/ir\u0259li ke\u015f \u00fc\u00e7\u00fcn uy\u011fun deyil."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebBluetooth": {
+    "message": "WebBluetooth API istifad\u0259 ed\u0259n s\u0259hif\u0259l\u0259r haz\u0131rda geri/ir\u0259li ke\u015f \u00fc\u00e7\u00fcn uy\u011fun deyil."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebUSB": {
+    "message": "WebUSB API istifad\u0259 ed\u0259n s\u0259hif\u0259l\u0259r haz\u0131rda geri/ir\u0259li ke\u015f \u00fc\u00e7\u00fcn uy\u011fun deyil."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cookieDisabled": {
+    "message": "Kukil\u0259r Cache-Control: no-store istifad\u0259 ed\u0259n s\u0259hif\u0259d\u0259 deaktiv edildiyi \u00fc\u00e7\u00fcn geri/ir\u0259li ke\u015fi deaktiv edilib."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | dedicatedWorkerOrWorklet": {
+    "message": "X\u00fcsusi i\u015f\u00e7i v\u0259 ya i\u015f d\u0259stind\u0259n istifad\u0259 ed\u0259n s\u0259hif\u0259l\u0259r haz\u0131rda geri/ir\u0259li ke\u015f \u00fc\u00e7\u00fcn uy\u011fun deyil."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | documentLoaded": {
+    "message": "\u00c7\u0131xmadan \u0259vv\u0259l s\u0259n\u0259d y\u00fckl\u0259nm\u0259si bitm\u0259yib."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderAppBannerManager": {
+    "message": "Uzaqla\u015fark\u0259n T\u0259tbiq Banneri m\u00f6vcud idi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderChromePasswordManagerClientBindCredentialManager": {
+    "message": "Uzaqla\u015fark\u0259n Chrome Parol Meneceri aktiv idi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderDomDistillerSelfDeletingRequestDelegate": {
+    "message": "Uzaqla\u015fark\u0259n DOM emal\u0131 davam edirdi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderDomDistillerViewerSource": {
+    "message": "Uzaqla\u015fark\u0259n DOM Emal\u00e7\u0131 \u0130zl\u0259yicisi aktiv idi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionMessaging": {
+    "message": "Mesajla\u015fma API-dan istifad\u0259 ed\u0259n art\u0131rmalara g\u00f6r\u0259 geri/ir\u0259li ke\u015f deaktiv edilib."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionMessagingForOpenPort": {
+    "message": "Qal\u0131c\u0131 ba\u011flant\u0131s\u0131 olan art\u0131rmalar geri/ir\u0259li ke\u015f\u0259 daxil olmazdan \u0259vv\u0259l ba\u011flant\u0131n\u0131 qapatmal\u0131d\u0131r."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionSentMessageToCachedFrame": {
+    "message": "Qal\u0131c\u0131 ba\u011flant\u0131s\u0131 olan art\u0131rmalar geri/ir\u0259li ke\u015fd\u0259 \u00e7\u0259r\u00e7iv\u0259l\u0259r\u0259 mesaj g\u00f6nd\u0259rm\u0259y\u0259 c\u0259hd edib."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensions": {
+    "message": "Art\u0131rmalara g\u00f6r\u0259 geri/ir\u0259li ke\u015f deaktiv edilib."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderModalDialog": {
+    "message": "Uzaqla\u015fark\u0259n s\u0259hif\u0259 \u00fc\u00e7\u00fcn forman\u0131n yenid\u0259n t\u0259qdim edilm\u0259si v\u0259 ya http parol dialoqu kimi modal dialoq g\u00f6st\u0259rilirdi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderOfflinePage": {
+    "message": "Uzaqla\u015fark\u0259n oflayn s\u0259hif\u0259 g\u00f6st\u0259rilirdi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderOomInterventionTabHelper": {
+    "message": "Uzaqla\u015fark\u0259n Yadda\u015f\u0131n Bitm\u0259sin\u0259 M\u00fcdaxil\u0259 paneli m\u00f6vcud idi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderPermissionRequestManager": {
+    "message": "Uzaqla\u015fark\u0259n icaz\u0259 sor\u011fular\u0131 var idi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderPopupBlockerTabHelper": {
+    "message": "Uzaqla\u015fark\u0259n popap bloklay\u0131c\u0131s\u0131 aktiv idi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderSafeBrowsingThreatDetails": {
+    "message": "Uzaqla\u015fark\u0259n T\u0259hl\u00fck\u0259siz Bax\u0131\u015f detallar\u0131 g\u00f6st\u0259rilirdi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderSafeBrowsingTriggeredPopupBlocker": {
+    "message": "T\u0259hl\u00fck\u0259siz Bax\u0131\u015f bu s\u0259hif\u0259d\u0259 sui-istifad\u0259 m\u0259qs\u0259di oldu\u011funu hesab edib v\u0259 popap\u0131 bloklay\u0131b."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | enteredBackForwardCacheBeforeServiceWorkerHostAdded": {
+    "message": "S\u0259hif\u0259 geri/ir\u0259li ke\u015fd\u0259 olark\u0259n xidm\u0259t i\u015f\u00e7isi aktivl\u0259\u015fdirilib."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | errorDocument": {
+    "message": "S\u0259n\u0259d x\u0259tas\u0131na g\u00f6r\u0259 geri/ir\u0259li ke\u015f deaktiv edilib."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | fencedFramesEmbedder": {
+    "message": "FencedFrames istifad\u0259 ed\u0259n s\u0259hif\u0259l\u0259r bfcache-d\u0259 saxlan\u0131la bilm\u0259z."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | foregroundCacheLimit": {
+    "message": "Dig\u0259r s\u0259hif\u0259nin ke\u015fl\u0259nm\u0259sin\u0259 icaz\u0259 verm\u0259k \u00fc\u00e7\u00fcn s\u0259hif\u0259 ke\u015fd\u0259n \u00e7\u0131xar\u0131l\u0131b."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | grantedMediaStreamAccess": {
+    "message": "Media yay\u0131m\u0131na giri\u015f icaz\u0259si vermi\u015f s\u0259hif\u0259l\u0259r haz\u0131rda geri/ir\u0259li ke\u015f \u00fc\u00e7\u00fcn uy\u011fun deyil."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | haveInnerContents": {
+    "message": "M\u00fc\u0259yy\u0259n n\u00f6v daxil edilmi\u015f kontenti olan s\u0259hif\u0259l\u0259r (m\u0259s\u0259l\u0259n, PDF-l\u0259r) haz\u0131rda geri/ir\u0259li ke\u015f \u00fc\u00e7\u00fcn uy\u011fun deyil."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | idleManager": {
+    "message": "IdleManager funksiyas\u0131ndan istifad\u0259 ed\u0259n s\u0259hif\u0259l\u0259r haz\u0131rda geri/ir\u0259li ke\u015f \u00fc\u00e7\u00fcn uy\u011fun deyil."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | indexedDBConnection": {
+    "message": "A\u00e7\u0131q IndexedDB ba\u011flant\u0131s\u0131 olan s\u0259hif\u0259l\u0259r haz\u0131rda geri/ir\u0259li ke\u015f \u00fc\u00e7\u00fcn uy\u011fun deyil."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | indexedDBEvent": {
+    "message": "\u0130ndeksl\u0259nmi\u015f DB t\u0259dbirin\u0259 g\u00f6r\u0259 geri/ir\u0259li ke\u015f deaktiv edilib."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | ineligibleAPI": {
+    "message": "Uy\u011fun olmayan API'lar istifad\u0259 edilib."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | injectedJavascript": {
+    "message": "JavaScript se\u00e7iminin art\u0131rmalarla daxil edildiyi s\u0259hif\u0259l\u0259r haz\u0131rda geri/ir\u0259li ke\u015f \u00fc\u00e7\u00fcn uy\u011fun deyil."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | injectedStyleSheet": {
+    "message": "StyleSheet se\u00e7iminin art\u0131rmalarla daxil edildiyi s\u0259hif\u0259l\u0259r haz\u0131rda geri/ir\u0259li ke\u015f \u00fc\u00e7\u00fcn uy\u011fun deyil."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | internalError": {
+    "message": "Daxili x\u0259ta."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | jsNetworkRequestReceivedCacheControlNoStoreResource": {
+    "message": "B\u0259zi JavaScript \u015f\u0259b\u0259k\u0259 sor\u011fular\u0131 Cache-Control: no-store ba\u015fl\u0131ql\u0131 resurs q\u0259bul etdiyi \u00fc\u00e7\u00fcn geri/ir\u0259li ke\u015fi deaktiv edilib."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | keepaliveRequest": {
+    "message": "Aktivlik sor\u011fusuna g\u00f6r\u0259 geri/ir\u0259li ke\u015f deaktiv edilib."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | keyboardLock": {
+    "message": "Klaviatura kilidind\u0259n istifad\u0259 ed\u0259n s\u0259hif\u0259l\u0259r haz\u0131rda geri/ir\u0259li ke\u015f \u00fc\u00e7\u00fcn uy\u011fun deyil."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | loading": {
+    "message": "\u00c7\u0131xmadan \u0259vv\u0259l s\u0259hif\u0259nin y\u00fckl\u0259nm\u0259si bitm\u0259yib."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | mainResourceHasCacheControlNoCache": {
+    "message": "\u018fsas resursunda ke\u015fl\u0259nm\u0259y\u0259n ke\u015f\u0259 n\u0259zar\u0259t funksiyas\u0131 olan s\u0259hif\u0259l\u0259r geri/ir\u0259li ke\u015f\u0259 daxil ola bilmir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | mainResourceHasCacheControlNoStore": {
+    "message": "\u018fsas resursunda saxlanmayan ke\u015f\u0259 n\u0259zar\u0259t funksiyas\u0131 olan s\u0259hif\u0259l\u0259r geri/ir\u0259li ke\u015f\u0259 daxil ola bilmir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | navigationCancelledWhileRestoring": {
+    "message": "S\u0259hif\u0259 geri/ir\u0259li ke\u015fd\u0259n b\u0259rpa edilm\u0259zd\u0259n \u0259vv\u0259l naviqasiya l\u0259\u011fv edilib."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkExceedsBufferLimit": {
+    "message": "Aktiv \u015f\u0259b\u0259k\u0259 ba\u011flant\u0131s\u0131 h\u0259dd\u0259n art\u0131q data q\u0259bul etdiyin\u0259 g\u00f6r\u0259 s\u0259hif\u0259 ke\u015fd\u0259n \u00e7\u0131xar\u0131l\u0131b. Chrome s\u0259hif\u0259nin ke\u015fl\u0259n\u0259rk\u0259n q\u0259bul ed\u0259 bil\u0259c\u0259yi data miqdar\u0131n\u0131 m\u0259hdudla\u015fd\u0131r\u0131r."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestDatapipeDrainedAsBytesConsumer": {
+    "message": "U\u00e7u\u015fdaxili axtar\u0131\u015f() v\u0259 ya XHR funksiyas\u0131 olan s\u0259hif\u0259l\u0259r haz\u0131rda geri/ir\u0259li ke\u015f \u00fc\u00e7\u00fcn uy\u011fun deyil."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestRedirected": {
+    "message": "Aktiv \u015f\u0259b\u0259k\u0259 sor\u011fusu y\u00f6nl\u0259ndirildiyin\u0259 g\u00f6r\u0259 s\u0259hif\u0259 geri/ir\u0259li ke\u015fd\u0259n \u00e7\u0131xar\u0131l\u0131b."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestTimeout": {
+    "message": "\u015e\u0259b\u0259k\u0259 ba\u011flant\u0131s\u0131 \u00e7ox uzun m\u00fcdd\u0259t a\u00e7\u0131q oldu\u011fu \u00fc\u00e7\u00fcn s\u0259hif\u0259 ke\u015fd\u0259n \u00e7\u0131xar\u0131l\u0131b. Chrome s\u0259hif\u0259nin ke\u015fl\u0259n\u0259rk\u0259n data q\u0259bul ed\u0259 bil\u0259c\u0259yi vaxt miqdar\u0131n\u0131 m\u0259hdudla\u015fd\u0131r\u0131r."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | noResponseHead": {
+    "message": "Etibarl\u0131 cavab ba\u015fl\u0131\u011f\u0131 olmayan s\u0259hif\u0259l\u0259r geri/ir\u0259li ke\u015f\u0259 daxil ola bilmir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | notMainFrame": {
+    "message": "Naviqasiya \u0259sas \u00e7\u0259r\u00e7iv\u0259d\u0259n ba\u015fqa bir \u00e7\u0259r\u00e7iv\u0259d\u0259 ba\u015f verib."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingIndexedDBTransaction": {
+    "message": "Davam ed\u0259n indeksl\u0259\u015fdirilmi\u015f DB \u0259m\u0259liyyatlar\u0131 olan s\u0259hif\u0259l\u0259r haz\u0131rda geri/ir\u0259li ke\u015f \u00fc\u00e7\u00fcn uy\u011fun deyil."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestDirectSocket": {
+    "message": "U\u00e7u\u015fdaxili \u015f\u0259b\u0259k\u0259 t\u0259l\u0259b ed\u0259n s\u0259hif\u0259l\u0259r haz\u0131rda geri/ir\u0259li ke\u015f \u00fc\u00e7\u00fcn uy\u011fun deyil."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestFetch": {
+    "message": "U\u00e7u\u015fdaxili axtar\u0131\u015f \u015f\u0259b\u0259k\u0259si t\u0259l\u0259b ed\u0259n s\u0259hif\u0259l\u0259r haz\u0131rda geri/ir\u0259li ke\u015f \u00fc\u00e7\u00fcn uy\u011fun deyil."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestOthers": {
+    "message": "U\u00e7u\u015fdaxili \u015f\u0259b\u0259k\u0259 t\u0259l\u0259b ed\u0259n s\u0259hif\u0259l\u0259r haz\u0131rda geri/ir\u0259li ke\u015f \u00fc\u00e7\u00fcn uy\u011fun deyil."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestXHR": {
+    "message": "U\u00e7u\u015fdaxili XHR \u015f\u0259b\u0259k\u0259si t\u0259l\u0259b ed\u0259n s\u0259hif\u0259l\u0259r haz\u0131rda geri/ir\u0259li ke\u015f \u00fc\u00e7\u00fcn uy\u011fun deyil."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | paymentManager": {
+    "message": "PaymentManager funksiyas\u0131ndan istifad\u0259 ed\u0259n s\u0259hif\u0259l\u0259r haz\u0131rda geri/ir\u0259li ke\u015f \u00fc\u00e7\u00fcn uy\u011fun deyil."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | pictureInPicture": {
+    "message": "\u015e\u0259kild\u0259 \u015f\u0259kil funksiyas\u0131ndan istifad\u0259 ed\u0259n s\u0259hif\u0259l\u0259r haz\u0131rda geri/ir\u0259li ke\u015f \u00fc\u00e7\u00fcn uy\u011fun deyil."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | printing": {
+    "message": "\u00c7ap UI funksiyas\u0131ndan istifad\u0259 ed\u0259n s\u0259hif\u0259l\u0259r haz\u0131rda geri/ir\u0259li ke\u015f \u00fc\u00e7\u00fcn uy\u011fun deyil."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | relatedActiveContentsExist": {
+    "message": "S\u0259hif\u0259 'window.open()' istifad\u0259 edil\u0259r\u0259k a\u00e7\u0131l\u0131b v\u0259 ba\u015fqa tab ona istinad edir v\u0259 ya s\u0259hif\u0259 bir p\u0259nc\u0259r\u0259 a\u00e7\u0131b."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | rendererProcessCrashed": {
+    "message": "Geri/ir\u0259li ke\u015fd\u0259ki s\u0259hif\u0259 \u00fc\u00e7\u00fcn vizualizasiya prosesind\u0259 x\u0259ta oldu."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | rendererProcessKilled": {
+    "message": "Geri/ir\u0259li ke\u015fd\u0259ki s\u0259hif\u0259 \u00fc\u00e7\u00fcn vizualizasiya prosesi dayand\u0131r\u0131l\u0131b."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedAudioCapturePermission": {
+    "message": "Audio \u00e7\u0259km\u0259k \u00fc\u00e7\u00fcn icaz\u0259 t\u0259l\u0259b ed\u0259n s\u0259hif\u0259l\u0259r haz\u0131rda geri/ir\u0259li ke\u015f \u00fc\u00e7\u00fcn uy\u011fun deyil."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedBackForwardCacheBlockedSensors": {
+    "message": "Sensor icaz\u0259l\u0259ri t\u0259l\u0259b ed\u0259n s\u0259hif\u0259l\u0259r haz\u0131rda geri/ir\u0259li ke\u015f \u00fc\u00e7\u00fcn uy\u011fun deyil."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedBackgroundWorkPermission": {
+    "message": "Arxa fon sinxronizasiyas\u0131 v\u0259 ya \u0259ld\u0259 etm\u0259 icaz\u0259l\u0259ri t\u0259l\u0259b ed\u0259n s\u0259hif\u0259l\u0259r haz\u0131rda geri/ir\u0259li ke\u015f \u00fc\u00e7\u00fcn uy\u011fun deyil."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedMIDIPermission": {
+    "message": "MIDI icaz\u0259l\u0259ri t\u0259l\u0259b ed\u0259n s\u0259hif\u0259l\u0259r haz\u0131rda geri/ir\u0259li ke\u015f \u00fc\u00e7\u00fcn uy\u011fun deyil."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedNotificationsPermission": {
+    "message": "Bildiri\u015f icaz\u0259l\u0259ri t\u0259l\u0259b ed\u0259n s\u0259hif\u0259l\u0259r haz\u0131rda geri/ir\u0259li ke\u015f \u00fc\u00e7\u00fcn uy\u011fun deyil."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedStorageAccessGrant": {
+    "message": "Yadda\u015fa giri\u015f t\u0259l\u0259b ed\u0259n s\u0259hif\u0259l\u0259r haz\u0131rda geri/ir\u0259li ke\u015f \u00fc\u00e7\u00fcn uy\u011fun deyil."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedVideoCapturePermission": {
+    "message": "Video \u00e7\u0259km\u0259k \u00fc\u00e7\u00fcn icaz\u0259 t\u0259l\u0259b ed\u0259n s\u0259hif\u0259l\u0259r haz\u0131rda geri/ir\u0259li ke\u015f \u00fc\u00e7\u00fcn uy\u011fun deyil."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | schemeNotHTTPOrHTTPS": {
+    "message": "Yaln\u0131z URL sxemi HTTP / HTTPS olan s\u0259hif\u0259l\u0259r ke\u015fl\u0259n\u0259 bil\u0259r."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerClaim": {
+    "message": "S\u0259hif\u0259 geri/ir\u0259li ke\u015fd\u0259 olark\u0259n xidm\u0259t i\u015f\u00e7isi t\u0259r\u0259find\u0259n t\u0259l\u0259b edilib."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerPostMessage": {
+    "message": "Xidm\u0259t i\u015f\u00e7isi geri/ir\u0259li ke\u015fd\u0259 olark\u0259n s\u0259hif\u0259y\u0259 MessageEvent g\u00f6nd\u0259rm\u0259y\u0259 c\u0259hd edib."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerUnregistration": {
+    "message": "S\u0259hif\u0259 geri/ir\u0259li ke\u015fd\u0259 olark\u0259n ServiceWorker qeydiyyatdan \u00e7\u0131xar\u0131l\u0131b."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerVersionActivation": {
+    "message": "Xidm\u0259t i\u015f\u00e7isinin aktiv edilm\u0259sin\u0259 g\u00f6r\u0259 s\u0259hif\u0259 geri/ir\u0259li ke\u015fd\u0259n \u00e7\u0131xar\u0131l\u0131b."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | sessionRestored": {
+    "message": "Chrome yenid\u0259n ba\u015flad\u0131l\u0131b v\u0259 geri/ir\u0259li ke\u015f daxiletm\u0259l\u0259rini t\u0259mizl\u0259yib."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | sharedWorker": {
+    "message": "SharedWorker funksiyas\u0131ndan istifad\u0259 ed\u0259n s\u0259hif\u0259l\u0259r haz\u0131rda geri/ir\u0259li ke\u015f \u00fc\u00e7\u00fcn uy\u011fun deyil."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | speechRecognizer": {
+    "message": "SpeechRecognizer funksiyas\u0131ndan istifad\u0259 ed\u0259n s\u0259hif\u0259l\u0259r haz\u0131rda geri/ir\u0259li ke\u015f \u00fc\u00e7\u00fcn uy\u011fun deyil."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | speechSynthesis": {
+    "message": "SpeechSynthesis funksiyas\u0131ndan istifad\u0259 ed\u0259n s\u0259hif\u0259l\u0259r haz\u0131rda geri/ir\u0259li ke\u015f \u00fc\u00e7\u00fcn uy\u011fun deyil."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subframeIsNavigating": {
+    "message": "S\u0259hif\u0259d\u0259ki iFrame tamamlanmam\u0131\u015f naviqasiyaya ba\u015flay\u0131b."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subresourceHasCacheControlNoCache": {
+    "message": "Alt resursunda ke\u015fl\u0259nm\u0259y\u0259n ke\u015f\u0259 n\u0259zar\u0259t funksiyas\u0131 olan s\u0259hif\u0259l\u0259r geri/ir\u0259li ke\u015f\u0259 daxil ola bilmir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subresourceHasCacheControlNoStore": {
+    "message": "Alt resursunda saxlanmayan ke\u015f\u0259 n\u0259zar\u0259t funksiyas\u0131 olan s\u0259hif\u0259l\u0259r geri/ir\u0259li ke\u015f\u0259 daxil ola bilmir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | timeout": {
+    "message": "S\u0259hif\u0259 geri/ir\u0259li ke\u015fd\u0259 maksimal vaxt\u0131 ke\u00e7ib v\u0259 vaxt\u0131 bitib."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | timeoutPuttingInCache": {
+    "message": "S\u0259hif\u0259 geri/ir\u0259li ke\u015f\u0259 daxil olark\u0259n vaxt\u0131 bitib (\u00e7ox g\u00fcman ki, uzun \u00e7\u0259k\u0259n s\u0259hif\u0259 gizl\u0259tm\u0259 emal\u00e7\u0131lar\u0131 s\u0259b\u0259bind\u0259n)."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | unloadHandlerExistsInMainFrame": {
+    "message": "S\u0259hif\u0259nin \u0259sas \u00e7\u0259r\u00e7iv\u0259d\u0259 bo\u015faltma emal\u00e7\u0131s\u0131 var."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | unloadHandlerExistsInSubFrame": {
+    "message": "S\u0259hif\u0259nin alt \u00e7\u0259r\u00e7iv\u0259sind\u0259 bo\u015faltma emal\u00e7\u0131s\u0131 var."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | userAgentOverrideDiffers": {
+    "message": "Brauzer istifad\u0259\u00e7i agentini \u0259v\u0259zl\u0259m\u0259 ba\u015fl\u0131\u011f\u0131n\u0131 d\u0259yi\u015fib."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | wasGrantedMediaAccess": {
+    "message": "Video v\u0259 ya audio yazmaq icaz\u0259si ver\u0259n s\u0259hif\u0259l\u0259r haz\u0131rda geri/ir\u0259li ke\u015f \u00fc\u00e7\u00fcn uy\u011fun deyil."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webDatabase": {
+    "message": "WebDatabase funksiyas\u0131ndan istifad\u0259 ed\u0259n s\u0259hif\u0259l\u0259r haz\u0131rda geri/ir\u0259li ke\u015f \u00fc\u00e7\u00fcn uy\u011fun deyil."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webHID": {
+    "message": "WebHID funksiyas\u0131ndan istifad\u0259 ed\u0259n s\u0259hif\u0259l\u0259r haz\u0131rda geri/ir\u0259li ke\u015f \u00fc\u00e7\u00fcn uy\u011fun deyil."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webLocks": {
+    "message": "WebLocks funksiyas\u0131ndan istifad\u0259 ed\u0259n s\u0259hif\u0259l\u0259r haz\u0131rda geri/ir\u0259li ke\u015f \u00fc\u00e7\u00fcn uy\u011fun deyil."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webNfc": {
+    "message": "WebNfc istifad\u0259 ed\u0259n s\u0259hif\u0259l\u0259r haz\u0131rda geri/ir\u0259li ke\u015f \u00fc\u00e7\u00fcn uy\u011fun deyil."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webOTPService": {
+    "message": "WebOTPService istifad\u0259 ed\u0259n s\u0259hif\u0259l\u0259r haz\u0131rda geri/ir\u0259li ke\u015f \u00fc\u00e7\u00fcn uy\u011fun deyil."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webRTC": {
+    "message": "WebRTC funksiyas\u0131 olan s\u0259hif\u0259l\u0259r geri/ir\u0259li ke\u015f\u0259 daxil ola bilmir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webRTCSticky": {
+    "message": "WebRTC istifad\u0259 edildiyi \u00fc\u00e7\u00fcn geri/ir\u0259li ke\u015fi deaktiv edilib."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webShare": {
+    "message": "WebShare istifad\u0259 ed\u0259n s\u0259hif\u0259l\u0259r haz\u0131rda geri/ir\u0259li ke\u015f \u00fc\u00e7\u00fcn uy\u011fun deyil."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webSocket": {
+    "message": "WebSocket funksiyas\u0131 olan s\u0259hif\u0259l\u0259r geri/ir\u0259li ke\u015f\u0259 daxil ola bilmir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webSocketSticky": {
+    "message": "WebSocket istifad\u0259 edildiyi \u00fc\u00e7\u00fcn geri/ir\u0259li ke\u015fi deaktiv edilib."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webTransport": {
+    "message": "WebTransport funksiyas\u0131 olan s\u0259hif\u0259l\u0259r geri/ir\u0259li ke\u015f\u0259 daxil ola bilmir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webTransportSticky": {
+    "message": "WebTransport istifad\u0259 edildiyi \u00fc\u00e7\u00fcn geri/ir\u0259li ke\u015fi deaktiv edilib."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webXR": {
+    "message": "WebXR funksiyas\u0131ndan istifad\u0259 ed\u0259n s\u0259hif\u0259l\u0259r haz\u0131rda geri/ir\u0259li ke\u015f \u00fc\u00e7\u00fcn uy\u011fun deyil."
+  }
+}

@@ -9,9 +9,6 @@ import { AsyncIterableUtil } from '../util/AsyncIterableUtil.js';
 const isKnownAttribute = (attribute) => {
     return ['name', 'role'].includes(attribute);
 };
-const normalizeValue = (value) => {
-    return value.replace(/ +/g, ' ').trim();
-};
 /**
  * The selectors consist of an accessible name to query for and optionally
  * further aria attributes on the form `[<attribute>=<value>]`.
@@ -25,15 +22,17 @@ const normalizeValue = (value) => {
  */
 const ATTRIBUTE_REGEXP = /\[\s*(?<attribute>\w+)\s*=\s*(?<quote>"|')(?<value>\\.|.*?(?=\k<quote>))\k<quote>\s*\]/g;
 const parseARIASelector = (selector) => {
+    if (selector.length > 10_000) {
+        throw new Error(`Selector ${selector} is too long`);
+    }
     const queryOptions = {};
     const defaultName = selector.replace(ATTRIBUTE_REGEXP, (_, attribute, __, value) => {
-        attribute = attribute.trim();
         assert(isKnownAttribute(attribute), `Unknown aria attribute "${attribute}" in selector`);
-        queryOptions[attribute] = normalizeValue(value);
+        queryOptions[attribute] = value;
         return '';
     });
     if (defaultName && !queryOptions.name) {
-        queryOptions.name = normalizeValue(defaultName);
+        queryOptions.name = defaultName;
     }
     return queryOptions;
 };

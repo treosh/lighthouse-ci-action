@@ -136,6 +136,7 @@ export function upperBound(array, needle, comparator, left, right) {
  * arr[i] > 5 you would be returned 2 because array[2] = 6.
  *
  * Please note: this presupposes that the array is already ordered.
+ * This function uses a variation of Binary Search.
  */
 function nearestIndex(arr, predicate, searchStart) {
     const searchFromEnd = searchStart === "END" /* NearestSearchStart.END */;

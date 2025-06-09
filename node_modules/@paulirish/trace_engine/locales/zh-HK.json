@@ -1,0 +1,908 @@
+{
+  "generated/Deprecation.ts | AuthorizationCoveredByWildcard": {
+    "message": "CORS Access-Control-Allow-Headers \u8655\u7406\u64cd\u4f5c\u4e2d\u7684\u842c\u7528\u5b57\u5143\u7b26\u865f (*) \u4e0d\u5305\u542b\u6388\u6b0a\u3002"
+  },
+  "generated/Deprecation.ts | CSSSelectorInternalMediaControlsOverlayCastButton": {
+    "message": "\u61c9\u4f7f\u7528 disableRemotePlayback \u5c6c\u6027\u505c\u7528\u9810\u8a2d\u7684\u6295\u653e\u6574\u5408\u529f\u80fd\uff0c\u800c\u975e -internal-media-controls-overlay-cast-button \u9078\u53d6\u5668\u3002"
+  },
+  "generated/Deprecation.ts | CSSValueAppearanceSliderVertical": {
+    "message": "CSS \u5916\u89c0\u503c slider-vertical \u4e26\u672a\u6a19\u6e96\u5316\uff0c\u56e0\u6b64\u5c07\u6703\u79fb\u9664\u3002"
+  },
+  "generated/Deprecation.ts | CanRequestURLHTTPContainingNewline": {
+    "message": "\u7cfb\u7d71\u5c07\u5c01\u9396\u7db2\u5740\u540c\u6642\u5305\u542b\u5df2\u79fb\u9664\u7684\u7a7a\u767d \\(n|r|t) \u5b57\u5143\u548c\u5c0f\u65bc\u5b57\u5143 (<) \u7684\u8cc7\u6e90\u8981\u6c42\u3002\u8acb\u5f9e\u5143\u7d20\u5c6c\u6027\u503c\u7b49\u4f4d\u7f6e\u79fb\u9664\u63db\u884c\u7b26\u865f\uff0c\u4e26\u7de8\u78bc\u5c0f\u65bc\u5b57\u5143\uff0c\u4ee5\u4fbf\u8f09\u5165\u9019\u4e9b\u8cc7\u6e90\u3002"
+  },
+  "generated/Deprecation.ts | CharsetAutoDetectionISO2022JP": {
+    "message": "\u81ea\u52d5\u5075\u6e2c ISO-2022-JP \u5b57\u5143\u8a2d\u5b9a\u7684\u529f\u80fd\u5df2\u6dd8\u6c70\uff0c\u4e26\u5373\u5c07\u505c\u7528\u3002\u8acb\u5728\u300c\u5167\u5bb9\u985e\u578b\u300d\u6a19\u984c\u4e2d\u6216\u4f7f\u7528\u4e2d\u7e7c\u6a19\u7c64\u6307\u660e\u5b57\u5143\u8a2d\u5b9a (https://developer.mozilla.org/en-US/docs/Glossary/Character_encoding)\u3002"
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesConnectionInfo": {
+    "message": "chrome.loadTimes() \u5df2\u6dd8\u6c70\uff0c\u8acb\u6539\u7528\u6a19\u6e96\u5316 API\uff1aNavigation Timing 2\u3002"
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesFirstPaintAfterLoadTime": {
+    "message": "chrome.loadTimes() \u5df2\u6dd8\u6c70\uff0c\u8acb\u6539\u7528\u6a19\u6e96\u5316 API\uff1aPaint Timing\u3002"
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesWasAlternateProtocolAvailable": {
+    "message": "chrome.loadTimes() \u5df2\u6dd8\u6c70\uff0c\u8acb\u6539\u7528\u6a19\u6e96\u5316 API\uff1aNavigation Timing 2 \u4e2d\u7684 nextHopProtocol\u3002"
+  },
+  "generated/Deprecation.ts | CookieWithTruncatingChar": {
+    "message": "\u7cfb\u7d71\u5c07\u6703\u62d2\u7d55\u5305\u542b \\(0|r|n) \u5b57\u5143\u7684 Cookie\uff0c\u800c\u975e\u7e2e\u77ed\u3002"
+  },
+  "generated/Deprecation.ts | CrossOriginAccessBasedOnDocumentDomain": {
+    "message": "\u900f\u904e\u8a2d\u5b9a document.domain \u555f\u7528\u76f8\u540c\u4f86\u6e90\u653f\u7b56\u7684\u529f\u80fd\u5df2\u6dd8\u6c70\uff0c\u4e26\u5c07\u6839\u64da\u9810\u8a2d\u79fb\u9664\u3002\u6b64\u6dd8\u6c70\u8b66\u544a\u662f\u91dd\u5c0d\u900f\u904e\u8a2d\u5b9a document.domain \u4f86\u555f\u7528\u8de8\u4f86\u6e90\u5b58\u53d6\u529f\u80fd\u3002"
+  },
+  "generated/Deprecation.ts | CrossOriginWindowAlert": {
+    "message": "\u5f9e\u8de8\u4f86\u6e90 iframe \u89f8\u767c window.alert \u7684\u529f\u80fd\u5df2\u6dd8\u6c70\uff0c\u4e26\u5c07\u6703\u5728\u65e5\u5f8c\u79fb\u9664\u3002"
+  },
+  "generated/Deprecation.ts | CrossOriginWindowConfirm": {
+    "message": "\u5f9e\u8de8\u4f86\u6e90 iframe \u89f8\u767c window.confirm \u7684\u529f\u80fd\u5df2\u6dd8\u6c70\uff0c\u4e26\u5c07\u6703\u5728\u65e5\u5f8c\u79fb\u9664\u3002"
+  },
+  "generated/Deprecation.ts | DOMMutationEvents": {
+    "message": "DOM \u8b8a\u66f4\u4e8b\u4ef6 (\u5305\u62ec DOMSubtreeModified\u3001DOMNodeInserted\u3001DOMNodeRemoved\u3001DOMNodeRemovedFromDocument\u3001DOMNodeInsertedIntoDocument \u548c DOMCharacterDataModified) \u5df2\u6dd8\u6c70 (https://w3c.github.io/uievents/#legacy-event-types)\uff0c\u4e26\u5c07\u65bc\u65e5\u5f8c\u79fb\u9664\u3002\u8acb\u6539\u7528 MutationObserver\u3002"
+  },
+  "generated/Deprecation.ts | DataUrlInSvgUse": {
+    "message": "SVGUseElement \u4e0d\u518d\u652f\u63f4\u300cdata: \u7db2\u5740\u300d\uff0c\u4e26\u5c07\u65bc\u65e5\u5f8c\u79fb\u9664\u3002"
+  },
+  "generated/Deprecation.ts | GeolocationInsecureOrigin": {
+    "message": "getCurrentPosition() \u548c watchPosition() \u7121\u6cd5\u518d\u5728\u4e0d\u5b89\u5168\u4f86\u6e90\u4e0a\u904b\u4f5c\u3002\u5982\u8981\u4f7f\u7528\u6b64\u529f\u80fd\uff0c\u8acb\u8003\u616e\u5c07\u61c9\u7528\u7a0b\u5f0f\u8f49\u79fb\u81f3\u5b89\u5168\u4f86\u6e90\uff0c\u4f8b\u5982 HTTPS\u3002\u8a73\u60c5\u8acb\u53c3\u95b1 https://goo.gle/chrome-insecure-origins\u3002"
+  },
+  "generated/Deprecation.ts | GeolocationInsecureOriginDeprecatedNotRemoved": {
+    "message": "\u4e0d\u5b89\u5168\u4f86\u6e90\u4e0a\u7684 getCurrentPosition() \u548c watchPosition() \u5df2\u6dd8\u6c70\u3002\u5982\u8981\u4f7f\u7528\u6b64\u529f\u80fd\uff0c\u8acb\u8003\u616e\u5c07\u61c9\u7528\u7a0b\u5f0f\u8f49\u79fb\u81f3\u5b89\u5168\u4f86\u6e90\uff0c\u4f8b\u5982 HTTPS\u3002\u8a73\u60c5\u8acb\u53c3\u95b1 https://goo.gle/chrome-insecure-origins\u3002"
+  },
+  "generated/Deprecation.ts | GetUserMediaInsecureOrigin": {
+    "message": "getUserMedia() \u7121\u6cd5\u518d\u5728\u4e0d\u5b89\u5168\u4f86\u6e90\u4e0a\u904b\u4f5c\u3002\u5982\u8981\u4f7f\u7528\u6b64\u529f\u80fd\uff0c\u8acb\u8003\u616e\u5c07\u61c9\u7528\u7a0b\u5f0f\u8f49\u79fb\u81f3\u5b89\u5168\u4f86\u6e90\uff0c\u4f8b\u5982 HTTPS\u3002\u8a73\u60c5\u8acb\u53c3\u95b1 https://goo.gle/chrome-insecure-origins\u3002"
+  },
+  "generated/Deprecation.ts | H1UserAgentFontSizeInSection": {
+    "message": "\u5728 <article>\u3001<aside>\u3001<nav> \u6216 <section> \u4e2d\uff0c\u7cfb\u7d71\u767c\u73fe\u6709\u4e00\u500b <h1> \u6a19\u7c64\u672a\u6307\u5b9a\u5b57\u578b\u5927\u5c0f\u3002\u4e0d\u4e45\u5f8c\uff0c\u6b64\u6a19\u984c\u6587\u5b57\u5728\u6b64\u700f\u89bd\u5668\u4e2d\u7684\u5927\u5c0f\u5c07\u6709\u8b8a\u52d5\u3002\u8a73\u60c5\u8acb\u53c3\u95b1 https://developer.mozilla.org/zh-HK/docs/Web/HTML/Element/Heading_Elements#specifying_a_uniform_font_size_for_h1\u3002"
+  },
+  "generated/Deprecation.ts | HostCandidateAttributeGetter": {
+    "message": "RTCPeerConnectionIceErrorEvent.hostCandidate \u5df2\u6dd8\u6c70\u3002\u8acb\u6539\u70ba\u4f7f\u7528 RTCPeerConnectionIceErrorEvent.address \u6216 RTCPeerConnectionIceErrorEvent.port\u3002"
+  },
+  "generated/Deprecation.ts | IdentityDigitalCredentials": {
+    "message": "\u6578\u78bc\u6191\u8b49\u7684 navigator.credentials.get() \u8981\u6c42\u683c\u5f0f\u5df2\u6dd8\u6c70\uff0c\u8acb\u66f4\u65b0\u8abf\u7528\u4ee5\u4f7f\u7528\u65b0\u683c\u5f0f\u3002"
+  },
+  "generated/Deprecation.ts | IdentityInCanMakePaymentEvent": {
+    "message": "\u300ccanmakepayment\u300dService Worker \u4e8b\u4ef6\u7684\u5546\u5bb6\u4f86\u6e90\u548c\u4efb\u610f\u8cc7\u6599\u76ee\u524d\u5df2\u6dd8\u6c70\uff0c\u4e26\u5c07\u5728\u4e4b\u5f8c\u79fb\u9664\uff1atopOrigin\u3001paymentRequestOrigin\u3001methodData\u3001modifiers\u3002"
+  },
+  "generated/Deprecation.ts | InsecurePrivateNetworkSubresourceRequest": {
+    "message": "\u7db2\u7ad9\u6839\u64da\u4f7f\u7528\u8005\u5177\u5099\u6b0a\u9650\u7684\u7db2\u7d61\u4f4d\u7f6e\uff0c\u900f\u904e\u53ea\u80fd\u5b58\u53d6\u7684\u7db2\u7d61\u8981\u6c42\u4e00\u500b\u5b50\u8cc7\u6e90\u3002\u9019\u4e9b\u8981\u6c42\u6703\u5411\u4e92\u806f\u7db2\u66b4\u9732\u975e\u516c\u958b\u7684\u88dd\u7f6e\u548c\u4f3a\u670d\u5668\uff0c\u56e0\u800c\u589e\u52a0\u507d\u9020\u8de8\u7db2\u7ad9\u8981\u6c42 (CSRF) \u653b\u64ca\u548c/\u6216\u8cc7\u6599\u6d29\u6f0f\u7684\u98a8\u96aa\u3002\u70ba\u964d\u4f4e\u98a8\u96aa\uff0cChrome \u6703\u5ffd\u7565\u4e0d\u5b89\u5168\u5167\u5bb9\u5411\u975e\u516c\u958b\u5b50\u8cc7\u6e90\u767c\u51fa\u7684\u8981\u6c42\uff0c\u4e26\u5c07\u958b\u59cb\u5c01\u9396\u9019\u985e\u8981\u6c42\u3002"
+  },
+  "generated/Deprecation.ts | InterestGroupDailyUpdateUrl": {
+    "message": "\u5df2\u50b3\u9001\u81f3 joinAdInterestGroup() \u7684 InterestGroups dailyUpdateUrl \u6b04\u4f4d\u5df2\u91cd\u65b0\u547d\u540d\u70ba updateUrl\uff0c\u4ee5\u4fbf\u66f4\u6e96\u78ba\u5730\u53cd\u6620\u5176\u884c\u70ba\u3002"
+  },
+  "generated/Deprecation.ts | IntlV8BreakIterator": {
+    "message": "Intl.v8BreakIterator \u5df2\u6dd8\u6c70\u3002\u8acb\u6539\u7528 Intl.Segmenter\u3002"
+  },
+  "generated/Deprecation.ts | LocalCSSFileExtensionRejected": {
+    "message": "\u9664\u975e CSS \u4ee5 .css \u526f\u6a94\u540d\u4f5c\u7d50\uff0c\u5426\u5247\u7121\u6cd5\u5f9e file: \u7db2\u5740\u8f09\u5165\u3002"
+  },
+  "generated/Deprecation.ts | MediaSourceAbortRemove": {
+    "message": "\u7531\u65bc\u898f\u683c\u8b8a\u66f4\uff0c\u7cfb\u7d71\u5df2\u6dd8\u6c70\u4f7f\u7528 SourceBuffer.abort() \u53d6\u6d88 remove() \u7684\u975e\u540c\u6b65\u7bc4\u570d\u79fb\u9664\u64cd\u4f5c\uff0c\u65e5\u5f8c\u4ea6\u5c07\u505c\u6b62\u652f\u63f4\u6b64\u529f\u80fd\u3002\u5efa\u8b70\u60a8\u6539\u70ba\u76e3\u807d updateend \u4e8b\u4ef6\u3002abort() \u7684\u7528\u9014\u53ea\u9650\u65bc\u53d6\u6d88\u975e\u540c\u6b65\u5a92\u9ad4\u9644\u52a0\u5167\u5bb9\u6216\u91cd\u8a2d\u5256\u6790\u5668\u72c0\u614b\u3002"
+  },
+  "generated/Deprecation.ts | MediaSourceDurationTruncatingBuffered": {
+    "message": "\u7531\u65bc\u898f\u683c\u8b8a\u66f4\uff0c\u7cfb\u7d71\u5df2\u6dd8\u6c70\u5c07 MediaSource.duration \u8a2d\u5b9a\u70ba\u4f4e\u65bc\u4efb\u4f55\u7de9\u885d\u7de8\u78bc\u9801\u6846\u7684\u6700\u9ad8\u986f\u793a\u6642\u9593\u6233\u8a18\u3002\u65e5\u5f8c\u5c07\u505c\u6b62\u652f\u63f4\u5c0d\u5df2\u7e2e\u77ed\u7de9\u885d\u5a92\u9ad4\u7684\u96b1\u542b\u79fb\u9664\u64cd\u4f5c\u3002\u8acb\u6539\u70ba\u5728 newDuration < oldDuration \u7684\u6240\u6709 sourceBuffers \u4e0a\u57f7\u884c\u660e\u78ba remove(newDuration, oldDuration)\u3002"
+  },
+  "generated/Deprecation.ts | NoSysexWebMIDIWithoutPermission": {
+    "message": "\u5373\u4f7f\u5728 MIDIOptions \u4e2d\u672a\u6307\u5b9a\u7cfb\u7d71\u5c08\u7528 (SysEx) \u8a0a\u606f\uff0cWeb MIDI \u4ea6\u6703\u8981\u6c42\u4f7f\u7528\u6b0a\u9650\u3002"
+  },
+  "generated/Deprecation.ts | NotificationInsecureOrigin": {
+    "message": "\u7cfb\u7d71\u53ef\u80fd\u7121\u6cd5\u518d\u4f7f\u7528\u4e0d\u5b89\u5168\u4f86\u6e90\u7684 Notification API\u3002\u8acb\u8003\u616e\u5c07\u61c9\u7528\u7a0b\u5f0f\u8f49\u79fb\u81f3\u5b89\u5168\u4f86\u6e90\uff0c\u4f8b\u5982 HTTPS\u3002\u8a73\u60c5\u8acb\u53c3\u95b1 https://goo.gle/chrome-insecure-origins\u3002"
+  },
+  "generated/Deprecation.ts | NotificationPermissionRequestedIframe": {
+    "message": "\u7cfb\u7d71\u53ef\u80fd\u7121\u6cd5\u518d\u900f\u904e\u8de8\u4f86\u6e90 iframe \u8981\u6c42 Notification API\u3002\u8acb\u8003\u616e\u900f\u904e\u9802\u5c64\u9801\u6846\u8981\u6c42\u6b0a\u9650\uff0c\u6216\u6539\u70ba\u958b\u555f\u65b0\u8996\u7a97\u3002"
+  },
+  "generated/Deprecation.ts | ObsoleteCreateImageBitmapImageOrientationNone": {
+    "message": "createImageBitmap \u4e2d\u7684 imageOrientation: 'none' \u9078\u9805\u5df2\u6dd8\u6c70\u3002\u8acb\u6539\u7528 createImageBitmap \u914d\u642d\u300c{imageOrientation: 'from-image'}\u300d\u9078\u9805\u3002"
+  },
+  "generated/Deprecation.ts | ObsoleteWebRtcCipherSuite": {
+    "message": "\u60a8\u7684\u5408\u4f5c\u5925\u4f34\u6b63\u5728\u4ea4\u6d89\u5df2\u904e\u6642\u7684\u50b3\u8f38\u5c64\u5b89\u5168\u6a19\u6e96 (TLS)/DTLS \u7248\u672c\u3002\u8acb\u5411\u60a8\u7684\u5408\u4f5c\u5925\u4f34\u67e5\u8a62\uff0c\u4ee5\u4fbf\u4fee\u6b63\u554f\u984c\u3002"
+  },
+  "generated/Deprecation.ts | OverflowVisibleOnReplacedElement": {
+    "message": "\u5982\u679c\u6307\u5b9a img\u3001video \u548c canvas \u6a19\u7c64\u7684\u300coverflow: visible\u300d\uff0c\u53ef\u80fd\u6703\u5c0e\u81f4\u9019\u4e9b\u6a19\u7c64\u7522\u751f\u7684\u8996\u89ba\u5167\u5bb9\u8d85\u51fa\u5143\u7d20\u908a\u754c\u3002\u8a73\u60c5\u8acb\u53c3\u95b1 https://github.com/WICG/shared-element-transitions/blob/main/debugging_overflow_on_images.md\u3002"
+  },
+  "generated/Deprecation.ts | PaymentInstruments": {
+    "message": "\u300cpaymentManager.instruments\u300d\u5df2\u6dd8\u6c70\u3002\u8acb\u6539\u7528\u4ed8\u6b3e\u8655\u7406\u5e38\u5f0f\u7684\u5373\u6642\u5b89\u88dd\u65b9\u6cd5\u3002"
+  },
+  "generated/Deprecation.ts | PaymentRequestCSPViolation": {
+    "message": "\u60a8\u7684\u300cPaymentRequest\u300d\u8abf\u7528\u5df2\u7e5e\u904e\u5167\u5bb9\u5b89\u5168\u653f\u7b56 (CSP)\u300cconnect-src\u300d\u6307\u4ee4\uff0c\u4f46\u76ee\u524d\u5df2\u7121\u6cd5\u518d\u7e5e\u904e\u3002\u8acb\u5c07 PaymentRequest API \u7684\u4ed8\u6b3e\u65b9\u6cd5\u8b58\u5225\u78bc (\u4f4d\u65bc\u300csupportedMethods\u300d\u6b04\u4f4d) \u65b0\u589e\u81f3 CSP\u300cconnect-src\u300d\u6307\u4ee4\u3002"
+  },
+  "generated/Deprecation.ts | PersistentQuotaType": {
+    "message": "StorageType.persistent \u5df2\u6dd8\u6c70\u3002\u8acb\u6539\u70ba\u6a19\u6e96\u5316\u7684 navigator.storage\u3002"
+  },
+  "generated/Deprecation.ts | PictureSourceSrc": {
+    "message": "\u5177\u6709 <picture> \u7236\u9805\u7684 <source src> \u7121\u6548\uff0c\u56e0\u6b64\u7cfb\u7d71\u6703\u5ffd\u7565\u3002\u8acb\u6539\u7528\u300c<source srcset>\u300d\u3002"
+  },
+  "generated/Deprecation.ts | PrefixedCancelAnimationFrame": {
+    "message": "webkitCancelAnimationFrame \u53ea\u9650\u4f9b\u61c9\u5546\u4f7f\u7528\uff0c\u8acb\u6539\u7528\u6a19\u6e96\u7684 cancelAnimationFrame\u3002"
+  },
+  "generated/Deprecation.ts | PrefixedRequestAnimationFrame": {
+    "message": "webkitRequestAnimationFrame \u53ea\u9650\u4f9b\u61c9\u5546\u4f7f\u7528\uff0c\u8acb\u6539\u7528\u6a19\u6e96 requestAnimationFrame\u3002"
+  },
+  "generated/Deprecation.ts | PrefixedVideoDisplayingFullscreen": {
+    "message": "HTMLVideoElement.webkitDisplayingFullscreen \u5df2\u6dd8\u6c70\uff0c\u8acb\u6539\u7528 Document.fullscreenElement\u3002"
+  },
+  "generated/Deprecation.ts | PrefixedVideoEnterFullScreen": {
+    "message": "HTMLVideoElement.webkitEnterFullScreen() \u5df2\u6dd8\u6c70\uff0c\u8acb\u6539\u7528 Element.requestFullscreen()\u3002"
+  },
+  "generated/Deprecation.ts | PrefixedVideoEnterFullscreen": {
+    "message": "HTMLVideoElement.webkitEnterFullscreen() \u5df2\u6dd8\u6c70\uff0c\u8acb\u6539\u7528 Element.requestFullscreen()\u3002"
+  },
+  "generated/Deprecation.ts | PrefixedVideoExitFullScreen": {
+    "message": "HTMLVideoElement.webkitExitFullScreen() \u5df2\u6dd8\u6c70\uff0c\u8acb\u6539\u7528 Document.exitFullscreen()\u3002"
+  },
+  "generated/Deprecation.ts | PrefixedVideoExitFullscreen": {
+    "message": "HTMLVideoElement.webkitExitFullscreen() \u5df2\u6dd8\u6c70\uff0c\u8acb\u6539\u7528 Document.exitFullscreen()\u3002"
+  },
+  "generated/Deprecation.ts | PrefixedVideoSupportsFullscreen": {
+    "message": "HTMLVideoElement.webkitSupportsFullscreen \u5df2\u6dd8\u6c70\uff0c\u8acb\u6539\u7528 Document.fullscreenEnabled\u3002"
+  },
+  "generated/Deprecation.ts | PrivacySandboxExtensionsAPI": {
+    "message": "\u6211\u5011\u5df2\u6dd8\u6c70\u6b64 API chrome.privacy.websites.privacySandboxEnabled\uff0c\u4f46\u70ba\u63d0\u4f9b\u56de\u6eaf\u517c\u5bb9\u6027\uff0c\u6b64 API \u53ef\u6301\u7e8c\u4f7f\u7528\u81f3\u7248\u672c M113\u3002\u8acb\u6539\u7528 chrome.privacy.websites.topicsEnabled\u3001chrome.privacy.websites.fledgeEnabled \u548c chrome.privacy.websites.adMeasurementEnabled\u3002\u8a73\u60c5\u8acb\u53c3\u95b1 https://developer.chrome.com/docs/extensions/reference/privacy/#property-websites-privacySandboxEnabled\u3002"
+  },
+  "generated/Deprecation.ts | RTCConstraintEnableDtlsSrtpFalse": {
+    "message": "\u5df2\u79fb\u9664 DtlsSrtpKeyAgreement \u9650\u5236\u3002\u7cfb\u7d71\u5c07\u60a8\u70ba\u6b64\u9650\u5236\u6307\u5b9a\u7684 false \u503c\u89e3\u8b80\u70ba\u5617\u8a66\u4f7f\u7528\u5df2\u79fb\u9664\u7684\u300cSDES key negotiation\u300d\u65b9\u6cd5\u3002\u6b64\u529f\u80fd\u5df2\u79fb\u9664\uff0c\u8acb\u6539\u7528\u652f\u63f4\u300cDTLS key negotiation\u300d\u7684\u65b9\u6cd5\u3002"
+  },
+  "generated/Deprecation.ts | RTCConstraintEnableDtlsSrtpTrue": {
+    "message": "\u5df2\u79fb\u9664 DtlsSrtpKeyAgreement \u9650\u5236\u3002\u60a8\u70ba\u6b64\u9650\u5236\u6307\u5b9a\u7684 true \u503c\u5df2\u4e0d\u518d\u9069\u7528\uff0c\u4e0d\u904e\u60a8\u53ef\u5c07\u6b64\u9650\u5236\u79fb\u9664\u4ee5\u4fdd\u6301\u756b\u9762\u6574\u6f54\u3002"
+  },
+  "generated/Deprecation.ts | RTCPeerConnectionGetStatsLegacyNonCompliant": {
+    "message": "\u56de\u547c\u5f0f getStats() \u5df2\u6dd8\u6c70\uff0c\u4e26\u5c07\u6703\u79fb\u9664\u3002\u8acb\u6539\u7528\u5408\u898f\u7684 getStats()\u3002"
+  },
+  "generated/Deprecation.ts | RangeExpand": {
+    "message": "Range.expand() \u5df2\u6dd8\u6c70\uff0c\u8acb\u6539\u7528 Selection.modify()\u3002"
+  },
+  "generated/Deprecation.ts | RequestedSubresourceWithEmbeddedCredentials": {
+    "message": "\u7cfb\u7d71\u5c07\u5c01\u9396\u7db2\u5740\u5305\u542b\u5d4c\u5165\u6191\u8b49 (\u4f8b\u5982 https://user:pass@host/) \u7684\u5b50\u8cc7\u6e90\u8981\u6c42\u3002"
+  },
+  "generated/Deprecation.ts | RtcpMuxPolicyNegotiate": {
+    "message": "rtcpMuxPolicy \u9078\u9805\u5df2\u6dd8\u6c70\uff0c\u4e26\u5c07\u6703\u79fb\u9664\u3002"
+  },
+  "generated/Deprecation.ts | SharedArrayBufferConstructedWithoutIsolation": {
+    "message": "SharedArrayBuffer \u6703\u8981\u6c42\u8de8\u4f86\u6e90\u9694\u96e2\u3002\u8a73\u60c5\u8acb\u53c3\u95b1 https://developer.chrome.com/blog/enabling-shared-array-buffer/\u3002"
+  },
+  "generated/Deprecation.ts | TextToSpeech_DisallowedByAutoplay": {
+    "message": "\u7121\u9700\u4f7f\u7528\u8005\u555f\u7528\u5373\u53ef\u547c\u53eb speechSynthesis.speak() \u7684\u529f\u80fd\u5df2\u6dd8\u6c70\uff0c\u4e26\u5c07\u6703\u79fb\u9664\u3002"
+  },
+  "generated/Deprecation.ts | UnloadHandler": {
+    "message": "\u5378\u8f09\u4e8b\u4ef6\u76e3\u807d\u5668\u5df2\u6dd8\u6c70\uff0c\u4e26\u5c07\u65bc\u65e5\u5f8c\u79fb\u9664\u3002"
+  },
+  "generated/Deprecation.ts | V8SharedArrayBufferConstructedInExtensionWithoutIsolation": {
+    "message": "\u64f4\u5145\u7a0b\u5f0f\u61c9\u9078\u64c7\u63a5\u53d7\u8de8\u4f86\u6e90\u9694\u96e2\u529f\u80fd\uff0c\u4ee5\u7e7c\u7e8c\u4f7f\u7528 SharedArrayBuffer\u3002\u8a73\u60c5\u8acb\u53c3\u95b1 https://developer.chrome.com/docs/extensions/mv3/cross-origin-isolation/\u3002"
+  },
+  "generated/Deprecation.ts | XHRJSONEncodingDetection": {
+    "message": "XMLHttpRequest \u4e2d\u7684 JSON \u56de\u61c9\u4e0d\u652f\u63f4 UTF-16\u3002"
+  },
+  "generated/Deprecation.ts | XMLHttpRequestSynchronousInNonWorkerOutsideBeforeUnload": {
+    "message": "\u4e3b\u8981\u57f7\u884c\u7dd2\u4e0a\u540c\u6b65\u7684 XMLHttpRequest \u6703\u5c0d\u4f7f\u7528\u8005\u9ad4\u9a57\u9020\u6210\u8ca0\u9762\u5f71\u97ff\uff0c\u56e0\u6b64\u5df2\u6dd8\u6c70\u3002\u5982\u9700\u9032\u4e00\u6b65\u8aaa\u660e\uff0c\u8acb\u67e5\u770b https://xhr.spec.whatwg.org/\u3002"
+  },
+  "models/trace/insights/CLSCulprits.ts | animation": {
+    "message": "\u52d5\u756b"
+  },
+  "models/trace/insights/CLSCulprits.ts | description": {
+    "message": "\u7576\u5143\u7d20\u5728\u7121\u4f7f\u7528\u8005\u4e92\u52d5\u4e0b\u79fb\u52d5\uff0c\u5c31\u6703\u51fa\u73fe\u7248\u9762\u914d\u7f6e\u8f49\u79fb\u3002\u8acb[\u8abf\u67e5\u7248\u9762\u914d\u7f6e\u8f49\u79fb\u7684\u539f\u56e0](https://web.dev/articles/optimize-cls)\uff0c\u4f8b\u5982\u96a8\u9801\u9762\u8f09\u5165\u6709\u5143\u7d20\u52a0\u5165\u3001\u79fb\u9664\u6216\u5b57\u578b\u8b8a\u66f4\u3002"
+  },
+  "models/trace/insights/CLSCulprits.ts | fontRequest": {
+    "message": "\u5b57\u578b\u8981\u6c42"
+  },
+  "models/trace/insights/CLSCulprits.ts | injectedIframe": {
+    "message": "\u5df2\u63d2\u5165 iframe"
+  },
+  "models/trace/insights/CLSCulprits.ts | layoutShiftCluster": {
+    "message": "\u7248\u9762\u914d\u7f6e\u8f49\u79fb\u53e2\u96c6 @ {PH1}"
+  },
+  "models/trace/insights/CLSCulprits.ts | noCulprits": {
+    "message": "\u7121\u6cd5\u5075\u6e2c\u4efb\u4f55\u7248\u9762\u914d\u7f6e\u8f49\u79fb\u8d77\u56e0"
+  },
+  "models/trace/insights/CLSCulprits.ts | noLayoutShifts": {
+    "message": "\u6c92\u6709\u7248\u9762\u914d\u7f6e\u8f49\u79fb"
+  },
+  "models/trace/insights/CLSCulprits.ts | title": {
+    "message": "\u7248\u9762\u914d\u7f6e\u8f49\u63db\u8d77\u56e0"
+  },
+  "models/trace/insights/CLSCulprits.ts | topCulprits": {
+    "message": "\u7248\u9762\u914d\u7f6e\u8f49\u79fb\u7684\u4e3b\u8981\u539f\u56e0"
+  },
+  "models/trace/insights/CLSCulprits.ts | unsizedImages": {
+    "message": "\u672a\u8a2d\u5b9a\u5927\u5c0f\u7684\u5716\u7247"
+  },
+  "models/trace/insights/CLSCulprits.ts | worstCluster": {
+    "message": "\u6700\u5dee\u7684\u53e2\u96c6"
+  },
+  "models/trace/insights/CLSCulprits.ts | worstLayoutShiftCluster": {
+    "message": "\u6700\u5dee\u7684\u7248\u9762\u914d\u7f6e\u8f49\u79fb\u53e2\u96c6"
+  },
+  "models/trace/insights/Cache.ts | cacheTTL": {
+    "message": "\u5feb\u53d6 TTL"
+  },
+  "models/trace/insights/Cache.ts | description": {
+    "message": "\u5ef6\u9577\u5feb\u53d6\u671f\u9650\u53ef\u52a0\u5feb\u91cd\u8986\u700f\u89bd\u9801\u9762\u7684\u901f\u5ea6\u3002[\u77ad\u89e3\u8a73\u60c5](https://web.dev/uses-long-cache-ttl/)\u3002"
+  },
+  "models/trace/insights/Cache.ts | noRequestsToCache": {
+    "message": "\u6c92\u6709\u4efb\u4f55\u8981\u6c42\u63a1\u7528\u6548\u7387\u6b20\u4f73\u7684\u5feb\u53d6\u653f\u7b56"
+  },
+  "models/trace/insights/Cache.ts | others": {
+    "message": "\u548c\u53e6\u5916 {PH1} \u500b\u9805\u76ee"
+  },
+  "models/trace/insights/Cache.ts | requestColumn": {
+    "message": "\u8981\u6c42"
+  },
+  "models/trace/insights/Cache.ts | title": {
+    "message": "\u4f7f\u7528\u6709\u6548\u7684\u5feb\u53d6\u751f\u547d\u9031\u671f"
+  },
+  "models/trace/insights/DOMSize.ts | description": {
+    "message": "\u5927\u578b DOM \u53ef\u80fd\u6703\u589e\u52a0\u6a23\u5f0f\u904b\u7b97\u548c\u7248\u9762\u914d\u7f6e\u91cd\u6392\u7684\u6642\u9577\uff0c\u7e7c\u800c\u5f71\u97ff\u9801\u9762\u56de\u61c9\u901f\u5ea6\u3002\u5927\u578b DOM \u4e5f\u6703\u589e\u52a0\u8a18\u61b6\u9ad4\u7528\u91cf\u3002[\u77ad\u89e3\u5982\u4f55\u907f\u514d DOM \u904e\u5927](https://developer.chrome.com/docs/lighthouse/performance/dom-size/)\u3002"
+  },
+  "models/trace/insights/DOMSize.ts | element": {
+    "message": "\u5143\u7d20"
+  },
+  "models/trace/insights/DOMSize.ts | maxChildren": {
+    "message": "\u5927\u90e8\u5206\u5b50\u9805"
+  },
+  "models/trace/insights/DOMSize.ts | maxDOMDepth": {
+    "message": "DOM \u6df1\u5ea6"
+  },
+  "models/trace/insights/DOMSize.ts | statistic": {
+    "message": "\u7d71\u8a08\u8cc7\u6599"
+  },
+  "models/trace/insights/DOMSize.ts | title": {
+    "message": "\u512a\u5316 DOM \u5927\u5c0f"
+  },
+  "models/trace/insights/DOMSize.ts | totalElements": {
+    "message": "\u5143\u7d20\u7e3d\u8a08"
+  },
+  "models/trace/insights/DOMSize.ts | value": {
+    "message": "\u503c"
+  },
+  "models/trace/insights/DocumentLatency.ts | description": {
+    "message": "\u9996\u500b\u7db2\u7d61\u8981\u6c42\u81f3\u95dc\u91cd\u8981\u3002\u907f\u514d\u91cd\u65b0\u5c0e\u5411\u3001\u78ba\u4fdd\u4f3a\u670d\u5668\u5feb\u901f\u56de\u61c9\uff0c\u4e26\u555f\u7528\u6587\u5b57\u58d3\u7e2e\u529f\u80fd\uff0c\u90fd\u6709\u52a9\u7e2e\u77ed\u5ef6\u9072\u6642\u9593\u3002"
+  },
+  "models/trace/insights/DocumentLatency.ts | failedRedirects": {
+    "message": "\u6709\u91cd\u65b0\u5c0e\u5411"
+  },
+  "models/trace/insights/DocumentLatency.ts | failedServerResponseTime": {
+    "message": "\u4f3a\u670d\u5668\u56de\u61c9\u7de9\u6162"
+  },
+  "models/trace/insights/DocumentLatency.ts | failedTextCompression": {
+    "message": "\u672a\u5957\u7528\u4efb\u4f55\u58d3\u7e2e"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingRedirects": {
+    "message": "\u907f\u514d\u91cd\u65b0\u5c0e\u5411"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingServerResponseTime": {
+    "message": "\u4f3a\u670d\u5668\u56de\u61c9\u8fc5\u901f"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingTextCompression": {
+    "message": "\u5957\u7528\u6587\u5b57\u58d3\u7e2e"
+  },
+  "models/trace/insights/DocumentLatency.ts | redirectsLabel": {
+    "message": "\u91cd\u65b0\u5c0e\u5411"
+  },
+  "models/trace/insights/DocumentLatency.ts | serverResponseTimeLabel": {
+    "message": "\u4f3a\u670d\u5668\u56de\u61c9\u6642\u9593"
+  },
+  "models/trace/insights/DocumentLatency.ts | title": {
+    "message": "\u6587\u4ef6\u8981\u6c42\u5ef6\u9072\u6642\u9593"
+  },
+  "models/trace/insights/DocumentLatency.ts | uncompressedDownload": {
+    "message": "\u672a\u58d3\u7e2e\u4e0b\u8f09"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | columnDuplicatedBytes": {
+    "message": "\u91cd\u8907\u7684\u4f4d\u5143\u7d44\u6578\u76ee"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | columnSource": {
+    "message": "\u4f86\u6e90"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | description": {
+    "message": "\u5f9e\u5957\u4ef6\u4e2d\u79fb\u9664\u91cd\u8907\u7684\u5927\u578b JavaScript \u6a21\u7d44\uff0c\u907f\u514d\u7db2\u7d61\u6d3b\u52d5\u8017\u7528\u4e0d\u5fc5\u8981\u7684\u5b57\u7bc0\u3002"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | title": {
+    "message": "\u91cd\u8907\u7684 JavaScript"
+  },
+  "models/trace/insights/FontDisplay.ts | description": {
+    "message": "\u5efa\u8b70\u5c07 [font-display](https://developer.chrome.com/blog/font-display) \u8a2d\u5b9a\u70ba swap \u6216 optional\uff0c\u78ba\u4fdd\u6587\u5b57\u80fd\u6301\u7e8c\u986f\u793a\u3002\u5982\u8981\u9032\u4e00\u6b65\u512a\u5316 swap\uff0c\u4f60\u53ef[\u8986\u5beb\u5b57\u578b\u6578\u64da](https://developer.chrome.com/blog/font-fallbacks)\u4f86\u7de9\u89e3\u7248\u9762\u914d\u7f6e\u8f49\u63db\u554f\u984c\u3002"
+  },
+  "models/trace/insights/FontDisplay.ts | fontColumn": {
+    "message": "\u5b57\u578b"
+  },
+  "models/trace/insights/FontDisplay.ts | title": {
+    "message": "\u5b57\u578b\u986f\u793a"
+  },
+  "models/trace/insights/FontDisplay.ts | wastedTimeColumn": {
+    "message": "\u6d6a\u8cbb\u7684\u6642\u9593"
+  },
+  "models/trace/insights/ForcedReflow.ts | anonymous": {
+    "message": "(\u533f\u540d)"
+  },
+  "models/trace/insights/ForcedReflow.ts | description": {
+    "message": "\u5f88\u591a API (\u901a\u5e38\u8b80\u53d6\u7248\u9762\u914d\u7f6e\u5e7e\u4f55\u5716\u5f62) \u6703\u5f37\u5236\u8f38\u51fa\u5f15\u64ce\u66ab\u505c\u57f7\u884c\u6307\u4ee4\u78bc\uff0c\u4ee5\u8a08\u7b97\u6a23\u5f0f\u548c\u7248\u9762\u914d\u7f6e\u3002\u9032\u4e00\u6b65\u77ad\u89e3[\u5f37\u5236\u91cd\u6392](https://developers.google.com/web/fundamentals/performance/rendering/avoid-large-complex-layouts-and-layout-thrashing#avoid-forced-synchronous-layouts)\u53ca\u5176\u7de9\u89e3\u63aa\u65bd\u3002"
+  },
+  "models/trace/insights/ForcedReflow.ts | relatedStackTrace": {
+    "message": "\u5806\u758a\u8ffd\u8e64"
+  },
+  "models/trace/insights/ForcedReflow.ts | title": {
+    "message": "\u5f37\u5236\u91cd\u6392"
+  },
+  "models/trace/insights/ForcedReflow.ts | topTimeConsumingFunctionCall": {
+    "message": "\u6700\u8cbb\u6642\u7684\u51fd\u6578\u8abf\u7528"
+  },
+  "models/trace/insights/ForcedReflow.ts | totalReflowTime": {
+    "message": "\u91cd\u6392\u7e3d\u6642\u9593"
+  },
+  "models/trace/insights/ForcedReflow.ts | unattributed": {
+    "message": "[\u672a\u6b78\u56e0]"
+  },
+  "models/trace/insights/ImageDelivery.ts | description": {
+    "message": "\u7e2e\u77ed\u5716\u50cf\u4e0b\u8f09\u6642\u9593\uff0c\u53ef\u7e2e\u6e1b\u4f7f\u7528\u8005\u611f\u77e5\u7684\u7db2\u9801\u8f09\u5165\u6642\u9593\uff0c\u4e26\u63d0\u5347 LCP \u6578\u64da\u7684\u8868\u73fe\u3002[\u9032\u4e00\u6b65\u77ad\u89e3\u5982\u4f55\u512a\u5316\u5716\u50cf\u5927\u5c0f](https://developer.chrome.com/docs/lighthouse/performance/uses-optimized-images/)"
+  },
+  "models/trace/insights/ImageDelivery.ts | estimatedSavings": {
+    "message": "{PH1} (\u9810\u4f30\u5927\u5c0f\u70ba {PH2})"
+  },
+  "models/trace/insights/ImageDelivery.ts | noOptimizableImages": {
+    "message": "\u6c92\u6709\u53ef\u512a\u5316\u7684\u5716\u50cf"
+  },
+  "models/trace/insights/ImageDelivery.ts | optimizeFile": {
+    "message": "\u512a\u5316\u6a94\u6848\u5927\u5c0f"
+  },
+  "models/trace/insights/ImageDelivery.ts | others": {
+    "message": "\u548c\u53e6\u5916 {PH1} \u500b\u9805\u76ee"
+  },
+  "models/trace/insights/ImageDelivery.ts | title": {
+    "message": "\u6539\u5584\u5716\u50cf\u653e\u9001"
+  },
+  "models/trace/insights/ImageDelivery.ts | useCompression": {
+    "message": "\u63d0\u9ad8\u5716\u50cf\u58d3\u7e2e\u7cfb\u6578\u53ef\u7e2e\u6e1b\u6b64\u5716\u50cf\u7684\u4e0b\u8f09\u5927\u5c0f\u3002"
+  },
+  "models/trace/insights/ImageDelivery.ts | useModernFormat": {
+    "message": "\u4f7f\u7528\u65b0\u5f0f\u5716\u50cf\u683c\u5f0f (WebP\u3001AVIF) \u6216\u63d0\u9ad8\u5716\u50cf\u58d3\u7e2e\u7cfb\u6578\uff0c\u53ef\u7e2e\u6e1b\u6b64\u5716\u50cf\u7684\u4e0b\u8f09\u5927\u5c0f"
+  },
+  "models/trace/insights/ImageDelivery.ts | useResponsiveSize": {
+    "message": "\u6b64\u5716\u50cf\u6a94\u6848\u7684\u539f\u59cb\u5c3a\u5bf8 ({PH2}) \u5927\u65bc\u6240\u9700\u986f\u793a\u5c3a\u5bf8 ({PH1})\u3002\u8acb\u4f7f\u7528\u56de\u61c9\u5f0f\u5716\u50cf\u4f86\u7e2e\u6e1b\u5716\u50cf\u4e0b\u8f09\u5927\u5c0f\u3002"
+  },
+  "models/trace/insights/ImageDelivery.ts | useVideoFormat": {
+    "message": "\u4f7f\u7528\u5f71\u7247\u683c\u5f0f\u800c\u975e GIF\uff0c\u53ef\u4ee5\u7e2e\u6e1b\u52d5\u756b\u5167\u5bb9\u7684\u4e0b\u8f09\u5927\u5c0f\u3002"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | description": {
+    "message": "\u7531\u6700\u9577\u7684\u968e\u6bb5\u958b\u59cb\u8abf\u67e5\uff0c[\u76e1\u91cf\u7e2e\u77ed\u5ef6\u9072\u6642\u9593](https://web.dev/articles/optimize-inp#optimize_interactions)\u3002\u8981\u6e1b\u5c11\u8655\u7406\u6642\u9577\uff0c\u5efa\u8b70[\u512a\u5316\u4e3b\u8981\u57f7\u884c\u7dd2\u6210\u672c](https://web.dev/articles/optimize-long-tasks) (\u901a\u5e38\u70ba JavaScript)\u3002"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | duration": {
+    "message": "\u6642\u9593\u9577\u5ea6"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | inputDelay": {
+    "message": "\u8f38\u5165\u5ef6\u9072"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | noInteractions": {
+    "message": "\u672a\u80fd\u5075\u6e2c\u5230\u4e92\u52d5"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | phase": {
+    "message": "\u968e\u6bb5"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | presentationDelay": {
+    "message": "\u7c21\u5831\u986f\u793a\u5ef6\u9072"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | processingDuration": {
+    "message": "\u8655\u7406\u6642\u9593\u9577\u5ea6"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | title": {
+    "message": "\u6309\u968e\u6bb5\u5283\u5206 INP"
+  },
+  "models/trace/insights/LCPDiscovery.ts | description": {
+    "message": "\u5982\u8981\u63d0\u5347 LCP\uff0c\u8acb\u8b93 LCP \u5716\u7247\u7acb\u5373[\u986f\u793a](https://web.dev/articles/optimize-lcp#1_eliminate_resource_load_delay)\u5728 HTML \u4e2d\uff0c[\u907f\u514d\u5ef6\u9072\u8f09\u5165](https://web.dev/articles/lcp-lazy-loading)"
+  },
+  "models/trace/insights/LCPDiscovery.ts | fetchPriorityApplied": {
+    "message": "\u5df2\u5957\u7528 fetchpriority \u7684 high \u5c6c\u6027\u503c"
+  },
+  "models/trace/insights/LCPDiscovery.ts | fetchPriorityShouldBeApplied": {
+    "message": "\u61c9\u5957\u7528 fetchpriority=high"
+  },
+  "models/trace/insights/LCPDiscovery.ts | lazyLoadNotApplied": {
+    "message": "\u672a\u5957\u7528\u5ef6\u9072\u8f09\u5165"
+  },
+  "models/trace/insights/LCPDiscovery.ts | lcpLoadDelay": {
+    "message": "LCP \u5716\u7247\u5728\u6700\u65e9\u7684\u958b\u59cb\u9ede {PH1} \u5f8c\u8f09\u5165\u3002"
+  },
+  "models/trace/insights/LCPDiscovery.ts | noLcp": {
+    "message": "\u672a\u80fd\u5075\u6e2c\u5230 LCP"
+  },
+  "models/trace/insights/LCPDiscovery.ts | noLcpResource": {
+    "message": "LCP \u4e0d\u662f\u5716\u50cf\uff0c\u56e0\u6b64\u672a\u5075\u6e2c\u5230 LCP \u8cc7\u6e90"
+  },
+  "models/trace/insights/LCPDiscovery.ts | requestDiscoverable": {
+    "message": "\u8981\u6c42\u5167\u5bb9\u53ef\u65bc\u521d\u59cb\u6587\u4ef6\u4e2d\u67e5\u770b"
+  },
+  "models/trace/insights/LCPDiscovery.ts | title": {
+    "message": "LCP \u8981\u6c42\u63a2\u7d22"
+  },
+  "models/trace/insights/LCPPhases.ts | description": {
+    "message": "\u6bcf\u500b[\u968e\u6bb5\u90fd\u6709\u7279\u5b9a\u7684\u6539\u5584\u7b56\u7565](https://web.dev/articles/optimize-lcp#lcp-breakdown)\u3002\u7406\u60f3\u72c0\u614b\u4e0b\uff0c\u5927\u90e8\u5206\u7684 LCP \u6642\u9593\u61c9\u8a72\u7528\u65bc\u8f09\u5165\u8cc7\u6e90\uff0c\u800c\u975e\u5ef6\u9072\u3002"
+  },
+  "models/trace/insights/LCPPhases.ts | duration": {
+    "message": "\u6642\u9593\u9577\u5ea6"
+  },
+  "models/trace/insights/LCPPhases.ts | elementRenderDelay": {
+    "message": "\u5143\u7d20\u8f38\u51fa\u5ef6\u9072"
+  },
+  "models/trace/insights/LCPPhases.ts | fieldDuration": {
+    "message": "\u5be6\u969b\u8cc7\u6599\u7684\u7b2c 75 \u500b\u767e\u5206\u4f4d\u6578"
+  },
+  "models/trace/insights/LCPPhases.ts | noLcp": {
+    "message": "\u672a\u80fd\u5075\u6e2c\u5230 LCP"
+  },
+  "models/trace/insights/LCPPhases.ts | phase": {
+    "message": "\u968e\u6bb5"
+  },
+  "models/trace/insights/LCPPhases.ts | resourceLoadDelay": {
+    "message": "\u8cc7\u6e90\u8f09\u5165\u5ef6\u9072"
+  },
+  "models/trace/insights/LCPPhases.ts | resourceLoadDuration": {
+    "message": "\u8cc7\u6e90\u8f09\u5165\u6642\u9577"
+  },
+  "models/trace/insights/LCPPhases.ts | timeToFirstByte": {
+    "message": "\u9996\u500b\u5b57\u7bc0\u6642\u9593"
+  },
+  "models/trace/insights/LCPPhases.ts | title": {
+    "message": "\u6309\u968e\u6bb5\u5283\u5206 LCP"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | columnScript": {
+    "message": "\u6307\u4ee4\u78bc"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | columnWastedBytes": {
+    "message": "\u6d6a\u8cbb\u7684\u4f4d\u5143\u7d44\u6578\u76ee"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | description": {
+    "message": "Polyfill \u548c\u8f49\u63db\u53ef\u8b93\u820a\u7248\u700f\u89bd\u5668\u4f7f\u7528\u65b0\u7248 JavaScript \u7684\u529f\u80fd\u3002\u4e0d\u904e\uff0c\u6709\u5f88\u591a Polyfill \u548c\u8f49\u63db\u90fd\u4e0d\u662f\u65b0\u578b\u700f\u89bd\u5668\u7684\u5fc5\u8981\u9805\u76ee\u3002\u9664\u975e\u4f60\u8a8d\u70ba\u5fc5\u9808\u652f\u63f4\u820a\u7248\u700f\u89bd\u5668\uff0c\u5426\u5247\u8acb\u8003\u616e\u5c07 JavaScript \u5efa\u7acb\u6d41\u7a0b\u6539\u70ba\u4e0d\u8f49\u8b6f[\u57fa\u6e96](https://web.dev/articles/baseline-and-polyfills)\u529f\u80fd\u3002[\u77ad\u89e3\u70ba\u4f55\u5927\u90e8\u5206\u7db2\u7ad9\u7121\u9700\u8f49\u8b6f\u4e5f\u80fd\u90e8\u7f72 ES6+ \u7a0b\u5f0f\u78bc](https://philipwalton.com/articles/the-state-of-es5-on-the-web/)"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | title": {
+    "message": "\u820a\u7248 JavaScript"
+  },
+  "models/trace/insights/ModernHTTP.ts | description": {
+    "message": "HTTP/2 \u548c HTTP/3 \u64c1\u6709\u8a31\u591a HTTP/1.1 \u6c92\u6709\u7684\u512a\u9ede\uff0c\u4f8b\u5982 multiplexing\u3002[\u9032\u4e00\u6b65\u77ad\u89e3\u5982\u4f55\u4f7f\u7528\u65b0\u5f0f HTTP](https://developer.chrome.com/docs/lighthouse/best-practices/uses-http2/)\u3002"
+  },
+  "models/trace/insights/ModernHTTP.ts | noOldProtocolRequests": {
+    "message": "\u6c92\u6709\u4efb\u4f55\u8981\u6c42\u4f7f\u7528 HTTP/1.1"
+  },
+  "models/trace/insights/ModernHTTP.ts | protocol": {
+    "message": "\u901a\u8a0a\u5354\u5b9a"
+  },
+  "models/trace/insights/ModernHTTP.ts | request": {
+    "message": "\u8981\u6c42"
+  },
+  "models/trace/insights/ModernHTTP.ts | title": {
+    "message": "\u65b0\u5f0f HTTP"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | description": {
+    "message": "\u5982\u8981[\u907f\u514d\u93c8\u7d50\u95dc\u9375\u8981\u6c42](https://developer.chrome.com/docs/lighthouse/performance/critical-request-chains)\uff0c\u4f60\u53ef\u4ee5\u7e2e\u77ed\u93c8\u7d50\u9577\u5ea6\u3001\u7e2e\u6e1b\u4e0b\u8f09\u8cc7\u6e90\u7684\u5927\u5c0f\u6216\u5ef6\u9072\u4e0b\u8f09\u4e0d\u5fc5\u8981\u8cc7\u6e90\uff0c\u4ee5\u63d0\u9ad8\u9801\u9762\u8f09\u5165\u901f\u5ea6\u3002"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | maxCriticalPathLatency": {
+    "message": "\u95dc\u9375\u8def\u5f91\u5ef6\u9072\u6642\u9593\u4e0a\u9650\uff1a"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | noNetworkDependencyTree": {
+    "message": "\u7db2\u7d61\u4f9d\u9644\u7d44\u4ef6\u6c92\u6709\u5f71\u97ff\u4efb\u4f55\u8f38\u51fa\u5de5\u4f5c"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | title": {
+    "message": "\u7db2\u7d61\u4f9d\u9644\u7d44\u4ef6\u6a39\u72c0\u7d50\u69cb"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | warningDescription": {
+    "message": "\u5982\u8981\u907f\u514d\u93c8\u7d50\u95dc\u9375\u8981\u6c42\uff0c\u4f60\u53ef\u4ee5\u7e2e\u77ed\u93c8\u7d50\u9577\u5ea6\u3001\u7e2e\u6e1b\u4e0b\u8f09\u8cc7\u6e90\u7684\u5927\u5c0f\u6216\u5ef6\u9072\u4e0b\u8f09\u4e0d\u5fc5\u8981\u8cc7\u6e90\uff0c\u4ee5\u63d0\u9ad8\u9801\u9762\u8f09\u5165\u901f\u5ea6\u3002"
+  },
+  "models/trace/insights/RenderBlocking.ts | description": {
+    "message": "\u8981\u6c42\u6703\u5c01\u9396\u9801\u9762\u7684\u521d\u59cb\u8f38\u51fa\uff0c\u53ef\u80fd\u6703\u5c0e\u81f4 LCP \u5ef6\u9072\u3002[\u5ef6\u9072\u6216\u5167\u5d4c](https://web.dev/learn/performance/understanding-the-critical-path#render-blocking_resources/)\u53ef\u4ee5\u5c07\u9019\u4e9b\u7db2\u7d61\u8981\u6c42\u79fb\u96e2\u95dc\u9375\u8def\u5f91\u3002"
+  },
+  "models/trace/insights/RenderBlocking.ts | duration": {
+    "message": "\u6642\u9593\u9577\u5ea6"
+  },
+  "models/trace/insights/RenderBlocking.ts | noRenderBlocking": {
+    "message": "\u6b64\u5c0e\u89bd\u6c92\u6709\u8f38\u51fa\u5c01\u9396\u8981\u6c42"
+  },
+  "models/trace/insights/RenderBlocking.ts | renderBlockingRequest": {
+    "message": "\u8981\u6c42"
+  },
+  "models/trace/insights/RenderBlocking.ts | title": {
+    "message": "\u8f38\u51fa\u5c01\u9396\u8981\u6c42"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | description": {
+    "message": "\u5982\u679c\u300c\u91cd\u65b0\u8a08\u7b97\u6a23\u5f0f\u300d\u7684\u6210\u672c\u4ecd\u7136\u504f\u9ad8\uff0c\u53ef\u4ee5\u4f7f\u7528\u9078\u53d6\u5668\u512a\u5316\u529f\u80fd\u964d\u4f4e\u6210\u672c\u3002\u91dd\u5c0d\u7d93\u904e\u6642\u9593\u504f\u9577\u53ca\u6162\u901f\u8def\u5f91\u767e\u5206\u6bd4\u504f\u9ad8\u7684[\u9078\u53d6\u5668\u4f5c\u51fa\u512a\u5316](https://developer.chrome.com/docs/devtools/performance/selector-stats)\uff0c\u4f8b\u5982\u7c21\u5316\u9078\u53d6\u5668\u548c\u6e1b\u5c11\u6578\u91cf\uff0c\u4ee5\u53ca\u7e2e\u6e1b DOM \u5927\u5c0f\u548c\u7d50\u69cb\uff0c\u90fd\u6709\u52a9\u964d\u4f4e\u914d\u5c0d\u6210\u672c\u3002"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | elapsed": {
+    "message": "\u7d93\u904e\u6642\u9593"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | enableSelectorData": {
+    "message": "\u627e\u4e0d\u5230\u4efb\u4f55 CSS \u9078\u53d6\u5668\u8cc7\u6599\u3002\u4f60\u9700\u8981\u5728\u6210\u6548\u9762\u677f\u8a2d\u5b9a\u4e2d\uff0c\u555f\u7528 CSS \u9078\u53d6\u5668\u7d71\u8a08\u8cc7\u6599\u3002"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | matchAttempts": {
+    "message": "\u5617\u8a66\u914d\u5c0d\u6b21\u6578"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | matchCount": {
+    "message": "\u76f8\u7b26\u6578\u91cf"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | title": {
+    "message": "CSS \u9078\u53d6\u5668\u6210\u672c"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | topSelectors": {
+    "message": "\u6700\u82b1\u6642\u9593/\u5fc3\u529b\u7684\u9078\u53d6\u5668"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | total": {
+    "message": "\u7e3d\u8a08"
+  },
+  "models/trace/insights/ThirdParties.ts | columnMainThreadTime": {
+    "message": "\u4e3b\u8981\u57f7\u884c\u7dd2\u7684\u57f7\u884c\u6642\u9593"
+  },
+  "models/trace/insights/ThirdParties.ts | columnThirdParty": {
+    "message": "\u7b2c\u4e09\u65b9"
+  },
+  "models/trace/insights/ThirdParties.ts | columnTransferSize": {
+    "message": "\u50b3\u8f38\u5927\u5c0f"
+  },
+  "models/trace/insights/ThirdParties.ts | description": {
+    "message": "\u7b2c\u4e09\u65b9\u7a0b\u5f0f\u78bc\u53ef\u80fd\u6703\u56b4\u91cd\u5f71\u97ff\u8f09\u5165\u6548\u80fd\u3002\u5efa\u8b70[\u6e1b\u5c11\u7b2c\u4e09\u65b9\u7a0b\u5f0f\u78bc\u548c\u5ef6\u9072\u8f09\u5165](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/loading-third-party-javascript/)\uff0c\u512a\u5148\u8f09\u5165\u7db2\u9801\u5167\u5bb9\u3002"
+  },
+  "models/trace/insights/ThirdParties.ts | noThirdParties": {
+    "message": "\u627e\u4e0d\u5230\u7b2c\u4e09\u65b9\u5167\u5bb9"
+  },
+  "models/trace/insights/ThirdParties.ts | title": {
+    "message": "\u7b2c\u4e09\u65b9"
+  },
+  "models/trace/insights/Viewport.ts | description": {
+    "message": "\u5982\u679c\u4e0d\u512a\u5316\u6d41\u52d5\u88dd\u7f6e\u7684\u6aa2\u8996\u5340\uff0c\u8f15\u6309\u4e92\u52d5\u53ef\u80fd\u6703[\u5ef6\u9072\u6700\u591a 300 \u6beb\u79d2](https://developer.chrome.com/blog/300ms-tap-delay-gone-away/)\u3002"
+  },
+  "models/trace/insights/Viewport.ts | title": {
+    "message": "\u512a\u5316\u6d41\u52d5\u88dd\u7f6e\u7684\u6aa2\u8996\u5340"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | HTTPMethodNotGET": {
+    "message": "\u53ea\u6709\u900f\u904e GET \u8981\u6c42\u8f09\u5165\u7684\u7db2\u9801\u624d\u7b26\u5408\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u7684\u8cc7\u683c\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | HTTPStatusNotOK": {
+    "message": "\u53ea\u6709\u72c0\u614b\u78bc\u70ba 2XX \u7684\u7db2\u9801\u624d\u53ef\u5feb\u53d6\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | JavaScriptExecution": {
+    "message": "Chrome \u5075\u6e2c\u5230\u5617\u8a66\u5728\u5feb\u53d6\u4e2d\u57f7\u884c JavaScript\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | appBanner": {
+    "message": "\u8981\u6c42 AppBanner \u7684\u7db2\u9801\u76ee\u524d\u4e0d\u7b26\u5408\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u7684\u8cc7\u683c\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabled": {
+    "message": "\u6a19\u8a18\u5df2\u505c\u7528\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u3002\u5982\u8981\u5728\u6b64\u88dd\u7f6e\u4e0a\u555f\u7528\u8a72\u529f\u80fd\uff0c\u8acb\u524d\u5f80 chrome://flags/#back-forward-cache\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledByCommandLine": {
+    "message": "\u6307\u4ee4\u5217\u5df2\u505c\u7528\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledByLowMemory": {
+    "message": "\u7531\u65bc\u8a18\u61b6\u9ad4\u4e0d\u8db3\uff0c\u56e0\u6b64\u7cfb\u7d71\u5df2\u505c\u7528\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledForDelegate": {
+    "message": "\u59d4\u6d3e\u76ee\u6a19\u4e0d\u652f\u63f4\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledForPrerender": {
+    "message": "\u5df2\u70ba\u9810\u5148\u8f49\u8b6f\u5668\u505c\u7528\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | broadcastChannel": {
+    "message": "\u7db2\u9801\u6709\u5305\u542b\u5df2\u8a3b\u518a\u76e3\u807d\u5668\u7684 BroadcastChannel \u4f8b\u9805\uff0c\u56e0\u6b64\u7cfb\u7d71\u7121\u6cd5\u5feb\u53d6\u7db2\u9801\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheControlNoStore": {
+    "message": "\u5305\u542b cache-control:no-store \u6a19\u984c\u7684\u7db2\u9801\u7121\u6cd5\u5132\u5b58\u81f3\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheFlushed": {
+    "message": "\u6709\u4eba\u523b\u610f\u6e05\u9664\u5feb\u53d6\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheLimit": {
+    "message": "\u70ba\u4e86\u8b93\u7cfb\u7d71\u53ef\u5feb\u53d6\u5176\u4ed6\u7db2\u9801\uff0c\u6b64\u7db2\u9801\u5df2\u5f9e\u5feb\u53d6\u4e2d\u79fb\u9664\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | containsPlugins": {
+    "message": "\u5305\u542b\u5916\u639b\u7a0b\u5f0f\u7684\u7db2\u9801\u76ee\u524d\u4e0d\u7b26\u5408\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u7684\u8cc7\u683c\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentDiscarded": {
+    "message": "\u672a\u5b9a\u7fa9"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentFileChooser": {
+    "message": "\u4f7f\u7528 FileChooser API \u7684\u7db2\u9801\u4e0d\u7b26\u5408\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u7684\u8cc7\u683c\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentFileSystemAccess": {
+    "message": "\u4f7f\u7528\u6a94\u6848\u7cfb\u7d71\u5b58\u53d6 API \u7684\u7db2\u9801\u4e0d\u7b26\u5408\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u7684\u8cc7\u683c\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaDevicesDispatcherHost": {
+    "message": "\u4f7f\u7528\u5a92\u9ad4\u88dd\u7f6e\u8abf\u5ea6\u5de5\u5177\u7684\u7db2\u9801\u4e0d\u7b26\u5408\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u7684\u8cc7\u683c\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaPlay": {
+    "message": "\u4f7f\u7528\u8005\u96e2\u958b\u7db2\u9801\u6642\uff0c\u5a92\u9ad4\u64ad\u653e\u5668\u6b63\u5728\u64ad\u653e\u5167\u5bb9\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaSession": {
+    "message": "\u4f7f\u7528 MediaSession API \u4e26\u8a2d\u5b9a\u64ad\u653e\u72c0\u614b\u7684\u7db2\u9801\u4e0d\u7b26\u5408\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u7684\u8cc7\u683c\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaSessionService": {
+    "message": "\u4f7f\u7528 MediaSession API \u4e26\u8a2d\u5b9a\u52d5\u4f5c\u8655\u7406\u5e38\u5f0f\u7684\u7db2\u9801\u4e0d\u7b26\u5408\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u7684\u8cc7\u683c\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentScreenReader": {
+    "message": "\u7531\u65bc\u87a2\u5e55\u95b1\u8b80\u5668\u7684\u95dc\u4fc2\uff0c\u7cfb\u7d71\u5df2\u505c\u7528\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentSecurityHandler": {
+    "message": "\u4f7f\u7528 SecurityHandler \u7684\u7db2\u9801\u4e0d\u7b26\u5408\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u7684\u8cc7\u683c\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentSerial": {
+    "message": "\u4f7f\u7528\u5e8f\u865f API \u7684\u7db2\u9801\u4e0d\u7b26\u5408\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u7684\u8cc7\u683c\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebAuthenticationAPI": {
+    "message": "\u4f7f\u7528 WebAuthetication API \u7684\u7db2\u9801\u4e0d\u7b26\u5408\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u7684\u8cc7\u683c\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebBluetooth": {
+    "message": "\u4f7f\u7528 WebBluetooth API \u7684\u7db2\u9801\u4e0d\u7b26\u5408\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u7684\u8cc7\u683c\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebUSB": {
+    "message": "\u4f7f\u7528 WebUSB API \u7684\u7db2\u9801\u4e0d\u7b26\u5408\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u7684\u8cc7\u683c\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cookieDisabled": {
+    "message": "\u7531\u65bc\u4f7f\u7528 Cache-Control: no-store \u7684\u9801\u9762\u5df2\u505c\u7528 Cookie\uff0c\u56e0\u6b64\u7cfb\u7d71\u5df2\u505c\u7528\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | dedicatedWorkerOrWorklet": {
+    "message": "\u4f7f\u7528\u5c08\u5c6c Worker \u6216 Worklet \u7684\u7db2\u9801\u76ee\u524d\u4e0d\u7b26\u5408\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u7684\u8cc7\u683c\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | documentLoaded": {
+    "message": "\u6587\u4ef6\u672a\u5728\u4f7f\u7528\u8005\u96e2\u958b\u524d\u5b8c\u6210\u8f09\u5165\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderAppBannerManager": {
+    "message": "\u4f7f\u7528\u8005\u96e2\u958b\u7db2\u9801\u6642\uff0c\u7cfb\u7d71\u6703\u986f\u793a\u61c9\u7528\u7a0b\u5f0f\u6a6b\u984d\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderChromePasswordManagerClientBindCredentialManager": {
+    "message": "\u4f7f\u7528\u8005\u96e2\u958b\u7db2\u9801\u6642\uff0c\u7cfb\u7d71\u6703\u986f\u793a Chrome \u5bc6\u78bc\u7ba1\u7406\u5de5\u5177\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderDomDistillerSelfDeletingRequestDelegate": {
+    "message": "\u4f7f\u7528\u8005\u96e2\u958b\u7db2\u9801\u6642\uff0cDOM distillation \u6b63\u5728\u8655\u7406\u4e2d\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderDomDistillerViewerSource": {
+    "message": "\u4f7f\u7528\u8005\u96e2\u958b\u7db2\u9801\u6642\uff0c\u7cfb\u7d71\u6703\u986f\u793a DOM Distiller Viewer\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionMessaging": {
+    "message": "\u7531\u65bc\u64f4\u5145\u7a0b\u5f0f\u4f7f\u7528\u8a0a\u606f API\uff0c\u56e0\u6b64\u7cfb\u7d71\u5df2\u505c\u7528\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionMessagingForOpenPort": {
+    "message": "\u5728\u5132\u5b58\u81f3\u5f80\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u524d\uff0c\u53ef\u6301\u7e8c\u9023\u7dda\u7684\u64f4\u5145\u7a0b\u5f0f\u61c9\u4e2d\u65b7\u9023\u7dda\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionSentMessageToCachedFrame": {
+    "message": "\u53ef\u6301\u7e8c\u9023\u7dda\u7684\u64f4\u5145\u7a0b\u5f0f\u5617\u8a66\u5728\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u4e2d\u50b3\u9001\u8a0a\u606f\u7d66\u9801\u6846\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensions": {
+    "message": "\u7531\u65bc\u64f4\u5145\u7a0b\u5f0f\u7684\u95dc\u4fc2\uff0c\u7cfb\u7d71\u5df2\u505c\u7528\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderModalDialog": {
+    "message": "\u4f7f\u7528\u8005\u96e2\u958b\u7db2\u9801\u6642\uff0c\u7cfb\u7d71\u6703\u5728\u8a72\u9801\u9762\u986f\u793a\u5f37\u5236\u56de\u61c9\u5c0d\u8a71\u65b9\u584a\uff0c\u4f8b\u5982\u91cd\u65b0\u63d0\u4ea4\u8868\u683c\u6216 HTTP \u5bc6\u78bc\u5c0d\u8a71\u6846\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderOfflinePage": {
+    "message": "\u4f7f\u7528\u8005\u96e2\u958b\u7db2\u9801\u6642\uff0c\u7cfb\u7d71\u6703\u986f\u793a\u96e2\u7dda\u9801\u9762\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderOomInterventionTabHelper": {
+    "message": "\u4f7f\u7528\u8005\u96e2\u958b\u7db2\u9801\u6642\uff0c\u7cfb\u7d71\u6703\u986f\u793a Out-Of-Memory Intervention\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderPermissionRequestManager": {
+    "message": "\u4f7f\u7528\u8005\u96e2\u958b\u7db2\u9801\u6642\uff0c\u7cfb\u7d71\u6703\u8981\u6c42\u6b0a\u9650\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderPopupBlockerTabHelper": {
+    "message": "\u4f7f\u7528\u8005\u96e2\u958b\u7db2\u9801\u6642\uff0c\u7cfb\u7d71\u6703\u986f\u793a\u5f48\u51fa\u5f0f\u8996\u7a97\u5c01\u9396\u5668\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderSafeBrowsingThreatDetails": {
+    "message": "\u4f7f\u7528\u8005\u96e2\u958b\u7db2\u9801\u6642\uff0c\u7cfb\u7d71\u6703\u986f\u793a\u5b89\u5168\u700f\u89bd\u8a73\u7d30\u8cc7\u6599\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderSafeBrowsingTriggeredPopupBlocker": {
+    "message": "\u5b89\u5168\u700f\u89bd\u529f\u80fd\u5c07\u6b64\u7db2\u9801\u8996\u70ba\u6feb\u7528\uff0c\u4e26\u5df2\u5c01\u9396\u5f48\u51fa\u5f0f\u8996\u7a97\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | enteredBackForwardCacheBeforeServiceWorkerHostAdded": {
+    "message": "Service Worker \u5df2\u5728\u7db2\u9801\u5132\u5b58\u65bc\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u6642\u555f\u7528\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | errorDocument": {
+    "message": "\u7531\u65bc\u767c\u751f\u6587\u4ef6\u932f\u8aa4\uff0c\u56e0\u6b64\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u5df2\u505c\u7528\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | fencedFramesEmbedder": {
+    "message": "\u4f7f\u7528 FencedFrames \u7684\u9801\u9762\u7121\u6cd5\u5132\u5b58\u5728\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u4e4b\u4e2d\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | foregroundCacheLimit": {
+    "message": "\u70ba\u4e86\u8b93\u7cfb\u7d71\u53ef\u5feb\u53d6\u5176\u4ed6\u7db2\u9801\uff0c\u6b64\u7db2\u9801\u5df2\u5f9e\u5feb\u53d6\u4e2d\u79fb\u9664\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | grantedMediaStreamAccess": {
+    "message": "\u6388\u4e88\u5a92\u9ad4\u4e32\u6d41\u64ad\u653e\u6b0a\u9650\u7684\u7db2\u9801\u76ee\u524d\u4e0d\u7b26\u5408\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u7684\u8cc7\u683c\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | haveInnerContents": {
+    "message": "\u6709\u7279\u5b9a\u5d4c\u5165\u5167\u5bb9\u985e\u578b (\u4f8b\u5982 PDF) \u7684\u9801\u9762\u76ee\u524d\u4e0d\u652f\u63f4\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | idleManager": {
+    "message": "\u4f7f\u7528 IdleManager \u7684\u7db2\u9801\u76ee\u524d\u4e0d\u7b26\u5408\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u7684\u8cc7\u683c\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | indexedDBConnection": {
+    "message": "\u5305\u542b\u958b\u653e\u5f0f IndexedDB \u9023\u7dda\u7684\u7db2\u9801\u76ee\u524d\u4e0d\u7b26\u5408\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u7684\u8cc7\u683c\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | indexedDBEvent": {
+    "message": "\u7531\u65bc\u767c\u751f IndexedDB \u4e8b\u4ef6\uff0c\u56e0\u6b64\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u5df2\u505c\u7528\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | ineligibleAPI": {
+    "message": "\u4f7f\u7528\u4e86\u4e0d\u7b26\u5408\u8cc7\u683c\u7684 API\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | injectedJavascript": {
+    "message": "\u7531\u64f4\u5145\u7a0b\u5f0f\u63d2\u5165 JavaScript \u7684\u7db2\u9801\u76ee\u524d\u4e0d\u7b26\u5408\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u7684\u8cc7\u683c\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | injectedStyleSheet": {
+    "message": "\u7531\u64f4\u5145\u7a0b\u5f0f\u63d2\u5165 StyleSheet \u7684\u7db2\u9801\u76ee\u524d\u4e0d\u7b26\u5408\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u7684\u8cc7\u683c\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | internalError": {
+    "message": "\u5167\u90e8\u932f\u8aa4\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | jsNetworkRequestReceivedCacheControlNoStoreResource": {
+    "message": "\u7531\u65bc\u90e8\u5206 JavaScript \u7db2\u7d61\u8981\u6c42\u6536\u5230\u542b\u6709\u300cCache-Control: no-store\u300d\u6a19\u984c\u7684\u8cc7\u6e90\uff0c\u56e0\u6b64\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u5df2\u505c\u7528\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | keepaliveRequest": {
+    "message": "\u7531\u65bc\u6709 Keepalive \u8981\u6c42\uff0c\u56e0\u6b64\u7cfb\u7d71\u5df2\u505c\u7528\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u529f\u80fd\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | keyboardLock": {
+    "message": "\u4f7f\u7528\u9375\u76e4\u9396\u5b9a\u7684\u7db2\u9801\u76ee\u524d\u4e0d\u7b26\u5408\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u7684\u8cc7\u683c\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | loading": {
+    "message": "\u7db2\u9801\u5728\u4f7f\u7528\u8005\u96e2\u958b\u524d\u5c1a\u672a\u5b8c\u6210\u8f09\u5165\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | mainResourceHasCacheControlNoCache": {
+    "message": "\u4e3b\u8981\u8cc7\u6e90\u5305\u542b cache-control:no-cache \u7684\u7db2\u9801\u7121\u6cd5\u5132\u5b58\u81f3\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | mainResourceHasCacheControlNoStore": {
+    "message": "\u4e3b\u8981\u8cc7\u6e90\u5305\u542b cache-control:no-store \u7684\u7db2\u9801\u7121\u6cd5\u5132\u5b58\u81f3\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | navigationCancelledWhileRestoring": {
+    "message": "\u700f\u89bd\u64cd\u4f5c\u5728\u7db2\u9801\u5f9e\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u4e2d\u9084\u539f\u524d\u53d6\u6d88\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkExceedsBufferLimit": {
+    "message": "\u7531\u65bc\u6709\u6548\u7684\u7db2\u8def\u9023\u7dda\u6536\u5230\u592a\u591a\u8cc7\u6599\uff0c\u56e0\u6b64\u7db2\u9801\u5df2\u5f9e\u5feb\u53d6\u4e2d\u79fb\u9664\u3002Chrome \u6703\u9650\u5236\u7db2\u9801\u53ef\u5728\u5feb\u53d6\u6642\u63a5\u6536\u7684\u8cc7\u6599\u91cf\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestDatapipeDrainedAsBytesConsumer": {
+    "message": "\u5305\u542b in-flight fetch() \u6216 XHR \u7684\u7db2\u9801\u76ee\u524d\u4e0d\u7b26\u5408\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u7684\u8cc7\u683c\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestRedirected": {
+    "message": "\u6709\u6548\u7684\u7db2\u7d61\u8981\u6c42\u6d89\u53ca\u91cd\u65b0\u5c0e\u5411\uff0c\u56e0\u6b64\u7db2\u9801\u5df2\u5f9e\u5f80\u8fd4\u5feb\u53d6\u4e2d\u79fb\u9664\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestTimeout": {
+    "message": "\u7531\u65bc\u7db2\u7d61\u9023\u7dda\u958b\u555f\u6642\u9593\u904e\u9577\uff0c\u56e0\u6b64\u7db2\u9801\u5df2\u5f9e\u5feb\u53d6\u4e2d\u79fb\u9664\u3002Chrome \u6703\u9650\u5236\u7db2\u9801\u53ef\u5728\u5feb\u53d6\u6642\u63a5\u6536\u8cc7\u6599\u7684\u6642\u9593\u9577\u5ea6\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | noResponseHead": {
+    "message": "\u6c92\u6709\u6709\u6548\u56de\u61c9\u6a19\u984c\u7684\u7db2\u9801\u7121\u6cd5\u5132\u5b58\u81f3\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | notMainFrame": {
+    "message": "\u5c0e\u89bd\u5df2\u5728\u4e3b\u9801\u6846\u4ee5\u5916\u7684\u9801\u6846\u4e2d\u57f7\u884c\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingIndexedDBTransaction": {
+    "message": "\u7db2\u9801\u5305\u542b\u5df2\u5efa\u7acb\u7d22\u5f15\u7684\u8cc7\u6599\u5eab\u6240\u57f7\u884c\u7684\u9032\u884c\u4e2d\u4ea4\u6613\uff0c\u76ee\u524d\u4e0d\u7b26\u5408\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u7684\u8cc7\u683c\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestDirectSocket": {
+    "message": "\u5305\u542b in-flight \u7db2\u7d61\u8981\u6c42\u7684\u7db2\u9801\u76ee\u524d\u4e0d\u7b26\u5408\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u7684\u8cc7\u683c\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestFetch": {
+    "message": "\u6b63\u5728\u50b3\u9001\u64f7\u53d6\u7db2\u7d61\u8981\u6c42\u7684\u7db2\u9801\u76ee\u524d\u4e0d\u7b26\u5408\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u7684\u8cc7\u683c\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestOthers": {
+    "message": "\u5305\u542b in-flight \u7db2\u7d61\u8981\u6c42\u7684\u7db2\u9801\u76ee\u524d\u4e0d\u7b26\u5408\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u7684\u8cc7\u683c\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestXHR": {
+    "message": "\u6b63\u5728\u50b3\u9001 XHR \u7db2\u7d61\u8981\u6c42\u7684\u7db2\u9801\u76ee\u524d\u4e0d\u7b26\u5408\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u7684\u8cc7\u683c\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | paymentManager": {
+    "message": "\u4f7f\u7528 PaymentManager \u7684\u7db2\u9801\u76ee\u524d\u4e0d\u7b26\u5408\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u7684\u8cc7\u683c\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | pictureInPicture": {
+    "message": "\u4f7f\u7528\u300c\u756b\u4e2d\u756b\u300d\u7684\u7db2\u9801\u76ee\u524d\u4e0d\u7b26\u5408\u8cc7\u683c\u63d0\u4f9b\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | printing": {
+    "message": "\u986f\u793a\u5217\u5370\u4f7f\u7528\u8005\u4ecb\u9762\u7684\u7db2\u9801\u76ee\u524d\u4e0d\u7b26\u5408\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u7684\u8cc7\u683c\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | relatedActiveContentsExist": {
+    "message": "\u7db2\u9801\u5df2\u900f\u904e\u300cwindow.open()\u300d\u958b\u555f\u4e14\u5176\u4ed6\u5206\u9801\u542b\u6709\u8a72\u7db2\u9801\u7684\u53c3\u7167\u5167\u5bb9\uff0c\u6216\u7db2\u9801\u5df2\u958b\u555f\u8996\u7a97\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | rendererProcessCrashed": {
+    "message": "\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u4e2d\u7db2\u9801\u7684\u8f49\u8b6f\u5668\u8655\u7406\u7a0b\u5e8f\u5df2\u7576\u6a5f\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | rendererProcessKilled": {
+    "message": "\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u4e2d\u7db2\u9801\u7684\u8f49\u8b6f\u5668\u8655\u7406\u7a0b\u5e8f\u5df2\u4e2d\u65b7\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedAudioCapturePermission": {
+    "message": "\u8981\u6c42\u97f3\u8a0a\u64f7\u53d6\u6b0a\u9650\u7684\u7db2\u9801\u76ee\u524d\u4e0d\u7b26\u5408\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u7684\u8cc7\u683c\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedBackForwardCacheBlockedSensors": {
+    "message": "\u5df2\u8981\u6c42\u611f\u61c9\u5668\u6b0a\u9650\u7684\u7db2\u9801\u76ee\u524d\u4e0d\u7b26\u5408\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u7684\u8cc7\u683c\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedBackgroundWorkPermission": {
+    "message": "\u8981\u6c42\u80cc\u666f\u540c\u6b65\u8655\u7406\u6216\u64f7\u53d6\u6b0a\u9650\u7684\u7db2\u9801\u76ee\u524d\u4e0d\u7b26\u5408\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u7684\u8cc7\u683c\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedMIDIPermission": {
+    "message": "\u8981\u6c42 MIDI \u6b0a\u9650\u7684\u7db2\u9801\u76ee\u524d\u4e0d\u7b26\u5408\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u7684\u8cc7\u683c\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedNotificationsPermission": {
+    "message": "\u8981\u6c42\u901a\u77e5\u6b0a\u9650\u7684\u7db2\u9801\u76ee\u524d\u4e0d\u7b26\u5408\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u7684\u8cc7\u683c\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedStorageAccessGrant": {
+    "message": "\u8981\u6c42\u5132\u5b58\u7a7a\u9593\u5b58\u53d6\u6b0a\u7684\u7db2\u9801\u76ee\u524d\u4e0d\u7b26\u5408\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u7684\u8cc7\u683c\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedVideoCapturePermission": {
+    "message": "\u8981\u6c42\u5f71\u7247\u64f7\u53d6\u6b0a\u9650\u7684\u7db2\u9801\u76ee\u524d\u4e0d\u7b26\u5408\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u7684\u8cc7\u683c\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | schemeNotHTTPOrHTTPS": {
+    "message": "\u53ea\u80fd\u5feb\u53d6\u7db2\u5740\u914d\u7f6e\u70ba HTTP/HTTPS \u7684\u7db2\u9801\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerClaim": {
+    "message": "\u5728\u7db2\u9801\u8655\u65bc\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u6642\uff0c\u7531 Service Worker \u8072\u660e\u64c1\u6709\u6b0a\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerPostMessage": {
+    "message": "Service Worker \u5df2\u5617\u8a66\u5411\u65bc\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u4e2d\u7684\u7db2\u9801\u50b3\u9001 MessageEvent\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerUnregistration": {
+    "message": "Service Worker \u5df2\u5728\u7db2\u9801\u5132\u5b58\u65bc\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u6642\u53d6\u6d88\u8a3b\u518a\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerVersionActivation": {
+    "message": "\u7531\u65bc\u7cfb\u7d71\u5df2\u555f\u7528 Service Worker\uff0c\u56e0\u6b64\u7db2\u9801\u5df2\u5f9e\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u4e2d\u79fb\u9664\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | sessionRestored": {
+    "message": "Chrome \u5df2\u91cd\u65b0\u555f\u52d5\uff0c\u4e26\u6e05\u9664\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u9805\u76ee\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | sharedWorker": {
+    "message": "\u4f7f\u7528 SharedWorker \u7684\u7db2\u9801\u76ee\u524d\u4e0d\u7b26\u5408\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u7684\u8cc7\u683c\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | speechRecognizer": {
+    "message": "\u4f7f\u7528 SpeechRecognizer \u7684\u7db2\u9801\u76ee\u524d\u4e0d\u7b26\u5408\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u7684\u8cc7\u683c\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | speechSynthesis": {
+    "message": "\u4f7f\u7528 SpeechSynthesis \u7684\u7db2\u9801\u76ee\u524d\u4e0d\u7b26\u5408\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u7684\u8cc7\u683c\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subframeIsNavigating": {
+    "message": "\u7db2\u9801\u4e0a iframe \u555f\u52d5\u7684\u5c0e\u89bd\u4e26\u672a\u5b8c\u6210\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subresourceHasCacheControlNoCache": {
+    "message": "\u5b50\u8cc7\u6e90\u5305\u542b cache-control:no-cache \u7684\u7db2\u9801\u7121\u6cd5\u5132\u5b58\u81f3\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subresourceHasCacheControlNoStore": {
+    "message": "\u5b50\u8cc7\u6e90\u5305\u542b cache-control:no-store \u7684\u7db2\u9801\u7121\u6cd5\u5132\u5b58\u81f3\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | timeout": {
+    "message": "\u7db2\u9801\u5df2\u8d85\u51fa\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u4e2d\u7684\u6642\u9593\u4e0a\u9650\uff0c\u56e0\u6b64\u5df2\u904e\u671f\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | timeoutPuttingInCache": {
+    "message": "\u5c07\u7db2\u9801\u5132\u5b58\u81f3\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u6642\u5df2\u903e\u6642 (\u53ef\u80fd\u662f\u7531\u65bc\u7db2\u9801\u96b1\u85cf\u4e8b\u4ef6\u8655\u7406\u5e38\u5f0f\u7684\u57f7\u884c\u6642\u9593\u592a\u9577\u6240\u81f4)\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | unloadHandlerExistsInMainFrame": {
+    "message": "\u7db2\u9801\u7684\u4e3b\u9801\u6846\u4e2d\u6709\u5378\u8f09\u8655\u7406\u5e38\u5f0f\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | unloadHandlerExistsInSubFrame": {
+    "message": "\u7db2\u9801\u5728\u5b50\u9801\u6846\u4e2d\u542b\u6709\u5378\u8f09\u8655\u7406\u5e38\u5f0f\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | userAgentOverrideDiffers": {
+    "message": "\u700f\u89bd\u5668\u5df2\u8b8a\u66f4\u7528\u6236\u4ee3\u7406\u7a0b\u5f0f\u8986\u5beb\u6a19\u984c\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | wasGrantedMediaAccess": {
+    "message": "\u6388\u6b0a\u9304\u88fd\u5f71\u7247\u6216\u97f3\u6548\u7684\u7db2\u9801\u76ee\u524d\u4e0d\u7b26\u5408\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u7684\u8cc7\u683c\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webDatabase": {
+    "message": "\u4f7f\u7528 WebDatabase \u7684\u7db2\u9801\u76ee\u524d\u4e0d\u7b26\u5408\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u7684\u8cc7\u683c\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webHID": {
+    "message": "\u4f7f\u7528 WebHID \u7684\u7db2\u9801\u76ee\u524d\u4e0d\u7b26\u5408\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u7684\u8cc7\u683c\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webLocks": {
+    "message": "\u4f7f\u7528 WebLocks \u7684\u7db2\u9801\u76ee\u524d\u4e0d\u7b26\u5408\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u7684\u8cc7\u683c\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webNfc": {
+    "message": "\u4f7f\u7528 WebNfc \u7684\u7db2\u9801\u76ee\u524d\u4e0d\u7b26\u5408\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u7684\u8cc7\u683c\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webOTPService": {
+    "message": "\u4f7f\u7528 WebOTPService \u7684\u7db2\u9801\u76ee\u524d\u4e0d\u7b26\u5408\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u7684\u8cc7\u683c\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webRTC": {
+    "message": "\u4f7f\u7528 WebRTC \u7684\u7db2\u9801\u7121\u6cd5\u5132\u5b58\u81f3\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webRTCSticky": {
+    "message": "\u7531\u65bc\u5df2\u4f7f\u7528 WebRTC\uff0c\u56e0\u6b64\u7cfb\u7d71\u5df2\u505c\u7528\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webShare": {
+    "message": "\u4f7f\u7528 WebShare \u7684\u7db2\u9801\u76ee\u524d\u4e0d\u7b26\u5408\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u7684\u8cc7\u683c\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webSocket": {
+    "message": "\u4f7f\u7528 WebSocket \u7684\u7db2\u9801\u7121\u6cd5\u5132\u5b58\u81f3\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webSocketSticky": {
+    "message": "\u7531\u65bc\u5df2\u4f7f\u7528 WebSocket\uff0c\u56e0\u6b64\u7cfb\u7d71\u5df2\u505c\u7528\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webTransport": {
+    "message": "\u4f7f\u7528 WebTransport \u7684\u7db2\u9801\u7121\u6cd5\u5132\u5b58\u81f3\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webTransportSticky": {
+    "message": "\u7531\u65bc\u5df2\u4f7f\u7528 WebTransport\uff0c\u56e0\u6b64\u7cfb\u7d71\u5df2\u505c\u7528\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u3002"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webXR": {
+    "message": "\u4f7f\u7528 WebXR \u7684\u7db2\u9801\u76ee\u524d\u4e0d\u7b26\u5408\u5411\u524d/\u8fd4\u56de\u5feb\u53d6\u7684\u8cc7\u683c\u3002"
+  }
+}

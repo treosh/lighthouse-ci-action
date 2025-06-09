@@ -1,0 +1,908 @@
+{
+  "generated/Deprecation.ts | AuthorizationCoveredByWildcard": {
+    "message": "Keizinan tidak akan diliputi dengan simbol kad bebas (*) dalam pemegang Access-Control-Allow-Headers CORS."
+  },
+  "generated/Deprecation.ts | CSSSelectorInternalMediaControlsOverlayCastButton": {
+    "message": "Atribut disableRemotePlayback harus digunakan untuk melumpuhkan penyepaduan Kas lalai dan bukannya menggunakan pemilih -internal-media-controls-overlay-cast-button."
+  },
+  "generated/Deprecation.ts | CSSValueAppearanceSliderVertical": {
+    "message": "Nilai penampilan CSS slider-vertical tidak distandardkan dan akan dialih keluar."
+  },
+  "generated/Deprecation.ts | CanRequestURLHTTPContainingNewline": {
+    "message": "Permintaan sumber yang URL mengandungi kedua-dua aksara \\(n|r|t) ruang putih yang dialih keluar dan aksara kurang daripada (<) disekat. Sila alih keluar baris baharu dan kodkan aksara kurang daripada tempat seperti nilai atribut elemen untuk memuatkan sumber ini."
+  },
+  "generated/Deprecation.ts | CharsetAutoDetectionISO2022JP": {
+    "message": "Autopengesanan set aksara ISO-2022-JP ditamatkan dan akan dilumpuhkan dalam tempoh terdekat. Sila nyatakan set aksara dalam pengepala Jenis Kandungan atau dengan menggunakan tag meta (https://developer.mozilla.org/en-US/docs/Glossary/Character_encoding)."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesConnectionInfo": {
+    "message": "chrome.loadTimes() telah ditamatkan, sebaliknya gunakan API terpiawai: Pemasaan Navigasi 2."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesFirstPaintAfterLoadTime": {
+    "message": "chrome.loadTimes() telah ditamatkan, sebaliknya gunakan API terpiawai: Pemasaan Cat."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesWasAlternateProtocolAvailable": {
+    "message": "chrome.loadTimes() telah ditamatkan, sebaliknya gunakan API terpiawai: nextHopProtocol dalam Pemasaan Navigasi 2."
+  },
+  "generated/Deprecation.ts | CookieWithTruncatingChar": {
+    "message": "Kuki yang mengandungi aksara \\(0|r|n) akan ditolak dan bukannya dipotong."
+  },
+  "generated/Deprecation.ts | CrossOriginAccessBasedOnDocumentDomain": {
+    "message": "Menenangkan dasar asalan sama dengan tetapan document.domain telah ditamatkan, dan akan dilumpuhkan secara lalai. Amaran penamatan ini adalah untuk akses rentas asalan yang didayakan dengan tetapan document.domain."
+  },
+  "generated/Deprecation.ts | CrossOriginWindowAlert": {
+    "message": "Pencetusan window.alert daripada iframe rentas asalan telah ditamatkan dan akan dialih keluar pada masa akan datang."
+  },
+  "generated/Deprecation.ts | CrossOriginWindowConfirm": {
+    "message": "Pencetusan window.confirm daripada iframe rentas asalan telah ditamatkan dan akan dialih keluar pada masa akan datang."
+  },
+  "generated/Deprecation.ts | DOMMutationEvents": {
+    "message": "DOM Mutation Events, termasuk DOMSubtreeModified, DOMNodeInserted, DOMNodeRemoved, DOMNodeRemovedFromDocument, DOMNodeInsertedIntoDocument dan DOMCharacterDataModified telah ditamatkan (https://w3c.github.io/uievents/#legacy-event-types) dan akan dialih keluar. Sila gunakan MutationObserver."
+  },
+  "generated/Deprecation.ts | DataUrlInSvgUse": {
+    "message": "Sokongan untuk data: URL dalam SVGUseElement sudah ditamatkan dan akan dialih keluar pada masa akan datang."
+  },
+  "generated/Deprecation.ts | GeolocationInsecureOrigin": {
+    "message": "getCurrentPosition() dan watchPosition() tidak lagi berfungsi pada asalan yang tidak selamat. Untuk menggunakan ciri ini, anda harus mempertimbangkan untuk menukar aplikasi anda kepada asalan yang selamat, seperti HTTPS. Lihat https://goo.gle/chrome-insecure-origins untuk mendapatkan butiran lanjut."
+  },
+  "generated/Deprecation.ts | GeolocationInsecureOriginDeprecatedNotRemoved": {
+    "message": "getCurrentPosition() dan watchPosition() telah ditamatkan pada asalan tidak selamat. Untuk menggunakan ciri ini, anda harus mempertimbangkan untuk menukar aplikasi anda kepada asalan yang selamat, seperti HTTPS. Lihat https://goo.gle/chrome-insecure-origins untuk mendapatkan butiran lanjut."
+  },
+  "generated/Deprecation.ts | GetUserMediaInsecureOrigin": {
+    "message": "getUserMedia() tidak lagi berfungsi pada asalan yang tidak selamat. Untuk menggunakan ciri ini, anda harus mempertimbangkan untuk menukar aplikasi anda kepada asalan yang selamat, seperti HTTPS. Lihat https://goo.gle/chrome-insecure-origins untuk mendapatkan butiran lanjut."
+  },
+  "generated/Deprecation.ts | H1UserAgentFontSizeInSection": {
+    "message": "Menemukan <h1> tag dalam <article>, <aside>, <nav> atau <section> yang tiada saiz fon yang ditentukan. Saiz pengepala teks ini akan berubah dalam penyemak imbas ini pada masa hadapan. Lihat https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#specifying_a_uniform_font_size_for_h1 untuk mendapatkan maklumat lanjut."
+  },
+  "generated/Deprecation.ts | HostCandidateAttributeGetter": {
+    "message": "RTCPeerConnectionIceErrorEvent.hostCandidate telah ditamatkan. Sila gunakan RTCPeerConnectionIceErrorEvent.address atau RTCPeerConnectionIceErrorEvent.port."
+  },
+  "generated/Deprecation.ts | IdentityDigitalCredentials": {
+    "message": "Format untuk permintaan navigator.credentials.get() bagi bukti kelayakan digital ini telah ditamatkan, sila kemas kinikan panggilan anda untuk menggunakan format baharu."
+  },
+  "generated/Deprecation.ts | IdentityInCanMakePaymentEvent": {
+    "message": "Asalan pedagang dan data rambang daripada peristiwa pekerja perkhidmatan canmakepayment ditamatkan dan akan dialih keluar: topOrigin, paymentRequestOrigin, methodData, modifiers."
+  },
+  "generated/Deprecation.ts | InsecurePrivateNetworkSubresourceRequest": {
+    "message": "Laman web meminta subsumber daripada rangkaian yang hanya boleh diakses kerana kedudukan rangkaian istimewa penggunanya. Permintaan ini mendedahkan peranti bukan umum dan pelayan kepada Internet, meningkatkan risiko serangan pemalsuan permintaan rentas laman (CSRF) dan/atau kebocoran maklumat. Untuk mengurangkan risiko ini, Chrome menamatkan permintaan kepada subsumber bukan umum apabila dimulakan daripada konteks tidak selamat dan akan mula menyekatnya."
+  },
+  "generated/Deprecation.ts | InterestGroupDailyUpdateUrl": {
+    "message": "Medan dailyUpdateUrl bagi InterestGroups yang disampaikan kepada joinAdInterestGroup() telah dinamakan semula kepada updateUrl, untuk menggambarkan gelagat yang lebih tepat."
+  },
+  "generated/Deprecation.ts | IntlV8BreakIterator": {
+    "message": "Intl.v8BreakIterator telah ditamatkan. Sila gunakan Intl.Segmenter."
+  },
+  "generated/Deprecation.ts | LocalCSSFileExtensionRejected": {
+    "message": "CSS tidak boleh dimuatkan daripada URL file: melainkan mereka tamat dalam sambungan fail .css."
+  },
+  "generated/Deprecation.ts | MediaSourceAbortRemove": {
+    "message": "Penggunaan SourceBuffer.abort() untuk henti paksa penyingkiran julat tidak segerak remove() telah ditamatkan disebabkan perubahan spesifikasi. Sokongan akan dialih keluar pada masa akan datang. Anda sepatutnya mendengar acara updateend itu. abort() bertujuan untuk hanya membatalkan penambahan media tidak segerak atau menetapkan semula keadaan penghurai."
+  },
+  "generated/Deprecation.ts | MediaSourceDurationTruncatingBuffered": {
+    "message": "Menetapkan MediaSource.duration di bawah cap masa pembentangan paling tinggi bagi mana-mana bingkai berkod berpenimbal ditamatkan kerana perubahan spesifikasi. Sokongan untuk pengalihan media berpenimbal yang dipotong akan dialih keluar pada masa akan datang Sebaliknya anda harus melakukan remove(newDuration, oldDuration) eksplisit pada semua sourceBuffers, yang newDuration < oldDuration."
+  },
+  "generated/Deprecation.ts | NoSysexWebMIDIWithoutPermission": {
+    "message": "Web MIDI akan meminta kebenaran untuk penggunaan walaupun sysex tidak ditentukan dalam MIDIOptions."
+  },
+  "generated/Deprecation.ts | NotificationInsecureOrigin": {
+    "message": "API Pemberitahuan tidak boleh digunakan lagi daripada asalan yang tidak selamat. Anda harus mempertimbangkan untuk menukar aplikasi anda kepada asalan yang selamat, seperti HTTPS. Lihat https://goo.gle/chrome-insecure-origins untuk mendapatkan butiran lanjut."
+  },
+  "generated/Deprecation.ts | NotificationPermissionRequestedIframe": {
+    "message": "Kebenaran untuk API Pemberitahuan mungkin tidak lagi diminta daripada iframe rentas asalan. Anda harus mempertimbangkan untuk meminta kebenaran daripada bingkai tahap teratas atau sebaliknya membuka tetingkap baharu."
+  },
+  "generated/Deprecation.ts | ObsoleteCreateImageBitmapImageOrientationNone": {
+    "message": "Pilihan imageOrientation: 'none' dalam createImageBitmap telah ditamatkan. Sila gunakan createImageBitmap dengan pilihan '{imageOrientation: 'from-image'}'."
+  },
+  "generated/Deprecation.ts | ObsoleteWebRtcCipherSuite": {
+    "message": "Rakan kongsi anda sedang merundingkan versi (D)TLS yang lapuk. Sila semak dengan rakan kongsi anda untuk membetulkan versi itu."
+  },
+  "generated/Deprecation.ts | OverflowVisibleOnReplacedElement": {
+    "message": "Menentukan overflow: visible pada tag img, video dan kanvas boleh menyebabkan penghasilan kandungan visual di luar sempadan elemen. Lihat https://github.com/WICG/shared-element-transitions/blob/main/debugging_overflow_on_images.md."
+  },
+  "generated/Deprecation.ts | PaymentInstruments": {
+    "message": "paymentManager.instruments telah ditamatkan. Sila gunakan pemasangan tepat pada masanya untuk pengendali pembayaran."
+  },
+  "generated/Deprecation.ts | PaymentRequestCSPViolation": {
+    "message": "Panggilan PaymentRequest anda telah memintas arahan connect-src Dasar Keselamatan Kandungan (CSP). Pintasan ini telah ditamatkan. Sila tambahkan pengecam kaedah pembayaran daripada API PaymentRequest (dalam medan supportedMethods) pada arahan connect-src CSP anda."
+  },
+  "generated/Deprecation.ts | PersistentQuotaType": {
+    "message": "StorageType.persistent telah ditamatkan. Sila gunakan navigator.storage standard."
+  },
+  "generated/Deprecation.ts | PictureSourceSrc": {
+    "message": "<source src> dengan <picture> induk tidak sah dan oleh itu diabaikan. Sila gunakan <source srcset>."
+  },
+  "generated/Deprecation.ts | PrefixedCancelAnimationFrame": {
+    "message": "webkitCancelAnimationFrame adalah khusus vendor. Sila gunakan cancelAnimationFrame standard."
+  },
+  "generated/Deprecation.ts | PrefixedRequestAnimationFrame": {
+    "message": "webkitRequestAnimationFrame adalah khusus vendor. Sila gunakan requestAnimationFrame standard."
+  },
+  "generated/Deprecation.ts | PrefixedVideoDisplayingFullscreen": {
+    "message": "HTMLVideoElement.webkitDisplayingFullscreen telah ditamatkan. Sila gunakan Document.fullscreenElement."
+  },
+  "generated/Deprecation.ts | PrefixedVideoEnterFullScreen": {
+    "message": "HTMLVideoElement.webkitEnterFullScreen() telah ditamatkan. Sila gunakan Element.requestFullscreen()."
+  },
+  "generated/Deprecation.ts | PrefixedVideoEnterFullscreen": {
+    "message": "HTMLVideoElement.webkitEnterFullscreen() telah ditamatkan. Sila gunakan Element.requestFullscreen()."
+  },
+  "generated/Deprecation.ts | PrefixedVideoExitFullScreen": {
+    "message": "HTMLVideoElement.webkitExitFullScreen() telah ditamatkan. Sila gunakan Document.exitFullscreen()."
+  },
+  "generated/Deprecation.ts | PrefixedVideoExitFullscreen": {
+    "message": "HTMLVideoElement.webkitExitFullscreen() telah ditamatkan. Sila gunakan Document.exitFullscreen()."
+  },
+  "generated/Deprecation.ts | PrefixedVideoSupportsFullscreen": {
+    "message": "HTMLVideoElement.webkitSupportsFullscreen telah ditamatkan. Sila gunakan Document.fullscreenEnabled."
+  },
+  "generated/Deprecation.ts | PrivacySandboxExtensionsAPI": {
+    "message": "Kami menamatkan API chrome.privacy.websites.privacySandboxEnabled, walaupun API itu akan kekal aktif untuk keserasian ke belakang hingga keluaran M113. Sebaliknya, sila gunakan chrome.privacy.websites.topicsEnabled, chrome.privacy.websites.fledgeEnabled dan chrome.privacy.websites.adMeasurementEnabled. Lihat https://developer.chrome.com/docs/extensions/reference/privacy/#property-websites-privacySandboxEnabled."
+  },
+  "generated/Deprecation.ts | RTCConstraintEnableDtlsSrtpFalse": {
+    "message": "Kekangan DtlsSrtpKeyAgreement telah dialih keluar. Anda telah menyatakan nilai false untuk kekangan ini, yang ditafsirkan sebagai percubaan untuk menggunakan kaedah SDES key negotiation yang telah dialih keluar. Fungsi ini telah dialih keluar; gunakan perkhidmatan yang menyokong DTLS key negotiation."
+  },
+  "generated/Deprecation.ts | RTCConstraintEnableDtlsSrtpTrue": {
+    "message": "Kekangan DtlsSrtpKeyAgreement telah dialih keluar. Anda telah menetapkan nilai true untuk kekangan ini, yang tidak mempunyai kesan, tetapi anda boleh mengalih keluar kekangan ini untuk kekemasan."
+  },
+  "generated/Deprecation.ts | RTCPeerConnectionGetStatsLegacyNonCompliant": {
+    "message": "getStats() berasaskan panggil balik telah ditamatkan dan akan dialih keluar. Gunakan getStats() yang mematuhi spesifikasi."
+  },
+  "generated/Deprecation.ts | RangeExpand": {
+    "message": "Range.expand() telah ditamatkan. Sila gunakan Selection.modify()."
+  },
+  "generated/Deprecation.ts | RequestedSubresourceWithEmbeddedCredentials": {
+    "message": "Permintaan subsumber yang URL mengandungi bukti kelayakan terbenam (cth. https://user:pass@host/) disekat."
+  },
+  "generated/Deprecation.ts | RtcpMuxPolicyNegotiate": {
+    "message": "Pilihan rtcpMuxPolicy telah ditamatkan dan akan dialih keluar."
+  },
+  "generated/Deprecation.ts | SharedArrayBufferConstructedWithoutIsolation": {
+    "message": "SharedArrayBuffer akan memerlukan pengasingan rentas asalan. Lihat https://developer.chrome.com/blog/enabling-shared-array-buffer/ untuk mendapatkan butiran lanjut."
+  },
+  "generated/Deprecation.ts | TextToSpeech_DisallowedByAutoplay": {
+    "message": "speechSynthesis.speak() tanpa pengaktifan pengguna telah ditamatkan dan akan dialih keluar."
+  },
+  "generated/Deprecation.ts | UnloadHandler": {
+    "message": "Nyahmuat pendengar peristiwa ditamatkan dan akan dialih keluar."
+  },
+  "generated/Deprecation.ts | V8SharedArrayBufferConstructedInExtensionWithoutIsolation": {
+    "message": "Sambungan harus ikut serta dalam pengasingan rentas asalan untuk terus menggunakan SharedArrayBuffer. Lihat https://developer.chrome.com/docs/extensions/mv3/cross-origin-isolation/."
+  },
+  "generated/Deprecation.ts | XHRJSONEncodingDetection": {
+    "message": "UTF-16 tidak disokong oleh respons json dalam XMLHttpRequest"
+  },
+  "generated/Deprecation.ts | XMLHttpRequestSynchronousInNonWorkerOutsideBeforeUnload": {
+    "message": "XMLHttpRequest segerak pada urutan utama telah ditamatkan kerana kesannya yang memudaratkan kepada pengalaman pengguna akhir. Untuk mendapatkan bantuan lanjut, semak https://xhr.spec.whatwg.org/."
+  },
+  "models/trace/insights/CLSCulprits.ts | animation": {
+    "message": "Animasi"
+  },
+  "models/trace/insights/CLSCulprits.ts | description": {
+    "message": "Peralihan reka letak berlaku apabila pergerakan elemen tiada sebarang interaksi pengguna. [Siasat punca peralihan reka letak](https://web.dev/articles/optimize-cls), seperti elemen yang ditambahkan, dialih keluar atau pertukaran fon semasa memuatkan halaman."
+  },
+  "models/trace/insights/CLSCulprits.ts | fontRequest": {
+    "message": "Permintaan fon"
+  },
+  "models/trace/insights/CLSCulprits.ts | injectedIframe": {
+    "message": "iframe disuntik"
+  },
+  "models/trace/insights/CLSCulprits.ts | layoutShiftCluster": {
+    "message": "Kluster peralihan reka letak @ {PH1}"
+  },
+  "models/trace/insights/CLSCulprits.ts | noCulprits": {
+    "message": "Tidak dapat mengesan sebarang punca anjakan reka letak"
+  },
+  "models/trace/insights/CLSCulprits.ts | noLayoutShifts": {
+    "message": "Tiada perubahan reka letak"
+  },
+  "models/trace/insights/CLSCulprits.ts | title": {
+    "message": "Punca peralihan reka letak"
+  },
+  "models/trace/insights/CLSCulprits.ts | topCulprits": {
+    "message": "Punca perubahan reka letak teratas"
+  },
+  "models/trace/insights/CLSCulprits.ts | unsizedImages": {
+    "message": "Imej Tidak Bersaiz"
+  },
+  "models/trace/insights/CLSCulprits.ts | worstCluster": {
+    "message": "Kluster paling teruk"
+  },
+  "models/trace/insights/CLSCulprits.ts | worstLayoutShiftCluster": {
+    "message": "Kluster peralihan reka letak paling teruk"
+  },
+  "models/trace/insights/Cache.ts | cacheTTL": {
+    "message": "TTL Cache"
+  },
+  "models/trace/insights/Cache.ts | description": {
+    "message": "Jangka hayat cache yang panjang boleh mempercepat lawatan berulang kepada halaman anda. [Ketahui lebih lanjut](https://web.dev/uses-long-cache-ttl/)."
+  },
+  "models/trace/insights/Cache.ts | noRequestsToCache": {
+    "message": "Tiada permintaan dengan dasar cache yang tidak cekap"
+  },
+  "models/trace/insights/Cache.ts | others": {
+    "message": "{PH1} yang lain"
+  },
+  "models/trace/insights/Cache.ts | requestColumn": {
+    "message": "Permintaan"
+  },
+  "models/trace/insights/Cache.ts | title": {
+    "message": "Gunakan jangka hayat cache yang cekap"
+  },
+  "models/trace/insights/DOMSize.ts | description": {
+    "message": "DOM yang besar boleh meningkatkan tempoh pengiraan gaya dan aliran semula reka letak, menjejaskan responsif halaman. DOM yang besar juga akan meningkatkan penggunaan memori. [Ketahui cara mengelakkan saiz DOM yang berlebihan](https://developer.chrome.com/docs/lighthouse/performance/dom-size/)."
+  },
+  "models/trace/insights/DOMSize.ts | element": {
+    "message": "Elemen"
+  },
+  "models/trace/insights/DOMSize.ts | maxChildren": {
+    "message": "Kebanyakan kanak-kanak"
+  },
+  "models/trace/insights/DOMSize.ts | maxDOMDepth": {
+    "message": "Kedalaman DOM"
+  },
+  "models/trace/insights/DOMSize.ts | statistic": {
+    "message": "Statistik"
+  },
+  "models/trace/insights/DOMSize.ts | title": {
+    "message": "Optimumkan saiz DOM"
+  },
+  "models/trace/insights/DOMSize.ts | totalElements": {
+    "message": "Jumlah elemen"
+  },
+  "models/trace/insights/DOMSize.ts | value": {
+    "message": "Nilai"
+  },
+  "models/trace/insights/DocumentLatency.ts | description": {
+    "message": "Permintaan rangkaian anda adalah paling penting.  Kurangkan kependaman rangkaian anda dengan mengelakkan pengubahan hala, memastikan balasan pelayan yang pantas dan mendayakan pemampatan teks."
+  },
+  "models/trace/insights/DocumentLatency.ts | failedRedirects": {
+    "message": "Mengandungi ubah hala"
+  },
+  "models/trace/insights/DocumentLatency.ts | failedServerResponseTime": {
+    "message": "Pelayan memberikan respons dengan perlahan"
+  },
+  "models/trace/insights/DocumentLatency.ts | failedTextCompression": {
+    "message": "Tiada pemampatan dikenakan"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingRedirects": {
+    "message": "Mengelakkan ubah hala"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingServerResponseTime": {
+    "message": "Pelayan memberikan respons dengan pantas"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingTextCompression": {
+    "message": "Menggunakan pemampatan teks"
+  },
+  "models/trace/insights/DocumentLatency.ts | redirectsLabel": {
+    "message": "Mengubah hala"
+  },
+  "models/trace/insights/DocumentLatency.ts | serverResponseTimeLabel": {
+    "message": "Masa respons pelayan"
+  },
+  "models/trace/insights/DocumentLatency.ts | title": {
+    "message": "Kependaman permintaan dokumen"
+  },
+  "models/trace/insights/DocumentLatency.ts | uncompressedDownload": {
+    "message": "Muat turun yang dinyahmampatkan"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | columnDuplicatedBytes": {
+    "message": "Bait dipenduakan"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | columnSource": {
+    "message": "Sumber"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | description": {
+    "message": "Alih keluar modul JavaScript pendua yang besar daripada himpunan untuk mengurangkan bait yang tidak diperlukan yang digunakan oleh aktiviti rangkaian."
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | title": {
+    "message": "JavaScript dipenduakan"
+  },
+  "models/trace/insights/FontDisplay.ts | description": {
+    "message": "Pertimbangkan untuk menetapkan [font-display](https://developer.chrome.com/blog/font-display) kepada swap atau optional untuk memastikan teks kelihatan secara konsisten. swap boleh dioptimumkan selanjutnya untuk mengurangkan peralihan reka letak dengan [penggantian metrik fon](https://developer.chrome.com/blog/font-fallbacks)."
+  },
+  "models/trace/insights/FontDisplay.ts | fontColumn": {
+    "message": "Fon"
+  },
+  "models/trace/insights/FontDisplay.ts | title": {
+    "message": "Paparan fon"
+  },
+  "models/trace/insights/FontDisplay.ts | wastedTimeColumn": {
+    "message": "Masa yang terbuang"
+  },
+  "models/trace/insights/ForcedReflow.ts | anonymous": {
+    "message": "(awanama)"
+  },
+  "models/trace/insights/ForcedReflow.ts | description": {
+    "message": "Kebanyakan API, biasanya membaca geometri reka letak, memaksa enjin pemaparan untuk menjeda pelaksanaan skrip untuk mengira gaya dan reka letak. Ketahui [aliran semula yang dipaksa](https://developers.google.com/web/fundamentals/performance/rendering/avoid-large-complex-layouts-and-layout-thrashing#avoid-forced-synchronous-layouts) dan pengurangan aliran tersebut dengan lebih lanjut."
+  },
+  "models/trace/insights/ForcedReflow.ts | relatedStackTrace": {
+    "message": "Surih tindanan"
+  },
+  "models/trace/insights/ForcedReflow.ts | title": {
+    "message": "Aliran semula yang dipaksa"
+  },
+  "models/trace/insights/ForcedReflow.ts | topTimeConsumingFunctionCall": {
+    "message": "Panggilan fungsi popular"
+  },
+  "models/trace/insights/ForcedReflow.ts | totalReflowTime": {
+    "message": "Jumlah masa aliran semula"
+  },
+  "models/trace/insights/ForcedReflow.ts | unattributed": {
+    "message": "[tanpa atribut]"
+  },
+  "models/trace/insights/ImageDelivery.ts | description": {
+    "message": "Pengurangan masa muat turun imej boleh meningkatkan masa pemuatan halaman dan LCP anggapan. [Ketahui cara mengoptimumkan saiz imej dengan lebih lanjut](https://developer.chrome.com/docs/lighthouse/performance/uses-optimized-images/)"
+  },
+  "models/trace/insights/ImageDelivery.ts | estimatedSavings": {
+    "message": "{PH1} (Anggaran {PH2})"
+  },
+  "models/trace/insights/ImageDelivery.ts | noOptimizableImages": {
+    "message": "Tiada imej yang boleh dioptimumkan"
+  },
+  "models/trace/insights/ImageDelivery.ts | optimizeFile": {
+    "message": "Optimumkan saiz fail"
+  },
+  "models/trace/insights/ImageDelivery.ts | others": {
+    "message": "{PH1} yang lain"
+  },
+  "models/trace/insights/ImageDelivery.ts | title": {
+    "message": "Tingkatkan penghantaran imej"
+  },
+  "models/trace/insights/ImageDelivery.ts | useCompression": {
+    "message": "Peningkatan faktor pemampatan imej boleh meningkatkan saiz muat turun imej ini."
+  },
+  "models/trace/insights/ImageDelivery.ts | useModernFormat": {
+    "message": "Penggunaan format imej moden (WebP, AVIF) atau peningkatan pemampatan imej boleh meningkatkan saiz muat turun imej ini."
+  },
+  "models/trace/insights/ImageDelivery.ts | useResponsiveSize": {
+    "message": "Fail imej ini lebih besar daripada keperluan ({PH1}) untuk dimensi yang dipaparkan ({PH2}). Gunakan imej responsif untuk mengurangkan saiz muat turun imej."
+  },
+  "models/trace/insights/ImageDelivery.ts | useVideoFormat": {
+    "message": "Penggunaan format video dan bukan GIF boleh meningkatkan saiz muat turun kandungan beranimasi."
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | description": {
+    "message": "Mulakan penyiasatan dengan fasa terpanjang. [Penangguhan boleh diminimumkan](https://web.dev/articles/optimize-inp#optimize_interactions). Untuk mengurangkan tempoh pemprosesan, [optimumkan kos urutan utama](https://web.dev/articles/optimize-long-tasks), biasanya JS."
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | duration": {
+    "message": "Tempoh"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | inputDelay": {
+    "message": "Lengah input"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | noInteractions": {
+    "message": "Tiada interaksi dikesan"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | phase": {
+    "message": "Fasa"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | presentationDelay": {
+    "message": "Lengah pembentangan"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | processingDuration": {
+    "message": "Memproses tempoh"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | title": {
+    "message": "INP mengikut fasa"
+  },
+  "models/trace/insights/LCPDiscovery.ts | description": {
+    "message": "Optimumkan LCP dengan menjadikan imej LCP [boleh ditemukan](https://web.dev/articles/optimize-lcp#1_eliminate_resource_load_delay) daripada HTML dengan serta-merta dan [mengelakkan pemuatan tak segerak](https://web.dev/articles/lcp-lazy-loading)"
+  },
+  "models/trace/insights/LCPDiscovery.ts | fetchPriorityApplied": {
+    "message": "fetchpriority=high digunakan"
+  },
+  "models/trace/insights/LCPDiscovery.ts | fetchPriorityShouldBeApplied": {
+    "message": "fetchpriority=high harus dikenakan"
+  },
+  "models/trace/insights/LCPDiscovery.ts | lazyLoadNotApplied": {
+    "message": "pemuatan tak segerak tidak digunakan"
+  },
+  "models/trace/insights/LCPDiscovery.ts | lcpLoadDelay": {
+    "message": "Imej LCP dimuatkan {PH1} selepas titik mula paling awal."
+  },
+  "models/trace/insights/LCPDiscovery.ts | noLcp": {
+    "message": "Tiada LCP dikesan"
+  },
+  "models/trace/insights/LCPDiscovery.ts | noLcpResource": {
+    "message": "Tiada sumber LCP dikesan kerana LCP bukan imej"
+  },
+  "models/trace/insights/LCPDiscovery.ts | requestDiscoverable": {
+    "message": "Permintaan boleh ditemukan dalam dokumen awal"
+  },
+  "models/trace/insights/LCPDiscovery.ts | title": {
+    "message": "Penemuan permintaan LCP"
+  },
+  "models/trace/insights/LCPPhases.ts | description": {
+    "message": "Setiap [fasa mengandungi strategi peningkatan yang khusus](https://web.dev/articles/optimize-lcp#lcp-breakdown). Sebaik-baiknya, kebanyakan masa LCP harus diluangkan untuk memuatkan sumber, bukan ditangguhkan."
+  },
+  "models/trace/insights/LCPPhases.ts | duration": {
+    "message": "Tempoh"
+  },
+  "models/trace/insights/LCPPhases.ts | elementRenderDelay": {
+    "message": "Lengah pemaparan elemen"
+  },
+  "models/trace/insights/LCPPhases.ts | fieldDuration": {
+    "message": "Medan persentil ke-75"
+  },
+  "models/trace/insights/LCPPhases.ts | noLcp": {
+    "message": "Tiada LCP dikesan"
+  },
+  "models/trace/insights/LCPPhases.ts | phase": {
+    "message": "Fasa"
+  },
+  "models/trace/insights/LCPPhases.ts | resourceLoadDelay": {
+    "message": "Lengah pemuatan sumber"
+  },
+  "models/trace/insights/LCPPhases.ts | resourceLoadDuration": {
+    "message": "Tempoh pemuatan asalan"
+  },
+  "models/trace/insights/LCPPhases.ts | timeToFirstByte": {
+    "message": "Masa untuk bait pertama"
+  },
+  "models/trace/insights/LCPPhases.ts | title": {
+    "message": "LCP mengikut fasa"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | columnScript": {
+    "message": "Skrip"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | columnWastedBytes": {
+    "message": "Bait yang terbuang"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | description": {
+    "message": "Polyfill dan jelmaan membolehkan penyemak imbas lama menggunakan ciri JavaScript baharu. Namun, kebanyakan ciri ini tidak diperlukan untuk penyemak imbas moden. Pertimbangkan untuk mengubah suai proses binaan JavaScript anda supaya tidak menterjemah kompil ciri [Garis dasar](https://web.dev/articles/baseline-and-polyfills), melainkan anda mengetahui anda perlu menyokong penyemak imbas lama. [Ketahui cara kebanyakan laman boleh menggunakan kod ES6+ tanpa penterjemahan kompil](https://philipwalton.com/articles/the-state-of-es5-on-the-web/)"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | title": {
+    "message": "JavaScript Lama"
+  },
+  "models/trace/insights/ModernHTTP.ts | description": {
+    "message": "HTTP/2 dan HTTP/3 menawarkan pelbagai manfaat ke atas HTTP/1.1, seperti pemultipleks. [Ketahui cara menggunakan HTTP moden dengan lebih lanjut](https://developer.chrome.com/docs/lighthouse/best-practices/uses-http2/)."
+  },
+  "models/trace/insights/ModernHTTP.ts | noOldProtocolRequests": {
+    "message": "Tiada permintaan yang menggunakan HTTP/1.1"
+  },
+  "models/trace/insights/ModernHTTP.ts | protocol": {
+    "message": "Protokol"
+  },
+  "models/trace/insights/ModernHTTP.ts | request": {
+    "message": "Permintaan"
+  },
+  "models/trace/insights/ModernHTTP.ts | title": {
+    "message": "HTTP Moden"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | description": {
+    "message": "[Elakkan daripada merantai permintaan kritikal](https://developer.chrome.com/docs/lighthouse/performance/critical-request-chains) dengan mengurangkan panjang rantai, mengurangkan saiz muat turun sumber atau menangguhkan muat turun sumber yang tidak diperlukan untuk memperbaik pemuatan halaman."
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | maxCriticalPathLatency": {
+    "message": "Kependaman laluan kritikal maksimum:"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | noNetworkDependencyTree": {
+    "message": "Tiada tugasan pemaparan yang dipengaruhi oleh kebergantungan rangkaian"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | title": {
+    "message": "Pokok kebergantungan rangkaian"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | warningDescription": {
+    "message": "Elakkan daripada merantai permintaan kritikal dengan mengurangkan panjang rantai, mengurangkan saiz muat turun sumber atau menangguhkan muat turun sumber yang tidak diperlukan untuk memperbaik pemuatan halaman."
+  },
+  "models/trace/insights/RenderBlocking.ts | description": {
+    "message": "Permintaan menyekat paparan awal halaman, yang mungkin melambatkan LCP. [Penangguhan atau penyebarisan](https://web.dev/learn/performance/understanding-the-critical-path#render-blocking_resources/) boleh mengalihkan permintaan rangkaian ini keluar daripada laluan kritikal."
+  },
+  "models/trace/insights/RenderBlocking.ts | duration": {
+    "message": "Tempoh"
+  },
+  "models/trace/insights/RenderBlocking.ts | noRenderBlocking": {
+    "message": "Tiada permintaan penyekatan pemaparan untuk navigasi ini"
+  },
+  "models/trace/insights/RenderBlocking.ts | renderBlockingRequest": {
+    "message": "Permintaan"
+  },
+  "models/trace/insights/RenderBlocking.ts | title": {
+    "message": "Paparkan permintaan penyekatan"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | description": {
+    "message": "Jika kos Kira Semula Gaya kekal tinggi, pengoptimuman pemilih boleh mengurangkan kos tersebut. [Optimumkan pemilih](https://developer.chrome.com/docs/devtools/performance/selector-stats) dengan masa berlalu dan % laluan perlahan yang tinggi. Pemilih yang lebih ringkas, pemilih yang kurang, DOM yang lebih kecil dan DOM yang lebih cetek, semuanya akan mengurangkan kos pemadanan."
+  },
+  "models/trace/insights/SlowCSSSelector.ts | elapsed": {
+    "message": "Masa berlalu"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | enableSelectorData": {
+    "message": "Tiada data pemilih CSS. Statistik pemilih CSS perlu didayakan dalam tetapan panel prestasi."
+  },
+  "models/trace/insights/SlowCSSSelector.ts | matchAttempts": {
+    "message": "Percubaan padanan"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | matchCount": {
+    "message": "Kiraan padanan"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | title": {
+    "message": "Kos Pemilih CSS"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | topSelectors": {
+    "message": "Pemilih teratas"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | total": {
+    "message": "Jumlah"
+  },
+  "models/trace/insights/ThirdParties.ts | columnMainThreadTime": {
+    "message": "Masa urutan utama"
+  },
+  "models/trace/insights/ThirdParties.ts | columnThirdParty": {
+    "message": "Pihak ketiga"
+  },
+  "models/trace/insights/ThirdParties.ts | columnTransferSize": {
+    "message": "Saiz pindahan"
+  },
+  "models/trace/insights/ThirdParties.ts | description": {
+    "message": "Kod pihak ketiga boleh memberikan kesan yang ketara kepada prestasi pemuatan. [Kurangkan dan tangguhkan pemuatan kod pihak ketiga](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/loading-third-party-javascript/) untuk mengutamakan kandungan halaman anda."
+  },
+  "models/trace/insights/ThirdParties.ts | noThirdParties": {
+    "message": "Tiada pihak ketiga ditemukan"
+  },
+  "models/trace/insights/ThirdParties.ts | title": {
+    "message": "Pihak ketiga"
+  },
+  "models/trace/insights/Viewport.ts | description": {
+    "message": "Interaksi ketik mungkin [dilengahkan hingga 300\u00a0ms](https://developer.chrome.com/blog/300ms-tap-delay-gone-away/) jika port pandang tidak dioptimumkan untuk peranti mudah alih."
+  },
+  "models/trace/insights/Viewport.ts | title": {
+    "message": "Optimumkan port pandang untuk peranti mudah alih"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | HTTPMethodNotGET": {
+    "message": "Hanya halaman yang dimuatkan melalui permintaan GT layak untuk cache kembali/maju."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | HTTPStatusNotOK": {
+    "message": "Hanya halaman dengan kod status 2XX yang boleh dicache."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | JavaScriptExecution": {
+    "message": "Chrome mengesan percubaan untuk melaksanakan JavaScript semasa dalam cache."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | appBanner": {
+    "message": "Halaman yang meminta AppBanner tidak layak untuk cache kembali/maju pada masa ini."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabled": {
+    "message": "Cache kembali/maju dilumpuhkan oleh bendera. Lawati chrome://flags/#back-forward-cache untuk mendayakan ciri ini secara setempat pada peranti ini."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledByCommandLine": {
+    "message": "Cache kembali/maju dilumpuhkan oleh baris perintah."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledByLowMemory": {
+    "message": "Cache kembali/maju dilumpuhkan kerana memori tidak mencukupi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledForDelegate": {
+    "message": "Cache kembali/maju tidak disokong oleh perwakilan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledForPrerender": {
+    "message": "Cache kembali/maju dilumpuhkan untuk prapemapar."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | broadcastChannel": {
+    "message": "Halaman tidak boleh dicache kerana halaman itu mempunyai tika BroadcastChannel dengan pendengar berdaftar."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheControlNoStore": {
+    "message": "Halaman dengan pengepala cache-control:no-store tidak boleh memasuki cache kembali/maju."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheFlushed": {
+    "message": "Cache telah dikosongkan dengan sengaja."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheLimit": {
+    "message": "Halaman telah dikeluarkan daripada cache untuk membenarkan halaman lain dicache."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | containsPlugins": {
+    "message": "Halaman yang mengandungi pemalam tidak layak untuk cache kembali/maju pada masa ini."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentDiscarded": {
+    "message": "Tidak ditentukan"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentFileChooser": {
+    "message": "Halaman yang menggunakan FileChooser API tidak layak untuk cache kembali/maju."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentFileSystemAccess": {
+    "message": "Halaman yang menggunakan API Akses Sistem Fail tidak layak untuk cache kembali/maju."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaDevicesDispatcherHost": {
+    "message": "Halaman yang menggunakan Penghantar Peranti Media tidak layak untuk cache kembali/maju."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaPlay": {
+    "message": "Pemain media sedang dimainkan semasa menavigasi keluar."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaSession": {
+    "message": "Halaman yang menggunakan MediaSession API dan menetapkan keadaan main balik tidak layak untuk cache kembali/maju."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaSessionService": {
+    "message": "Halaman yang menggunakan MediaSession API dan menetapkan pengendali tindakan tidak layak untuk cache kembali/maju."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentScreenReader": {
+    "message": "Cache kembali/maju dilumpuhkan kerana pembaca skrin."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentSecurityHandler": {
+    "message": "Halaman yang menggunakan SecurityHandler tidak layak untuk cache kembali/maju."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentSerial": {
+    "message": "Halaman yang menggunakan API Bersiri tidak layak untuk cache kembali/maju."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebAuthenticationAPI": {
+    "message": "Halaman yang menggunakan WebAuthenticaion API tidak layak untuk cache kembali/maju."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebBluetooth": {
+    "message": "Halaman yang menggunakan WebBluetooth API tidak layak untuk cache kembali/maju."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebUSB": {
+    "message": "Halaman yang menggunakan WebUSB API tidak layak untuk cache kembali/maju."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cookieDisabled": {
+    "message": "Cache kembali/maju dilumpuhkan kerana kuki dilumpuhkan pada halaman yang menggunakan Cache-Control: no-store."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | dedicatedWorkerOrWorklet": {
+    "message": "Halaman yang menggunakan pekerja atau kerja kecil khusus tidak layak untuk cache kembali/maju pada masa ini."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | documentLoaded": {
+    "message": "Dokumen belum selesai dimuatkan sebelum menavigasi keluar."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderAppBannerManager": {
+    "message": "Terdapat Sepanduk Apl semasa menavigasi keluar."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderChromePasswordManagerClientBindCredentialManager": {
+    "message": "Terdapat Pengurus Kata Laluan Chrome semasa menavigasi keluar."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderDomDistillerSelfDeletingRequestDelegate": {
+    "message": "Penyaringan DOM sedang dijalankan semasa menavigasi keluar."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderDomDistillerViewerSource": {
+    "message": "Terdapat Penatap Penyaring DOM semasa menavigasi keluar."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionMessaging": {
+    "message": "Cache kembali-maju dilumpuhkan kerana sambungan menggunakan API pemesejan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionMessagingForOpenPort": {
+    "message": "Sambungan menggunakan sambungan tahan lama hendaklah dimatikan sebelum memasuki cache kembali-maju."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionSentMessageToCachedFrame": {
+    "message": "Sambungan menggunakan sambungan tahan lama cuba menghantar mesej ke bingkai dalam cache kembali-maju."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensions": {
+    "message": "Ccache kembali-maju dilumpuhkan kerana sambungan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderModalDialog": {
+    "message": "Dialog mod untuk halaman seperti penyerahan semula borang atau dialog kata laluan http telah ditunjukkan semasa menavigasi keluar."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderOfflinePage": {
+    "message": "Halaman luar talian ditunjukkan semasa menavigasi keluar."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderOomInterventionTabHelper": {
+    "message": "Terdapat bar Campur Tangan Kehabisan Memori semasa menavigasi keluar."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderPermissionRequestManager": {
+    "message": "Terdapat permintaan kebenaran semasa menavigasi keluar."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderPopupBlockerTabHelper": {
+    "message": "Terdapat penyekat tetingkap timbul semasa menavigasi keluar."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderSafeBrowsingThreatDetails": {
+    "message": "Butiran Penyemakan Imbas Selamat ditunjukkan semasa menavigasi keluar."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderSafeBrowsingTriggeredPopupBlocker": {
+    "message": "Penyemakan Imbas Selamat menganggap halaman ini mengandungi kata-kata kesat dan tetingkap timbul disekat."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | enteredBackForwardCacheBeforeServiceWorkerHostAdded": {
+    "message": "Pekerja perkhidmatan telah diaktifkan semasa halaman dalam cache kembali/maju."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | errorDocument": {
+    "message": "Cache kembali-maju dilumpuhkan kerana ralat dokumen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | fencedFramesEmbedder": {
+    "message": "Halaman yang menggunakan FencedFrames tidak boleh disimpan dalam cache kembali-maju."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | foregroundCacheLimit": {
+    "message": "Halaman telah dikeluarkan daripada cache untuk membenarkan halaman lain dicache."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | grantedMediaStreamAccess": {
+    "message": "Halaman yang telah memberikan akses strim media tidak layak untuk cache kembali/maju pada masa ini."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | haveInnerContents": {
+    "message": "Halaman yang mengandungi jenis kandungan dibenamkan tertentu (mis. PDF) tidak layak untuk cache kembali-maju pada masa ini."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | idleManager": {
+    "message": "Halaman yang menggunakan IdleManager tidak layak untuk cache kembali/maju pada masa ini."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | indexedDBConnection": {
+    "message": "Halaman yang mempunyai sambungan IndexedDB terbuka tidak layak untuk cache kembali/maju pada masa ini."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | indexedDBEvent": {
+    "message": "Cache kembali-maju dilumpuhkan disebabkan oleh peristiwa IndexedDB."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | ineligibleAPI": {
+    "message": "API yang tidak layak telah digunakan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | injectedJavascript": {
+    "message": "Halaman yang telah disuntik JavaScript oleh sambungan tidak layak untuk cache kembali/maju pada masa ini."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | injectedStyleSheet": {
+    "message": "Halaman yang telah disuntik StyleSheet oleh sambungan tidak layak untuk cache kembali/maju pada masa ini."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | internalError": {
+    "message": "Ralat dalaman."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | jsNetworkRequestReceivedCacheControlNoStoreResource": {
+    "message": "Cache kembali/maju dilumpuhkan kerana beberapa permintaan rangkaian JavaScript menerima sumber dengan pengepala Cache-Control: no-store."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | keepaliveRequest": {
+    "message": "Cache kembali-maju dilumpuhkan kerana permintaan pengekal."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | keyboardLock": {
+    "message": "Halaman yang menggunakan kunci Papan Kekunci tidak layak untuk cache kembali/maju pada masa ini."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | loading": {
+    "message": "Halaman belum selesai dimuatkan sebelum menavigasi keluar."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | mainResourceHasCacheControlNoCache": {
+    "message": "Halaman yang sumber utamanya mempunyai cache-control:no-cache tidak boleh memasuki cache kembali/maju."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | mainResourceHasCacheControlNoStore": {
+    "message": "Halaman yang sumber utamanya mempunyai cache-control:no-store tidak boleh memasuki cache kembali/maju."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | navigationCancelledWhileRestoring": {
+    "message": "Navigasi dibatalkan sebelum halaman dapat dipulihkan daripada cache kembali/maju."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkExceedsBufferLimit": {
+    "message": "Halaman telah dikeluarkan daripada cache kerana sambungan rangkaian yang aktif menerima terlalu banyak data. Chrome mengehadkan jumlah data yang boleh diterima oleh halaman semasa dicache."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestDatapipeDrainedAsBytesConsumer": {
+    "message": "Halaman yang mempunyai ambil() atau XHR yang sedang diproses tidak layak untuk cache kembali/maju pada masa ini."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestRedirected": {
+    "message": "Halaman telah dikeluarkan daripada cache kembali/maju kerana permintaan rangkaian aktif terlibat dalam pengubahhalaan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestTimeout": {
+    "message": "Halaman telah dikeluarkan daripada cache kerana sambungan rangkaian telah dibuka terlalu lama. Chrome mengehadkan jumlah masa halaman boleh menerima data semasa dicache."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | noResponseHead": {
+    "message": "Halaman yang tiada pengepala respons yang sah tidak boleh memasuki cache kembali/maju."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | notMainFrame": {
+    "message": "Navigasi berlaku dalam bingkai selain bingkai utama."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingIndexedDBTransaction": {
+    "message": "Halaman dengan transaksi DB berindeks yang sedang berjalan tidak layak untuk cache kembali/maju pada masa ini."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestDirectSocket": {
+    "message": "Halaman dengan permintaan rangkaian yang sedang diproses tidak layak untuk cache kembali/maju pada masa ini."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestFetch": {
+    "message": "Halaman dengan permintaan ambil rangkaian yang sedang diproses tidak layak untuk cache kembali/maju pada masa ini."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestOthers": {
+    "message": "Halaman dengan permintaan rangkaian yang sedang diproses tidak layak untuk cache kembali/maju pada masa ini."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestXHR": {
+    "message": "Halaman dengan permintaan rangkaian XHR yang sedang diproses tidak layak untuk cache kembali/maju pada masa ini."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | paymentManager": {
+    "message": "Halaman yang menggunakan PaymentManager tidak layak untuk cache kembali/maju pada masa ini."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | pictureInPicture": {
+    "message": "Halaman yang menggunakan Gambar dalam Gambar tidak layak untuk cache kembali/maju pada masa ini."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | printing": {
+    "message": "Halaman yang menunjukkan UI Pencetakan tidak layak untuk cache kembali/maju pada masa ini."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | relatedActiveContentsExist": {
+    "message": "Halaman telah dibuka menggunakan window.open() dan tab lain mempunyai rujukan pada halaman itu atau halaman telah membuka tetingkap."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | rendererProcessCrashed": {
+    "message": "Proses pemapar untuk halaman dalam cache kembali/maju telah ranap."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | rendererProcessKilled": {
+    "message": "Proses pemapar untuk halaman dalam cache kembali/maju telah dihentikan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedAudioCapturePermission": {
+    "message": "Halaman yang telah meminta kebenaran rakaman audio tidak layak untuk cache kembali/maju pada masa ini."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedBackForwardCacheBlockedSensors": {
+    "message": "Halaman yang telah meminta kebenaran penderia tidak layak untuk cache kembali/maju pada masa ini."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedBackgroundWorkPermission": {
+    "message": "Halaman yang telah meminta kebenaran penyegerakan atau ambil di latar belakang tidak layak untuk cache kembali/maju pada masa ini."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedMIDIPermission": {
+    "message": "Halaman yang telah meminta kebenaran MIDI tidak layak untuk cache kembali/maju pada masa ini."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedNotificationsPermission": {
+    "message": "Halaman yang telah meminta kebenaran pemberitahuan tidak layak untuk cache kembali/maju pada masa ini."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedStorageAccessGrant": {
+    "message": "Halaman yang telah meminta akses storan tidak layak untuk cache kembali/maju pada masa ini."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedVideoCapturePermission": {
+    "message": "Halaman yang telah meminta kebenaran rakaman video tidak layak untuk cache kembali/maju pada masa ini."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | schemeNotHTTPOrHTTPS": {
+    "message": "Hanya halaman yang skema URLnya ialah HTTP / HTTPS boleh dicache."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerClaim": {
+    "message": "Halaman telah dituntut oleh pekerja perkhidmatan semasa dalam cache kembali/maju."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerPostMessage": {
+    "message": "Pekerja perkhidmatan cuba menghantar MessageEvent kepada halaman dalam cache kembali/maju."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerUnregistration": {
+    "message": "ServiceWorker telah dinyahdaftar semasa halaman dalam cache kembali/maju."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerVersionActivation": {
+    "message": "Halaman telah dikeluarkan daripada cache kembali/maju disebabkan pengaktifan pekerja perkhidmatan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | sessionRestored": {
+    "message": "Chrome dimulakan semula dan masukan cache kembali/maju dikosongkan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | sharedWorker": {
+    "message": "Halaman yang menggunakan SharedWorker tidak layak untuk cache kembali/maju pada masa ini."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | speechRecognizer": {
+    "message": "Halaman yang menggunakan SpeechRecognizer tidak layak untuk cache kembali/maju pada masa ini."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | speechSynthesis": {
+    "message": "Halaman yang menggunakan SpeechSynthesis tidak layak untuk cache kembali/maju pada masa ini."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subframeIsNavigating": {
+    "message": "iframe pada halaman memulakan navigasi yang tidak selesai."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subresourceHasCacheControlNoCache": {
+    "message": "Halaman yang subsumbernya mempunyai cache-control:no-cache tidak boleh memasuki cache kembali/maju."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subresourceHasCacheControlNoStore": {
+    "message": "Halaman yang subsumbernya mempunyai cache-control:no-store tidak boleh memasuki cache kembali/maju."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | timeout": {
+    "message": "Halaman melebihi masa maksimum dalam cache kembali/maju dan telah tamat tempoh."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | timeoutPuttingInCache": {
+    "message": "Halaman tamat masa semasa memasuki cache kembali/maju (mungkin disebabkan pengendali pagehide yang telah lama berjalan)."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | unloadHandlerExistsInMainFrame": {
+    "message": "Halaman mempunyai pengendali nyahmuat dalam bingkai utama."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | unloadHandlerExistsInSubFrame": {
+    "message": "Halaman mempunyai pengendali nyahmuat dalam subbingkai."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | userAgentOverrideDiffers": {
+    "message": "Penyemak imbas telah menukar pengepala penggantian agen pengguna."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | wasGrantedMediaAccess": {
+    "message": "Halaman yang telah memberikan akses untuk merakam video atau audio tidak layak untuk cache kembali/maju pada masa ini."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webDatabase": {
+    "message": "Halaman yang menggunakan WebDatabase tidak layak untuk cache kembali/maju pada masa ini."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webHID": {
+    "message": "Halaman yang menggunakan WebHID tidak layak untuk cache kembali/maju pada masa ini."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webLocks": {
+    "message": "Halaman yang menggunakan WebLocks tidak layak untuk cache kembali/maju pada masa ini."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webNfc": {
+    "message": "Halaman yang menggunakan WebNfc tidak layak untuk cache kembali/maju pada masa ini."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webOTPService": {
+    "message": "Halaman yang menggunakan WebOTPService tidak layak untuk cache kembali/maju pada masa ini."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webRTC": {
+    "message": "Halaman dengan WebRTC tidak boleh memasuki cache kembali/maju."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webRTCSticky": {
+    "message": "Cache kembali-maju dilumpuhkan kerana WebRTC telah digunakan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webShare": {
+    "message": "Halaman yang menggunakan WebShare tidak layak untuk cache kembali/maju pada masa ini."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webSocket": {
+    "message": "Halaman dengan WebSocket tidak boleh memasuki cache kembali/maju."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webSocketSticky": {
+    "message": "Cache kembali-maju dilumpuhkan kerana WebSocket telah digunakan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webTransport": {
+    "message": "Halaman dengan WebTransport tidak boleh memasuki cache kembali/maju."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webTransportSticky": {
+    "message": "Cache kembali-maju dilumpuhkan kerana WebTransport telah digunakan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webXR": {
+    "message": "Halaman yang menggunakan WebXR tidak layak untuk cache kembali/maju pada masa ini."
+  }
+}

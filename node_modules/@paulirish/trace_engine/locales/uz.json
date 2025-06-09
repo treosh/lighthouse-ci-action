@@ -1,0 +1,908 @@
+{
+  "generated/Deprecation.ts | AuthorizationCoveredByWildcard": {
+    "message": "CORS Access-Control-Allow-Headers qayta ishlanishida yoppasiga (*) belgili hisob tekshiruvi ishlamaydi."
+  },
+  "generated/Deprecation.ts | CSSSelectorInternalMediaControlsOverlayCastButton": {
+    "message": "Birlamchi translatsiya integratsiyasini faolsizlantirishda -internal-media-controls-overlay-cast-button tanlagichi o\u02bbrniga disableRemotePlayback atributi ishlatilishi lozim."
+  },
+  "generated/Deprecation.ts | CSSValueAppearanceSliderVertical": {
+    "message": "CSS ko\u02bbrinish qiymati slider-vertical standartlashtirilmagan va olib tashlanadi."
+  },
+  "generated/Deprecation.ts | CanRequestURLHTTPContainingNewline": {
+    "message": "Bo\u02bbshliq va \\(n|r|t) belgilaridan iborat URL manzilli resurs so\u02bbrovlari olib tashlandi va <dan kam belgidan iboratlari bloklandi. Bu resurslar yuklanishi uchun yangi qatorlarni olib tashlang va element atributi qiymatlaridan kam belgilarni shifrlang."
+  },
+  "generated/Deprecation.ts | CharsetAutoDetectionISO2022JP": {
+    "message": "ISO-2022-JP belgilar to\u02bbplamini avtomatik aniqlash eskirgan va kelasi versiyada olib tashlanadi. Belgilar to\u02bbplamini \u201cKontent turi\u201d sarlavhasida yoki meta-teg (https://developer.mozilla.org/en-US/docs/Glossary/Character_encoding) orqali belgilash mumkin."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesConnectionInfo": {
+    "message": "chrome.loadTimes() eskirdi, uning o\u02bbrniga standartlashtirilgan Navigation Timing 2 API ishlating."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesFirstPaintAfterLoadTime": {
+    "message": "chrome.loadTimes() eskirdi, uning o\u02bbrniga standartlashtirilgan Paint Timing API ishlating."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesWasAlternateProtocolAvailable": {
+    "message": "chrome.loadTimes() eskirdi, uning o\u02bbrniga standartlashtirilgan nextHopProtocol Navigation Timing 2 API ishlating."
+  },
+  "generated/Deprecation.ts | CookieWithTruncatingChar": {
+    "message": "Tarkibida \\(0|r|n) belgisi bor Cookie so\u02bbrovlari qisqartirilmasdan rad qilinadi."
+  },
+  "generated/Deprecation.ts | CrossOriginAccessBasedOnDocumentDomain": {
+    "message": "document.domain sozlamasi orqali bir xil manba siyosatining yumshatilishi eskirdi va standart holatda o\u02bbchiq bo\u02bbladi. Ushbu eskirgan begona manbaga ruxsat ogohlantiruvi document.domain sozlamasi orqali yoqildi."
+  },
+  "generated/Deprecation.ts | CrossOriginWindowAlert": {
+    "message": "Begona manba ichki freymlaridan window.alert chaqiruvini bajarish eskirdi va keyingi versiyalardan olib tashlanadi."
+  },
+  "generated/Deprecation.ts | CrossOriginWindowConfirm": {
+    "message": "Begona manba ichki freymlaridan window.confirm chaqiruvini bajarish eskirdi va keyingi versiyalardan olib tashlanadi."
+  },
+  "generated/Deprecation.ts | DOMMutationEvents": {
+    "message": "DOM Mutation hodisalari, junladan: DOMSubtreeModified, DOMNodeInserted, DOMNodeRemoved, DOMNodeRemovedFromDocument, DOMNodeInsertedIntoDocument va DOMCharacterDataModified eskirgan (https://w3c.github.io/uievents/#legacy-event-types) va olib tashlanadi. O\u02bbrniga MutationObserver ishlating."
+  },
+  "generated/Deprecation.ts | DataUrlInSvgUse": {
+    "message": "Axborotlar ta\u02bcminoti: SVG SVGUseElement eskirgan va kelasi versiyada olib tashlanadi."
+  },
+  "generated/Deprecation.ts | GeolocationInsecureOrigin": {
+    "message": "Endi himoyalanmagan manabalarda getCurrentPosition() va watchPosition() ishlamaydi. Bu funksiyadan foydalanish uchun ilovangizni HTTPS kabi himoyalangan manbalarga o\u02bbtkazing. Batafsil: https://goo.gle/chrome-insecure-origins."
+  },
+  "generated/Deprecation.ts | GeolocationInsecureOriginDeprecatedNotRemoved": {
+    "message": "Himoyasiz manbalarda getCurrentPosition() va watchPosition() eskirdi. Bu funksiyadan foydalanish uchun ilovangizni HTTPS kabi himoyalangan manbalarga o\u02bbtkazing. Batafsil: https://goo.gle/chrome-insecure-origins."
+  },
+  "generated/Deprecation.ts | GetUserMediaInsecureOrigin": {
+    "message": "Endi himoyalanmagan manbalarda getUserMedia() ishlamaydi. Bu funksiyadan foydalanish uchun ilovangizni HTTPS kabi himoyalangan manbalarga o\u02bbtkazing. Batafsil: https://goo.gle/chrome-insecure-origins."
+  },
+  "generated/Deprecation.ts | H1UserAgentFontSizeInSection": {
+    "message": "<article>, <aside>, <nav> yoki <section> elementlari tarkibida shrift o\u02bblchami belgilanmagan <h1> tegi aniqlandi. Kelgusida ushbu brauzerda mazkur sarlavha o\u02bblchami o\u02bbzgaradi. Batafsil: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#specifying_a_uniform_font_size_for_h1."
+  },
+  "generated/Deprecation.ts | HostCandidateAttributeGetter": {
+    "message": "RTCPeerConnectionIceErrorEvent.hostCandidate tugatilgan. O\u02bbrniga RTCPeerConnectionIceErrorEvent.address yoki RTCPeerConnectionIceErrorEvent.port ishlating."
+  },
+  "generated/Deprecation.ts | IdentityDigitalCredentials": {
+    "message": "Raqamli hisob ma\u02bclumotlarini olish uchun ishlatiladigan joriy \u201cnavigator.credentials.get()\u201d so\u02bbrov formati eskirgan. So\u02bbrov parametrlarida yangi formatdan foydalaning."
+  },
+  "generated/Deprecation.ts | IdentityInCanMakePaymentEvent": {
+    "message": "canmakepayment service worker hodisasida savdo manbasi va ixtiyoriy axborotlar ishlatilishi eskirgan va olib tashlanadi: topOrigin, paymentRequestOrigin, methodData, modifiers."
+  },
+  "generated/Deprecation.ts | InsecurePrivateNetworkSubresourceRequest": {
+    "message": "Sayt foydalanuvchilari imtiyoz asosida tartiblanadigan tarmoqdan quyi resurs so\u02bbradi. Bunday so\u02bbrovlar yopiq qurilma va serverlarni internetga oshkor qilishi va tinimsiz saytlararo so\u02bbrovli (CSRF) hujumlar va/yoki axborot sizib chiqishi kabi xavfli oqibatlarga olib kelishi mumkin. Xavfni kamaytirish maqsadida Chrome himoyasiz kontekstlardan yopiq quyi manbalarga yuborilgan so\u02bbrovlarni bekor qiladi va bloklaydi."
+  },
+  "generated/Deprecation.ts | InterestGroupDailyUpdateUrl": {
+    "message": "joinAdInterestGroup() ga o\u02bbtkazilgan InterestGroups ning dailyUpdateUrl maydoni updateUrl deb nomlandi, shunda uning funksiyalari aniqroq ifodalanadi."
+  },
+  "generated/Deprecation.ts | IntlV8BreakIterator": {
+    "message": "Intl.v8BreakIterator tugatilgan. O\u02bbrniga Intl.Segmenter ishlating."
+  },
+  "generated/Deprecation.ts | LocalCSSFileExtensionRejected": {
+    "message": "file: URL manzillardan .css kengaytmasiz CSS fayllar yuklanmaydi."
+  },
+  "generated/Deprecation.ts | MediaSourceAbortRemove": {
+    "message": "remove()ning asinxron oralig\u02bbini SourceBuffer.abort() orqali olib tashlash tavsif o\u02bbzgarishiga ko\u02bbra eskirdi. Uning ishlatilishi keyingi versiyalardan olib tashlanadi. O\u02bbrniga updateend hodisasini kuzating. abort() faqat asinxron media kiritilishini yoki tahlil qilish vositasi holatini bekor qilish uchun ishlatiladi."
+  },
+  "generated/Deprecation.ts | MediaSourceDurationTruncatingBuffered": {
+    "message": "Tavsifdagi o\u02bbzgarishga ko\u02bbra MediaSource.duration qiymatini buferdagi har qaysi shifrlangan freymning eng yuqori vaqt orasidan kam belgilash eskirdi. Keyingi versiyalarda buferdagi qisqartirilgan media fayllarning nofaol olib tashlanishi ishlamay qoladi. O\u02bbrniga newDuration < oldDuration holatlarda barcha sourceBuffers uchun faol remove(newDuration, oldDuration) ishlating."
+  },
+  "generated/Deprecation.ts | NoSysexWebMIDIWithoutPermission": {
+    "message": "Hatto MIDIOptions parametrida sysex qiymati belgilanmasa ham Web MIDI ishlatilishi uchun ruxsat so\u02bbraladi."
+  },
+  "generated/Deprecation.ts | NotificationInsecureOrigin": {
+    "message": "Endi himoyasiz manbalarning Notification API so\u02bbrovlari ishlamaydi. Ilovangizni HTTPS kabi himoyalangan manbalarga o\u02bbtkazing. Batafsil: https://goo.gle/chrome-insecure-origins."
+  },
+  "generated/Deprecation.ts | NotificationPermissionRequestedIframe": {
+    "message": "Notification API ishlatishga ruxsat so\u02bbrovi begona ichki freymdan kelmagan bo\u02bblishi mumkin. Ruxsat so\u02bbrovini yuqori darajali freym yoki yangi ochilgan oyna orqali yuboring."
+  },
+  "generated/Deprecation.ts | ObsoleteCreateImageBitmapImageOrientationNone": {
+    "message": "createImageBitmap ichidagi imageOrientation: 'none' parametri eskirgan. O\u02bbrniga {imageOrientation: 'from-image'} parametrli createImageBitmap ishlating."
+  },
+  "generated/Deprecation.ts | ObsoleteWebRtcCipherSuite": {
+    "message": "Hamkoringiz eskirgan (D)TLS versiyasi yuzasidan muzokara olib boryapti. Buni tuzatish uchun hamkoringizga murojaat qiling."
+  },
+  "generated/Deprecation.ts | OverflowVisibleOnReplacedElement": {
+    "message": "Rasm, video va kanvas teglarida overflow: visible belgilansa, ular vizual kontentni element tashqarisida yaratishi mumkin. Batafsil: https://github.com/WICG/shared-element-transitions/blob/main/debugging_overflow_on_images.md."
+  },
+  "generated/Deprecation.ts | PaymentInstruments": {
+    "message": "paymentManager.instruments tugatilgan. To\u02bblovlar bilan ishlash vositasi uchun so\u02bbralganda o\u02bbrnatish parametridan foydalaning."
+  },
+  "generated/Deprecation.ts | PaymentRequestCSPViolation": {
+    "message": "PaymentRequest talabingiz Kontent xavfizligi siyosatinining (CSP) connect-src shartini chetlab o\u02bbtdi. Bu chetlash usuli eskirgan. PaymentRequest API (supportedMethods qatori) to\u02bblov usuli identifikatoriga o\u02bbz CSP connect-src shartingizni kiriting."
+  },
+  "generated/Deprecation.ts | PersistentQuotaType": {
+    "message": "StorageType.persistent tugatilgan. O\u02bbrniga standartlashtirilgan navigator.storage ishlating."
+  },
+  "generated/Deprecation.ts | PictureSourceSrc": {
+    "message": "<picture> tuzilmali <source src> yaroqsiz va inkor etiladi. O\u02bbrniga <source srcset> ishlating."
+  },
+  "generated/Deprecation.ts | PrefixedCancelAnimationFrame": {
+    "message": "webkitCancelAnimationFrame usuli ma\u02bclum bir provayderga bog\u02bblangan. O\u02bbrniga standart cancelAnimationFrame ishlating."
+  },
+  "generated/Deprecation.ts | PrefixedRequestAnimationFrame": {
+    "message": "webkitRequestAnimationFrame usuli ma\u02bclum bir provayderga bog\u02bblangan. O\u02bbrniga standart requestAnimationFrame ishlating."
+  },
+  "generated/Deprecation.ts | PrefixedVideoDisplayingFullscreen": {
+    "message": "HTMLVideoElement.webkitDisplayingFullscreen eskirgan. O\u02bbrniga Document.fullscreenElement ishlating."
+  },
+  "generated/Deprecation.ts | PrefixedVideoEnterFullScreen": {
+    "message": "HTMLVideoElement.webkitEnterFullScreen() eskirgan. O\u02bbrniga Element.requestFullscreen() ishlating."
+  },
+  "generated/Deprecation.ts | PrefixedVideoEnterFullscreen": {
+    "message": "HTMLVideoElement.webkitEnterFullscreen() eskirgan. O\u02bbrniga Element.requestFullscreen() ishlating."
+  },
+  "generated/Deprecation.ts | PrefixedVideoExitFullScreen": {
+    "message": "HTMLVideoElement.webkitExitFullScreen() eskirgan. O\u02bbrniga Document.exitFullscreen() ishlating."
+  },
+  "generated/Deprecation.ts | PrefixedVideoExitFullscreen": {
+    "message": "HTMLVideoElement.webkitExitFullscreen() eskirgan. O\u02bbrniga Document.exitFullscreen() ishlating."
+  },
+  "generated/Deprecation.ts | PrefixedVideoSupportsFullscreen": {
+    "message": "HTMLVideoElement.webkitSupportsFullscreen eskirgan. O\u02bbrniga Document.fullscreenEnabled ishlating."
+  },
+  "generated/Deprecation.ts | PrivacySandboxExtensionsAPI": {
+    "message": "API chrome.privacy.websites.privacySandboxEnabled tugatilmoqda, lekin u M113 chiqarilgunga qadar eski versiyalarga moslik uchun faol qoladi. O\u02bbrniga chrome.privacy.websites.topicsEnabled, chrome.privacy.websites.fledgeEnabled va chrome.privacy.websites.adMeasurementEnabled ishlating. Batafsil: https://developer.chrome.com/docs/extensions/reference/privacy/#property-websites-privacySandboxEnabled."
+  },
+  "generated/Deprecation.ts | RTCConstraintEnableDtlsSrtpFalse": {
+    "message": "DtlsSrtpKeyAgreement uslubi olib tashlandi. Sizda bu uslub uchun false qiymati belgilangan va olib tashlangan SDES key negotiation uslubidan foydalanishga urinish sifatida qabul qilinadi. Bu funksiyalar olib tashlangan, ularning o\u02bbrniga DTLS key negotiation bilan mos xizmatdan foydalaning."
+  },
+  "generated/Deprecation.ts | RTCConstraintEnableDtlsSrtpTrue": {
+    "message": "DtlsSrtpKeyAgreement uslubi olib tashlandi. Sizda bu uslub uchun ta\u02bcsir qilmaydigan true qiymati belgilangan, lekin aniqlik uchun bu uslubni olib tashlash mumkin."
+  },
+  "generated/Deprecation.ts | RTCPeerConnectionGetStatsLegacyNonCompliant": {
+    "message": "getStats() callback-funksiyasi eskirgan va olib tashlanadi. Buning o\u02bbrniga spetsifikatsiyaga mos getStats() funksiyasidan foydalaning."
+  },
+  "generated/Deprecation.ts | RangeExpand": {
+    "message": "Range.expand() eskirgan. O\u02bbrniga Selection.modify() ishlating."
+  },
+  "generated/Deprecation.ts | RequestedSubresourceWithEmbeddedCredentials": {
+    "message": "Tarkibida joylangan hisob ma\u02bclumotlari (https://user:pass@host/ kabi) mavjud quyi resurs so\u02bbrovlari bloklanadi."
+  },
+  "generated/Deprecation.ts | RtcpMuxPolicyNegotiate": {
+    "message": "rtcpMuxPolicy parametri eskirdi va olib tashlanadi."
+  },
+  "generated/Deprecation.ts | SharedArrayBufferConstructedWithoutIsolation": {
+    "message": "SharedArrayBuffer begona manba izolyatsiyasini talab qiladi. Batafsil: https://developer.chrome.com/blog/enabling-shared-array-buffer/."
+  },
+  "generated/Deprecation.ts | TextToSpeech_DisallowedByAutoplay": {
+    "message": "Foydalanuvchi amalisiz speechSynthesis.speak() eskirdi va olib tashlanadi."
+  },
+  "generated/Deprecation.ts | UnloadHandler": {
+    "message": "Hodisa aniqlagichlari yuklanishini yechish eskirdi va olib tashlanadi."
+  },
+  "generated/Deprecation.ts | V8SharedArrayBufferConstructedInExtensionWithoutIsolation": {
+    "message": "Kengaytmalar SharedArrayBuffer ishlatish uchun begona manba izolyatsiyasiga yozilishi kerak. Batafsil: https://developer.chrome.com/docs/extensions/mv3/cross-origin-isolation/."
+  },
+  "generated/Deprecation.ts | XHRJSONEncodingDetection": {
+    "message": "XMLHttpRequest json javobida UTF-16 kodlash ishlamaydi"
+  },
+  "generated/Deprecation.ts | XMLHttpRequestSynchronousInNonWorkerOutsideBeforeUnload": {
+    "message": "Asosiy zanjirdagi sinxronlangan XMLHttpRequest eskirgan va foydalanuvchi tajribasiga salbiy ta\u02bcsir qilishi mumkin. Batafsil: https://xhr.spec.whatwg.org/."
+  },
+  "models/trace/insights/CLSCulprits.ts | animation": {
+    "message": "Animatsiya"
+  },
+  "models/trace/insights/CLSCulprits.ts | description": {
+    "message": "Maket o\u02bbzgarishi sahifa elementlari foydalanuvchi ishtirokisiz harakatlanganda yuz beradi. Bunga sahifa yuklanishidagi elementlar qo\u02bbshilishi yoki olinishi hamda shriftlarning o\u02bbzgarishi sabab bo\u02bblishi mumkin. [Maket o\u02bbzgarishi sabablarini aniqlang](https://web.dev/articles/optimize-cls)."
+  },
+  "models/trace/insights/CLSCulprits.ts | fontRequest": {
+    "message": "Shrift so\u02bbrovi"
+  },
+  "models/trace/insights/CLSCulprits.ts | injectedIframe": {
+    "message": "Kiritilgan iframe"
+  },
+  "models/trace/insights/CLSCulprits.ts | layoutShiftCluster": {
+    "message": "Maket o\u02bbzgarishi klasteri @ {PH1}"
+  },
+  "models/trace/insights/CLSCulprits.ts | noCulprits": {
+    "message": "Maketni o\u02bbzgartirish culprits aniqlanmadi"
+  },
+  "models/trace/insights/CLSCulprits.ts | noLayoutShifts": {
+    "message": "Sxemada o\u02bbzgarishlar yo\u02bbq"
+  },
+  "models/trace/insights/CLSCulprits.ts | title": {
+    "message": "Maket o\u02bbzgarishi sabablari"
+  },
+  "models/trace/insights/CLSCulprits.ts | topCulprits": {
+    "message": "Maket o\u02bbzgarishi asosiy sabablari"
+  },
+  "models/trace/insights/CLSCulprits.ts | unsizedImages": {
+    "message": "O\u02bblchamsiz rasmlar"
+  },
+  "models/trace/insights/CLSCulprits.ts | worstCluster": {
+    "message": "Eng yomon klaster"
+  },
+  "models/trace/insights/CLSCulprits.ts | worstLayoutShiftCluster": {
+    "message": "Eng yomon maket o\u02bbzgarishi klasteri"
+  },
+  "models/trace/insights/Cache.ts | cacheTTL": {
+    "message": "Keshning amal qilish vaqti (TTL)"
+  },
+  "models/trace/insights/Cache.ts | description": {
+    "message": "Uzoq saqlanadigan kesh kelgusi tashriflarda sahifaning tezroq yuklanishiga yordam beradi. [Batafsil](https://web.dev/uses-long-cache-ttl/)."
+  },
+  "models/trace/insights/Cache.ts | noRequestsToCache": {
+    "message": "Samarasiz kesh qoidalari mavjud so\u02bbrovlar topilmadi"
+  },
+  "models/trace/insights/Cache.ts | others": {
+    "message": "yana {PH1} ta"
+  },
+  "models/trace/insights/Cache.ts | requestColumn": {
+    "message": "So\u02bbrov"
+  },
+  "models/trace/insights/Cache.ts | title": {
+    "message": "Keshni samarali saqlash davrini tanlang"
+  },
+  "models/trace/insights/DOMSize.ts | description": {
+    "message": "DOM hajmi kattaligi sababli uslublarni hisoblash va maketni tuzish ko\u02bbproq vaqt olishi mumkin. Bu sahifa tezligiga ta\u02bcsir qiladi. Katta DOM xotira sarfini oshiradi. [Haddan ortiq DOM hajmiga yo\u02bbl qo\u02bbymaslik haqida batafsil](https://developer.chrome.com/docs/lighthouse/performance/dom-size/)."
+  },
+  "models/trace/insights/DOMSize.ts | element": {
+    "message": "Element"
+  },
+  "models/trace/insights/DOMSize.ts | maxChildren": {
+    "message": "Aksariyat quyi elementlar"
+  },
+  "models/trace/insights/DOMSize.ts | maxDOMDepth": {
+    "message": "DOM chuqurligi"
+  },
+  "models/trace/insights/DOMSize.ts | statistic": {
+    "message": "Statistika"
+  },
+  "models/trace/insights/DOMSize.ts | title": {
+    "message": "DOM hajmini optimallash"
+  },
+  "models/trace/insights/DOMSize.ts | totalElements": {
+    "message": "Jami elementlar"
+  },
+  "models/trace/insights/DOMSize.ts | value": {
+    "message": "Qiymat"
+  },
+  "models/trace/insights/DocumentLatency.ts | description": {
+    "message": "Dastlabki tarmoq so\u02bbrovingiz \u2014 juda muhim.  Yo\u02bbnaltirishlar ishlatmasdan, matnni siqish va server javobini tezlatish orqali kechiktirishni kamaytiring."
+  },
+  "models/trace/insights/DocumentLatency.ts | failedRedirects": {
+    "message": "Yo\u02bbnaltirishlar bajarilgan"
+  },
+  "models/trace/insights/DocumentLatency.ts | failedServerResponseTime": {
+    "message": "Server sekin javob qaytardi"
+  },
+  "models/trace/insights/DocumentLatency.ts | failedTextCompression": {
+    "message": "Arxivlash tatbiq etiladi"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingRedirects": {
+    "message": "Yo\u02bbnaltirishlarsiz"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingServerResponseTime": {
+    "message": "Server tezroq javob beradi"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingTextCompression": {
+    "message": "Matnni arxivlash tatbiq etiladi"
+  },
+  "models/trace/insights/DocumentLatency.ts | redirectsLabel": {
+    "message": "Yo\u02bbnaltirishlar"
+  },
+  "models/trace/insights/DocumentLatency.ts | serverResponseTimeLabel": {
+    "message": "Server javobi vaqti"
+  },
+  "models/trace/insights/DocumentLatency.ts | title": {
+    "message": "Hujjat so\u02bbrovi kechikishi"
+  },
+  "models/trace/insights/DocumentLatency.ts | uncompressedDownload": {
+    "message": "Siqilmagan faylni yuklab olish"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | columnDuplicatedBytes": {
+    "message": "Takroriy baytlar"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | columnSource": {
+    "message": "Manba"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | description": {
+    "message": "Tarmoq faolligida sarflangan keraksiz baytlar sonini kamaytirish uchun paketlardan yirik va takrorlanuvchi JavaScript modullarini olib tashlang."
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | title": {
+    "message": "Takroriy JavaScript"
+  },
+  "models/trace/insights/FontDisplay.ts | description": {
+    "message": "Matn bir xil chiqishi uchun [font-display](https://developer.chrome.com/blog/font-display) uchun swap yoki optional belgilash tavsiya etiladi. [Shrift ko\u02bbrsatkichlarini qayta belgilash](https://developer.chrome.com/blog/font-fallbacks) orqali maket o\u02bbzgarishlarini kamaytirish uchun qo\u02bbshimcha tarzda swap optimallanishi mumkin."
+  },
+  "models/trace/insights/FontDisplay.ts | fontColumn": {
+    "message": "Shrift"
+  },
+  "models/trace/insights/FontDisplay.ts | title": {
+    "message": "Ishlatilgan shriftlar"
+  },
+  "models/trace/insights/FontDisplay.ts | wastedTimeColumn": {
+    "message": "Yo\u02bbqotilgan vaqt"
+  },
+  "models/trace/insights/ForcedReflow.ts | anonymous": {
+    "message": "(anonim)"
+  },
+  "models/trace/insights/ForcedReflow.ts | description": {
+    "message": "Aksariyat API tizimlar avval maket geometriyasini o\u02bbqiydi va uslub va maketni hisoblash uchun renderlash tizimini skript ishga tushirishni to\u02bbxtatishga undaydi. [Majburiy tuzish](https://developers.google.com/web/fundamentals/performance/rendering/avoid-large-complex-layouts-and-layout-thrashing#avoid-forced-synchronous-layouts) va uning oldini olish haqida batafsil."
+  },
+  "models/trace/insights/ForcedReflow.ts | relatedStackTrace": {
+    "message": "Stek trassirovkasi"
+  },
+  "models/trace/insights/ForcedReflow.ts | title": {
+    "message": "Majburiy reflow"
+  },
+  "models/trace/insights/ForcedReflow.ts | topTimeConsumingFunctionCall": {
+    "message": "Eng ko\u02bbp vaqt oladigan chaqiruv"
+  },
+  "models/trace/insights/ForcedReflow.ts | totalReflowTime": {
+    "message": "Jami maket tuzish vaqti"
+  },
+  "models/trace/insights/ForcedReflow.ts | unattributed": {
+    "message": "[atributsiz]"
+  },
+  "models/trace/insights/ImageDelivery.ts | description": {
+    "message": "Rasmlarni yuklab olish vaqtini kamaytirish sahifaning qabul qilingan yuklash vaqtini va LCPni yaxshilashi mumkin. [Rasm o\u02bblchamini optimallash haqida batafsil](https://developer.chrome.com/docs/lighthouse/performance/uses-optimized-images/)"
+  },
+  "models/trace/insights/ImageDelivery.ts | estimatedSavings": {
+    "message": "{PH1} (Taxminan {PH2})"
+  },
+  "models/trace/insights/ImageDelivery.ts | noOptimizableImages": {
+    "message": "Optimallanadigan rasmlar yo\u02bbq"
+  },
+  "models/trace/insights/ImageDelivery.ts | optimizeFile": {
+    "message": "Fayl hajmini optimallash"
+  },
+  "models/trace/insights/ImageDelivery.ts | others": {
+    "message": "yana {PH1} ta"
+  },
+  "models/trace/insights/ImageDelivery.ts | title": {
+    "message": "Rasm yetkazilishini yaxshilash"
+  },
+  "models/trace/insights/ImageDelivery.ts | useCompression": {
+    "message": "Rasmni siqish koeffitsiyentini oshirish ushbu rasmni yuklab olish hajmini yaxshilashi mumkin."
+  },
+  "models/trace/insights/ImageDelivery.ts | useModernFormat": {
+    "message": "Zamonaviy rasm formatidan (WebP, AVIF) foydalanish yoki tasvirni siqishni oshirish ushbu tasvirni yuklab olish hajmini yaxshilashi mumkin."
+  },
+  "models/trace/insights/ImageDelivery.ts | useResponsiveSize": {
+    "message": "Bu rasmli fayl ko\u02bbrsatilgan o\u02bblchamlar ({PH2}) uchun keragidan ({PH1}) kattaroq. Rasmlarni yuklab olish hajmini kamaytirish uchun moslashuvchan rasmlardan foydalaning."
+  },
+  "models/trace/insights/ImageDelivery.ts | useVideoFormat": {
+    "message": "GIFlar o\u02bbrniga video formatlaridan foydalanish animatsiyali kontentni yuklab olish hajmini yaxshilashi mumkin."
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | description": {
+    "message": "Tahlilni eng uzoq bosqichdan boshlang. [Kechikishlarni kamaytirish mumkin](https://web.dev/articles/optimize-inp#optimize_interactions). Qayta ishlash davomiyligini qisqartirish uchun [asosiy oqim xarajatlarini optimallang](https://web.dev/articles/optimize-long-tasks). Odatda ular JS kodiga taalluqli."
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | duration": {
+    "message": "Davomiyligi"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | inputDelay": {
+    "message": "Kiritish kechikishi"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | noInteractions": {
+    "message": "Hech qanday muloqot aniqlanmadi"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | phase": {
+    "message": "Bosqich"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | presentationDelay": {
+    "message": "Taqdimot kechikishi"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | processingDuration": {
+    "message": "Qayta ishlash davomiyligi"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | title": {
+    "message": "INP bosqichlari"
+  },
+  "models/trace/insights/LCPDiscovery.ts | description": {
+    "message": "Bevosita HTML koddagi eng yirik tasvirlarni [ko\u02bbrinadigan](https://web.dev/articles/optimize-lcp#1_eliminate_resource_load_delay) qilish orqali LCP metrikasni optimallang va [zarurat asosida yuklash ishlatmang](https://web.dev/articles/lcp-lazy-loading)."
+  },
+  "models/trace/insights/LCPDiscovery.ts | fetchPriorityApplied": {
+    "message": "fetchpriority=high tatbiq qilindi"
+  },
+  "models/trace/insights/LCPDiscovery.ts | fetchPriorityShouldBeApplied": {
+    "message": "fetchpriority=high tatbiq qilish zarur"
+  },
+  "models/trace/insights/LCPDiscovery.ts | lazyLoadNotApplied": {
+    "message": "zarurat asosida yuklash tatbiq qilinmadi"
+  },
+  "models/trace/insights/LCPDiscovery.ts | lcpLoadDelay": {
+    "message": "LCP tasviri eng erta boshlang\u02bbich nuqtadan {PH1} keyin yuklandi."
+  },
+  "models/trace/insights/LCPDiscovery.ts | noLcp": {
+    "message": "LCP aniqlanmadi"
+  },
+  "models/trace/insights/LCPDiscovery.ts | noLcpResource": {
+    "message": "LCP rasm emasligi sababli hech qanday LCP resursi aniqlanmadi"
+  },
+  "models/trace/insights/LCPDiscovery.ts | requestDiscoverable": {
+    "message": "So\u02bbrovni ilk hujjatdan topish mumkin"
+  },
+  "models/trace/insights/LCPDiscovery.ts | title": {
+    "message": "LCP va aloqador so\u02bbrovlar axboroti"
+  },
+  "models/trace/insights/LCPPhases.ts | description": {
+    "message": "Har bosqichda [yaxshilash strategiyalari mavjud](https://web.dev/articles/optimize-lcp#lcp-breakdown). Ideal holatda LCP elementlarni chizish uchun kerakli vaqtning katta qismi kechikishga emas, resurslarni yuklashga sarflanishi kerak."
+  },
+  "models/trace/insights/LCPPhases.ts | duration": {
+    "message": "Davomiyligi"
+  },
+  "models/trace/insights/LCPPhases.ts | elementRenderDelay": {
+    "message": "Elementni renderlashda kechikish"
+  },
+  "models/trace/insights/LCPPhases.ts | fieldDuration": {
+    "message": "Kuzatuvdagi axborotlarda 75-protsentil"
+  },
+  "models/trace/insights/LCPPhases.ts | noLcp": {
+    "message": "LCP aniqlanmadi"
+  },
+  "models/trace/insights/LCPPhases.ts | phase": {
+    "message": "Bosqich"
+  },
+  "models/trace/insights/LCPPhases.ts | resourceLoadDelay": {
+    "message": "Resursni yuklashda kechikish"
+  },
+  "models/trace/insights/LCPPhases.ts | resourceLoadDuration": {
+    "message": "Resursni yuklash davomiyligi"
+  },
+  "models/trace/insights/LCPPhases.ts | timeToFirstByte": {
+    "message": "Ilk bayt vaqti"
+  },
+  "models/trace/insights/LCPPhases.ts | title": {
+    "message": "LCP bosqichlari"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | columnScript": {
+    "message": "Skript"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | columnWastedBytes": {
+    "message": "Isrof qilingan baytlar"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | description": {
+    "message": "Polifill va transform parametrlari eskirgan brauzerlarga yangi JavaScript funksiyalaridan foydalanish imkonini beradi. Ammo, ular zamonaviy brauzerlarda talab etilmaydi. Eskirgan brauzerlarni dastaklash kerak bo\u02bblmasa, JavaScript ishlab chiqish jarayonida [Baseline](https://web.dev/articles/baseline-and-polyfills) funksiyalarini transpil qilmaslikni hisobga oling. [Aksariyat saytlar nima uchun ES6+ kodni transpil qilmasdan ishlatishi mumkinligi haqida batafsil](https://philipwalton.com/articles/the-state-of-es5-on-the-web/)"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | title": {
+    "message": "Eskirgan JavaScript"
+  },
+  "models/trace/insights/ModernHTTP.ts | description": {
+    "message": "HTTP/2 va HTTP/3 HTTP/1.1 protokollariga nisbatan bir qancha afzalliklarga ega, masalan, multipleksing. [Zamonaviy HTTP protokolidan foydalanish haqida batafsil](https://developer.chrome.com/docs/lighthouse/best-practices/uses-http2/)."
+  },
+  "models/trace/insights/ModernHTTP.ts | noOldProtocolRequests": {
+    "message": "HTTP/1.1 ishlatilgan so\u02bbrovlar topilmadi"
+  },
+  "models/trace/insights/ModernHTTP.ts | protocol": {
+    "message": "Protokol"
+  },
+  "models/trace/insights/ModernHTTP.ts | request": {
+    "message": "So\u02bbrov"
+  },
+  "models/trace/insights/ModernHTTP.ts | title": {
+    "message": "Zamonaviy HTTP"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | description": {
+    "message": "[Ziddiyatli so\u02bbrovlar zanjirini yaratmaslikka urining](https://developer.chrome.com/docs/lighthouse/performance/critical-request-chains). Sahifa tezroq yuklanishi uchun so\u02bbrovlar sonini qisqartiring, yuklanadigan resurslar hajmini kamaytiring yoki keraksiz resurslar yuklanmasini keyinga qoldiring."
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | maxCriticalPathLatency": {
+    "message": "Ziddiyatli manzil maksimal kechikishi:"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | noNetworkDependencyTree": {
+    "message": "Hech qaysi renderlash vazifasiga tarmoq quyi so\u02bbrovlari ta\u02bcsir qilmagan"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | title": {
+    "message": "Tarmoqdagi quyi so\u02bbrovlar daraxti"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | warningDescription": {
+    "message": "Ziddiyatli so\u02bbrovlar zanjirini yaratmaslikka urining. Sahifa tezroq yuklanishi uchun so\u02bbrovlar sonini qisqartiring, yuklanadigan resurslar hajmini kamaytiring yoki keraksiz resurslar yuklanmasini keyinga qoldiring."
+  },
+  "models/trace/insights/RenderBlocking.ts | description": {
+    "message": "So\u02bbrovlar sahifaning dastlabki renderlanishini bloklamoqda va LCP kechikishiga olib kelishi mumkin. [](https://web.dev/learn/performance/understanding-the-critical-path#render-blocking_resources/) alohida yoki bir qatorda joylansa, mazkur tarmoq so\u02bbrovlari ziddiyatli yo\u02bblakdan olinishi mumkin."
+  },
+  "models/trace/insights/RenderBlocking.ts | duration": {
+    "message": "Davomiyligi"
+  },
+  "models/trace/insights/RenderBlocking.ts | noRenderBlocking": {
+    "message": "Bu navigatsiya uchun renderni bloklash so\u02bbrovlari yo\u02bbq"
+  },
+  "models/trace/insights/RenderBlocking.ts | renderBlockingRequest": {
+    "message": "So\u02bbrov"
+  },
+  "models/trace/insights/RenderBlocking.ts | title": {
+    "message": "Renderni bloklagan so\u02bbrovlar"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | description": {
+    "message": "Uslublarni qayta hisoblash xarajatlari yuqori qolsa, selektorni optimallash ularni pasaytirishi mumkin. Katta vaqt davomida yuqori foizli slow-path bilan [selektorlarni optimallang](https://developer.chrome.com/docs/devtools/performance/selector-stats). Sodda va kamroq selektorlar hamda ixchamroq tuzilmali DOM yordamida muvofiq xarajatlarni kamaytirish mumkin."
+  },
+  "models/trace/insights/SlowCSSSelector.ts | elapsed": {
+    "message": "O\u02bbtgan vaqt"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | enableSelectorData": {
+    "message": "Hech qanday CSS selektor ma\u02bclumotlari topilmadi. CSS selektor statistikasi samaradorlik paneli sozlamalarida yoqilishi zarur."
+  },
+  "models/trace/insights/SlowCSSSelector.ts | matchAttempts": {
+    "message": "Moslik topishga urinishlar"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | matchCount": {
+    "message": "Mosliklar"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | title": {
+    "message": "CSS selektor xarajatlari"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | topSelectors": {
+    "message": "Asosiy selektorlar"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | total": {
+    "message": "Jami"
+  },
+  "models/trace/insights/ThirdParties.ts | columnMainThreadTime": {
+    "message": "Asosiy zanjir vaqti"
+  },
+  "models/trace/insights/ThirdParties.ts | columnThirdParty": {
+    "message": "Tashqi xizmat"
+  },
+  "models/trace/insights/ThirdParties.ts | columnTransferSize": {
+    "message": "Uzatish hajmi"
+  },
+  "models/trace/insights/ThirdParties.ts | description": {
+    "message": "Tashqi xizmat kodi yuklash unumdorligiga sezilarli ta\u02bcsir qilishi mumkin. Sahifadagi kontent namoyishini tezlatish uchun [tashqi kodni qisqartiring va yuklanishini kechiktiring](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/loading-third-party-javascript/)."
+  },
+  "models/trace/insights/ThirdParties.ts | noThirdParties": {
+    "message": "Tashqi kontent topilmadi"
+  },
+  "models/trace/insights/ThirdParties.ts | title": {
+    "message": "Tashqi xizmatlar"
+  },
+  "models/trace/insights/Viewport.ts | description": {
+    "message": "Agar ko\u02bbrinadigan qismi mobil qurilmalar uchun optimallashtirilmagan bo\u02bblsa, teginishlar [300 ms gacha kechikishi](https://developer.chrome.com/blog/300ms-tap-delay-gone-away/) mumkin."
+  },
+  "models/trace/insights/Viewport.ts | title": {
+    "message": "Mobil uchun ko\u02bbrinadigan qismini optimallash"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | HTTPMethodNotGET": {
+    "message": "Faqatgina GET so\u02bbrovi orqali yuklangan sahifalar keshdan ortga qaytarilishi mumkin."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | HTTPStatusNotOK": {
+    "message": "Faqatgina 2XX holat kodiga ega sahifalar keshlanishi mumkin."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | JavaScriptExecution": {
+    "message": "Chrome kesh ichidan JavaScript ishga tushirish urinishini aniqladi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | appBanner": {
+    "message": "AppBanner so\u02bbrovini yuboradigan sahifalarda hozircha ortga qaytadigan kesh ishlamaydi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabled": {
+    "message": "Ortga qaytadigan kesh bayroqcha tomonidan faolsizlantirildi. Uni bu qurilmada chrome://flags/#back-forward-cache sahifasi orqali mustaqil yoqish mumkin."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledByCommandLine": {
+    "message": "Ortga qaytadigan kesh buryuqlar qatoridan faolsizlantirildi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledByLowMemory": {
+    "message": "Xotira kamligi sababli ortga qaytadigan kesh faolsizlantirildi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledForDelegate": {
+    "message": "Ortga qaytadigan kesh vakil ta\u02bcminoti bilan ishlamaydi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledForPrerender": {
+    "message": "Ortga qaytadigan kesh oldindan renderlanishi uchun faolsizlantirildi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | broadcastChannel": {
+    "message": "Tarkibida qayd qilingan kutish vositalariga ega BroadcastChannel namunasi borligi uchun sahifani keshlash imkonsiz."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheControlNoStore": {
+    "message": "Sarlavhasida cache-control:no-store parametri bor sahifalarni keshdan ortga qaytarish imkonsiz."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheFlushed": {
+    "message": "Kesh ataylab tozalandi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheLimit": {
+    "message": "Sahifa boshqasini keshlash maqsadida keshdan o\u02bbchirildi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | containsPlugins": {
+    "message": "Tarkibida plaginlari bor sahifalarda hozircha ortga qaytadigan kesh ishlamaydi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentDiscarded": {
+    "message": "Aniqlanmagan"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentFileChooser": {
+    "message": "FileChooser API ishlatadigan sahifalarda hozircha ortga qaytadigan kesh ishlamaydi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentFileSystemAccess": {
+    "message": "Fayllar tizimiga ruxsat API ta\u02bcminotidan foydalanuvchi sahifalarda hozircha ortga qaytadigan kesh ishlamaydi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaDevicesDispatcherHost": {
+    "message": "Media qurilmalar dispetcheridan foydalanadigan sahifalarda ortga qaytadigan kesh ishlamaydi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaPlay": {
+    "message": "Boshqa sahifaga o\u02bbtish vaqtida media pleyer ijrosi faol edi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaSession": {
+    "message": "MediaSession API ishlatadigan va ijro holati belgilangan sahifalarda hozircha ortga qaytadigan kesh ishlamaydi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaSessionService": {
+    "message": "MediaSession API ishlatadigan va amal bajarish vositalari belgilangan sahifalarda hozircha ortga qaytadigan kesh ishlamaydi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentScreenReader": {
+    "message": "Ortga qaytadigan kesh skrin rider uchun faolsizlantirildi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentSecurityHandler": {
+    "message": "SecurityHandler ishlatadigan sahifalarda ortga qaytadigan kesh ishlamaydi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentSerial": {
+    "message": "Serial API ishlatadigan sahifalarda hozircha ortga qaytadigan kesh ishlamaydi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebAuthenticationAPI": {
+    "message": "WebAuthetication API ishlatadigan sahifalarda hozircha ortga qaytadigan kesh ishlamaydi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebBluetooth": {
+    "message": "WebBluetooth API ishlatadigan sahifalarda hozircha ortga qaytadigan kesh ishlamaydi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebUSB": {
+    "message": "WebUSB API ishlatadigan sahifalarda hozircha ortga qaytadigan kesh ishlamaydi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cookieDisabled": {
+    "message": "Cache-Control: no-store ishlatuvchi sahifalarda cookielar yoniq emasligi uchun orqaga qaytadigan kesh faolsizlantirildi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | dedicatedWorkerOrWorklet": {
+    "message": "Alohida worker yoki worklet interfeysi bor sahifalarda hozircha ortga qaytadigan kesh ishlamaydi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | documentLoaded": {
+    "message": "Hujjat boshqa joyga o\u02bbtishdan oldin oxirigacha yuklanmadi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderAppBannerManager": {
+    "message": "Boshqa sahifaga o\u02bbtish vaqtida ilova banneri chiqqan edi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderChromePasswordManagerClientBindCredentialManager": {
+    "message": "Boshqa sahifaga o\u02bbtish vaqtida Chrome Parollar menejeri faol edi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderDomDistillerSelfDeletingRequestDelegate": {
+    "message": "Boshqa sahifaga o\u02bbtish vaqtida DOM distillash jarayoni faol edi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderDomDistillerViewerSource": {
+    "message": "Boshqa sahifaga o\u02bbtish vaqtida DOM Distillanishini ko\u02bbrish vositasi chiqqan edi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionMessaging": {
+    "message": "Ortga qaytadigan kesh kengaytmalar xabarlashuv APIsidan foydalangani uchun faolsizlantirildi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionMessagingForOpenPort": {
+    "message": "Uzoq aloqada turuvchi kengaytmalar ortga qaytadigan keshga kirishdan avval aloqasini uzishi lozim."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionSentMessageToCachedFrame": {
+    "message": "Uzoq aloqada turuvchi kengaytmalar ortga qaytadigan keshdan freymlarga xabar yuborishga urindi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensions": {
+    "message": "Ortga qaytadigan kesh kengaytmalar sababli faolsizlantirildi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderModalDialog": {
+    "message": "Boshqa sahifaga o\u02bbtish vaqtida http parol oynasi yoki shakl kiritish kabi modal oyna chiqqan edi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderOfflinePage": {
+    "message": "Boshqa sahifaga o\u02bbtish vaqtida oflayn sahifa chiqqan edi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderOomInterventionTabHelper": {
+    "message": "Boshqa sahifaga o\u02bbtish vaqtida xotirada joy qolmaganda aralashuvchi panel chiqqan edi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderPermissionRequestManager": {
+    "message": "Boshqa sahifaga o\u02bbtish vaqtida ruxsat so\u02bbrovlari faol edi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderPopupBlockerTabHelper": {
+    "message": "Boshqa sahifaga o\u02bbtish vaqtida pop-ap blokeri faol edi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderSafeBrowsingThreatDetails": {
+    "message": "Boshqa sahifaga o\u02bbtish vaqtida Saytlarni xavfsiz kezish tafsiloti chiqqan edi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderSafeBrowsingTriggeredPopupBlocker": {
+    "message": "Saytlarni xavfsiz kezish tizimi bu sahifani zararli hisobladi va undagi pop-ap oynani blokladi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | enteredBackForwardCacheBeforeServiceWorkerHostAdded": {
+    "message": "Sahifa ortga qaytadigan keshdaligida service worker aktivatsiya qilinadi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | errorDocument": {
+    "message": "Hujjat xatosi sababli ortga qaytadigan kesh faolsizlantirildi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | fencedFramesEmbedder": {
+    "message": "FencedFrames ishlatadigan sahifalar bfcache ichida saqlanmaydi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | foregroundCacheLimit": {
+    "message": "Sahifa boshqasini keshlash maqsadida keshdan o\u02bbchirildi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | grantedMediaStreamAccess": {
+    "message": "Media oqimga ruxsat olgan sahifalarda hozircha ortga qaytadigan kesh ishlamaydi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | haveInnerContents": {
+    "message": "PDF fayllar kabi muayyan ichki joylangan kontentga ega sahifalar hozirda orqaga qaytiladigan keshdan foydalana olmaydi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | idleManager": {
+    "message": "IdleManager ishlatadigan sahifalarida hozircha ortga qaytadigan kesh ishlamaydi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | indexedDBConnection": {
+    "message": "Ochiq Indekslangan axborot ombori ulanishlariga ega sahifalarda hozircha ortga qaytadigan kesh ishlamaydi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | indexedDBEvent": {
+    "message": "Ortga qaytadigan kesh Indekslangan axborot ombori hodisasi sababli faolsizlantirildi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | ineligibleAPI": {
+    "message": "Ruxsat etilmagan API ta\u02bcminotlar ishlatildi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | injectedJavascript": {
+    "message": "Tarkibiga kengaytma tomonidan JavaScript qiymatlari kiritiladigan sahifalarda hozircha ortga qaytadigan kesh ishlamaydi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | injectedStyleSheet": {
+    "message": "Tarkibiga kengaytma tomonidan StyleSheet qiymatlari kiritiladigan sahifalarda hozircha ortga qaytadigan kesh ishlamaydi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | internalError": {
+    "message": "Ichki xatolik."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | jsNetworkRequestReceivedCacheControlNoStoreResource": {
+    "message": "Ayrim JavaScript tarmoq so\u02bbrovi Cache-Control: no-store sarlavhali resursni qabul qilingani uchun Orqaga qaytadigan kesh faolsizlantirildi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | keepaliveRequest": {
+    "message": "Ortga qaytadigan kesh keepalive so\u02bbrovi tufayli faolsizlantirildi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | keyboardLock": {
+    "message": "Klaviatura qulfidan foydalanigan sahifalarda hozircha ortga qaytadigan kesh ishlamaydi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | loading": {
+    "message": "Sahifa boshqa joyga o\u02bbtishdan oldin oxirigacha yuklanmadi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | mainResourceHasCacheControlNoCache": {
+    "message": "Asosiy resursida cache-control:no-cache parametri bor sahifalarni keshdan ortga qaytarish imkonsiz."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | mainResourceHasCacheControlNoStore": {
+    "message": "Asosiy resursida cache-control:no-store parametri bor sahifalarni keshdan ortga qaytarish imkonsiz."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | navigationCancelledWhileRestoring": {
+    "message": "Sahifa ortga qaytadigan keshdan qayta tiklanguncha navigatsiya bekor qilindi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkExceedsBufferLimit": {
+    "message": "Faol tarmoq ulanishi ortiqcha axborot qabul qilgani sababli sahifa keshdan o\u02bbchirildi. Chrome sahifalarning keshlanish vaqtida qabul qilishi mumkin axborot hajmini cheklaydi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestDatapipeDrainedAsBytesConsumer": {
+    "message": "Harakatdagi fetch() yoki XHR tarmoq so\u02bbrovlari bor sahifalarda hozircha ortga qaytadigan kesh ishlamaydi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestRedirected": {
+    "message": "Faol tarmoq so\u02bbrovi qayta yo\u02bbnaltirilishi sababli sahifa ortga qaytadigan keshdan o\u02bbchirildi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestTimeout": {
+    "message": "Tarmoq ulanishi juda uzoq ochiq turgani sababli sahifa keshdan o\u02bbchirildi. Chrome sahifalarning keshlanish jarayonida qabul qilishi mumkin axborot vaqtini cheklaydi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | noResponseHead": {
+    "message": "Yaroqli javob sarlavhasi bo\u02bblmagan sahifalar ortga qaytadigan keshga kiritilmaydi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | notMainFrame": {
+    "message": "Asosiy freymdan tashqari freymda o\u02bbtish amali yuz berdi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingIndexedDBTransaction": {
+    "message": "Indekslangan axborot ombori tranzaksiyalari bor sahifalarda hozircha ortga qaytadigan kesh ishlamaydi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestDirectSocket": {
+    "message": "Harakatdagi tarmoq so\u02bbrovlari bor sahifalarda hozircha ortga qaytadigan kesh ishlamaydi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestFetch": {
+    "message": "Harakatdagi yuklash tarmoq so\u02bbrovlari bor sahifalarda hozircha ortga qaytadigan kesh ishlamaydi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestOthers": {
+    "message": "Harakatdagi tarmoq so\u02bbrovlari bor sahifalarda hozircha ortga qaytadigan kesh ishlamaydi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestXHR": {
+    "message": "Harakatdagi XHR tarmoq so\u02bbrovlari bor sahifalarda hozircha ortga qaytadigan kesh ishlamaydi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | paymentManager": {
+    "message": "PaymentManager ishlatadigan sahifalarida hozircha ortga qaytadigan kesh ishlamaydi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | pictureInPicture": {
+    "message": "Tasvir ustida tasvir rejimidagi sahifalarda hozircha ortga qaytadigan kesh ishlamaydi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | printing": {
+    "message": "Bosma interfeysni chiqaradigan sahifalarda hozircha ortga qaytadigan kesh ishlamaydi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | relatedActiveContentsExist": {
+    "message": "Sahifa window.open() yordamida ochildi va unga boshqa varaq yo\u02bbnaltirilgan yoki sahifa oynani ochdi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | rendererProcessCrashed": {
+    "message": "Ortga qaytadigan keshdagi sahifani renderlash jarayoni ishdan chiqdi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | rendererProcessKilled": {
+    "message": "Ortga qaytadigan keshdagi sahifani renderlash jarayoni tugatildi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedAudioCapturePermission": {
+    "message": "Audio yozib olishga ruxsat olmoqchi bo\u02bblgan sahifalarda hozircha ortga qaytadigan kesh ishlamaydi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedBackForwardCacheBlockedSensors": {
+    "message": "Sensorlarga ruxsat olmoqchi bo\u02bblgan sahifalarda hozircha ortga qaytadigan kesh ishlamaydi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedBackgroundWorkPermission": {
+    "message": "Fonda sinxronlash yoki yuklashga ruxsat olmoqchi bo\u02bblgan sahifalarda hozircha ortga qaytadigan kesh ishlamaydi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedMIDIPermission": {
+    "message": "MIDI signallarga ruxsat olmoqchi bo\u02bblgan sahifalarda hozircha ortga qaytadigan kesh ishlamaydi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedNotificationsPermission": {
+    "message": "Bildirishnomalarga ruxsat olmoqchi bo\u02bblgan sahifalarda hozircha ortga qaytadigan kesh ishlamaydi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedStorageAccessGrant": {
+    "message": "Xotira omboriga ruxsat olmoqchi bo\u02bblgan sahifalarda hozircha ortga qaytadigan kesh ishlamaydi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedVideoCapturePermission": {
+    "message": "Video yozib olishga ruxsat olmoqchi bo\u02bblgan sahifalarda hozircha ortga qaytadigan kesh ishlamaydi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | schemeNotHTTPOrHTTPS": {
+    "message": "Faqat HTTP / HTTPS URL andozali sahifalar keshlanadi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerClaim": {
+    "message": "Sahifa ortga qaytadigan keshdaligida service worker tomonidan talab qilindi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerPostMessage": {
+    "message": "Service worker ortga qaytadigan keshdagi sahifaga MessageEvent yuborishga urindi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerUnregistration": {
+    "message": "Sahifa ortga qaytadigan kesh ichidaligida ServiceWorker ro\u02bbyxatdan olib tashlandi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerVersionActivation": {
+    "message": "Sahifa service worker aktivatsiyasi sababli ortga qaytadigan keshdan o\u02bbchirildi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | sessionRestored": {
+    "message": "Chrome qaytadan ishga tushdi va ortga qaytadigan kesh qaydlari tozalandi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | sharedWorker": {
+    "message": "SharedWorker ishlatadigan sahifalarida hozircha ortga qaytadigan kesh ishlamaydi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | speechRecognizer": {
+    "message": "SpeechRecognizer ishlatadigan sahifalarida hozircha ortga qaytadigan kesh ishlamaydi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | speechSynthesis": {
+    "message": "SpeechSynthesis ishlatadigan sahifalarida hozircha ortga qaytadigan kesh ishlamaydi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subframeIsNavigating": {
+    "message": "Sahifadagi iframe o\u02bbtish amalini boshladi, lekin bu navigatsiya yakunlanmadi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subresourceHasCacheControlNoCache": {
+    "message": "Quyi resursida cache-control:no-cache parametri bor sahifalarni keshdan ortga qaytarish imkonsiz."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subresourceHasCacheControlNoStore": {
+    "message": "Quyi resursida cache-control:no-store parametri bor sahifalarni keshdan ortga qaytarish imkonsiz."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | timeout": {
+    "message": "Sahifaning ortga qaytadigan keshda bo\u02bblishi uchun ajratilgan maksimal vaqti o\u02bbtib ketdi va uning muddati tugadi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | timeoutPuttingInCache": {
+    "message": "Sahifalar ortga qaytadigan keshga kirishga ulgurmayapti (sahifani berkitadigan vositalar uzoq ishlayotgani uchun bo\u02bblishi mumkin)."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | unloadHandlerExistsInMainFrame": {
+    "message": "Sahifa asosiy freymda yuklanishni yechish vositasiga ega."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | unloadHandlerExistsInSubFrame": {
+    "message": "Sahifa quyi freymda yuklanishni yechish vositasiga ega."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | userAgentOverrideDiffers": {
+    "message": "Brauzer sarlavhadagi foydalanuvchi agenti qiymati o\u02bbzgartirildi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | wasGrantedMediaAccess": {
+    "message": "Video yoki audio yozib olishga ruxsat olgan sahifalarda hozircha ortga qaytadigan kesh ishlamaydi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webDatabase": {
+    "message": "WebDatabase ishlatadigan sahifalarida hozircha ortga qaytadigan kesh ishlamaydi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webHID": {
+    "message": "WebHID ishlatadigan sahifalarida hozircha ortga qaytadigan kesh ishlamaydi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webLocks": {
+    "message": "WebLocks ishlatadigan sahifalarida hozircha ortga qaytadigan kesh ishlamaydi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webNfc": {
+    "message": "WebNfc ishlatadigan sahifalarda hozircha ortga qaytadigan kesh ishlamaydi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webOTPService": {
+    "message": "WebOTPService ishlatadigan sahifalarda hozircha ortga qaytadigan kesh (bfcache) ishlamaydi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webRTC": {
+    "message": "WebRTC sahifalarini keshdan ortga qaytarish imkonsiz."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webRTCSticky": {
+    "message": "Ortga qaytadigan kesh WebRTC ishlatilgani uchun faolsizlantirildi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webShare": {
+    "message": "WebShare ishlatadigan sahifalarda hozircha ortga qaytadigan kesh ishlamaydi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webSocket": {
+    "message": "WebSocket protokolidagi sahifalarini keshdan ortga qaytarish imkonsiz."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webSocketSticky": {
+    "message": "Ortga qaytadigan kesh WebSocket ishlatilgani uchun faolsizlantirildi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webTransport": {
+    "message": "WebTransport protokolidagi sahifalarini keshdan ortga qaytarish imkonsiz."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webTransportSticky": {
+    "message": "Ortga qaytadigan kesh WebTrasport ishlatilgani uchun faolsizlantirildi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webXR": {
+    "message": "WebXR ishlatadigan sahifalarida hozircha ortga qaytadigan kesh ishlamaydi."
+  }
+}

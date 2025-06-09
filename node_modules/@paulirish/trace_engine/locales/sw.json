@@ -1,0 +1,908 @@
+{
+  "generated/Deprecation.ts | AuthorizationCoveredByWildcard": {
+    "message": "Uidhinishaji hautaangaziwa kwa ishara ya herufi wakilishi (*) kwenye ushughulikiaji wa Access-Control-Allow-Headers ya CORS."
+  },
+  "generated/Deprecation.ts | CSSSelectorInternalMediaControlsOverlayCastButton": {
+    "message": "Sifa ya disableRemotePlayback inabidi itumike ili kuzima muunganisho chaguomsingi wa Cast badala ya kutumia kiteuzi cha -internal-media-controls-overlay-cast-button."
+  },
+  "generated/Deprecation.ts | CSSValueAppearanceSliderVertical": {
+    "message": "Thamani ya mwonekano wa CSS slider-vertical haikidhi viwango na itaondolewa."
+  },
+  "generated/Deprecation.ts | CanRequestURLHTTPContainingNewline": {
+    "message": "Maombi ya nyenzo ambazo URL zake zilikuwa na herufi za nafasi nyeupe zilizoondolewa \\(n|r|t) pamoja na herufi zisizopaswa kuzidi (<) yamezuiwa. Tafadhali ondoa mistari mipya na usimbe herufi zisizopaswa kuzidi kwenye sehemu kama thamani ya sifa za vipengee ili kupakia nyenzo hizi."
+  },
+  "generated/Deprecation.ts | CharsetAutoDetectionISO2022JP": {
+    "message": "Utambuzi wa kiotomatiki wa misimbo ya herufi ya ISO-2022-JP umeacha kutumika na utazimwa hivi karibuni. Tafadhali bainisha misimbo ya herufi katika kijajuu cha Aina ya Maudhui au kwa kutumia meta tagi (https://developer.mozilla.org/en-US/docs/Glossary/Character_encoding)."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesConnectionInfo": {
+    "message": "chrome.loadTimes() imeacha kuendesha huduma, badala yake tumia API ya kawaida: Navigation Timing 2."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesFirstPaintAfterLoadTime": {
+    "message": "chrome.loadTimes() imeacha kuendesha huduma, badala yake tumia API ya kawaida: Paint Timing."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesWasAlternateProtocolAvailable": {
+    "message": "chrome.loadTimes() imeacha kuendesha huduma, badala yake tumia API ya kawaida: nextHopProtocol kwenye Navigation Timing 2."
+  },
+  "generated/Deprecation.ts | CookieWithTruncatingChar": {
+    "message": "Vidakuzi vyenye herufi \\(0|r|n) vitakataliwa badala ya kupunguzwa."
+  },
+  "generated/Deprecation.ts | CrossOriginAccessBasedOnDocumentDomain": {
+    "message": "Usimamishaji wa sera yenye chanzo kimoja kwa kuweka mipangilio ya document.domain, umeacha kuendesha huduma na utazimwa kwa chaguomsingi. Onyo hili la kuacha kuendesha huduma ni la ufikiaji wenye vyanzo mbalimbali uliowashwa kwa kuweka mipangilio ya document.domain."
+  },
+  "generated/Deprecation.ts | CrossOriginWindowAlert": {
+    "message": "Uwezo wa kuanzisha window.alert kutoka kwenye iframe zenye vyanzo mbalimbali umeacha kuendesha huduma na utaondolewa hapo baadaye."
+  },
+  "generated/Deprecation.ts | CrossOriginWindowConfirm": {
+    "message": "Uwezo wa kuanzisha window.confirm kutoka kwenye iframe zenye vyanzo mbalimbali umeacha kuendesha huduma na utaondolewa hapo baadaye."
+  },
+  "generated/Deprecation.ts | DOMMutationEvents": {
+    "message": "Matukio ya Ubadilikaji wa DOM, ikiwa ni pamoja na DOMSubtreeModified, DOMNodeInserted, DOMNodeRemoved, DOMNodeRemovedFromDocument, DOMNodeInsertedIntoDocument na DOMCharacterDataModified yameacha kuendesha huduma (https://w3c.github.io/uievents/#legacy-event-types) na yataondolewa. Tafadhali badala yake tumia MutationObserver."
+  },
+  "generated/Deprecation.ts | DataUrlInSvgUse": {
+    "message": "Usaidizi wa data: URL zilizo katika kipengele cha <use> SVG zimeacha kuendesha huduma na zitaondolewa katika siku zijazo."
+  },
+  "generated/Deprecation.ts | GeolocationInsecureOrigin": {
+    "message": "API ya getCurrentPosition() na watchPosition() hazifanyi kazi tena kwenye vyanzo visivyo salama. Ili utumie kipengele hiki, unaweza kuamua kubadilisha matumizi yako kwenda chanzo salama kama vile HTTPS. Angalia https://goo.gle/chrome-insecure-origins kwa maelezo zaidi."
+  },
+  "generated/Deprecation.ts | GeolocationInsecureOriginDeprecatedNotRemoved": {
+    "message": "getCurrentPosition() na watchPosition() zimeacha kuendesha huduma kwenye vyanzo visivyo salama. Ili utumie kipengele hiki, unaweza kuamua kubadilisha matumizi yako kwenda chanzo salama kama vile HTTPS. Angalia https://goo.gle/chrome-insecure-origins kwa maelezo zaidi."
+  },
+  "generated/Deprecation.ts | GetUserMediaInsecureOrigin": {
+    "message": "getUserMedia() havifanyi kazi tena kwenye vyanzo visivyo salama. Ili utumie kipengele hiki, unaweza kuamua kubadilisha matumizi yako kwenda chanzo salama kama vile HTTPS. Angalia https://goo.gle/chrome-insecure-origins kwa maelezo zaidi."
+  },
+  "generated/Deprecation.ts | H1UserAgentFontSizeInSection": {
+    "message": "Imepata lebo ya <h1> ndani ya <article>, <aside>, <nav> au <section> ambayo haina ukubwa wa fonti uliobainishwa. Ukubwa wa maandishi haya ya kichwa utabadilika katika kivinjari hiki hivi karibuni. Tembelea https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#specifying_a_uniform_font_size_for_h1 ili upate maelezo zaidi."
+  },
+  "generated/Deprecation.ts | HostCandidateAttributeGetter": {
+    "message": "RTCPeerConnectionIceErrorEvent.hostCandidate imeacha kuendesha huduma. Tafadhali tumia RTCPeerConnectionIceErrorEvent.address au RTCPeerConnectionIceErrorEvent.port badala yake."
+  },
+  "generated/Deprecation.ts | IdentityDigitalCredentials": {
+    "message": "Muundo huu wa ombi la navigator.credentials.get() la vitambulisho dijitali umeacha kuendesha huduma, tafadhali sasisha ombi lako ili utumie muundo mpya."
+  },
+  "generated/Deprecation.ts | IdentityInCanMakePaymentEvent": {
+    "message": "Data halisi ya muuzaji na data holela kutoka kwenye canmakepayment tukio la kitoa huduma unganishi imeacha kuendesha huduma na itaondolewa: topOrigin, paymentRequestOrigin, methodData, modifiers."
+  },
+  "generated/Deprecation.ts | InsecurePrivateNetworkSubresourceRequest": {
+    "message": "Tovuti imeomba nyenzo ndogo kutoka kwenye mtandao ambao iliweza tu kuufikia kwa sababu ya nafasi maalum ya mtandao wa watumiaji wake. Maombi haya hufichua vifaa na seva zisizo za umma kwenye intaneti, yakiongeza hatari ya mashambulio ya kughushi maombi kutoka tovuti tofauti (CSRF) na/au kuvuja kwa taarifa. Ili kukabiliana na hatari hizi, Chrome imeacha kuendesha huduma ya maombi ya nyenzo ndogo zisizo za umma zinapoanzishwa kutoka kwenye miktadha isiyo salama na itaanza kuzizuia."
+  },
+  "generated/Deprecation.ts | InterestGroupDailyUpdateUrl": {
+    "message": "Sehemu ya dailyUpdateUrl ya InterestGroups iliyopita kwenye joinAdInterestGroup() imebadilishwa jina kuwa updateUrl,ili kuonyesha tabia yake kwa usahihi zaidi."
+  },
+  "generated/Deprecation.ts | IntlV8BreakIterator": {
+    "message": "Intl.v8BreakIterator imeacha kuendesha huduma. Tafadhali tumia Intl.Segmenter badala yake."
+  },
+  "generated/Deprecation.ts | LocalCSSFileExtensionRejected": {
+    "message": "CSS haiwezi kupakiwa kutoka kwenye URL za file: isipokuwa zikiishia kwa kiambishi cha faili ya .css."
+  },
+  "generated/Deprecation.ts | MediaSourceAbortRemove": {
+    "message": "Kutumia SourceBuffer.abort() ili kughairi uondoaji wa vipengele mbalimbali vya remove() visivyosawazishwa kumeacha kuendesha huduma kwa sababu ya mabadiliko ya maelezo. Usaidizi utaondolewa hapo baadaye. Unapaswa kusikiliza tukio la updateend badala yake. abort() imekusudiwa tu kughairi kiambatisho cha maudhui yasiyosawazishwa au kuadilisha hali ya kichanganuzi."
+  },
+  "generated/Deprecation.ts | MediaSourceDurationTruncatingBuffered": {
+    "message": "Kuweka MediaSource.duration chini ya muhuri wa wakati wa juu zaidi wa uwasilishaji wa fremu zozote za msimbo zilizoakibishwa kumeacha kuendesha huduma kwa sababu ya mabadiliko ya maelezo. Usaidizi wa uondoaji kamili wa maudhui pungufu yaliyoakibishwa utaondolewa hapo baadaye. Badala yake itabidi utekeleze remove(newDuration, oldDuration) dhahiri kwenye akiba zote za sourceBuffers, ambapo newDuration < oldDuration."
+  },
+  "generated/Deprecation.ts | NoSysexWebMIDIWithoutPermission": {
+    "message": "MIDI ya wavuti itaomba ruhusa ili itumie hata kama sysex haijabainishwa kwenye MIDIOptions."
+  },
+  "generated/Deprecation.ts | NotificationInsecureOrigin": {
+    "message": "Huenda API ya Arifa isitumike tena kutoka kwenye vyanzo visivyo salama. Unaweza kuamua kubadilisha matumizi yako kwenda chanzo salama kama vile HTTPS. Angalia https://goo.gle/chrome-insecure-origins kwa maelezo zaidi."
+  },
+  "generated/Deprecation.ts | NotificationPermissionRequestedIframe": {
+    "message": "Huenda ruhusa ya API ya Arifa isiombwe tena kutoka kwenye iframe yenye vyanzo mbalimbali. Unaweza kuamua kuomba ruhusa kutoka kwenye fremu kuu au kufungua dirisha jipya badala yake."
+  },
+  "generated/Deprecation.ts | ObsoleteCreateImageBitmapImageOrientationNone": {
+    "message": "Chaguo la imageOrientation: 'none' kwenye createImageBitmap limeacha kuendesha huduma. Tafadhali tumia createImageBitmap ukitumia chaguo la '{imageOrientation: 'from-image'}' badala yake."
+  },
+  "generated/Deprecation.ts | ObsoleteWebRtcCipherSuite": {
+    "message": "Mshirika wako anajadili toleo lililopitwa na wakati la (D)TLS. Tafadhali wasiliana na mshirika wako ili atatue tatizo hili."
+  },
+  "generated/Deprecation.ts | OverflowVisibleOnReplacedElement": {
+    "message": "Kubainisha overflow: visible kwenye img, video na canvas kunaweza kusababisha zitoe maudhui yanayoonekana nje ya mipaka ya kipengele. Angalia https://github.com/WICG/shared-element-transitions/blob/main/debugging_overflow_on_images.md."
+  },
+  "generated/Deprecation.ts | PaymentInstruments": {
+    "message": "paymentManager.instruments imeacha kuendesha huduma. Badala yake tafadhali tumia usakinishaji wa haraka kwa ajili ya kudhibiti malipo."
+  },
+  "generated/Deprecation.ts | PaymentRequestCSPViolation": {
+    "message": "Utekelezaji wako wa PaymentRequest umekwepa agizo la Sera ya Usalama wa Maudhui (CSP) ya connect-src. Njia hii ya kukwepa imeacha kuendesha huduma. Tafadhali weka kitambulishi cha njia ya kulipa kutoka API ya PaymentRequest (kwenye sehemu ya supportedMethods) katika agizo lako la Sera ya Usalama wa Maudhui (CSP) connect-src."
+  },
+  "generated/Deprecation.ts | PersistentQuotaType": {
+    "message": "StorageType.persistent imeacha kuendesha huduma. Tafadhali tumia navigator.storage ya kawaida badala yake."
+  },
+  "generated/Deprecation.ts | PictureSourceSrc": {
+    "message": "<source src> yenye <picture> kuu si sahihi, hivyo imepuuzwa. Tafadhali tumia <source srcset> badala yake."
+  },
+  "generated/Deprecation.ts | PrefixedCancelAnimationFrame": {
+    "message": "webkitCancelAnimationFrame ni mahususi kwa muuzaji. Badala yake, tafadhali tumia cancelAnimationFrame inayokidhi viwango."
+  },
+  "generated/Deprecation.ts | PrefixedRequestAnimationFrame": {
+    "message": "webkitRequestAnimationFrame ni mahususi kwa muuzaji. Badala yake, tafadhali tumia requestAnimationFrame inayokidhi viwango."
+  },
+  "generated/Deprecation.ts | PrefixedVideoDisplayingFullscreen": {
+    "message": "HTMLVideoElement.webkitDisplayingFullscreen imeacha kuendesha huduma. Badala yake tumia Document.fullscreenElement."
+  },
+  "generated/Deprecation.ts | PrefixedVideoEnterFullScreen": {
+    "message": "HTMLVideoElement.webkitEnterFullScreen() imeacha kuendesha huduma. Badala yake, tafadhali tumia Element.requestFullscreen()."
+  },
+  "generated/Deprecation.ts | PrefixedVideoEnterFullscreen": {
+    "message": "HTMLVideoElement.webkitEnterFullscreen() imecha kuendesha huduma. Badala yake, tafadhali tumia Element.requestFullscreen()."
+  },
+  "generated/Deprecation.ts | PrefixedVideoExitFullScreen": {
+    "message": "HTMLVideoElement.webkitExitFullScreen() imeacha kuendesha huduma. Badala yake, tafadhali tumia Document.exitFullscreen()."
+  },
+  "generated/Deprecation.ts | PrefixedVideoExitFullscreen": {
+    "message": "HTMLVideoElement.webkitExitFullscreen() imecha kuendesha huduma. Badala yake, tafadhali tumia Document.exitFullscreen()."
+  },
+  "generated/Deprecation.ts | PrefixedVideoSupportsFullscreen": {
+    "message": "HTMLVideoElement.webkitSupportsFullscreen imeacha kuendesha huduma. Badala yake, tumia Document.fullscreenEnabled."
+  },
+  "generated/Deprecation.ts | PrivacySandboxExtensionsAPI": {
+    "message": "Tunaacha kuendesha huduma ya API ya chrome.privacy.websites.privacySandboxEnabled, ingawa itaendelea kutumika kwa uoanifu na matoleo ya nyuma hadi M113 itakapochapishwa. Badala yake, tafadhali tumia chrome.privacy.websites.topicsEnabled, chrome.privacy.websites.fledgeEnabled na chrome.privacy.websites.adMeasurementEnabled. Angalia https://developer.chrome.com/docs/extensions/reference/privacy/#property-websites-privacySandboxEnabled."
+  },
+  "generated/Deprecation.ts | RTCConstraintEnableDtlsSrtpFalse": {
+    "message": "DtlsSrtpKeyAgreement ya kizuizi imeondolewa. Umebainisha thamani false ya kizuizi hiki, ambayo imechanganuliwa kama jaribio la kutumia njia ya SDES key negotiation iliyoondolewa. Utendaji huu umeondolewa, tumia huduma inayotumiaDTLS key negotiation badala yake."
+  },
+  "generated/Deprecation.ts | RTCConstraintEnableDtlsSrtpTrue": {
+    "message": "DtlsSrtpKeyAgreement ya kizuizi imeondolewa. Umebainisha thamani true ya kizuizi hiki, ambacho hakikuwa na athari, lakini unaweza kuondoa kizuizi hiki kwa ajili ya unadhifu."
+  },
+  "generated/Deprecation.ts | RTCPeerConnectionGetStatsLegacyNonCompliant": {
+    "message": "Mbinu ya callback-based getStats() imeacha kuendesha huduma na itaondolewa. Badala yake tumia getStats() inayotii masharti ya sifa."
+  },
+  "generated/Deprecation.ts | RangeExpand": {
+    "message": "Range.expand() imeacha kuendesha huduma. Badala yake, tafadhali tumia Selection.modify()."
+  },
+  "generated/Deprecation.ts | RequestedSubresourceWithEmbeddedCredentials": {
+    "message": "Maombi ya nyenzo ndogo ambazo URL zake zinajumuisha vitambulisho vilivyopachikwa (mfano https://user:pass@host/) yamezuiwa."
+  },
+  "generated/Deprecation.ts | RtcpMuxPolicyNegotiate": {
+    "message": "Chaguo la rtcpMuxPolicy limeacha kuendesha huduma na litaondolewa."
+  },
+  "generated/Deprecation.ts | SharedArrayBufferConstructedWithoutIsolation": {
+    "message": "SharedArrayBuffer itahitaji utengaji kwenye vyanzo mbalimbali. Angalia https://developer.chrome.com/blog/enabling-shared-array-buffer/ kwa maelezo zaidi."
+  },
+  "generated/Deprecation.ts | TextToSpeech_DisallowedByAutoplay": {
+    "message": "speechSynthesis.speak() ambayo haijawezeshwa na mtumiaji imeacha kuendesha huduma na itaondolewa."
+  },
+  "generated/Deprecation.ts | UnloadHandler": {
+    "message": "Kipengele cha wasikilizaji wa tukio la kuondoa kimeacha kutumika na kitaondolewa."
+  },
+  "generated/Deprecation.ts | V8SharedArrayBufferConstructedInExtensionWithoutIsolation": {
+    "message": "Viendelezi vinapaswa kujumuishwa kwenye utengaji wenye vyanzo mbalimbali ili kuendelea kutumia SharedArrayBuffer. Angalia https://developer.chrome.com/docs/extensions/mv3/cross-origin-isolation/."
+  },
+  "generated/Deprecation.ts | XHRJSONEncodingDetection": {
+    "message": "UTF-16 haitumiwi na njia ya response json kwenye XMLHttpRequest"
+  },
+  "generated/Deprecation.ts | XMLHttpRequestSynchronousInNonWorkerOutsideBeforeUnload": {
+    "message": "XMLHttpRequest inayosawazisha kwenye mfumo mkuu imeacha kuendesha huduma kwa sababu ya madhara yake kwa hali ya utumiaji ya mtumiaji wa hatima. Kwa usaidizi zaidi, tembelea https://xhr.spec.whatwg.org/."
+  },
+  "models/trace/insights/CLSCulprits.ts | animation": {
+    "message": "Uhuishaji"
+  },
+  "models/trace/insights/CLSCulprits.ts | description": {
+    "message": "Hali ya mabadiliko ya muundo hutokea vipengele vinaposogezwa bila mtagusano wowote wa watumiaji. [Chunguza sababu za mabadiliko ya miundo](https://web.dev/articles/optimize-cls), kama vile vipengee kuwekwa, kuondolewa au fonti zao kubadilika huku ukurasa ukipakia."
+  },
+  "models/trace/insights/CLSCulprits.ts | fontRequest": {
+    "message": "Ombi la fonti"
+  },
+  "models/trace/insights/CLSCulprits.ts | injectedIframe": {
+    "message": "iframe iliyowekwa"
+  },
+  "models/trace/insights/CLSCulprits.ts | layoutShiftCluster": {
+    "message": "Kikundi cha mabadiliko ya muundo @ {PH1}"
+  },
+  "models/trace/insights/CLSCulprits.ts | noCulprits": {
+    "message": "Imeshindwa kutambua visababishi vyovyote vya mabadiliko ya muundo"
+  },
+  "models/trace/insights/CLSCulprits.ts | noLayoutShifts": {
+    "message": "Hakuna mabadiliko ya muundo"
+  },
+  "models/trace/insights/CLSCulprits.ts | title": {
+    "message": "Visababishi vya mabadiliko ya muundo"
+  },
+  "models/trace/insights/CLSCulprits.ts | topCulprits": {
+    "message": "Visababishi maarufu vya mabadiliko ya muundo"
+  },
+  "models/trace/insights/CLSCulprits.ts | unsizedImages": {
+    "message": "Picha Zisizo na Ukubwa Mahususi"
+  },
+  "models/trace/insights/CLSCulprits.ts | worstCluster": {
+    "message": "Kikundi kibaya zaidi"
+  },
+  "models/trace/insights/CLSCulprits.ts | worstLayoutShiftCluster": {
+    "message": "Kikundi kibaya zaidi cha mabadiliko ya muundo"
+  },
+  "models/trace/insights/Cache.ts | cacheTTL": {
+    "message": "Muda wa Kuhifadhiwa katika akiba"
+  },
+  "models/trace/insights/Cache.ts | description": {
+    "message": "Muda mrefu wa kuhifadhi akiba unaweza kuongeza mara za kutembelewa kwa ukurasa wako. [Pata maelezo zaidi](https://web.dev/uses-long-cache-ttl/)."
+  },
+  "models/trace/insights/Cache.ts | noRequestsToCache": {
+    "message": "Hakuna maombi yaliyo na sera zisizofaa za akiba ya data"
+  },
+  "models/trace/insights/Cache.ts | others": {
+    "message": "Vingine {PH1}"
+  },
+  "models/trace/insights/Cache.ts | requestColumn": {
+    "message": "Ombi"
+  },
+  "models/trace/insights/Cache.ts | title": {
+    "message": "Tumia muda unaofaa wa kuhifadhi akiba"
+  },
+  "models/trace/insights/DOMSize.ts | description": {
+    "message": "DOM kubwa inaweza kuongeza muda wa ukokotoaji wa miundo na urekebishaji wa mipangilio ya vipengee, hivyo kuathiri utendaji wa ukurasa. DOM kubwa pia itaongeza matumizi ya hifadhi. [Pata maelezo kuhusu jinsi ya kuepuka ukubwa wa DOM uliopita kiasi](https://developer.chrome.com/docs/lighthouse/performance/dom-size/)."
+  },
+  "models/trace/insights/DOMSize.ts | element": {
+    "message": "Kipengele"
+  },
+  "models/trace/insights/DOMSize.ts | maxChildren": {
+    "message": "Vitegemezi vingi"
+  },
+  "models/trace/insights/DOMSize.ts | maxDOMDepth": {
+    "message": "Kina cha DOM"
+  },
+  "models/trace/insights/DOMSize.ts | statistic": {
+    "message": "Takwimu"
+  },
+  "models/trace/insights/DOMSize.ts | title": {
+    "message": "Kuboresha ukubwa wa DOM"
+  },
+  "models/trace/insights/DOMSize.ts | totalElements": {
+    "message": "Jumla ya vipengele"
+  },
+  "models/trace/insights/DOMSize.ts | value": {
+    "message": "Thamani"
+  },
+  "models/trace/insights/DocumentLatency.ts | description": {
+    "message": "Ombi lako la kwanza la mtandao ni muhimu zaidi.  Punguza muda wake wa kusubiri kwa kuepuka matukio ya kuelekezwa kwingine, kuhakikisha majibu ya haraka ya seva na kuhakikisha matini yamebanwa."
+  },
+  "models/trace/insights/DocumentLatency.ts | failedRedirects": {
+    "message": "Lilielekezwa kwingine"
+  },
+  "models/trace/insights/DocumentLatency.ts | failedServerResponseTime": {
+    "message": "Seva imejibu polepole"
+  },
+  "models/trace/insights/DocumentLatency.ts | failedTextCompression": {
+    "message": "Haijabanwa"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingRedirects": {
+    "message": "Huepuka matukio ya kuelekeza kwingine"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingServerResponseTime": {
+    "message": "Seva hujibu haraka"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingTextCompression": {
+    "message": "Matini yamebanwa"
+  },
+  "models/trace/insights/DocumentLatency.ts | redirectsLabel": {
+    "message": "Inaelekeza kwingine"
+  },
+  "models/trace/insights/DocumentLatency.ts | serverResponseTimeLabel": {
+    "message": "Muda wa seva kupakia matokeo"
+  },
+  "models/trace/insights/DocumentLatency.ts | title": {
+    "message": "Muda wa kusubiri ombi la hati"
+  },
+  "models/trace/insights/DocumentLatency.ts | uncompressedDownload": {
+    "message": "Upakuaji usiobanwa"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | columnDuplicatedBytes": {
+    "message": "Baiti zilizorudiwa"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | columnSource": {
+    "message": "Chanzo"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | description": {
+    "message": "Ondoa sehemu kubwa za nakala za JavaScript kwenye vifurushi ili kupunguza baiti zisizohitajika ambazo zinatumika katika shughuli za mtandao."
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | title": {
+    "message": "JavaScript inayojirudia"
+  },
+  "models/trace/insights/FontDisplay.ts | description": {
+    "message": "Zingatia kuweka mipangilio ya [font-display](https://developer.chrome.com/blog/font-display) kuwa swap au optional ili uhakikishe maandishi yanaonekana kila wakati. swap inaweza kuboreshwa zaidi ili kuzuia mabadiliko ya muundo kupitia [ubatilishaji wa vipimo vya fonti](https://developer.chrome.com/blog/font-fallbacks)."
+  },
+  "models/trace/insights/FontDisplay.ts | fontColumn": {
+    "message": "Fonti"
+  },
+  "models/trace/insights/FontDisplay.ts | title": {
+    "message": "Mwonekano wa fonti"
+  },
+  "models/trace/insights/FontDisplay.ts | wastedTimeColumn": {
+    "message": "Muda uliopoteza"
+  },
+  "models/trace/insights/ForcedReflow.ts | anonymous": {
+    "message": "(hazijulikani)"
+  },
+  "models/trace/insights/ForcedReflow.ts | description": {
+    "message": "API nyingi, zinazosoma jiometri ya muundo kwa kawaida, hulazimisha mtambo wa kutekeleza usitishe utekelezaji wa hati ili kukokotoa muundo na vipengee. Pata maelezo zaidi kuhusu [urekebishaji wa mipangilio uliolazimishwa](https://developers.google.com/web/fundamentals/performance/rendering/avoid-large-complex-layouts-and-layout-thrashing#avoid-forced-synchronous-layouts) na hatari zake."
+  },
+  "models/trace/insights/ForcedReflow.ts | relatedStackTrace": {
+    "message": "Ufuatiliaji wa rafu"
+  },
+  "models/trace/insights/ForcedReflow.ts | title": {
+    "message": "Mpangilio uliorekebishwa uliolazimishwa"
+  },
+  "models/trace/insights/ForcedReflow.ts | topTimeConsumingFunctionCall": {
+    "message": "Utekelezaji wa utendaji wa juu"
+  },
+  "models/trace/insights/ForcedReflow.ts | totalReflowTime": {
+    "message": "Jumla ya muda wa kurekebisha mpangilio"
+  },
+  "models/trace/insights/ForcedReflow.ts | unattributed": {
+    "message": "[hakina maelezo]"
+  },
+  "models/trace/insights/ImageDelivery.ts | description": {
+    "message": "Kupunguza muda wa kupakua picha kunaweza kuboresha LCP na muda wa kupakia ukurasa unaotambuliwa na watumiaji. [Pata maelezo zaidi kuhusu kuboresha ukubwa wa picha](https://developer.chrome.com/docs/lighthouse/performance/uses-optimized-images/)"
+  },
+  "models/trace/insights/ImageDelivery.ts | estimatedSavings": {
+    "message": "{PH1} ({PH2} zilizokadiriwa)"
+  },
+  "models/trace/insights/ImageDelivery.ts | noOptimizableImages": {
+    "message": "Hakuna picha zinazoweza kuboreshwa"
+  },
+  "models/trace/insights/ImageDelivery.ts | optimizeFile": {
+    "message": "Kuboresha ukubwa wa faili"
+  },
+  "models/trace/insights/ImageDelivery.ts | others": {
+    "message": "Vingine {PH1}"
+  },
+  "models/trace/insights/ImageDelivery.ts | title": {
+    "message": "Kuboresha picha zinazopakuliwa"
+  },
+  "models/trace/insights/ImageDelivery.ts | useCompression": {
+    "message": "Kuongeza kipimo cha kubana picha kunaweza kuboresha ukubwa wa kupakua wa picha hii."
+  },
+  "models/trace/insights/ImageDelivery.ts | useModernFormat": {
+    "message": "Kutumia muundo wa picha wa kisasa (WebP, AVIF) au kuongeza kipimo cha kubana picha kunaweza kuboresha ukubwa wa picha hii inayopakuliwa."
+  },
+  "models/trace/insights/ImageDelivery.ts | useResponsiveSize": {
+    "message": "Faili hii ya picha ni kubwa kuliko inavyopaswa kuwa ({PH1}) kulingana na vipimo vinavyohusiana nayo ambavyo vimeonyeshwa ({PH2}). Tumia picha zinazoweza kubadilika ili upunguze ukubwa wa picha zinazopakuliwa."
+  },
+  "models/trace/insights/ImageDelivery.ts | useVideoFormat": {
+    "message": "Kutumia miundo ya video badala ya GIF kunaweza kuboresha ukubwa wa maudhui yaliyohuishwa yanayopakuliwa."
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | description": {
+    "message": "Anza kuchunguza ukitumia kipindi kirefu zaidi. [Hali ya kuchelewa inaweza kupunguzwa](https://web.dev/articles/optimize-inp#optimize_interactions). Ili upunguze muda wa kuchakata, [boresha gharama za mazungumzo makuu](https://web.dev/articles/optimize-long-tasks), mara nyingi JS."
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | duration": {
+    "message": "Muda"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | inputDelay": {
+    "message": "Uchelewaji wa kuweka data"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | noInteractions": {
+    "message": "Hakuna mitagusano iliyotambuliwa"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | phase": {
+    "message": "Awamu"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | presentationDelay": {
+    "message": "Kuchelewa kwa wasilisho"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | processingDuration": {
+    "message": "Muda wa kuchakata"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | title": {
+    "message": "INP kulingana na awamu"
+  },
+  "models/trace/insights/LCPDiscovery.ts | description": {
+    "message": "Boresha LCP kwa kufanya picha ya LCP [itambulike](https://web.dev/articles/optimize-lcp#1_eliminate_resource_load_delay) kwenye HTML papo hapo na [uepuke kupakia tu maudhui yanapokaribia sehemu ya kutazamia](https://web.dev/articles/lcp-lazy-loading)"
+  },
+  "models/trace/insights/LCPDiscovery.ts | fetchPriorityApplied": {
+    "message": "Imetumia fetchpriority=high"
+  },
+  "models/trace/insights/LCPDiscovery.ts | fetchPriorityShouldBeApplied": {
+    "message": "Unapaswa kutumia fetchpriority=high"
+  },
+  "models/trace/insights/LCPDiscovery.ts | lazyLoadNotApplied": {
+    "message": "mbinu ya kupakia tu maudhui yanapokaribia sehemu ya kutazamia haijatumika"
+  },
+  "models/trace/insights/LCPDiscovery.ts | lcpLoadDelay": {
+    "message": "Picha ya LCP ilipakiwa kwa {PH1} wakati kivinjari kilianza kuipakia."
+  },
+  "models/trace/insights/LCPDiscovery.ts | noLcp": {
+    "message": "Hakuna LCP iliyotambuliwa"
+  },
+  "models/trace/insights/LCPDiscovery.ts | noLcpResource": {
+    "message": "Hakuna nyenzo ya LCP iliyotambuliwa kwa sababu LCP husika si picha"
+  },
+  "models/trace/insights/LCPDiscovery.ts | requestDiscoverable": {
+    "message": "Ombi linaweza kutambulika katika hati ya mwanzo"
+  },
+  "models/trace/insights/LCPDiscovery.ts | title": {
+    "message": "Ugunduzi wa ombi la LCP"
+  },
+  "models/trace/insights/LCPPhases.ts | description": {
+    "message": "Kila [kipindi kina mikakati mahususi ya uboreshaji](https://web.dev/articles/optimize-lcp#lcp-breakdown). Kimsingi, muda mwingi wa LCP unapaswa kutumiwa kupakia nyenzo, si katika ucheleweshaji."
+  },
+  "models/trace/insights/LCPPhases.ts | duration": {
+    "message": "Muda"
+  },
+  "models/trace/insights/LCPPhases.ts | elementRenderDelay": {
+    "message": "Kuchelewa kwa utekelezaji wa kipengee"
+  },
+  "models/trace/insights/LCPPhases.ts | fieldDuration": {
+    "message": "Asilimia ya 75 ya data ya sehemu"
+  },
+  "models/trace/insights/LCPPhases.ts | noLcp": {
+    "message": "Hakuna LCP iliyotambuliwa"
+  },
+  "models/trace/insights/LCPPhases.ts | phase": {
+    "message": "Awamu"
+  },
+  "models/trace/insights/LCPPhases.ts | resourceLoadDelay": {
+    "message": "Ucheleweshaji wa kupakia nyenzo"
+  },
+  "models/trace/insights/LCPPhases.ts | resourceLoadDuration": {
+    "message": "Muda wa kupakia nyenzo"
+  },
+  "models/trace/insights/LCPPhases.ts | timeToFirstByte": {
+    "message": "Muda hadi baiti ya kwanza"
+  },
+  "models/trace/insights/LCPPhases.ts | title": {
+    "message": "LCP kulingana na awamu"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | columnScript": {
+    "message": "Hati"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | columnWastedBytes": {
+    "message": "Baiti zilizotumika vibaya"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | description": {
+    "message": "Misimbo ya kuwezesha utendaji wa kivinjari na mabadiliko huwezesha vivinjari vilivyopitwa na wakati kutumia vipengele vipya vya JavaScript. Hata hivyo, vivinjari vya kisasa havihitaji vipengele hivyo. Zingatia kuboresha mchakato wako wa kuunda JavaScript ili usibadilishe vipengele vya [Kisasa](https://web.dev/articles/baseline-and-polyfills), isipokuwa uwe unafahamu kuwa ni sharti utumie vivinjari vilivyopitwa na wakati. [Pata maelezo kwa nini tovuti nyingi zinaweza kutumia msimbo wa ES6+ bila kubadilisha vipengele](https://philipwalton.com/articles/the-state-of-es5-on-the-web/)"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | title": {
+    "message": "JavaScript iliyopitwa na wakati"
+  },
+  "models/trace/insights/ModernHTTP.ts | description": {
+    "message": "HTTP/2 na HTTP/3 hutoa manufaa mengi ikilinganishwa na HTTP/1.1, kama vile uchanganyaji wa mawimbi anuwai ya analogi na dijitali. [Pata maelezo zaidi kuhusu kutumia HTTP ya kisasa](https://developer.chrome.com/docs/lighthouse/best-practices/uses-http2/)."
+  },
+  "models/trace/insights/ModernHTTP.ts | noOldProtocolRequests": {
+    "message": "Hakuna maombi yaliyotumia HTTP/1.1"
+  },
+  "models/trace/insights/ModernHTTP.ts | protocol": {
+    "message": "Itifaki"
+  },
+  "models/trace/insights/ModernHTTP.ts | request": {
+    "message": "Ombi"
+  },
+  "models/trace/insights/ModernHTTP.ts | title": {
+    "message": "HTTP ya kisasa"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | description": {
+    "message": "[Epuka kuunganisha maombi muhimu](https://developer.chrome.com/docs/lighthouse/performance/critical-request-chains) kwa kupunguza urefu wa mifuatano, kupunguza ukubwa wa upakuaji wa nyenzo au kuahirisha upakuaji wa nyenzo zisizohitajika ili kuboresha upakiaji wa ukurasa."
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | maxCriticalPathLatency": {
+    "message": "Muda mwingi zaidi wa kusubiri wa njia muhimu:"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | noNetworkDependencyTree": {
+    "message": "Hakuna majukumu ya utekelezaji yaliyoathiriwa na utegemezi wa mtandao"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | title": {
+    "message": "Daraja la utegemezi wa mtandao"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | warningDescription": {
+    "message": "Epuka kuunganisha maombi muhimu kwa kupunguza urefu wa mifuatano, kupunguza ukubwa wa upakuaji wa nyenzo au kuahirisha upakuaji wa nyenzo zisizohitajika ili kuboresha upakiaji wa ukurasa."
+  },
+  "models/trace/insights/RenderBlocking.ts | description": {
+    "message": "Maombi yanazuia utekelezaji wa mwanzo wa ukurasa, hatua ambayo inaweza kuchelewesha LCP. [Kuahirisha au kupachika ndani ](https://web.dev/learn/performance/understanding-the-critical-path#render-blocking_resources/) kunaweza kuhamisha maombi haya ya mtandao kutoka kwa njia muhimu."
+  },
+  "models/trace/insights/RenderBlocking.ts | duration": {
+    "message": "Muda"
+  },
+  "models/trace/insights/RenderBlocking.ts | noRenderBlocking": {
+    "message": "Hakuna maombi ya kuzuia utekelezaji kwenye usogezaji huu"
+  },
+  "models/trace/insights/RenderBlocking.ts | renderBlockingRequest": {
+    "message": "Ombi"
+  },
+  "models/trace/insights/RenderBlocking.ts | title": {
+    "message": "Maombi yanayozuia ukurasa kupakia"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | description": {
+    "message": "Iwapo gharama za Kukokotoa Upya Muundo zitasalia kuwa juu, uboreshaji wa kiteuzi unaweza kuzipunguza. [Boresha viteuzi](https://developer.chrome.com/docs/devtools/performance/selector-stats) vyenye muda wa juu uliopita na asilimia ya juu ya njia za taratibu. Viteuzi rahisi zaidi, viteuzi vichache na DOM ndogo zaidi pamoja na DOM isiyo ya kina itapunguza gharama za ulinganishaji."
+  },
+  "models/trace/insights/SlowCSSSelector.ts | elapsed": {
+    "message": "Wakati uliopita"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | enableSelectorData": {
+    "message": "Hakuna data ya kiteuzi cha CSS iliyopatikana. Unahitaji kuwasha kipengele cha takwimu za kiteuzi cha CSS katika mipangilio ya kidirisha cha utendaji."
+  },
+  "models/trace/insights/SlowCSSSelector.ts | matchAttempts": {
+    "message": "Majaribio ya vipengee vinavyolingana"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | matchCount": {
+    "message": "Idadi ya vipengee vinavyolingana"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | title": {
+    "message": "Gharama za Kiteuzi cha CSS"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | topSelectors": {
+    "message": "Viteuzi maarufu"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | total": {
+    "message": "Jumla"
+  },
+  "models/trace/insights/ThirdParties.ts | columnMainThreadTime": {
+    "message": "Muda wa kipimo kikuu"
+  },
+  "models/trace/insights/ThirdParties.ts | columnThirdParty": {
+    "message": "Mshirika mwingine"
+  },
+  "models/trace/insights/ThirdParties.ts | columnTransferSize": {
+    "message": "Ukubwa wa data ya kuhamishwa"
+  },
+  "models/trace/insights/ThirdParties.ts | description": {
+    "message": "Msimbo wa mshirika mwingine unaweza kuathiri kwa kiasi kikubwa utendaji wa kupakia. [Punguza na uahirishe upakiaji wa msimbo wa mshirika mwingine](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/loading-third-party-javascript/) ili uyape kipaumbele maudhui ya ukurasa wako."
+  },
+  "models/trace/insights/ThirdParties.ts | noThirdParties": {
+    "message": "Hakuna maudhui ya wengine yaliyopatikana"
+  },
+  "models/trace/insights/ThirdParties.ts | title": {
+    "message": "Washirika wengine"
+  },
+  "models/trace/insights/Viewport.ts | description": {
+    "message": "Mitagusano ya kugusa inaweza [kucheleweshwa kwa hadi milisekunde\u00a0300](https://developer.chrome.com/blog/300ms-tap-delay-gone-away/) ikiwa sehemu ya kutazamia haijaboreshwa kwenye simu."
+  },
+  "models/trace/insights/Viewport.ts | title": {
+    "message": "Kuboresha sehemu ya kutazamia kwenye simu"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | HTTPMethodNotGET": {
+    "message": "Kurasa zilizopakiwa kupitia Ombi la KULETA data ndizo tu zinazoweza kuwekwa kwenye kipengele cha kuakibisha ukurasa kamili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | HTTPStatusNotOK": {
+    "message": "Kurasa zilizo na msimbo wa hali wa 2XX ndizo tu zinazoweza kuakibishwa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | JavaScriptExecution": {
+    "message": "Chrome ilitambua jaribio la kutekeleza JavaScript katika akiba."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | appBanner": {
+    "message": "Kurasa zilizoomba AppBanner haziwezi kuwekwa kwenye kipengele cha kuakibisha ukurasa kamili kwa sasa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabled": {
+    "message": "Kipengele cha kuakibisha ukurasa kamili kimezimwa na vitia alama. Tembelea chrome://flags/#back-forward-cache ili ukiwashe kwenye kifaa hiki."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledByCommandLine": {
+    "message": "Kipengele cha kuakibisha ukurasa kamili kimezimwa na swichi ya amri."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledByLowMemory": {
+    "message": "Kipengele cha kuakibisha ukurasa kamili kimezimwa kwa sababu hifadhi haitoshi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledForDelegate": {
+    "message": "Kipengele cha kuakibisha ukurasa kamili hakiwezi kutumika kwenye kikabidhiwa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledForPrerender": {
+    "message": "Kipengele cha kuakibisha ukurasa kamili kimezimwa kwa ajili ya kipengele cha kutekeleza mapema."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | broadcastChannel": {
+    "message": "Ukurasa hauwezi kuakibishwa kwa sababu una tukio la BroadcastChannel lenye visikilizaji vilivyosajiliwa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheControlNoStore": {
+    "message": "Kurasa zenye kichwa cha 'cache-control:no-store' haziwezi kuingia kwenye kipengele cha kuakibisha ukurasa kamili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheFlushed": {
+    "message": "Akiba imefutwa kimakusudi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheLimit": {
+    "message": "Ukurasa umeondolewa kwenye akiba ili kuruhusu ukurasa mwingine uakibishwe."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | containsPlugins": {
+    "message": "Kurasa zilizo na programu jalizi haziwezi kuwekwa kwenye kipengele cha kuakibisha ukurasa kamili kwa sasa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentDiscarded": {
+    "message": "Haijabainishwa"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentFileChooser": {
+    "message": "Kurasa zinazotumia API ya FileChooser haziwezi kuwekwa kwenye kipengele cha kuakibisha ukurasa kamili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentFileSystemAccess": {
+    "message": "Kurasa zinazotumia API ya File System Access haziwezi kuwekwa kwenye kipengele cha kuakibisha ukurasa kamili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaDevicesDispatcherHost": {
+    "message": "Kurasa zinazotumia kipengele cha Kusambaza Vifaa vya Kuhifadhia Data haziwezi kuwekwa kwenye kipengele cha kuakibisha ukurasa kamili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaPlay": {
+    "message": "Kicheza faili za sauti na video kilikuwa kinacheza wakati wa kuondoa ukurasa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaSession": {
+    "message": "Kurasa zinazotumia API ya MediaSession na ziwe zimeweka hali ya uchezaji haziwezi kuwekwa kwenye kipengele cha kuakibisha ukurasa kamili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaSessionService": {
+    "message": "Kurasa zinazotumia API ya MediaSession na ziwe zimeweka vidhibiti vya vitendo haziwezi kuwekwa kwenye kipengele cha kuakibisha ukurasa kamili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentScreenReader": {
+    "message": "Kipengele cha kuakibisha ukurasa kamili kimezimwa kwa sababu ya kisoma skrini."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentSecurityHandler": {
+    "message": "Kurasa zinazotumia SecurityHandler haziwezi kuwekwa kwenye kipengele cha kuakibisha ukurasa kamili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentSerial": {
+    "message": "Kurasa zinazotumia API ya Serial haziwezi kuwekwa kwenye kipengele cha kuakibisha ukurasa kamili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebAuthenticationAPI": {
+    "message": "Kurasa zinazotumia API ya WebAuthetication haziwezi kuwekwa kwenye kipengele cha kuakibisha ukurasa kamili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebBluetooth": {
+    "message": "Kurasa zinazotumia API ya WebBluetooth haziwezi kuwekwa kwenye kipengele cha kuakibisha ukurasa kamili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebUSB": {
+    "message": "Kurasa zinazotumia API ya WebUSB haziwezi kuwekwa kwenye kipengele cha kuakibisha ukurasa kamili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cookieDisabled": {
+    "message": "Kipengele cha kuakibisha ukurasa kamili kimezimwa kwa sababu umezima vidakuzi katika ukurasa unaotumia Cache-Control: no-store."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | dedicatedWorkerOrWorklet": {
+    "message": "Kurasa zinazotumia kitendakazi maalum au kitendakazi kidogo haziwezi kuwekwa kwenye kipengele cha kuakibisha ukurasa kamili kwa sasa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | documentLoaded": {
+    "message": "Hati haikumaliza kupakiwa kabla ya kuondolewa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderAppBannerManager": {
+    "message": "Bango la programu lilikuwepo wakati wa kuondoa ukurasa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderChromePasswordManagerClientBindCredentialManager": {
+    "message": "Kidhibiti cha Manenosiri cha Chrome kilikuwepo wakati wa kuondoa ukurasa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderDomDistillerSelfDeletingRequestDelegate": {
+    "message": "Utenganishaji wa DOM ulikuwa unaendelea wakati wa kuondoa ukurasa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderDomDistillerViewerSource": {
+    "message": "Kitazamaji cha Zana ya Kutenganisha DOM kilikuwepo wakati wa kuondoa ukurasa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionMessaging": {
+    "message": "Kipengele cha kuakibisha ukurasa kamili kimezimwa kwa sababu kuna viendelezi vinavyotumia API ya ujumbe."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionMessagingForOpenPort": {
+    "message": "Viendelezi vyenye muunganisho uliofunguliwa kwa muda mrefu vinapaswa kufunga muunganisho huo kabla ya kuwekwa kwenye kipengele cha kuakibisha ukurasa kamili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionSentMessageToCachedFrame": {
+    "message": "Viendelezi vyenye muunganisho uliofunguliwa kwa muda mrefu vilijaribu kutuma ujumbe kwa fremu katika kipengele cha kuakibisha ukurasa kamili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensions": {
+    "message": "Kipengele cha kuakibisha ukurasa kamili kimezimwa kwa sababu ya viendelezi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderModalDialog": {
+    "message": "Kidirisha cha hali kama vile kidirisha cha kutuma fomu tena au kidirisha cha nenosiri cha http kilionyeshwa kwa ajili ya ukurasa wakati wa kuuondoa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderOfflinePage": {
+    "message": "Ukurasa wa nje ya mtandao ulionyeshwa wakati wa kuondoa ukurasa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderOomInterventionTabHelper": {
+    "message": "Upau wa Kuonyesha kuwa Hifadhi Imejaa ulikuwepo wakati wa kuondoa ukurasa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderPermissionRequestManager": {
+    "message": "Kulikuwa na maombi ya ruhusa wakati wa kuondoa ukurasa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderPopupBlockerTabHelper": {
+    "message": "Kizuia dirisha ibukizi kilikuwepo wakati wa kuondoa ukurasa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderSafeBrowsingThreatDetails": {
+    "message": "Maelezo ya kipengele cha Kuvinjari Salama yalionyeshwa wakati wa kuondoa ukurasa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderSafeBrowsingTriggeredPopupBlocker": {
+    "message": "Kipengele cha Kuvinjari Salama kimechukulia ukurasa huu kuwa wa matumizi mabaya na kimezuia dirisha ibukizi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | enteredBackForwardCacheBeforeServiceWorkerHostAdded": {
+    "message": "Kitoa huduma (SW) kiliwashwa ukurasa ulipokuwa kwenye kipengele cha kuakibisha ukurasa kamili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | errorDocument": {
+    "message": "Kipengele cha kuakibisha ukurasa kamili kimezimwa kwa sababu ya hitilafu ya hati."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | fencedFramesEmbedder": {
+    "message": "Kurasa zinazotumia FencedFrames haziwezi kuhifadhiwa kwenye bfcache."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | foregroundCacheLimit": {
+    "message": "Ukurasa umeondolewa kwenye akiba ili kuruhusu ukurasa mwingine uakibishwe."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | grantedMediaStreamAccess": {
+    "message": "Kurasa zilizopewa ruhusa ya kufikia maudhui yanayotiririshwa haziwezi kuwekwa kwenye kipengele cha kuakibisha ukurasa kamili kwa sasa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | haveInnerContents": {
+    "message": "Kurasa zilizo na aina fulani ya maudhui yaliyopachikwa (k.m. PDF) hazistahiki kuwekwa kwenye kipengele cha kuakibisha ukurasa kamili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | idleManager": {
+    "message": "Kurasa zinazotumia IdleManager haziwezi kuwekwa kwenye kipengele cha kuakibisha ukurasa kamili kwa sasa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | indexedDBConnection": {
+    "message": "Kurasa zenye muunganisho wazi wa DB haziwezi kuwekwa kwenye kipengele cha kuakibisha ukurasa kamili kwa sasa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | indexedDBEvent": {
+    "message": "Kipengele cha kuakibisha ukurasa kamili kimezimwa kutokana na tukio la IndexedDB."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | ineligibleAPI": {
+    "message": "API zisizotimiza masharti zimetumiwa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | injectedJavascript": {
+    "message": "Kurasa ambapo JavaScript imeingizwa na viendelezi haziwezi kuwekwa kwenye kipengele cha kuakibisha ukurasa kamili kwa sasa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | injectedStyleSheet": {
+    "message": "Kurasa ambapo StyleSheet imeingizwa na viendelezi haziwezi kuwekwa kwenye kipengele cha kuakibisha ukurasa kamili kwa sasa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | internalError": {
+    "message": "Hitilafu ya ndani."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | jsNetworkRequestReceivedCacheControlNoStoreResource": {
+    "message": "Kipengele cha kuakibisha ukurasa kamili kimezimwa kwa sababu baadhi ya maombi ya mtandao ya JavaScript yalipokea nyenzo iliyokuwa na kichwa cha Cache-Control: no-store."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | keepaliveRequest": {
+    "message": "Kipengele cha kuakibisha ukurasa kamili kimezimwa kwa sababu ya ombi la ujumbe wa kukagua muunganisho."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | keyboardLock": {
+    "message": "Kurasa zinazotumia kipengele cha Kufunga kibodi haziwezi kuwekwa kwenye kipengele cha kuakibisha ukurasa kamili kwa sasa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | loading": {
+    "message": "Ukurasa haukumaliza kupakiwa kabla ya kuondolewa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | mainResourceHasCacheControlNoCache": {
+    "message": "Kurasa zenye nyenzo kuu iliyo na agizo la 'cache-control:no-cache' haziwezi kuingia kwenye kipengele cha kuakibisha ukurasa kamili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | mainResourceHasCacheControlNoStore": {
+    "message": "Kurasa zenye nyenzo kuu iliyo na agizo la 'cache-control:no-store' haziwezi kuingia kwenye kipengele cha kuakibisha ukurasa kamili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | navigationCancelledWhileRestoring": {
+    "message": "Usogezaji ulighairiwa kabla ukurasa haujarejeshwa kutoka kipengele cha kuakibisha ukurasa kamili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkExceedsBufferLimit": {
+    "message": "Ukurasa umeondolewa kwenye akiba kwa sababu muunganisho wa mtandao unaotumika umepokea data nyingi mno. Chrome hudhibiti kiwango cha data ambayo ukurasa unaweza kupokea ukiwa umeakibishwa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestDatapipeDrainedAsBytesConsumer": {
+    "message": "Kurasa zenye ombi la mtandao la fetch() au la XHR linalotumwa haziwezi kuwekwa kwenye kipengele cha kuakibisha ukurasa kamili kwa sasa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestRedirected": {
+    "message": "Ukurasa umeondolewa kwenye kipengele cha kuakibisha ukurasa kamili kwa sababu ombi la mtandao linaloendelea limeelekezwa kwingine."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestTimeout": {
+    "message": "Ukurasa umeondolewa kwenye akiba kwa sababu muunganisho wa mtandao ulikuwa wazi kwa muda mrefu mno. Chrome hudhibiti kipindi cha muda ambao ukurasa unaweza kupokea data ukiwa umeakibishwa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | noResponseHead": {
+    "message": "Kurasa zisizo na kichwa sahihi cha jibu haziwezi kuingia kwenye kipengele cha kuakibisha ukurasa kamili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | notMainFrame": {
+    "message": "Usogezaji ulifanyika kwenye fremu tofauti na fremu kuu."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingIndexedDBTransaction": {
+    "message": "Kurasa zenye shughuli za DB zinazoendelea kuhifadhiwa haziwezi kuwekwa kwenye kipengele cha kuakibisha ukurasa kamili kwa sasa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestDirectSocket": {
+    "message": "Kurasa zenye ombi la mtandao linalotumwa haziwezi kuwekwa kwenye kipengele cha kuakibisha ukurasa kamili kwa sasa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestFetch": {
+    "message": "Kurasa zenye ombi la mtandao la fetch linalotumwa haziwezi kuwekwa kwenye kipengele cha kuakibisha ukurasa kamili kwa sasa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestOthers": {
+    "message": "Kurasa zenye ombi la mtandao linalotumwa haziwezi kuwekwa kwenye kipengele cha kuakibisha ukurasa kamili kwa sasa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestXHR": {
+    "message": "Kurasa zenye ombi la mtandao la XHR linalotumwa haziwezi kuwekwa kwenye kipengele cha kuakibisha ukurasa kamili kwa sasa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | paymentManager": {
+    "message": "Kurasa zinazotumia PaymentManager haziwezi kuwekwa kwenye kipengele cha kuakibisha ukurasa kamili kwa sasa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | pictureInPicture": {
+    "message": "Kurasa zinazotumia hali ya Kupachika Picha Ndani ya Picha Nyingine haziwezi kuwekwa kwenye kipengele cha kuakibisha ukurasa kamili kwa sasa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | printing": {
+    "message": "Kurasa zinazoonyesha kiolesura cha Kuchapisha haziwezi kuwekwa kwenye kipengele cha kuakibisha ukurasa kamili kwa sasa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | relatedActiveContentsExist": {
+    "message": "Ukurasa ulifunguliwa kwa kutumia 'window.open()' na kichupo kingine kinaurejelea au ukurasa ulifungua dirisha."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | rendererProcessCrashed": {
+    "message": "Mchakato wa kitekelezaji wa ukurasa katika kipengele cha kuakibisha ukurasa kamili umeacha kufanya kazi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | rendererProcessKilled": {
+    "message": "Mchakato wa kitekelezaji wa ukurasa katika kipengele cha kuakibisha ukurasa kamili umekomeshwa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedAudioCapturePermission": {
+    "message": "Kurasa zilizoomba ruhusa za kunasa sauti haziwezi kuwekwa kwenye kipengele cha kuakibisha ukurasa kamili kwa sasa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedBackForwardCacheBlockedSensors": {
+    "message": "Kurasa zilizoomba ruhusa za kutumia kitambuzi haziwezi kuwekwa kwenye kipengele cha kuakibisha ukurasa kamili kwa sasa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedBackgroundWorkPermission": {
+    "message": "Kurasa zilizoomba ruhusa za fetch au za kusawazisha chinichini haziwezi kuwekwa kwenye kipengele cha kuakibisha ukurasa kamili kwa sasa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedMIDIPermission": {
+    "message": "Kurasa zilizoomba ruhusa za MIDI haziwezi kuwekwa kwenye kipengele cha kuakibisha ukurasa kamili kwa sasa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedNotificationsPermission": {
+    "message": "Kurasa zilizoomba ruhusa za kutuma arifa haziwezi kuwekwa kwenye kipengele cha kuakibisha ukurasa kamili kwa sasa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedStorageAccessGrant": {
+    "message": "Kurasa zilizoomba ruhusa ya kufikia nafasi ya hifadhi haziwezi kuwekwa kwenye kipengele cha kuakibisha ukurasa kamili kwa sasa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedVideoCapturePermission": {
+    "message": "Kurasa zilizoomba ruhusa za kunasa video haziwezi kuwekwa kwenye kipengele cha kuakibisha ukurasa kamili kwa sasa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | schemeNotHTTPOrHTTPS": {
+    "message": "Kurasa zenye URL iliyo na utaratibu wa HTTP au HTTPS ndizo tu zinaweza kuakibishwa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerClaim": {
+    "message": "Ukurasa umedaiwa na kitoa huduma (SW) ukiwa katika kipengele cha kuakibisha ukurasa kamili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerPostMessage": {
+    "message": "Kitekelezi (SW) kilijaribu kuutumia ukurasa ulio kwenye kipengele cha kuakibisha ukurasa kamili MessageEvent."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerUnregistration": {
+    "message": "Usajili wa Kitekelezi ulibatilishwa ukurasa ulipokuwa katika kipengele cha kuakibisha ukurasa kamili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerVersionActivation": {
+    "message": "Ukurasa umeondolewa kwenye kipengele cha kuakibisha ukurasa kamili kwa sababu kitoa huduma (SW) kimewashwa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | sessionRestored": {
+    "message": "Chrome ilifungwa kisha ikafunguliwa na ikafuta data iliyowekwa kwenye kipengele cha kuakibisha ukurasa kamili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | sharedWorker": {
+    "message": "Kurasa zinazotumia SharedWorker haziwezi kuwekwa kwenye kipengele cha kuakibisha ukurasa kamili kwa sasa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | speechRecognizer": {
+    "message": "Kurasa zinazotumia SpeechRecognizer haziwezi kuwekwa kwenye kipengele cha kuakibisha ukurasa kamili kwa sasa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | speechSynthesis": {
+    "message": "Kurasa zinazotumia SpeechSynthesis haziwezi kuwekwa kwenye kipengele cha kuakibisha ukurasa kamili kwa sasa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subframeIsNavigating": {
+    "message": "Kipengele cha iframe kilicho kwenye ukurasa kilianzisha usogezaji ambao haukukamilika."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subresourceHasCacheControlNoCache": {
+    "message": "Kurasa zenye nyenzo ndogo iliyo na agizo la 'cache-control:no-cache' haziwezi kuingia kwenye kipengele cha kuakibisha ukurasa kamili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subresourceHasCacheControlNoStore": {
+    "message": "Kurasa zenye nyenzo ndogo iliyo na agizo la 'cache-control:no-store' haziwezi kuingia kwenye kipengele cha kuakibisha ukurasa kamili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | timeout": {
+    "message": "Ukurasa ulipitisha muda wa juu zaidi unaoruhusiwa kwenye kipengele cha kuakibisha ukurasa kamili na muda wake ukaisha."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | timeoutPuttingInCache": {
+    "message": "Muda wa ukurasa umeisha ulipokuwa unawekwa kwenye kipengele cha kuakibisha ukurasa kamili (inawezekana ni kwa sababu ya vidhibiti vya kuficha ukurasa vinavyotekelezwa kwa muda mrefu)."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | unloadHandlerExistsInMainFrame": {
+    "message": "Ukurasa una kidhibiti cha kuondoa katika fremu kuu."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | unloadHandlerExistsInSubFrame": {
+    "message": "Ukurasa una kidhibiti cha kuondoa katika fremu ndogo."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | userAgentOverrideDiffers": {
+    "message": "Kivinjari kimebadilisha kijajuu cha kubatilisha ala ya mtumiaji."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | wasGrantedMediaAccess": {
+    "message": "Kurasa zilizopewa ruhusa ya kurekodi video au sauti haziwezi kuwekwa kwenye kipengele cha kuakibisha ukurasa kamili kwa sasa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webDatabase": {
+    "message": "Kurasa zinazotumia WebDatabase haziwezi kuwekwa kwenye kipengele cha kuakibisha ukurasa kamili kwa sasa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webHID": {
+    "message": "Kurasa zinazotumia WebHID haziwezi kuwekwa kwenye kipengele cha kuakibisha ukurasa kamili kwa sasa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webLocks": {
+    "message": "Kurasa zinazotumia WebLocks haziwezi kuwekwa kwenye kipengele cha kuakibisha ukurasa kamili kwa sasa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webNfc": {
+    "message": "Kurasa zinazotumia WebNfc haziwezi kuwekwa kwenye kipengele cha kuakibisha ukurasa kamili kwa sasa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webOTPService": {
+    "message": "Kurasa zinazotumia WebOTPService haziwezi kuwekwa kwenye kipengele cha kuakibisha ukurasa kamili kwa sasa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webRTC": {
+    "message": "Kurasa zenye WebRTC haziwezi kuingia kwenye kipengele cha kuakibisha ukurasa kamili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webRTCSticky": {
+    "message": "Kipengele cha kuakibisha ukurasa kamili kimezimwa kwa sababu WebRTC imetumika."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webShare": {
+    "message": "Kurasa zinazotumia WebShare haziwezi kuwekwa kwenye kipengele cha kuakibisha ukurasa kamili kwa sasa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webSocket": {
+    "message": "Kurasa zenye WebSocket haziwezi kuingia kwenye kipengele cha kuakibisha ukurasa kamili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webSocketSticky": {
+    "message": "Kipengele cha kuakibisha ukurasa kamili kimezimwa kwa sababu WebSocket imetumika."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webTransport": {
+    "message": "Kurasa zenye WebTransport haziwezi kuingia kwenye kipengele cha kuakibisha ukurasa kamili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webTransportSticky": {
+    "message": "Kipengele cha kuakibisha ukurasa kamili kimezimwa kwa sababu WebTransport imetumika."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webXR": {
+    "message": "Kurasa zinazotumia WebXR haziwezi kuwekwa kwenye kipengele cha kuakibisha ukurasa kamili kwa sasa."
+  }
+}

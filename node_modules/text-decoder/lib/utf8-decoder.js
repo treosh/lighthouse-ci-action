@@ -12,6 +12,10 @@ module.exports = class UTF8Decoder {
     this.upperBoundary = 0xbf
   }
 
+  get remaining () {
+    return this.bytesSeen
+  }
+
   decode (data) {
     // If we have a fast path, just sniff if the last part is a boundary
     if (this.bytesNeeded === 0) {
@@ -32,21 +36,25 @@ module.exports = class UTF8Decoder {
       if (this.bytesNeeded === 0) {
         if (byte <= 0x7f) {
           result += String.fromCharCode(byte)
-        } else if (byte >= 0xc2 && byte <= 0xdf) {
-          this.bytesNeeded = 1
-          this.codePoint = byte & 0x1f
-        } else if (byte >= 0xe0 && byte <= 0xef) {
-          if (byte === 0xe0) this.lowerBoundary = 0xa0
-          else if (byte === 0xed) this.upperBoundary = 0x9f
-          this.bytesNeeded = 2
-          this.codePoint = byte & 0xf
-        } else if (byte >= 0xf0 && byte <= 0xf4) {
-          if (byte === 0xf0) this.lowerBoundary = 0x90
-          if (byte === 0xf4) this.upperBoundary = 0x8f
-          this.bytesNeeded = 3
-          this.codePoint = byte & 0x7
         } else {
-          result += '\ufffd'
+          this.bytesSeen = 1
+
+          if (byte >= 0xc2 && byte <= 0xdf) {
+            this.bytesNeeded = 2
+            this.codePoint = byte & 0x1f
+          } else if (byte >= 0xe0 && byte <= 0xef) {
+            if (byte === 0xe0) this.lowerBoundary = 0xa0
+            else if (byte === 0xed) this.upperBoundary = 0x9f
+            this.bytesNeeded = 3
+            this.codePoint = byte & 0xf
+          } else if (byte >= 0xf0 && byte <= 0xf4) {
+            if (byte === 0xf0) this.lowerBoundary = 0x90
+            if (byte === 0xf4) this.upperBoundary = 0x8f
+            this.bytesNeeded = 4
+            this.codePoint = byte & 0x7
+          } else {
+            result += '\ufffd'
+          }
         }
 
         continue

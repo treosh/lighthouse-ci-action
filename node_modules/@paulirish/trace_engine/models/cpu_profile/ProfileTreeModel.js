@@ -54,8 +54,6 @@ export class ProfileTreeModel {
     }
     assignDepthsAndParents() {
         const root = this.root;
-        // TODO(crbug.com/1354548): start depth from 0 once profiler
-        // panel dependencies are gone.
         root.depth = -1;
         root.parent = null;
         this.maxDepth = 0;

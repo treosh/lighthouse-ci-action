@@ -114,6 +114,7 @@ let Request = (() => {
                     return;
                 }
                 this.#response = event.response;
+                this.#event.request.timings = event.request.timings;
                 this.emit('success', this.#response);
                 // In case this is a redirect.
                 if (this.#response.status >= 300 && this.#response.status < 400) {
@@ -168,6 +169,18 @@ let Request = (() => {
         get isBlocked() {
             return this.#event.isBlocked;
         }
+        get resourceType() {
+            // @ts-expect-error non-standard attribute.
+            return this.#event.request['goog:resourceType'] ?? undefined;
+        }
+        get postData() {
+            // @ts-expect-error non-standard attribute.
+            return this.#event.request['goog:postData'] ?? undefined;
+        }
+        get hasPostData() {
+            // @ts-expect-error non-standard attribute.
+            return this.#event.request['goog:hasPostData'] ?? false;
+        }
         async continueRequest({ url, method, headers, cookies, body, }) {
             await this.#session.send('network.continueRequest', {
                 request: this.id,
@@ -213,6 +226,9 @@ let Request = (() => {
         [(_dispose_decorators = [inertIfDisposed], disposeSymbol)]() {
             this.#disposables.dispose();
             super[disposeSymbol]();
+        }
+        timing() {
+            return this.#event.request.timings;
         }
     };
 })();

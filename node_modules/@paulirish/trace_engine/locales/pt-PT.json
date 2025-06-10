@@ -1,0 +1,908 @@
+{
+  "generated/Deprecation.ts | AuthorizationCoveredByWildcard": {
+    "message": "A autoriza\u00e7\u00e3o n\u00e3o vai estar abrangida pelo s\u00edmbolo de car\u00e1ter universal (*) no processamento do atributo Access-Control-Allow-Headers de CORS (partilha de recursos de origem cruzada)."
+  },
+  "generated/Deprecation.ts | CSSSelectorInternalMediaControlsOverlayCastButton": {
+    "message": "Deve usar o atributo disableRemotePlayback em vez do seletor -internal-media-controls-overlay-cast-button para desativar a integra\u00e7\u00e3o do Cast predefinida."
+  },
+  "generated/Deprecation.ts | CSSValueAppearanceSliderVertical": {
+    "message": "O valor de aspeto de CSS slider-vertical n\u00e3o est\u00e1 padronizado e vai ser removido."
+  },
+  "generated/Deprecation.ts | CanRequestURLHTTPContainingNewline": {
+    "message": "Os pedidos de recursos cujos URLs continham os carateres \\(n|r|t) de espa\u00e7os em branco removidos e o limite m\u00ednimo de carateres (<) foram bloqueados. Remova as novas linhas e codifique o limite m\u00ednimo de carateres de locais como valores de atributos de elementos para carregar estes recursos."
+  },
+  "generated/Deprecation.ts | CharsetAutoDetectionISO2022JP": {
+    "message": "A dete\u00e7\u00e3o autom\u00e1tica do conjunto de carateres ISO-2022-JP foi descontinuada e vai ser desativada em breve. Especifique o conjunto de carateres no cabe\u00e7alho Tipo de conte\u00fado ou atrav\u00e9s de uma metatag (https://developer.mozilla.org/en-US/docs/Glossary/Character_encoding)."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesConnectionInfo": {
+    "message": "O atributo chrome.loadTimes() foi descontinuado. Em alternativa, use a API padronizada: Navigation Timing 2."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesFirstPaintAfterLoadTime": {
+    "message": "O atributo chrome.loadTimes() foi descontinuado. Em alternativa, use a API padronizada: Paint Timing."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesWasAlternateProtocolAvailable": {
+    "message": "O atributo chrome.loadTimes() foi descontinuado. Em alternativa, use a API padronizada: nextHopProtocol no Navigation Timing 2."
+  },
+  "generated/Deprecation.ts | CookieWithTruncatingChar": {
+    "message": "Os cookies que cont\u00eam um car\u00e1ter \\(0|r|n) v\u00e3o ser rejeitados em vez de truncados."
+  },
+  "generated/Deprecation.ts | CrossOriginAccessBasedOnDocumentDomain": {
+    "message": "O relaxamento da pol\u00edtica da mesma origem ao definir o atributo document.domain foi descontinuado e vai ser desativado por predefini\u00e7\u00e3o. Este aviso de descontinua\u00e7\u00e3o \u00e9 para um acesso de origem cruzada que foi ativado ao definir o atributo document.domain."
+  },
+  "generated/Deprecation.ts | CrossOriginWindowAlert": {
+    "message": "O acionamento da fun\u00e7\u00e3o window.alert a partir de iFrames de origem cruzada foi descontinuado e vai ser removido no futuro."
+  },
+  "generated/Deprecation.ts | CrossOriginWindowConfirm": {
+    "message": "O acionamento da fun\u00e7\u00e3o window.confirm a partir de iFrames de origem cruzada foi descontinuado e vai ser removido no futuro."
+  },
+  "generated/Deprecation.ts | DOMMutationEvents": {
+    "message": "Os eventos de muta\u00e7\u00e3o DOM, incluindo DOMSubtreeModified, DOMNodeInserted, DOMNodeRemoved, DOMNodeRemovedFromDocument, DOMNodeInsertedIntoDocument e DOMCharacterDataModified foram descontinuados (https://w3c.github.io/uievents/#legacy-event-types) e v\u00e3o ser removidos. Em alternativa, use MutationObserver."
+  },
+  "generated/Deprecation.ts | DataUrlInSvgUse": {
+    "message": "Suporte de dados: os URLs em SVGUseElement foram descontinuados e v\u00e3o ser removidos no futuro."
+  },
+  "generated/Deprecation.ts | GeolocationInsecureOrigin": {
+    "message": "Os atributos getCurrentPosition() e watchPosition() j\u00e1 n\u00e3o funcionam em origens inseguras. Para usar esta funcionalidade, deve considerar mudar a sua aplica\u00e7\u00e3o para uma origem segura, como HTTPS. Consulte https://goo.gle/chrome-insecure-origins para obter mais detalhes."
+  },
+  "generated/Deprecation.ts | GeolocationInsecureOriginDeprecatedNotRemoved": {
+    "message": "Os atributos getCurrentPosition() e watchPosition() foram descontinuados em origens inseguras. Para usar esta funcionalidade, deve considerar mudar a sua aplica\u00e7\u00e3o para uma origem segura, como HTTPS. Consulte https://goo.gle/chrome-insecure-origins para obter mais detalhes."
+  },
+  "generated/Deprecation.ts | GetUserMediaInsecureOrigin": {
+    "message": "O atributo getUserMedia() j\u00e1 n\u00e3o funciona em origens inseguras. Para usar esta funcionalidade, deve considerar mudar a sua aplica\u00e7\u00e3o para uma origem segura, como HTTPS. Consulte https://goo.gle/chrome-insecure-origins para obter mais detalhes."
+  },
+  "generated/Deprecation.ts | H1UserAgentFontSizeInSection": {
+    "message": "Foi encontrada uma etiqueta <h1> dentro de um <article>, <aside>, <nav> ou uma <section> que n\u00e3o tem um tamanho de tipo de letra especificado. O tamanho deste texto do cabe\u00e7alho vai mudar neste navegador num futuro pr\u00f3ximo. Consulte https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#specifying_a_uniform_font_size_for_h1 para mais informa\u00e7\u00f5es."
+  },
+  "generated/Deprecation.ts | HostCandidateAttributeGetter": {
+    "message": "O atributo RTCPeerConnectionIceErrorEvent.hostCandidate foi descontinuado. Em alternativa, use o atributo RTCPeerConnectionIceErrorEvent.address ou RTCPeerConnectionIceErrorEvent.port."
+  },
+  "generated/Deprecation.ts | IdentityDigitalCredentials": {
+    "message": "Este formato para o pedido navigator.credentials.get() de credenciais digitais foi descontinuado. Atualize a sua chamada para usar o novo formato."
+  },
+  "generated/Deprecation.ts | IdentityInCanMakePaymentEvent": {
+    "message": "A origem do comerciante e os dados arbitr\u00e1rios do evento do service canmakepayment worker foram descontinuados e v\u00e3o ser removidos: topOrigin, paymentRequestOrigin, methodData e modifiers."
+  },
+  "generated/Deprecation.ts | InsecurePrivateNetworkSubresourceRequest": {
+    "message": "O Website pediu um subrecurso de uma rede \u00e0 qual s\u00f3 podia aceder devido \u00e0 posi\u00e7\u00e3o da rede privilegiada dos respetivos utilizadores. Estes pedidos exp\u00f5em servidores e dispositivos n\u00e3o p\u00fablicos \u00e0 Internet, aumentando o risco de um ataque de falsifica\u00e7\u00e3o de pedido entre sites (CSRF) e/ou de uma fuga de informa\u00e7\u00f5es. Para mitigar estes riscos, o Chrome descontinua pedidos para subrecursos n\u00e3o p\u00fablicos quando forem iniciados por contextos n\u00e3o seguros e vai come\u00e7ar a bloque\u00e1-los."
+  },
+  "generated/Deprecation.ts | InterestGroupDailyUpdateUrl": {
+    "message": "O nome do campo dailyUpdateUrl de InterestGroups transmitido a joinAdInterestGroup() foi mudado para updateUrl, de modo a refletir com maior precis\u00e3o o respetivo comportamento."
+  },
+  "generated/Deprecation.ts | IntlV8BreakIterator": {
+    "message": "O atributo Intl.v8BreakIterator foi descontinuado. Em alternativa, use Intl.Segmenter."
+  },
+  "generated/Deprecation.ts | LocalCSSFileExtensionRejected": {
+    "message": "N\u00e3o \u00e9 poss\u00edvel carregar o CSS a partir dos URLs file:, exceto se terminarem numa extens\u00e3o de ficheiro .css."
+  },
+  "generated/Deprecation.ts | MediaSourceAbortRemove": {
+    "message": "A utiliza\u00e7\u00e3o do atributo SourceBuffer.abort() para interromper a remo\u00e7\u00e3o do intervalo ass\u00edncrono do atributo remove() foi descontinuado devido a uma altera\u00e7\u00e3o na especifica\u00e7\u00e3o. O suporte vai ser removido no futuro. Em alternativa, deve ouvir o evento updateend. O atributo abort() destina-se apenas a interromper um estado de analisador de reposi\u00e7\u00e3o ou anexa\u00e7\u00e3o de suporte ass\u00edncrono."
+  },
+  "generated/Deprecation.ts | MediaSourceDurationTruncatingBuffered": {
+    "message": "A defini\u00e7\u00e3o do atributo MediaSource.duration abaixo da data/hora de apresenta\u00e7\u00e3o mais elevada de quaisquer frames codificados no buffer foi descontinuada devido a uma altera\u00e7\u00e3o na especifica\u00e7\u00e3o. O suporte para uma remo\u00e7\u00e3o impl\u00edcita do suporte no buffer truncado vai ser removido no futuro. Em alternativa, deve executar um atributo remove(newDuration, oldDuration) expl\u00edcito em todos os sourceBuffers, em que newDuration < oldDuration."
+  },
+  "generated/Deprecation.ts | NoSysexWebMIDIWithoutPermission": {
+    "message": "A MIDI da Web vai pedir uma autoriza\u00e7\u00e3o de utiliza\u00e7\u00e3o mesmo que o sysex n\u00e3o esteja especificado no atributo MIDIOptions."
+  },
+  "generated/Deprecation.ts | NotificationInsecureOrigin": {
+    "message": "A API Notification j\u00e1 n\u00e3o pode ser usada a partir de origens inseguras. Deve considerar mudar a sua aplica\u00e7\u00e3o para uma origem segura, como HTTPS. Consulte https://goo.gle/chrome-insecure-origins para obter mais detalhes."
+  },
+  "generated/Deprecation.ts | NotificationPermissionRequestedIframe": {
+    "message": "A autoriza\u00e7\u00e3o para a API Notification pode j\u00e1 n\u00e3o ser pedida a partir de um iFrame de origem cruzada. Em alternativa, deve considerar pedir autoriza\u00e7\u00e3o a partir de um frame de n\u00edvel superior ou abrir uma nova janela."
+  },
+  "generated/Deprecation.ts | ObsoleteCreateImageBitmapImageOrientationNone": {
+    "message": "A op\u00e7\u00e3o imageOrientation: 'none' em createImageBitmap foi descontinuada. Em alternativa, use createImageBitmap com a op\u00e7\u00e3o \"{imageOrientation: 'from-image'\\}\"."
+  },
+  "generated/Deprecation.ts | ObsoleteWebRtcCipherSuite": {
+    "message": "O seu parceiro est\u00e1 a negociar uma vers\u00e3o do (D)TLS (Transport Layer Security) obsoleta. Contacte o seu parceiro para corrigir isto."
+  },
+  "generated/Deprecation.ts | OverflowVisibleOnReplacedElement": {
+    "message": "Especificar overflow: visible em etiquetas img, video e canvas pode fazer com que produzam conte\u00fado visual fora dos limites do elemento. Consulte https://github.com/WICG/shared-element-transitions/blob/main/debugging_overflow_on_images.md."
+  },
+  "generated/Deprecation.ts | PaymentInstruments": {
+    "message": "O atributo paymentManager.instruments foi descontinuado. Em alternativa, use a instala\u00e7\u00e3o just-in-time para os controladores de pagamento."
+  },
+  "generated/Deprecation.ts | PaymentRequestCSPViolation": {
+    "message": "A sua chamada de PaymentRequest ignorou a diretiva da Pol\u00edtica de Seguran\u00e7a de Conte\u00fados (CSP) connect-src. Esta a\u00e7\u00e3o de ignorar foi descontinuada. Adicione o identificador do m\u00e9todo de pagamento da API PaymentRequest (no campo supportedMethods) \u00e0 diretiva da CSP connect-src."
+  },
+  "generated/Deprecation.ts | PersistentQuotaType": {
+    "message": "O atributo StorageType.persistent foi descontinuado. Em alternativa, use o atributo navigator.storage padronizado."
+  },
+  "generated/Deprecation.ts | PictureSourceSrc": {
+    "message": "O atributo <source src> com um <picture> superior \u00e9 inv\u00e1lido e, por isso, vai ser ignorado. Em alternativa, use <source srcset>."
+  },
+  "generated/Deprecation.ts | PrefixedCancelAnimationFrame": {
+    "message": "O m\u00e9todo webkitCancelAnimationFrame \u00e9 espec\u00edfico do fornecedor. Em alternativa, use o m\u00e9todo cancelAnimationFrame padr\u00e3o."
+  },
+  "generated/Deprecation.ts | PrefixedRequestAnimationFrame": {
+    "message": "O m\u00e9todo webkitRequestAnimationFrame \u00e9 espec\u00edfico do fornecedor. Em alternativa, use o m\u00e9todo requestAnimationFrame padr\u00e3o."
+  },
+  "generated/Deprecation.ts | PrefixedVideoDisplayingFullscreen": {
+    "message": "A fun\u00e7\u00e3o HTMLVideoElement.webkitDisplayingFullscreen foi descontinuada. Em alternativa, use Document.fullscreenElement."
+  },
+  "generated/Deprecation.ts | PrefixedVideoEnterFullScreen": {
+    "message": "A API HTMLVideoElement.webkitEnterFullScreen() foi descontinuada. Em alternativa, use a API Element.requestFullscreen()."
+  },
+  "generated/Deprecation.ts | PrefixedVideoEnterFullscreen": {
+    "message": "A API HTMLVideoElement.webkitEnterFullscreen() foi descontinuada. Em alternativa, use a API Element.requestFullscreen()."
+  },
+  "generated/Deprecation.ts | PrefixedVideoExitFullScreen": {
+    "message": "A API HTMLVideoElement.webkitExitFullScreen() foi descontinuada. Em alternativa, use a API Document.exitFullscreen()."
+  },
+  "generated/Deprecation.ts | PrefixedVideoExitFullscreen": {
+    "message": "A API HTMLVideoElement.webkitExitFullscreen() foi descontinuada. Em alternativa, use a API Document.exitFullscreen()."
+  },
+  "generated/Deprecation.ts | PrefixedVideoSupportsFullscreen": {
+    "message": "A fun\u00e7\u00e3o webkitSupportsFullscreen foi descontinuada. Em alternativa, use a fun\u00e7\u00e3o Document.fullscreenEnabled."
+  },
+  "generated/Deprecation.ts | PrivacySandboxExtensionsAPI": {
+    "message": "Vamos descontinuar a API chrome.privacy.websites.privacySandboxEnabled, mas esta permanece ativa para retrocompatibilidade at\u00e9 ao lan\u00e7amento M113. Em alternativa, use chrome.privacy.websites.topicsEnabled, chrome.privacy.websites.fledgeEnabled e chrome.privacy.websites.adMeasurementEnabled. Veja https://developer.chrome.com/docs/extensions/reference/privacy/#property-websites-privacySandboxEnabled."
+  },
+  "generated/Deprecation.ts | RTCConstraintEnableDtlsSrtpFalse": {
+    "message": "A restri\u00e7\u00e3o DtlsSrtpKeyAgreement foi removida. Especificou um valor false para esta restri\u00e7\u00e3o, que \u00e9 interpretado como uma tentativa de usar o m\u00e9todo SDES key negotiation removido. Esta funcionalidade foi removida. Em alternativa, use um servi\u00e7o que suporte o atributo DTLS key negotiation."
+  },
+  "generated/Deprecation.ts | RTCConstraintEnableDtlsSrtpTrue": {
+    "message": "A restri\u00e7\u00e3o DtlsSrtpKeyAgreement foi removida. Especificou um valor true para esta restri\u00e7\u00e3o, que n\u00e3o teve qualquer efeito, mas pode remover a restri\u00e7\u00e3o para fins de organiza\u00e7\u00e3o."
+  },
+  "generated/Deprecation.ts | RTCPeerConnectionGetStatsLegacyNonCompliant": {
+    "message": "O m\u00e9todo getStats() baseado em chamadas de resposta foi descontinuado e vai ser removido. Em alternativa, use o m\u00e9todo getStats() em conformidade com a especifica\u00e7\u00e3o."
+  },
+  "generated/Deprecation.ts | RangeExpand": {
+    "message": "A API Range.expand() foi descontinuada. Em alternativa, use a API Selection.modify()."
+  },
+  "generated/Deprecation.ts | RequestedSubresourceWithEmbeddedCredentials": {
+    "message": "Os pedidos de subrecursos cujos URLs continham credenciais incorporadas (por exemplo, https://user:pass@host/) foram bloqueados."
+  },
+  "generated/Deprecation.ts | RtcpMuxPolicyNegotiate": {
+    "message": "A op\u00e7\u00e3o rtcpMuxPolicy foi descontinuada e vai ser removida."
+  },
+  "generated/Deprecation.ts | SharedArrayBufferConstructedWithoutIsolation": {
+    "message": "O atributo SharedArrayBuffer vai requerer isolamento de origem cruzada. Consulte https://developer.chrome.com/blog/enabling-shared-array-buffer/ para obter mais detalhes."
+  },
+  "generated/Deprecation.ts | TextToSpeech_DisallowedByAutoplay": {
+    "message": "O atributo speechSynthesis.speak() sem a ativa\u00e7\u00e3o do utilizador foi descontinuado e vai ser removido."
+  },
+  "generated/Deprecation.ts | UnloadHandler": {
+    "message": "Os ouvintes de eventos unload foram descontinuados e v\u00e3o ser removidos."
+  },
+  "generated/Deprecation.ts | V8SharedArrayBufferConstructedInExtensionWithoutIsolation": {
+    "message": "As extens\u00f5es devem aceitar o isolamento de origem cruzada para continuar a usar o atributo SharedArrayBuffer. Consulte https://developer.chrome.com/docs/extensions/mv3/cross-origin-isolation/."
+  },
+  "generated/Deprecation.ts | XHRJSONEncodingDetection": {
+    "message": "O formato UTF-16 n\u00e3o \u00e9 suportado por JSON de resposta no atributo XMLHttpRequest"
+  },
+  "generated/Deprecation.ts | XMLHttpRequestSynchronousInNonWorkerOutsideBeforeUnload": {
+    "message": "A API XMLHttpRequest s\u00edncrona na thread principal foi descontinuada devido aos respetivos efeitos adversos na experi\u00eancia do utilizador final. Para obter mais ajuda, consulte https://xhr.spec.whatwg.org/."
+  },
+  "models/trace/insights/CLSCulprits.ts | animation": {
+    "message": "Anima\u00e7\u00e3o"
+  },
+  "models/trace/insights/CLSCulprits.ts | description": {
+    "message": "As mudan\u00e7as de esquema ocorrem quando os elementos se movem sem nenhuma intera\u00e7\u00e3o do utilizador. [Investigue as causas das mudan\u00e7as de esquema](https://web.dev/articles/optimize-cls), como a adi\u00e7\u00e3o ou a remo\u00e7\u00e3o de elementos ou a altera\u00e7\u00e3o dos respetivos tipos de letra \u00e0 medida que a p\u00e1gina \u00e9 carregada."
+  },
+  "models/trace/insights/CLSCulprits.ts | fontRequest": {
+    "message": "Pedido de tipo de letra"
+  },
+  "models/trace/insights/CLSCulprits.ts | injectedIframe": {
+    "message": "iFrame injetado"
+  },
+  "models/trace/insights/CLSCulprits.ts | layoutShiftCluster": {
+    "message": "Tempo de in\u00edcio do cluster de mudan\u00e7a de esquema: {PH1}"
+  },
+  "models/trace/insights/CLSCulprits.ts | noCulprits": {
+    "message": "N\u00e3o foi poss\u00edvel detetar nenhuma causa da mudan\u00e7a de esquema"
+  },
+  "models/trace/insights/CLSCulprits.ts | noLayoutShifts": {
+    "message": "Sem mudan\u00e7as de esquema"
+  },
+  "models/trace/insights/CLSCulprits.ts | title": {
+    "message": "Causas da mudan\u00e7a de esquema"
+  },
+  "models/trace/insights/CLSCulprits.ts | topCulprits": {
+    "message": "Principais causas da mudan\u00e7a de esquema"
+  },
+  "models/trace/insights/CLSCulprits.ts | unsizedImages": {
+    "message": "Imagens n\u00e3o dimensionadas"
+  },
+  "models/trace/insights/CLSCulprits.ts | worstCluster": {
+    "message": "Pior cluster"
+  },
+  "models/trace/insights/CLSCulprits.ts | worstLayoutShiftCluster": {
+    "message": "Pior cluster de mudan\u00e7a de esquema"
+  },
+  "models/trace/insights/Cache.ts | cacheTTL": {
+    "message": "TTL da cache"
+  },
+  "models/trace/insights/Cache.ts | description": {
+    "message": "Uma longa dura\u00e7\u00e3o total da cache pode acelerar as visitas repetidas \u00e0 sua p\u00e1gina. [Saiba mais](https://web.dev/uses-long-cache-ttl/)."
+  },
+  "models/trace/insights/Cache.ts | noRequestsToCache": {
+    "message": "Sem pedidos com pol\u00edticas de cache ineficientes"
+  },
+  "models/trace/insights/Cache.ts | others": {
+    "message": "Mais {PH1}"
+  },
+  "models/trace/insights/Cache.ts | requestColumn": {
+    "message": "Pedido"
+  },
+  "models/trace/insights/Cache.ts | title": {
+    "message": "Use dura\u00e7\u00f5es totais de cache eficientes"
+  },
+  "models/trace/insights/DOMSize.ts | description": {
+    "message": "Um DOM grande pode aumentar a dura\u00e7\u00e3o dos c\u00e1lculos de estilo e dos ajustes de esquema, o que afeta a capacidade de resposta da p\u00e1gina. Um DOM grande tamb\u00e9m aumenta a utiliza\u00e7\u00e3o de mem\u00f3ria. [Saiba como evitar um tamanho excessivo do DOM](https://developer.chrome.com/docs/lighthouse/performance/dom-size/)."
+  },
+  "models/trace/insights/DOMSize.ts | element": {
+    "message": "Elemento"
+  },
+  "models/trace/insights/DOMSize.ts | maxChildren": {
+    "message": "A maioria dos elementos secund\u00e1rios"
+  },
+  "models/trace/insights/DOMSize.ts | maxDOMDepth": {
+    "message": "Profundidade do DOM"
+  },
+  "models/trace/insights/DOMSize.ts | statistic": {
+    "message": "Estat\u00edstica"
+  },
+  "models/trace/insights/DOMSize.ts | title": {
+    "message": "Otimize o tamanho do DOM"
+  },
+  "models/trace/insights/DOMSize.ts | totalElements": {
+    "message": "Total de elementos"
+  },
+  "models/trace/insights/DOMSize.ts | value": {
+    "message": "Valor"
+  },
+  "models/trace/insights/DocumentLatency.ts | description": {
+    "message": "O primeiro pedido de rede \u00e9 o mais importante.  Reduza a lat\u00eancia evitando redirecionamentos, assegurando uma resposta r\u00e1pida do servidor e ativando a compress\u00e3o de texto."
+  },
+  "models/trace/insights/DocumentLatency.ts | failedRedirects": {
+    "message": "Tinha redirecionamentos"
+  },
+  "models/trace/insights/DocumentLatency.ts | failedServerResponseTime": {
+    "message": "O servidor respondeu lentamente"
+  },
+  "models/trace/insights/DocumentLatency.ts | failedTextCompression": {
+    "message": "Nenhuma compress\u00e3o aplicada"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingRedirects": {
+    "message": "Evita redirecionamentos"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingServerResponseTime": {
+    "message": "O servidor responde rapidamente"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingTextCompression": {
+    "message": "Aplica compress\u00e3o de texto"
+  },
+  "models/trace/insights/DocumentLatency.ts | redirectsLabel": {
+    "message": "Redirecionamentos"
+  },
+  "models/trace/insights/DocumentLatency.ts | serverResponseTimeLabel": {
+    "message": "Tempo de resposta do servidor"
+  },
+  "models/trace/insights/DocumentLatency.ts | title": {
+    "message": "Lat\u00eancia do pedido de documento"
+  },
+  "models/trace/insights/DocumentLatency.ts | uncompressedDownload": {
+    "message": "Transfer\u00eancia n\u00e3o comprimida"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | columnDuplicatedBytes": {
+    "message": "Bytes duplicados"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | columnSource": {
+    "message": "Origem"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | description": {
+    "message": "Remova m\u00f3dulos de JavaScript grandes e duplicados de pacotes para reduzir bytes desnecess\u00e1rios consumidos pela atividade da rede."
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | title": {
+    "message": "JavaScript duplicado"
+  },
+  "models/trace/insights/FontDisplay.ts | description": {
+    "message": "Considere definir [font-display](https://developer.chrome.com/blog/font-display) como swap ou optional para garantir que o texto \u00e9 vis\u00edvel de forma consistente. \u00c9 poss\u00edvel otimizar ainda mais o swap para mitigar as mudan\u00e7as de esquema com [substitui\u00e7\u00f5es de m\u00e9tricas de tipos de letra](https://developer.chrome.com/blog/font-fallbacks)."
+  },
+  "models/trace/insights/FontDisplay.ts | fontColumn": {
+    "message": "Tipo de letra"
+  },
+  "models/trace/insights/FontDisplay.ts | title": {
+    "message": "Apresenta\u00e7\u00e3o do tipo de letra"
+  },
+  "models/trace/insights/FontDisplay.ts | wastedTimeColumn": {
+    "message": "Tempo perdido"
+  },
+  "models/trace/insights/ForcedReflow.ts | anonymous": {
+    "message": "(an\u00f3nimo)"
+  },
+  "models/trace/insights/ForcedReflow.ts | description": {
+    "message": "Muitas APIs, que normalmente leem a geometria do esquema, for\u00e7am o motor de renderiza\u00e7\u00e3o a pausar a execu\u00e7\u00e3o do script para calcular o estilo e o esquema. Saiba mais sobre o [ajuste for\u00e7ado](https://developers.google.com/web/fundamentals/performance/rendering/avoid-large-complex-layouts-and-layout-thrashing#avoid-forced-synchronous-layouts) e as respetivas mitiga\u00e7\u00f5es."
+  },
+  "models/trace/insights/ForcedReflow.ts | relatedStackTrace": {
+    "message": "Rastreio de pilha"
+  },
+  "models/trace/insights/ForcedReflow.ts | title": {
+    "message": "Ajuste for\u00e7ado"
+  },
+  "models/trace/insights/ForcedReflow.ts | topTimeConsumingFunctionCall": {
+    "message": "Chamada de fun\u00e7\u00e3o principal"
+  },
+  "models/trace/insights/ForcedReflow.ts | totalReflowTime": {
+    "message": "Tempo de ajuste total"
+  },
+  "models/trace/insights/ForcedReflow.ts | unattributed": {
+    "message": "[n\u00e3o atribu\u00edda]"
+  },
+  "models/trace/insights/ImageDelivery.ts | description": {
+    "message": "Reduzir o tempo de transfer\u00eancia das imagens pode melhorar o tempo de carregamento percecionado da p\u00e1gina e o LCP. [Saiba como otimizar o tamanho da imagem](https://developer.chrome.com/docs/lighthouse/performance/uses-optimized-images/)"
+  },
+  "models/trace/insights/ImageDelivery.ts | estimatedSavings": {
+    "message": "{PH1} (Estimativa: {PH2})"
+  },
+  "models/trace/insights/ImageDelivery.ts | noOptimizableImages": {
+    "message": "Nenhuma imagem a otimizar"
+  },
+  "models/trace/insights/ImageDelivery.ts | optimizeFile": {
+    "message": "Otimize o tamanho do ficheiro"
+  },
+  "models/trace/insights/ImageDelivery.ts | others": {
+    "message": "Mais {PH1}"
+  },
+  "models/trace/insights/ImageDelivery.ts | title": {
+    "message": "Melhore a entrega de imagens"
+  },
+  "models/trace/insights/ImageDelivery.ts | useCompression": {
+    "message": "Aumentar o fator de compress\u00e3o da imagem pode melhorar o tamanho de transfer\u00eancia desta imagem."
+  },
+  "models/trace/insights/ImageDelivery.ts | useModernFormat": {
+    "message": "Usar um formato de imagem moderno (WebP ou AVIF) ou aumentar a compress\u00e3o da imagem pode melhorar o tamanho de transfer\u00eancia desta imagem."
+  },
+  "models/trace/insights/ImageDelivery.ts | useResponsiveSize": {
+    "message": "Este ficheiro de imagem \u00e9 maior do que precisa de ser ({PH1}) para as respetivas dimens\u00f5es apresentadas ({PH2}). Use imagens adapt\u00e1veis para reduzir o tamanho de transfer\u00eancia da imagem."
+  },
+  "models/trace/insights/ImageDelivery.ts | useVideoFormat": {
+    "message": "Usar formatos de v\u00eddeo em vez de GIFs pode melhorar o tamanho de transfer\u00eancia do conte\u00fado animado."
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | description": {
+    "message": "Comece a investigar com a fase mais longa. [Os atrasos podem ser minimizados](https://web.dev/articles/optimize-inp#optimize_interactions). Para reduzir a dura\u00e7\u00e3o do processamento, [otimize os custos da thread principal](https://web.dev/articles/optimize-long-tasks), muitas vezes JS."
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | duration": {
+    "message": "Dura\u00e7\u00e3o"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | inputDelay": {
+    "message": "Atraso na entrada"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | noInteractions": {
+    "message": "Nenhuma intera\u00e7\u00e3o detetada"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | phase": {
+    "message": "Fase"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | presentationDelay": {
+    "message": "Atraso na apresenta\u00e7\u00e3o"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | processingDuration": {
+    "message": "Dura\u00e7\u00e3o do processamento"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | title": {
+    "message": "INP por fase"
+  },
+  "models/trace/insights/LCPDiscovery.ts | description": {
+    "message": "Otimize o LCP tornando a imagem do LCP [detet\u00e1vel](https://web.dev/articles/optimize-lcp#1_eliminate_resource_load_delay) imediatamente a partir do HTML e [evitando o carregamento em diferido](https://web.dev/articles/lcp-lazy-loading)"
+  },
+  "models/trace/insights/LCPDiscovery.ts | fetchPriorityApplied": {
+    "message": "valor fetchpriority=high aplicado"
+  },
+  "models/trace/insights/LCPDiscovery.ts | fetchPriorityShouldBeApplied": {
+    "message": "Deve ser aplicado o valor fetchpriority=high"
+  },
+  "models/trace/insights/LCPDiscovery.ts | lazyLoadNotApplied": {
+    "message": "carregamento em diferido n\u00e3o aplicado"
+  },
+  "models/trace/insights/LCPDiscovery.ts | lcpLoadDelay": {
+    "message": "A imagem de LCP carregou {PH1} ap\u00f3s o ponto de in\u00edcio mais antigo."
+  },
+  "models/trace/insights/LCPDiscovery.ts | noLcp": {
+    "message": "Nenhum LCP detetado"
+  },
+  "models/trace/insights/LCPDiscovery.ts | noLcpResource": {
+    "message": "Nenhum recurso de LCP detetado porque o LCP n\u00e3o \u00e9 uma imagem"
+  },
+  "models/trace/insights/LCPDiscovery.ts | requestDiscoverable": {
+    "message": "O pedido \u00e9 detet\u00e1vel no documento inicial"
+  },
+  "models/trace/insights/LCPDiscovery.ts | title": {
+    "message": "Dete\u00e7\u00e3o de pedidos de LCP"
+  },
+  "models/trace/insights/LCPPhases.ts | description": {
+    "message": "Cada [fase tem estrat\u00e9gias de melhoria espec\u00edficas](https://web.dev/articles/optimize-lcp#lcp-breakdown). Idealmente, a maior parte do tempo de LCP deve ser gasto no carregamento dos recursos e n\u00e3o nos atrasos."
+  },
+  "models/trace/insights/LCPPhases.ts | duration": {
+    "message": "Dura\u00e7\u00e3o"
+  },
+  "models/trace/insights/LCPPhases.ts | elementRenderDelay": {
+    "message": "Atraso de renderiza\u00e7\u00e3o do elemento"
+  },
+  "models/trace/insights/LCPPhases.ts | fieldDuration": {
+    "message": "Percentil 75 do campo"
+  },
+  "models/trace/insights/LCPPhases.ts | noLcp": {
+    "message": "Nenhum LCP detetado"
+  },
+  "models/trace/insights/LCPPhases.ts | phase": {
+    "message": "Fase"
+  },
+  "models/trace/insights/LCPPhases.ts | resourceLoadDelay": {
+    "message": "Atraso no carregamento do recurso"
+  },
+  "models/trace/insights/LCPPhases.ts | resourceLoadDuration": {
+    "message": "Dura\u00e7\u00e3o do carregamento do recurso"
+  },
+  "models/trace/insights/LCPPhases.ts | timeToFirstByte": {
+    "message": "Time to First Byte"
+  },
+  "models/trace/insights/LCPPhases.ts | title": {
+    "message": "LCP por fase"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | columnScript": {
+    "message": "Script"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | columnWastedBytes": {
+    "message": "Bytes desperdi\u00e7ados"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | description": {
+    "message": "Os polyfills e as transforma\u00e7\u00f5es permitem que os navegadores antigos usem novas funcionalidades de JavaScript. No entanto, muitos n\u00e3o s\u00e3o necess\u00e1rios para os navegadores modernos. Considere modificar o processo de compila\u00e7\u00e3o de JavaScript para n\u00e3o transpilar as funcionalidades do [Baseline](https://web.dev/articles/baseline-and-polyfills), a menos que saiba que tem de ser compat\u00edvel com navegadores antigos. [Saiba por que motivo a maioria dos sites pode implementar c\u00f3digo ES6+ sem transpila\u00e7\u00e3o](https://philipwalton.com/articles/the-state-of-es5-on-the-web/)"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | title": {
+    "message": "JavaScript antigo"
+  },
+  "models/trace/insights/ModernHTTP.ts | description": {
+    "message": "O HTTP/2 e o HTTP/3 oferecem muitas vantagens em rela\u00e7\u00e3o ao HTTP/1.1, como a multiplexagem. [Saiba mais sobre a utiliza\u00e7\u00e3o do HTTP moderno](https://developer.chrome.com/docs/lighthouse/best-practices/uses-http2/)."
+  },
+  "models/trace/insights/ModernHTTP.ts | noOldProtocolRequests": {
+    "message": "Nenhum pedido usou HTTP/1.1"
+  },
+  "models/trace/insights/ModernHTTP.ts | protocol": {
+    "message": "Protocolo"
+  },
+  "models/trace/insights/ModernHTTP.ts | request": {
+    "message": "Pedido"
+  },
+  "models/trace/insights/ModernHTTP.ts | title": {
+    "message": "HTTP moderno"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | description": {
+    "message": "[Evite encadear pedidos cr\u00edticos](https://developer.chrome.com/docs/lighthouse/performance/critical-request-chains) reduzindo o tamanho das cadeias, reduzindo o tamanho de transfer\u00eancia dos recursos ou adiando a transfer\u00eancia de recursos desnecess\u00e1rios para melhorar o carregamento de p\u00e1gina."
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | maxCriticalPathLatency": {
+    "message": "Lat\u00eancia m\u00e1xima de caminho cr\u00edtico:"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | noNetworkDependencyTree": {
+    "message": "Nenhuma tarefa de renderiza\u00e7\u00e3o afetada por depend\u00eancias de rede"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | title": {
+    "message": "\u00c1rvore de depend\u00eancias de rede"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | warningDescription": {
+    "message": "Evite encadear pedidos cr\u00edticos reduzindo o tamanho das cadeias, reduzindo o tamanho de transfer\u00eancia dos recursos ou adiando a transfer\u00eancia de recursos desnecess\u00e1rios para melhorar o carregamento de p\u00e1gina."
+  },
+  "models/trace/insights/RenderBlocking.ts | description": {
+    "message": "Os pedidos est\u00e3o a bloquear a renderiza\u00e7\u00e3o inicial da p\u00e1gina, o que pode atrasar o LCP. [Adiar ou colocar inline](https://web.dev/learn/performance/understanding-the-critical-path#render-blocking_resources/) pode remover estes pedidos de rede do caminho cr\u00edtico."
+  },
+  "models/trace/insights/RenderBlocking.ts | duration": {
+    "message": "Dura\u00e7\u00e3o"
+  },
+  "models/trace/insights/RenderBlocking.ts | noRenderBlocking": {
+    "message": "Nenhum pedido de bloqueio de renderiza\u00e7\u00e3o para esta navega\u00e7\u00e3o"
+  },
+  "models/trace/insights/RenderBlocking.ts | renderBlockingRequest": {
+    "message": "Pedido"
+  },
+  "models/trace/insights/RenderBlocking.ts | title": {
+    "message": "Pedidos de bloqueio de renderiza\u00e7\u00e3o"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | description": {
+    "message": "Se os custos de Recalcular estilo permanecerem elevados, a otimiza\u00e7\u00e3o do seletor pode reduzi-los. [Otimize os seletores](https://developer.chrome.com/docs/devtools/performance/selector-stats) com um tempo decorrido elevado e uma percentagem de caminho lento elevada. Seletores mais simples, menos seletores, um DOM menor e um DOM mais superficial reduzem os custos de correspond\u00eancia."
+  },
+  "models/trace/insights/SlowCSSSelector.ts | elapsed": {
+    "message": "Tempo decorrido"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | enableSelectorData": {
+    "message": "N\u00e3o foram encontrados dados do seletor CSS. As estat\u00edsticas do seletor CSS t\u00eam de estar ativadas nas defini\u00e7\u00f5es do painel de desempenho."
+  },
+  "models/trace/insights/SlowCSSSelector.ts | matchAttempts": {
+    "message": "Tentativas de correspond\u00eancia"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | matchCount": {
+    "message": "Contagem de correspond\u00eancias"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | title": {
+    "message": "Custos do seletor CSS"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | topSelectors": {
+    "message": "Principais seletores"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | total": {
+    "message": "Total"
+  },
+  "models/trace/insights/ThirdParties.ts | columnMainThreadTime": {
+    "message": "Tempo do thread principal"
+  },
+  "models/trace/insights/ThirdParties.ts | columnThirdParty": {
+    "message": "Terceiros"
+  },
+  "models/trace/insights/ThirdParties.ts | columnTransferSize": {
+    "message": "Tamanho da transfer\u00eancia"
+  },
+  "models/trace/insights/ThirdParties.ts | description": {
+    "message": "O c\u00f3digo de terceiros pode afetar significativamente o desempenho de carregamento. [Reduza e adie o carregamento de c\u00f3digo de terceiros](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/loading-third-party-javascript/) para dar prioridade ao conte\u00fado da sua p\u00e1gina."
+  },
+  "models/trace/insights/ThirdParties.ts | noThirdParties": {
+    "message": "N\u00e3o foram encontrados terceiros"
+  },
+  "models/trace/insights/ThirdParties.ts | title": {
+    "message": "Terceiros"
+  },
+  "models/trace/insights/Viewport.ts | description": {
+    "message": "As intera\u00e7\u00f5es com toques podem ter um [atraso de at\u00e9 300\u00a0ms](https://developer.chrome.com/blog/300ms-tap-delay-gone-away/) se a \u00e1rea vis\u00edvel n\u00e3o estiver otimizada para dispositivos m\u00f3veis."
+  },
+  "models/trace/insights/Viewport.ts | title": {
+    "message": "Otimize a \u00e1rea vis\u00edvel para dispositivos m\u00f3veis"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | HTTPMethodNotGET": {
+    "message": "Apenas as p\u00e1ginas carregadas atrav\u00e9s de um pedido GET s\u00e3o eleg\u00edveis para a cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | HTTPStatusNotOK": {
+    "message": "Apenas as p\u00e1ginas com um c\u00f3digo de estado de 2XX podem ser colocadas em cache."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | JavaScriptExecution": {
+    "message": "O Chrome detetou uma tentativa de execu\u00e7\u00e3o do JavaScript enquanto a p\u00e1gina estava na cache."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | appBanner": {
+    "message": "Atualmente, as p\u00e1ginas que solicitaram um AppBanner n\u00e3o s\u00e3o eleg\u00edveis para a cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabled": {
+    "message": "A cache para a frente/para tr\u00e1s foi desativada por sinaliza\u00e7\u00f5es. Visite chrome://flags/#back-forward-cache para a ativar localmente neste dispositivo."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledByCommandLine": {
+    "message": "A cache para a frente/para tr\u00e1s foi desativada pela linha de comandos."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledByLowMemory": {
+    "message": "A cache para a frente/para tr\u00e1s foi desativada devido a mem\u00f3ria insuficiente."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledForDelegate": {
+    "message": "A cache para a frente/para tr\u00e1s n\u00e3o \u00e9 suportada pelo delegado."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledForPrerender": {
+    "message": "A cache para a frente/para tr\u00e1s foi desativada pelo pr\u00e9-renderizador."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | broadcastChannel": {
+    "message": "N\u00e3o \u00e9 poss\u00edvel colocar a p\u00e1gina em cache porque tem uma inst\u00e2ncia BroadcastChannel com ouvintes registados."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheControlNoStore": {
+    "message": "N\u00e3o \u00e9 poss\u00edvel adicionar p\u00e1ginas com um cabe\u00e7alho cache-control:no-store \u00e0 cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheFlushed": {
+    "message": "A cache foi limpa intencionalmente."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheLimit": {
+    "message": "A p\u00e1gina foi removida da cache para permitir que outra p\u00e1gina fosse colocada em cache."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | containsPlugins": {
+    "message": "Atualmente, as p\u00e1ginas que cont\u00eam plug-ins n\u00e3o s\u00e3o eleg\u00edveis para a cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentDiscarded": {
+    "message": "N\u00e3o definido"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentFileChooser": {
+    "message": "As p\u00e1ginas que utilizam a API FileChooser n\u00e3o s\u00e3o eleg\u00edveis para a cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentFileSystemAccess": {
+    "message": "As p\u00e1ginas que utilizam a API File System Access n\u00e3o s\u00e3o eleg\u00edveis para a cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaDevicesDispatcherHost": {
+    "message": "Atualmente, as p\u00e1ginas que utilizam o Media Device Dispatcher n\u00e3o s\u00e3o eleg\u00edveis para a cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaPlay": {
+    "message": "Um leitor de multim\u00e9dia estava em reprodu\u00e7\u00e3o quando saiu da p\u00e1gina."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaSession": {
+    "message": "As p\u00e1ginas que utilizam a API MediaSession e definem um estado de reprodu\u00e7\u00e3o n\u00e3o s\u00e3o eleg\u00edveis para a cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaSessionService": {
+    "message": "As p\u00e1ginas que utilizam a API MediaSession e definem controladores de a\u00e7\u00f5es n\u00e3o s\u00e3o eleg\u00edveis para a cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentScreenReader": {
+    "message": "A cache para a frente/para tr\u00e1s foi desativada devido ao leitor de ecr\u00e3."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentSecurityHandler": {
+    "message": "As p\u00e1ginas que utilizam SecurityHandler n\u00e3o s\u00e3o eleg\u00edveis para a cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentSerial": {
+    "message": "As p\u00e1ginas que utilizam a API Serial n\u00e3o s\u00e3o eleg\u00edveis para a cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebAuthenticationAPI": {
+    "message": "As p\u00e1ginas que utilizam a API WebAuthetication n\u00e3o s\u00e3o eleg\u00edveis para a cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebBluetooth": {
+    "message": "As p\u00e1ginas que utilizam a API WebBluetooth n\u00e3o s\u00e3o eleg\u00edveis para a cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebUSB": {
+    "message": "As p\u00e1ginas que utilizam a API WebUSB n\u00e3o s\u00e3o eleg\u00edveis para a cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cookieDisabled": {
+    "message": "A cache para a frente/para tr\u00e1s foi desativada porque os cookies est\u00e3o desativados numa p\u00e1gina que usa Cache-Control: no-store."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | dedicatedWorkerOrWorklet": {
+    "message": "Atualmente, as p\u00e1ginas que utilizam uma trabalhadora ou worklet dedicados n\u00e3o s\u00e3o eleg\u00edveis para a cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | documentLoaded": {
+    "message": "O documento n\u00e3o concluiu o carregamento antes de sair do mesmo."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderAppBannerManager": {
+    "message": "A faixa da app estava presente quando saiu da p\u00e1gina."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderChromePasswordManagerClientBindCredentialManager": {
+    "message": "O Gestor de palavras-passe do Chrome estava presente quando saiu da p\u00e1gina."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderDomDistillerSelfDeletingRequestDelegate": {
+    "message": "A destila\u00e7\u00e3o DOM estava em curso quando saiu da p\u00e1gina."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderDomDistillerViewerSource": {
+    "message": "O Visualizador DOM Distiller estava presente quando saiu da p\u00e1gina."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionMessaging": {
+    "message": "A cache para a frente/para tr\u00e1s foi desativada devido a extens\u00f5es que utilizam a API de mensagens."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionMessagingForOpenPort": {
+    "message": "As extens\u00f5es com liga\u00e7\u00f5es de longa dura\u00e7\u00e3o devem fechar a liga\u00e7\u00e3o antes de entrar na cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionSentMessageToCachedFrame": {
+    "message": "As extens\u00f5es com liga\u00e7\u00f5es de longa dura\u00e7\u00e3o tentaram enviar mensagens para frames na cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensions": {
+    "message": "A cache para a frente/para tr\u00e1s foi desativada devido \u00e0s extens\u00f5es."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderModalDialog": {
+    "message": "A caixa de di\u00e1logo modal, como a caixa de di\u00e1logo da palavra-passe HTTP ou reenvio do formul\u00e1rio, foi apresentada para a p\u00e1gina quando saiu da mesma."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderOfflinePage": {
+    "message": "A p\u00e1gina offline foi apresentada quando saiu da p\u00e1gina."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderOomInterventionTabHelper": {
+    "message": "A barra Interven\u00e7\u00e3o sem mem\u00f3ria estava presente quando saiu da p\u00e1gina."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderPermissionRequestManager": {
+    "message": "Houve pedidos de autoriza\u00e7\u00e3o quando saiu da p\u00e1gina."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderPopupBlockerTabHelper": {
+    "message": "O bloqueador de pop-ups estava presente quando saiu da p\u00e1gina."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderSafeBrowsingThreatDetails": {
+    "message": "Os detalhes da Navega\u00e7\u00e3o segura foram apresentados quando saiu da p\u00e1gina."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderSafeBrowsingTriggeredPopupBlocker": {
+    "message": "A Navega\u00e7\u00e3o segura considerou esta p\u00e1gina abusiva e bloqueou o pop-up."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | enteredBackForwardCacheBeforeServiceWorkerHostAdded": {
+    "message": "Um service worker foi ativado enquanto a p\u00e1gina estava na cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | errorDocument": {
+    "message": "A cache para a frente/para tr\u00e1s foi desativada devido a um erro do documento."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | fencedFramesEmbedder": {
+    "message": "N\u00e3o \u00e9 poss\u00edvel armazenar p\u00e1ginas com FencedFrames na cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | foregroundCacheLimit": {
+    "message": "A p\u00e1gina foi removida da cache para permitir que outra p\u00e1gina fosse colocada em cache."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | grantedMediaStreamAccess": {
+    "message": "Atualmente, as p\u00e1ginas que concederam acesso \u00e0 stream de multim\u00e9dia n\u00e3o s\u00e3o eleg\u00edveis para a cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | haveInnerContents": {
+    "message": "Atualmente, as p\u00e1ginas com determinados tipos de conte\u00fado incorporado (por exemplo, PDFs) n\u00e3o s\u00e3o eleg\u00edveis para a cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | idleManager": {
+    "message": "Atualmente, as p\u00e1ginas que utilizam IdleManager n\u00e3o s\u00e3o eleg\u00edveis para a cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | indexedDBConnection": {
+    "message": "Atualmente, as p\u00e1ginas com uma liga\u00e7\u00e3o IndexedDB aberta n\u00e3o s\u00e3o eleg\u00edveis para a cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | indexedDBEvent": {
+    "message": "A cache para a frente/para tr\u00e1s foi desativada devido a um evento IndexedDB."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | ineligibleAPI": {
+    "message": "Foram utilizadas APIs n\u00e3o eleg\u00edveis."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | injectedJavascript": {
+    "message": "Atualmente, as p\u00e1ginas em que a folha de estilos JavaScript \u00e9 injetada por extens\u00f5es n\u00e3o s\u00e3o eleg\u00edveis para a cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | injectedStyleSheet": {
+    "message": "Atualmente, as p\u00e1ginas em que a folha de estilos StyleSheet \u00e9 injetada por extens\u00f5es n\u00e3o s\u00e3o eleg\u00edveis para a cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | internalError": {
+    "message": "Erro interno."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | jsNetworkRequestReceivedCacheControlNoStoreResource": {
+    "message": "A cache para a frente/para tr\u00e1s foi desativada porque alguns pedidos de rede JavaScript receberam o recurso com o cabe\u00e7alho Cache-Control: no-store."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | keepaliveRequest": {
+    "message": "A cache para a frente/para tr\u00e1s foi desativada devido a um pedido keep-alive."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | keyboardLock": {
+    "message": "Atualmente, as p\u00e1ginas que utilizam bloqueio do teclado n\u00e3o s\u00e3o eleg\u00edveis para a cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | loading": {
+    "message": "A p\u00e1gina n\u00e3o concluiu o carregamento antes de sair da mesma."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | mainResourceHasCacheControlNoCache": {
+    "message": "N\u00e3o \u00e9 poss\u00edvel adicionar as p\u00e1ginas que t\u00eam recursos principais com cache-control:no-cache \u00e0 cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | mainResourceHasCacheControlNoStore": {
+    "message": "N\u00e3o \u00e9 poss\u00edvel adicionar as p\u00e1ginas que t\u00eam recursos principais com cache-control:no-store \u00e0 cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | navigationCancelledWhileRestoring": {
+    "message": "A navega\u00e7\u00e3o foi cancelada antes de a p\u00e1gina poder ser restaurada a partir da cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkExceedsBufferLimit": {
+    "message": "A p\u00e1gina foi removida da cache porque uma liga\u00e7\u00e3o de rede ativa recebeu demasiados dados. O Chrome limita a quantidade de dados que uma p\u00e1gina pode receber enquanto est\u00e1 em cache."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestDatapipeDrainedAsBytesConsumer": {
+    "message": "Atualmente, as p\u00e1ginas com fetch() ou XHR em processamento n\u00e3o s\u00e3o eleg\u00edveis para a cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestRedirected": {
+    "message": "A p\u00e1gina foi removida da cache para a frente/para tr\u00e1s porque um pedido de rede ativo envolveu um redirecionamento."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestTimeout": {
+    "message": "A p\u00e1gina foi removida da cache porque uma liga\u00e7\u00e3o de rede ficou aberta por demasiado tempo. O Chrome limita o per\u00edodo de tempo durante o qual uma p\u00e1gina pode receber dados enquanto est\u00e1 em cache."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | noResponseHead": {
+    "message": "N\u00e3o \u00e9 poss\u00edvel adicionar p\u00e1ginas que n\u00e3o t\u00eam um cabe\u00e7alho de resposta v\u00e1lido \u00e0 cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | notMainFrame": {
+    "message": "A navega\u00e7\u00e3o ocorreu num frame diferente do frame principal."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingIndexedDBTransaction": {
+    "message": "Atualmente, as p\u00e1ginas com transa\u00e7\u00f5es DB indexadas em curso n\u00e3o s\u00e3o eleg\u00edveis para a cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestDirectSocket": {
+    "message": "Atualmente, as p\u00e1ginas com um pedido de rede em processamento n\u00e3o s\u00e3o eleg\u00edveis para a cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestFetch": {
+    "message": "Atualmente, as p\u00e1ginas com um pedido de obten\u00e7\u00e3o de rede em processamento n\u00e3o s\u00e3o eleg\u00edveis para a cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestOthers": {
+    "message": "Atualmente, as p\u00e1ginas com um pedido de rede em processamento n\u00e3o s\u00e3o eleg\u00edveis para a cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestXHR": {
+    "message": "Atualmente, as p\u00e1ginas com um pedido de rede XHR em processamento n\u00e3o s\u00e3o eleg\u00edveis para a cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | paymentManager": {
+    "message": "Atualmente, as p\u00e1ginas que utilizam PaymentManager n\u00e3o s\u00e3o eleg\u00edveis para a cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | pictureInPicture": {
+    "message": "Atualmente, as p\u00e1ginas que utilizam a funcionalidade ecr\u00e3 no ecr\u00e3 n\u00e3o s\u00e3o eleg\u00edveis para a cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | printing": {
+    "message": "Atualmente, as p\u00e1ginas que utilizam a IU de impress\u00e3o n\u00e3o s\u00e3o eleg\u00edveis para a cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | relatedActiveContentsExist": {
+    "message": "A p\u00e1gina foi aberta atrav\u00e9s de \"window.open()\" e \u00e9 referenciada por outro separador ou a p\u00e1gina abriu uma janela."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | rendererProcessCrashed": {
+    "message": "O processo de renderiza\u00e7\u00e3o da p\u00e1gina na cache para a frente/para tr\u00e1s falhou."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | rendererProcessKilled": {
+    "message": "O processo de renderiza\u00e7\u00e3o da p\u00e1gina na cache para a frente/para tr\u00e1s foi interrompido."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedAudioCapturePermission": {
+    "message": "Atualmente, as p\u00e1ginas que solicitaram autoriza\u00e7\u00f5es de captura de \u00e1udio n\u00e3o s\u00e3o eleg\u00edveis para a cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedBackForwardCacheBlockedSensors": {
+    "message": "Atualmente, as p\u00e1ginas que solicitaram autoriza\u00e7\u00f5es de sensores n\u00e3o s\u00e3o eleg\u00edveis para a cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedBackgroundWorkPermission": {
+    "message": "Atualmente, as p\u00e1ginas que solicitaram a sincroniza\u00e7\u00e3o em segundo plano ou autoriza\u00e7\u00f5es de obten\u00e7\u00e3o n\u00e3o s\u00e3o eleg\u00edveis para a cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedMIDIPermission": {
+    "message": "Atualmente, as p\u00e1ginas que solicitaram autoriza\u00e7\u00f5es MIDI n\u00e3o s\u00e3o eleg\u00edveis para a cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedNotificationsPermission": {
+    "message": "Atualmente, as p\u00e1ginas que solicitaram autoriza\u00e7\u00f5es de notifica\u00e7\u00f5es n\u00e3o s\u00e3o eleg\u00edveis para a cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedStorageAccessGrant": {
+    "message": "Atualmente, as p\u00e1ginas que solicitaram acesso ao armazenamento n\u00e3o s\u00e3o eleg\u00edveis para a cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedVideoCapturePermission": {
+    "message": "Atualmente, as p\u00e1ginas que solicitaram autoriza\u00e7\u00f5es de captura de v\u00eddeo n\u00e3o s\u00e3o eleg\u00edveis para a cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | schemeNotHTTPOrHTTPS": {
+    "message": "Apenas as p\u00e1ginas com um esquema de URL HTTP/HTTPS podem ser colocadas em cache."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerClaim": {
+    "message": "A p\u00e1gina foi reivindicada por um service worker enquanto estava na cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerPostMessage": {
+    "message": "Um service worker tentou enviar um MessageEvent para a p\u00e1gina na cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerUnregistration": {
+    "message": "O registo do ServiceWorker foi anulado enquanto a p\u00e1gina estava na cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerVersionActivation": {
+    "message": "A p\u00e1gina foi removida da cache para a frente/para tr\u00e1s devido \u00e0 ativa\u00e7\u00e3o de um service worker."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | sessionRestored": {
+    "message": "O Chrome foi reiniciado e limpou as entradas da cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | sharedWorker": {
+    "message": "Atualmente, as p\u00e1ginas que utilizam SharedWorker n\u00e3o s\u00e3o eleg\u00edveis para a cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | speechRecognizer": {
+    "message": "Atualmente, as p\u00e1ginas que utilizam SpeechRecognizer n\u00e3o s\u00e3o eleg\u00edveis para a cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | speechSynthesis": {
+    "message": "Atualmente, as p\u00e1ginas que utilizam SpeechSynthesis n\u00e3o s\u00e3o eleg\u00edveis para a cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subframeIsNavigating": {
+    "message": "Um iFrame na p\u00e1gina iniciou uma navega\u00e7\u00e3o que n\u00e3o foi conclu\u00edda."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subresourceHasCacheControlNoCache": {
+    "message": "N\u00e3o \u00e9 poss\u00edvel adicionar as p\u00e1ginas que t\u00eam sub-recursos com cache-control:no-cache \u00e0 cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subresourceHasCacheControlNoStore": {
+    "message": "N\u00e3o \u00e9 poss\u00edvel adicionar as p\u00e1ginas que t\u00eam sub-recursos com cache-control:no-store \u00e0 cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | timeout": {
+    "message": "A p\u00e1gina excedeu o tempo m\u00e1ximo na cache para a frente/para tr\u00e1s e expirou."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | timeoutPuttingInCache": {
+    "message": "A p\u00e1gina expirou ao ser adicionada \u00e0 cache para a frente/para tr\u00e1s (provavelmente devido aos controladores pagehide em execu\u00e7\u00e3o h\u00e1 muito tempo)."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | unloadHandlerExistsInMainFrame": {
+    "message": "A p\u00e1gina tem um controlador de descarregamento no frame principal."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | unloadHandlerExistsInSubFrame": {
+    "message": "A p\u00e1gina tem um controlador de descarregamento num subframe."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | userAgentOverrideDiffers": {
+    "message": "O navegador alterou o cabe\u00e7alho de substitui\u00e7\u00e3o do agente do utilizador."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | wasGrantedMediaAccess": {
+    "message": "Atualmente, as p\u00e1ginas que concederam acesso \u00e0 grava\u00e7\u00e3o de v\u00eddeo ou \u00e1udio n\u00e3o s\u00e3o eleg\u00edveis para a cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webDatabase": {
+    "message": "Atualmente, as p\u00e1ginas que utilizam WebDatabase n\u00e3o s\u00e3o eleg\u00edveis para a cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webHID": {
+    "message": "Atualmente, as p\u00e1ginas que utilizam WebHID n\u00e3o s\u00e3o eleg\u00edveis para a cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webLocks": {
+    "message": "Atualmente, as p\u00e1ginas que utilizam WebLocks n\u00e3o s\u00e3o eleg\u00edveis para a cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webNfc": {
+    "message": "Atualmente, as p\u00e1ginas que utilizam WebNfc n\u00e3o s\u00e3o eleg\u00edveis para a cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webOTPService": {
+    "message": "Atualmente, as p\u00e1ginas que utilizam WebOTPService n\u00e3o s\u00e3o eleg\u00edveis para a cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webRTC": {
+    "message": "N\u00e3o \u00e9 poss\u00edvel adicionar p\u00e1ginas com WebRTC \u00e0 cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webRTCSticky": {
+    "message": "A cache para a frente/para tr\u00e1s foi desativada porque o WebRTC foi usado."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webShare": {
+    "message": "Atualmente, as p\u00e1ginas que utilizam WebShare n\u00e3o s\u00e3o eleg\u00edveis para a cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webSocket": {
+    "message": "N\u00e3o \u00e9 poss\u00edvel adicionar p\u00e1ginas com WebSocket \u00e0 cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webSocketSticky": {
+    "message": "A cache para a frente/para tr\u00e1s foi desativada porque o WebSocket foi usado."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webTransport": {
+    "message": "N\u00e3o \u00e9 poss\u00edvel adicionar p\u00e1ginas com WebTransport \u00e0 cache para a frente/para tr\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webTransportSticky": {
+    "message": "A cache para a frente/para tr\u00e1s foi desativada porque o WebTransport foi usado."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webXR": {
+    "message": "Atualmente, as p\u00e1ginas que utilizam WebXR n\u00e3o s\u00e3o eleg\u00edveis para a cache para a frente/para tr\u00e1s."
+  }
+}

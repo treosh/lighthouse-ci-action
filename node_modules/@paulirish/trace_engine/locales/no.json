@@ -1,0 +1,908 @@
+{
+  "generated/Deprecation.ts | AuthorizationCoveredByWildcard": {
+    "message": "Autorisasjon kommer ikke til \u00e5 bli dekket av jokertegnet (*) ved h\u00e5ndtering av CORS-hodet Access-Control-Allow-Headers."
+  },
+  "generated/Deprecation.ts | CSSSelectorInternalMediaControlsOverlayCastButton": {
+    "message": "For \u00e5 sl\u00e5 av Cast-integreringen som brukes som standard, bruk disableRemotePlayback-attributtet i stedet for -internal-media-controls-overlay-cast-button-velgeren."
+  },
+  "generated/Deprecation.ts | CSSValueAppearanceSliderVertical": {
+    "message": "CSS-utseendeverdien slider-vertical er ikke standardisert og blir fjernet."
+  },
+  "generated/Deprecation.ts | CanRequestURLHTTPContainingNewline": {
+    "message": "Ressursforesp\u00f8rsler med nettadresser som inneholdt b\u00e5de fjernede mellomromstegn (\\(n|r|t)) og mindre-enn-tegn (<), er blokkert. For \u00e5 kunne laste inn disse ressursene, fjern linjeskift og gj\u00f8r mindre-enn-tegn om til kode p\u00e5 steder som i attributtverdiene til elementer."
+  },
+  "generated/Deprecation.ts | CharsetAutoDetectionISO2022JP": {
+    "message": "Automatisk gjenkjenning av ISO-2022-JP-tegnsettet er avviklet og blir deaktivert i n\u00e6r fremtid. Angi tegnsettet i Content Type-hodet eller ved \u00e5 bruke en metatag (https://developer.mozilla.org/en-US/docs/Glossary/Character_encoding)."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesConnectionInfo": {
+    "message": "chrome.loadTimes() er avviklet. Bruk heller det standardiserte API-et Navigation Timing 2."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesFirstPaintAfterLoadTime": {
+    "message": "chrome.loadTimes() er avviklet. Bruk heller det standardiserte API-et Paint Timing."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesWasAlternateProtocolAvailable": {
+    "message": "chrome.loadTimes() er avviklet. Bruk heller det standardiserte API-et nextHopProtocol i Navigation Timing 2."
+  },
+  "generated/Deprecation.ts | CookieWithTruncatingChar": {
+    "message": "Informasjonskapsler som inneholder tegnet \\(0|r|n), blir avvist i stedet for \u00e5 bli avkortet."
+  },
+  "generated/Deprecation.ts | CrossOriginAccessBasedOnDocumentDomain": {
+    "message": "Oppmykning av samme opphav-reglene ved \u00e5 angi document.domain er avviklet og kommer til \u00e5 v\u00e6re avsl\u00e5tt som standard. Dette avviklingsvarselet gjelder en opphavsuavhengig tilgang som ble p\u00e5sl\u00e5tt ved \u00e5 angi document.domain."
+  },
+  "generated/Deprecation.ts | CrossOriginWindowAlert": {
+    "message": "Utl\u00f8sing av window.alert fra iframe-elementer med andre opphav er avviklet og kommer til \u00e5 bli fjernet i fremtiden."
+  },
+  "generated/Deprecation.ts | CrossOriginWindowConfirm": {
+    "message": "Utl\u00f8sing av window.confirm fra iframe-elementer med andre opphav er avviklet og kommer til \u00e5 bli fjernet i fremtiden."
+  },
+  "generated/Deprecation.ts | DOMMutationEvents": {
+    "message": "DOM-mutasjonshendelser, inkludert DOMSubtreeModified, DOMNodeInserted, DOMNodeRemoved, DOMNodeRemovedFromDocument, DOMNodeInsertedIntoDocument og DOMCharacterDataModified, er avviklet (https://w3c.github.io/uievents/#legacy-event-types) og kommer til \u00e5 bli fjernet. Bruk MutationObserver i stedet."
+  },
+  "generated/Deprecation.ts | DataUrlInSvgUse": {
+    "message": "St\u00f8tte for data:-nettadresser i SVGUseElement er avviklet og blir fjernet i fremtiden."
+  },
+  "generated/Deprecation.ts | GeolocationInsecureOrigin": {
+    "message": "getCurrentPosition() og watchPosition() fungerer ikke p\u00e5 usikre opphav lenger. For \u00e5 bruke denne funksjonen b\u00f8r du vurdere \u00e5 flytte programmet ditt til et sikkert opphav, for eksempel HTTPS. Se https://goo.gle/chrome-insecure-origins for mer informasjon."
+  },
+  "generated/Deprecation.ts | GeolocationInsecureOriginDeprecatedNotRemoved": {
+    "message": "getCurrentPosition() og watchPosition() er avviklet p\u00e5 usikre opphav. For \u00e5 bruke denne funksjonen b\u00f8r du vurdere \u00e5 flytte programmet ditt til et sikkert opphav, for eksempel HTTPS. Se https://goo.gle/chrome-insecure-origins for mer informasjon."
+  },
+  "generated/Deprecation.ts | GetUserMediaInsecureOrigin": {
+    "message": "getUserMedia() fungerer ikke p\u00e5 usikre opphav lenger. For \u00e5 bruke denne funksjonen b\u00f8r du vurdere \u00e5 flytte programmet ditt til et sikkert opphav, for eksempel HTTPS. Se https://goo.gle/chrome-insecure-origins for mer informasjon."
+  },
+  "generated/Deprecation.ts | H1UserAgentFontSizeInSection": {
+    "message": "Fant en <h1>-tag i et <article>-, <aside>-, <nav>- eller <section>-element som det ikke er angitt noen skriftst\u00f8rrelse for. St\u00f8rrelsen p\u00e5 denne overskriftsteksten endres snart i denne nettleseren. Les https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#specifying_a_uniform_font_size_for_h1 for mer informasjon."
+  },
+  "generated/Deprecation.ts | HostCandidateAttributeGetter": {
+    "message": "RTCPeerConnectionIceErrorEvent.hostCandidate er avviklet. Bruk RTCPeerConnectionIceErrorEvent.address eller RTCPeerConnectionIceErrorEvent.port i stedet."
+  },
+  "generated/Deprecation.ts | IdentityDigitalCredentials": {
+    "message": "Dette formatet for navigator.credentials.get()-foresp\u00f8rselen om digitale legitimasjoner er avviklet. Oppdater kallet for \u00e5 bruke det nye formatet."
+  },
+  "generated/Deprecation.ts | IdentityInCanMakePaymentEvent": {
+    "message": "Selgerens opprinnelse og vilk\u00e5rlige data fra canmakepayment Service Worker-hendelsen er avviklet og blir fjernet: topOrigin, paymentRequestOrigin, methodData, modifiers."
+  },
+  "generated/Deprecation.ts | InsecurePrivateNetworkSubresourceRequest": {
+    "message": "Nettstedet forespurte en underressurs fra et nettverk det kun hadde tilgang til p\u00e5 grunn av den privilegerte nettverksposisjonen til brukerne sine. Disse foresp\u00f8rslene eksponerer ikke-offentlige enheter og tjenere for internett, noe som \u00f8ker risikoen for angrep via forfalskning av tredjepartsforesp\u00f8rsler (CSRF) og/eller informasjonslekkasjer. For \u00e5 forebygge disse risikoene avvikler Chrome foresp\u00f8rsler til ikke-offentlige underressurser n\u00e5r disse igangsettes fra ikke-sikre kontekster, og kommer til \u00e5 begynne \u00e5 blokkere dem."
+  },
+  "generated/Deprecation.ts | InterestGroupDailyUpdateUrl": {
+    "message": "Feltet dailyUpdateUrl for InterestGroups, som ble sendt til joinAdInterestGroup(), har f\u00e5tt det nye navnet updateUrl, for en mer n\u00f8yaktig atferd."
+  },
+  "generated/Deprecation.ts | IntlV8BreakIterator": {
+    "message": "Intl.v8BreakIterator er avviklet. Bruk Intl.Segmenter i stedet."
+  },
+  "generated/Deprecation.ts | LocalCSSFileExtensionRejected": {
+    "message": "CSS-filer kan ikke lastes inn fra file:-nettadresser med mindre de har filetternavnet .css."
+  },
+  "generated/Deprecation.ts | MediaSourceAbortRemove": {
+    "message": "Bruk av SourceBuffer.abort() for \u00e5 avbryte den asynkrone omr\u00e5defjerningen som utf\u00f8res av remove(), er avviklet p\u00e5 grunn av endringer i spesifikasjonen. St\u00f8tten kommer til \u00e5 bli fjernet i fremtiden. Du b\u00f8r lytte etter updateend-hendelsen i stedet. abort() er kun ment \u00e5 avbryte asynkrone medietilf\u00f8yninger eller tilbakestille parsertilstanden."
+  },
+  "generated/Deprecation.ts | MediaSourceDurationTruncatingBuffered": {
+    "message": "\u00c5 angi en verdi for MediaSource.duration som er lavere enn det h\u00f8yeste presentasjonstidsstempelet for noen bufret, kodet ramme, er avviklet p\u00e5 grunn av endringer i spesifikasjonen. St\u00f8tte for implisitt fjerning av avkortede, bufrede medier kommer til \u00e5 bli fjernet i fremtiden. Du b\u00f8r i stedet utf\u00f8re eksplisitte remove(newDuration, oldDuration)-kall p\u00e5 alle sourceBuffers, hvor newDuration < oldDuration."
+  },
+  "generated/Deprecation.ts | NoSysexWebMIDIWithoutPermission": {
+    "message": "Web MIDI kommer til \u00e5 be om brukstillatelse selv om sysex ikke er angitt i MIDIOptions."
+  },
+  "generated/Deprecation.ts | NotificationInsecureOrigin": {
+    "message": "Notification-API-et kan ikke lenger brukes fra usikre opphav. Vurder \u00e5 flytte programmet ditt til et sikkert opphav, for eksempel HTTPS. Se https://goo.gle/chrome-insecure-origins for mer informasjon."
+  },
+  "generated/Deprecation.ts | NotificationPermissionRequestedIframe": {
+    "message": "Det er ikke lenger mulig \u00e5 be om tillatelse for Notification-API-et via iframe-elementer med andre opphav. Vurder \u00e5 be om tillatelse via en toppniv\u00e5ramme eller \u00e5pne et nytt vindu i stedet."
+  },
+  "generated/Deprecation.ts | ObsoleteCreateImageBitmapImageOrientationNone": {
+    "message": "Alternativet imageOrientation: 'none' i createImageBitmap er avviklet. Bruk createImageBitmap med alternativet '{imageOrientation: 'from-image'}' i stedet."
+  },
+  "generated/Deprecation.ts | ObsoleteWebRtcCipherSuite": {
+    "message": "Partneren din bruker en foreldet (D)TLS-versjon. Snakk med partneren din for \u00e5 f\u00e5 rettet dette."
+  },
+  "generated/Deprecation.ts | OverflowVisibleOnReplacedElement": {
+    "message": "Hvis du angir overflow: visible p\u00e5 img-, video- eller canvas-tagger, kan det hende at de produserer visuelt innhold utenfor elementgrensene. Se https://github.com/WICG/shared-element-transitions/blob/main/debugging_overflow_on_images.md."
+  },
+  "generated/Deprecation.ts | PaymentInstruments": {
+    "message": "paymentManager.instruments er avviklet. Bruk siste liten-installasjon for betalingsbehandlere i stedet."
+  },
+  "generated/Deprecation.ts | PaymentRequestCSPViolation": {
+    "message": "PaymentRequest-kallet ditt omgikk Content-Security-Policy (CSP)-direktivet connect-src. Denne omg\u00e5elsen er avviklet. Legg til identifikatoren for betalingsm\u00e5ten fra PaymentRequest-API-et (i supportedMethods-feltet) i CSP-direktivet connect-src."
+  },
+  "generated/Deprecation.ts | PersistentQuotaType": {
+    "message": "StorageType.persistent er avviklet. Bruk standardisert navigator.storage i stedet."
+  },
+  "generated/Deprecation.ts | PictureSourceSrc": {
+    "message": "<source src> med <picture> som forelder er ugyldig og blir derfor ignorert. Bruk <source srcset> i stedet."
+  },
+  "generated/Deprecation.ts | PrefixedCancelAnimationFrame": {
+    "message": "webkitCancelAnimationFrame er en leverand\u00f8rspesifikk metode. Bruk standardmetoden cancelAnimationFrame i stedet."
+  },
+  "generated/Deprecation.ts | PrefixedRequestAnimationFrame": {
+    "message": "webkitRequestAnimationFrame er en leverand\u00f8rspesifikk metode. Bruk standardmetoden requestAnimationFrame i stedet."
+  },
+  "generated/Deprecation.ts | PrefixedVideoDisplayingFullscreen": {
+    "message": "HTMLVideoElement.webkitDisplayingFullscreen er avviklet. Bruk Document.fullscreenElement i stedet."
+  },
+  "generated/Deprecation.ts | PrefixedVideoEnterFullScreen": {
+    "message": "HTMLVideoElement.webkitEnterFullScreen() er avviklet. Bruk Element.requestFullscreen() i stedet."
+  },
+  "generated/Deprecation.ts | PrefixedVideoEnterFullscreen": {
+    "message": "HTMLVideoElement.webkitEnterFullscreen() er avviklet. Bruk Element.requestFullscreen() i stedet."
+  },
+  "generated/Deprecation.ts | PrefixedVideoExitFullScreen": {
+    "message": "HTMLVideoElement.webkitExitFullScreen() er avviklet. Bruk Document.exitFullscreen() i stedet."
+  },
+  "generated/Deprecation.ts | PrefixedVideoExitFullscreen": {
+    "message": "HTMLVideoElement.webkitExitFullscreen() er avviklet. Bruk Document.exitFullscreen() i stedet."
+  },
+  "generated/Deprecation.ts | PrefixedVideoSupportsFullscreen": {
+    "message": "HTMLVideoElement.webkitSupportsFullscreen er avviklet. Bruk Document.fullscreenEnabled i stedet."
+  },
+  "generated/Deprecation.ts | PrivacySandboxExtensionsAPI": {
+    "message": "Vi avvikler API-et chrome.privacy.websites.privacySandboxEnabled, men av hensyn til bakoverkompatibilitet forblir det aktivt frem til versjon M113. Bruk chrome.privacy.websites.topicsEnabled, chrome.privacy.websites.fledgeEnabled og chrome.privacy.websites.adMeasurementEnabled i stedet. Se https://developer.chrome.com/docs/extensions/reference/privacy/#property-websites-privacySandboxEnabled."
+  },
+  "generated/Deprecation.ts | RTCConstraintEnableDtlsSrtpFalse": {
+    "message": "Begrensningen DtlsSrtpKeyAgreement er fjernet. Du har angitt verdien false for denne begrensningen, noe som tolkes som et fors\u00f8k p\u00e5 \u00e5 bruke den fjernede SDES key negotiation-metoden. Denne funksjonaliteten er fjernet. Bruk en tjeneste som st\u00f8tter DTLS key negotiation i stedet."
+  },
+  "generated/Deprecation.ts | RTCConstraintEnableDtlsSrtpTrue": {
+    "message": "Begrensningen DtlsSrtpKeyAgreement er fjernet. Du har angitt verdien true for denne begrensningen. Dette har ingen virkning, men du kan fjerne denne begrensningen for ryddighets skyld."
+  },
+  "generated/Deprecation.ts | RTCPeerConnectionGetStatsLegacyNonCompliant": {
+    "message": "Den tilbakekallbaserte metoden getStats() er avviklet og kommer til \u00e5 bli fjernet. Bruk den spesifikasjonskompatible metoden getStats() i stedet."
+  },
+  "generated/Deprecation.ts | RangeExpand": {
+    "message": "Range.expand() er avviklet. Bruk Selection.modify() i stedet."
+  },
+  "generated/Deprecation.ts | RequestedSubresourceWithEmbeddedCredentials": {
+    "message": "Underressursforesp\u00f8rsler med nettadresser som inneholder innebygd legitimasjon (f.eks. https://user:pass@host/), er blokkert."
+  },
+  "generated/Deprecation.ts | RtcpMuxPolicyNegotiate": {
+    "message": "rtcpMuxPolicy-alternativet er avviklet og kommer til \u00e5 bli fjernet."
+  },
+  "generated/Deprecation.ts | SharedArrayBufferConstructedWithoutIsolation": {
+    "message": "SharedArrayBuffer kommer til \u00e5 kreve isolering fra andre opphav. Se https://developer.chrome.com/blog/enabling-shared-array-buffer/ for mer informasjon."
+  },
+  "generated/Deprecation.ts | TextToSpeech_DisallowedByAutoplay": {
+    "message": "speechSynthesis.speak() uten brukeraktivering er avviklet og kommer til \u00e5 bli fjernet."
+  },
+  "generated/Deprecation.ts | UnloadHandler": {
+    "message": "\u00abunload\u00bb-hendelseslyttere er avviklet og kommer til \u00e5 bli fjernet."
+  },
+  "generated/Deprecation.ts | V8SharedArrayBufferConstructedInExtensionWithoutIsolation": {
+    "message": "Utvidelser m\u00e5 sl\u00e5 p\u00e5 isolering fra andre opphav for \u00e5 fortsette \u00e5 bruke SharedArrayBuffer. Se https://developer.chrome.com/docs/extensions/mv3/cross-origin-isolation/."
+  },
+  "generated/Deprecation.ts | XHRJSONEncodingDetection": {
+    "message": "UTF-16 st\u00f8ttes ikke av JSON-svaret i XMLHttpRequest"
+  },
+  "generated/Deprecation.ts | XMLHttpRequestSynchronousInNonWorkerOutsideBeforeUnload": {
+    "message": "Synkrone XMLHttpRequest-foresp\u00f8rsler p\u00e5 hovedtr\u00e5den er avviklet p\u00e5 grunn av de negative virkningene p\u00e5 sluttbrukerens opplevelse. For \u00e5 f\u00e5 mer hjelp, se https://xhr.spec.whatwg.org/."
+  },
+  "models/trace/insights/CLSCulprits.ts | animation": {
+    "message": "Animasjon"
+  },
+  "models/trace/insights/CLSCulprits.ts | description": {
+    "message": "Utseendeforskyvninger oppst\u00e5r n\u00e5r elementer beveger seg uten at brukeren har gjort noe. [Unders\u00f8k \u00e5rsakene til utseendeforskyvninger](https://web.dev/articles/optimize-cls), for eksempel elementer som legges til, fjernes eller endrer skrifttype mens siden lastes inn."
+  },
+  "models/trace/insights/CLSCulprits.ts | fontRequest": {
+    "message": "Foresp\u00f8rsel om skrifttype"
+  },
+  "models/trace/insights/CLSCulprits.ts | injectedIframe": {
+    "message": "Injisert iframe-element"
+  },
+  "models/trace/insights/CLSCulprits.ts | layoutShiftCluster": {
+    "message": "Klynge med utseendeforskyvning etter {PH1}"
+  },
+  "models/trace/insights/CLSCulprits.ts | noCulprits": {
+    "message": "Fant ingen \u00e5rsaker til utseendeforskyvning"
+  },
+  "models/trace/insights/CLSCulprits.ts | noLayoutShifts": {
+    "message": "Ingen utseendeforskyvninger"
+  },
+  "models/trace/insights/CLSCulprits.ts | title": {
+    "message": "\u00c5rsaker til utseendeforskyvning"
+  },
+  "models/trace/insights/CLSCulprits.ts | topCulprits": {
+    "message": "De vanligste \u00e5rsakene til utseendeforskyvning"
+  },
+  "models/trace/insights/CLSCulprits.ts | unsizedImages": {
+    "message": "Bilder uten st\u00f8rrelse"
+  },
+  "models/trace/insights/CLSCulprits.ts | worstCluster": {
+    "message": "Verste klynge"
+  },
+  "models/trace/insights/CLSCulprits.ts | worstLayoutShiftCluster": {
+    "message": "Verste klynge med utseendeforskyvning"
+  },
+  "models/trace/insights/Cache.ts | cacheTTL": {
+    "message": "Buffer-TTL"
+  },
+  "models/trace/insights/Cache.ts | description": {
+    "message": "En lang bufferlevetid kan gj\u00f8re at gjentatte bes\u00f8k p\u00e5 siden din g\u00e5r raskere. [Finn ut mer.](https://web.dev/uses-long-cache-ttl/)"
+  },
+  "models/trace/insights/Cache.ts | noRequestsToCache": {
+    "message": "Ingen foresp\u00f8rsler med ineffektive bufferregler"
+  },
+  "models/trace/insights/Cache.ts | others": {
+    "message": "{PH1} til"
+  },
+  "models/trace/insights/Cache.ts | requestColumn": {
+    "message": "Foresp\u00f8rsel"
+  },
+  "models/trace/insights/Cache.ts | title": {
+    "message": "Bruk effektive bufferlevetider"
+  },
+  "models/trace/insights/DOMSize.ts | description": {
+    "message": "Store DOM-er kan \u00f8ke varigheten p\u00e5 stilberegninger og dynamiske tilpasninger av layouten, noe som p\u00e5virker sidens responstid. Store DOM-er \u00f8ker ogs\u00e5 minnebruken. [Finn ut hvordan du unng\u00e5r at DOM-en blir for stor.](https://developer.chrome.com/docs/lighthouse/performance/dom-size/)"
+  },
+  "models/trace/insights/DOMSize.ts | element": {
+    "message": "Element"
+  },
+  "models/trace/insights/DOMSize.ts | maxChildren": {
+    "message": "Flest underelementer"
+  },
+  "models/trace/insights/DOMSize.ts | maxDOMDepth": {
+    "message": "DOM-dybde"
+  },
+  "models/trace/insights/DOMSize.ts | statistic": {
+    "message": "Statistikk"
+  },
+  "models/trace/insights/DOMSize.ts | title": {
+    "message": "Optimaliser DOM-st\u00f8rrelsen"
+  },
+  "models/trace/insights/DOMSize.ts | totalElements": {
+    "message": "Elementer totalt"
+  },
+  "models/trace/insights/DOMSize.ts | value": {
+    "message": "Verdi"
+  },
+  "models/trace/insights/DocumentLatency.ts | description": {
+    "message": "Den f\u00f8rste nettverksforesp\u00f8rselen er den viktigste.  Reduser tidsforsinkelsen ved \u00e5 unng\u00e5 omdirigeringer, sikre rask tjenerrespons og sl\u00e5 p\u00e5 tekstkomprimering."
+  },
+  "models/trace/insights/DocumentLatency.ts | failedRedirects": {
+    "message": "Hadde viderekoblinger"
+  },
+  "models/trace/insights/DocumentLatency.ts | failedServerResponseTime": {
+    "message": "Tjeneren svarte tregt"
+  },
+  "models/trace/insights/DocumentLatency.ts | failedTextCompression": {
+    "message": "Ingen komprimering er brukt"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingRedirects": {
+    "message": "Unng\u00e5r viderekoblinger"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingServerResponseTime": {
+    "message": "Tjeneren svarer raskt"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingTextCompression": {
+    "message": "Bruker tekstkomprimering"
+  },
+  "models/trace/insights/DocumentLatency.ts | redirectsLabel": {
+    "message": "Viderekoblinger"
+  },
+  "models/trace/insights/DocumentLatency.ts | serverResponseTimeLabel": {
+    "message": "Responstid for tjeneren"
+  },
+  "models/trace/insights/DocumentLatency.ts | title": {
+    "message": "Tidsforsinkelse for dokumentforesp\u00f8rsel"
+  },
+  "models/trace/insights/DocumentLatency.ts | uncompressedDownload": {
+    "message": "Ukomprimert nedlasting"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | columnDuplicatedBytes": {
+    "message": "Dupliserte byte"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | columnSource": {
+    "message": "Kilde"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | description": {
+    "message": "Fjern store, dupliserte JavaScript-moduler fra pakker for \u00e5 redusere antall byte som brukes un\u00f8dvendig av nettverksaktiviteten."
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | title": {
+    "message": "Duplisert JavaScript"
+  },
+  "models/trace/insights/FontDisplay.ts | description": {
+    "message": "Vurder \u00e5 sette [font-display](https://developer.chrome.com/blog/font-display) til swap eller optional for \u00e5 sikre at teksten er synlig hele tiden. swap kan optimaliseres ytterligere for \u00e5 motvirke utseendeforskyvninger med [overstyring av skrifttypeverdier](https://developer.chrome.com/blog/font-fallbacks)."
+  },
+  "models/trace/insights/FontDisplay.ts | fontColumn": {
+    "message": "Skrifttype"
+  },
+  "models/trace/insights/FontDisplay.ts | title": {
+    "message": "Visning av skrifttype"
+  },
+  "models/trace/insights/FontDisplay.ts | wastedTimeColumn": {
+    "message": "Tidstap"
+  },
+  "models/trace/insights/ForcedReflow.ts | anonymous": {
+    "message": "(anonym)"
+  },
+  "models/trace/insights/ForcedReflow.ts | description": {
+    "message": "Mange API-er, som vanligvis leser layoutgeometri, tvinger gjengivelsesmotoren til \u00e5 sette skriptutf\u00f8relsen p\u00e5 pause for \u00e5 beregne stilen og layouten. Finn ut mer om [tvungen dynamisk tilpasning](https://developers.google.com/web/fundamentals/performance/rendering/avoid-large-complex-layouts-and-layout-thrashing#avoid-forced-synchronous-layouts) og avhjelpende tiltak."
+  },
+  "models/trace/insights/ForcedReflow.ts | relatedStackTrace": {
+    "message": "Stabelspor"
+  },
+  "models/trace/insights/ForcedReflow.ts | title": {
+    "message": "Tvungen dynamisk tilpasning"
+  },
+  "models/trace/insights/ForcedReflow.ts | topTimeConsumingFunctionCall": {
+    "message": "Mest tidkrevende funksjonskall"
+  },
+  "models/trace/insights/ForcedReflow.ts | totalReflowTime": {
+    "message": "Totaltid for dynamiske tilpasninger"
+  },
+  "models/trace/insights/ForcedReflow.ts | unattributed": {
+    "message": "[uten attribusjon]"
+  },
+  "models/trace/insights/ImageDelivery.ts | description": {
+    "message": "Hvis du reduserer nedlastingstiden for bilder, kan det redusere den opplevde innlastingstiden for siden og LCP (st\u00f8rste innholdsrike opptegning). [Finn ut mer om optimalisering av bildest\u00f8rrelser](https://developer.chrome.com/docs/lighthouse/performance/uses-optimized-images/)"
+  },
+  "models/trace/insights/ImageDelivery.ts | estimatedSavings": {
+    "message": "{PH1} (ansl\u00e5tt {PH2})"
+  },
+  "models/trace/insights/ImageDelivery.ts | noOptimizableImages": {
+    "message": "Ingen bilder som kan optimaliseres"
+  },
+  "models/trace/insights/ImageDelivery.ts | optimizeFile": {
+    "message": "Optimaliser filst\u00f8rrelsen"
+  },
+  "models/trace/insights/ImageDelivery.ts | others": {
+    "message": "{PH1} til"
+  },
+  "models/trace/insights/ImageDelivery.ts | title": {
+    "message": "Forbedre bildeleveringen"
+  },
+  "models/trace/insights/ImageDelivery.ts | useCompression": {
+    "message": "Hvis du \u00f8ker komprimeringsfaktoren for bildet, kan nedlastingsst\u00f8rrelsen bli mindre."
+  },
+  "models/trace/insights/ImageDelivery.ts | useModernFormat": {
+    "message": "Hvis du bruker et moderne bildeformat (WebP, AVIF) eller \u00f8ker bildekomprimeringsfaktoren, kan nedlastingsst\u00f8rrelsen for dette bildet bli mindre."
+  },
+  "models/trace/insights/ImageDelivery.ts | useResponsiveSize": {
+    "message": "Denne bildefilen er st\u00f8rre enn n\u00f8dvendig ({PH1}) for de viste dimensjonene ({PH2}). Bruk responsivt bildeinnhold for \u00e5 redusere nedlastingsst\u00f8rrelsen for bildet."
+  },
+  "models/trace/insights/ImageDelivery.ts | useVideoFormat": {
+    "message": "Ved \u00e5 bruke videoformater i stedet for GIF-er kan du redusere nedlastingsst\u00f8rrelsen p\u00e5 animert innhold."
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | description": {
+    "message": "Begynn med \u00e5 unders\u00f8ke den lengste fasen. [Forsinkelser kan minimeres.](https://web.dev/articles/optimize-inp#optimize_interactions) For \u00e5 redusere behandlingstiden m\u00e5 du [optimalisere kostnadene p\u00e5 hovedtr\u00e5den](https://web.dev/articles/optimize-long-tasks). Ofte er dette JS."
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | duration": {
+    "message": "Varighet"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | inputDelay": {
+    "message": "Inndataforsinkelse"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | noInteractions": {
+    "message": "Ingen interaksjoner ble registrert"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | phase": {
+    "message": "Fase"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | presentationDelay": {
+    "message": "Presentasjonsforsinkelse"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | processingDuration": {
+    "message": "Behandlingsvarighet"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | title": {
+    "message": "INP (tid fra interaksjon til neste opptegning) etter fase"
+  },
+  "models/trace/insights/LCPDiscovery.ts | description": {
+    "message": "Optimaliser LCP (st\u00f8rste innholdsrike opptegning) ved \u00e5 gj\u00f8re LCP-bildet [synlig](https://web.dev/articles/optimize-lcp#1_eliminate_resource_load_delay) umiddelbart i HTML-koden og [unng\u00e5 bruk av utsatt innlasting](https://web.dev/articles/lcp-lazy-loading)"
+  },
+  "models/trace/insights/LCPDiscovery.ts | fetchPriorityApplied": {
+    "message": "fetchpriority=high er tatt i bruk"
+  },
+  "models/trace/insights/LCPDiscovery.ts | fetchPriorityShouldBeApplied": {
+    "message": "fetchpriority=high b\u00f8r brukes"
+  },
+  "models/trace/insights/LCPDiscovery.ts | lazyLoadNotApplied": {
+    "message": "utsatt innlasting er ikke brukt"
+  },
+  "models/trace/insights/LCPDiscovery.ts | lcpLoadDelay": {
+    "message": "Bildet med st\u00f8rste innholdsrike opptegning (LCP) ble lastet inn {PH1} etter det tidligste startpunktet."
+  },
+  "models/trace/insights/LCPDiscovery.ts | noLcp": {
+    "message": "Ingen LCP (st\u00f8rste innholdsrike opptegning) ble registrert"
+  },
+  "models/trace/insights/LCPDiscovery.ts | noLcpResource": {
+    "message": "Ingen LCP-ressurs ble oppdaget fordi LCP (st\u00f8rste innholdsrike opptegning) ikke er et bilde"
+  },
+  "models/trace/insights/LCPDiscovery.ts | requestDiscoverable": {
+    "message": "Foresp\u00f8rselen er synlig i det opprinnelige dokumentet"
+  },
+  "models/trace/insights/LCPDiscovery.ts | title": {
+    "message": "Oppdagelse av foresp\u00f8rsel med LCP (st\u00f8rste innholdsrike opptegning)"
+  },
+  "models/trace/insights/LCPPhases.ts | description": {
+    "message": "Hver [fase har spesifikke forbedringsstrategier](https://web.dev/articles/optimize-lcp#lcp-breakdown). Ideelt sett b\u00f8r mesteparten av LCP-tiden brukes p\u00e5 innlasting av ressurser, ikke p\u00e5 forsinkelser."
+  },
+  "models/trace/insights/LCPPhases.ts | duration": {
+    "message": "Varighet"
+  },
+  "models/trace/insights/LCPPhases.ts | elementRenderDelay": {
+    "message": "Forsinkelse for gjengivelse av element"
+  },
+  "models/trace/insights/LCPPhases.ts | fieldDuration": {
+    "message": "75. persentil for felten"
+  },
+  "models/trace/insights/LCPPhases.ts | noLcp": {
+    "message": "Ingen LCP (st\u00f8rste innholdsrike opptegning) ble registrert"
+  },
+  "models/trace/insights/LCPPhases.ts | phase": {
+    "message": "Fase"
+  },
+  "models/trace/insights/LCPPhases.ts | resourceLoadDelay": {
+    "message": "Forsinkelse ved innlasting av ressurser"
+  },
+  "models/trace/insights/LCPPhases.ts | resourceLoadDuration": {
+    "message": "Varighet av ressursinnlasting"
+  },
+  "models/trace/insights/LCPPhases.ts | timeToFirstByte": {
+    "message": "Tid til f\u00f8rste byte"
+  },
+  "models/trace/insights/LCPPhases.ts | title": {
+    "message": "LCP (st\u00f8rste innholdsrike opptegning) etter fase"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | columnScript": {
+    "message": "Skript"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | columnWastedBytes": {
+    "message": "Bortkastede byte"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | description": {
+    "message": "Polyfill- og transform-kode gj\u00f8r det mulig for nettlesere i eldre versjoner \u00e5 bruke nye JavaScript-funksjoner. Mange former for slik kode trengs imidlertid ikke i moderne nettlesere. Vurder \u00e5 endre JavaScript-byggeprosessen din slik at den ikke transkompilerer [Baseline](https://web.dev/articles/baseline-and-polyfills)-funksjoner, med mindre du vet at du m\u00e5 st\u00f8tte eldre nettlesere. [Finn ut hvorfor de fleste nettsteder kan implementere ES6+-kode uten transkompilering](https://philipwalton.com/articles/the-state-of-es5-on-the-web/)"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | title": {
+    "message": "JavaScript i en eldre versjon"
+  },
+  "models/trace/insights/ModernHTTP.ts | description": {
+    "message": "HTTP/2 og HTTP/3 har mange fordeler sammenlignet med HTTP/1.1, for eksempel multipleksing. [Finn ut mer om bruk av moderne HTTP.](https://developer.chrome.com/docs/lighthouse/best-practices/uses-http2/)"
+  },
+  "models/trace/insights/ModernHTTP.ts | noOldProtocolRequests": {
+    "message": "Ingen foresp\u00f8rsler brukte HTTP/1.1"
+  },
+  "models/trace/insights/ModernHTTP.ts | protocol": {
+    "message": "Protokoll"
+  },
+  "models/trace/insights/ModernHTTP.ts | request": {
+    "message": "Foresp\u00f8rsel"
+  },
+  "models/trace/insights/ModernHTTP.ts | title": {
+    "message": "Moderne HTTP"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | description": {
+    "message": "[Unng\u00e5 kjeding av kritiske foresp\u00f8rsler](https://developer.chrome.com/docs/lighthouse/performance/critical-request-chains) ved \u00e5 redusere lengden p\u00e5 kjedene, redusere nedlastingsst\u00f8rrelsen p\u00e5 ressursene eller utsette nedlasting av un\u00f8dvendige ressurser for \u00e5 bedre sideinnlastingen."
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | maxCriticalPathLatency": {
+    "message": "Maksimal tidsforsinkelse for kritisk bane:"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | noNetworkDependencyTree": {
+    "message": "Ingen gjengivelsesoppgaver p\u00e5virkes av nettverksavhengigheter"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | title": {
+    "message": "Avhengighetstre for nettverket"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | warningDescription": {
+    "message": "Unng\u00e5 kjeding av kritiske foresp\u00f8rsler ved \u00e5 redusere lengden p\u00e5 kjedene, redusere nedlastingsst\u00f8rrelsen p\u00e5 ressursene eller utsette nedlasting av un\u00f8dvendige ressurser for \u00e5 bedre sideinnlastingen."
+  },
+  "models/trace/insights/RenderBlocking.ts | description": {
+    "message": "Foresp\u00f8rsler blokkerer den innledende gjengivelsen av siden, noe som kan forsinke LCP (st\u00f8rste innholdsrike opptegning). [Hvis du utsetter eller fletter inn disse](https://web.dev/learn/performance/understanding-the-critical-path#render-blocking_resources/), flyttes disse nettverksforesp\u00f8rslene ut av den kritiske banen."
+  },
+  "models/trace/insights/RenderBlocking.ts | duration": {
+    "message": "Varighet"
+  },
+  "models/trace/insights/RenderBlocking.ts | noRenderBlocking": {
+    "message": "Ingen foresp\u00f8rsler om blokkering av gjengivelse for denne navigeringen"
+  },
+  "models/trace/insights/RenderBlocking.ts | renderBlockingRequest": {
+    "message": "Foresp\u00f8rsel"
+  },
+  "models/trace/insights/RenderBlocking.ts | title": {
+    "message": "Foresp\u00f8rsler som blokkerer gjengivelse"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | description": {
+    "message": "Hvis kostnadene for omberegning av stiler fortsetter \u00e5 v\u00e6re h\u00f8ye, kan du senke dem ved \u00e5 optimalisere velgere. [Optimaliser velgere](https://developer.chrome.com/docs/devtools/performance/selector-stats) som b\u00e5de har lang forl\u00f8pstid og f\u00f8lger den langsomme banen en stor prosentandel av tiden. B\u00e5de enklere velgere, f\u00e6rre velgere, en mindre DOM og en mindre omfattende DOM er med p\u00e5 \u00e5 senke kostnadene ved \u00e5 beregne elementsamsvar."
+  },
+  "models/trace/insights/SlowCSSSelector.ts | elapsed": {
+    "message": "Forl\u00f8pt tid"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | enableSelectorData": {
+    "message": "Fant ingen data for CSS-velgere. Du m\u00e5 sl\u00e5 p\u00e5 statistikk for CSS-velgere i innstillingene for ytelsespanelet."
+  },
+  "models/trace/insights/SlowCSSSelector.ts | matchAttempts": {
+    "message": "Samsvarsfors\u00f8k"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | matchCount": {
+    "message": "Antall samsvarende elementer"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | title": {
+    "message": "Kostnader for CSS-velger"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | topSelectors": {
+    "message": "Mest tidkrevende velgere"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | total": {
+    "message": "Totalt"
+  },
+  "models/trace/insights/ThirdParties.ts | columnMainThreadTime": {
+    "message": "Tid i hovedtr\u00e5den"
+  },
+  "models/trace/insights/ThirdParties.ts | columnThirdParty": {
+    "message": "Tredjepart"
+  },
+  "models/trace/insights/ThirdParties.ts | columnTransferSize": {
+    "message": "Overf\u00f8ringsst\u00f8rrelse"
+  },
+  "models/trace/insights/ThirdParties.ts | description": {
+    "message": "Tredjepartskode kan ha betydelig innvirkning p\u00e5 hvor lang tid det tar \u00e5 laste inn siden. [Reduser og utsett innlasting av tredjepartskode](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/loading-third-party-javascript/) for \u00e5 prioritere innholdet p\u00e5 siden din."
+  },
+  "models/trace/insights/ThirdParties.ts | noThirdParties": {
+    "message": "Fant ingen tredjeparter"
+  },
+  "models/trace/insights/ThirdParties.ts | title": {
+    "message": "Tredjeparter"
+  },
+  "models/trace/insights/Viewport.ts | description": {
+    "message": "Trykkeinteraksjoner kan [forsinkes med opptil 300\u00a0ms](https://developer.chrome.com/blog/300ms-tap-delay-gone-away/) hvis det synlige omr\u00e5det ikke er optimalisert for mobil."
+  },
+  "models/trace/insights/Viewport.ts | title": {
+    "message": "Optimaliser det synlige omr\u00e5det for mobil"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | HTTPMethodNotGET": {
+    "message": "Kun sider som lastes inn via GET-foresp\u00f8rsler, kan lagres i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | HTTPStatusNotOK": {
+    "message": "Kun sider med statuskode 2XX kan bufres."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | JavaScriptExecution": {
+    "message": "Chrome oppdaget et fors\u00f8k p\u00e5 kj\u00f8ring av JavaScript mens siden var i bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | appBanner": {
+    "message": "Sider som bruker har forespurt AppBanner, kan for tiden ikke lagres i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabled": {
+    "message": "Frem-og-tilbake-bufferen er deaktivert via flagg. G\u00e5 til chrome://flags/#back-forward-cache for \u00e5 aktivere den lokalt p\u00e5 denne enheten."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledByCommandLine": {
+    "message": "Frem-og-tilbake-bufferen er deaktivert via kommandolinjen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledByLowMemory": {
+    "message": "Frem-og-tilbake-bufferen er deaktivert p\u00e5 grunn av utilstrekkelig minne."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledForDelegate": {
+    "message": "Frem-og-tilbake-bufferen st\u00f8ttes ikke av den innbyggende nettleseren."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledForPrerender": {
+    "message": "Frem-og-tilbake-bufferen er deaktivert for forh\u00e5ndsgjengivelse."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | broadcastChannel": {
+    "message": "Siden kan ikke bufres, ettersom den har en BroadcastChannel-forekomst med registrerte lyttere."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheControlNoStore": {
+    "message": "Sider med hodet \u00abcache-control:no-store\u00bb kan ikke lagres i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheFlushed": {
+    "message": "Bufferen ble t\u00f8mt med vilje."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheLimit": {
+    "message": "Siden ble fjernet fra bufferen slik at en annen side kunne bli bufret."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | containsPlugins": {
+    "message": "Sider som inneholder programtillegg, kan for tiden ikke lagres i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentDiscarded": {
+    "message": "Udefinert"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentFileChooser": {
+    "message": "Sider som bruker FileChooser-API-et, kan ikke lagres i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentFileSystemAccess": {
+    "message": "Sider som bruker File System Access-API-et, kan ikke lagres i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaDevicesDispatcherHost": {
+    "message": "Sider som bruker Media Device Dispatcher, kan for tiden ikke lagres i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaPlay": {
+    "message": "En mediespiller holdt p\u00e5 \u00e5 spille av da nettleseren navigerte bort."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaSession": {
+    "message": "Sider som bruker MediaSession-API-et og angir en avspillingsstatus, kan ikke lagres i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaSessionService": {
+    "message": "Sider som bruker MediaSession-API-et og angir handlingsbehandlere, kan ikke lagres i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentScreenReader": {
+    "message": "Frem-og-tilbake-bufferen er deaktivert p\u00e5 grunn av skjermleseren."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentSecurityHandler": {
+    "message": "Sider som bruker SecurityHandler, kan ikke lagres i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentSerial": {
+    "message": "Sider som bruker Serial-API-et, kan ikke lagres i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebAuthenticationAPI": {
+    "message": "Sider som bruker WebAuthentication-API-et, kan ikke lagres i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebBluetooth": {
+    "message": "Sider som bruker WebBluetooth-API-et, kan ikke lagres i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebUSB": {
+    "message": "Sider som bruker WebUSB-API-et, kan ikke lagres i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cookieDisabled": {
+    "message": "Frem-og-tilbake-bufferen er deaktivert fordi informasjonskapsler er deaktivert p\u00e5 en side som bruker Cache-Control: no-store."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | dedicatedWorkerOrWorklet": {
+    "message": "Sider som bruker en dedikert Service Worker eller worklet, kan for tiden ikke lagres i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | documentLoaded": {
+    "message": "Dokumentet ble ikke ferdig innlastet f\u00f8r nettleseren navigerte bort."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderAppBannerManager": {
+    "message": "Appbanneret var til stede da nettleseren navigerte bort."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderChromePasswordManagerClientBindCredentialManager": {
+    "message": "Chrome Passordlagring var til stede da nettleseren navigerte bort."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderDomDistillerSelfDeletingRequestDelegate": {
+    "message": "DOM-destillering p\u00e5gikk da nettleseren navigerte bort."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderDomDistillerViewerSource": {
+    "message": "DOM-destilleringsvisningen var til stede da nettleseren navigerte bort."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionMessaging": {
+    "message": "Frem-og-tilbake-bufferen er deaktivert fordi utvidelser bruker meldings-API-et."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionMessagingForOpenPort": {
+    "message": "Utvidelser med tilkoblinger med lang levetid m\u00e5 lukke tilkoblingen f\u00f8r de kan lagres i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionSentMessageToCachedFrame": {
+    "message": "Utvidelser med tilkoblinger med lang levetid pr\u00f8vde \u00e5 sende meldinger til rammer i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensions": {
+    "message": "Frem-og-tilbake-bufferen er deaktivert p\u00e5 grunn av utvidelser."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderModalDialog": {
+    "message": "En modal dialogboks for siden, for eksempel en dialogboks om \u00e5 sende inn et skjema p\u00e5 nytt eller en dialogboks for HTTP-passord, ble vist da nettleseren navigerte bort."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderOfflinePage": {
+    "message": "Siden hvor det st\u00e5r at enheten er uten nett, ble vist da nettleseren navigerte bort."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderOomInterventionTabHelper": {
+    "message": "Intervensjonsfeltet hvor det st\u00e5r at enheten ikke har nok minne, var til stede da nettleseren navigerte bort."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderPermissionRequestManager": {
+    "message": "Det fantes tillatelsesforesp\u00f8rsler da nettleseren navigerte bort."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderPopupBlockerTabHelper": {
+    "message": "Blokkering av forgrunnsvinduer var til stede da nettleseren navigerte bort."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderSafeBrowsingThreatDetails": {
+    "message": "Safe Browsing-detaljer ble vist da nettleseren navigerte bort."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderSafeBrowsingTriggeredPopupBlocker": {
+    "message": "Safe Browsing ans\u00e5 denne siden for \u00e5 v\u00e6re villedende og blokkerte forgrunnsvinduet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | enteredBackForwardCacheBeforeServiceWorkerHostAdded": {
+    "message": "En Service Worker ble aktivert mens siden var i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | errorDocument": {
+    "message": "Frem-og-tilbake-bufferen er deaktivert p\u00e5 grunn av en dokumentfeil."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | fencedFramesEmbedder": {
+    "message": "Sider som bruker FencedFrames, kan ikke lagres i bfcache."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | foregroundCacheLimit": {
+    "message": "Siden ble fjernet fra bufferen slik at en annen side kunne bli bufret."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | grantedMediaStreamAccess": {
+    "message": "Sider som har gitt mediestr\u00f8mtilgang, kan for tiden ikke lagres i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | haveInnerContents": {
+    "message": "Sider med visse typer innebygd innhold (f.eks. PDF-filer) kan for tiden ikke lagres i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | idleManager": {
+    "message": "Sider som bruker IdleManager, kan for tiden ikke lagres i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | indexedDBConnection": {
+    "message": "Sider med \u00e5pne IndexedDB-tilkoblinger kan for tiden ikke lagres i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | indexedDBEvent": {
+    "message": "Frem-og-tilbake-bufferen er deaktivert p\u00e5 grunn av en IndexedDB-hendelse."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | ineligibleAPI": {
+    "message": "Det ble brukt API-er som ikke er kvalifisert."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | injectedJavascript": {
+    "message": "Sider som utvidelser har injisert JavaScript i, kan for tiden ikke lagres i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | injectedStyleSheet": {
+    "message": "Sider som utvidelser har injisert StyleSheet i, kan for tiden ikke lagres i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | internalError": {
+    "message": "Intern feil."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | jsNetworkRequestReceivedCacheControlNoStoreResource": {
+    "message": "Frem-og-tilbake-bufferen er deaktivert fordi en JavaScript-nettverksforesp\u00f8rsel har mottatt en ressurs med Cache-Control: no-store-hodet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | keepaliveRequest": {
+    "message": "Frem-og-tilbake-bufferen er deaktivert p\u00e5 grunn av en keepalive-foresp\u00f8rsel."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | keyboardLock": {
+    "message": "Sider som bruker tastaturl\u00e5s, kan for tiden ikke lagres i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | loading": {
+    "message": "Siden ble ikke ferdig innlastet f\u00f8r nettleseren navigerte bort."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | mainResourceHasCacheControlNoCache": {
+    "message": "Sider som har \u00abcache-control:no-cache\u00bb i hovedressursen sin, kan ikke lagres i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | mainResourceHasCacheControlNoStore": {
+    "message": "Sider som har \u00abcache-control:no-store\u00bb i hovedressursen sin, kan ikke lagres i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | navigationCancelledWhileRestoring": {
+    "message": "Navigeringen ble avbrutt f\u00f8r siden kunne gjenopprettes fra frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkExceedsBufferLimit": {
+    "message": "Siden ble fjernet fra bufferen fordi en aktiv nettverkstilkobling mottok for mye data. Chrome begrenser hvor mye data sider kan motta mens de er bufret."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestDatapipeDrainedAsBytesConsumer": {
+    "message": "Sider med p\u00e5g\u00e5ende fetch()- eller XHR-foresp\u00f8rsler kan for tiden ikke lagres i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestRedirected": {
+    "message": "Siden ble fjernet fra frem-og-tilbake-bufferen fordi en aktiv nettverksforesp\u00f8rsel medf\u00f8rte en viderekobling."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestTimeout": {
+    "message": "Siden ble fjernet fra bufferen fordi en nettverkstilkobling var \u00e5pen for lenge. Chrome begrenser hvor lenge sider kan motta data mens de er bufret."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | noResponseHead": {
+    "message": "Sider som ikke har noe gyldig svarhode, kan ikke lagres i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | notMainFrame": {
+    "message": "Navigeringen skjedde i en annen ramme enn hovedrammen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingIndexedDBTransaction": {
+    "message": "Sider med p\u00e5g\u00e5ende IndexedDB-transaksjoner, kan for tiden ikke lagres i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestDirectSocket": {
+    "message": "Sider med p\u00e5g\u00e5ende nettverksforesp\u00f8rsler kan for tiden ikke lagres i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestFetch": {
+    "message": "Sider med p\u00e5g\u00e5ende fetch()-nettverksforesp\u00f8rsler kan for tiden ikke lagres i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestOthers": {
+    "message": "Sider med p\u00e5g\u00e5ende nettverksforesp\u00f8rsler kan for tiden ikke lagres i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestXHR": {
+    "message": "Sider med p\u00e5g\u00e5ende XHR-nettverksforesp\u00f8rsler kan for tiden ikke lagres i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | paymentManager": {
+    "message": "Sider som bruker PaymentManager, kan for tiden ikke lagres i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | pictureInPicture": {
+    "message": "Sider som bruker bilde-i-bilde, kan for tiden ikke lagres i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | printing": {
+    "message": "Sider som viser UI for utskrift, kan for tiden ikke lagres i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | relatedActiveContentsExist": {
+    "message": "Siden ble \u00e5pnet med 'window.open()', og en annen fane har en henvisning til den, eller siden \u00e5pnet et vindu."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | rendererProcessCrashed": {
+    "message": "Gjengivelsesprosessen for siden i frem-og-tilbake-bufferen krasjet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | rendererProcessKilled": {
+    "message": "Gjengivelsesprosessen for siden i frem-og-tilbake-bufferen ble avsluttet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedAudioCapturePermission": {
+    "message": "Sider som har bedt om tillatelser til lydopptak, kan for tiden ikke lagres i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedBackForwardCacheBlockedSensors": {
+    "message": "Sider som har bedt om sensortillatelser, kan for tiden ikke lagres i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedBackgroundWorkPermission": {
+    "message": "Sider som har bedt om bakgrunnssynkronisering eller fetch()-tillatelser, kan for tiden ikke lagres i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedMIDIPermission": {
+    "message": "Sider som har bedt om MIDI-tillatelser, kan for tiden ikke lagres i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedNotificationsPermission": {
+    "message": "Sider som har bedt om varseltillatelser, kan for tiden ikke lagres i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedStorageAccessGrant": {
+    "message": "Sider som har bedt om tilgang til lagring, kan for tiden ikke lagres i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedVideoCapturePermission": {
+    "message": "Sider som har bedt om tillatelser til videoopptak, kan for tiden ikke lagres i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | schemeNotHTTPOrHTTPS": {
+    "message": "Kun sider med HTTP eller HTTPS som nettadresseprotokoll kan bufres."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerClaim": {
+    "message": "Siden ble gjort krav p\u00e5 av en Service Worker mens den var i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerPostMessage": {
+    "message": "En Service Worker pr\u00f8vde \u00e5 sende en MessageEvent til siden i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerUnregistration": {
+    "message": "ServiceWorker ble avregistrert mens en side var i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerVersionActivation": {
+    "message": "Siden ble fjernet fra frem-og-tilbake-bufferen p\u00e5 grunn av en Service Worker-aktivering."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | sessionRestored": {
+    "message": "Chrome ble startet p\u00e5 nytt og slettet oppf\u00f8ringene i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | sharedWorker": {
+    "message": "Sider som bruker SharedWorker, kan for tiden ikke lagres i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | speechRecognizer": {
+    "message": "Sider som bruker SpeechRecognizer, kan for tiden ikke lagres i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | speechSynthesis": {
+    "message": "Sider som bruker SpeechSynthesis, kan for tiden ikke lagres i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subframeIsNavigating": {
+    "message": "Et iframe-element p\u00e5 siden startet en navigering som ikke ble fullf\u00f8rt."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subresourceHasCacheControlNoCache": {
+    "message": "Sider som har \u00abcache-control:no-cache\u00bb i underressursen sin, kan ikke lagres i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subresourceHasCacheControlNoStore": {
+    "message": "Sider som har \u00abcache-control:no-store\u00bb i underressursen sin, kan ikke lagres i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | timeout": {
+    "message": "Siden overskred den maksimale tiden i frem-og-tilbake-bufferen og har utl\u00f8pt."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | timeoutPuttingInCache": {
+    "message": "Siden fikk tidsavbrudd under lagring i frem-og-tilbake-bufferen (sannsynligvis p\u00e5 grunn av pagehide-behandlere med lang kj\u00f8retid)."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | unloadHandlerExistsInMainFrame": {
+    "message": "Siden har en utlastingsbehandler i hovedrammen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | unloadHandlerExistsInSubFrame": {
+    "message": "Siden har en utlastingsbehandler i en underramme."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | userAgentOverrideDiffers": {
+    "message": "Nettleseren har endret hodet for overstyring av brukeragenten."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | wasGrantedMediaAccess": {
+    "message": "Sider som har gitt tilgang til opptak av video eller lyd, kan for tiden ikke lagres i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webDatabase": {
+    "message": "Sider som bruker WebDatabase, kan for tiden ikke lagres i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webHID": {
+    "message": "Sider som bruker WebHID, kan for tiden ikke lagres i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webLocks": {
+    "message": "Sider som bruker WebLocks, kan for tiden ikke lagres i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webNfc": {
+    "message": "Sider som bruker WebNfc, kan for tiden ikke lagres i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webOTPService": {
+    "message": "Sider som bruker WebOTPService, kan for tiden ikke lagres i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webRTC": {
+    "message": "Sider med WebRTC kan ikke lagres i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webRTCSticky": {
+    "message": "Frem-og-tilbake-bufferen er deaktivert fordi WebRTC er brukt."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webShare": {
+    "message": "Sider som bruker WebShare, kan for tiden ikke lagres i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webSocket": {
+    "message": "Sider med WebSocket kan ikke lagres i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webSocketSticky": {
+    "message": "Frem-og-tilbake-bufferen er deaktivert fordi WebSocket er brukt."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webTransport": {
+    "message": "Sider med WebTransport kan ikke lagres i frem-og-tilbake-bufferen."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webTransportSticky": {
+    "message": "Frem-og-tilbake-bufferen er deaktivert fordi WebTransport er brukt."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webXR": {
+    "message": "Sider som bruker WebXR, kan for tiden ikke lagres i frem-og-tilbake-bufferen."
+  }
+}

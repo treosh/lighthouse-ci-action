@@ -9,4 +9,11 @@ export var InsightWarning;
     InsightWarning["NO_DOCUMENT_REQUEST"] = "NO_DOCUMENT_REQUEST";
     InsightWarning["NO_LAYOUT"] = "NO_LAYOUT";
 })(InsightWarning || (InsightWarning = {}));
+export var InsightCategory;
+(function (InsightCategory) {
+    InsightCategory["ALL"] = "All";
+    InsightCategory["INP"] = "INP";
+    InsightCategory["LCP"] = "LCP";
+    InsightCategory["CLS"] = "CLS";
+})(InsightCategory || (InsightCategory = {}));
 //# sourceMappingURL=types.js.map

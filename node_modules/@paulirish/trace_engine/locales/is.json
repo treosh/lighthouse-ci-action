@@ -1,0 +1,908 @@
+{
+  "generated/Deprecation.ts | AuthorizationCoveredByWildcard": {
+    "message": "Authorization will not be covered by the wildcard symbol (*) in CORS Access-Control-Allow-Headers handling."
+  },
+  "generated/Deprecation.ts | CSSSelectorInternalMediaControlsOverlayCastButton": {
+    "message": "The disableRemotePlayback attribute should be used in order to disable the default Cast integration instead of using -internal-media-controls-overlay-cast-button selector."
+  },
+  "generated/Deprecation.ts | CSSValueAppearanceSliderVertical": {
+    "message": "Birtingargildi CSS slider-vertical er ekki sta\u00f0la\u00f0 og ver\u00f0ur fjarl\u00e6gt."
+  },
+  "generated/Deprecation.ts | CanRequestURLHTTPContainingNewline": {
+    "message": "Resource requests whose URLs contained both removed whitespace \\(n|r|t) characters and less-than characters (<) are blocked. Please remove newlines and encode less-than characters from places like element attribute values in order to load these resources."
+  },
+  "generated/Deprecation.ts | CharsetAutoDetectionISO2022JP": {
+    "message": "Sj\u00e1lfvirk greining \u00e1 stafasettinu ISO-2022-JP er \u00farelt og sl\u00f6kkt ver\u00f0ur \u00e1 henni \u00e1 n\u00e6stunni. Tilgreindu stafasett \u00ed hausnum Efnisger\u00f0 e\u00f0a me\u00f0 \u00fev\u00ed a\u00f0 nota meta-merki (https://developer.mozilla.org/en-US/docs/Glossary/Character_encoding)."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesConnectionInfo": {
+    "message": "chrome.loadTimes() is deprecated, instead use standardized API: Navigation Timing 2."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesFirstPaintAfterLoadTime": {
+    "message": "chrome.loadTimes() is deprecated, instead use standardized API: Paint Timing."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesWasAlternateProtocolAvailable": {
+    "message": "chrome.loadTimes() er \u00farelt, nota skal st\u00f6\u00f0lu\u00f0 forritaskil \u00ed sta\u00f0inn: nextHopProtocol \u00ed t\u00edmasetningu flettingar 2."
+  },
+  "generated/Deprecation.ts | CookieWithTruncatingChar": {
+    "message": "Cookies containing a \\(0|r|n) character will be rejected instead of truncated."
+  },
+  "generated/Deprecation.ts | CrossOriginAccessBasedOnDocumentDomain": {
+    "message": "\u00darelt er a\u00f0 slaka \u00e1 reglu fyrir sama uppruna me\u00f0 \u00fev\u00ed a\u00f0 stilla document.domain og sl\u00f6kkt ver\u00f0ur \u00e1 \u00feessu sj\u00e1lfkrafa. \u00deessi \u00fareldingarvi\u00f0v\u00f6run er fyrir a\u00f0gang \u00fevert \u00e1 uppruna sem kveikt var \u00e1 me\u00f0 \u00fev\u00ed a\u00f0 stilla document.domain."
+  },
+  "generated/Deprecation.ts | CrossOriginWindowAlert": {
+    "message": "Virkjun window.alert fr\u00e1 iframe \u00fevert \u00e1 uppruna er \u00farelt og ver\u00f0ur fjarl\u00e6g\u00f0 \u00ed framt\u00ed\u00f0inni."
+  },
+  "generated/Deprecation.ts | CrossOriginWindowConfirm": {
+    "message": "Virkjun window.confirm fr\u00e1 iframe \u00fevert \u00e1 uppruna er \u00farelt og ver\u00f0ur fjarl\u00e6g\u00f0 \u00ed framt\u00ed\u00f0inni."
+  },
+  "generated/Deprecation.ts | DOMMutationEvents": {
+    "message": "DOM-st\u00f6kkbreytingartilvik, \u00fear \u00e1 me\u00f0al DOMSubtreeModified, DOMNodeInserted, DOMNodeRemoved, DOMNodeRemovedFromDocument, DOMNodeInsertedIntoDocument og DOMCharacterDataModified eru \u00farelt (https://w3c.github.io/uievents/#legacy-event-types) og ver\u00f0a fjarl\u00e6g\u00f0. Nota skal MutationObserver \u00ed sta\u00f0inn."
+  },
+  "generated/Deprecation.ts | DataUrlInSvgUse": {
+    "message": "Stu\u00f0ningur fyrir g\u00f6gn: Vefsl\u00f3\u00f0ir \u00ed SVGUseElement er \u00farelt og ver\u00f0ur fjarl\u00e6g\u00f0 \u00ed framt\u00ed\u00f0inni."
+  },
+  "generated/Deprecation.ts | GeolocationInsecureOrigin": {
+    "message": "getCurrentPosition() og watchPosition() virka ekki lengur \u00e1 \u00f3traustum uppruna. Til a\u00f0 nota \u00feennan eiginleika skaltu \u00edhuga a\u00f0 flytja forriti\u00f0 yfir \u00e1 \u00f6ruggan uppruna, t.d. HTTPS. Frekari uppl\u00fdsingar eru \u00e1 https://goo.gle/chrome-insecure-origins."
+  },
+  "generated/Deprecation.ts | GeolocationInsecureOriginDeprecatedNotRemoved": {
+    "message": "getCurrentPosition() og watchPosition() eru \u00farelt \u00ed \u00f3traustum uppruna. Til a\u00f0 nota \u00feennan eiginleika skaltu \u00edhuga a\u00f0 flytja forriti\u00f0 yfir \u00e1 \u00f6ruggan uppruna, t.d. HTTPS. Frekari uppl\u00fdsingar eru \u00e1 https://goo.gle/chrome-insecure-origins."
+  },
+  "generated/Deprecation.ts | GetUserMediaInsecureOrigin": {
+    "message": "getUserMedia() virkar ekki lengur \u00e1 \u00f3traustum uppruna. Til a\u00f0 nota \u00feennan eiginleika skaltu \u00edhuga a\u00f0 flytja forriti\u00f0 yfir \u00e1 \u00f6ruggan uppruna, t.d. HTTPS. Frekari uppl\u00fdsingar eru \u00e1 https://goo.gle/chrome-insecure-origins."
+  },
+  "generated/Deprecation.ts | H1UserAgentFontSizeInSection": {
+    "message": "Fann <h1> merki innan <article>, <aside>, <nav>, e\u00f0a <section> sem er ekki me\u00f0 tilgreindri leturst\u00e6r\u00f0. St\u00e6r\u00f0 \u00feessarar fyrirsagnar mun breytast \u00ed \u00feessum vafra \u00ed n\u00e1inni framt\u00ed\u00f0. Sj\u00e1 https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#specifying_a_uniform_font_size_for_h1 fyrir n\u00e1nari uppl\u00fdsingar."
+  },
+  "generated/Deprecation.ts | HostCandidateAttributeGetter": {
+    "message": "RTCPeerConnectionIceErrorEvent.hostCandidate er \u00farelt. Nota skal RTCPeerConnectionIceErrorEvent.address e\u00f0a RTCPeerConnectionIceErrorEvent.port \u00ed sta\u00f0inn."
+  },
+  "generated/Deprecation.ts | IdentityDigitalCredentials": {
+    "message": "\u00deetta sni\u00f0 fyrir bei\u00f0ni um stafr\u00e6n skilr\u00edki, navigator.credentials.get(), er \u00farelt. Uppf\u00e6r\u00f0u til a\u00f0 nota n\u00fdja sni\u00f0i\u00f0."
+  },
+  "generated/Deprecation.ts | IdentityInCanMakePaymentEvent": {
+    "message": "Uppruna- og handah\u00f3fsg\u00f6gn s\u00f6lua\u00f0ila \u00far canmakepayment tilviki \u00fej\u00f3nustuskriftu eru \u00farelt og ver\u00f0a fjarl\u00e6g\u00f0: topOrigin, paymentRequestOrigin, methodData, modifiers."
+  },
+  "generated/Deprecation.ts | InsecurePrivateNetworkSubresourceRequest": {
+    "message": "The website requested a subresource from a network that it could only access because of its users' privileged network position. These requests expose non-public devices and servers to the internet, increasing the risk of a cross-site request forgery (CSRF) attack, and/or information leakage. To mitigate these risks, Chrome deprecates requests to non-public subresources when initiated from non-secure contexts, and will start blocking them."
+  },
+  "generated/Deprecation.ts | InterestGroupDailyUpdateUrl": {
+    "message": "Reiturinn dailyUpdateUrl \u00ed InterestGroups sem var fluttur \u00ed joinAdInterestGroup() var endurnefndur updateUrl til a\u00f0 endurspegla virkni hans betur."
+  },
+  "generated/Deprecation.ts | IntlV8BreakIterator": {
+    "message": "Intl.v8BreakIterator er \u00farelt. Nota skal Intl.Segmenter \u00ed sta\u00f0inn."
+  },
+  "generated/Deprecation.ts | LocalCSSFileExtensionRejected": {
+    "message": "CSS cannot be loaded from file: URLs unless they end in a .css file extension."
+  },
+  "generated/Deprecation.ts | MediaSourceAbortRemove": {
+    "message": "Notkun SourceBuffer.abort() til a\u00f0 h\u00e6tta vi\u00f0 fjarl\u00e6gingu \u00e1 \u00f3samstilltu svi\u00f0i remove() er \u00farelt vegna breytingar t\u00e6knil\u00fdsingar. Stu\u00f0ningur ver\u00f0ur fjarl\u00e6g\u00f0ur s\u00ed\u00f0ar meir. \u00de\u00fa \u00e6ttir a\u00f0 hlusta \u00e1 updateend tilviki\u00f0 \u00ed sta\u00f0inn. abort() er a\u00f0eins \u00e6tla\u00f0 a\u00f0 h\u00e6tta vi\u00f0 \u00f3samstillta efnisvi\u00f0b\u00f3t e\u00f0a endurstilla \u00fe\u00e1ttunarst\u00f6\u00f0u."
+  },
+  "generated/Deprecation.ts | MediaSourceDurationTruncatingBuffered": {
+    "message": "Setting MediaSource.duration below the highest presentation timestamp of any buffered coded frames is deprecated due to specification change. Support for implicit removal of truncated buffered media will be removed in the future. You should instead perform explicit remove(newDuration, oldDuration) on all sourceBuffers, where newDuration < oldDuration."
+  },
+  "generated/Deprecation.ts | NoSysexWebMIDIWithoutPermission": {
+    "message": "Web MIDI will ask a permission to use even if the sysex is not specified in the MIDIOptions."
+  },
+  "generated/Deprecation.ts | NotificationInsecureOrigin": {
+    "message": "Ekki m\u00e1 lengur nota forritaskil tilkynninga fr\u00e1 \u00f3traustum uppruna. \u00cdhuga\u00f0u a\u00f0 f\u00e6ra forriti\u00f0 yfir \u00e1 \u00f6ruggan uppruna, t.d. HTTPS. Frekari uppl\u00fdsingar eru \u00e1 https://goo.gle/chrome-insecure-origins."
+  },
+  "generated/Deprecation.ts | NotificationPermissionRequestedIframe": {
+    "message": "\u00d3v\u00edst er a\u00f0 be\u00f0i\u00f0 ver\u00f0i um heimild fyrir forritaskilum tilkynninga fr\u00e1 iframe \u00fevert \u00e1 uppruna. \u00cdhuga\u00f0u a\u00f0 bi\u00f0ja um heimild fr\u00e1 ramma \u00e1 efsta stigi e\u00f0a opna n\u00fdjan glugga \u00ed sta\u00f0inn."
+  },
+  "generated/Deprecation.ts | ObsoleteCreateImageBitmapImageOrientationNone": {
+    "message": "Valkosturinn imageOrientation: 'none' \u00ed createImageBitmap er \u00fareltur. Nota skal createImageBitmap me\u00f0 valkostinum '{imageOrientation: 'from-image'}' \u00ed sta\u00f0inn."
+  },
+  "generated/Deprecation.ts | ObsoleteWebRtcCipherSuite": {
+    "message": "Your partner is negotiating an obsolete (D)TLS version. Please check with your partner to have this fixed."
+  },
+  "generated/Deprecation.ts | OverflowVisibleOnReplacedElement": {
+    "message": "\u00deegar overflow: visible er tilgreint fyrir merkin \u201eimg, video og canvas\u201c b\u00faa \u00feau hugsanlega til myndefni utan marka einingarinnar. Sj\u00e1 https://github.com/WICG/shared-element-transitions/blob/main/debugging_overflow_on_images.md."
+  },
+  "generated/Deprecation.ts | PaymentInstruments": {
+    "message": "paymentManager.instruments er \u00farelt. Nota\u00f0u JIT-uppsetningu (Just In Time) fyrir grei\u00f0slumi\u00f0lara \u00ed sta\u00f0inn."
+  },
+  "generated/Deprecation.ts | PaymentRequestCSPViolation": {
+    "message": "Kalli\u00f0 PaymentRequest sneiddi hj\u00e1 connect-src-tilskipun efnis\u00f6ryggisstefnunnar (CSP). \u00deessi hj\u00e1snei\u00f0ing er \u00farelt. B\u00e6ttu au\u00f0kenni grei\u00f0slum\u00e1ta \u00far forritaskilunum PaymentRequest (\u00ed supportedMethods-reitnum) vi\u00f0 connect-src-tilskipun efnis\u00f6ryggisstefnunnar (CSP)."
+  },
+  "generated/Deprecation.ts | PersistentQuotaType": {
+    "message": "StorageType.persistent er \u00farelt. Nota skal sta\u00f0la\u00f0 navigator.storage \u00ed sta\u00f0inn."
+  },
+  "generated/Deprecation.ts | PictureSourceSrc": {
+    "message": "<source src> me\u00f0 <picture> yfireiningu er \u00f3gilt og \u00fev\u00ed hunsa\u00f0. Nota skal <source srcset> \u00ed sta\u00f0inn."
+  },
+  "generated/Deprecation.ts | PrefixedCancelAnimationFrame": {
+    "message": "webkitCancelAnimationFrame er s\u00e9rt\u00e6kt fyrir s\u00f6lua\u00f0ila. Nota skal sta\u00f0la\u00f0 cancelAnimationFrame \u00ed sta\u00f0inn."
+  },
+  "generated/Deprecation.ts | PrefixedRequestAnimationFrame": {
+    "message": "webkitRequestAnimationFrame er s\u00e9rt\u00e6kt fyrir s\u00f6lua\u00f0ila. Nota skal sta\u00f0la\u00f0 requestAnimationFrame \u00ed sta\u00f0inn."
+  },
+  "generated/Deprecation.ts | PrefixedVideoDisplayingFullscreen": {
+    "message": "HTMLVideoElement.webkitDisplayingFullscreen er \u00farelt. Nota skal Document.fullscreenElement \u00ed sta\u00f0inn."
+  },
+  "generated/Deprecation.ts | PrefixedVideoEnterFullScreen": {
+    "message": "HTMLVideoElement.webkitEnterFullScreen() er \u00farelt. Nota skal Element.requestFullscreen() \u00ed sta\u00f0inn."
+  },
+  "generated/Deprecation.ts | PrefixedVideoEnterFullscreen": {
+    "message": "HTMLVideoElement.webkitEnterFullscreen() er \u00farelt. Nota skal Element.requestFullscreen() \u00ed sta\u00f0inn."
+  },
+  "generated/Deprecation.ts | PrefixedVideoExitFullScreen": {
+    "message": "HTMLVideoElement.webkitExitFullScreen() er \u00farelt. Nota skal Document.exitFullscreen() \u00ed sta\u00f0inn."
+  },
+  "generated/Deprecation.ts | PrefixedVideoExitFullscreen": {
+    "message": "HTMLVideoElement.webkitExitFullscreen() er \u00farelt. Nota skal Document.exitFullscreen() \u00ed sta\u00f0inn."
+  },
+  "generated/Deprecation.ts | PrefixedVideoSupportsFullscreen": {
+    "message": "HTMLVideoElement.webkitSupportsFullscreen er \u00farelt. Nota skal Document.fullscreenEnabled \u00ed sta\u00f0inn."
+  },
+  "generated/Deprecation.ts | PrivacySandboxExtensionsAPI": {
+    "message": "Vi\u00f0 \u00fareldum forritaskilin chrome.privacy.websites.privacySandboxEnabled en \u00feau ver\u00f0a \u00e1fram virk til a\u00f0 vi\u00f0halda samh\u00e6fi vi\u00f0 eldri \u00fatg\u00e1fur fram a\u00f0 \u00fatg\u00e1fu M113. Nota skal chrome.privacy.websites.topicsEnabled, chrome.privacy.websites.fledgeEnabled og chrome.privacy.websites.adMeasurementEnabled \u00ed sta\u00f0inn. Sj\u00e1 https://developer.chrome.com/docs/extensions/reference/privacy/#property-websites-privacySandboxEnabled."
+  },
+  "generated/Deprecation.ts | RTCConstraintEnableDtlsSrtpFalse": {
+    "message": "Takm\u00f6rkunin DtlsSrtpKeyAgreement var fjarl\u00e6g\u00f0. \u00de\u00fa tilgreindir false gildi fyrir \u00feessa takm\u00f6rkun sem er t\u00falka\u00f0 sem tilraun til a\u00f0 nota a\u00f0fer\u00f0ina SDES key negotiation sem var fjarl\u00e6g\u00f0. \u00deessi eiginleiki var fjarl\u00e6g\u00f0ur. Nota skal \u00fej\u00f3nustu sem sty\u00f0ur DTLS key negotiation \u00ed sta\u00f0inn."
+  },
+  "generated/Deprecation.ts | RTCConstraintEnableDtlsSrtpTrue": {
+    "message": "Takm\u00f6rkunin DtlsSrtpKeyAgreement var fjarl\u00e6g\u00f0. \u00de\u00fa tilgreindir true gildi fyrir \u00feessa takm\u00f6rkun sem haf\u00f0i engin \u00e1hrif en \u00fe\u00fa getur fjarl\u00e6gt \u00feessa takm\u00f6rkun til a\u00f0 hreinsa til."
+  },
+  "generated/Deprecation.ts | RTCPeerConnectionGetStatsLegacyNonCompliant": {
+    "message": "getStats() sem byggist \u00e1 svarhringingu er \u00farelt og ver\u00f0ur fjarl\u00e6gt. Nota skal getStats() sem samr\u00e6mist t\u00e6knil\u00fdsingu \u00ed sta\u00f0inn."
+  },
+  "generated/Deprecation.ts | RangeExpand": {
+    "message": "Range.expand() er \u00farelt. Nota skal Selection.modify() \u00ed sta\u00f0inn."
+  },
+  "generated/Deprecation.ts | RequestedSubresourceWithEmbeddedCredentials": {
+    "message": "Subresource requests whose URLs contain embedded credentials (e.g. https://user:pass@host/) are blocked."
+  },
+  "generated/Deprecation.ts | RtcpMuxPolicyNegotiate": {
+    "message": "Valkosturinn rtcpMuxPolicy er \u00fareltur og ver\u00f0ur fjarl\u00e6g\u00f0ur."
+  },
+  "generated/Deprecation.ts | SharedArrayBufferConstructedWithoutIsolation": {
+    "message": "SharedArrayBuffer will require cross-origin isolation. See https://developer.chrome.com/blog/enabling-shared-array-buffer/ for more details."
+  },
+  "generated/Deprecation.ts | TextToSpeech_DisallowedByAutoplay": {
+    "message": "speechSynthesis.speak() \u00e1n virkjunar notanda er \u00farelt og ver\u00f0ur fjarl\u00e6gt."
+  },
+  "generated/Deprecation.ts | UnloadHandler": {
+    "message": "Hlustendur fjarl\u00e6gingartilvika eru \u00fareltir og ver\u00f0a fjarl\u00e6g\u00f0ir."
+  },
+  "generated/Deprecation.ts | V8SharedArrayBufferConstructedInExtensionWithoutIsolation": {
+    "message": "Extensions should opt into cross-origin isolation to continue using SharedArrayBuffer. See https://developer.chrome.com/docs/extensions/mv3/cross-origin-isolation/."
+  },
+  "generated/Deprecation.ts | XHRJSONEncodingDetection": {
+    "message": "UTF-16 is not supported by response json in XMLHttpRequest"
+  },
+  "generated/Deprecation.ts | XMLHttpRequestSynchronousInNonWorkerOutsideBeforeUnload": {
+    "message": "Samstilling XMLHttpRequest \u00ed a\u00f0al\u00fer\u00e6\u00f0i er \u00farelt vegna ska\u00f0legra \u00e1hrifa \u00e1 upplifun notenda. Frekari a\u00f0sto\u00f0 m\u00e1 finna \u00e1 https://xhr.spec.whatwg.org/."
+  },
+  "models/trace/insights/CLSCulprits.ts | animation": {
+    "message": "Hreyfimynd"
+  },
+  "models/trace/insights/CLSCulprits.ts | description": {
+    "message": "Uppsetningarhli\u00f0ranir eiga s\u00e9r sta\u00f0 \u00feegar einingar hreyfast \u00e1n inngrips notanda. [Kanna\u00f0u orsakir uppsetningarhli\u00f0rana](https://web.dev/articles/optimize-cls), eins og hvort einingum hefur veri\u00f0 b\u00e6tt vi\u00f0, \u00fe\u00e6r fjarl\u00e6g\u00f0ar e\u00f0a hvort leturger\u00f0 hefur breyst vi\u00f0 hle\u00f0slu s\u00ed\u00f0unnar."
+  },
+  "models/trace/insights/CLSCulprits.ts | fontRequest": {
+    "message": "Bei\u00f0ni um leturger\u00f0"
+  },
+  "models/trace/insights/CLSCulprits.ts | injectedIframe": {
+    "message": "Innf\u00e6r\u00f0ur iframe"
+  },
+  "models/trace/insights/CLSCulprits.ts | layoutShiftCluster": {
+    "message": "Klasi uppsetningarhli\u00f0runar @ {PH1}"
+  },
+  "models/trace/insights/CLSCulprits.ts | noCulprits": {
+    "message": "Ekki t\u00f3kst a\u00f0 greina \u00e1st\u00e6\u00f0u fyrir breytingu \u00e1 uppsetningu"
+  },
+  "models/trace/insights/CLSCulprits.ts | noLayoutShifts": {
+    "message": "Engar uppsetningarhli\u00f0ranir"
+  },
+  "models/trace/insights/CLSCulprits.ts | title": {
+    "message": "Orsakir uppsetningarhli\u00f0runar"
+  },
+  "models/trace/insights/CLSCulprits.ts | topCulprits": {
+    "message": "Helstu orsakir uppsetningarhli\u00f0runar"
+  },
+  "models/trace/insights/CLSCulprits.ts | unsizedImages": {
+    "message": "St\u00e6r\u00f0 mynda ekki stillt"
+  },
+  "models/trace/insights/CLSCulprits.ts | worstCluster": {
+    "message": "Versti klasi"
+  },
+  "models/trace/insights/CLSCulprits.ts | worstLayoutShiftCluster": {
+    "message": "Versti klasi uppsetningarhli\u00f0runar"
+  },
+  "models/trace/insights/Cache.ts | cacheTTL": {
+    "message": "TTL \u00ed skyndiminni"
+  },
+  "models/trace/insights/Cache.ts | description": {
+    "message": "Langur l\u00edft\u00edmi skyndiminnis getur hra\u00f0a\u00f0 endurteknum heims\u00f3knum \u00e1 s\u00ed\u00f0una. [N\u00e1nar](https://web.dev/uses-long-cache-ttl/)."
+  },
+  "models/trace/insights/Cache.ts | noRequestsToCache": {
+    "message": "Engar bei\u00f0nir me\u00f0 \u00f3skilvirkum skyndiminnisreglum"
+  },
+  "models/trace/insights/Cache.ts | others": {
+    "message": "{PH1} \u00ed vi\u00f0b\u00f3t"
+  },
+  "models/trace/insights/Cache.ts | requestColumn": {
+    "message": "Bei\u00f0ni"
+  },
+  "models/trace/insights/Cache.ts | title": {
+    "message": "Nota skilvirkan skyndiminnisl\u00edft\u00edma"
+  },
+  "models/trace/insights/DOMSize.ts | description": {
+    "message": "St\u00f3rt DOM-tr\u00e9 getur lengt \u00fatreikninga \u00e1 endurr\u00f6\u00f0un st\u00edla og uppsetninga og \u00fear af lei\u00f0andi haft \u00e1hrif \u00e1 a\u00f0l\u00f6gunarh\u00e6fni s\u00ed\u00f0u. St\u00f3rt DOM-tr\u00e9 mun einnig auka minnisnotkun. [Kynntu \u00fe\u00e9r hvernig \u00fe\u00fa kemur \u00ed veg fyrir a\u00f0 vera me\u00f0 of st\u00f3rt DOM-tr\u00e9](https://developer.chrome.com/docs/lighthouse/performance/dom-size/)."
+  },
+  "models/trace/insights/DOMSize.ts | element": {
+    "message": "Eining"
+  },
+  "models/trace/insights/DOMSize.ts | maxChildren": {
+    "message": "Flestar undireiningar"
+  },
+  "models/trace/insights/DOMSize.ts | maxDOMDepth": {
+    "message": "D\u00fdpt DOM"
+  },
+  "models/trace/insights/DOMSize.ts | statistic": {
+    "message": "T\u00f6lfr\u00e6\u00f0iuppl\u00fdsingar"
+  },
+  "models/trace/insights/DOMSize.ts | title": {
+    "message": "F\u00ednstilla st\u00e6r\u00f0 DOM"
+  },
+  "models/trace/insights/DOMSize.ts | totalElements": {
+    "message": "Heildarfj\u00f6ldi eininga"
+  },
+  "models/trace/insights/DOMSize.ts | value": {
+    "message": "Gildi"
+  },
+  "models/trace/insights/DocumentLatency.ts | description": {
+    "message": "Fyrsta netkerfisbei\u00f0nin \u00fe\u00edn er s\u00fa mikilv\u00e6gasta.  Styttu bi\u00f0t\u00edma hennar til a\u00f0 for\u00f0ast framsendingar, tryggja hra\u00f0a sv\u00f6run \u00fej\u00f3ns og virkja texta\u00fej\u00f6ppun."
+  },
+  "models/trace/insights/DocumentLatency.ts | failedRedirects": {
+    "message": "F\u00f3l \u00ed s\u00e9r framsendingar"
+  },
+  "models/trace/insights/DocumentLatency.ts | failedServerResponseTime": {
+    "message": "H\u00e6g sv\u00f6run \u00fej\u00f3ns"
+  },
+  "models/trace/insights/DocumentLatency.ts | failedTextCompression": {
+    "message": "Engin \u00fej\u00f6ppun notu\u00f0"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingRedirects": {
+    "message": "For\u00f0ast framsendingar"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingServerResponseTime": {
+    "message": "Hr\u00f6\u00f0 sv\u00f6run \u00fej\u00f3ns"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingTextCompression": {
+    "message": "\u00dejappar texta"
+  },
+  "models/trace/insights/DocumentLatency.ts | redirectsLabel": {
+    "message": "Beinir \u00e1fram"
+  },
+  "models/trace/insights/DocumentLatency.ts | serverResponseTimeLabel": {
+    "message": "Svart\u00edmi \u00fej\u00f3ns"
+  },
+  "models/trace/insights/DocumentLatency.ts | title": {
+    "message": "Bi\u00f0t\u00edmi skjals"
+  },
+  "models/trace/insights/DocumentLatency.ts | uncompressedDownload": {
+    "message": "\u00d3\u00fejappa\u00f0 ni\u00f0urhal"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | columnDuplicatedBytes": {
+    "message": "Afritu\u00f0 b\u00e6ti"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | columnSource": {
+    "message": "Uppruni"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | description": {
+    "message": "Fjarl\u00e6g\u00f0u st\u00f3rar og endurteknar JavaScript-einingar \u00far p\u00f6kkum til a\u00f0 minnka \u00f3\u00fearfa b\u00e6tanotkun vegna netvirkni."
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | title": {
+    "message": "Afrita\u00f0 JavaScript"
+  },
+  "models/trace/insights/FontDisplay.ts | description": {
+    "message": "Reyndu a\u00f0 stilla [font-display](https://developer.chrome.com/blog/font-display) \u00e1 swap e\u00f0a optional til a\u00f0 tryggja a\u00f0 textinn s\u00e9 \u00e1vallt s\u00fdnilegur. H\u00e6gt er a\u00f0 f\u00ednstilla swap enn frekar til a\u00f0 draga \u00far uppsetningarhli\u00f0runum me\u00f0 \u00fev\u00ed a\u00f0 [hnekkja m\u00e6ligildum leturger\u00f0a](https://developer.chrome.com/blog/font-fallbacks)."
+  },
+  "models/trace/insights/FontDisplay.ts | fontColumn": {
+    "message": "Letur"
+  },
+  "models/trace/insights/FontDisplay.ts | title": {
+    "message": "Leturbirting"
+  },
+  "models/trace/insights/FontDisplay.ts | wastedTimeColumn": {
+    "message": "T\u00edma eytt"
+  },
+  "models/trace/insights/ForcedReflow.ts | anonymous": {
+    "message": "(nafnlaus)"
+  },
+  "models/trace/insights/ForcedReflow.ts | description": {
+    "message": "M\u00f6rg forritaskil, yfirleitt \u00feau sem lesa r\u00famfr\u00e6\u00f0i uppsetningar, \u00fevinga teikniv\u00e9lina til a\u00f0 gera hl\u00e9 \u00e1 keyrslu skriftu til a\u00f0 reikna \u00fat st\u00edl og uppsetningu. N\u00e1nar um [\u00fevinga\u00f0a endurr\u00f6\u00f0un](https://developers.google.com/web/fundamentals/performance/rendering/avoid-large-complex-layouts-and-layout-thrashing#avoid-forced-synchronous-layouts) og hvernig m\u00e1 koma \u00ed veg fyrir hana."
+  },
+  "models/trace/insights/ForcedReflow.ts | relatedStackTrace": {
+    "message": "Staflar\u00f6\u00f0"
+  },
+  "models/trace/insights/ForcedReflow.ts | title": {
+    "message": "\u00devingu\u00f0 endurr\u00f6\u00f0un"
+  },
+  "models/trace/insights/ForcedReflow.ts | topTimeConsumingFunctionCall": {
+    "message": "Helsta a\u00f0ger\u00f0arkall"
+  },
+  "models/trace/insights/ForcedReflow.ts | totalReflowTime": {
+    "message": "Heildart\u00edmi endurr\u00f6\u00f0unar"
+  },
+  "models/trace/insights/ForcedReflow.ts | unattributed": {
+    "message": "[\u00e1n tilv\u00edsunar]"
+  },
+  "models/trace/insights/ImageDelivery.ts | description": {
+    "message": "A\u00f0 minnka ni\u00f0urhalst\u00edma mynda getur b\u00e6tt hle\u00f0slut\u00edma s\u00ed\u00f0unnar og LCP. [N\u00e1nar um f\u00ednstillingu myndst\u00e6r\u00f0a](https://developer.chrome.com/docs/lighthouse/performance/uses-optimized-images/)"
+  },
+  "models/trace/insights/ImageDelivery.ts | estimatedSavings": {
+    "message": "{PH1} (\u00c1\u00e6tl. {PH2})"
+  },
+  "models/trace/insights/ImageDelivery.ts | noOptimizableImages": {
+    "message": "Engar myndir sem h\u00e6gt er a\u00f0 f\u00ednstilla"
+  },
+  "models/trace/insights/ImageDelivery.ts | optimizeFile": {
+    "message": "F\u00ednstilla skr\u00e1arst\u00e6r\u00f0"
+  },
+  "models/trace/insights/ImageDelivery.ts | others": {
+    "message": "{PH1} \u00ed vi\u00f0b\u00f3t"
+  },
+  "models/trace/insights/ImageDelivery.ts | title": {
+    "message": "B\u00e6ta myndbirtingu"
+  },
+  "models/trace/insights/ImageDelivery.ts | useCompression": {
+    "message": "\u00dea\u00f0 g\u00e6ti b\u00e6tt ni\u00f0urhalsst\u00e6r\u00f0 \u00feessarar myndar a\u00f0 auka mynd\u00fej\u00f6ppun."
+  },
+  "models/trace/insights/ImageDelivery.ts | useModernFormat": {
+    "message": "N\u00fat\u00edmalegt myndasni\u00f0 (WebP, AVIF) e\u00f0a aukin mynd\u00fej\u00f6ppun g\u00e6ti b\u00e6tt ni\u00f0urhalsst\u00e6r\u00f0 \u00feessarar myndar."
+  },
+  "models/trace/insights/ImageDelivery.ts | useResponsiveSize": {
+    "message": "\u00deessi myndskr\u00e1 er st\u00e6rri en ({PH1}) birtingarst\u00e6r\u00f0ir ({PH2}) hennar. Nota\u00f0u a\u00f0l\u00f6gunarh\u00e6far myndir til a\u00f0 minnka ni\u00f0urhalsst\u00e6r\u00f0 myndarinnar."
+  },
+  "models/trace/insights/ImageDelivery.ts | useVideoFormat": {
+    "message": "H\u00e6gt er a\u00f0 b\u00e6ta ni\u00f0urhalsst\u00e6r\u00f0 hreyfimyndaefnis me\u00f0 \u00fev\u00ed a\u00f0 nota v\u00edde\u00f3sni\u00f0 \u00ed sta\u00f0 GIF."
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | description": {
+    "message": "Nota\u00f0u lengsta fasann til a\u00f0 kafa d\u00fdpra. [H\u00e6gt er a\u00f0 l\u00e1gmarka tafir](https://web.dev/articles/optimize-inp#optimize_interactions). [F\u00ednstilltu kostna\u00f0 vi\u00f0 a\u00f0al\u00fer\u00e1\u00f0inn](https://web.dev/articles/optimize-long-tasks), oft JS, til a\u00f0 draga \u00far \u00farvinnslut\u00edma."
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | duration": {
+    "message": "Lengd"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | inputDelay": {
+    "message": "Inntaksseinkun"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | noInteractions": {
+    "message": "Engin gagnvirkni greind"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | phase": {
+    "message": "Fasi"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | presentationDelay": {
+    "message": "Kynningarseinkun"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | processingDuration": {
+    "message": "T\u00edmalengd vinnslu"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | title": {
+    "message": "INP eftir fasa"
+  },
+  "models/trace/insights/LCPDiscovery.ts | description": {
+    "message": "F\u00ednstilltu LCP me\u00f0 \u00fev\u00ed a\u00f0 gera LCP-myndina [s\u00fdnilega](https://web.dev/articles/optimize-lcp#1_eliminate_resource_load_delay) beint \u00far HTML og [for\u00f0ast \u00feannig tafir \u00e1 hle\u00f0slu](https://web.dev/articles/lcp-lazy-loading)"
+  },
+  "models/trace/insights/LCPDiscovery.ts | fetchPriorityApplied": {
+    "message": "fetchpriority = h\u00e1tt"
+  },
+  "models/trace/insights/LCPDiscovery.ts | fetchPriorityShouldBeApplied": {
+    "message": "Nota \u00e6tti \u201efetchpriority=high\u201c"
+  },
+  "models/trace/insights/LCPDiscovery.ts | lazyLoadNotApplied": {
+    "message": "tafinni hle\u00f0slu var ekki beitt"
+  },
+  "models/trace/insights/LCPDiscovery.ts | lcpLoadDelay": {
+    "message": "LCP-mynd hla\u00f0i\u00f0 {PH1} eftir fyrsta upphafssta\u00f0."
+  },
+  "models/trace/insights/LCPDiscovery.ts | noLcp": {
+    "message": "Ekkert LCP greindist"
+  },
+  "models/trace/insights/LCPDiscovery.ts | noLcpResource": {
+    "message": "Engin LCP-g\u00f6gn fundust \u00fev\u00ed \u00feetta LCP er ekki mynd"
+  },
+  "models/trace/insights/LCPDiscovery.ts | requestDiscoverable": {
+    "message": "Bei\u00f0ni er s\u00fdnileg \u00ed upphaflega skjalinu"
+  },
+  "models/trace/insights/LCPDiscovery.ts | title": {
+    "message": "LCP-uppg\u00f6tvunarbei\u00f0ni"
+  },
+  "models/trace/insights/LCPPhases.ts | description": {
+    "message": "Hver [fasi er me\u00f0 s\u00e9rstakar endurb\u00e6tingara\u00f0fer\u00f0ir](https://web.dev/articles/optimize-lcp#lcp-breakdown). Helst \u00e6tti mestum hluta LCP-t\u00edmans a\u00f0 vera vari\u00f0 \u00ed hle\u00f0slu gagna, ekki \u00ed tafir."
+  },
+  "models/trace/insights/LCPPhases.ts | duration": {
+    "message": "Lengd"
+  },
+  "models/trace/insights/LCPPhases.ts | elementRenderDelay": {
+    "message": "T\u00f6f \u00e1 hle\u00f0slu einingar"
+  },
+  "models/trace/insights/LCPPhases.ts | fieldDuration": {
+    "message": "75. hundra\u00f0hlutareitur"
+  },
+  "models/trace/insights/LCPPhases.ts | noLcp": {
+    "message": "Ekkert LCP greindist"
+  },
+  "models/trace/insights/LCPPhases.ts | phase": {
+    "message": "Fasi"
+  },
+  "models/trace/insights/LCPPhases.ts | resourceLoadDelay": {
+    "message": "T\u00f6f \u00e1 hle\u00f0slu gagna"
+  },
+  "models/trace/insights/LCPPhases.ts | resourceLoadDuration": {
+    "message": "Hle\u00f0slut\u00edmi gagna"
+  },
+  "models/trace/insights/LCPPhases.ts | timeToFirstByte": {
+    "message": "T\u00edmi fram a\u00f0 fyrsta b\u00e6ti"
+  },
+  "models/trace/insights/LCPPhases.ts | title": {
+    "message": "LCP eftir fasa"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | columnScript": {
+    "message": "Skrifta"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | columnWastedBytes": {
+    "message": "Eydd b\u00e6ti"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | description": {
+    "message": "Fj\u00f6lfyllingar og umbreytingar gera eldri v\u00f6frum kleift a\u00f0 nota n\u00fdja JavaScript-eiginleika. Hins vegar eru margar \u00feeirra ekki nau\u00f0synlegar fyrir n\u00fat\u00edmavafra. \u00cdhuga\u00f0u a\u00f0 breyta JavaScript-k\u00f3\u00f0unarferlinu \u00fe\u00ednu \u00feannig a\u00f0 \u00fe\u00fa umbreytir ekki og vist\u00fe\u00fd\u00f0ir eiginleika \u00e1 [grunnl\u00ednunni](https://web.dev/articles/baseline-and-polyfills) nema \u00fe\u00fa vitir a\u00f0 \u00fe\u00fa munir \u00feurfa a\u00f0 sty\u00f0ja eldri vafra. [Kynntu \u00fe\u00e9r hvers vegna flest vefsv\u00e6\u00f0i geta nota\u00f0 ES6+ k\u00f3\u00f0a \u00e1n umbreytingar og vist\u00fe\u00fd\u00f0ingar](https://philipwalton.com/articles/the-state-of-es5-on-the-web/)"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | title": {
+    "message": "Eldra JavaScript"
+  },
+  "models/trace/insights/ModernHTTP.ts | description": {
+    "message": "HTTP/2 og HTTP/3 bj\u00f3\u00f0a upp \u00e1 margs konar fr\u00ed\u00f0indi fram yfir HTTP/1.1, eins og multiplexing. [N\u00e1nar um a\u00f0 nota n\u00fat\u00edmalegt HTTP](https://developer.chrome.com/docs/lighthouse/best-practices/uses-http2/)."
+  },
+  "models/trace/insights/ModernHTTP.ts | noOldProtocolRequests": {
+    "message": "Bei\u00f0nir notu\u00f0u ekki HTTP/1.1"
+  },
+  "models/trace/insights/ModernHTTP.ts | protocol": {
+    "message": "Samskiptaregla"
+  },
+  "models/trace/insights/ModernHTTP.ts | request": {
+    "message": "Bei\u00f0ni"
+  },
+  "models/trace/insights/ModernHTTP.ts | title": {
+    "message": "N\u00fat\u00edmalegt HTTP"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | description": {
+    "message": "[For\u00f0astu a\u00f0 tengja mikilv\u00e6gar bei\u00f0nir saman](https://developer.chrome.com/docs/lighthouse/performance/critical-request-chains) me\u00f0 \u00fev\u00ed a\u00f0 stytta ke\u00f0jur, minnka st\u00e6r\u00f0 ni\u00f0urhals \u00e1 tilf\u00f6ngum e\u00f0a fresta ni\u00f0urhali \u00f3nau\u00f0synlegra tilfanga til a\u00f0 b\u00e6ta s\u00ed\u00f0uhle\u00f0slu."
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | maxCriticalPathLatency": {
+    "message": "H\u00e1marksbi\u00f0t\u00edmi \u00e1r\u00ed\u00f0andi sl\u00f3\u00f0ar:"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | noNetworkDependencyTree": {
+    "message": "Netkerfis\u00e1kv\u00e6\u00f0i hafa ekki \u00e1hrif \u00e1 nein verkefni \u00ed bi\u00f0"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | title": {
+    "message": "\u00c1kv\u00e6\u00f0atr\u00e9 netkerfis"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | warningDescription": {
+    "message": "For\u00f0astu a\u00f0 tengja mikilv\u00e6gar bei\u00f0nir saman me\u00f0 \u00fev\u00ed a\u00f0 stytta ke\u00f0jur, minnka st\u00e6r\u00f0 ni\u00f0urhals \u00e1 tilf\u00f6ngum e\u00f0a fresta ni\u00f0urhali \u00f3nau\u00f0synlegra tilfanga til a\u00f0 b\u00e6ta s\u00ed\u00f0uhle\u00f0slu."
+  },
+  "models/trace/insights/RenderBlocking.ts | description": {
+    "message": "Bei\u00f0nir loka \u00e1 upphaflega hle\u00f0slu s\u00ed\u00f0u sem kann a\u00f0 valda t\u00f6fum \u00e1 LCP. [Frestun e\u00f0a innfelling](https://web.dev/learn/performance/understanding-the-critical-path#render-blocking_resources/) getur f\u00e6rt \u00feessar netkerfisbei\u00f0nir \u00fat fyrir nau\u00f0synlega sl\u00f3\u00f0."
+  },
+  "models/trace/insights/RenderBlocking.ts | duration": {
+    "message": "Lengd"
+  },
+  "models/trace/insights/RenderBlocking.ts | noRenderBlocking": {
+    "message": "Engar bei\u00f0nir loku\u00f0u \u00e1 teiknun fyrir \u00feessa flettingu"
+  },
+  "models/trace/insights/RenderBlocking.ts | renderBlockingRequest": {
+    "message": "Bei\u00f0ni"
+  },
+  "models/trace/insights/RenderBlocking.ts | title": {
+    "message": "Birta lokunarbei\u00f0nir"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | description": {
+    "message": "Ef kostna\u00f0ur vi\u00f0 endurreikning st\u00edls er h\u00e1r getur f\u00ednstilling vals dregi\u00f0 \u00far honum. [F\u00ednstilltu vali\u00f0](https://developer.chrome.com/docs/devtools/performance/selector-stats) me\u00f0 b\u00e6\u00f0i l\u00f6ngum gangt\u00edma og h\u00e1rri % h\u00e6gsl\u00f3\u00f0ar. Einfaldara val, f\u00e6rri valkostir, sm\u00e6rra DOM og grynnra DOM munu draga \u00far samsvarandi kostna\u00f0i."
+  },
+  "models/trace/insights/SlowCSSSelector.ts | elapsed": {
+    "message": "Li\u00f0inn t\u00edmi"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | enableSelectorData": {
+    "message": "Engin CSS-valg\u00f6gn fundust. Kveikt \u00fearf a\u00f0 vera \u00e1 t\u00f6lfr\u00e6\u00f0iuppl\u00fdsingum CSS-vals \u00ed stillingum afkastasv\u00e6\u00f0is."
+  },
+  "models/trace/insights/SlowCSSSelector.ts | matchAttempts": {
+    "message": "Tilraunir til samsv\u00f6runar"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | matchCount": {
+    "message": "Fj\u00f6ldi samsvarana"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | title": {
+    "message": "Kostna\u00f0ur vi\u00f0 CSS-val"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | topSelectors": {
+    "message": "Helsta val"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | total": {
+    "message": "Samtals"
+  },
+  "models/trace/insights/ThirdParties.ts | columnMainThreadTime": {
+    "message": "T\u00edmi a\u00f0al\u00fer\u00e1\u00f0ar"
+  },
+  "models/trace/insights/ThirdParties.ts | columnThirdParty": {
+    "message": "\u00deri\u00f0ji a\u00f0ili"
+  },
+  "models/trace/insights/ThirdParties.ts | columnTransferSize": {
+    "message": "Flutningsst\u00e6r\u00f0"
+  },
+  "models/trace/insights/ThirdParties.ts | description": {
+    "message": "K\u00f3\u00f0i \u00feri\u00f0ja a\u00f0ila getur haft veruleg \u00e1hrif \u00e1 hle\u00f0slu. [Styttu k\u00f3\u00f0a \u00feri\u00f0ja a\u00f0ila og fresta\u00f0u hle\u00f0slu hans](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/loading-third-party-javascript/) til a\u00f0 setja efni s\u00ed\u00f0unnar \u00feinnar \u00ed forgang."
+  },
+  "models/trace/insights/ThirdParties.ts | noThirdParties": {
+    "message": "Ekkert efni fr\u00e1 \u00feri\u00f0ju a\u00f0ilum fannst"
+  },
+  "models/trace/insights/ThirdParties.ts | title": {
+    "message": "\u00deri\u00f0ju a\u00f0ilar"
+  },
+  "models/trace/insights/Viewport.ts | description": {
+    "message": "Smelligagnvirkni g\u00e6ti [tafist um allt a\u00f0 300\u00a0ms](https://developer.chrome.com/blog/300ms-tap-delay-gone-away/) ef glugginn er ekki f\u00ednstilltur fyrir snjallt\u00e6ki."
+  },
+  "models/trace/insights/Viewport.ts | title": {
+    "message": "F\u00ednstilla glugga fyrir snjallt\u00e6ki"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | HTTPMethodNotGET": {
+    "message": "A\u00f0eins er h\u00e6gt a\u00f0 vista s\u00ed\u00f0ur sem er hla\u00f0i\u00f0 \u00ed gegnum GET-bei\u00f0ni \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | HTTPStatusNotOK": {
+    "message": "A\u00f0eins er h\u00e6gt a\u00f0 vista s\u00ed\u00f0ur me\u00f0 st\u00f6\u00f0uk\u00f3\u00f0a 2XX \u00ed skyndiminni."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | JavaScriptExecution": {
+    "message": "Chrome greindi tilraun til a\u00f0 keyra JavaScript \u00ed skyndiminni."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | appBanner": {
+    "message": "Eins og stendur er ekki h\u00e6gt a\u00f0 vista s\u00ed\u00f0ur sem bi\u00f0ja um AppBanner \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabled": {
+    "message": "Fl\u00f6gg hafa sl\u00f6kkt \u00e1 skyndiminni til baka/\u00e1fram. Opna\u00f0u chrome://flags/#back-forward-cache til a\u00f0 virkja \u00fea\u00f0 sta\u00f0bundi\u00f0 \u00ed \u00feessu t\u00e6ki."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledByCommandLine": {
+    "message": "Skipanal\u00ednan hefur sl\u00f6kkt \u00e1 skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledByLowMemory": {
+    "message": "Sl\u00f6kkt er \u00e1 skyndiminni til baka/\u00e1fram vegna of l\u00edtils minnis."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledForDelegate": {
+    "message": "Fulltr\u00fai sty\u00f0ur ekki skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledForPrerender": {
+    "message": "Skyndiminni til baka/\u00e1fram er \u00f3virkt fyrir forteiknun."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | broadcastChannel": {
+    "message": "Ekki er h\u00e6gt a\u00f0 vista s\u00ed\u00f0una \u00ed skyndiminni vegna \u00feess a\u00f0 h\u00fan inniheldur BroadcastChannel-tilvik me\u00f0 skr\u00e1\u00f0um hlustendum."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheControlNoStore": {
+    "message": "Ekki er h\u00e6gt a\u00f0 vista s\u00ed\u00f0ur me\u00f0 hausinn cache-control:no-store \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheFlushed": {
+    "message": "Skyndiminni\u00f0 var hreinsa\u00f0 viljandi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheLimit": {
+    "message": "S\u00ed\u00f0an var flutt \u00far skyndiminninu til a\u00f0 koma annarri s\u00ed\u00f0u fyrir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | containsPlugins": {
+    "message": "Eins og stendur er ekki h\u00e6gt a\u00f0 vista s\u00ed\u00f0ur sem innihalda vi\u00f0b\u00e6tur \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentDiscarded": {
+    "message": "\u00d3skilgreint"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentFileChooser": {
+    "message": "Ekki er h\u00e6gt a\u00f0 vista s\u00ed\u00f0ur sem nota forritaskil FileChooser \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentFileSystemAccess": {
+    "message": "Ekki er h\u00e6gt a\u00f0 vista s\u00ed\u00f0ur sem nota File System Access-forritaskil \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaDevicesDispatcherHost": {
+    "message": "Ekki er h\u00e6gt a\u00f0 vista s\u00ed\u00f0ur sem nota verkefnastj\u00f3ra geymslumi\u00f0la \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaPlay": {
+    "message": "Efnisspilari var \u00ed gangi \u00feegar flett var \u00ed burtu."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaSession": {
+    "message": "Ekki er h\u00e6gt a\u00f0 vista s\u00ed\u00f0ur sem nota forritaskil MediaSession og stilla spilunarst\u00f6\u00f0u \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaSessionService": {
+    "message": "Ekki er h\u00e6gt a\u00f0 vista s\u00ed\u00f0ur sem nota forritaskil MediaSession og stilla hj\u00e1lparforrit a\u00f0ger\u00f0a \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentScreenReader": {
+    "message": "Sl\u00f6kkt er \u00e1 skyndiminni til baka / \u00e1fram vegna skj\u00e1lesara."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentSecurityHandler": {
+    "message": "Eins og stendur er ekki h\u00e6gt a\u00f0 vista s\u00ed\u00f0ur sem nota SecurityHandler \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentSerial": {
+    "message": "Ekki er h\u00e6gt a\u00f0 vista s\u00ed\u00f0ur sem nota forritaskil Serial \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebAuthenticationAPI": {
+    "message": "Ekki er h\u00e6gt a\u00f0 vista s\u00ed\u00f0ur sem nota forritaskil WebAuthetication \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebBluetooth": {
+    "message": "Ekki er h\u00e6gt a\u00f0 vista s\u00ed\u00f0ur sem nota forritaskil WebBluetooth \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebUSB": {
+    "message": "Ekki er h\u00e6gt a\u00f0 vista s\u00ed\u00f0ur sem nota forritaskil WebUSB \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cookieDisabled": {
+    "message": "Sl\u00f6kkt er \u00e1 skyndiminni til baka/\u00e1fram vegna \u00feess a\u00f0 sl\u00f6kkt er \u00e1 f\u00f3tsporum \u00e1 s\u00ed\u00f0u sem notar Cache-Control: no-store."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | dedicatedWorkerOrWorklet": {
+    "message": "Eins og stendur er ekki h\u00e6gt a\u00f0 vista s\u00ed\u00f0ur sem nota tilgreinda skriftu (dedicated worker) e\u00f0a einfalda skriftu (worklet) \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | documentLoaded": {
+    "message": "Skjali\u00f0 hl\u00f3\u00f0st ekki a\u00f0 fullu \u00e1\u00f0ur en flett var \u00ed burtu."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderAppBannerManager": {
+    "message": "Forritabor\u00f0i var opinn \u00feegar flett var \u00ed burtu."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderChromePasswordManagerClientBindCredentialManager": {
+    "message": "A\u00f0gangsor\u00f0astj\u00f3rnun Chrome var opin \u00feegar flett var \u00ed burtu."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderDomDistillerSelfDeletingRequestDelegate": {
+    "message": "DOM-samantekt var \u00ed gangi \u00feegar flett var \u00ed burtu."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderDomDistillerViewerSource": {
+    "message": "Sko\u00f0un DOM-samantektar var opin \u00feegar flett var \u00ed burtu."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionMessaging": {
+    "message": "Sl\u00f6kkt er \u00e1 skyndiminni til baka / \u00e1fram vegna vi\u00f0b\u00f3ta sem nota forritaskil skilabo\u00f0a."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionMessagingForOpenPort": {
+    "message": "Vi\u00f0b\u00e6tur me\u00f0 langl\u00edfa tengingu \u00e6ttu a\u00f0 loka tengingunni \u00e1\u00f0ur en \u00fe\u00e6r eru vista\u00f0ar \u00ed skyndiminni til baka / \u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionSentMessageToCachedFrame": {
+    "message": "Vi\u00f0b\u00e6tur me\u00f0 langl\u00edfa tengingu reyndu a\u00f0 senda skilabo\u00f0 til ramma \u00ed skyndiminni til baka / \u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensions": {
+    "message": "Sl\u00f6kkt er \u00e1 skyndiminni til baka / \u00e1fram vegna vi\u00f0b\u00f3ta."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderModalDialog": {
+    "message": "Vi\u00f0brag\u00f0sgluggi \u00e1 bor\u00f0 vi\u00f0 endursendingu ey\u00f0ubla\u00f0s e\u00f0a HTTP-a\u00f0gangsor\u00f0sgluggi var birtur \u00e1 s\u00ed\u00f0unni \u00feegar flett var \u00ed burtu."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderOfflinePage": {
+    "message": "S\u00ed\u00f0a \u00e1n nettengingar var birt \u00feegar flett var \u00ed burtu."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderOomInterventionTabHelper": {
+    "message": "A\u00f0ger\u00f0astikan \u201eMinni fullt\u201c var opin \u00feegar flett var \u00ed burtu."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderPermissionRequestManager": {
+    "message": "Heimildabei\u00f0nir voru til sta\u00f0ar \u00feegar flett var \u00ed burtu."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderPopupBlockerTabHelper": {
+    "message": "Sprettigluggav\u00f6rn var til sta\u00f0ar \u00feegar flett var \u00ed burtu."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderSafeBrowsingThreatDetails": {
+    "message": "Uppl\u00fdsingar \u00f6ruggrar vefsko\u00f0unar voru birtar \u00feegar flett var \u00ed burtu."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderSafeBrowsingTriggeredPopupBlocker": {
+    "message": "\u00d6rugg vefsko\u00f0un tengdi \u00feessa s\u00ed\u00f0u vi\u00f0 misnotkun og loka\u00f0i \u00e1 sprettiglugga."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | enteredBackForwardCacheBeforeServiceWorkerHostAdded": {
+    "message": "\u00dej\u00f3nustuskrifta (service worker) var virkju\u00f0 \u00e1 me\u00f0an s\u00ed\u00f0an var \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | errorDocument": {
+    "message": "Sl\u00f6kkt er \u00e1 skyndiminni til baka / \u00e1fram vegna villu \u00ed skjali."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | fencedFramesEmbedder": {
+    "message": "S\u00ed\u00f0ur sem nota FencedFrames er ekki h\u00e6gt a\u00f0 geyma \u00ed skyndiminni til baka / \u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | foregroundCacheLimit": {
+    "message": "S\u00ed\u00f0an var flutt \u00far skyndiminninu til a\u00f0 koma annarri s\u00ed\u00f0u fyrir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | grantedMediaStreamAccess": {
+    "message": "Eins og stendur er ekki h\u00e6gt a\u00f0 vista s\u00ed\u00f0ur sem heimila a\u00f0gang a\u00f0 efnisstraumi \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | haveInnerContents": {
+    "message": "Eins og stendur eru s\u00ed\u00f0ur sem innihalda vissar ger\u00f0ir af innfelldu efni (t.d. PDF-skj\u00f6l) ekki gjaldgengar fyrir skyndiminni til baka / \u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | idleManager": {
+    "message": "Eins og stendur er ekki h\u00e6gt a\u00f0 vista s\u00ed\u00f0ur sem nota IdleManager \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | indexedDBConnection": {
+    "message": "Eins og stendur er ekki h\u00e6gt a\u00f0 vista s\u00ed\u00f0ur me\u00f0 opna IndexedDB-tengingu \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | indexedDBEvent": {
+    "message": "Sl\u00f6kkt er \u00e1 skyndiminni til baka / \u00e1fram vegna IndexedDB-tilviks"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | ineligibleAPI": {
+    "message": "\u00d3gild forritaskil voru notu\u00f0."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | injectedJavascript": {
+    "message": "Eins og stendur er ekki h\u00e6gt a\u00f0 vista s\u00ed\u00f0ur \u00fear sem JavaScript er komi\u00f0 fyrir me\u00f0 vi\u00f0b\u00f3tum \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | injectedStyleSheet": {
+    "message": "Eins og stendur er ekki h\u00e6gt a\u00f0 vista s\u00ed\u00f0ur \u00fear sem StyleSheet er komi\u00f0 fyrir me\u00f0 vi\u00f0b\u00f3tum \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | internalError": {
+    "message": "Innri villa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | jsNetworkRequestReceivedCacheControlNoStoreResource": {
+    "message": "Sl\u00f6kkt er \u00e1 skyndiminni til baka/\u00e1fram vegna \u00feess a\u00f0 JavaScript-netbei\u00f0ni f\u00e9kk g\u00f6gn me\u00f0 Cache-Control: no-store-haus."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | keepaliveRequest": {
+    "message": "Sl\u00f6kkt er \u00e1 skyndiminni til baka / \u00e1fram vegna bei\u00f0ni um a\u00f0 halda tengingu."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | keyboardLock": {
+    "message": "Eins og stendur er ekki h\u00e6gt a\u00f0 vista s\u00ed\u00f0ur sem nota lyklabor\u00f0sl\u00e1s \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | loading": {
+    "message": "S\u00ed\u00f0an hl\u00f3\u00f0st ekki a\u00f0 fullu \u00e1\u00f0ur en flett var \u00ed burtu."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | mainResourceHasCacheControlNoCache": {
+    "message": "Ekki er h\u00e6gt a\u00f0 vista s\u00ed\u00f0ur me\u00f0 a\u00f0altilfangi\u00f0 cache-control:no-cache \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | mainResourceHasCacheControlNoStore": {
+    "message": "Ekki er h\u00e6gt a\u00f0 vista s\u00ed\u00f0ur me\u00f0 a\u00f0altilfangi\u00f0 cache-control:no-store \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | navigationCancelledWhileRestoring": {
+    "message": "H\u00e6tt var vi\u00f0 flettingu \u00e1\u00f0ur en h\u00e6gt var a\u00f0 endurheimta s\u00ed\u00f0una \u00far skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkExceedsBufferLimit": {
+    "message": "S\u00ed\u00f0an var flutt \u00far skyndiminni vegna \u00feess a\u00f0 virk nettenging t\u00f3k vi\u00f0 of miklu gagnamagni. Chrome takmarkar gagnamagni\u00f0 sem s\u00ed\u00f0a getur teki\u00f0 vi\u00f0 \u00ed skyndiminni."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestDatapipeDrainedAsBytesConsumer": {
+    "message": "Eins og stendur er ekki h\u00e6gt a\u00f0 vista s\u00ed\u00f0ur sem eru me\u00f0 fetch() e\u00f0a XHR \u00ed vinnslu \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestRedirected": {
+    "message": "S\u00ed\u00f0an var flutt \u00far skyndiminni til baka/\u00e1fram vegna \u00feess a\u00f0 virk netkerfisbei\u00f0ni f\u00f3l \u00ed s\u00e9r framsendingu."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestTimeout": {
+    "message": "S\u00ed\u00f0an var flutt \u00far skyndiminninu vegna \u00feess a\u00f0 nettenging var opin of lengi. Chrome takmarkar t\u00edmann sem s\u00ed\u00f0a getur teki\u00f0 vi\u00f0 g\u00f6gnum \u00ed skyndiminni."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | noResponseHead": {
+    "message": "Ekki er h\u00e6gt a\u00f0 vista s\u00ed\u00f0ur sem eru me\u00f0 \u00f3gildan svarhaus \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | notMainFrame": {
+    "message": "Fletting \u00e1tti s\u00e9r sta\u00f0 \u00ed ramma sem er ekki a\u00f0alramminn."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingIndexedDBTransaction": {
+    "message": "Eins og stendur er ekki h\u00e6gt a\u00f0 vista s\u00ed\u00f0ur me\u00f0 vi\u00f0varandi, skr\u00e1\u00f0ar DB-f\u00e6rslur \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestDirectSocket": {
+    "message": "Eins og stendur er ekki h\u00e6gt a\u00f0 vista s\u00ed\u00f0ur me\u00f0 netkerfisbei\u00f0ni \u00ed vinnslu \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestFetch": {
+    "message": "Eins og stendur er ekki h\u00e6gt a\u00f0 vista s\u00ed\u00f0ur me\u00f0 bei\u00f0nir um a\u00f0 s\u00e6kja netkerfi \u00ed vinnslu \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestOthers": {
+    "message": "Eins og stendur er ekki h\u00e6gt a\u00f0 vista s\u00ed\u00f0ur me\u00f0 netkerfisbei\u00f0ni \u00ed vinnslu \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestXHR": {
+    "message": "Eins og stendur er ekki h\u00e6gt a\u00f0 vista s\u00ed\u00f0ur me\u00f0 XHR-netkerfisbei\u00f0ni \u00ed vinnslu \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | paymentManager": {
+    "message": "Eins og stendur er ekki h\u00e6gt a\u00f0 vista s\u00ed\u00f0ur sem nota PaymentManager \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | pictureInPicture": {
+    "message": "Eins og stendur er ekki h\u00e6gt a\u00f0 vista s\u00ed\u00f0ur sem nota mynd \u00ed mynd \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | printing": {
+    "message": "Ekki er h\u00e6gt a\u00f0 vista s\u00ed\u00f0ur sem birta prentvi\u00f0m\u00f3t \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | relatedActiveContentsExist": {
+    "message": "S\u00ed\u00f0an var opnu\u00f0 me\u00f0 \u201ewindow.open()\u201c og annar flipi v\u00edsar \u00e1 s\u00ed\u00f0una, e\u00f0a s\u00ed\u00f0an opna\u00f0i glugga."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | rendererProcessCrashed": {
+    "message": "Hrun var\u00f0 vi\u00f0 teiknunarferli s\u00ed\u00f0u \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | rendererProcessKilled": {
+    "message": "Teiknunarferli s\u00ed\u00f0u \u00ed skyndiminni til baka/\u00e1fram var st\u00f6\u00f0va\u00f0."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedAudioCapturePermission": {
+    "message": "Eins og stendur er ekki h\u00e6gt a\u00f0 vista s\u00ed\u00f0ur sem bi\u00f0ja um heimild fyrir hlj\u00f3\u00f0uppt\u00f6ku \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedBackForwardCacheBlockedSensors": {
+    "message": "Eins og stendur er ekki h\u00e6gt a\u00f0 vista s\u00ed\u00f0ur sem bi\u00f0ja um skynjaraheimildir \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedBackgroundWorkPermission": {
+    "message": "Eins og stendur er ekki h\u00e6gt a\u00f0 vista s\u00ed\u00f0ur sem bi\u00f0ja um a\u00f0 samstilla \u00ed bakgrunni e\u00f0a a\u00f0 s\u00e6kja heimildir \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedMIDIPermission": {
+    "message": "Eins og stendur er ekki h\u00e6gt a\u00f0 vista s\u00ed\u00f0ur sem bi\u00f0ja um MIDI-heimildir \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedNotificationsPermission": {
+    "message": "Eins og stendur er ekki h\u00e6gt a\u00f0 vista s\u00ed\u00f0ur sem bi\u00f0ja um tilkynningaheimildir \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedStorageAccessGrant": {
+    "message": "Eins og stendur er ekki h\u00e6gt a\u00f0 vista s\u00ed\u00f0ur sem bi\u00f0ja um a\u00f0gang a\u00f0 geymslur\u00fdmi \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedVideoCapturePermission": {
+    "message": "Eins og stendur er ekki h\u00e6gt a\u00f0 vista s\u00ed\u00f0ur sem bi\u00f0ja um heimild fyrir myndskei\u00f0suppt\u00f6ku \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | schemeNotHTTPOrHTTPS": {
+    "message": "A\u00f0eins er h\u00e6gt a\u00f0 vista s\u00ed\u00f0ur me\u00f0 HTTP- / HTTPS-vefsl\u00f3\u00f0arskema \u00ed skyndiminni."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerClaim": {
+    "message": "\u00dej\u00f3nustuskrifta (service worker) ger\u00f0i tilkall til s\u00ed\u00f0unnar \u00e1 me\u00f0an h\u00fan var \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerPostMessage": {
+    "message": "\u00dej\u00f3nustuskrifta (service worker) reyndi a\u00f0 senda s\u00ed\u00f0u \u00ed skyndiminni til baka/\u00e1fram MessageEvent."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerUnregistration": {
+    "message": "\u00dej\u00f3nususkrifta (service worker) var afskr\u00e1\u00f0 \u00e1 me\u00f0an s\u00ed\u00f0a var \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerVersionActivation": {
+    "message": "S\u00ed\u00f0an var flutt \u00far skyndiminni til baka/\u00e1fram vegna virkjunar \u00fej\u00f3nustuskriftu (service worker)."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | sessionRestored": {
+    "message": "Chrome var endurr\u00e6stur og hreinsa\u00f0i f\u00e6rslur \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | sharedWorker": {
+    "message": "Eins og stendur er ekki h\u00e6gt a\u00f0 vista s\u00ed\u00f0ur sem nota SharedWorker \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | speechRecognizer": {
+    "message": "Eins og stendur er ekki h\u00e6gt a\u00f0 vista s\u00ed\u00f0ur sem nota SpeechRecognizer \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | speechSynthesis": {
+    "message": "Eins og stendur er ekki h\u00e6gt a\u00f0 vista s\u00ed\u00f0ur sem nota SpeechSynthesis \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subframeIsNavigating": {
+    "message": "iframe \u00e1 s\u00ed\u00f0unni h\u00f3f flettingu sem var ekki loki\u00f0 vi\u00f0."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subresourceHasCacheControlNoCache": {
+    "message": "Ekki er h\u00e6gt a\u00f0 vista s\u00ed\u00f0ur me\u00f0 undirtilfangi\u00f0 cache-control:no-cache \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subresourceHasCacheControlNoStore": {
+    "message": "Ekki er h\u00e6gt a\u00f0 vista s\u00ed\u00f0ur me\u00f0 undirtilfangi\u00f0 cache-control:no-store \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | timeout": {
+    "message": "S\u00ed\u00f0an f\u00f3r yfir h\u00e1markst\u00edma \u00ed skyndiminni til baka/\u00e1fram og rann \u00fat \u00e1 t\u00edma."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | timeoutPuttingInCache": {
+    "message": "S\u00ed\u00f0an rann \u00fat \u00e1 t\u00edma vi\u00f0 vistun \u00ed skyndiminni til baka/\u00e1fram (l\u00edklega vegna langvarandi keyrslu pagehide-hj\u00e1lparforrita)."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | unloadHandlerExistsInMainFrame": {
+    "message": "S\u00ed\u00f0an er me\u00f0 hreinsunarskipun (unload handler) \u00ed a\u00f0alrammanum."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | unloadHandlerExistsInSubFrame": {
+    "message": "S\u00ed\u00f0an er me\u00f0 hreinsunarskipun (unload handler) \u00ed undirramma."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | userAgentOverrideDiffers": {
+    "message": "Vafrinn breytti hnekkingarhaus a\u00f0gangsb\u00fana\u00f0ar."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | wasGrantedMediaAccess": {
+    "message": "Eins og stendur er ekki h\u00e6gt a\u00f0 vista s\u00ed\u00f0ur sem hafa veitt a\u00f0gang a\u00f0 mynd- og hlj\u00f3\u00f0uppt\u00f6kum \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webDatabase": {
+    "message": "Eins og stendur er ekki h\u00e6gt a\u00f0 vista s\u00ed\u00f0ur sem nota WebDatabase \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webHID": {
+    "message": "Eins og stendur er ekki h\u00e6gt a\u00f0 vista s\u00ed\u00f0ur sem nota WebHID \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webLocks": {
+    "message": "Eins og stendur er ekki h\u00e6gt a\u00f0 vista s\u00ed\u00f0ur sem nota WebLocks \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webNfc": {
+    "message": "Ekki er h\u00e6gt a\u00f0 vista s\u00ed\u00f0ur sem nota WebNfc \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webOTPService": {
+    "message": "Eins og stendur er ekki h\u00e6gt a\u00f0 vista s\u00ed\u00f0ur sem nota WebOTPService \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webRTC": {
+    "message": "Ekki er h\u00e6gt a\u00f0 vista s\u00ed\u00f0ur me\u00f0 WebRTC \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webRTCSticky": {
+    "message": "Sl\u00f6kkt er \u00e1 skyndiminni til baka/\u00e1fram vegna \u00feess a\u00f0 WebRTC var nota\u00f0."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webShare": {
+    "message": "Eins og stendur er ekki h\u00e6gt a\u00f0 vista s\u00ed\u00f0ur sem nota WebShare \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webSocket": {
+    "message": "Ekki er h\u00e6gt a\u00f0 vista s\u00ed\u00f0ur me\u00f0 WebSocket \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webSocketSticky": {
+    "message": "Sl\u00f6kkt er \u00e1 skyndiminni til baka/\u00e1fram vegna \u00feess a\u00f0 WebSocket var nota\u00f0."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webTransport": {
+    "message": "Ekki er h\u00e6gt a\u00f0 vista s\u00ed\u00f0ur me\u00f0 WebTransport \u00ed skyndiminni til baka/\u00e1fram."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webTransportSticky": {
+    "message": "Sl\u00f6kkt er \u00e1 skyndiminni til baka/\u00e1fram vegna \u00feess a\u00f0 WebTransport var nota\u00f0."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webXR": {
+    "message": "Eins og stendur er ekki h\u00e6gt a\u00f0 vista s\u00ed\u00f0ur sem nota WebXR \u00ed skyndiminni til baka/\u00e1fram."
+  }
+}

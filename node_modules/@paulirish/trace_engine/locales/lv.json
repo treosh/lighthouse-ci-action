@@ -1,0 +1,908 @@
+{
+  "generated/Deprecation.ts | AuthorizationCoveredByWildcard": {
+    "message": "Authorization will not be covered by the wildcard symbol (*) in CORS Access-Control-Allow-Headers handling."
+  },
+  "generated/Deprecation.ts | CSSSelectorInternalMediaControlsOverlayCastButton": {
+    "message": "The disableRemotePlayback attribute should be used in order to disable the default Cast integration instead of using -internal-media-controls-overlay-cast-button selector."
+  },
+  "generated/Deprecation.ts | CSSValueAppearanceSliderVertical": {
+    "message": "CSS izskata v\u0113rt\u012bba slider-vertical nav standartiz\u0113ta un tiks no\u0146emta."
+  },
+  "generated/Deprecation.ts | CanRequestURLHTTPContainingNewline": {
+    "message": "Resource requests whose URLs contained both removed whitespace \\(n|r|t) characters and less-than characters (<) are blocked. Please remove newlines and encode less-than characters from places like element attribute values in order to load these resources."
+  },
+  "generated/Deprecation.ts | CharsetAutoDetectionISO2022JP": {
+    "message": "ISO-2022-JP rakstz\u012bmju kopas autom\u0101tisk\u0101 noteik\u0161ana vairs netiek atbalst\u012bta un dr\u012bzum\u0101 tiks atsp\u0113jota. L\u016bdzu, nor\u0101diet rakstz\u012bmju kopu satura veida galven\u0113 vai izmantojot metatagu (https://developer.mozilla.org/en-US/docs/Glossary/Character_encoding)."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesConnectionInfo": {
+    "message": "chrome.loadTimes() is deprecated, instead use standardized API: Navigation Timing 2."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesFirstPaintAfterLoadTime": {
+    "message": "chrome.loadTimes() is deprecated, instead use standardized API: Paint Timing."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesWasAlternateProtocolAvailable": {
+    "message": "chrome.loadTimes() is deprecated, instead use standardized API: nextHopProtocol in Navigation Timing 2."
+  },
+  "generated/Deprecation.ts | CookieWithTruncatingChar": {
+    "message": "Cookies containing a \\(0|r|n) character will be rejected instead of truncated."
+  },
+  "generated/Deprecation.ts | CrossOriginAccessBasedOnDocumentDomain": {
+    "message": "T\u0101s pa\u0161as izcelsmes politikas ierobe\u017eojumu no\u0146em\u0161ana, iestatot funkciju document.domain, vairs netiek izmantota, un \u0161\u012b iesp\u0113ja tiks atsp\u0113jota p\u0113c noklus\u0113juma. \u0160is darb\u012bbas p\u0101rtrauk\u0161anas br\u012bdin\u0101jums ir saist\u012bts ar citas izcelsmes piek\u013cuvi, kas tika iesp\u0113jota, iestatot document.domain."
+  },
+  "generated/Deprecation.ts | CrossOriginWindowAlert": {
+    "message": "Funkcijas window.alert aktiviz\u0113\u0161ana no citas izcelsmes iframe ietvariem vairs netiek atbalst\u012bta un n\u0101kotn\u0113 tiks no\u0146emta."
+  },
+  "generated/Deprecation.ts | CrossOriginWindowConfirm": {
+    "message": "Funkcijas window.confirm aktiviz\u0113\u0161ana no citas izcelsmes iframe ietvariem vairs netiek atbalst\u012bta un n\u0101kotn\u0113 tiks no\u0146emta."
+  },
+  "generated/Deprecation.ts | DOMMutationEvents": {
+    "message": "DOM mut\u0101cijas notikumi, tostarp DOMSubtreeModified, DOMNodeInserted, DOMNodeRemoved, DOMNodeRemovedFromDocument, DOMNodeInsertedIntoDocument un DOMCharacterDataModified, ir novecoju\u0161i (https://w3c.github.io/uievents/#legacy-event-types) un tiks no\u0146emti. To viet\u0101 izmantojiet MutationObserver."
+  },
+  "generated/Deprecation.ts | DataUrlInSvgUse": {
+    "message": "Datu atbalsts: parametr\u0101 SVGUseElement vairs netiek atbalst\u012bti vietr\u0101\u017ei\u00a0URL, un n\u0101kotn\u0113 tie tiks no\u0146emti."
+  },
+  "generated/Deprecation.ts | GeolocationInsecureOrigin": {
+    "message": "Metodes getCurrentPosition() un watchPosition() vairs nedarbojas nedro\u0161os avotos. Lai izmantotu \u0161o funkciju, apsveriet iesp\u0113ju lietojumprogramm\u0101 izmantot dro\u0161u avotu, piem\u0113ram, HTTPS. Pla\u0161\u0101ku inform\u0101ciju skatiet vietn\u0113 https://goo.gle/chrome-insecure-origins."
+  },
+  "generated/Deprecation.ts | GeolocationInsecureOriginDeprecatedNotRemoved": {
+    "message": "Metodes getCurrentPosition() un watchPosition() vairs netiek izmantotas nedro\u0161os avotos. Lai izmantotu \u0161o funkciju, apsveriet iesp\u0113ju lietojumprogramm\u0101 izmantot dro\u0161u avotu, piem\u0113ram, HTTPS. Pla\u0161\u0101ku inform\u0101ciju skatiet vietn\u0113 https://goo.gle/chrome-insecure-origins."
+  },
+  "generated/Deprecation.ts | GetUserMediaInsecureOrigin": {
+    "message": "getUserMedia() no longer works on insecure origins. To use this feature, you should consider switching your application to a secure origin, such as HTTPS. See https://goo.gle/chrome-insecure-origins for more details."
+  },
+  "generated/Deprecation.ts | H1UserAgentFontSizeInSection": {
+    "message": "Ir atrasts <h1> tags, kas atrodas element\u0101 <article>, <aside>, <nav> vai <section>, kam nav nor\u0101d\u012bts fonta lielums. Tuv\u0101kaj\u0101 n\u0101kotn\u0113 \u0161\u012b p\u0101rl\u016bkprogramma main\u012bs \u0161\u012b virsraksta teksta lielumu. Pla\u0161\u0101ku inform\u0101ciju skatiet vietn\u0113 https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#specifying_a_uniform_font_size_for_h1."
+  },
+  "generated/Deprecation.ts | HostCandidateAttributeGetter": {
+    "message": "Lauks RTCPeerConnectionIceErrorEvent.hostCandidate vairs netiek atbalst\u012bts. T\u0101 viet\u0101 izmantojiet lauku RTCPeerConnectionIceErrorEvent.address vai RTCPeerConnectionIceErrorEvent.port."
+  },
+  "generated/Deprecation.ts | IdentityDigitalCredentials": {
+    "message": "\u0160is digit\u0101lo akredit\u0101cijas datu piepras\u012bjuma navigator.credentials.get() form\u0101ts vairs netiek atbalst\u012bts. L\u016bdzu, atjauniniet savu izsaukumu, lai izmantotu jauno form\u0101tu."
+  },
+  "generated/Deprecation.ts | IdentityInCanMakePaymentEvent": {
+    "message": "Tirgot\u0101ja izcelsme un patva\u013c\u012bgi noteikti dati no pakalpojumu skripta notikuma canmakepayment ir novecoju\u0161i un tiks no\u0146emti: topOrigin, paymentRequestOrigin, methodData un modifiers."
+  },
+  "generated/Deprecation.ts | InsecurePrivateNetworkSubresourceRequest": {
+    "message": "The website requested a subresource from a network that it could only access because of its users' privileged network position. These requests expose non-public devices and servers to the internet, increasing the risk of a cross-site request forgery (CSRF) attack, and/or information leakage. To mitigate these risks, Chrome deprecates requests to non-public subresources when initiated from non-secure contexts, and will start blocking them."
+  },
+  "generated/Deprecation.ts | InterestGroupDailyUpdateUrl": {
+    "message": "InterestGroups lauks dailyUpdateUrl, kuram iestat\u012bta v\u0113rt\u012bba joinAdInterestGroup(), ir p\u0101rd\u0113v\u0113ts par updateUrl, lai prec\u012bz\u0101k atspogu\u013cotu t\u0101 darb\u012bbu."
+  },
+  "generated/Deprecation.ts | IntlV8BreakIterator": {
+    "message": "Saskarne Intl.v8BreakIterator vairs netiek atbalst\u012bta. T\u0101s viet\u0101, l\u016bdzu, izmantojiet saskarni Intl.Segmenter."
+  },
+  "generated/Deprecation.ts | LocalCSSFileExtensionRejected": {
+    "message": "CSS cannot be loaded from file: URLs unless they end in a .css file extension."
+  },
+  "generated/Deprecation.ts | MediaSourceAbortRemove": {
+    "message": "Specifik\u0101cijas izmai\u0146u d\u0113\u013c metodes SourceBuffer.abort() izmanto\u0161ana, lai priek\u0161laikus p\u0101rtrauktu remove() asinhrono diapazona no\u0146em\u0161anu, ir novecojusi. Tiek pl\u0101nots p\u0101rtraukt tai atbalstu. T\u0101s viet\u0101 ieteicams izmantot notikuma \u201cupdateend\u201d uztver\u0161anu. Metode abort() ir paredz\u0113ta tikai asinhronas multivides l\u012bdzek\u013cu pievieno\u0161anas priek\u0161laic\u012bgai p\u0101rtrauk\u0161anai vai pars\u0113t\u0101ja statusa atiestat\u012b\u0161anai."
+  },
+  "generated/Deprecation.ts | MediaSourceDurationTruncatingBuffered": {
+    "message": "Setting MediaSource.duration below the highest presentation timestamp of any buffered coded frames is deprecated due to specification change. Support for implicit removal of truncated buffered media will be removed in the future. You should instead perform explicit remove(newDuration, oldDuration) on all sourceBuffers, where newDuration < oldDuration."
+  },
+  "generated/Deprecation.ts | NoSysexWebMIDIWithoutPermission": {
+    "message": "Web MIDI will ask a permission to use even if the sysex is not specified in the MIDIOptions."
+  },
+  "generated/Deprecation.ts | NotificationInsecureOrigin": {
+    "message": "Pazi\u0146ojumu\u00a0API vairs nevar izmantot no nedro\u0161iem avotiem. Apsveriet iesp\u0113ju lietojumprogramm\u0101 izmantot dro\u0161u avotu, piem\u0113ram, HTTPS. Pla\u0161\u0101ku inform\u0101ciju skatiet vietn\u0113 https://goo.gle/chrome-insecure-origins."
+  },
+  "generated/Deprecation.ts | NotificationPermissionRequestedIframe": {
+    "message": "No citas izcelsmes iframe ietvara vairs nevar piepras\u012bt at\u013cauju saskarnei Pazi\u0146ojumu\u00a0API. Apsveriet iesp\u0113ju piepras\u012bt at\u013cauju no aug\u0161\u0113j\u0101 l\u012bme\u0146a ietvara vai atv\u0113rt jaunu logu."
+  },
+  "generated/Deprecation.ts | ObsoleteCreateImageBitmapImageOrientationNone": {
+    "message": "Metodes createImageBitmap opcija imageOrientation: 'none' vairs netiek atbalst\u012bta. T\u0101s viet\u0101 izmantojiet metodi createImageBitmap ar opciju '{imageOrientation: 'from-image'}'."
+  },
+  "generated/Deprecation.ts | ObsoleteWebRtcCipherSuite": {
+    "message": "Your partner is negotiating an obsolete (D)TLS version. Please check with your partner to have this fixed."
+  },
+  "generated/Deprecation.ts | OverflowVisibleOnReplacedElement": {
+    "message": "Tagos \u201cimg\u201d, \u201cvideo\u201d un \u201ccanvas\u201d nor\u0101dot v\u0113rt\u012bbu \u201coverflow: visible\u201d, vizu\u0101ls saturs var tikt r\u0101d\u012bts \u0101rpus elementa robe\u017e\u0101m. Skatiet lapu https://github.com/WICG/shared-element-transitions/blob/main/debugging_overflow_on_images.md"
+  },
+  "generated/Deprecation.ts | PaymentInstruments": {
+    "message": "Saskarnei paymentManager.instruments ir p\u0101rtraukts atbalsts. T\u0101 viet\u0101 maks\u0101jumu apdarin\u0101t\u0101jiem izmantojiet instal\u0113\u0161anu tie\u0161i laik\u0101."
+  },
+  "generated/Deprecation.ts | PaymentRequestCSPViolation": {
+    "message": "Ar j\u016bsu PaymentRequest izsaukumu tika apieta Content-Security-Policy (satura dro\u0161\u012bbas politikas\u00a0\u2014 SDP) direkt\u012bva \u201cconnect-src\u201d. \u0160\u0101dai apie\u0161anai ir p\u0101rtraukts atbalsts. SDP\u00a0direkt\u012bvai \u201cconnect-src\u201d pievienojiet maks\u0101juma veida identifikatoru no PaymentRequest\u00a0API (lauk\u0101 supportedMethods)."
+  },
+  "generated/Deprecation.ts | PersistentQuotaType": {
+    "message": "Saskarne StorageType.persistent vairs netiek atbalst\u012bta. T\u0101s viet\u0101, l\u016bdzu, izmantojiet standartiz\u0113tu navigator.storage."
+  },
+  "generated/Deprecation.ts | PictureSourceSrc": {
+    "message": "Elements <source src> ar galveno elementu <picture> nav der\u012bgs, t\u0101d\u0113\u013c tiks ignor\u0113ts. T\u0101 viet\u0101, l\u016bdzu, izmantojiet <source srcset>."
+  },
+  "generated/Deprecation.ts | PrefixedCancelAnimationFrame": {
+    "message": "Metode webkitCancelAnimationFrame ir piesaist\u012bta nodro\u0161in\u0101t\u0101jam. T\u0101s viet\u0101 izmantojiet standarta metodi cancelAnimationFrame."
+  },
+  "generated/Deprecation.ts | PrefixedRequestAnimationFrame": {
+    "message": "Metode webkitRequestAnimationFrame ir piesaist\u012bta nodro\u0161in\u0101t\u0101jam. T\u0101s viet\u0101 izmantojiet standarta metodi requestAnimationFrame."
+  },
+  "generated/Deprecation.ts | PrefixedVideoDisplayingFullscreen": {
+    "message": "Saskarne HTMLVideoElement.webkitDisplayingFullscreen vairs netiek atbalst\u012bta. T\u0101s viet\u0101 izmantojiet saskarni Document.fullscreenElement."
+  },
+  "generated/Deprecation.ts | PrefixedVideoEnterFullScreen": {
+    "message": "Saskarne HTMLVideoElement.webkitEnterFullScreen() vairs netiek atbalst\u012bta. T\u0101s viet\u0101 izmantojiet saskarni Element.requestFullscreen()."
+  },
+  "generated/Deprecation.ts | PrefixedVideoEnterFullscreen": {
+    "message": "Saskarne HTMLVideoElement.webkitEnterFullscreen() vairs netiek atbalst\u012bta. T\u0101s viet\u0101 izmantojiet saskarni Element.requestFullscreen()."
+  },
+  "generated/Deprecation.ts | PrefixedVideoExitFullScreen": {
+    "message": "Saskarne HTMLVideoElement.webkitExitFullScreen() vairs netiek atbalst\u012bta. T\u0101s viet\u0101 izmantojiet saskarni Document.exitFullscreen()."
+  },
+  "generated/Deprecation.ts | PrefixedVideoExitFullscreen": {
+    "message": "Saskarne HTMLVideoElement.webkitExitFullscreen() vairs netiek atbalst\u012bta. T\u0101s viet\u0101 izmantojiet saskarni Document.exitFullscreen()."
+  },
+  "generated/Deprecation.ts | PrefixedVideoSupportsFullscreen": {
+    "message": "Saskarne HTMLVideoElement.webkitSupportsFullscreen vairs netiek atbalst\u012bta. T\u0101s viet\u0101 izmantojiet saskarni Document.fullscreenEnabled."
+  },
+  "generated/Deprecation.ts | PrivacySandboxExtensionsAPI": {
+    "message": "Pl\u0101nojam p\u0101rtraukt atbalstu saskarnei API\u00a0chrome.privacy.websites.privacySandboxEnabled, kaut gan atpaka\u013csader\u012bbas nol\u016bkiem t\u0101 b\u016bs akt\u012bva l\u012bdz laidiena\u00a0M113 public\u0113\u0161anai. T\u0101s viet\u0101 izmantojiet chrome.privacy.websites.topicsEnabled, chrome.privacy.websites.fledgeEnabled un chrome.privacy.websites.adMeasurementEnabled. Skatiet vietni https://developer.chrome.com/docs/extensions/reference/privacy/#property-websites-privacySandboxEnabled."
+  },
+  "generated/Deprecation.ts | RTCConstraintEnableDtlsSrtpFalse": {
+    "message": "Ierobe\u017eojums DtlsSrtpKeyAgreement ir no\u0146emts. J\u016bs \u0161im ierobe\u017eojumam esat noteicis v\u0113rt\u012bbu \u201cfalse\u201d, un tas tiek interpret\u0113ts k\u0101 m\u0113\u0123in\u0101jums izmantot no\u0146emto metodi SDES key negotiation. \u0160\u012b funkcionalit\u0101te ir no\u0146emta. T\u0101s viet\u0101 izmantojiet pakalpojumu, kas atbalsta metodi DTLS key negotiation."
+  },
+  "generated/Deprecation.ts | RTCConstraintEnableDtlsSrtpTrue": {
+    "message": "Ierobe\u017eojums DtlsSrtpKeyAgreement ir no\u0146emts. J\u016bs \u0161im ierobe\u017eojumam esat noteicis v\u0113rt\u012bbu \u201ctrue\u201d, ta\u010du tas nedarboj\u0101s. Skaidr\u012bbas labad varat no\u0146emt \u0161o ierobe\u017eojumu."
+  },
+  "generated/Deprecation.ts | RTCPeerConnectionGetStatsLegacyNonCompliant": {
+    "message": "Uz izsaukumu balst\u012bt\u0101 metode getStats() vairs netiek atbalst\u012bta un tiks no\u0146emta. T\u0101s viet\u0101 izmantojiet specifik\u0101cij\u0101m atbilsto\u0161o metodi getStats()."
+  },
+  "generated/Deprecation.ts | RangeExpand": {
+    "message": "Saskarne Range.expand() vairs netiek atbalst\u012bta. T\u0101s viet\u0101 izmantojiet saskarni Selection.modify()."
+  },
+  "generated/Deprecation.ts | RequestedSubresourceWithEmbeddedCredentials": {
+    "message": "Subresource requests whose URLs contain embedded credentials (e.g. https://user:pass@host/) are blocked."
+  },
+  "generated/Deprecation.ts | RtcpMuxPolicyNegotiate": {
+    "message": "Opcija rtcpMuxPolicy vairs nav pieejama un tiks no\u0146emta."
+  },
+  "generated/Deprecation.ts | SharedArrayBufferConstructedWithoutIsolation": {
+    "message": "SharedArrayBuffer will require cross-origin isolation. See https://developer.chrome.com/blog/enabling-shared-array-buffer/ for more details."
+  },
+  "generated/Deprecation.ts | TextToSpeech_DisallowedByAutoplay": {
+    "message": "Metode speechSynthesis.speak() bez lietot\u0101ja aktiviz\u0101cijas vairs netiek izmantota un tiks no\u0146emta."
+  },
+  "generated/Deprecation.ts | UnloadHandler": {
+    "message": "Iel\u0101des atcel\u0161anas notikumu uztv\u0113r\u0113ju darb\u012bba ir p\u0101rtraukta, un tie tiks no\u0146emti."
+  },
+  "generated/Deprecation.ts | V8SharedArrayBufferConstructedInExtensionWithoutIsolation": {
+    "message": "Extensions should opt into cross-origin isolation to continue using SharedArrayBuffer. See https://developer.chrome.com/docs/extensions/mv3/cross-origin-isolation/."
+  },
+  "generated/Deprecation.ts | XHRJSONEncodingDetection": {
+    "message": "UTF-16 is not supported by response json in XMLHttpRequest"
+  },
+  "generated/Deprecation.ts | XMLHttpRequestSynchronousInNonWorkerOutsideBeforeUnload": {
+    "message": "Sinhron\u0101 saskarne XMLHttpRequest galvenaj\u0101 pavedien\u0101 vairs netiek atbalst\u012bta, jo t\u0101 negat\u012bvi ietekm\u0113ja galalietot\u0101ju pieredzi. Pla\u0161\u0101ku inform\u0101ciju skatiet vietn\u0113 https://xhr.spec.whatwg.org/."
+  },
+  "models/trace/insights/CLSCulprits.ts | animation": {
+    "message": "Anim\u0101cija"
+  },
+  "models/trace/insights/CLSCulprits.ts | description": {
+    "message": "Izk\u0101rtojuma nob\u012bdes rodas, ja elementi p\u0101rvietojas bez lietot\u0101ja mijiedarb\u012bbas. [Izp\u0113tiet izk\u0101rtojuma nob\u012bdes c\u0113lo\u0146us](https://web.dev/articles/optimize-cls), piem\u0113ram, elementu pievieno\u0161anu un no\u0146em\u0161anu vai to fonta izmai\u0146as lapas iel\u0101des laik\u0101."
+  },
+  "models/trace/insights/CLSCulprits.ts | fontRequest": {
+    "message": "Fonta piepras\u012bjums"
+  },
+  "models/trace/insights/CLSCulprits.ts | injectedIframe": {
+    "message": "Iepludin\u0101ts iframe"
+  },
+  "models/trace/insights/CLSCulprits.ts | layoutShiftCluster": {
+    "message": "Izk\u0101rtojuma nob\u012bdes kopas s\u0101kuma laiks:\u00a0{PH1}"
+  },
+  "models/trace/insights/CLSCulprits.ts | noCulprits": {
+    "message": "Nevar\u0113ja noteikt izk\u0101rtojuma nob\u012bdes c\u0113lo\u0146us"
+  },
+  "models/trace/insights/CLSCulprits.ts | noLayoutShifts": {
+    "message": "Nav izk\u0101rtojuma nob\u012b\u017eu"
+  },
+  "models/trace/insights/CLSCulprits.ts | title": {
+    "message": "Izk\u0101rtojuma nob\u012bdes c\u0113lo\u0146i"
+  },
+  "models/trace/insights/CLSCulprits.ts | topCulprits": {
+    "message": "Galvenie izk\u0101rtojuma nob\u012bdes c\u0113lo\u0146i"
+  },
+  "models/trace/insights/CLSCulprits.ts | unsizedImages": {
+    "message": "Att\u0113li bez lieluma parametriem"
+  },
+  "models/trace/insights/CLSCulprits.ts | worstCluster": {
+    "message": "Visslikt\u0101k\u0101 kopa"
+  },
+  "models/trace/insights/CLSCulprits.ts | worstLayoutShiftCluster": {
+    "message": "Slikt\u0101k\u0101s izk\u0101rtojuma nob\u012bdes kopa"
+  },
+  "models/trace/insights/Cache.ts | cacheTTL": {
+    "message": "Ke\u0161atmi\u0146as TTL\u00a0v\u0113rt\u012bba"
+  },
+  "models/trace/insights/Cache.ts | description": {
+    "message": "Iestatot ilgu ke\u0161atmi\u0146as m\u016b\u017eu, lapas atk\u0101rtoti apmekl\u0113jumi var\u0113tu pa\u0101trin\u0101ties. [Uzziniet vair\u0101k](https://web.dev/uses-long-cache-ttl/)."
+  },
+  "models/trace/insights/Cache.ts | noRequestsToCache": {
+    "message": "Nav piepras\u012bjumu ar neefekt\u012bv\u0101m ke\u0161atmi\u0146as politik\u0101m"
+  },
+  "models/trace/insights/Cache.ts | others": {
+    "message": "V\u0113l\u00a0{PH1}"
+  },
+  "models/trace/insights/Cache.ts | requestColumn": {
+    "message": "Piepras\u012bjums"
+  },
+  "models/trace/insights/Cache.ts | title": {
+    "message": "Efekt\u012bva ke\u0161atmi\u0146as darb\u012bbas ilguma izmanto\u0161ana"
+  },
+  "models/trace/insights/DOMSize.ts | description": {
+    "message": "Liels DOM koks var paildzin\u0101t stila apr\u0113\u0137inus un izk\u0101rtojuma pl\u016bduma p\u0101rk\u0101rto\u0161anu, ietekm\u0113jot lapas rea\u0123\u0113tsp\u0113ju. Liels DOM koks ar\u012b palielin\u0101s atmi\u0146as lietojumu. [Uzziniet, k\u0101 izvair\u012bties no p\u0101rm\u0113r\u012bga DOM lieluma](https://developer.chrome.com/docs/lighthouse/performance/dom-size/)."
+  },
+  "models/trace/insights/DOMSize.ts | element": {
+    "message": "Elements"
+  },
+  "models/trace/insights/DOMSize.ts | maxChildren": {
+    "message": "Liel\u0101k\u0101 da\u013ca pak\u0101rtoto elementu"
+  },
+  "models/trace/insights/DOMSize.ts | maxDOMDepth": {
+    "message": "DOM dzi\u013cums"
+  },
+  "models/trace/insights/DOMSize.ts | statistic": {
+    "message": "Statistikas dati"
+  },
+  "models/trace/insights/DOMSize.ts | title": {
+    "message": "DOM lieluma optimiz\u0101cija"
+  },
+  "models/trace/insights/DOMSize.ts | totalElements": {
+    "message": "Elementu kopskaits"
+  },
+  "models/trace/insights/DOMSize.ts | value": {
+    "message": "V\u0113rt\u012bba"
+  },
+  "models/trace/insights/DocumentLatency.ts | description": {
+    "message": "J\u016bsu pirmais t\u012bkla piepras\u012bjums ir vissvar\u012bg\u0101kais.  Samaziniet latentumu, nov\u0113r\u0161ot novirz\u012b\u0161anu, nodro\u0161inot \u0101tru servera atbildi un iesp\u0113jojot teksta saspie\u0161anu."
+  },
+  "models/trace/insights/DocumentLatency.ts | failedRedirects": {
+    "message": "Tika veikta novirz\u012b\u0161ana"
+  },
+  "models/trace/insights/DocumentLatency.ts | failedServerResponseTime": {
+    "message": "Serveris atbild\u0113ja l\u0113ni"
+  },
+  "models/trace/insights/DocumentLatency.ts | failedTextCompression": {
+    "message": "Saspie\u0161ana netika lietota."
+  },
+  "models/trace/insights/DocumentLatency.ts | passingRedirects": {
+    "message": "Izvair\u0101s no novirz\u012b\u0161anas"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingServerResponseTime": {
+    "message": "Serveris atbild \u0101tri"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingTextCompression": {
+    "message": "Tiek lietota teksta saspie\u0161ana"
+  },
+  "models/trace/insights/DocumentLatency.ts | redirectsLabel": {
+    "message": "Novirz\u012b\u0161ana"
+  },
+  "models/trace/insights/DocumentLatency.ts | serverResponseTimeLabel": {
+    "message": "Servera atbildes laiks"
+  },
+  "models/trace/insights/DocumentLatency.ts | title": {
+    "message": "Dokumenta piepras\u012bjuma latentums"
+  },
+  "models/trace/insights/DocumentLatency.ts | uncompressedDownload": {
+    "message": "Nesaspiestu datu lejupiel\u0101de"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | columnDuplicatedBytes": {
+    "message": "Dubl\u0113tie baiti"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | columnSource": {
+    "message": "Avots"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | description": {
+    "message": "No\u0146emiet lielus, dubl\u0113tus JavaScript modu\u013cus no pak\u0101m, lai samazin\u0101tu nevajadz\u012bgu baitu apjomu, ko pat\u0113r\u0113 t\u012bkla darb\u012bba."
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | title": {
+    "message": "JavaScript kodu dublik\u0101ti"
+  },
+  "models/trace/insights/FontDisplay.ts | description": {
+    "message": "Lai teksts vienm\u0113r b\u016btu redzams, ieteicams parametram [font-display](https://developer.chrome.com/blog/font-display) iestat\u012bt v\u0113rt\u012bbu swap vai optional. Lai mazin\u0101tu izk\u0101rtojuma nob\u012bdes, swap var optimiz\u0113t v\u0113l vair\u0101k, izmantojot [fonta r\u0101d\u012bt\u0101ju ignor\u0113\u0161anu](https://developer.chrome.com/blog/font-fallbacks)."
+  },
+  "models/trace/insights/FontDisplay.ts | fontColumn": {
+    "message": "Fonts"
+  },
+  "models/trace/insights/FontDisplay.ts | title": {
+    "message": "Fonta att\u0113lojums"
+  },
+  "models/trace/insights/FontDisplay.ts | wastedTimeColumn": {
+    "message": "Nelietder\u012bgi izmantots laiks"
+  },
+  "models/trace/insights/ForcedReflow.ts | anonymous": {
+    "message": "(anon\u012bmas)"
+  },
+  "models/trace/insights/ForcedReflow.ts | description": {
+    "message": "Daudzi\u00a0API, lasot izk\u0101rtojuma \u0123eometriju, liek render\u0113\u0161anas programmai aptur\u0113t skripta izpildi, lai apr\u0113\u0137in\u0101tu stilu un izk\u0101rtojumu. Uzziniet vair\u0101k par [pl\u016bduma piespiedu p\u0101rk\u0101rto\u0161anu](https://developers.google.com/web/fundamentals/performance/rendering/avoid-large-complex-layouts-and-layout-thrashing#avoid-forced-synchronous-layouts) un t\u0101s nov\u0113r\u0161anu."
+  },
+  "models/trace/insights/ForcedReflow.ts | relatedStackTrace": {
+    "message": "Steka tras\u0113jums"
+  },
+  "models/trace/insights/ForcedReflow.ts | title": {
+    "message": "Pl\u016bduma piespiedu p\u0101rk\u0101rto\u0161ana"
+  },
+  "models/trace/insights/ForcedReflow.ts | topTimeConsumingFunctionCall": {
+    "message": "Visilg\u0101kais funkcijas izsaukums"
+  },
+  "models/trace/insights/ForcedReflow.ts | totalReflowTime": {
+    "message": "Kop\u0113jais pl\u016bduma p\u0101rk\u0101rto\u0161anas laiks"
+  },
+  "models/trace/insights/ForcedReflow.ts | unattributed": {
+    "message": "[neattiecin\u0101ti]"
+  },
+  "models/trace/insights/ImageDelivery.ts | description": {
+    "message": "Samazinot att\u0113lu lejupiel\u0101des laiku, var tikt uzlabots lapas iel\u0101des laiks un LCP. [Uzziniet vair\u0101k par att\u0113lu lieluma optimiz\u0101ciju](https://developer.chrome.com/docs/lighthouse/performance/uses-optimized-images/)."
+  },
+  "models/trace/insights/ImageDelivery.ts | estimatedSavings": {
+    "message": "{PH1} (apt. {PH2})"
+  },
+  "models/trace/insights/ImageDelivery.ts | noOptimizableImages": {
+    "message": "Nav optimiz\u0113jamu att\u0113lu"
+  },
+  "models/trace/insights/ImageDelivery.ts | optimizeFile": {
+    "message": "Faila lieluma optimiz\u0101cija"
+  },
+  "models/trace/insights/ImageDelivery.ts | others": {
+    "message": "V\u0113l\u00a0{PH1}"
+  },
+  "models/trace/insights/ImageDelivery.ts | title": {
+    "message": "Att\u0113lu pieg\u0101des uzlabo\u0161ana"
+  },
+  "models/trace/insights/ImageDelivery.ts | useCompression": {
+    "message": "Att\u0113la saspie\u0161anas koeficienta palielin\u0101\u0161ana var uzlabot \u0161\u012b att\u0113la lejupiel\u0101des lielumu."
+  },
+  "models/trace/insights/ImageDelivery.ts | useModernFormat": {
+    "message": "Modernu att\u0113la form\u0101tu (WebP, AVIF) izmanto\u0161ana vai att\u0113lu saspie\u0161anas koeficienta palielin\u0101\u0161ana var\u0113tu uzlabot \u0161\u012b att\u0113la lejupiel\u0101des lielumu."
+  },
+  "models/trace/insights/ImageDelivery.ts | useResponsiveSize": {
+    "message": "\u0160\u012b att\u0113la faila lielums ({PH1}) p\u0101rsniedz att\u0113lo\u0161anai vajadz\u012bgo lielumu ({PH2}). Izmantojiet adapt\u012bvos att\u0113lus, lai samazin\u0101tu att\u0113la lejupiel\u0101des lielumu."
+  },
+  "models/trace/insights/ImageDelivery.ts | useVideoFormat": {
+    "message": "Izmantojot video form\u0101tus, nevis GIF\u00a0att\u0113lus, var uzlabot anim\u0113ta satura lejupiel\u0101des lielumu."
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | description": {
+    "message": "Vispirms izp\u0113tiet gar\u0101ko posmu. [Aizkaves var samazin\u0101t](https://web.dev/articles/optimize-inp#optimize_interactions). Lai samazin\u0101tu apstr\u0101des ilgumu, [optimiz\u0113jiet galven\u0101 pavediena izmaksas](https://web.dev/articles/optimize-long-tasks) (parasti JS)."
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | duration": {
+    "message": "Ilgums"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | inputDelay": {
+    "message": "Ievades aizkave"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | noInteractions": {
+    "message": "Nav konstat\u0113ta mijiedarb\u012bba"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | phase": {
+    "message": "F\u0101ze"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | presentationDelay": {
+    "message": "R\u0101d\u012b\u0161anas aizkave"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | processingDuration": {
+    "message": "Apstr\u0101des ilgums"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | title": {
+    "message": "INP p\u0113c posma"
+  },
+  "models/trace/insights/LCPDiscovery.ts | description": {
+    "message": "Optimiz\u0113jiet LCP, padarot LCP att\u0113lu nekav\u0113joties [atkl\u0101jamu](https://web.dev/articles/optimize-lcp#1_eliminate_resource_load_delay) HTML strukt\u016br\u0101 un [nov\u0113r\u0161ot atlikto iel\u0101di](https://web.dev/articles/lcp-lazy-loading)"
+  },
+  "models/trace/insights/LCPDiscovery.ts | fetchPriorityApplied": {
+    "message": "Tiek lietota v\u0113rt\u012bba fetchpriority=high"
+  },
+  "models/trace/insights/LCPDiscovery.ts | fetchPriorityShouldBeApplied": {
+    "message": "J\u0101izmanto v\u0113rt\u012bba fetchpriority=high"
+  },
+  "models/trace/insights/LCPDiscovery.ts | lazyLoadNotApplied": {
+    "message": "atlikt\u0101 iel\u0101de netiek lietota"
+  },
+  "models/trace/insights/LCPDiscovery.ts | lcpLoadDelay": {
+    "message": "LCP att\u0113ls tika iel\u0101d\u0113ts {PH1} p\u0113c agr\u0101k\u0101 s\u0101kumpunkta."
+  },
+  "models/trace/insights/LCPDiscovery.ts | noLcp": {
+    "message": "Netika konstat\u0113ts\u00a0LCP"
+  },
+  "models/trace/insights/LCPDiscovery.ts | noLcpResource": {
+    "message": "Netika konstat\u0113ts neviens LCP\u00a0resurss, jo LCP nav att\u0113ls"
+  },
+  "models/trace/insights/LCPDiscovery.ts | requestDiscoverable": {
+    "message": "Piepras\u012bjums ir atrodams s\u0101kotn\u0113j\u0101 dokument\u0101"
+  },
+  "models/trace/insights/LCPDiscovery.ts | title": {
+    "message": "LCP piepras\u012bjuma atkl\u0101\u0161ana"
+  },
+  "models/trace/insights/LCPPhases.ts | description": {
+    "message": "Katram [posmam ir noteiktas uzlabo\u0161anas strat\u0113\u0123ijas](https://web.dev/articles/optimize-lcp#lcp-breakdown). Ide\u0101l\u0101 gad\u012bjum\u0101 liel\u0101ko da\u013cu LCP laika ir j\u0101veido resursu iel\u0101dei, nevis aizkavei."
+  },
+  "models/trace/insights/LCPPhases.ts | duration": {
+    "message": "Ilgums"
+  },
+  "models/trace/insights/LCPPhases.ts | elementRenderDelay": {
+    "message": "Elementa atveido\u0161anas aizkave"
+  },
+  "models/trace/insights/LCPPhases.ts | fieldDuration": {
+    "message": "Lauka 75.\u00a0procentile"
+  },
+  "models/trace/insights/LCPPhases.ts | noLcp": {
+    "message": "Netika konstat\u0113ts\u00a0LCP"
+  },
+  "models/trace/insights/LCPPhases.ts | phase": {
+    "message": "F\u0101ze"
+  },
+  "models/trace/insights/LCPPhases.ts | resourceLoadDelay": {
+    "message": "Resursa iel\u0101des aizkave"
+  },
+  "models/trace/insights/LCPPhases.ts | resourceLoadDuration": {
+    "message": "Resursa iel\u0101des ilgums"
+  },
+  "models/trace/insights/LCPPhases.ts | timeToFirstByte": {
+    "message": "Laiks l\u012bdz pirmajam baitam"
+  },
+  "models/trace/insights/LCPPhases.ts | title": {
+    "message": "LCP p\u0113c f\u0101zes"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | columnScript": {
+    "message": "Skripts"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | columnWastedBytes": {
+    "message": "Neizmantotie baiti"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | description": {
+    "message": "P\u0101rl\u016bka ielikumi un p\u0101rveido\u0161anas kodi \u013cauj mantotos p\u0101rl\u016bkos izmantot jaunas JavaScript funkcijas. Tom\u0113r modernos p\u0101rl\u016bkos daudzi no tiem nav nepiecie\u0161ami. Ieteicams main\u012bt JavaScript b\u016bv\u0113\u0161anas procesu, lai netiktu transpil\u0113tas [pamata l\u012bme\u0146a](https://web.dev/articles/baseline-and-polyfills) funkcijas, ja vien nezin\u0101t, ka jums ir j\u0101atbalsta mantotie p\u0101rl\u016bki. [Uzziniet, k\u0101p\u0113c liel\u0101kaj\u0101 da\u013c\u0101 viet\u0146u var izvietot ES6+ kodu bez transpil\u0113\u0161anas](https://philipwalton.com/articles/the-state-of-es5-on-the-web/)."
+  },
+  "models/trace/insights/LegacyJavaScript.ts | title": {
+    "message": "Mantotais JavaScript kods"
+  },
+  "models/trace/insights/ModernHTTP.ts | description": {
+    "message": "HTTP/2 un HTTP/3 sniedz daudzas priek\u0161roc\u012bbas sal\u012bdzin\u0101jum\u0101 ar HTTP/1.1, piem\u0113ram, multipleks\u0113\u0161anu. [Uzziniet vair\u0101k par modern\u0101 HTTP izmanto\u0161anu](https://developer.chrome.com/docs/lighthouse/best-practices/uses-http2/)."
+  },
+  "models/trace/insights/ModernHTTP.ts | noOldProtocolRequests": {
+    "message": "Neviens piepras\u012bjums neizmanto protokolu HTTP/1.1"
+  },
+  "models/trace/insights/ModernHTTP.ts | protocol": {
+    "message": "Protokols"
+  },
+  "models/trace/insights/ModernHTTP.ts | request": {
+    "message": "Piepras\u012bjums"
+  },
+  "models/trace/insights/ModernHTTP.ts | title": {
+    "message": "Moderns HTTP"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | description": {
+    "message": "[Nov\u0113rsiet kritisko piepras\u012bjumu \u0137\u0113des](https://developer.chrome.com/docs/lighthouse/performance/critical-request-chains), samazinot \u0137\u0113\u017eu garumu, samazinot resursu lejupiel\u0101des apjomu vai atliekot nevajadz\u012bgo resursu lejupiel\u0101di, lai uzlabotu lapas iel\u0101di."
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | maxCriticalPathLatency": {
+    "message": "Maksim\u0101l\u0101 kritisk\u0101 ce\u013ca latentums:"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | noNetworkDependencyTree": {
+    "message": "Nav neviena atveido\u0161anas uzdevuma, ko ietekm\u0113tu t\u012bkla atkar\u012bbas"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | title": {
+    "message": "T\u012bkla atkar\u012bbu koks"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | warningDescription": {
+    "message": "Nov\u0113rsiet kritisko piepras\u012bjumu \u0137\u0113des, samazinot \u0137\u0113\u017eu garumu, samazinot resursu lejupiel\u0101des apjomu vai atliekot nevajadz\u012bgo resursu lejupiel\u0101di, lai uzlabotu lapas iel\u0101di."
+  },
+  "models/trace/insights/RenderBlocking.ts | description": {
+    "message": "Piepras\u012bjumi blo\u0137\u0113 lapas s\u0101kotn\u0113jo atveidi, un tas var aizkav\u0113t\u00a0LCP. [Atliekot vai iek\u013caujot](https://web.dev/learn/performance/understanding-the-critical-path#render-blocking_resources/) \u0161os t\u012bkla piepras\u012bjumus, tos varat p\u0101rvietot \u0101rpus kritisk\u0101 ce\u013ca."
+  },
+  "models/trace/insights/RenderBlocking.ts | duration": {
+    "message": "Ilgums"
+  },
+  "models/trace/insights/RenderBlocking.ts | noRenderBlocking": {
+    "message": "\u0160ai navig\u0101cijai nav atveido\u0161anas blo\u0137\u0113\u0161anas piepras\u012bjumu"
+  },
+  "models/trace/insights/RenderBlocking.ts | renderBlockingRequest": {
+    "message": "Piepras\u012bjums"
+  },
+  "models/trace/insights/RenderBlocking.ts | title": {
+    "message": "Atveido\u0161anas blo\u0137\u0113\u0161anas piepras\u012bjumi"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | description": {
+    "message": "Ja izmaksas par stila p\u0101rr\u0113\u0137in\u0101\u0161anu saglab\u0101jas augstas, t\u0101s var samazin\u0101t atlas\u012bt\u0101ja optimiz\u0101cija. [Optimiz\u0113jiet atlas\u012bt\u0101jus](https://developer.chrome.com/docs/devtools/performance/selector-stats), iestatot augstu pag\u0101ju\u0161\u0101 laika v\u0113rt\u012bbu un augstu l\u0113na ce\u013ca % v\u0113rt\u012bbu. Atbilst\u012bbas izmaksas ar\u012b var samazin\u0101t, izmantojot vienk\u0101r\u0161\u0101ku atlas\u012bt\u0101ju, maz\u0101ku skaitu atlas\u012bt\u0101ju, maz\u0101ku DOM un DOM koku ar maz\u0101ku l\u012bme\u0146u skaitu."
+  },
+  "models/trace/insights/SlowCSSSelector.ts | elapsed": {
+    "message": "Pat\u0113r\u0113tais laiks"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | enableSelectorData": {
+    "message": "Netika atrasti CSS\u00a0atlas\u012bt\u0101ja dati. Veiktsp\u0113jas pane\u013ca iestat\u012bjumos ir j\u0101iesp\u0113jo CSS\u00a0atlas\u012bt\u0101ja statistika."
+  },
+  "models/trace/insights/SlowCSSSelector.ts | matchAttempts": {
+    "message": "M\u0113\u0123in\u0101jumi noteikt atbilst\u012bbu"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | matchCount": {
+    "message": "Atbilst\u012bbu skaits"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | title": {
+    "message": "CSS atlas\u012bt\u0101ja izmaksas"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | topSelectors": {
+    "message": "Visilg\u0101k apstr\u0101d\u0101tie atlas\u012bt\u0101ji"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | total": {
+    "message": "Kop\u0101"
+  },
+  "models/trace/insights/ThirdParties.ts | columnMainThreadTime": {
+    "message": "Galven\u0101 pavediena laiks"
+  },
+  "models/trace/insights/ThirdParties.ts | columnThirdParty": {
+    "message": "Tre\u0161\u0101 puse"
+  },
+  "models/trace/insights/ThirdParties.ts | columnTransferSize": {
+    "message": "P\u0101rs\u016bt\u012bto vienumu lielums"
+  },
+  "models/trace/insights/ThirdParties.ts | description": {
+    "message": "Tre\u0161\u0101s puses kods var iev\u0113rojami ietekm\u0113t iel\u0101des veiktsp\u0113ju. Lai pie\u0161\u0137irtu priorit\u0101ti savas lapas saturam, [ierobe\u017eojiet un atlieciet tre\u0161\u0101s puses koda iel\u0101di](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/loading-third-party-javascript/)."
+  },
+  "models/trace/insights/ThirdParties.ts | noThirdParties": {
+    "message": "Netika atrasts tre\u0161\u0101s puses saturs"
+  },
+  "models/trace/insights/ThirdParties.ts | title": {
+    "message": "Tre\u0161\u0101s puses"
+  },
+  "models/trace/insights/Viewport.ts | description": {
+    "message": "Ja skatvieta nav optimiz\u0113ta mobilaj\u0101m ier\u012bc\u0113m, mijiedarb\u012bb\u0101 ar piesk\u0101rieniem var b\u016bt [aizkave l\u012bdz pat 300\u00a0ms](https://developer.chrome.com/blog/300ms-tap-delay-gone-away/)."
+  },
+  "models/trace/insights/Viewport.ts | title": {
+    "message": "Skatvietas optimiz\u0101cija mobilaj\u0101m ier\u012bc\u0113m"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | HTTPMethodNotGET": {
+    "message": "Tikai lapas, kuras tiek iel\u0101d\u0113tas, sa\u0146emot GET piepras\u012bjumu, ir piem\u0113rotas piln\u012bgai saglab\u0101\u0161anai ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | HTTPStatusNotOK": {
+    "message": "Ke\u0161atmi\u0146\u0101 var saglab\u0101t tikai lapas ar statusa kodu 2XX."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | JavaScriptExecution": {
+    "message": "P\u0101rl\u016bk\u0101 Chrome tiks konstat\u0113ts m\u0113\u0123in\u0101jums izpild\u012bt JavaScript kodu ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | appBanner": {
+    "message": "Lapas, kur\u0101s tiek piepras\u012bts AppBanner, pa\u0161laik nav piem\u0113rotas piln\u012bgai saglab\u0101\u0161anai ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabled": {
+    "message": "Piln\u012bgu saglab\u0101\u0161anu ke\u0161atmi\u0146\u0101 atsp\u0113joja karodzi\u0146u iestat\u012bjumi. Lai \u0161aj\u0101 ier\u012bc\u0113 to iesp\u0113jotu lok\u0101li, atveriet lapu chrome://flags/#back-forward-cache."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledByCommandLine": {
+    "message": "Komandrinda atsp\u0113joja piln\u012bgu saglab\u0101\u0161anu ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledByLowMemory": {
+    "message": "Piln\u012bga saglab\u0101\u0161ana ke\u0161atmi\u0146\u0101 ir atsp\u0113jota, jo atmi\u0146\u0101 pietr\u016bka vietas."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledForDelegate": {
+    "message": "Piln\u012bgu saglab\u0101\u0161anu ke\u0161atmi\u0146\u0101 neatbalsta dele\u0123\u0113tais elements"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledForPrerender": {
+    "message": "Pirmsiel\u0101des atveidot\u0101js atsp\u0113joja piln\u012bgu saglab\u0101\u0161anu ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | broadcastChannel": {
+    "message": "Lapu nevar saglab\u0101t ke\u0161atmi\u0146\u0101, jo taj\u0101 ir BroadcastChannel instance ar re\u0123istr\u0113tiem klaus\u012bt\u0101jiem."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheControlNoStore": {
+    "message": "Lapas, kur\u0101s ir galvene cache-control:no-store, nevar piln\u012bgi saglab\u0101t ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheFlushed": {
+    "message": "Ke\u0161atmi\u0146a tika m\u0113r\u0137tiec\u012bgi not\u012br\u012bta."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheLimit": {
+    "message": "\u0160\u012bs lapas dati tika izlikti no ke\u0161atmi\u0146as, lai ke\u0161atmi\u0146\u0101 var\u0113tu saglab\u0101t citu lapu."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | containsPlugins": {
+    "message": "Lapas ar spraud\u0146iem pa\u0161laik nav piem\u0113rotas piln\u012bgai saglab\u0101\u0161anai ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentDiscarded": {
+    "message": "Nav defin\u0113ts"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentFileChooser": {
+    "message": "Lapas, kur\u0101s tiek izmantota saskarne FileChooser\u00a0API, pa\u0161laik nav piem\u0113rotas piln\u012bgai saglab\u0101\u0161anai ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentFileSystemAccess": {
+    "message": "Lapas, kur\u0101s tiek izmantota saskarne File System Access\u00a0API, nav piem\u0113rotas piln\u012bgai saglab\u0101\u0161anai ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaDevicesDispatcherHost": {
+    "message": "Lapas, kur\u0101s tiek izmantots multivides ier\u012b\u010du dispe\u010ders, pa\u0161laik nav piem\u0113rotas piln\u012bgai saglab\u0101\u0161anai ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaPlay": {
+    "message": "P\u0101rie\u0161anas br\u012bd\u012b darboj\u0101s multivides atska\u0146ot\u0101js."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaSession": {
+    "message": "Lapas, kur\u0101s tiek izmantota saskarne MediaSession\u00a0API un kur\u0101s ir iestat\u012bts atska\u0146o\u0161anas st\u0101voklis, nav piem\u0113rotas piln\u012bgai saglab\u0101\u0161anai ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaSessionService": {
+    "message": "Lapas, kur\u0101s tiek izmantota saskarne MediaSession\u00a0API un kur\u0101s ir iestat\u012bti darb\u012bbu apdarin\u0101t\u0101ji, nav piem\u0113rotas piln\u012bgai saglab\u0101\u0161anai ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentScreenReader": {
+    "message": "Piln\u012bga saglab\u0101\u0161ana ke\u0161atmi\u0146\u0101 ir atsp\u0113jota ekr\u0101na las\u012bt\u0101ja d\u0113\u013c."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentSecurityHandler": {
+    "message": "Lapas, kur\u0101s tiek izmantots apdarin\u0101t\u0101js SecurityHandler, nav piem\u0113rotas piln\u012bgai saglab\u0101\u0161anai ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentSerial": {
+    "message": "Lapas, kur\u0101s tiek izmantota saskarne Serial\u00a0API, pa\u0161laik nav piem\u0113rotas piln\u012bgai saglab\u0101\u0161anai ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebAuthenticationAPI": {
+    "message": "Lapas, kur\u0101s tiek izmantota saskarne WebAuthetication\u00a0API, pa\u0161laik nav piem\u0113rotas piln\u012bgai saglab\u0101\u0161anai ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebBluetooth": {
+    "message": "Lapas, kur\u0101s tiek izmantota saskarne WebBluetooth\u00a0API, pa\u0161laik nav piem\u0113rotas piln\u012bgai saglab\u0101\u0161anai ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebUSB": {
+    "message": "Lapas, kur\u0101s tiek izmantota saskarne WebUSB\u00a0API, pa\u0161laik nav piem\u0113rotas piln\u012bgai saglab\u0101\u0161anai ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cookieDisabled": {
+    "message": "Piln\u012bga saglab\u0101\u0161ana ke\u0161atmi\u0146\u0101 ir atsp\u0113jota, jo lap\u0101, kur\u0101 tiek izmantota direkt\u012bva Cache-Control: no-store, ir atsp\u0113joti s\u012bkfaili."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | dedicatedWorkerOrWorklet": {
+    "message": "Lapas, kur\u0101s tiek izmantota saskarne DedicatedWorker vai Worklet, pa\u0161laik nav piem\u0113rotas piln\u012bgai saglab\u0101\u0161anai ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | documentLoaded": {
+    "message": "Dokuments tika aizv\u0113rts v\u0113l pirms bija pabeigta t\u0101 iel\u0101de."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderAppBannerManager": {
+    "message": "P\u0101rejot prom, tika r\u0101d\u012bts lietotnes rekl\u0101mkarogs."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderChromePasswordManagerClientBindCredentialManager": {
+    "message": "P\u0101rejot prom, bija akt\u012bvs Chrome paro\u013cu p\u0101rvaldnieks."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderDomDistillerSelfDeletingRequestDelegate": {
+    "message": "P\u0101rejot prom, notika DOM att\u012br\u012b\u0161ana."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderDomDistillerViewerSource": {
+    "message": "P\u0101rejot prom, bija akt\u012bvs DOM att\u012br\u012bt\u0101ja skat\u012bt\u0101js."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionMessaging": {
+    "message": "Piln\u012bga saglab\u0101\u0161ana ke\u0161atmi\u0146\u0101 ir atsp\u0113jota, jo papla\u0161in\u0101jumi izmantoja zi\u0146ojumapmai\u0146as\u00a0API."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionMessagingForOpenPort": {
+    "message": "Papla\u0161in\u0101jumiem ar ilgsto\u0161u savienojumu j\u0101p\u0101rtrauc savienojums pirms piln\u012bgas saglab\u0101\u0161anas ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionSentMessageToCachedFrame": {
+    "message": "Izmantojot papla\u0161in\u0101jumus ar ilgsto\u0161u savienojumu, tika m\u0113\u0123in\u0101ts s\u016bt\u012bt zi\u0146ojumus uz ietvariem, kas piln\u012bgi saglab\u0101ti ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensions": {
+    "message": "Piln\u012bga saglab\u0101\u0161ana ke\u0161atmi\u0146\u0101 ir atsp\u0113jota papla\u0161in\u0101jumu d\u0113\u013c."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderModalDialog": {
+    "message": "P\u0101rejot prom, tika par\u0101d\u012bts mod\u0101ls lapas dialoglodzi\u0146\u0161, piem\u0113ram, veidlapas atk\u0101rtotas iesnieg\u0161anas vai http paro\u013cu dialoglodzi\u0146\u0161."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderOfflinePage": {
+    "message": "P\u0101rejot prom, tika r\u0101d\u012bta bezsaistes lapa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderOomInterventionTabHelper": {
+    "message": "P\u0101rejot prom, tika r\u0101d\u012bta iejauk\u0161an\u0101s josla par atmi\u0146as tr\u016bkumu."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderPermissionRequestManager": {
+    "message": "P\u0101rejot prom, bija at\u013cauju piepras\u012bjumi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderPopupBlockerTabHelper": {
+    "message": "P\u0101rejot prom, bija akt\u012bvs uznirsto\u0161o elementu blo\u0137\u0113t\u0101js."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderSafeBrowsingThreatDetails": {
+    "message": "P\u0101rejot prom, tika par\u0101d\u012bta dro\u0161as p\u0101rl\u016bko\u0161anas inform\u0101cija."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderSafeBrowsingTriggeredPopupBlocker": {
+    "message": "Funkcij\u0101 \u201cDro\u0161a p\u0101rl\u016bko\u0161ana\u201d \u0161\u012b lapa tika identific\u0113ta k\u0101 \u013caunpr\u0101t\u012bga un tika blo\u0137\u0113ts uznirsto\u0161ais logs."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | enteredBackForwardCacheBeforeServiceWorkerHostAdded": {
+    "message": "Kam\u0113r norit\u0113ja lapas piln\u012bga saglab\u0101\u0161ana ke\u0161atmi\u0146\u0101, tika aktiviz\u0113ts pakalpojuma skripts."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | errorDocument": {
+    "message": "Piln\u012bga saglab\u0101\u0161ana ke\u0161atmi\u0146\u0101 ir atsp\u0113jota dokumenta k\u013c\u016bdas d\u0113\u013c."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | fencedFramesEmbedder": {
+    "message": "Lapas, kur\u0101s tiek izmantots elements FencedFrames, nevar piln\u012bgi saglab\u0101t ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | foregroundCacheLimit": {
+    "message": "\u0160\u012bs lapas dati tika izlikti no ke\u0161atmi\u0146as, lai ke\u0161atmi\u0146\u0101 var\u0113tu saglab\u0101t citu lapu."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | grantedMediaStreamAccess": {
+    "message": "Lapas, kur\u0101s ir pie\u0161\u0137irta piek\u013cuve multivides straumei, pa\u0161laik nav piem\u0113rotas piln\u012bgai saglab\u0101\u0161anai ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | haveInnerContents": {
+    "message": "Lapas, kur\u0101s ir noteikta veida iegults saturs (piem\u0113ram, PDF\u00a0faili), pa\u0161laik nav piem\u0113rotas piln\u012bgai saglab\u0101\u0161anai ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | idleManager": {
+    "message": "Lapas, kur\u0101s tiek izmantota saskarne IdleManager, pa\u0161laik nav piem\u0113rotas piln\u012bgai saglab\u0101\u0161anai ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | indexedDBConnection": {
+    "message": "Lapas, kur\u0101s ir atv\u0113rts IndexedDB savienojums, pa\u0161laik nav piem\u0113rotas piln\u012bgai saglab\u0101\u0161anai ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | indexedDBEvent": {
+    "message": "Piln\u012bga saglab\u0101\u0161ana ke\u0161atmi\u0146\u0101 ir atsp\u0113jota IndexedDB notikuma d\u0113\u013c."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | ineligibleAPI": {
+    "message": "Tika izmantotas nepiem\u0113rotas\u00a0API."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | injectedJavascript": {
+    "message": "Pa\u0161laik nevar piln\u012bgi saglab\u0101t ke\u0161atmi\u0146\u0101 lapas, kur\u0101s papla\u0161in\u0101jumi iepludina JavaScript."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | injectedStyleSheet": {
+    "message": "Pa\u0161laik nevar piln\u012bgi saglab\u0101t ke\u0161atmi\u0146\u0101 lapas, kur\u0101s papla\u0161in\u0101jumi iepludina StyleSheet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | internalError": {
+    "message": "Iek\u0161\u0113ja k\u013c\u016bda."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | jsNetworkRequestReceivedCacheControlNoStoreResource": {
+    "message": "Piln\u012bga saglab\u0101\u0161ana ke\u0161atmi\u0146\u0101 ir atsp\u0113jota, jo k\u0101ds JavaScript t\u012bkla piepras\u012bjums sa\u0146\u0113ma resursu ar galveni Cache-Control: no-store."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | keepaliveRequest": {
+    "message": "Piln\u012bga saglab\u0101\u0161ana ke\u0161atmi\u0146\u0101 ir atsp\u0113jota, jo tika sa\u0146emts saites darb\u012bbas p\u0101rbaudes zi\u0146ojuma s\u016bt\u012b\u0161anas piepras\u012bjums."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | keyboardLock": {
+    "message": "Lapas, kur\u0101s tiek izmantota tastat\u016bras blo\u0137\u0113\u0161ana, pa\u0161laik nav piem\u0113rotas piln\u012bgai saglab\u0101\u0161anai ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | loading": {
+    "message": "Lapa tika aizv\u0113rta v\u0113l pirms bija pabeigta t\u0101s iel\u0101de."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | mainResourceHasCacheControlNoCache": {
+    "message": "Lapas, kuru galven\u0101 resursa direkt\u012bva ir cache-control:no-cache, nevar piln\u012bgi saglab\u0101t ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | mainResourceHasCacheControlNoStore": {
+    "message": "Lapas, kuru galven\u0101 resursa direkt\u012bva ir cache-control:no-store, nevar piln\u012bgi saglab\u0101t ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | navigationCancelledWhileRestoring": {
+    "message": "P\u0101rie\u0161ana tika p\u0101rtraukta pirms ke\u0161atmi\u0146\u0101 piln\u012bgi saglab\u0101tas lapas atjauno\u0161anas."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkExceedsBufferLimit": {
+    "message": "Lapas dati tika izlikti no ke\u0161atmi\u0146as, jo akt\u012bvaj\u0101 t\u012bkla savienojum\u0101 tika sa\u0146emts p\u0101rm\u0113r\u012bgs daudzums datu. P\u0101rl\u016bk\u0101 Chrome tiek ierobe\u017eots datu daudzums, ko lapa var sa\u0146emt, kad tiek saglab\u0101ta ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestDatapipeDrainedAsBytesConsumer": {
+    "message": "Lapas, kur\u0101s ir akt\u012bvi iene\u0161anas vai XHR notikumi, pa\u0161laik nav piem\u0113rotas piln\u012bgai saglab\u0101\u0161anai ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestRedirected": {
+    "message": "\u0160\u012bs lapas dati tika izlikti no ke\u0161atmi\u0146as, jo akt\u012bvs t\u012bkla savienojuma piepras\u012bjums ietv\u0113ra novirz\u012b\u0161anu."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestTimeout": {
+    "message": "\u0160\u012bs lapas dati tika izlikti no ke\u0161atmi\u0146as, jo t\u012bkla savienojums bija atv\u0113rts p\u0101r\u0101k ilgi. P\u0101rl\u016bk\u0101 Chrome tiek ierobe\u017eots laiks, kur\u0101 lapa var sa\u0146emt datus, kam\u0113r norit t\u0101s saglab\u0101\u0161ana ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | noResponseHead": {
+    "message": "Lapas, kur\u0101m nav der\u012bgas atbildes galvenes, nevar piln\u012bgi saglab\u0101t ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | notMainFrame": {
+    "message": "P\u0101rie\u0161ana notika cit\u0101 ietvar\u0101, nevis galvenaj\u0101 ietvar\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingIndexedDBTransaction": {
+    "message": "Lapas, kur\u0101s notiek IndexedDB oper\u0101cijas, pa\u0161laik nav piem\u0113rotas piln\u012bgai saglab\u0101\u0161anai atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestDirectSocket": {
+    "message": "Lapas, kur\u0101s ir akt\u012bvs t\u012bkla piepras\u012bjums, pa\u0161laik nav piem\u0113rotas piln\u012bgai saglab\u0101\u0161anai ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestFetch": {
+    "message": "Lapas, kur\u0101s ir akt\u012bvs t\u012bkla iene\u0161anas piepras\u012bjums, pa\u0161laik nav piem\u0113rotas piln\u012bgai saglab\u0101\u0161anai ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestOthers": {
+    "message": "Lapas, kur\u0101s ir akt\u012bvs t\u012bkla piepras\u012bjums, pa\u0161laik nav piem\u0113rotas piln\u012bgai saglab\u0101\u0161anai ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestXHR": {
+    "message": "Lapas, kur\u0101s ir akt\u012bvs XHR t\u012bkla piepras\u012bjums, pa\u0161laik nav piem\u0113rotas piln\u012bgai saglab\u0101\u0161anai ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | paymentManager": {
+    "message": "Lapas, kur\u0101s tiek izmantota saskarne PaymentManager, pa\u0161laik nav piem\u0113rotas piln\u012bgai saglab\u0101\u0161anai ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | pictureInPicture": {
+    "message": "Lapas, kur\u0101s tiek izmantota funkcija \u201cAtt\u0113ls att\u0113l\u0101\u201d, pa\u0161laik nav piem\u0113rotas piln\u012bgai saglab\u0101\u0161anai ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | printing": {
+    "message": "Lapas, kur\u0101s r\u0101d\u012bta druk\u0101\u0161anas saskarne, pa\u0161laik nav piem\u0113rotas piln\u012bgai saglab\u0101\u0161anai ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | relatedActiveContentsExist": {
+    "message": "Lapa tika atv\u0113rta, izmantojot metodi window.open(), un cit\u0101 ciln\u0113 ir atsauce uz \u0161o lapu, vai ar\u012b lapa tika atv\u0113rta log\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | rendererProcessCrashed": {
+    "message": "Ke\u0161atmi\u0146\u0101 piln\u012bgi saglab\u0101tas lapas atveidot\u0101js avar\u0113ja."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | rendererProcessKilled": {
+    "message": "Ke\u0161atmi\u0146\u0101 piln\u012bgi saglab\u0101tas lapas atveidot\u0101ja darb\u012bba tika p\u0101rtraukta."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedAudioCapturePermission": {
+    "message": "Lapas, kur\u0101s tika piepras\u012btas audio ierakst\u012b\u0161anas at\u013caujas, pa\u0161laik nav piem\u0113rotas piln\u012bgai saglab\u0101\u0161anai ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedBackForwardCacheBlockedSensors": {
+    "message": "Lapas, kur\u0101s tika piepras\u012btas sensoru at\u013caujas, pa\u0161laik nav piem\u0113rotas piln\u012bgai saglab\u0101\u0161anai ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedBackgroundWorkPermission": {
+    "message": "Lapas, kur\u0101s tika piepras\u012btas at\u013caujas sinhroniz\u0101cijai fon\u0101 vai iene\u0161anai, pa\u0161laik nav piem\u0113rotas piln\u012bgai saglab\u0101\u0161anai ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedMIDIPermission": {
+    "message": "Lapas, kur\u0101s tika piepras\u012bta MIDI ier\u012b\u010du at\u013cauja, pa\u0161laik nav piem\u0113rotas piln\u012bgai saglab\u0101\u0161anai ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedNotificationsPermission": {
+    "message": "Lapas, kur\u0101s tika piepras\u012btas pazi\u0146ojumu at\u013caujas, pa\u0161laik nav piem\u0113rotas piln\u012bgai saglab\u0101\u0161anai ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedStorageAccessGrant": {
+    "message": "Lapas, kur\u0101s tika piepras\u012bta piek\u013cuve kr\u0101tuvei, pa\u0161laik nav piem\u0113rotas piln\u012bgai saglab\u0101\u0161anai ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedVideoCapturePermission": {
+    "message": "Lapas, kur\u0101s tika piepras\u012btas video ierakst\u012b\u0161anas at\u013caujas, pa\u0161laik nav piem\u0113rotas piln\u012bgai saglab\u0101\u0161anai ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | schemeNotHTTPOrHTTPS": {
+    "message": "Ke\u0161atmi\u0146\u0101 var saglab\u0101t tikai t\u0101das lapas, kuru URL sh\u0113ma ietver HTTP vai HTTPS."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerClaim": {
+    "message": "Kam\u0113r norit\u0113ja lapas piln\u012bga saglab\u0101\u0161ana ke\u0161atmi\u0146\u0101, lapu piepras\u012bja pakalpojuma skripts."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerPostMessage": {
+    "message": "Pakalpojuma skripts m\u0113\u0123in\u0101ja nos\u016bt\u012bt rekviz\u012btu MessageEvent lapai, kas tiek piln\u012bgi saglab\u0101ta ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerUnregistration": {
+    "message": "ServiceWorker re\u0123istr\u0101cija tika atcelta, kam\u0113r norit\u0113ja lapas piln\u012bga saglab\u0101\u0161ana ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerVersionActivation": {
+    "message": "Lapas dati tika izlikti no ke\u0161atmi\u0146as, jo tika aktiviz\u0113ts pakalpojuma skripts."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | sessionRestored": {
+    "message": "P\u0101rl\u016bks Chrome tika restart\u0113ts, un ke\u0161atmi\u0146\u0101 piln\u012bgi saglab\u0101tie ieraksti tika not\u012br\u012bti."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | sharedWorker": {
+    "message": "Lapas, kur\u0101s tiek izmantota saskarne SharedWorker, pa\u0161laik nav piem\u0113rotas piln\u012bgai saglab\u0101\u0161anai ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | speechRecognizer": {
+    "message": "Lapas, kur\u0101s tiek izmantota saskarne SpeedRecognizer, pa\u0161laik nav piem\u0113rotas piln\u012bgai saglab\u0101\u0161anai ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | speechSynthesis": {
+    "message": "Lapas, kur\u0101s tiek izmantota saskarne SpeechSynthesis, pa\u0161laik nav piem\u0113rotas piln\u012bgai saglab\u0101\u0161anai ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subframeIsNavigating": {
+    "message": "Lapas Iframe ietvar\u0101 tika s\u0101kta p\u0101rie\u0161ana, bet t\u0101 netika pabeigta."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subresourceHasCacheControlNoCache": {
+    "message": "Lapas, kuru apak\u0161resursa direkt\u012bva ir cache-control:no-cache, nevar piln\u012bgi saglab\u0101t ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subresourceHasCacheControlNoStore": {
+    "message": "Lapas, kuru apak\u0161resursa direkt\u012bva ir cache-control:no-store, nevar piln\u012bgi saglab\u0101t ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | timeout": {
+    "message": "Tika p\u0101rsniegts maksim\u0101lais laiks lapas piln\u012bgai saglab\u0101\u0161anai ke\u0161atmi\u0146\u0101, un lapas der\u012bguma termi\u0146\u0161 beidz\u0101s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | timeoutPuttingInCache": {
+    "message": "S\u0101kot piln\u012bgu saglab\u0101\u0161anu ke\u0161atmi\u0146\u0101, lap\u0101 iest\u0101j\u0101s noildze (iesp\u0113jams, to izrais\u012bja ieilgusi lapas pasl\u0113p\u0161anas notikumu apdarin\u0101t\u0101ju darb\u012bba)."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | unloadHandlerExistsInMainFrame": {
+    "message": "Lapas galvenaj\u0101 ietvar\u0101 ir iel\u0101d\u0113\u0161anas atcel\u0161anas apdarin\u0101t\u0101js."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | unloadHandlerExistsInSubFrame": {
+    "message": "Lapas apak\u0161ietvar\u0101 ir iel\u0101d\u0113\u0161anas atcel\u0161anas apdarin\u0101t\u0101js."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | userAgentOverrideDiffers": {
+    "message": "P\u0101rl\u016bk\u0101 tika main\u012bta lietot\u0101ja a\u0123enta ignor\u0113\u0161anas galvene."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | wasGrantedMediaAccess": {
+    "message": "Lapas, kur\u0101s ir pie\u0161\u0137irta piek\u013cuves video vai audio ierakst\u012b\u0161anai, pa\u0161laik nav piem\u0113rotas piln\u012bgai saglab\u0101\u0161anai ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webDatabase": {
+    "message": "Lapas, kur\u0101s tiek izmantots WebDatabase, pa\u0161laik nav piem\u0113rotas piln\u012bgai saglab\u0101\u0161anai ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webHID": {
+    "message": "Lapas, kur\u0101s tiek izmantota saskarne WebHID, pa\u0161laik nav piem\u0113rotas piln\u012bgai saglab\u0101\u0161anai ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webLocks": {
+    "message": "Lapas, kur\u0101s tiek izmantota saskarne WebLocks, pa\u0161laik nav piem\u0113rotas piln\u012bgai saglab\u0101\u0161anai ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webNfc": {
+    "message": "Lapas, kur\u0101s tiek izmantota saskarne WebNfc, pa\u0161laik nav piem\u0113rotas piln\u012bgai saglab\u0101\u0161anai ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webOTPService": {
+    "message": "Lapas, kur\u0101s tiek izmantota saskarne WebOTPService, pa\u0161laik nav piem\u0113rotas piln\u012bgai saglab\u0101\u0161anai ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webRTC": {
+    "message": "Lapas, kur\u0101s tiek izmantota saskarne WebRTC, nevar piln\u012bgi saglab\u0101t ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webRTCSticky": {
+    "message": "Piln\u012bga saglab\u0101\u0161ana ke\u0161atmi\u0146\u0101 ir atsp\u0113jota, jo tika izmantots protokols WebRTC."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webShare": {
+    "message": "Lapas, kur\u0101s tiek izmantots starpniekserveris WebShare, pa\u0161laik nav piem\u0113rotas piln\u012bgai saglab\u0101\u0161anai ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webSocket": {
+    "message": "Lapas, kur\u0101s tiek izmantots protokols WebSocket, nevar piln\u012bgi saglab\u0101t ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webSocketSticky": {
+    "message": "Piln\u012bga saglab\u0101\u0161ana ke\u0161atmi\u0146\u0101 ir atsp\u0113jota, jo tika izmantots protokols WebSocket."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webTransport": {
+    "message": "Lapas, kur\u0101s tiek izmantota saskarne WebTransport, nevar piln\u012bgi saglab\u0101t ke\u0161atmi\u0146\u0101."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webTransportSticky": {
+    "message": "Piln\u012bga saglab\u0101\u0161ana ke\u0161atmi\u0146\u0101 ir atsp\u0113jota, jo tika izmantots protokols WebTransport."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webXR": {
+    "message": "Lapas, kur\u0101s tiek izmantota saskarne WebXR, pa\u0161laik nav piem\u0113rotas piln\u012bgai saglab\u0101\u0161anai ke\u0161atmi\u0146\u0101."
+  }
+}

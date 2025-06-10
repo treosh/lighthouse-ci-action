@@ -5,6 +5,10 @@ module.exports = class PassThroughDecoder {
     this.encoding = encoding
   }
 
+  get remaining () {
+    return 0
+  }
+
   decode (tail) {
     return b4a.toString(tail, this.encoding)
   }

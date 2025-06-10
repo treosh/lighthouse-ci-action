@@ -1,9 +1,4 @@
 "use strict";
-/**
- * @license
- * Copyright 2017 Google Inc.
- * SPDX-License-Identifier: Apache-2.0
- */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Browser = exports.WEB_PERMISSION_TO_PROTOCOL_PERMISSION = void 0;
 const rxjs_js_1 = require("../../third_party/rxjs/rxjs.js");
@@ -14,25 +9,24 @@ const disposable_js_1 = require("../util/disposable.js");
  * @internal
  */
 exports.WEB_PERMISSION_TO_PROTOCOL_PERMISSION = new Map([
+    ['accelerometer', 'sensors'],
+    ['ambient-light-sensor', 'sensors'],
+    ['background-sync', 'backgroundSync'],
+    ['camera', 'videoCapture'],
+    ['clipboard-read', 'clipboardReadWrite'],
+    ['clipboard-sanitized-write', 'clipboardSanitizedWrite'],
+    ['clipboard-write', 'clipboardReadWrite'],
     ['geolocation', 'geolocation'],
+    ['gyroscope', 'sensors'],
+    ['idle-detection', 'idleDetection'],
+    ['keyboard-lock', 'keyboardLock'],
+    ['magnetometer', 'sensors'],
+    ['microphone', 'audioCapture'],
     ['midi', 'midi'],
     ['notifications', 'notifications'],
-    // TODO: push isn't a valid type?
-    // ['push', 'push'],
-    ['camera', 'videoCapture'],
-    ['microphone', 'audioCapture'],
-    ['background-sync', 'backgroundSync'],
-    ['ambient-light-sensor', 'sensors'],
-    ['accelerometer', 'sensors'],
-    ['gyroscope', 'sensors'],
-    ['magnetometer', 'sensors'],
-    ['accessibility-events', 'accessibilityEvents'],
-    ['clipboard-read', 'clipboardReadWrite'],
-    ['clipboard-write', 'clipboardReadWrite'],
-    ['clipboard-sanitized-write', 'clipboardSanitizedWrite'],
     ['payment-handler', 'paymentHandler'],
     ['persistent-storage', 'durableStorage'],
-    ['idle-detection', 'idleDetection'],
+    ['pointer-lock', 'pointerLock'],
     // chrome-specific permissions we have.
     ['midi-sysex', 'midiSysex'],
 ]);
@@ -93,18 +87,18 @@ class Browser extends EventEmitter_js_1.EventEmitter {
      * ```ts
      * await page.evaluate(() => window.open('https://www.example.com/'));
      * const newWindowTarget = await browser.waitForTarget(
-     *   target => target.url() === 'https://www.example.com/'
+     *   target => target.url() === 'https://www.example.com/',
      * );
      * ```
      */
     async waitForTarget(predicate, options = {}) {
-        const { timeout: ms = 30000 } = options;
-        return await (0, rxjs_js_1.firstValueFrom)((0, rxjs_js_1.merge)((0, util_js_1.fromEmitterEvent)(this, "targetcreated" /* BrowserEvent.TargetCreated */), (0, util_js_1.fromEmitterEvent)(this, "targetchanged" /* BrowserEvent.TargetChanged */), (0, rxjs_js_1.from)(this.targets())).pipe((0, util_js_1.filterAsync)(predicate), (0, rxjs_js_1.raceWith)((0, util_js_1.timeout)(ms))));
+        const { timeout: ms = 30000, signal } = options;
+        return await (0, rxjs_js_1.firstValueFrom)((0, rxjs_js_1.merge)((0, util_js_1.fromEmitterEvent)(this, "targetcreated" /* BrowserEvent.TargetCreated */), (0, util_js_1.fromEmitterEvent)(this, "targetchanged" /* BrowserEvent.TargetChanged */), (0, rxjs_js_1.from)(this.targets())).pipe((0, util_js_1.filterAsync)(predicate), (0, rxjs_js_1.raceWith)((0, util_js_1.fromAbortSignal)(signal), (0, util_js_1.timeout)(ms))));
     }
     /**
      * Gets a list of all open {@link Page | pages} inside this {@link Browser}.
      *
-     * If there ar multiple {@link BrowserContext | browser contexts}, this
+     * If there are multiple {@link BrowserContext | browser contexts}, this
      * returns all {@link Page | pages} in all
      * {@link BrowserContext | browser contexts}.
      *
@@ -119,6 +113,39 @@ class Browser extends EventEmitter_js_1.EventEmitter {
         return contextPages.reduce((acc, x) => {
             return acc.concat(x);
         }, []);
+    }
+    /**
+     * Returns all cookies in the default {@link BrowserContext}.
+     *
+     * @remarks
+     *
+     * Shortcut for
+     * {@link BrowserContext.cookies | browser.defaultBrowserContext().cookies()}.
+     */
+    async cookies() {
+        return await this.defaultBrowserContext().cookies();
+    }
+    /**
+     * Sets cookies in the default {@link BrowserContext}.
+     *
+     * @remarks
+     *
+     * Shortcut for
+     * {@link BrowserContext.setCookie | browser.defaultBrowserContext().setCookie()}.
+     */
+    async setCookie(...cookies) {
+        return await this.defaultBrowserContext().setCookie(...cookies);
+    }
+    /**
+     * Removes cookies from the default {@link BrowserContext}.
+     *
+     * @remarks
+     *
+     * Shortcut for
+     * {@link BrowserContext.deleteCookie | browser.defaultBrowserContext().deleteCookie()}.
+     */
+    async deleteCookie(...cookies) {
+        return await this.defaultBrowserContext().deleteCookie(...cookies);
     }
     /**
      * Whether Puppeteer is connected to this {@link Browser | browser}.

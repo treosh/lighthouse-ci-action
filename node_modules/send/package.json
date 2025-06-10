@@ -1,7 +1,7 @@
 {
   "name": "send",
   "description": "Better streaming static file server with Range and conditional-GET support",
-  "version": "0.18.0",
+  "version": "0.19.0",
   "author": "TJ Holowaychuk <tj@vision-media.ca>",
   "contributors": [
     "Douglas Christopher Wilson <doug@somethingdoug.com>",

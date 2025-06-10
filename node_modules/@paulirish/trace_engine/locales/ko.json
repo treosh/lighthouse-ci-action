@@ -1,0 +1,908 @@
+{
+  "generated/Deprecation.ts | AuthorizationCoveredByWildcard": {
+    "message": "CORS Access-Control-Allow-Headers \ucc98\ub9ac \uc2dc \uc640\uc77c\ub4dc \uce74\ub4dc \uae30\ud638(*)\ub97c \uc0ac\uc6a9\ud558\uba74 \uc2b9\uc778\ub418\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4."
+  },
+  "generated/Deprecation.ts | CSSSelectorInternalMediaControlsOverlayCastButton": {
+    "message": "\uae30\ubcf8 Cast \ud1b5\ud569\uc744 \uc0ac\uc6a9 \uc911\uc9c0\ud558\ub824\uba74 -internal-media-controls-overlay-cast-button \uc120\ud0dd\uae30 \ub300\uc2e0 disableRemotePlayback \uc18d\uc131\uc744 \uc0ac\uc6a9\ud574\uc57c \ud569\ub2c8\ub2e4."
+  },
+  "generated/Deprecation.ts | CSSValueAppearanceSliderVertical": {
+    "message": "CSS \ubaa8\uc591 \uac12(slider-vertical)\uc774 \ud45c\uc900\ud654\ub418\uc9c0 \uc54a\uc558\uc73c\uba70 \uc0ad\uc81c\ub420 \uc608\uc815\uc785\ub2c8\ub2e4."
+  },
+  "generated/Deprecation.ts | CanRequestURLHTTPContainingNewline": {
+    "message": "\uc0ad\uc81c\ub41c \uacf5\ubc31 \\(n|r|t)\uc790 \ubc0f \uae00\uc790\uc218 \uc81c\ud55c(<)\uc774 URL\uc5d0 \ud3ec\ud568\ub41c \ub9ac\uc18c\uc2a4 \uc694\uccad\uc774 \ucc28\ub2e8\ub418\uc5c8\uc2b5\ub2c8\ub2e4. \uc774\ub7ec\ud55c \ub9ac\uc18c\uc2a4\ub97c \ub85c\ub4dc\ud558\ub824\uba74 \uc5d8\ub9ac\uba3c\ud2b8 \uc18d\uc131 \uac12\uacfc \uac19\uc740 \uc704\uce58\uc5d0\uc11c \uc904\ubc14\uafc8\uc744 \uc0ad\uc81c\ud558\uace0 \uae00\uc790\uc218 \uc81c\ud55c\uc744 \uc778\ucf54\ub529\ud558\uc138\uc694."
+  },
+  "generated/Deprecation.ts | CharsetAutoDetectionISO2022JP": {
+    "message": "ISO-2022-JP \ubb38\uc790 \uc9d1\ud569\uc758 \uc790\ub3d9 \uac10\uc9c0\ub294 \uc9c0\uc6d0 \uc911\ub2e8\ub418\uc5c8\uc73c\uba70 \uc870\ub9cc\uac04 \uc0ac\uc6a9 \uc911\uc9c0\ub429\ub2c8\ub2e4. \ucf58\ud150\uce20 \uc720\ud615 \ud5e4\ub354\uc5d0\uc11c \ubb38\uc790 \uc9d1\ud569\uc744 \uc9c0\uc815\ud558\uac70\ub098 \uba54\ud0c0 \ud0dc\uadf8(https://developer.mozilla.org/en-US/docs/Glossary/Character_encoding)\ub97c \uc0ac\uc6a9\ud558\uc138\uc694."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesConnectionInfo": {
+    "message": "chrome.loadTimes()\ub294 \uc9c0\uc6d0 \uc911\ub2e8\ub418\uc5c8\uc2b5\ub2c8\ub2e4. \ub300\uc2e0 \ud45c\uc900\ud654\ub41c API\uc778 Navigation Timing 2\ub97c \uc0ac\uc6a9\ud558\uc138\uc694."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesFirstPaintAfterLoadTime": {
+    "message": "chrome.loadTimes()\ub294 \uc0ac\uc6a9 \uc911\uc9c0\ub418\uc5c8\uc2b5\ub2c8\ub2e4. \ub300\uc2e0 \ud45c\uc900\ud654\ub41c API\uc778 Paint Timing\uc744 \uc0ac\uc6a9\ud558\uc138\uc694."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesWasAlternateProtocolAvailable": {
+    "message": "chrome.loadTimes()\ub294 \uc9c0\uc6d0 \uc911\ub2e8\ub418\uc5c8\uc2b5\ub2c8\ub2e4. \ub300\uc2e0 nextHopProtocol\uc774 \ucd94\uac00\ub41c \ud45c\uc900\ud654\ub41c API\uc778 Navigation Timing 2\ub97c \uc0ac\uc6a9\ud558\uc138\uc694."
+  },
+  "generated/Deprecation.ts | CookieWithTruncatingChar": {
+    "message": "\\(0|r|n)\uc790\ub97c \ud3ec\ud568\ud558\ub294 \ucfe0\ud0a4\ub294 \uc798\ub9ac\ub294 \ub300\uc2e0 \uac70\ubd80\ub429\ub2c8\ub2e4."
+  },
+  "generated/Deprecation.ts | CrossOriginAccessBasedOnDocumentDomain": {
+    "message": "document.domain \uc124\uc815\uc744 \ud1b5\ud55c \ub3d9\uc77c \ucd9c\ucc98 \uc815\ucc45\uc758 \ud574\uc81c\ub294 \uc9c0\uc6d0 \uc911\ub2e8\ub418\uc5c8\uc73c\uba70 \uae30\ubcf8\uc801\uc73c\ub85c \uc0ac\uc6a9 \uc911\uc9c0\ub420 \uc608\uc815\uc785\ub2c8\ub2e4. \uc774 \uc9c0\uc6d0 \uc911\ub2e8 \uacbd\uace0\ub294 document.domain \uc124\uc815\uc5d0 \uc758\ud574 \uc0ac\uc6a9 \uc124\uc815\ub41c \uad50\ucc28 \ucd9c\ucc98 \uc561\uc138\uc2a4\uc5d0 \uc801\uc6a9\ub429\ub2c8\ub2e4."
+  },
+  "generated/Deprecation.ts | CrossOriginWindowAlert": {
+    "message": "\uad50\ucc28 \ucd9c\ucc98 iframe\uc5d0\uc11c\uc758 window.alert \ud2b8\ub9ac\uac70\ub294 \uc9c0\uc6d0 \uc911\ub2e8\ub418\uc5c8\uc73c\uba70 \uc55e\uc73c\ub85c \uc0ad\uc81c\ub420 \uc608\uc815\uc785\ub2c8\ub2e4."
+  },
+  "generated/Deprecation.ts | CrossOriginWindowConfirm": {
+    "message": "\uad50\ucc28 \ucd9c\ucc98 iframe\uc5d0\uc11c\uc758 window.confirm \ud2b8\ub9ac\uac70\ub294 \uc9c0\uc6d0 \uc911\ub2e8\ub418\uc5c8\uc73c\uba70 \uc55e\uc73c\ub85c \uc0ad\uc81c\ub420 \uc608\uc815\uc785\ub2c8\ub2e4."
+  },
+  "generated/Deprecation.ts | DOMMutationEvents": {
+    "message": "DOMSubtreeModified, DOMNodeInserted, DOMNodeRemoved, DOMNodeRemovedFromDocument, DOMNodeInsertedIntoDocument, DOMCharacterDataModified \ub4f1\uc758 DOM \ubcc0\ud615 \uc774\ubca4\ud2b8\uac00 \uc9c0\uc6d0 \uc911\ub2e8\ub418\uc5c8\uc73c\uba70(https://w3c.github.io/uievents/#legacy-event-types) \uc0ad\uc81c\ub429\ub2c8\ub2e4. \ub300\uc2e0 MutationObserver\ub97c \uc0ac\uc6a9\ud558\uc2dc\uae30 \ubc14\ub78d\ub2c8\ub2e4."
+  },
+  "generated/Deprecation.ts | DataUrlInSvgUse": {
+    "message": "\ub370\uc774\ud130 \uc9c0\uc6d0: SVGUseElement\uc758 URL\uc740 \uc9c0\uc6d0 \uc911\ub2e8\ub418\uba70 \ud5a5\ud6c4 \uc0ad\uc81c\ub420 \uc608\uc815\uc785\ub2c8\ub2e4."
+  },
+  "generated/Deprecation.ts | GeolocationInsecureOrigin": {
+    "message": "getCurrentPosition() \ubc0f watchPosition()\uc740 \ub354 \uc774\uc0c1 \uc548\uc804\ud558\uc9c0 \uc54a\uc740 \ucd9c\ucc98\uc5d0\uc11c \uc791\ub3d9\ud558\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4. \uc774 \uae30\ub2a5\uc744 \uc0ac\uc6a9\ud558\ub824\uba74 \uc560\ud50c\ub9ac\ucf00\uc774\uc158\uc744 HTTPS\uc640 \uac19\uc740 \uc548\uc804\ud55c \ucd9c\ucc98\ub85c \uc804\ud658\ud558\ub294 \uac83\uc744 \uace0\ub824\ud574\uc57c \ud569\ub2c8\ub2e4. \uc790\uc138\ud55c \ub0b4\uc6a9\uc740 \ub2e4\uc74c \ud398\uc774\uc9c0\ub97c \ucc38\uace0\ud558\uc138\uc694. https://goo.gle/chrome-insecure-origins"
+  },
+  "generated/Deprecation.ts | GeolocationInsecureOriginDeprecatedNotRemoved": {
+    "message": "\uc548\uc804\ud558\uc9c0 \uc54a\uc740 \ucd9c\ucc98\uc758 getCurrentPosition() \ubc0f watchPosition()\uc740 \uc9c0\uc6d0 \uc911\ub2e8\ub418\uc5c8\uc2b5\ub2c8\ub2e4. \uc774 \uae30\ub2a5\uc744 \uc0ac\uc6a9\ud558\ub824\uba74 \uc560\ud50c\ub9ac\ucf00\uc774\uc158\uc744 HTTPS\uc640 \uac19\uc740 \uc548\uc804\ud55c \ucd9c\ucc98\ub85c \uc804\ud658\ud558\ub294 \uac83\uc744 \uace0\ub824\ud574\uc57c \ud569\ub2c8\ub2e4. \uc790\uc138\ud55c \ub0b4\uc6a9\uc740 \ub2e4\uc74c \ud398\uc774\uc9c0\ub97c \ucc38\uace0\ud558\uc138\uc694. https://goo.gle/chrome-insecure-origins"
+  },
+  "generated/Deprecation.ts | GetUserMediaInsecureOrigin": {
+    "message": "getUserMedia()\ub294 \ub354 \uc774\uc0c1 \uc548\uc804\ud558\uc9c0 \uc54a\uc740 \ucd9c\ucc98\uc5d0\uc11c \uc791\ub3d9\ud558\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4. \uc774 \uae30\ub2a5\uc744 \uc0ac\uc6a9\ud558\ub824\uba74 \uc560\ud50c\ub9ac\ucf00\uc774\uc158\uc744 HTTPS\uc640 \uac19\uc740 \uc548\uc804\ud55c \ucd9c\ucc98\ub85c \uc804\ud658\ud558\ub294 \uac83\uc744 \uace0\ub824\ud574\uc57c \ud569\ub2c8\ub2e4. \uc790\uc138\ud55c \ub0b4\uc6a9\uc740 \ub2e4\uc74c \ud398\uc774\uc9c0\ub97c \ucc38\uace0\ud558\uc138\uc694. https://goo.gle/chrome-insecure-origins"
+  },
+  "generated/Deprecation.ts | H1UserAgentFontSizeInSection": {
+    "message": "<article>, <aside>, <nav> \ub610\ub294 <section> \ub0b4\uc5d0 \uc9c0\uc815\ub41c \uae00\uaf34 \ud06c\uae30\uac00 \uc5c6\ub294 <h1> \ud0dc\uadf8\uac00 \uc788\uc2b5\ub2c8\ub2e4. \uc774 \ube0c\ub77c\uc6b0\uc800\uc5d0\uc11c \uc774 \uc81c\ubaa9 \ud14d\uc2a4\ud2b8\uc758 \ud06c\uae30\uac00 \uc870\ub9cc\uac04 \ubcc0\uacbd\ub420 \uc608\uc815\uc785\ub2c8\ub2e4. \uc790\uc138\ud55c \ub0b4\uc6a9\uc740 \ub2e4\uc74c\uc744 \ucc38\uace0\ud558\uc138\uc694. https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#specifying_a_uniform_font_size_for_h1"
+  },
+  "generated/Deprecation.ts | HostCandidateAttributeGetter": {
+    "message": "RTCPeerConnectionIceErrorEvent.hostCandidate\ub294 \uc9c0\uc6d0 \uc911\ub2e8\ub418\uc5c8\uc2b5\ub2c8\ub2e4. \ub300\uc2e0 RTCPeerConnectionIceErrorEvent.address \ub610\ub294 RTCPeerConnectionIceErrorEvent.port\ub97c \uc0ac\uc6a9\ud558\uc138\uc694."
+  },
+  "generated/Deprecation.ts | IdentityDigitalCredentials": {
+    "message": "\ub514\uc9c0\ud138 \uc0ac\uc6a9\uc790 \uc778\uc99d \uc815\ubcf4\uc5d0 \ub300\ud55c navigator.credentials.get() \uc694\uccad\uc758 \uc774 \ud615\uc2dd\uc740 \uc9c0\uc6d0 \uc911\ub2e8\ub418\uc5c8\uc73c\ubbc0\ub85c \ud638\ucd9c\uc744 \uc5c5\ub370\uc774\ud2b8\ud558\uc5ec \uc0c8 \ud615\uc2dd\uc744 \uc0ac\uc6a9\ud558\uc138\uc694."
+  },
+  "generated/Deprecation.ts | IdentityInCanMakePaymentEvent": {
+    "message": "canmakepayment \uc11c\ube44\uc2a4 \uc6cc\ucee4 \uc774\ubca4\ud2b8\uc758 \ud310\ub9e4\uc790 \uc6d0\ubcf8 \ubc0f \uc784\uc758 \ub370\uc774\ud130\uc778 topOrigin, paymentRequestOrigin, methodData, modifiers\uac00 \uc9c0\uc6d0 \uc911\ub2e8\ub418\uc5c8\uc73c\uba70 \uc0ad\uc81c\ub420 \uc608\uc815\uc785\ub2c8\ub2e4."
+  },
+  "generated/Deprecation.ts | InsecurePrivateNetworkSubresourceRequest": {
+    "message": "\uc6f9\uc0ac\uc774\ud2b8\uc5d0\uc11c \uc0ac\uc6a9\uc790 \uad8c\ud55c\uc774 \uc9c0\uc815\ub41c \ub124\ud2b8\uc6cc\ud06c \uc704\uce58\ub85c \uc778\ud574 \ud574\ub2f9 \uc6f9\uc0ac\uc774\ud2b8\ub9cc \uc561\uc138\uc2a4 \uac00\ub2a5\ud55c \ub124\ud2b8\uc6cc\ud06c\uc758 \ud558\uc704 \ub9ac\uc18c\uc2a4\ub97c \uc694\uccad\ud588\uc2b5\ub2c8\ub2e4. \uc774\ub7ec\ud55c \uc694\uccad\uc740 \ube44\uacf5\uac1c \uae30\uae30 \ubc0f \uc11c\ubc84\ub97c \uc778\ud130\ub137\uc5d0 \ub178\ucd9c\uc2dc\ucf1c \ud06c\ub85c\uc2a4 \uc0ac\uc774\ud2b8 \uc694\uccad \uc704\uc870(CSRF) \uacf5\uaca9 \ub610\ub294 \uc815\ubcf4 \uc720\ucd9c\uc758 \uc704\ud5d8\uc744 \ub192\uc785\ub2c8\ub2e4. \uc704\ud5d8\uc744 \uc644\ud654\ud558\uae30 \uc704\ud574 Chrome\uc740 \uc548\uc804\ud558\uc9c0 \uc54a\uc740 \ucee8\ud14d\uc2a4\ud2b8\uc5d0\uc11c \uc2dc\uc791\ub41c \ube44\uacf5\uac1c \ud558\uc704 \ub9ac\uc18c\uc2a4\uc5d0 \ub300\ud55c \uc694\uccad\uc744 \uc0ac\uc6a9 \uc911\uc9c0\ud558\uace0 \ucc28\ub2e8\ud558\uae30 \uc2dc\uc791\ud569\ub2c8\ub2e4."
+  },
+  "generated/Deprecation.ts | InterestGroupDailyUpdateUrl": {
+    "message": "joinAdInterestGroup()\uc5d0 \uc804\ub2ec\ub41c InterestGroups\uc758 dailyUpdateUrl \ud544\ub4dc \uc774\ub984\uc774 \ub3d9\uc791\uc744 \ub354 \uc815\ud655\ud558\uac8c \ubc18\uc601\ud558\ub3c4\ub85d updateUrl\ub85c \ubcc0\uacbd\ub418\uc5c8\uc2b5\ub2c8\ub2e4."
+  },
+  "generated/Deprecation.ts | IntlV8BreakIterator": {
+    "message": "Intl.v8BreakIterator\ub294 \uc9c0\uc6d0 \uc911\ub2e8\ub418\uc5c8\uc2b5\ub2c8\ub2e4. \ub300\uc2e0 Intl.Segmenter\ub97c \uc0ac\uc6a9\ud558\uc138\uc694."
+  },
+  "generated/Deprecation.ts | LocalCSSFileExtensionRejected": {
+    "message": ".css \ud30c\uc77c \ud655\uc7a5\uc790\ub85c \ub05d\ub098\uc9c0 \uc54a\ub294 CSS\ub294 file: URL\uc5d0\uc11c \ub85c\ub4dc\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "generated/Deprecation.ts | MediaSourceAbortRemove": {
+    "message": "\uc0ac\uc591 \ubcc0\uacbd\uc73c\ub85c \uc778\ud574 SourceBuffer.abort()\ub97c \uc0ac\uc6a9\ud558\uc5ec remove() \ube44\ub3d9\uae30 \ubc94\uc704 \uc0ad\uc81c\ub97c \ucde8\uc18c\ud558\ub294 \uae30\ub2a5\uc758 \uc9c0\uc6d0\uc774 \uc911\ub2e8\ub429\ub2c8\ub2e4. \uc9c0\uc6d0\uc740 \ud5a5\ud6c4 \uc0ad\uc81c\ub420 \uc608\uc815\uc785\ub2c8\ub2e4. \ub300\uc2e0 updateend \uc774\ubca4\ud2b8\ub97c \uc218\uc2e0 \ub300\uae30\ud574\uc57c \ud569\ub2c8\ub2e4. abort()\ub294 \ube44\ub3d9\uae30 \ubbf8\ub514\uc5b4 \ucd94\uac00 \ud56d\ubaa9\uc744 \ucde8\uc18c\ud558\uac70\ub098 \ud30c\uc11c \uc0c1\ud0dc\ub97c \ucd08\uae30\ud654\ud558\ub294 \ub370\ub9cc \uc0ac\uc6a9\ud558\ub3c4\ub85d \ub9cc\ub4e4\uc5b4\uc84c\uc2b5\ub2c8\ub2e4."
+  },
+  "generated/Deprecation.ts | MediaSourceDurationTruncatingBuffered": {
+    "message": "\uc0ac\uc591 \ubcc0\uacbd\uc73c\ub85c \uc778\ud574, MediaSource.duration\uc744 \ubc84\ud37c\ub9c1\ub41c \ucf54\ub4dc \ud504\ub808\uc784\uc758 \ucd5c\uace0 \ud0c0\uc784\uc2a4\ud0ec\ud504\ubcf4\ub2e4 \ub0ae\uac8c \uc124\uc815\ud558\ub294 \uae30\ub2a5\uc774 \uc9c0\uc6d0 \uc911\ub2e8\ub418\uc5c8\uc2b5\ub2c8\ub2e4. \ubc84\ud37c\ub9c1\ub41c \ubbf8\ub514\uc5b4\uc758 \uc798\ub9b0 \ubd80\ubd84\uc744 \uc554\uc2dc\uc801\uc73c\ub85c \uc0ad\uc81c\ud558\ub294 \uae30\ub2a5\uc5d0 \ub300\ud55c \uc9c0\uc6d0\uc740 \uc55e\uc73c\ub85c \uc0ad\uc81c\ub420 \uc608\uc815\uc785\ub2c8\ub2e4. newDuration < oldDuration\uc758 \uacbd\uc6b0 \ub300\uc2e0 \ubaa8\ub4e0 sourceBuffers\uc5d0\uc11c \uba85\uc2dc\uc801 remove(newDuration, oldDuration)\uc744 \uc218\ud589\ud574\uc57c \ud569\ub2c8\ub2e4."
+  },
+  "generated/Deprecation.ts | NoSysexWebMIDIWithoutPermission": {
+    "message": "SysEx\uac00 MIDIOptions\uc5d0 \uc9c0\uc815\ub418\uc5b4 \uc788\uc9c0 \uc54a\uc740 \uacbd\uc6b0\uc5d0\ub3c4 \uc0ac\uc6a9\ud560 \uc218 \uc788\ub3c4\ub85d \uc6f9 MIDI\uac00 \uad8c\ud55c\uc744 \uc694\uccad\ud569\ub2c8\ub2e4."
+  },
+  "generated/Deprecation.ts | NotificationInsecureOrigin": {
+    "message": "\uc548\uc804\ud558\uc9c0 \uc54a\uc740 \ucd9c\ucc98\uc758 Notification API\ub294 \ub354 \uc774\uc0c1 \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4. \uc560\ud50c\ub9ac\ucf00\uc774\uc158\uc744 HTTPS\uc640 \uac19\uc774 \uc548\uc804\ud55c \ucd9c\ucc98\ub85c \uc804\ud658\ud574 \ubcf4\uc138\uc694. \uc790\uc138\ud55c \ub0b4\uc6a9\uc740 \ub2e4\uc74c \ud398\uc774\uc9c0\ub97c \ucc38\uace0\ud558\uc138\uc694. https://goo.gle/chrome-insecure-origins"
+  },
+  "generated/Deprecation.ts | NotificationPermissionRequestedIframe": {
+    "message": "\ub354 \uc774\uc0c1 \uad50\ucc28 \ucd9c\ucc98 iframe\uc5d0\uc11c Notification API \uad8c\ud55c\uc744 \uc694\uccad\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4. \ucd5c\uc0c1\uc704 \ud504\ub808\uc784\uc5d0\uc11c \uad8c\ud55c\uc744 \uc694\uccad\ud558\uac70\ub098 \ub300\uc2e0 \uc0c8\ub85c\uc6b4 \ucc3d\uc744 \uc5ec\ub294 \ubc29\ubc95\uc744 \uace0\ub824\ud574\uc57c \ud569\ub2c8\ub2e4."
+  },
+  "generated/Deprecation.ts | ObsoleteCreateImageBitmapImageOrientationNone": {
+    "message": "createImageBitmap\uc758 imageOrientation: 'none' \uc635\uc158\uc740 \uc9c0\uc6d0 \uc911\ub2e8\ub429\ub2c8\ub2e4. \ub300\uc2e0 '{imageOrientation: 'from-image'}' \uc635\uc158\uc73c\ub85c createImageBitmap\uc744 \uc0ac\uc6a9\ud558\uc2dc\uae30 \ubc14\ub78d\ub2c8\ub2e4."
+  },
+  "generated/Deprecation.ts | ObsoleteWebRtcCipherSuite": {
+    "message": "\ud30c\ud2b8\ub108\uac00 \uc9c0\uc6d0 \uc911\ub2e8\ub41c (D)TLS \ubc84\uc804\uc744 \ud611\uc0c1\ud569\ub2c8\ub2e4. \ud30c\ud2b8\ub108\uc5d0\uac8c \ud655\uc778\ud558\uc5ec \uc774\ub97c \ud574\uacb0\ud558\uc138\uc694."
+  },
+  "generated/Deprecation.ts | OverflowVisibleOnReplacedElement": {
+    "message": "img, video, canvas \ud0dc\uadf8\uc5d0 overflow: visible\uc744(\ub97c) \uc9c0\uc815\ud558\uba74 \uc694\uc18c \uacbd\uacc4 \uc678\ubd80\uc5d0 \uc2dc\uac01\uc801 \ucf58\ud150\uce20\uac00 \uc0dd\uc131\ub420 \uc218 \uc788\uc2b5\ub2c8\ub2e4. \ub2e4\uc74c\uc744 \ucc38\uace0\ud558\uc138\uc694. https://github.com/WICG/shared-element-transitions/blob/main/debugging_overflow_on_images.md"
+  },
+  "generated/Deprecation.ts | PaymentInstruments": {
+    "message": "paymentManager.instruments \uc9c0\uc6d0\uc774 \uc911\ub2e8\ub429\ub2c8\ub2e4. \ub300\uc2e0 \uacb0\uc81c \ud578\ub4e4\ub7ec\uc5d0 \uc801\uc2dc \uc124\uce58\ub97c \uc0ac\uc6a9\ud558\uc138\uc694."
+  },
+  "generated/Deprecation.ts | PaymentRequestCSPViolation": {
+    "message": "PaymentRequest \ud638\ucd9c\uc774 \ucf58\ud150\uce20 \ubcf4\uc548 \uc815\ucc45(CSP) connect-src \uc9c0\uc2dc\uc5b4\ub97c \uc6b0\ud68c\ud588\uc2b5\ub2c8\ub2e4. \uc774 \uc6b0\ud68c \uc9c0\uc6d0\uc774 \uc911\ub2e8\ub429\ub2c8\ub2e4. PaymentRequest API(supportedMethods \uc785\ub825\ub780)\uc758 \uacb0\uc81c \uc218\ub2e8 \uc2dd\ubcc4\uc790\ub97c CSP connect-src \uc9c0\uc2dc\uc5b4\uc5d0 \ucd94\uac00\ud558\uc138\uc694."
+  },
+  "generated/Deprecation.ts | PersistentQuotaType": {
+    "message": "StorageType.persistent\ub294 \uc9c0\uc6d0 \uc911\ub2e8\ub418\uc5c8\uc2b5\ub2c8\ub2e4. \ub300\uc2e0 \ud45c\uc900\ud654\ub41c navigator.storage\ub97c \uc0ac\uc6a9\ud558\uc138\uc694."
+  },
+  "generated/Deprecation.ts | PictureSourceSrc": {
+    "message": "<picture> \uc0c1\uc704 \uc694\uc18c\ub97c \uc9c0\ub2cc <source src>\uac00 \uc798\ubabb\ub418\uc5c8\uc73c\ubbc0\ub85c \ubb34\uc2dc\ub429\ub2c8\ub2e4. \ub300\uc2e0 <source srcset>\ub97c \uc0ac\uc6a9\ud558\uc138\uc694."
+  },
+  "generated/Deprecation.ts | PrefixedCancelAnimationFrame": {
+    "message": "webkitCancelAnimationFrame\uc740 \uacf5\uae09\uc5c5\uccb4\ubcc4\ub85c \ub2e4\ub985\ub2c8\ub2e4. \ud45c\uc900 cancelAnimationFrame\uc744 \ub300\uc2e0 \uc0ac\uc6a9\ud558\uc2dc\uae30 \ubc14\ub78d\ub2c8\ub2e4."
+  },
+  "generated/Deprecation.ts | PrefixedRequestAnimationFrame": {
+    "message": "webkitRequestAnimationFrame\uc740 \uacf5\uae09\uc5c5\uccb4\ubcc4\ub85c \ub2e4\ub985\ub2c8\ub2e4. \ud45c\uc900 requestAnimationFrame\uc744 \ub300\uc2e0 \uc0ac\uc6a9\ud558\uc2dc\uae30 \ubc14\ub78d\ub2c8\ub2e4."
+  },
+  "generated/Deprecation.ts | PrefixedVideoDisplayingFullscreen": {
+    "message": "HTMLVideoElement.webkitDisplayingFullscreen\uc740 \uc9c0\uc6d0 \uc911\ub2e8\ub418\uc5c8\uc2b5\ub2c8\ub2e4. \ub300\uc2e0 Document.fullscreenElement\ub97c \uc0ac\uc6a9\ud558\uc138\uc694."
+  },
+  "generated/Deprecation.ts | PrefixedVideoEnterFullScreen": {
+    "message": "HTMLVideoElement.webkitEnterFullScreen()\uc740 \uc9c0\uc6d0 \uc911\ub2e8\ub418\uc5c8\uc2b5\ub2c8\ub2e4. Element.requestFullscreen()\uc744 \ub300\uc2e0 \uc0ac\uc6a9\ud558\uc2dc\uae30 \ubc14\ub78d\ub2c8\ub2e4."
+  },
+  "generated/Deprecation.ts | PrefixedVideoEnterFullscreen": {
+    "message": "HTMLVideoElement.webkitEnterFullscreen()\uc740 \uc9c0\uc6d0 \uc911\ub2e8\ub418\uc5c8\uc2b5\ub2c8\ub2e4. Element.requestFullscreen()\uc744 \ub300\uc2e0 \uc0ac\uc6a9\ud558\uc2dc\uae30 \ubc14\ub78d\ub2c8\ub2e4."
+  },
+  "generated/Deprecation.ts | PrefixedVideoExitFullScreen": {
+    "message": "HTMLVideoElement.webkitExitFullScreen()\uc740 \uc9c0\uc6d0 \uc911\ub2e8\ub418\uc5c8\uc2b5\ub2c8\ub2e4. Document.exitFullscreen()\uc744 \ub300\uc2e0 \uc0ac\uc6a9\ud558\uc2dc\uae30 \ubc14\ub78d\ub2c8\ub2e4."
+  },
+  "generated/Deprecation.ts | PrefixedVideoExitFullscreen": {
+    "message": "HTMLVideoElement.webkitExitFullscreen()\uc740 \uc9c0\uc6d0 \uc911\ub2e8\ub418\uc5c8\uc2b5\ub2c8\ub2e4. Document.exitFullscreen()\uc744 \ub300\uc2e0 \uc0ac\uc6a9\ud558\uc2dc\uae30 \ubc14\ub78d\ub2c8\ub2e4."
+  },
+  "generated/Deprecation.ts | PrefixedVideoSupportsFullscreen": {
+    "message": "HTMLVideoElement.webkitSupportsFullscreen\uc740 \uc9c0\uc6d0 \uc911\ub2e8\ub418\uc5c8\uc2b5\ub2c8\ub2e4. \ub300\uc2e0 Document.fullscreenEnabled\ub97c \uc0ac\uc6a9\ud558\uc138\uc694."
+  },
+  "generated/Deprecation.ts | PrivacySandboxExtensionsAPI": {
+    "message": "chrome.privacy.websites.privacySandboxEnabled API\ub294 \uc9c0\uc6d0 \uc911\ub2e8\ub418\uc9c0\ub9cc M113 \ubc84\uc804\uc774 \ucd9c\uc2dc\ub420 \ub54c\uae4c\uc9c0 \uc774\uc804 \ubc84\uc804\uacfc\uc758 \ud638\ud658\uc131\uc744 \uc704\ud574 \ud65c\uc131 \uc0c1\ud0dc\ub85c \uc720\uc9c0\ub429\ub2c8\ub2e4. \ub300\uc2e0 chrome.privacy.websites.topicsEnabled, chrome.privacy.websites.fledgeEnabled, chrome.privacy.websites.adMeasurementEnabled API\ub97c \uc0ac\uc6a9\ud558\uc138\uc694. \uc790\uc138\ud55c \ub0b4\uc6a9\uc740 \ub2e4\uc74c \ud398\uc774\uc9c0\ub97c \ucc38\uace0\ud558\uc138\uc694. https://developer.chrome.com/docs/extensions/reference/privacy/#property-websites-privacySandboxEnabled"
+  },
+  "generated/Deprecation.ts | RTCConstraintEnableDtlsSrtpFalse": {
+    "message": "DtlsSrtpKeyAgreement \uc81c\uc57d \uc870\uac74\uc740 \uc0ad\uc81c\ub418\uc5c8\uc2b5\ub2c8\ub2e4. \uc774 \uc81c\uc57d \uc870\uac74\uc5d0 false \uac12\uc744 \uc9c0\uc815\ud588\uc73c\uba70 \uc774\ub294 \uc0ad\uc81c\ub41c SDES key negotiation \uba54\uc11c\ub4dc\ub97c \uc0ac\uc6a9\ud558\uae30 \uc704\ud55c \uc2dc\ub3c4\ub85c \ud574\uc11d\ub420 \uc218 \uc788\uc2b5\ub2c8\ub2e4. \ud574\ub2f9 \uae30\ub2a5\uc740 \uc0ad\uc81c\ub418\uc5c8\uc2b5\ub2c8\ub2e4. \ub300\uc2e0 DTLS key negotiation\uc744 \uc9c0\uc6d0\ud558\ub294 \uc11c\ube44\uc2a4\ub97c \uc0ac\uc6a9\ud558\uc138\uc694."
+  },
+  "generated/Deprecation.ts | RTCConstraintEnableDtlsSrtpTrue": {
+    "message": "DtlsSrtpKeyAgreement \uc81c\uc57d \uc870\uac74\uc740 \uc0ad\uc81c\ub418\uc5c8\uc2b5\ub2c8\ub2e4. \uc774 \uc81c\uc57d \uc870\uac74\uc5d0 true \uac12\uc744 \uc9c0\uc815\ud588\uc73c\uba70 \uc774\ub294 \uc544\ubb34\ub7f0 \uc601\ud5a5\uc744 \ubbf8\uce58\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4. \uc815\ub3c8\uc744 \uc704\ud574 \uc774 \uc81c\uc57d \uc870\uac74\uc744 \uc0ad\uc81c\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4."
+  },
+  "generated/Deprecation.ts | RTCPeerConnectionGetStatsLegacyNonCompliant": {
+    "message": "\ucf5c\ubc31 \uae30\ubc18 getStats()\ub294 \uc9c0\uc6d0 \uc911\ub2e8\ub418\uc5c8\uc73c\uba70 \uc0ad\uc81c\ub420 \uc608\uc815\uc785\ub2c8\ub2e4. \ub300\uc2e0 \uc0ac\uc591\uc744 \uc900\uc218\ud558\ub294 getStats()\ub97c \uc0ac\uc6a9\ud558\uc138\uc694."
+  },
+  "generated/Deprecation.ts | RangeExpand": {
+    "message": "Range.expand()\ub294 \uc9c0\uc6d0 \uc911\ub2e8\ub418\uc5c8\uc2b5\ub2c8\ub2e4. Selection.modify()\ub97c \ub300\uc2e0 \uc0ac\uc6a9\ud558\uc2dc\uae30 \ubc14\ub78d\ub2c8\ub2e4."
+  },
+  "generated/Deprecation.ts | RequestedSubresourceWithEmbeddedCredentials": {
+    "message": "\uc0bd\uc785\ub41c \uc0ac\uc6a9\uc790 \uc778\uc99d \uc815\ubcf4(\uc608: https://user:pass@host/)\uac00 URL\uc5d0 \ud3ec\ud568\ub41c \ud558\uc704 \ub9ac\uc18c\uc2a4 \uc694\uccad\uc774 \ucc28\ub2e8\ub418\uc5c8\uc2b5\ub2c8\ub2e4."
+  },
+  "generated/Deprecation.ts | RtcpMuxPolicyNegotiate": {
+    "message": "rtcpMuxPolicy \uc635\uc158\uc740 \uc9c0\uc6d0 \uc911\ub2e8\ub418\uc5c8\uc73c\uba70 \uc0ad\uc81c\ub420 \uc608\uc815\uc785\ub2c8\ub2e4."
+  },
+  "generated/Deprecation.ts | SharedArrayBufferConstructedWithoutIsolation": {
+    "message": "SharedArrayBuffer\uc5d0\uc11c\ub294 \uad50\ucc28 \ucd9c\ucc98 \ubd84\ub9ac\ub97c \uc694\uad6c\ud569\ub2c8\ub2e4. \uc790\uc138\ud55c \ub0b4\uc6a9\uc740 \ub2e4\uc74c \ud398\uc774\uc9c0\ub97c \ucc38\uace0\ud558\uc138\uc694. https://developer.chrome.com/blog/enabling-shared-array-buffer/"
+  },
+  "generated/Deprecation.ts | TextToSpeech_DisallowedByAutoplay": {
+    "message": "\uc0ac\uc6a9\uc790 \ud65c\uc131\ud654\ub97c \ud3ec\ud568\ud558\uc9c0 \uc54a\uc740 speechSynthesis.speak()\ub294 \uc9c0\uc6d0 \uc911\ub2e8\ub418\uc5c8\uc73c\uba70 \uc0ad\uc81c\ub420 \uc608\uc815\uc785\ub2c8\ub2e4."
+  },
+  "generated/Deprecation.ts | UnloadHandler": {
+    "message": "\ub85c\ub4dc \ucde8\uc18c \uc774\ubca4\ud2b8 \ub9ac\uc2a4\ub108\ub294 \uc9c0\uc6d0 \uc911\ub2e8\ub418\uc5c8\uc73c\uba70 \uc0ad\uc81c\ub420 \uc608\uc815\uc785\ub2c8\ub2e4."
+  },
+  "generated/Deprecation.ts | V8SharedArrayBufferConstructedInExtensionWithoutIsolation": {
+    "message": "SharedArrayBuffer\ub97c \uacc4\uc18d \uc0ac\uc6a9\ud558\ub824\uba74 \ud655\uc7a5 \ud504\ub85c\uadf8\ub7a8\uc5d0\uc11c \uad50\ucc28 \ucd9c\ucc98 \ubd84\ub9ac\ub97c \uc0ac\uc6a9\ud574\uc57c \ud569\ub2c8\ub2e4. \ub2e4\uc74c \ud398\uc774\uc9c0\ub97c \ucc38\uace0\ud558\uc138\uc694. https://developer.chrome.com/docs/extensions/mv3/cross-origin-isolation/"
+  },
+  "generated/Deprecation.ts | XHRJSONEncodingDetection": {
+    "message": "UTF-16\uc740 XMLHttpRequest\uc758 response.json\uc5d0\uc11c \uc9c0\uc6d0\ub418\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4."
+  },
+  "generated/Deprecation.ts | XMLHttpRequestSynchronousInNonWorkerOutsideBeforeUnload": {
+    "message": "\ucd5c\uc885 \uc0ac\uc6a9\uc790 \ud658\uacbd\uc5d0 \ubd80\uc815\uc801\uc778 \uc601\ud5a5\uc744 \ubbf8\uce58\ubbc0\ub85c \uae30\ubcf8 \uc2a4\ub808\ub4dc\uc758 \ub3d9\uae30\uc2dd XMLHttpRequest\uc774(\uac00) \uc9c0\uc6d0 \uc911\ub2e8\ub418\uc5c8\uc2b5\ub2c8\ub2e4. \ucd94\uac00 \uc9c0\uc6d0\uc774 \ud544\uc694\ud55c \uacbd\uc6b0 \ub2e4\uc74c \ud398\uc774\uc9c0\ub97c \ucc38\uace0\ud558\uc138\uc694. https://xhr.spec.whatwg.org/"
+  },
+  "models/trace/insights/CLSCulprits.ts | animation": {
+    "message": "\uc560\ub2c8\uba54\uc774\uc158"
+  },
+  "models/trace/insights/CLSCulprits.ts | description": {
+    "message": "\ub808\uc774\uc544\uc6c3 \ubcc0\uacbd\uc740 \uc0ac\uc6a9\uc790 \uc0c1\ud638\uc791\uc6a9 \uc5c6\uc774 \uc694\uc18c\uac00 \uc774\ub3d9\ud560 \ub54c \ubc1c\uc0dd\ud569\ub2c8\ub2e4. \ud398\uc774\uc9c0\uac00 \ub85c\ub4dc\ub420 \ub54c \uc694\uc18c\uac00 \ucd94\uac00\ub418\uac70\ub098 \uc0ad\uc81c\ub418\uac70\ub098 \uae00\uaf34\uc774 \ubcc0\uacbd\ub418\ub294 \ub4f1 [\ub808\uc774\uc544\uc6c3\uc774 \ubcc0\uacbd\ub418\ub294 \uc774\uc720\ub97c \uc870\uc0ac](https://web.dev/articles/optimize-cls)\ud558\uc138\uc694."
+  },
+  "models/trace/insights/CLSCulprits.ts | fontRequest": {
+    "message": "\uae00\uaf34 \uc694\uccad"
+  },
+  "models/trace/insights/CLSCulprits.ts | injectedIframe": {
+    "message": "\uc0bd\uc785\ub41c iframe"
+  },
+  "models/trace/insights/CLSCulprits.ts | layoutShiftCluster": {
+    "message": "\ub808\uc774\uc544\uc6c3 \ubcc0\uacbd \ud074\ub7ec\uc2a4\ud130 @{PH1}"
+  },
+  "models/trace/insights/CLSCulprits.ts | noCulprits": {
+    "message": "\ub808\uc774\uc544\uc6c3 \ubcc0\uacbd \uc6d0\uc778\uc744 \ucc3e\uc744 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "models/trace/insights/CLSCulprits.ts | noLayoutShifts": {
+    "message": "\ub808\uc774\uc544\uc6c3 \ubcc0\uacbd \uc5c6\uc74c"
+  },
+  "models/trace/insights/CLSCulprits.ts | title": {
+    "message": "\ub808\uc774\uc544\uc6c3 \ubcc0\uacbd \uc6d0\uc778"
+  },
+  "models/trace/insights/CLSCulprits.ts | topCulprits": {
+    "message": "\uc0c1\uc704 \ub808\uc774\uc544\uc6c3 \ubcc0\uacbd \uc6d0\uc778"
+  },
+  "models/trace/insights/CLSCulprits.ts | unsizedImages": {
+    "message": "\ud06c\uae30\uac00 \uc9c0\uc815\ub418\uc9c0 \uc54a\uc740 \uc774\ubbf8\uc9c0"
+  },
+  "models/trace/insights/CLSCulprits.ts | worstCluster": {
+    "message": "\ucd5c\uc545\uc758 \ud074\ub7ec\uc2a4\ud130"
+  },
+  "models/trace/insights/CLSCulprits.ts | worstLayoutShiftCluster": {
+    "message": "\ucd5c\uc545\uc758 \ub808\uc774\uc544\uc6c3 \ubcc0\uacbd \ud074\ub7ec\uc2a4\ud130"
+  },
+  "models/trace/insights/Cache.ts | cacheTTL": {
+    "message": "\uce90\uc2dc TTL"
+  },
+  "models/trace/insights/Cache.ts | description": {
+    "message": "\uce90\uc2dc \uc218\uba85\uc774 \uae38\uba74 \ud398\uc774\uc9c0\ub97c \ubc18\ubcf5\ud574\uc11c \ubc29\ubb38\ud558\ub294 \uc18d\ub3c4\uac00 \ube68\ub77c\uc9c8 \uc218 \uc788\uc2b5\ub2c8\ub2e4. [\uc790\uc138\ud788 \uc54c\uc544\ubcf4\uae30](https://web.dev/uses-long-cache-ttl/)"
+  },
+  "models/trace/insights/Cache.ts | noRequestsToCache": {
+    "message": "\ube44\ud6a8\uc728\uc801\uc778 \uce90\uc2dc \uc815\ucc45\uc744 \uc0ac\uc6a9\ud558\ub294 \uc694\uccad \uc5c6\uc74c"
+  },
+  "models/trace/insights/Cache.ts | others": {
+    "message": "\uadf8 \uc678 {PH1}\uac1c"
+  },
+  "models/trace/insights/Cache.ts | requestColumn": {
+    "message": "\uc694\uccad"
+  },
+  "models/trace/insights/Cache.ts | title": {
+    "message": "\ud6a8\uc728\uc801\uc778 \uce90\uc2dc \uc218\uba85 \uc0ac\uc6a9"
+  },
+  "models/trace/insights/DOMSize.ts | description": {
+    "message": "DOM\uc774 \ud06c\uba74 \uc2a4\ud0c0\uc77c \uacc4\uc0b0 \ubc0f \ub808\uc774\uc544\uc6c3 \ub9ac\ud50c\ub85c\uc6b0 \uc2dc\uac04\uc774 \uae38\uc5b4\uc838 \ud398\uc774\uc9c0 \ubc18\uc751\uc131\uc5d0 \uc601\ud5a5\uc744 \ubbf8\uce60 \uc218 \uc788\uc2b5\ub2c8\ub2e4. DOM\uc774 \ud06c\uba74 \uba54\ubaa8\ub9ac \uc0ac\uc6a9\ub7c9\ub3c4 \ub298\uc5b4\ub0a9\ub2c8\ub2e4. [\uacfc\ub3c4\ud55c DOM \ud06c\uae30\ub97c \ubc29\uc9c0\ud558\ub294 \ubc29\ubc95 \uc54c\uc544\ubcf4\uae30](https://developer.chrome.com/docs/lighthouse/performance/dom-size/)"
+  },
+  "models/trace/insights/DOMSize.ts | element": {
+    "message": "\uc694\uc18c"
+  },
+  "models/trace/insights/DOMSize.ts | maxChildren": {
+    "message": "\ub300\ubd80\ubd84\uc758 \ud558\uc704 \uc694\uc18c"
+  },
+  "models/trace/insights/DOMSize.ts | maxDOMDepth": {
+    "message": "DOM \uae4a\uc774"
+  },
+  "models/trace/insights/DOMSize.ts | statistic": {
+    "message": "\ud1b5\uacc4"
+  },
+  "models/trace/insights/DOMSize.ts | title": {
+    "message": "DOM \ud06c\uae30 \ucd5c\uc801\ud654"
+  },
+  "models/trace/insights/DOMSize.ts | totalElements": {
+    "message": "\ucd1d \uc694\uc18c \uc218"
+  },
+  "models/trace/insights/DOMSize.ts | value": {
+    "message": "\uac12"
+  },
+  "models/trace/insights/DocumentLatency.ts | description": {
+    "message": "\uccab \ubc88\uc9f8 \ub124\ud2b8\uc6cc\ud06c \uc694\uccad\uc774 \uac00\uc7a5 \uc911\uc694\ud569\ub2c8\ub2e4.  \ub9ac\ub514\ub809\uc158\uc744 \ubc29\uc9c0\ud558\uace0 \uc11c\ubc84 \uc751\ub2f5 \uc18d\ub3c4\ub97c \ub192\uc774\uba70 \ud14d\uc2a4\ud2b8 \uc555\ucd95\uc744 \uc0ac\uc6a9 \uc124\uc815\ud558\uc5ec \uc9c0\uc5f0 \uc2dc\uac04\uc744 \uc904\uc774\uc138\uc694."
+  },
+  "models/trace/insights/DocumentLatency.ts | failedRedirects": {
+    "message": "\ub9ac\ub514\ub809\uc158 \uc788\uc74c"
+  },
+  "models/trace/insights/DocumentLatency.ts | failedServerResponseTime": {
+    "message": "\uc11c\ubc84 \uc751\ub2f5\uc774 \ub290\ub9bc"
+  },
+  "models/trace/insights/DocumentLatency.ts | failedTextCompression": {
+    "message": "\uc801\uc6a9\ub41c \uc555\ucd95 \uc5c6\uc74c"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingRedirects": {
+    "message": "\ub9ac\ub514\ub809\uc158 \ubc29\uc9c0"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingServerResponseTime": {
+    "message": "\uc11c\ubc84 \uc751\ub2f5\uc774 \ube60\ub984"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingTextCompression": {
+    "message": "\ud14d\uc2a4\ud2b8 \uc555\ucd95 \uc801\uc6a9"
+  },
+  "models/trace/insights/DocumentLatency.ts | redirectsLabel": {
+    "message": "\ub9ac\ub514\ub809\uc158"
+  },
+  "models/trace/insights/DocumentLatency.ts | serverResponseTimeLabel": {
+    "message": "\uc11c\ubc84 \uc751\ub2f5 \uc2dc\uac04"
+  },
+  "models/trace/insights/DocumentLatency.ts | title": {
+    "message": "\ubb38\uc11c \uc694\uccad \uc9c0\uc5f0 \uc2dc\uac04"
+  },
+  "models/trace/insights/DocumentLatency.ts | uncompressedDownload": {
+    "message": "\ube44\uc555\ucd95 \ub2e4\uc6b4\ub85c\ub4dc"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | columnDuplicatedBytes": {
+    "message": "\uc911\ubcf5\ub41c \ubc14\uc774\ud2b8"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | columnSource": {
+    "message": "\uc18c\uc2a4"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | description": {
+    "message": "\ubc88\ub4e4\uc5d0\uc11c \ud06c\uace0 \uc911\ubcf5\ub41c JavaScript \ubaa8\ub4c8\uc744 \uc0ad\uc81c\ud558\uc5ec \ub124\ud2b8\uc6cc\ud06c \ud65c\ub3d9\uc774 \uc18c\ube44\ud558\ub294 \ubd88\ud544\uc694\ud55c \ubc14\uc774\ud2b8 \uc218\ub97c \uc904\uc785\ub2c8\ub2e4."
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | title": {
+    "message": "\uc911\ubcf5\ub41c JavaScript"
+  },
+  "models/trace/insights/FontDisplay.ts | description": {
+    "message": "[font-display](https://developer.chrome.com/blog/font-display)\ub97c swap \ub610\ub294 optional\ub85c \uc124\uc815\ud558\uc5ec \ud14d\uc2a4\ud2b8\uac00 \uc77c\uad00\ub418\uac8c \ud45c\uc2dc\ub418\ub3c4\ub85d \ud558\uc138\uc694. swap\uc740 [\uae00\uaf34 \uce21\uc815\ud56d\ubaa9 \uc7ac\uc815\uc758](https://developer.chrome.com/blog/font-fallbacks)\ub97c \ud1b5\ud574 \ub808\uc774\uc544\uc6c3 \ubcc0\ud654\ub97c \uc644\ud654\ud558\ub3c4\ub85d \ucd94\uac00\ub85c \ucd5c\uc801\ud654\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4."
+  },
+  "models/trace/insights/FontDisplay.ts | fontColumn": {
+    "message": "\uae00\uaf34"
+  },
+  "models/trace/insights/FontDisplay.ts | title": {
+    "message": "\uae00\uaf34 \ud45c\uc2dc"
+  },
+  "models/trace/insights/FontDisplay.ts | wastedTimeColumn": {
+    "message": "\ub0ad\ube44\ub41c \uc2dc\uac04"
+  },
+  "models/trace/insights/ForcedReflow.ts | anonymous": {
+    "message": "(\uc775\uba85)"
+  },
+  "models/trace/insights/ForcedReflow.ts | description": {
+    "message": "\ub9ce\uc740 API\uac00 \uc77c\ubc18\uc801\uc73c\ub85c \ub808\uc774\uc544\uc6c3 \ub3c4\ud615\uc744 \uc77d\uc73c\uba70, \uc2a4\ud0c0\uc77c\uacfc \ub808\uc774\uc544\uc6c3\uc744 \uacc4\uc0b0\ud558\uae30 \uc704\ud574 \ub80c\ub354\ub9c1 \uc5d4\uc9c4\uc774 \uc2a4\ud06c\ub9bd\ud2b8 \uc2e4\ud589\uc744 \uc77c\uc2dc\uc911\uc9c0\ud558\ub3c4\ub85d \uac15\uc81c\ud569\ub2c8\ub2e4. [\uac15\uc81c \ub9ac\ud50c\ub85c\uc6b0](https://developers.google.com/web/fundamentals/performance/rendering/avoid-large-complex-layouts-and-layout-thrashing#avoid-forced-synchronous-layouts) \ubc0f \uc644\ud654\uc5d0 \uad00\ud574 \uc790\uc138\ud788 \uc54c\uc544\ubcf4\uc138\uc694."
+  },
+  "models/trace/insights/ForcedReflow.ts | relatedStackTrace": {
+    "message": "\uc2a4\ud0dd \ud2b8\ub808\uc774\uc2a4"
+  },
+  "models/trace/insights/ForcedReflow.ts | title": {
+    "message": "\uac15\uc81c \uc2e4\ud589\ub41c \ub9ac\ud50c\ub85c\uc6b0"
+  },
+  "models/trace/insights/ForcedReflow.ts | topTimeConsumingFunctionCall": {
+    "message": "\uc0c1\uc704 \ud568\uc218 \ud638\ucd9c"
+  },
+  "models/trace/insights/ForcedReflow.ts | totalReflowTime": {
+    "message": "\ucd1d \ub9ac\ud50c\ub85c\uc6b0 \uc2dc\uac04"
+  },
+  "models/trace/insights/ForcedReflow.ts | unattributed": {
+    "message": "[\ucd9c\ucc98 \ubd88\uba85]"
+  },
+  "models/trace/insights/ImageDelivery.ts | description": {
+    "message": "\uc774\ubbf8\uc9c0\uc758 \ub2e4\uc6b4\ub85c\ub4dc \uc2dc\uac04\uc744 \uc904\uc774\uba74 \ud398\uc774\uc9c0\uc758 \uccb4\uac10 \ub85c\ub4dc \uc2dc\uac04\uacfc LCP\ub97c \uac1c\uc120\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4. [\uc774\ubbf8\uc9c0 \ud06c\uae30 \ucd5c\uc801\ud654\uc5d0 \ub300\ud574 \uc790\uc138\ud788 \uc54c\uc544\ubcf4\uae30](https://developer.chrome.com/docs/lighthouse/performance/uses-optimized-images/)"
+  },
+  "models/trace/insights/ImageDelivery.ts | estimatedSavings": {
+    "message": "{PH1}(\uc608\uc0c1: {PH2})"
+  },
+  "models/trace/insights/ImageDelivery.ts | noOptimizableImages": {
+    "message": "\ucd5c\uc801\ud654\ud560 \uc218 \uc788\ub294 \uc774\ubbf8\uc9c0 \uc5c6\uc74c"
+  },
+  "models/trace/insights/ImageDelivery.ts | optimizeFile": {
+    "message": "\ud30c\uc77c \ud06c\uae30 \ucd5c\uc801\ud654"
+  },
+  "models/trace/insights/ImageDelivery.ts | others": {
+    "message": "\uadf8 \uc678 {PH1}\uac1c"
+  },
+  "models/trace/insights/ImageDelivery.ts | title": {
+    "message": "\uc774\ubbf8\uc9c0 \uc804\uc1a1 \uac1c\uc120"
+  },
+  "models/trace/insights/ImageDelivery.ts | useCompression": {
+    "message": "\uc774\ubbf8\uc9c0 \uc555\ucd95\ub960\uc744 \ub192\uc774\uba74 \uc774 \uc774\ubbf8\uc9c0\uc758 \ub2e4\uc6b4\ub85c\ub4dc \ud06c\uae30\uac00 \uac1c\uc120\ub420 \uc218 \uc788\uc2b5\ub2c8\ub2e4."
+  },
+  "models/trace/insights/ImageDelivery.ts | useModernFormat": {
+    "message": "\ucd5c\uc2e0 \uc774\ubbf8\uc9c0 \ud615\uc2dd(WebP, AVIF)\uc744 \uc0ac\uc6a9\ud558\uac70\ub098 \uc774\ubbf8\uc9c0 \uc555\ucd95\ub960\uc744 \ub192\uc774\uba74 \uc774 \uc774\ubbf8\uc9c0\uc758 \ub2e4\uc6b4\ub85c\ub4dc \ud06c\uae30\ub97c \uac1c\uc120\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4."
+  },
+  "models/trace/insights/ImageDelivery.ts | useResponsiveSize": {
+    "message": "\uc774 \uc774\ubbf8\uc9c0 \ud30c\uc77c\uc740 \ud45c\uc2dc\ub41c \ud06c\uae30({PH2})\uc5d0 \ube44\ud574 \ud06c\uae30\uac00 \ub108\ubb34 \ud07d\ub2c8\ub2e4({PH1}). \ubc18\uc751\ud615 \uc774\ubbf8\uc9c0\ub97c \uc0ac\uc6a9\ud558\uc5ec \uc774\ubbf8\uc9c0 \ub2e4\uc6b4\ub85c\ub4dc \ud06c\uae30\ub97c \uc904\uc774\uc138\uc694."
+  },
+  "models/trace/insights/ImageDelivery.ts | useVideoFormat": {
+    "message": "GIF \ub300\uc2e0 \ub3d9\uc601\uc0c1 \ud615\uc2dd\uc744 \uc0ac\uc6a9\ud558\uba74 \uc560\ub2c8\uba54\uc774\uc158 \ucf58\ud150\uce20\uc758 \ub2e4\uc6b4\ub85c\ub4dc \ud06c\uae30\ub97c \uac1c\uc120\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4."
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | description": {
+    "message": "\uac00\uc7a5 \uae34 \ub2e8\uacc4\ubd80\ud130 \uc870\uc0ac\ub97c \uc2dc\uc791\ud558\uc138\uc694. [\uc9c0\uc5f0\uc744 \ucd5c\uc18c\ud654\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4](https://web.dev/articles/optimize-inp#optimize_interactions). \ucc98\ub9ac \uc2dc\uac04\uc744 \uc904\uc774\ub824\uba74 [\uc8fc \uc2a4\ub808\ub4dc \ube44\uc6a9(JS\uc778 \uacbd\uc6b0\uac00 \ub9ce\uc74c)\uc744 \ucd5c\uc801\ud654](https://web.dev/articles/optimize-long-tasks)\ud558\uc138\uc694."
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | duration": {
+    "message": "\uae30\uac04"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | inputDelay": {
+    "message": "\uc785\ub825 \uc9c0\uc5f0"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | noInteractions": {
+    "message": "\uc0c1\ud638\uc791\uc6a9\uc774 \uac10\uc9c0\ub418\uc9c0 \uc54a\uc74c"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | phase": {
+    "message": "\ub2e8\uacc4"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | presentationDelay": {
+    "message": "\ud45c\uc2dc \uc9c0\uc5f0"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | processingDuration": {
+    "message": "\ucc98\ub9ac \uae30\uac04"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | title": {
+    "message": "\ub2e8\uacc4\ubcc4 INP"
+  },
+  "models/trace/insights/LCPDiscovery.ts | description": {
+    "message": "HTML\uc5d0\uc11c LCP \uc774\ubbf8\uc9c0\ub97c \uc989\uc2dc [\uac80\uc0c9 \uac00\ub2a5](https://web.dev/articles/optimize-lcp#1_eliminate_resource_load_delay)\ud558\uac8c \ub9cc\ub4e4\uace0 [\uc9c0\uc5f0 \ub85c\ub4dc](https://web.dev/articles/lcp-lazy-loading)\ub97c \ubc29\uc9c0\ud558\uc5ec LCP\ub97c \ucd5c\uc801\ud654\ud569\ub2c8\ub2e4."
+  },
+  "models/trace/insights/LCPDiscovery.ts | fetchPriorityApplied": {
+    "message": "fetchpriority=high \uc801\uc6a9\ub428"
+  },
+  "models/trace/insights/LCPDiscovery.ts | fetchPriorityShouldBeApplied": {
+    "message": "fetchpriority=high\uac00 \uc801\uc6a9\ub418\uc5b4\uc57c \ud569\ub2c8\ub2e4."
+  },
+  "models/trace/insights/LCPDiscovery.ts | lazyLoadNotApplied": {
+    "message": "\uc9c0\uc5f0 \ub85c\ub4dc\uac00 \uc801\uc6a9\ub418\uc9c0 \uc54a\uc74c"
+  },
+  "models/trace/insights/LCPDiscovery.ts | lcpLoadDelay": {
+    "message": "LCP \uc774\ubbf8\uc9c0\uac00 \uac00\uc7a5 \uc774\ub978 \uc2dc\uc791 \uc2dc\uac04 {PH1} \ud6c4\uc5d0 \ub85c\ub4dc\ub418\uc5c8\uc2b5\ub2c8\ub2e4."
+  },
+  "models/trace/insights/LCPDiscovery.ts | noLcp": {
+    "message": "\uac10\uc9c0\ub41c LCP \uc5c6\uc74c"
+  },
+  "models/trace/insights/LCPDiscovery.ts | noLcpResource": {
+    "message": "LCP\uac00 \uc774\ubbf8\uc9c0\uac00 \uc544\ub2c8\uae30 \ub54c\ubb38\uc5d0 LCP \ub9ac\uc18c\uc2a4\uac00 \uac10\uc9c0\ub418\uc9c0 \uc54a\uc558\uc2b5\ub2c8\ub2e4."
+  },
+  "models/trace/insights/LCPDiscovery.ts | requestDiscoverable": {
+    "message": "\ucd08\uae30 \ubb38\uc11c\uc5d0\uc11c \uc694\uccad\uc744 \uac80\uc0c9\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4"
+  },
+  "models/trace/insights/LCPDiscovery.ts | title": {
+    "message": "LCP \uc694\uccad \ud0d0\uc0c9"
+  },
+  "models/trace/insights/LCPPhases.ts | description": {
+    "message": "\uac01 [\ub2e8\uacc4\uc5d0\ub294 \ud574\ub2f9 \ub2e8\uacc4\uc5d0 \ub9de\ub294 \uac1c\uc120 \uc804\ub7b5\uc774 \uc788\uc2b5\ub2c8\ub2e4](https://web.dev/articles/optimize-lcp#lcp-breakdown). \uc774\uc0c1\uc801\uc73c\ub85c\ub294 \ub300\ubd80\ubd84\uc758 LCP \uc2dc\uac04\uc774 \uc9c0\uc5f0\uc774 \uc544\ub2cc \ub9ac\uc18c\uc2a4 \ub85c\ub4dc\uc5d0 \uc18c\uc694\ub418\uc5b4\uc57c \ud569\ub2c8\ub2e4."
+  },
+  "models/trace/insights/LCPPhases.ts | duration": {
+    "message": "\uae30\uac04"
+  },
+  "models/trace/insights/LCPPhases.ts | elementRenderDelay": {
+    "message": "\uc694\uc18c \ub80c\ub354\ub9c1 \uc9c0\uc5f0"
+  },
+  "models/trace/insights/LCPPhases.ts | fieldDuration": {
+    "message": "\ud544\ub4dc 75\ubc88\uc9f8 \ubc31\ubd84\uc704\uc218"
+  },
+  "models/trace/insights/LCPPhases.ts | noLcp": {
+    "message": "\uac10\uc9c0\ub41c LCP \uc5c6\uc74c"
+  },
+  "models/trace/insights/LCPPhases.ts | phase": {
+    "message": "\ub2e8\uacc4"
+  },
+  "models/trace/insights/LCPPhases.ts | resourceLoadDelay": {
+    "message": "\ub9ac\uc18c\uc2a4 \ub85c\ub4dc \uc9c0\uc5f0"
+  },
+  "models/trace/insights/LCPPhases.ts | resourceLoadDuration": {
+    "message": "\ub9ac\uc18c\uc2a4 \ub85c\ub4dc \uc2dc\uac04"
+  },
+  "models/trace/insights/LCPPhases.ts | timeToFirstByte": {
+    "message": "\uccab \ubc14\uc774\ud2b8\uae4c\uc9c0\uc758 \uc2dc\uac04"
+  },
+  "models/trace/insights/LCPPhases.ts | title": {
+    "message": "\ub2e8\uacc4\ubcc4 LCP"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | columnScript": {
+    "message": "\uc2a4\ud06c\ub9bd\ud2b8"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | columnWastedBytes": {
+    "message": "\ub0ad\ube44\ub41c \ubc14\uc774\ud2b8"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | description": {
+    "message": "\ud3f4\ub9ac\ud544 \ubc0f \ubcc0\ud658\uc744 \ud1b5\ud574 \ub808\uac70\uc2dc \ube0c\ub77c\uc6b0\uc800\uc5d0\uc11c \uc0c8\ub85c\uc6b4 JavaScript \uae30\ub2a5\uc744 \uc0ac\uc6a9\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4. \ud558\uc9c0\ub9cc \ucd5c\uc2e0 \ube0c\ub77c\uc6b0\uc800\uc5d0\uc11c\ub294 \ub300\ubd80\ubd84 \ud544\uc694\ud558\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4. \ub808\uac70\uc2dc \ube0c\ub77c\uc6b0\uc800\ub97c \uc9c0\uc6d0\ud574\uc57c \ud558\ub294 \uacbd\uc6b0\uac00 \uc544\ub2c8\ub77c\uba74 [Baseline](https://web.dev/articles/baseline-and-polyfills) \uae30\ub2a5\uc744 \ud2b8\ub79c\uc2a4\ud30c\uc77c\ud558\uc9c0 \uc54a\ub3c4\ub85d JavaScript \ube4c\ub4dc \ud504\ub85c\uc138\uc2a4\ub97c \uc218\uc815\ud574 \ubcf4\uc138\uc694. [\ub300\ubd80\ubd84\uc758 \uc0ac\uc774\ud2b8\uc5d0\uc11c \ud2b8\ub79c\uc2a4\ud30c\uc77c\ub9c1 \uc5c6\uc774 ES6+ \ucf54\ub4dc\ub97c \ubc30\ud3ec\ud560 \uc218 \uc788\ub294 \uc774\uc720 \uc54c\uc544\ubcf4\uae30](https://philipwalton.com/articles/the-state-of-es5-on-the-web/)"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | title": {
+    "message": "\ub808\uac70\uc2dc JavaScript"
+  },
+  "models/trace/insights/ModernHTTP.ts | description": {
+    "message": "HTTP/2 \ubc0f HTTP/3\uc740 HTTP/1.1\uc5d0 \ube44\ud574 \ub2e4\uc911\ud654\uc640 \uac19\uc740 \ub9ce\uc740 \uc774\uc810\uc744 \uc81c\uacf5\ud569\ub2c8\ub2e4. [\ucd5c\uc2e0 HTTP \uc0ac\uc6a9\uc5d0 \uad00\ud574 \uc790\uc138\ud788 \uc54c\uc544\ubcf4\uae30](https://developer.chrome.com/docs/lighthouse/best-practices/uses-http2/)"
+  },
+  "models/trace/insights/ModernHTTP.ts | noOldProtocolRequests": {
+    "message": "HTTP/1.1\uc744 \uc0ac\uc6a9\ud55c \uc694\uccad \uc5c6\uc74c"
+  },
+  "models/trace/insights/ModernHTTP.ts | protocol": {
+    "message": "\ud504\ub85c\ud1a0\ucf5c"
+  },
+  "models/trace/insights/ModernHTTP.ts | request": {
+    "message": "\uc694\uccad"
+  },
+  "models/trace/insights/ModernHTTP.ts | title": {
+    "message": "\ucd5c\uc2e0 HTTP"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | description": {
+    "message": "\uccb4\uc778\uc758 \uae38\uc774\ub97c \uc904\uc774\uace0, \ub9ac\uc18c\uc2a4\uc758 \ub2e4\uc6b4\ub85c\ub4dc \ud06c\uae30\ub97c \uc904\uc774\uac70\ub098 \ubd88\ud544\uc694\ud55c \ub9ac\uc18c\uc2a4\uc758 \ub2e4\uc6b4\ub85c\ub4dc\ub97c \uc9c0\uc5f0\ud558\uc5ec \ud398\uc774\uc9c0 \ub85c\ub4dc \uc18d\ub3c4\ub97c \uac1c\uc120\ud558\ub294 \ubc29\uc2dd\uc73c\ub85c [\ud06c\ub9ac\ud2f0\uceec \uc694\uccad \uccb4\uc774\ub2dd\uc744 \ubc29\uc9c0](https://developer.chrome.com/docs/lighthouse/performance/critical-request-chains)\ud569\ub2c8\ub2e4."
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | maxCriticalPathLatency": {
+    "message": "\ucd5c\ub300 \uc911\uc694 \uacbd\ub85c \uc9c0\uc5f0 \uc2dc\uac04:"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | noNetworkDependencyTree": {
+    "message": "\ub124\ud2b8\uc6cc\ud06c \uc885\uc18d \ud56d\ubaa9\uc758 \uc601\ud5a5\uc744 \ubc1b\ub294 \ub80c\ub354\ub9c1 \uc791\uc5c5\uc774 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | title": {
+    "message": "\ub124\ud2b8\uc6cc\ud06c \uc885\uc18d \ud56d\ubaa9 \ud2b8\ub9ac"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | warningDescription": {
+    "message": "\uccb4\uc778\uc758 \uae38\uc774\ub97c \uc904\uc774\uace0, \ub9ac\uc18c\uc2a4\uc758 \ub2e4\uc6b4\ub85c\ub4dc \ud06c\uae30\ub97c \uc904\uc774\uac70\ub098 \ubd88\ud544\uc694\ud55c \ub9ac\uc18c\uc2a4\uc758 \ub2e4\uc6b4\ub85c\ub4dc\ub97c \uc9c0\uc5f0\ud558\uc5ec \ud398\uc774\uc9c0 \ub85c\ub4dc \uc18d\ub3c4\ub97c \uac1c\uc120\ud558\ub294 \ubc29\uc2dd\uc73c\ub85c \ud06c\ub9ac\ud2f0\uceec \uc694\uccad \uccb4\uc774\ub2dd\uc744 \ubc29\uc9c0\ud569\ub2c8\ub2e4."
+  },
+  "models/trace/insights/RenderBlocking.ts | description": {
+    "message": "\uc694\uccad\uc73c\ub85c \uc778\ud574 \ud398\uc774\uc9c0\uc758 \ucd08\uae30 \ub80c\ub354\ub9c1\uc774 \ucc28\ub2e8\ub418\uc5b4 LCP\uac00 \uc9c0\uc5f0\ub420 \uc218 \uc788\uc2b5\ub2c8\ub2e4. [\uc9c0\uc5f0 \ub610\ub294 \uc778\ub77c\uc778 \ucc98\ub9ac](https://web.dev/learn/performance/understanding-the-critical-path#render-blocking_resources/)\ud558\uba74 \uc774\ub7ec\ud55c \ub124\ud2b8\uc6cc\ud06c \uc694\uccad\uc774 \uc8fc\uc694 \uacbd\ub85c\uc5d0\uc11c \ubc97\uc5b4\ub0a0 \uc218 \uc788\uc2b5\ub2c8\ub2e4."
+  },
+  "models/trace/insights/RenderBlocking.ts | duration": {
+    "message": "\uae30\uac04"
+  },
+  "models/trace/insights/RenderBlocking.ts | noRenderBlocking": {
+    "message": "\uc774 \ud0d0\uc0c9\uc5d0 \ub300\ud55c \ub80c\ub354\ub9c1 \ucc28\ub2e8 \uc694\uccad \uc5c6\uc74c"
+  },
+  "models/trace/insights/RenderBlocking.ts | renderBlockingRequest": {
+    "message": "\uc694\uccad"
+  },
+  "models/trace/insights/RenderBlocking.ts | title": {
+    "message": "\ub80c\ub354\ub9c1 \ucc28\ub2e8 \uc694\uccad"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | description": {
+    "message": "\uc2a4\ud0c0\uc77c \uc7ac\uacc4\uc0b0 \ube44\uc6a9\uc774 \uc5ec\uc804\ud788 \ub192\ub2e4\uba74 \uc120\ud0dd\uc790 \ucd5c\uc801\ud654\ub97c \ud1b5\ud574 \ube44\uc6a9\uc744 \uc904\uc77c \uc218 \uc788\uc2b5\ub2c8\ub2e4. \uacbd\uacfc \uc2dc\uac04\uc774 \uae38\uace0 \ub290\ub9b0 \uacbd\ub85c \ube44\uc728\uc774 \ub192\uc740 \uacbd\uc6b0 [\uc120\ud0dd\uc790\ub97c \ucd5c\uc801\ud654](https://developer.chrome.com/docs/devtools/performance/selector-stats)\ud558\uc138\uc694. \uc120\ud0dd\uc790\uac00 \uac04\ub2e8\ud558\uace0 \uc120\ud0dd\uc790 \uc218\uac00 \uc801\uc73c\uba70 DOM\uc774 \uc791\uace0 DOM\uc774 \uc595\uc73c\uba74 \uc77c\uce58 \ube44\uc6a9\uc774 \uc904\uc5b4\ub4ed\ub2c8\ub2e4."
+  },
+  "models/trace/insights/SlowCSSSelector.ts | elapsed": {
+    "message": "\uacbd\uacfc \uc2dc\uac04"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | enableSelectorData": {
+    "message": "CSS \uc120\ud0dd\uc790 \ub370\uc774\ud130\ub97c \ucc3e\uc744 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4. \uc131\ub2a5 \ud328\ub110 \uc124\uc815\uc5d0\uc11c CSS \uc120\ud0dd\uc790 \ud1b5\uacc4\ub97c \uc0ac\uc6a9 \uc124\uc815\ud574\uc57c \ud569\ub2c8\ub2e4."
+  },
+  "models/trace/insights/SlowCSSSelector.ts | matchAttempts": {
+    "message": "\uc77c\uce58 \uc2dc\ub3c4"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | matchCount": {
+    "message": "\uc77c\uce58 \ud56d\ubaa9 \uc218"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | title": {
+    "message": "CSS \uc120\ud0dd\uc790 \ube44\uc6a9"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | topSelectors": {
+    "message": "\uc0c1\uc704 \uc120\ud0dd\uae30"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | total": {
+    "message": "\ud569\uacc4"
+  },
+  "models/trace/insights/ThirdParties.ts | columnMainThreadTime": {
+    "message": "\uae30\ubcf8 \uc2a4\ub808\ub4dc \uc2dc\uac04"
+  },
+  "models/trace/insights/ThirdParties.ts | columnThirdParty": {
+    "message": "\uc11c\ub4dc \ud30c\ud2f0"
+  },
+  "models/trace/insights/ThirdParties.ts | columnTransferSize": {
+    "message": "\uc804\uc1a1 \ud06c\uae30"
+  },
+  "models/trace/insights/ThirdParties.ts | description": {
+    "message": "\uc11c\ub4dc \ud30c\ud2f0 \ucf54\ub4dc\ub294 \ub85c\ub4dc \uc131\ub2a5\uc5d0 \ud06c\uac8c \uc601\ud5a5\uc744 \ubbf8\uce60 \uc218 \uc788\uc2b5\ub2c8\ub2e4. [\uc11c\ub4dc \ud30c\ud2f0 \ucf54\ub4dc\uc758 \ub85c\ub4dc\ub97c \uc904\uc774\uace0 \uc5f0\uae30](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/loading-third-party-javascript/)\ud558\uc5ec \ud398\uc774\uc9c0 \ucf58\ud150\uce20\uc5d0 \uc6b0\uc120\uc21c\uc704\ub97c \uc9c0\uc815\ud558\uc138\uc694."
+  },
+  "models/trace/insights/ThirdParties.ts | noThirdParties": {
+    "message": "\uc11c\ub4dc \ud30c\ud2f0\ub97c \ucc3e\uc744 \uc218 \uc5c6\uc74c"
+  },
+  "models/trace/insights/ThirdParties.ts | title": {
+    "message": "\uc11c\ub4dc \ud30c\ud2f0"
+  },
+  "models/trace/insights/Viewport.ts | description": {
+    "message": "\ud45c\uc2dc \uc601\uc5ed\uc774 \ubaa8\ubc14\uc77c\uc5d0 \ucd5c\uc801\ud654\ub418\uc5b4 \uc788\uc9c0 \uc54a\uc73c\uba74 \ud0ed \uc0c1\ud638\uc791\uc6a9\uc774 [\ucd5c\ub300 300\ubc00\ub9ac\ucd08\u00a0\uc9c0\uc5f0\ub420 \uc218 \uc788\uc2b5\ub2c8\ub2e4](https://developer.chrome.com/blog/300ms-tap-delay-gone-away/)."
+  },
+  "models/trace/insights/Viewport.ts | title": {
+    "message": "\ubaa8\ubc14\uc77c \ud45c\uc2dc \uc601\uc5ed \ucd5c\uc801\ud654"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | HTTPMethodNotGET": {
+    "message": "GET \uc694\uccad\uc744 \ud1b5\ud574 \ub85c\ub4dc\ub41c \ud398\uc774\uc9c0\ub9cc \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \uc0ac\uc6a9\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | HTTPStatusNotOK": {
+    "message": "\uc0c1\ud0dc \ucf54\ub4dc\uac00 2XX\uc778 \ud398\uc774\uc9c0\ub9cc \uce90\uc2dc\ub420 \uc218 \uc788\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | JavaScriptExecution": {
+    "message": "Chrome\uc774 \uce90\uc2dc\ub41c \ud398\uc774\uc9c0\uc5d0\uc11c \uc790\ubc14\uc2a4\ud06c\ub9bd\ud2b8 \uc2e4\ud589 \uc2dc\ub3c4\ub97c \uac10\uc9c0\ud588\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | appBanner": {
+    "message": "AppBanner\ub97c \uc694\uccad\ud55c \ud398\uc774\uc9c0\uc5d0\uc11c\ub294 \ud604\uc7ac \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabled": {
+    "message": "\ud50c\ub798\uadf8\uc5d0\uc11c \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\uac00 \uc0ac\uc6a9 \uc911\uc9c0\ub418\uc5c8\uc2b5\ub2c8\ub2e4. chrome://flags/#back-forward-cache\ub85c \uc774\ub3d9\ud558\uc5ec \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \uc0ac\uc6a9 \uc124\uc815\ud558\uc138\uc694. \uce90\uc2dc\ub294 \uae30\uae30\uc758 \ub85c\uceec\uc5d0 \uc800\uc7a5\ub429\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledByCommandLine": {
+    "message": "\uba85\ub839\uc904\uc5d0 \uc758\ud574 \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\uac00 \uc0ac\uc6a9 \uc911\uc9c0\ub418\uc5c8\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledByLowMemory": {
+    "message": "\uba54\ubaa8\ub9ac\uac00 \ucda9\ubd84\ud558\uc9c0 \ubabb\ud558\uc5ec \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\uac00 \uc0ac\uc6a9 \uc911\uc9c0\ub418\uc5c8\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledForDelegate": {
+    "message": "\uad8c\ud55c\uc744 \uc704\uc784\ubc1b\uc740 \uc0ac\uc6a9\uc790\uac00 \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \ud5c8\uc6a9\ud558\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledForPrerender": {
+    "message": "\ud504\ub9ac\ub80c\ub354\ub7ec\uc5d0 \uc758\ud574 \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\uac00 \uc0ac\uc6a9 \uc911\uc9c0\ub418\uc5c8\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | broadcastChannel": {
+    "message": "\ud398\uc774\uc9c0\uc5d0 \ub4f1\ub85d\ub41c \ub9ac\uc2a4\ub108\uac00 \ud3ec\ud568\ub41c BroadcastChannel \uc778\uc2a4\ud134\uc2a4\uac00 \uc788\uc5b4 \ud398\uc774\uc9c0\ub97c \uce90\uc2dc\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheControlNoStore": {
+    "message": "cache-control:no-store \ud5e4\ub354\uac00 \uc788\ub294 \ud398\uc774\uc9c0\uc5d0\uc11c\ub294 \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \uc2dc\uc791\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheFlushed": {
+    "message": "\uce90\uc2dc\uac00 \uc758\ub3c4\uc801\uc73c\ub85c \uc0ad\uc81c\ub418\uc5c8\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheLimit": {
+    "message": "\ub2e4\ub978 \ud398\uc774\uc9c0\ub97c \uce90\uc2dc\ud558\uae30 \uc704\ud574 \ud398\uc774\uc9c0\uac00 \uce90\uc2dc\uc5d0\uc11c \uc0ad\uc81c\ub418\uc5c8\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | containsPlugins": {
+    "message": "\ud50c\ub7ec\uadf8\uc778\uc744 \ud3ec\ud568\ud558\uace0 \uc788\ub294 \ud398\uc774\uc9c0\uc5d0\uc11c\ub294 \ud604\uc7ac \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentDiscarded": {
+    "message": "\uc815\uc758\ub418\uc9c0 \uc54a\uc74c"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentFileChooser": {
+    "message": "FileChooser API\ub97c \uc0ac\uc6a9\ud558\ub294 \ud398\uc774\uc9c0\uc5d0\uc11c\ub294 \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentFileSystemAccess": {
+    "message": "File System Access API\ub97c \uc0ac\uc6a9\ud558\ub294 \ud398\uc774\uc9c0\uc5d0\uc11c\ub294 \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaDevicesDispatcherHost": {
+    "message": "\ubbf8\ub514\uc5b4 \uae30\uae30 \ub514\uc2a4\ud328\ucc98\ub97c \uc0ac\uc6a9\ud558\ub294 \ud398\uc774\uc9c0\uc5d0\uc11c\ub294 \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaPlay": {
+    "message": "\ud398\uc774\uc9c0\uc5d0\uc11c \ub098\uac08 \ub54c \ubbf8\ub514\uc5b4 \ud50c\ub808\uc774\uc5b4\uac00 \uc7ac\uc0dd \uc911\uc774\uc5c8\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaSession": {
+    "message": "MediaSession API\ub97c \uc0ac\uc6a9\ud558\uba70 \uc7ac\uc0dd \uc0c1\ud0dc\ub97c \uc124\uc815\ud55c \ud398\uc774\uc9c0\uc5d0\uc11c\ub294 \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaSessionService": {
+    "message": "MediaSession API\ub97c \uc0ac\uc6a9\ud558\uba70 \uc791\uc5c5 \ud578\ub4e4\ub7ec\ub97c \uc124\uc815\ud55c \ud398\uc774\uc9c0\uc5d0\uc11c\ub294 \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentScreenReader": {
+    "message": "\uc2a4\ud06c\ub9b0 \ub9ac\ub354\ub85c \uc778\ud574 \ub4a4\ub85c/\uc55e\uc73c\ub85c \uce90\uc2dc\uac00 \uc0ac\uc6a9 \uc911\uc9c0\ub418\uc5c8\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentSecurityHandler": {
+    "message": "SecurityHandler\ub97c \uc0ac\uc6a9\ud558\ub294 \ud398\uc774\uc9c0\uc5d0\uc11c\ub294 \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentSerial": {
+    "message": "Serial API\ub97c \uc0ac\uc6a9\ud558\ub294 \ud398\uc774\uc9c0\uc5d0\uc11c\ub294 \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebAuthenticationAPI": {
+    "message": "WebAuthetication API\ub97c \uc0ac\uc6a9\ud558\ub294 \ud398\uc774\uc9c0\uc5d0\uc11c\ub294 \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebBluetooth": {
+    "message": "WebBluetooth API\ub97c \uc0ac\uc6a9\ud558\ub294 \ud398\uc774\uc9c0\uc5d0\uc11c\ub294 \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebUSB": {
+    "message": "WebUSB API\ub97c \uc0ac\uc6a9\ud558\ub294 \ud398\uc774\uc9c0\uc5d0\uc11c\ub294 \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cookieDisabled": {
+    "message": "Cache-Control: no-store\ub97c \uc0ac\uc6a9\ud558\ub294 \ud398\uc774\uc9c0\uc5d0\uc11c \ucfe0\ud0a4\uac00 \uc0ac\uc6a9 \uc911\uc9c0\ub418\ubbc0\ub85c \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\uac00 \uc0ac\uc6a9 \uc911\uc9c0\ub429\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | dedicatedWorkerOrWorklet": {
+    "message": "\uc804\uc6a9 \uc791\uc5c5\uc790 \ub610\ub294 Worklet\uc744 \uc0ac\uc6a9\ud558\ub294 \ud398\uc774\uc9c0\uc5d0\uc11c\ub294 \ud604\uc7ac \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | documentLoaded": {
+    "message": "\uc0ac\uc6a9\uc790\uac00 \ubb38\uc11c\uc5d0\uc11c \ub098\uac08 \ub54c\uae4c\uc9c0 \ubb38\uc11c \ub85c\ub4dc\uac00 \uc644\ub8cc\ub418\uc9c0 \uc54a\uc558\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderAppBannerManager": {
+    "message": "\ud398\uc774\uc9c0\uc5d0\uc11c \ub098\uac08 \ub54c \uc571 \ubc30\ub108\uac00 \ud45c\uc2dc\ub418\uc5b4 \uc788\uc5c8\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderChromePasswordManagerClientBindCredentialManager": {
+    "message": "\ud398\uc774\uc9c0\uc5d0\uc11c \ub098\uac08 \ub54c Chrome \ube44\ubc00\ubc88\ud638 \uad00\ub9ac\uc790\uac00 \ud45c\uc2dc\ub418\uc5b4 \uc788\uc5c8\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderDomDistillerSelfDeletingRequestDelegate": {
+    "message": "\ud398\uc774\uc9c0\uc5d0\uc11c \ub098\uac08 \ub54c DOM \ub514\uc2a4\ud2f8\ub808\uc774\uc158\uc774 \uc9c4\ud589 \uc911\uc774\uc5c8\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderDomDistillerViewerSource": {
+    "message": "\ud398\uc774\uc9c0\uc5d0\uc11c \ub098\uac08 \ub54c DOM Distiller \ubdf0\uc5b4\uac00 \ud45c\uc2dc\ub418\uc5b4 \uc788\uc5c8\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionMessaging": {
+    "message": "messaging API\ub97c \uc0ac\uc6a9\ud558\ub294 \ud655\uc7a5 \ud504\ub85c\uadf8\ub7a8\uc73c\ub85c \uc778\ud574 \ub4a4\ub85c/\uc55e\uc73c\ub85c \uce90\uc2dc\uac00 \uc0ac\uc6a9 \uc911\uc9c0\ub418\uc5c8\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionMessagingForOpenPort": {
+    "message": "\uc7a5\uc2dc\uac04 \uc5f0\uacb0\uc774 \ud3ec\ud568\ub41c \ud655\uc7a5 \ud504\ub85c\uadf8\ub7a8\uc740 \uc5f0\uacb0\uc744 \ud574\uc81c\ud574\uc57c \ub4a4\ub85c/\uc55e\uc73c\ub85c \uce90\uc2dc\uc5d0 \uc800\uc7a5\ub420 \uc218 \uc788\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionSentMessageToCachedFrame": {
+    "message": "\uc7a5\uae30 \uc5f0\uacb0\uc774 \ud3ec\ud568\ub41c \ud655\uc7a5 \ud504\ub85c\uadf8\ub7a8\uc5d0\uc11c \ub4a4\ub85c/\uc55e\uc73c\ub85c \uce90\uc2dc \ub0b4 \ud504\ub808\uc784\uc73c\ub85c \uba54\uc2dc\uc9c0\ub97c \uc804\uc1a1\ud558\ub824 \ud588\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensions": {
+    "message": "\ud655\uc7a5 \ud504\ub85c\uadf8\ub7a8\uc73c\ub85c \uc778\ud574 \ub4a4\ub85c/\uc55e\uc73c\ub85c \uce90\uc2dc\uac00 \uc0ac\uc6a9 \uc911\uc9c0\ub418\uc5c8\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderModalDialog": {
+    "message": "\ud398\uc774\uc9c0\uc5d0\uc11c \ub098\uac08 \ub54c \uc591\uc2dd \ub2e4\uc2dc \uc81c\ucd9c\uacfc \uac19\uc740 \ubaa8\ub2ec \ub300\ud654\uc0c1\uc790 \ub610\ub294 http \uc778\uc99d \ub300\ud654\uc0c1\uc790\uac00 \ud45c\uc2dc\ub418\uc5c8\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderOfflinePage": {
+    "message": "\ud398\uc774\uc9c0\uc5d0\uc11c \ub098\uac08 \ub54c \uc624\ud504\ub77c\uc778 \ud398\uc774\uc9c0\uac00 \ud45c\uc2dc\ub418\uc5c8\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderOomInterventionTabHelper": {
+    "message": "\ud398\uc774\uc9c0\uc5d0\uc11c \ub098\uac08 \ub54c \uba54\ubaa8\ub9ac \ubd80\uc871 \uc54c\ub9bc \ud45c\uc2dc\uc904\uc774 \ud45c\uc2dc\ub418\uc5b4 \uc788\uc5c8\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderPermissionRequestManager": {
+    "message": "\ud398\uc774\uc9c0\uc5d0\uc11c \ub098\uac08 \ub54c \uad8c\ud55c \uc694\uccad\uc774 \uc788\uc5c8\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderPopupBlockerTabHelper": {
+    "message": "\ud398\uc774\uc9c0\uc5d0\uc11c \ub098\uac08 \ub54c \ud31d\uc5c5 \ucc28\ub2e8\uae30\uac00 \ud45c\uc2dc\ub418\uc5b4 \uc788\uc5c8\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderSafeBrowsingThreatDetails": {
+    "message": "\ud398\uc774\uc9c0\uc5d0\uc11c \ub098\uac08 \ub54c \uc138\uc774\ud504 \ube0c\ub77c\uc6b0\uc9d5 \uc138\ubd80\uc815\ubcf4\uac00 \ud45c\uc2dc\ub418\uc5c8\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderSafeBrowsingTriggeredPopupBlocker": {
+    "message": "\uc138\uc774\ud504 \ube0c\ub77c\uc6b0\uc9d5\uc5d0\uc11c \uc774 \ud398\uc774\uc9c0\ub97c \uc545\uc131\uc73c\ub85c \uac04\uc8fc\ud558\uc5ec \ud31d\uc5c5\uc744 \ucc28\ub2e8\ud588\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | enteredBackForwardCacheBeforeServiceWorkerHostAdded": {
+    "message": "\ud398\uc774\uc9c0\uac00 \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\uc5d0 \uc800\uc7a5\ub41c \uc0c1\ud0dc\uc5d0\uc11c \uc11c\ube44\uc2a4 \uc6cc\ucee4\uac00 \ud65c\uc131\ud654\ub418\uc5c8\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | errorDocument": {
+    "message": "\ubb38\uc11c \uc624\ub958\ub85c \uc778\ud574 \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\uac00 \uc0ac\uc6a9 \uc911\uc9c0\ub418\uc5c8\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | fencedFramesEmbedder": {
+    "message": "FencedFrame\uc744 \uc0ac\uc6a9\ud558\ub294 \ud398\uc774\uc9c0\ub294 bfcache\uc5d0 \uc800\uc7a5\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | foregroundCacheLimit": {
+    "message": "\ub2e4\ub978 \ud398\uc774\uc9c0\ub97c \uce90\uc2dc\ud558\uae30 \uc704\ud574 \ud398\uc774\uc9c0\uac00 \uce90\uc2dc\uc5d0\uc11c \uc0ad\uc81c\ub418\uc5c8\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | grantedMediaStreamAccess": {
+    "message": "\ubbf8\ub514\uc5b4 \uc2a4\ud2b8\ub9bc \uc561\uc138\uc2a4 \uad8c\ud55c\uc744 \ubd80\uc5ec\ud55c \ud398\uc774\uc9c0\uc5d0\uc11c\ub294 \ud604\uc7ac \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | haveInnerContents": {
+    "message": "\ud2b9\uc815 \uc720\ud615\uc758 \uc0bd\uc785 \ucf58\ud150\uce20(\uc608: PDF)\uac00 \uc788\ub294 \ud398\uc774\uc9c0\uc5d0\uc11c\ub294 \ud604\uc7ac \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | idleManager": {
+    "message": "IdleManager\ub97c \uc0ac\uc6a9\ud558\ub294 \ud398\uc774\uc9c0\uc5d0\uc11c\ub294 \ud604\uc7ac \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | indexedDBConnection": {
+    "message": "IndexedDB\uac00 \uc5f0\uacb0\ub41c \ud398\uc774\uc9c0\uc5d0\uc11c\ub294 \ud604\uc7ac \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | indexedDBEvent": {
+    "message": "IndexedDB \uc774\ubca4\ud2b8\ub85c \uc778\ud574 \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\uac00 \uc0ac\uc6a9 \uc911\uc9c0\ub418\uc5c8\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | ineligibleAPI": {
+    "message": "\uc0ac\uc6a9 \ubd88\uac00\ub2a5\ud55c API\uac00 \uc0ac\uc6a9\ub418\uc5c8\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | injectedJavascript": {
+    "message": "\ud655\uc7a5 \ud504\ub85c\uadf8\ub7a8\uc5d0 \uc758\ud574 JavaScript\uac00 \uc0bd\uc785\ub41c \ud398\uc774\uc9c0\uc5d0\uc11c\ub294 \ud604\uc7ac \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | injectedStyleSheet": {
+    "message": "\ud655\uc7a5 \ud504\ub85c\uadf8\ub7a8\uc5d0 \uc758\ud574 StyleSheet\uc774(\uac00) \uc0bd\uc785\ub41c \ud398\uc774\uc9c0\uc5d0\uc11c\ub294 \ud604\uc7ac \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | internalError": {
+    "message": "\ub0b4\ubd80 \uc624\ub958\uc785\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | jsNetworkRequestReceivedCacheControlNoStoreResource": {
+    "message": "\uc77c\ubd80 JavaScript \ub124\ud2b8\uc6cc\ud06c \uc694\uccad\uc5d0\uc11c Cache-Control: no-store \ud5e4\ub354\uac00 \uc788\ub294 \ub9ac\uc18c\uc2a4\ub97c \uc218\uc2e0\ud588\uc73c\ubbc0\ub85c \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\uac00 \uc0ac\uc6a9 \uc911\uc9c0\ub418\uc5c8\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | keepaliveRequest": {
+    "message": "\uc5f0\uacb0 \uc720\uc9c0 \uc694\uccad\uc73c\ub85c \uc778\ud574 \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\uac00 \uc0ac\uc6a9 \uc911\uc9c0\ub418\uc5c8\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | keyboardLock": {
+    "message": "\ud0a4\ubcf4\ub4dc \uc7a0\uae08\uc744 \uc0ac\uc6a9\ud558\ub294 \ud398\uc774\uc9c0\uc5d0\uc11c\ub294 \ud604\uc7ac \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | loading": {
+    "message": "\uc0ac\uc6a9\uc790\uac00 \ud398\uc774\uc9c0\uc5d0\uc11c \ub098\uac08 \ub54c\uae4c\uc9c0 \ud398\uc774\uc9c0 \ub85c\ub4dc\uac00 \uc644\ub8cc\ub418\uc9c0 \uc54a\uc558\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | mainResourceHasCacheControlNoCache": {
+    "message": "\uae30\ubcf8 \ub9ac\uc18c\uc2a4\uc5d0 cache-control:no-cache\uac00 \uc788\ub294 \ud398\uc774\uc9c0\uc5d0\uc11c\ub294 \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \uc2dc\uc791\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | mainResourceHasCacheControlNoStore": {
+    "message": "\uae30\ubcf8 \ub9ac\uc18c\uc2a4\uc5d0 cache-control:no-store\uac00 \uc788\ub294 \ud398\uc774\uc9c0\uc5d0\uc11c\ub294 \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \uc2dc\uc791\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | navigationCancelledWhileRestoring": {
+    "message": "\ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\uc5d0\uc11c \ud398\uc774\uc9c0\ub97c \ubcf5\uc6d0\ud558\uae30 \uc804\uc5d0 \ud0d0\uc0c9\uc774 \ucde8\uc18c\ub418\uc5c8\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkExceedsBufferLimit": {
+    "message": "\ud65c\uc131 \ub124\ud2b8\uc6cc\ud06c\uc5d0 \uc5f0\uacb0\ub41c \ub3d9\uc548 \ud398\uc774\uc9c0\uc5d0\uc11c \uc9c0\ub098\uce58\uac8c \ub9ce\uc740 \ub370\uc774\ud130\ub97c \uc218\uc2e0\ud558\uc5ec \ud398\uc774\uc9c0\uac00 \uce90\uc2dc\uc5d0\uc11c \uc0ad\uc81c\ub418\uc5c8\uc2b5\ub2c8\ub2e4. Chrome\uc740 \uce90\uc2dc\ub41c \ud398\uc774\uc9c0\uc5d0\uc11c \uc218\uc2e0\ud560 \uc218 \uc788\ub294 \ub370\uc774\ud130\uc758 \uc591\uc744 \uc81c\ud55c\ud569\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestDatapipeDrainedAsBytesConsumer": {
+    "message": "fetch() \ub610\ub294 XHR\uc774 \ubc1c\uc0dd\ud55c \ud398\uc774\uc9c0\uc5d0\uc11c\ub294 \ud604\uc7ac \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestRedirected": {
+    "message": "\ud65c\uc131 \ub124\ud2b8\uc6cc\ud06c \uc694\uccad\uc5d0 \ub9ac\ub514\ub809\uc158\uc774 \ubc1c\uc0dd\ud558\uc5ec \ud398\uc774\uc9c0\uac00 \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\uc5d0\uc11c \uc0ad\uc81c\ub418\uc5c8\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestTimeout": {
+    "message": "\ub124\ud2b8\uc6cc\ud06c \uc5f0\uacb0 \uc2dc\uac04\uc774 \ub108\ubb34 \uae38\uc5b4 \ud398\uc774\uc9c0\uac00 \uce90\uc2dc\uc5d0\uc11c \uc0ad\uc81c\ub418\uc5c8\uc2b5\ub2c8\ub2e4. Chrome\uc740 \uce90\uc2dc\ub41c \ud398\uc774\uc9c0\uc5d0\uc11c \ub370\uc774\ud130\ub97c \uc218\uc2e0\ud560 \uc218 \uc788\ub294 \uc2dc\uac04\uc744 \uc81c\ud55c\ud569\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | noResponseHead": {
+    "message": "\uc720\ud6a8\ud55c \uc751\ub2f5 \ud5e4\ub4dc\uac00 \uc5c6\ub294 \ud398\uc774\uc9c0\uc5d0\uc11c\ub294 \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \uc2dc\uc791\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | notMainFrame": {
+    "message": "\uae30\ubcf8 \ud504\ub808\uc784\uc774 \uc544\ub2cc \ub2e4\ub978 \ud504\ub808\uc784\uc5d0\uc11c \ud0d0\uc0c9\uc774 \uc774\ub8e8\uc5b4\uc84c\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingIndexedDBTransaction": {
+    "message": "indexedDB \ud2b8\ub79c\uc7ad\uc158\uc774 \uc9c4\ud589 \uc911\uc778 \ud398\uc774\uc9c0\uc5d0\uc11c\ub294 \ud604\uc7ac \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestDirectSocket": {
+    "message": "\ub124\ud2b8\uc6cc\ud06c \uc694\uccad\uc774 \ubc1c\uc0dd\ud55c \ud398\uc774\uc9c0\uc5d0\uc11c\ub294 \ud604\uc7ac \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestFetch": {
+    "message": "\uac00\uc838\uc624\uae30 \ub124\ud2b8\uc6cc\ud06c \uc694\uccad\uc774 \ubc1c\uc0dd\ud55c \ud398\uc774\uc9c0\uc5d0\uc11c\ub294 \ud604\uc7ac \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestOthers": {
+    "message": "\ub124\ud2b8\uc6cc\ud06c \uc694\uccad\uc774 \ubc1c\uc0dd\ud55c \ud398\uc774\uc9c0\uc5d0\uc11c\ub294 \ud604\uc7ac \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestXHR": {
+    "message": "XHR \ub124\ud2b8\uc6cc\ud06c \uc694\uccad\uc774 \ubc1c\uc0dd\ud55c \ud398\uc774\uc9c0\uc5d0\uc11c\ub294 \ud604\uc7ac \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | paymentManager": {
+    "message": "PaymentManager\ub97c \uc0ac\uc6a9\ud558\ub294 \ud398\uc774\uc9c0\uc5d0\uc11c\ub294 \ud604\uc7ac \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | pictureInPicture": {
+    "message": "PIP \ubaa8\ub4dc\ub97c \uc0ac\uc6a9\ud558\ub294 \ud398\uc774\uc9c0\uc5d0\uc11c\ub294 \ud604\uc7ac \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | printing": {
+    "message": "\uc778\uc1c4 UI\ub97c \ud45c\uc2dc\ud558\ub294 \ud398\uc774\uc9c0\uc5d0\uc11c\ub294 \ud604\uc7ac \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | relatedActiveContentsExist": {
+    "message": "\ud398\uc774\uc9c0\uac00 'window.open()'\uc744(\ub97c) \uc0ac\uc6a9\ud558\uc5ec \uc5f4\ub838\uace0 \ub2e4\ub978 \ud0ed\uc5d0 \ud574\ub2f9 \ud398\uc774\uc9c0 \ucc38\uc870\uac00 \uc788\uac70\ub098 \ud398\uc774\uc9c0\uac00 \uc0c8 \ucc3d\uc5d0\uc11c \uc5f4\ub838\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | rendererProcessCrashed": {
+    "message": "\ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\uc5d0 \uc800\uc7a5\ub41c \ud398\uc774\uc9c0\uc758 \ub80c\ub354\uae30 \ud504\ub85c\uc138\uc2a4\uac00 \ub2e4\uc6b4\ub418\uc5c8\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | rendererProcessKilled": {
+    "message": "\ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\uc5d0 \uc800\uc7a5\ub41c \ud398\uc774\uc9c0\uc758 \ub80c\ub354\uae30 \ud504\ub85c\uc138\uc2a4\uac00 \uc911\ub2e8\ub418\uc5c8\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedAudioCapturePermission": {
+    "message": "\uc624\ub514\uc624 \ucea1\ucc98 \uad8c\ud55c\uc744 \uc694\uccad\ud55c \ud398\uc774\uc9c0\uc5d0\uc11c\ub294 \ud604\uc7ac \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedBackForwardCacheBlockedSensors": {
+    "message": "\uc13c\uc11c \uad8c\ud55c\uc744 \uc694\uccad\ud55c \ud398\uc774\uc9c0\uc5d0\uc11c\ub294 \ud604\uc7ac \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedBackgroundWorkPermission": {
+    "message": "\ubc31\uadf8\ub77c\uc6b4\ub4dc \ub3d9\uae30\ud654 \ub610\ub294 \uac00\uc838\uc624\uae30 \uad8c\ud55c\uc744 \uc694\uccad\ud55c \ud398\uc774\uc9c0\uc5d0\uc11c\ub294 \ud604\uc7ac \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedMIDIPermission": {
+    "message": "MIDI \uad8c\ud55c\uc744 \uc694\uccad\ud55c \ud398\uc774\uc9c0\uc5d0\uc11c\ub294 \ud604\uc7ac \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedNotificationsPermission": {
+    "message": "\uc54c\ub9bc \uad8c\ud55c\uc744 \uc694\uccad\ud55c \ud398\uc774\uc9c0\uc5d0\uc11c\ub294 \ud604\uc7ac \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedStorageAccessGrant": {
+    "message": "\uc800\uc7a5\uc6a9\ub7c9 \uc561\uc138\uc2a4\ub97c \uc694\uccad\ud55c \ud398\uc774\uc9c0\uc5d0\uc11c\ub294 \ud604\uc7ac \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedVideoCapturePermission": {
+    "message": "\ub3d9\uc601\uc0c1 \ucea1\ucc98 \uad8c\ud55c\uc744 \uc694\uccad\ud55c \ud398\uc774\uc9c0\uc5d0\uc11c\ub294 \ud604\uc7ac \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | schemeNotHTTPOrHTTPS": {
+    "message": "URL \uc2a4\ud0b4\uc774 HTTP/HTTPS\uc778 \ud398\uc774\uc9c0\ub9cc \uce90\uc2dc\ub420 \uc218 \uc788\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerClaim": {
+    "message": "\ud398\uc774\uc9c0\uac00 \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\uc5d0 \uc800\uc7a5\ub41c \uc0c1\ud0dc\uc5d0\uc11c \uc11c\ube44\uc2a4 \uc6cc\ucee4\uc5d0 \uc758\ud574 \uc0ac\uc6a9\ub418\uc5c8\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerPostMessage": {
+    "message": "\uc11c\ube44\uc2a4 \uc6cc\ucee4\uac00 \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\uc5d0 \ucd94\uac00\ub41c \ud398\uc774\uc9c0\uc5d0 MessageEvent \uc18d\uc131\uc744 \uc804\uc1a1\ud558\ub824\uace0 \ud588\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerUnregistration": {
+    "message": "\ud398\uc774\uc9c0\uac00 \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\uc5d0 \uc800\uc7a5\ub41c \uc0c1\ud0dc\uc5d0\uc11c ServiceWorker\uac00 \ub4f1\ub85d \ucde8\uc18c\ub418\uc5c8\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerVersionActivation": {
+    "message": "\uc11c\ube44\uc2a4 \uc6cc\ucee4 \ud65c\uc131\ud654\ub85c \uc778\ud558\uc5ec \ud398\uc774\uc9c0\uac00 \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\uc5d0\uc11c \uc0ad\uc81c\ub418\uc5c8\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | sessionRestored": {
+    "message": "Chrome\uc774 \ub2e4\uc2dc \uc2dc\uc791\ub418\uba74\uc11c \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc \ud56d\ubaa9\uc774 \uc0ad\uc81c\ub418\uc5c8\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | sharedWorker": {
+    "message": "SharedWorker\ub97c \uc0ac\uc6a9\ud558\ub294 \ud398\uc774\uc9c0\uc5d0\uc11c\ub294 \ud604\uc7ac \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | speechRecognizer": {
+    "message": "SpeechRecognizer\ub97c \uc0ac\uc6a9\ud558\ub294 \ud398\uc774\uc9c0\uc5d0\uc11c\ub294 \ud604\uc7ac \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | speechSynthesis": {
+    "message": "SpeechSynthesis\ub97c \uc0ac\uc6a9\ud558\ub294 \ud398\uc774\uc9c0\uc5d0\uc11c\ub294 \ud604\uc7ac \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subframeIsNavigating": {
+    "message": "\ud398\uc774\uc9c0\uc758 iframe\uc774 \ud0d0\uc0c9\uc744 \uc2dc\uc791\ud588\uc73c\ub098 \uc644\ub8cc\ub418\uc9c0 \uc54a\uc558\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subresourceHasCacheControlNoCache": {
+    "message": "\ud558\uc704 \ub9ac\uc18c\uc2a4\uc5d0 cache-control:no-cache\uac00 \uc788\ub294 \ud398\uc774\uc9c0\uc5d0\uc11c\ub294 \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \uc2dc\uc791\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subresourceHasCacheControlNoStore": {
+    "message": "\ud558\uc704 \ub9ac\uc18c\uc2a4\uc5d0 cache-control:no-store\uac00 \uc788\ub294 \ud398\uc774\uc9c0\uc5d0\uc11c\ub294 \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \uc2dc\uc791\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | timeout": {
+    "message": "\ud398\uc774\uc9c0\uac00 \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\uc5d0\uc11c \ucd5c\ub300 \uc2dc\uac04\uc744 \ucd08\uacfc\ud558\uc5ec \ub9cc\ub8cc\ub418\uc5c8\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | timeoutPuttingInCache": {
+    "message": "\ud398\uc774\uc9c0\uc758 \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc \uc2dc\uc791\uc774 \ud0c0\uc784\uc544\uc6c3\ub418\uc5c8\uc2b5\ub2c8\ub2e4(\ud398\uc774\uc9c0 \uc228\uae40 \ud578\ub4e4\ub7ec\uc758 \uc7a5\uae30\uac04 \uc2e4\ud589 \ub54c\ubb38\uc77c \uac00\ub2a5\uc131\uc774 \ud07c)."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | unloadHandlerExistsInMainFrame": {
+    "message": "\ud398\uc774\uc9c0 \uae30\ubcf8 \ud504\ub808\uc784\uc5d0 \ub85c\ub4dc \ucde8\uc18c \ud578\ub4e4\ub7ec\uac00 \uc788\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | unloadHandlerExistsInSubFrame": {
+    "message": "\ud398\uc774\uc9c0 \ud558\uc704 \ud504\ub808\uc784\uc5d0 \ub85c\ub4dc \ucde8\uc18c \ud578\ub4e4\ub7ec\uac00 \uc788\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | userAgentOverrideDiffers": {
+    "message": "\ube0c\ub77c\uc6b0\uc800\uc5d0\uc11c \uc0ac\uc6a9\uc790 \uc5d0\uc774\uc804\ud2b8 \uc7ac\uc815\uc758 \ud5e4\ub354\ub97c \ubcc0\uacbd\ud588\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | wasGrantedMediaAccess": {
+    "message": "\ub3d9\uc601\uc0c1 \ub179\ud654 \ub610\ub294 \uc624\ub514\uc624 \ub179\uc74c \uc561\uc138\uc2a4\ub97c \ubd80\uc5ec\ud55c \ud398\uc774\uc9c0\uc5d0\uc11c\ub294 \ud604\uc7ac \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webDatabase": {
+    "message": "WebDatabase\ub97c \uc0ac\uc6a9\ud558\ub294 \ud398\uc774\uc9c0\uc5d0\uc11c\ub294 \ud604\uc7ac \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webHID": {
+    "message": "WebHID\ub97c \uc0ac\uc6a9\ud558\ub294 \ud398\uc774\uc9c0\uc5d0\uc11c\ub294 \ud604\uc7ac \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webLocks": {
+    "message": "WebLock\uc744 \uc0ac\uc6a9\ud558\ub294 \ud398\uc774\uc9c0\uc5d0\uc11c\ub294 \ud604\uc7ac \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webNfc": {
+    "message": "WebNfc\ub97c \uc0ac\uc6a9\ud558\ub294 \ud398\uc774\uc9c0\uc5d0\uc11c\ub294 \ud604\uc7ac \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webOTPService": {
+    "message": "WebOTPService\ub97c \uc0ac\uc6a9\ud558\ub294 \ud398\uc774\uc9c0\uc5d0\uc11c\ub294 \ud604\uc7ac \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webRTC": {
+    "message": "WebRTC\uac00 \uc788\ub294 \ud398\uc774\uc9c0\uc5d0\uc11c\ub294 \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \uc2dc\uc791\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webRTCSticky": {
+    "message": "WebRTC\uac00 \uc0ac\uc6a9\ub418\uc5c8\uae30 \ub54c\ubb38\uc5d0 \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\uac00 \uc0ac\uc6a9 \uc911\uc9c0\ub418\uc5c8\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webShare": {
+    "message": "WebShare\ub97c \uc0ac\uc6a9\ud558\ub294 \ud398\uc774\uc9c0\uc5d0\uc11c\ub294 \ud604\uc7ac \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webSocket": {
+    "message": "WebSocket\uc774 \uc788\ub294 \ud398\uc774\uc9c0\uc5d0\uc11c\ub294 \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \uc2dc\uc791\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webSocketSticky": {
+    "message": "WebSocket\uc774 \uc0ac\uc6a9\ub418\uc5c8\uae30 \ub54c\ubb38\uc5d0 \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\uac00 \uc0ac\uc6a9 \uc911\uc9c0\ub418\uc5c8\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webTransport": {
+    "message": "WebTransport\uac00 \uc788\ub294 \ud398\uc774\uc9c0\uc5d0\uc11c\ub294 \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \uc2dc\uc791\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webTransportSticky": {
+    "message": "WebTransport\uac00 \uc0ac\uc6a9\ub418\uc5c8\uae30 \ub54c\ubb38\uc5d0 \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\uac00 \uc0ac\uc6a9 \uc911\uc9c0\ub418\uc5c8\uc2b5\ub2c8\ub2e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webXR": {
+    "message": "WebXR\uc744 \uc0ac\uc6a9\ud558\ub294 \ud398\uc774\uc9c0\uc5d0\uc11c\ub294 \ud604\uc7ac \ub4a4\ub85c-\uc55e\uc73c\ub85c \uce90\uc2dc\ub97c \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+  }
+}

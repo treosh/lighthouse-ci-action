@@ -42,12 +42,12 @@ exports.DeviceRequestPromptDevice = DeviceRequestPromptDevice;
  * @example
  *
  * ```ts
- * const [deviceRequest] = Promise.all([
+ * const [devicePrompt] = Promise.all([
  *   page.waitForDevicePrompt(),
  *   page.click('#connect-bluetooth'),
  * ]);
  * await devicePrompt.select(
- *   await devicePrompt.waitForDevice(({name}) => name.includes('My Device'))
+ *   await devicePrompt.waitForDevice(({name}) => name.includes('My Device')),
  * );
  * ```
  *
@@ -110,6 +110,11 @@ class DeviceRequestPrompt {
             message: `Waiting for \`DeviceRequestPromptDevice\` failed: ${timeout}ms exceeded`,
             timeout,
         });
+        if (options.signal) {
+            options.signal.addEventListener('abort', () => {
+                deferred.reject(options.signal?.reason);
+            }, { once: true });
+        }
         const handle = { filter, promise: deferred };
         this.#waitForDevicePromises.add(handle);
         try {
@@ -151,7 +156,7 @@ exports.DeviceRequestPrompt = DeviceRequestPrompt;
 class DeviceRequestPromptManager {
     #client;
     #timeoutSettings;
-    #deviceRequestPrompDeferreds = new Set();
+    #deviceRequestPromptDeferreds = new Set();
     /**
      * @internal
      */
@@ -171,7 +176,7 @@ class DeviceRequestPromptManager {
      */
     async waitForDevicePrompt(options = {}) {
         (0, assert_js_1.assert)(this.#client !== null, 'Cannot wait for device prompt through detached session!');
-        const needsEnable = this.#deviceRequestPrompDeferreds.size === 0;
+        const needsEnable = this.#deviceRequestPromptDeferreds.size === 0;
         let enablePromise;
         if (needsEnable) {
             enablePromise = this.#client.send('DeviceAccess.enable');
@@ -181,7 +186,12 @@ class DeviceRequestPromptManager {
             message: `Waiting for \`DeviceRequestPrompt\` failed: ${timeout}ms exceeded`,
             timeout,
         });
-        this.#deviceRequestPrompDeferreds.add(deferred);
+        if (options.signal) {
+            options.signal.addEventListener('abort', () => {
+                deferred.reject(options.signal?.reason);
+            }, { once: true });
+        }
+        this.#deviceRequestPromptDeferreds.add(deferred);
         try {
             const [result] = await Promise.all([
                 deferred.valueOrThrow(),
@@ -190,22 +200,22 @@ class DeviceRequestPromptManager {
             return result;
         }
         finally {
-            this.#deviceRequestPrompDeferreds.delete(deferred);
+            this.#deviceRequestPromptDeferreds.delete(deferred);
         }
     }
     /**
      * @internal
      */
     #onDeviceRequestPrompted(event) {
-        if (!this.#deviceRequestPrompDeferreds.size) {
+        if (!this.#deviceRequestPromptDeferreds.size) {
             return;
         }
         (0, assert_js_1.assert)(this.#client !== null);
         const devicePrompt = new DeviceRequestPrompt(this.#client, this.#timeoutSettings, event);
-        for (const promise of this.#deviceRequestPrompDeferreds) {
+        for (const promise of this.#deviceRequestPromptDeferreds) {
             promise.resolve(devicePrompt);
         }
-        this.#deviceRequestPrompDeferreds.clear();
+        this.#deviceRequestPromptDeferreds.clear();
     }
 }
 exports.DeviceRequestPromptManager = DeviceRequestPromptManager;

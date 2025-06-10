@@ -1,8 +1,3 @@
-/* replacement start */
-
-const { Buffer } = require('buffer')
-
-/* replacement end */
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -24,7 +19,14 @@ const { Buffer } = require('buffer')
 // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
 // USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-;('use strict')
+'use strict'
+
+/* replacement start */
+
+const { Buffer } = require('buffer')
+
+/* replacement end */
+
 const { ObjectDefineProperty, ObjectKeys, ReflectApply } = require('./ours/primordials')
 const {
   promisify: { custom: customPromisify }

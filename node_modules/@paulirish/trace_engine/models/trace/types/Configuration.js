@@ -5,6 +5,7 @@ export const defaults = () => ({
     includeRuntimeCallStats: false,
     showAllEvents: false,
     debugMode: false,
+    maxInvalidationEventsPerEvent: 20,
 });
 /**
  * Generates a key that can be used to represent this config in a cache. This is

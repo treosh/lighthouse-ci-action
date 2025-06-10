@@ -1,0 +1,87 @@
+"use strict";
+// Copyright 2021-2025 Buf Technologies, Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.runNodeJs = runNodeJs;
+const error_js_1 = require("./error.js");
+const protobuf_1 = require("@bufbuild/protobuf");
+const wkt_1 = require("@bufbuild/protobuf/wkt");
+/**
+ * Run a plugin with Node.js.
+ *
+ * ```
+ * #!/usr/bin/env node
+ * const {runNodeJs} = require("@bufbuild/protoplugin");
+ * const {myPlugin} = require("./protoc-gen-x-plugin.js");
+ * runNodeJs(myPlugin);
+ * ```
+ */
+function runNodeJs(plugin) {
+    const args = process.argv.slice(2);
+    if ((args.length === 1 && args[0] === "-v") || args[0] === "--version") {
+        process.stdout.write(`${plugin.name} ${plugin.version}\n`);
+        process.exit(0);
+        return;
+    }
+    if (args.length !== 0) {
+        process.stderr.write(`${plugin.name} accepts a google.protobuf.compiler.CodeGeneratorRequest on stdin and writes a CodeGeneratorResponse to stdout\n`);
+        process.exit(1);
+        return;
+    }
+    readBytes(process.stdin)
+        .then((data) => {
+        const req = (0, protobuf_1.fromBinary)(wkt_1.CodeGeneratorRequestSchema, data);
+        const res = plugin.run(req);
+        return writeBytes(process.stdout, (0, protobuf_1.toBinary)(wkt_1.CodeGeneratorResponseSchema, res));
+    })
+        .then(() => process.exit(0))
+        .catch((reason) => {
+        const message = (0, error_js_1.isPluginOptionError)(reason)
+            ? reason.message
+            : (0, error_js_1.reasonToString)(reason);
+        process.stderr.write(`${plugin.name}: ${message}\n`);
+        process.exit(1);
+        return;
+    });
+}
+/**
+ * Read a stream to the end.
+ */
+function readBytes(stream) {
+    return new Promise((resolve, reject) => {
+        const chunks = [];
+        stream.on("data", (chunk) => chunks.push(chunk));
+        stream.on("end", () => {
+            resolve(Buffer.concat(chunks));
+        });
+        stream.on("error", (err) => {
+            reject(err);
+        });
+    });
+}
+/**
+ * Write a chunk of bytes to a stream.
+ */
+function writeBytes(stream, data) {
+    return new Promise((resolve, reject) => {
+        stream.write(data, (err) => {
+            if (err) {
+                reject(err);
+            }
+            else {
+                resolve();
+            }
+        });
+    });
+}

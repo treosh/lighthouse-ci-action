@@ -1,0 +1,908 @@
+{
+  "generated/Deprecation.ts | AuthorizationCoveredByWildcard": {
+    "message": "CORS Access-Control-Allow-Headers i\u015flemlerinde kimlik do\u011frulama, joker karakter (*) simgesinin kapsam\u0131na girmeyecektir."
+  },
+  "generated/Deprecation.ts | CSSSelectorInternalMediaControlsOverlayCastButton": {
+    "message": "Varsay\u0131lan Cast entegrasyonunu devre d\u0131\u015f\u0131 b\u0131rakmak i\u00e7in -internal-media-controls-overlay-cast-button yerine disableRemotePlayback \u00f6zelli\u011fi kullan\u0131lmal\u0131d\u0131r."
+  },
+  "generated/Deprecation.ts | CSSValueAppearanceSliderVertical": {
+    "message": "CSS g\u00f6r\u00fcn\u00fcm de\u011feri slider-vertical standart hale getirilmemi\u015ftir ve kald\u0131r\u0131lacakt\u0131r."
+  },
+  "generated/Deprecation.ts | CanRequestURLHTTPContainingNewline": {
+    "message": "URL'lerinde hem kald\u0131r\u0131lan bo\u015fluk \\(n|r|t) karakterleri hem k\u00fc\u00e7\u00fckt\u00fcr karakterleri (<) bulunan kaynak istekleri engellenir. Bu kaynaklar\u0131 y\u00fcklemek i\u00e7in l\u00fctfen yeni sat\u0131rlar\u0131 kald\u0131r\u0131p \u00f6\u011fe \u00f6zellik de\u011feri gibi yerlerdeki k\u00fc\u00e7\u00fckt\u00fcr karakterlerini kodlay\u0131n."
+  },
+  "generated/Deprecation.ts | CharsetAutoDetectionISO2022JP": {
+    "message": "ISO-2022-JP karakter k\u00fcmesinin otomatik alg\u0131lanmas\u0131 kullan\u0131mdan kald\u0131r\u0131lm\u0131\u015ft\u0131r ve yak\u0131n zamanda devre d\u0131\u015f\u0131 b\u0131rak\u0131lacak. L\u00fctfen karakter k\u00fcmesini \u0130\u00e7erik T\u00fcr\u00fc \u00fcstbilgisinde veya bir meta etiket kullanarak (https://developer.mozilla.org/tr/docs/Glossary/Character_encoding) belirtin."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesConnectionInfo": {
+    "message": "chrome.loadTimes() kullan\u0131mdan kald\u0131r\u0131ld\u0131. Onun yerine standart API: Navigation Timing 2'yi kullan\u0131n."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesFirstPaintAfterLoadTime": {
+    "message": "chrome.loadTimes() kullan\u0131mdan kald\u0131r\u0131ld\u0131. L\u00fctfen standart API: Paint Timing'i kullan\u0131n."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesWasAlternateProtocolAvailable": {
+    "message": "chrome.loadTimes() kullan\u0131mdan kald\u0131r\u0131ld\u0131. Onun yerine Navigation Timing 2'de standart API: nextHopProtocol kullan\u0131n."
+  },
+  "generated/Deprecation.ts | CookieWithTruncatingChar": {
+    "message": "\\(0|r|n) karakteri i\u00e7eren \u00e7erezler k\u0131salt\u0131lmay\u0131p reddedilecektir."
+  },
+  "generated/Deprecation.ts | CrossOriginAccessBasedOnDocumentDomain": {
+    "message": "document.domain ayarlayarak ayn\u0131 kaynak politikas\u0131n\u0131 esnetme i\u015flevi kullan\u0131mdan kald\u0131r\u0131lm\u0131\u015f olup varsay\u0131lan olarak devre d\u0131\u015f\u0131 olacakt\u0131r. Bu kullan\u0131mdan kald\u0131rma uyar\u0131s\u0131, document.domain ayarlamak suretiyle izin verilen bir \u00e7apraz kaynak eri\u015fimine y\u00f6neliktir."
+  },
+  "generated/Deprecation.ts | CrossOriginWindowAlert": {
+    "message": "\u00c7apraz kaynak iframe'lerden window.alert tetikleme i\u015flevinin deste\u011fi sonland\u0131r\u0131lm\u0131\u015f olup ileride kald\u0131r\u0131lacakt\u0131r."
+  },
+  "generated/Deprecation.ts | CrossOriginWindowConfirm": {
+    "message": "\u00c7apraz kaynak iframe'lerden window.confirm tetikleme deste\u011fi sonland\u0131r\u0131lm\u0131\u015f olup ileride kald\u0131r\u0131lacakt\u0131r."
+  },
+  "generated/Deprecation.ts | DOMMutationEvents": {
+    "message": "DOMSubtreeModified, DOMNodeInserted, DOMNodeRemoved, DOMNodeRemovedFromDocument, DOMNodeInsertedIntoDocument ve DOMCharacterDataModified dahil omak \u00fczere DOM d\u00f6n\u00fc\u015f\u00fcm\u00fc etkinliklerinin deste\u011fi sonland\u0131r\u0131lm\u0131\u015ft\u0131r (https://w3c.github.io/uievents/#legacy-event-types) ve bu etkinlikler kald\u0131r\u0131lacakt\u0131r. L\u00fctfen bunun yerine MutationObserver kullan\u0131n."
+  },
+  "generated/Deprecation.ts | DataUrlInSvgUse": {
+    "message": "Veri deste\u011fi: SVGUseElement \u00f6\u011fesindeki URL'lerin deste\u011fi sonland\u0131r\u0131lm\u0131\u015ft\u0131r ve gelecekte kald\u0131r\u0131lacakt\u0131r."
+  },
+  "generated/Deprecation.ts | GeolocationInsecureOrigin": {
+    "message": "getCurrentPosition() ve watchPosition() g\u00fcvenilir olmayan kaynaklarda art\u0131k \u00e7al\u0131\u015fm\u0131yor. Bu \u00f6zelli\u011fi kullanmak i\u00e7in uygulaman\u0131z\u0131 HTTPS gibi g\u00fcvenli bir kayna\u011fa ge\u00e7irmenizi \u00f6neririz. Daha fazla bilgi i\u00e7in https://goo.gle/chrome-insecure-origins adresine g\u00f6z at\u0131n."
+  },
+  "generated/Deprecation.ts | GeolocationInsecureOriginDeprecatedNotRemoved": {
+    "message": "getCurrentPosition() ve watchPosition() g\u00fcvenli olmayan kaynaklarda kullan\u0131mdan kald\u0131r\u0131ld\u0131. Bu \u00f6zelli\u011fi kullanmak i\u00e7in uygulaman\u0131z\u0131 HTTPS gibi g\u00fcvenli bir kayna\u011fa ge\u00e7irmenizi \u00f6neririz. Daha fazla bilgi i\u00e7in https://goo.gle/chrome-insecure-origins adresine g\u00f6z at\u0131n."
+  },
+  "generated/Deprecation.ts | GetUserMediaInsecureOrigin": {
+    "message": "getUserMedia() g\u00fcvenilir olmayan kaynaklarda art\u0131k \u00e7al\u0131\u015fm\u0131yor. Bu \u00f6zelli\u011fi kullanmak i\u00e7in uygulaman\u0131z\u0131 HTTPS gibi g\u00fcvenli bir kayna\u011fa ge\u00e7irmenizi \u00f6neririz. Daha fazla bilgi i\u00e7in https://goo.gle/chrome-insecure-origins adresine g\u00f6z at\u0131n."
+  },
+  "generated/Deprecation.ts | H1UserAgentFontSizeInSection": {
+    "message": "Bir <article>, <aside>, <nav> veya <section> i\u00e7inde yer alan ve yaz\u0131 tipi boyutu belirtilmeyen <h1> etiketi bulundu. Bu ba\u015fl\u0131k metninin boyutu yak\u0131nda bu taray\u0131c\u0131da de\u011fi\u015fecek. Daha fazla bilgi i\u00e7in https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#specifying_a_uniform_font_size_for_h1 adresine g\u00f6z at\u0131n."
+  },
+  "generated/Deprecation.ts | HostCandidateAttributeGetter": {
+    "message": "RTCPeerConnectionIceErrorEvent.hostCandidate kullan\u0131mdan kald\u0131r\u0131ld\u0131. Yerine l\u00fctfen RTCPeerConnectionIceErrorEvent.address veya RTCPeerConnectionIceErrorEvent.port kullan\u0131n."
+  },
+  "generated/Deprecation.ts | IdentityDigitalCredentials": {
+    "message": "Dijital kimlik bilgileri i\u00e7in navigator.credentials.get() iste\u011finin bu bi\u00e7imi i\u00e7in destek sonland\u0131r\u0131ld\u0131. L\u00fctfen iste\u011finizi g\u00fcncelleyerek yeni bi\u00e7ime ge\u00e7irin."
+  },
+  "generated/Deprecation.ts | IdentityInCanMakePaymentEvent": {
+    "message": "canmakepayment hizmet \u00e7al\u0131\u015fan\u0131 etkinli\u011findeki sat\u0131c\u0131 kayna\u011f\u0131 ve rastgele veriler kullan\u0131mdan kald\u0131r\u0131lacak ve mevcut olmayacak: topOrigin, paymentRequestOrigin, methodData, modifiers."
+  },
+  "generated/Deprecation.ts | InsecurePrivateNetworkSubresourceRequest": {
+    "message": "Web sitesi, kullan\u0131c\u0131lar\u0131n\u0131n ayr\u0131cal\u0131kl\u0131 a\u011f konumu sayesinde eri\u015febildi\u011fi bir a\u011fdan alt kaynak istedi. Bu istekler herkese a\u00e7\u0131k olmayan cihazlar\u0131n ve sunucular\u0131n internette a\u00e7\u0131\u011fa \u00e7\u0131kmas\u0131na neden olarak, siteler aras\u0131 istek sahtekarl\u0131\u011f\u0131 (CSRF) sald\u0131r\u0131s\u0131 ve/veya bilgi s\u0131z\u0131nt\u0131s\u0131 riskini art\u0131r\u0131r. Bu riskleri azaltmak amac\u0131yla Chrome, g\u00fcvenli olmayan ba\u011flamlardan herkese a\u00e7\u0131k olmayan alt kaynaklara g\u00f6nderilen istekleri kullan\u0131mdan kald\u0131racak ve engellemeye ba\u015flayacakt\u0131r."
+  },
+  "generated/Deprecation.ts | InterestGroupDailyUpdateUrl": {
+    "message": "InterestGroups adl\u0131 yap\u0131dan joinAdInterestGroup() adl\u0131 yap\u0131ya iletilen dailyUpdateUrl alan\u0131, davran\u0131\u015f\u0131n\u0131 daha do\u011fru \u015fekilde yans\u0131tmak i\u00e7in updateUrl olarak yeniden adland\u0131r\u0131ld\u0131."
+  },
+  "generated/Deprecation.ts | IntlV8BreakIterator": {
+    "message": "Intl.v8BreakIterator deste\u011fi sonland\u0131r\u0131ld\u0131. L\u00fctfen bunun yerine Intl.Segmenter se\u00e7ene\u011fini kullan\u0131n."
+  },
+  "generated/Deprecation.ts | LocalCSSFileExtensionRejected": {
+    "message": ".css dosya uzant\u0131s\u0131yla bitmeyen file: URL'lerinden CSS y\u00fcklenemiyor."
+  },
+  "generated/Deprecation.ts | MediaSourceAbortRemove": {
+    "message": "Spesifikasyon de\u011fi\u015fimi nedeniyle art\u0131k remove() e\u015fzamans\u0131z aral\u0131k kald\u0131rma i\u015flemini iptal etmek i\u00e7in SourceBuffer.abort() kullan\u0131lmamaktad\u0131r. Bu i\u015flevle ilgili destek ileride kald\u0131r\u0131lacakt\u0131r. Bunun yerine updateend etkinli\u011fini dinlemeniz gerekir. abort() yaln\u0131zca e\u015fzamans\u0131z medya eklerini iptal etmek veya ayr\u0131\u015ft\u0131r\u0131c\u0131 durumunu s\u0131f\u0131rlamak i\u00e7in kullan\u0131lmal\u0131d\u0131r."
+  },
+  "generated/Deprecation.ts | MediaSourceDurationTruncatingBuffered": {
+    "message": "Spesifikasyon de\u011fi\u015fikli\u011fi nedeniyle, arabellekte kodlanan \u00e7er\u00e7evelerdeki en y\u00fcksek sunum zaman damgas\u0131ndan d\u00fc\u015f\u00fck bir MediaSource.duration de\u011feri ayarlama \u00f6zelli\u011fi kullan\u0131mdan kald\u0131r\u0131lm\u0131\u015ft\u0131r. Arabellekteki k\u0131rp\u0131lm\u0131\u015f medya \u00f6\u011felerinin dolayl\u0131 yoldan kald\u0131r\u0131lmas\u0131 ileride desteklenmeyecektir. Onun yerine, newDuration < oldDuration olan durumlarda her sourceBuffers \u00fczerinde a\u00e7\u0131k remove(newDuration, oldDuration) uygulaman\u0131z gerekir."
+  },
+  "generated/Deprecation.ts | NoSysexWebMIDIWithoutPermission": {
+    "message": "Sysex, MIDIOptions i\u00e7inde belirtilmi\u015f olmasa bile Web MIDI, sysex kullanmak i\u00e7in izin ister."
+  },
+  "generated/Deprecation.ts | NotificationInsecureOrigin": {
+    "message": "Art\u0131k Notification API g\u00fcvenli olmayan kaynaklardan kullan\u0131lamaz. Uygulaman\u0131z\u0131 HTTPS gibi g\u00fcvenli bir kayna\u011fa ge\u00e7irmenizi \u00f6neririz. Daha fazla bilgi i\u00e7in https://goo.gle/chrome-insecure-origins adresine g\u00f6z at\u0131n."
+  },
+  "generated/Deprecation.ts | NotificationPermissionRequestedIframe": {
+    "message": "Art\u0131k \u00e7apraz kaynak iframe'lerden Notification API izni istenemez. Bunun yerine izni \u00fcst d\u00fczey bir \u00e7er\u00e7eveden istemeniz veya yeni bir pencere a\u00e7man\u0131z gerekir."
+  },
+  "generated/Deprecation.ts | ObsoleteCreateImageBitmapImageOrientationNone": {
+    "message": "createImageBitmap i\u00e7indeki imageOrientation: 'none' se\u00e7ene\u011finin deste\u011fi sonland\u0131r\u0131ld\u0131. Bunun yerine, createImageBitmap'i l\u00fctfen \\{imageOrientation: \"from-image\"\\} se\u00e7ene\u011fi ile kullan\u0131n."
+  },
+  "generated/Deprecation.ts | ObsoleteWebRtcCipherSuite": {
+    "message": "\u0130\u015f orta\u011f\u0131n\u0131z\u0131n anla\u015fma yapt\u0131\u011f\u0131 (D)TLS s\u00fcr\u00fcm\u00fc art\u0131k kullan\u0131lm\u0131yor. L\u00fctfen i\u015f orta\u011f\u0131n\u0131zla g\u00f6r\u00fc\u015f\u00fcp bu durumu d\u00fczeltin."
+  },
+  "generated/Deprecation.ts | OverflowVisibleOnReplacedElement": {
+    "message": "img, video ve canvas etiketlerinde overflow: visible belirtilmesi, \u00f6\u011fe s\u0131n\u0131rlar\u0131n\u0131n d\u0131\u015f\u0131nda g\u00f6rsel i\u00e7erik olu\u015fturulmas\u0131na neden olabilir. https://github.com/WICG/shared-element-transitions/blob/main/debugging_overflow_on_images.md sayfas\u0131n\u0131 inceleyin."
+  },
+  "generated/Deprecation.ts | PaymentInstruments": {
+    "message": "paymentManager.instruments kullan\u0131mdan kald\u0131r\u0131ld\u0131. Bunun yerine, \u00f6deme i\u015fleyiciler i\u00e7in l\u00fctfen tam zaman\u0131nda y\u00fckleme \u00f6zelli\u011fini kullan\u0131n."
+  },
+  "generated/Deprecation.ts | PaymentRequestCSPViolation": {
+    "message": "PaymentRequest \u00e7a\u011fr\u0131n\u0131z, \u0130\u00e7erik G\u00fcvenli\u011fi Politikas\u0131 (\u0130GP) connect-src y\u00f6nergesini atlad\u0131. Bu atlama i\u015fleminin deste\u011fi sonland\u0131r\u0131lm\u0131\u015ft\u0131r. L\u00fctfen PaymentRequest API'sindeki (supportedMethods alan\u0131ndaki) \u00f6deme y\u00f6ntemi tan\u0131mlay\u0131c\u0131s\u0131n\u0131 \u0130GP connect-src y\u00f6nergenize ekleyin."
+  },
+  "generated/Deprecation.ts | PersistentQuotaType": {
+    "message": "StorageType.persistent kullan\u0131mdan kald\u0131r\u0131ld\u0131. L\u00fctfen bunun yerine standart navigator.storage kullan\u0131n."
+  },
+  "generated/Deprecation.ts | PictureSourceSrc": {
+    "message": "\u00dcst \u00f6\u011fesi <picture> olan <source src> \u00f6\u011feleri ge\u00e7ersiz oldu\u011fundan yoksay\u0131l\u0131r. L\u00fctfen bunun yerine <source srcset> politikas\u0131n\u0131 kullan\u0131n."
+  },
+  "generated/Deprecation.ts | PrefixedCancelAnimationFrame": {
+    "message": "webkitCancelAnimationFrame, sat\u0131c\u0131ya \u00f6zg\u00fc bir i\u015flevdir. L\u00fctfen bunun yerine standart cancelAnimationFrame i\u015flevini kullan\u0131n."
+  },
+  "generated/Deprecation.ts | PrefixedRequestAnimationFrame": {
+    "message": "webkitRequestAnimationFrame, sat\u0131c\u0131ya \u00f6zg\u00fc bir i\u015flevdir. L\u00fctfen bunun yerine standart requestAnimationFrame i\u015flevini kullan\u0131n."
+  },
+  "generated/Deprecation.ts | PrefixedVideoDisplayingFullscreen": {
+    "message": "HTMLVideoElement.webkitDisplayingFullscreen deste\u011fi sonland\u0131r\u0131ld\u0131. L\u00fctfen bunun yerine Document.fullscreenElement kullan\u0131n."
+  },
+  "generated/Deprecation.ts | PrefixedVideoEnterFullScreen": {
+    "message": "HTMLVideoElement.webkitEnterFullScreen() deste\u011fi sonland\u0131r\u0131ld\u0131. L\u00fctfen bunun yerine Element.requestFullscreen() kullan\u0131n."
+  },
+  "generated/Deprecation.ts | PrefixedVideoEnterFullscreen": {
+    "message": "HTMLVideoElement.webkitEnterFullscreen() deste\u011fi sonland\u0131r\u0131ld\u0131. L\u00fctfen bunun yerine Element.requestFullscreen() kullan\u0131n."
+  },
+  "generated/Deprecation.ts | PrefixedVideoExitFullScreen": {
+    "message": "HTMLVideoElement.webkitExitFullScreen() deste\u011fi sonland\u0131r\u0131ld\u0131. L\u00fctfen bunun yerine Document.exitFullscreen() kullan\u0131n."
+  },
+  "generated/Deprecation.ts | PrefixedVideoExitFullscreen": {
+    "message": "HTMLVideoElement.webkitExitFullscreen() deste\u011fi sonland\u0131r\u0131ld\u0131. L\u00fctfen bunun yerine Document.exitFullscreen() kullan\u0131n."
+  },
+  "generated/Deprecation.ts | PrefixedVideoSupportsFullscreen": {
+    "message": "HTMLVideoElement.webkitSupportsFullscreen deste\u011fi sonland\u0131r\u0131ld\u0131. L\u00fctfen bunun yerine Document.fullscreenEnabled kullan\u0131n."
+  },
+  "generated/Deprecation.ts | PrivacySandboxExtensionsAPI": {
+    "message": "chrome.privacy.websites.privacySandboxEnabled API'sinin deste\u011fini sonland\u0131r\u0131yoruz, ancak geriye d\u00f6n\u00fck uyumluluk i\u00e7in M113 s\u00fcr\u00fcm\u00fcne kadar etkin kalacakt\u0131r. Bunun yerine l\u00fctfen chrome.privacy.websites.topicsEnabled, chrome.privacy.websites.fledgeEnabled ve chrome.privacy.websites.adMeasurementEnabled kullan\u0131n. https://developer.chrome.com/docs/extensions/reference/privacy/#property-websites-privacySandboxEnabled adresini ziyaret edin."
+  },
+  "generated/Deprecation.ts | RTCConstraintEnableDtlsSrtpFalse": {
+    "message": "DtlsSrtpKeyAgreement k\u0131s\u0131tlamas\u0131 kald\u0131r\u0131ld\u0131. Bu k\u0131s\u0131tlama i\u00e7in belirtti\u011finiz false de\u011feri, kald\u0131r\u0131lan SDES key negotiation y\u00f6ntemini kullanmaya y\u00f6nelik bir deneme olarak yorumland\u0131. Bu i\u015flev kald\u0131r\u0131lm\u0131\u015ft\u0131r; onun yerine DTLS key negotiation destekleyen bir hizmet kullan\u0131n."
+  },
+  "generated/Deprecation.ts | RTCConstraintEnableDtlsSrtpTrue": {
+    "message": "DtlsSrtpKeyAgreement k\u0131s\u0131tlamas\u0131 kald\u0131r\u0131ld\u0131. Bu k\u0131s\u0131tlama i\u00e7in belirtti\u011finiz true de\u011feri etkisiz olmu\u015ftur ancak d\u00fczenli olmak ad\u0131na bu k\u0131s\u0131tlamay\u0131 kald\u0131rabilirsiniz."
+  },
+  "generated/Deprecation.ts | RTCPeerConnectionGetStatsLegacyNonCompliant": {
+    "message": "Geri \u00e7a\u011f\u0131rmaya dayal\u0131 getStats() deste\u011fi sonland\u0131r\u0131lm\u0131\u015f olup ileride kald\u0131r\u0131lacakt\u0131r. Bunun yerine spesifikasyonla uyumlu getStats() kullan\u0131n."
+  },
+  "generated/Deprecation.ts | RangeExpand": {
+    "message": "Range.expand() deste\u011fi sonland\u0131r\u0131ld\u0131. L\u00fctfen bunun yerine Selection.modify() kullan\u0131n."
+  },
+  "generated/Deprecation.ts | RequestedSubresourceWithEmbeddedCredentials": {
+    "message": "URL'lerinde yerle\u015ftirilmi\u015f kimlik bilgileri (\u00f6r. https://user:pass@host/) olan alt kaynak istekleri engellenir."
+  },
+  "generated/Deprecation.ts | RtcpMuxPolicyNegotiate": {
+    "message": "rtcpMuxPolicy se\u00e7ene\u011fi art\u0131k kullan\u0131lm\u0131yor olup kald\u0131r\u0131lacakt\u0131r."
+  },
+  "generated/Deprecation.ts | SharedArrayBufferConstructedWithoutIsolation": {
+    "message": "SharedArrayBuffer, k\u00f6kler aras\u0131 eri\u015fimin kapat\u0131lmas\u0131n\u0131 gerektiriyor. Daha fazla bilgi i\u00e7in https://developer.chrome.com/blog/enabling-shared-array-buffer/ adresini ziyaret edin."
+  },
+  "generated/Deprecation.ts | TextToSpeech_DisallowedByAutoplay": {
+    "message": "Kullan\u0131c\u0131 etkinli\u011fi olmadan speechSynthesis.speak() \u00e7a\u011f\u0131rma i\u015flevi art\u0131k kullan\u0131lm\u0131yor olup kald\u0131r\u0131lacakt\u0131r."
+  },
+  "generated/Deprecation.ts | UnloadHandler": {
+    "message": "Kald\u0131rma etkinli\u011fi i\u015fleyicileri deste\u011fi sonland\u0131r\u0131lm\u0131\u015ft\u0131r ve kald\u0131r\u0131lacakt\u0131r."
+  },
+  "generated/Deprecation.ts | V8SharedArrayBufferConstructedInExtensionWithoutIsolation": {
+    "message": "Uzant\u0131lar\u0131n SharedArrayBuffer kullanmay\u0131 s\u00fcrd\u00fcrmek i\u00e7in k\u00f6kler aras\u0131 eri\u015fimi kapatmalar\u0131 gerekir. https://developer.chrome.com/docs/extensions/mv3/cross-origin-isolation/ adresini ziyaret edin."
+  },
+  "generated/Deprecation.ts | XHRJSONEncodingDetection": {
+    "message": "XMLHttpRequest i\u00e7indeki yan\u0131t JSON dosyas\u0131 UTF-16'y\u0131 desteklemiyor."
+  },
+  "generated/Deprecation.ts | XMLHttpRequestSynchronousInNonWorkerOutsideBeforeUnload": {
+    "message": "Son kullan\u0131c\u0131 deneyimini olumsuz etkilemesi nedeniyle, ana i\u015f par\u00e7ac\u0131\u011f\u0131nda e\u015fzamanl\u0131 XMLHttpRequest i\u015fleviyle ilgili destek sonland\u0131r\u0131ld\u0131. Daha fazla yard\u0131m i\u00e7in https://xhr.spec.whatwg.org/ adresini ziyaret edin."
+  },
+  "models/trace/insights/CLSCulprits.ts | animation": {
+    "message": "Animasyon"
+  },
+  "models/trace/insights/CLSCulprits.ts | description": {
+    "message": "D\u00fczen kaymalar\u0131, \u00f6\u011feler herhangi bir kullan\u0131c\u0131 etkile\u015fimi olmadan hareket etti\u011finde ger\u00e7ekle\u015fir. [\u00d6\u011felerin eklenmesi, kald\u0131r\u0131lmas\u0131 veya sayfa y\u00fcklenirken yaz\u0131 tiplerinin de\u011fi\u015fmesi gibi d\u00fczen kaymalar\u0131n\u0131n nedenlerini ara\u015ft\u0131r\u0131n](https://web.dev/articles/optimize-cls)."
+  },
+  "models/trace/insights/CLSCulprits.ts | fontRequest": {
+    "message": "Yaz\u0131 tipi iste\u011fi"
+  },
+  "models/trace/insights/CLSCulprits.ts | injectedIframe": {
+    "message": "Yerle\u015ftirilen iFrame"
+  },
+  "models/trace/insights/CLSCulprits.ts | layoutShiftCluster": {
+    "message": "D\u00fczen kaymas\u0131 k\u00fcmesi @ {PH1}"
+  },
+  "models/trace/insights/CLSCulprits.ts | noCulprits": {
+    "message": "D\u00fczen kaymas\u0131 sorununun nedenleri tespit edilemedi"
+  },
+  "models/trace/insights/CLSCulprits.ts | noLayoutShifts": {
+    "message": "D\u00fczen kaymas\u0131 yok"
+  },
+  "models/trace/insights/CLSCulprits.ts | title": {
+    "message": "D\u00fczen kaymas\u0131 sorununun nedenleri"
+  },
+  "models/trace/insights/CLSCulprits.ts | topCulprits": {
+    "message": "D\u00fczen kaymas\u0131 sorununun en \u00f6nemli nedenleri"
+  },
+  "models/trace/insights/CLSCulprits.ts | unsizedImages": {
+    "message": "Boyutu Belirlenmemi\u015f Resimler"
+  },
+  "models/trace/insights/CLSCulprits.ts | worstCluster": {
+    "message": "En k\u00f6t\u00fc k\u00fcme"
+  },
+  "models/trace/insights/CLSCulprits.ts | worstLayoutShiftCluster": {
+    "message": "En k\u00f6t\u00fc d\u00fczen kaymas\u0131 k\u00fcmesi"
+  },
+  "models/trace/insights/Cache.ts | cacheTTL": {
+    "message": "TTL'yi \u00d6nbelle\u011fe Al"
+  },
+  "models/trace/insights/Cache.ts | description": {
+    "message": "Uzun \u00f6nbellek \u00f6mr\u00fc, sayfan\u0131z\u0131n tekrar ziyaret edilmesi s\u00fcrecini h\u0131zland\u0131rabilir. [Daha fazla bilgi edinin](https://web.dev/uses-long-cache-ttl/)."
+  },
+  "models/trace/insights/Cache.ts | noRequestsToCache": {
+    "message": "Verimsiz \u00f6nbellek politikalar\u0131n\u0131 gerektiren istek yok"
+  },
+  "models/trace/insights/Cache.ts | others": {
+    "message": "{PH1} tane daha"
+  },
+  "models/trace/insights/Cache.ts | requestColumn": {
+    "message": "\u0130stek"
+  },
+  "models/trace/insights/Cache.ts | title": {
+    "message": "Verimli \u00f6nbellek s\u00fcrelerini kullan\u0131n"
+  },
+  "models/trace/insights/DOMSize.ts | description": {
+    "message": "B\u00fcy\u00fck bir DOM, stil hesaplamalar\u0131n\u0131n ve yeniden d\u00fczenlemelerin daha uzun s\u00fcrmesine neden olarak sayfan\u0131n yan\u0131t verme h\u0131z\u0131n\u0131 etkileyebilir. Ayr\u0131ca bellek kullan\u0131m\u0131n\u0131 da art\u0131r\u0131r. [DOM'un a\u015f\u0131r\u0131 b\u00fcy\u00fcmesini nas\u0131l \u00f6nleyece\u011finizi \u00f6\u011frenin](https://developer.chrome.com/docs/lighthouse/performance/dom-size/)."
+  },
+  "models/trace/insights/DOMSize.ts | element": {
+    "message": "\u00d6\u011fe"
+  },
+  "models/trace/insights/DOMSize.ts | maxChildren": {
+    "message": "Maksimum alt \u00f6\u011fe say\u0131s\u0131"
+  },
+  "models/trace/insights/DOMSize.ts | maxDOMDepth": {
+    "message": "DOM derinli\u011fi"
+  },
+  "models/trace/insights/DOMSize.ts | statistic": {
+    "message": "\u0130statistik"
+  },
+  "models/trace/insights/DOMSize.ts | title": {
+    "message": "DOM boyutunu optimize edin"
+  },
+  "models/trace/insights/DOMSize.ts | totalElements": {
+    "message": "Toplam \u00f6\u011fe say\u0131s\u0131"
+  },
+  "models/trace/insights/DOMSize.ts | value": {
+    "message": "De\u011fer"
+  },
+  "models/trace/insights/DocumentLatency.ts | description": {
+    "message": "\u0130lk a\u011f iste\u011finiz en \u00f6nemli iste\u011finizdir.  Y\u00f6nlendirmelerden ka\u00e7\u0131narak, h\u0131zl\u0131 sunucu yan\u0131t\u0131 sa\u011flayarak ve metin s\u0131k\u0131\u015ft\u0131rmay\u0131 etkinle\u015ftirerek gecikmeyi azalt\u0131n."
+  },
+  "models/trace/insights/DocumentLatency.ts | failedRedirects": {
+    "message": "Y\u00f6nlendirmeler i\u00e7eriyordu"
+  },
+  "models/trace/insights/DocumentLatency.ts | failedServerResponseTime": {
+    "message": "Sunucu yava\u015f yan\u0131t verdi"
+  },
+  "models/trace/insights/DocumentLatency.ts | failedTextCompression": {
+    "message": "S\u0131k\u0131\u015ft\u0131rma uygulanmad\u0131"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingRedirects": {
+    "message": "Y\u00f6nlendirme i\u00e7ermiyor"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingServerResponseTime": {
+    "message": "Sunucu h\u0131zl\u0131 yan\u0131t veriyor"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingTextCompression": {
+    "message": "Metin s\u0131k\u0131\u015ft\u0131rma uygulan\u0131r"
+  },
+  "models/trace/insights/DocumentLatency.ts | redirectsLabel": {
+    "message": "Y\u00f6nlendirmeler"
+  },
+  "models/trace/insights/DocumentLatency.ts | serverResponseTimeLabel": {
+    "message": "Sunucu yan\u0131t s\u00fcresi"
+  },
+  "models/trace/insights/DocumentLatency.ts | title": {
+    "message": "Dok\u00fcman iste\u011fiyle ilgili gecikme"
+  },
+  "models/trace/insights/DocumentLatency.ts | uncompressedDownload": {
+    "message": "S\u0131k\u0131\u015ft\u0131r\u0131lmam\u0131\u015f indirme i\u015flemi"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | columnDuplicatedBytes": {
+    "message": "Yinelenen baytlar"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | columnSource": {
+    "message": "Kaynak"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | description": {
+    "message": "A\u011f etkinli\u011finin kulland\u0131\u011f\u0131 bayt say\u0131s\u0131n\u0131 azaltmak i\u00e7in paketlerden b\u00fcy\u00fck, yinelenen JavaScript mod\u00fcllerini kald\u0131r\u0131n."
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | title": {
+    "message": "Yinelenen JavaScript"
+  },
+  "models/trace/insights/FontDisplay.ts | description": {
+    "message": "Metnin her zaman g\u00f6r\u00fcnmesini sa\u011flamak i\u00e7in [font-display](https://developer.chrome.com/blog/font-display) \u00f6zelli\u011fini swap veya optional olarak ayarlayabilirsiniz. swap, [yaz\u0131 tipi metri\u011fi ge\u00e7ersiz k\u0131lmalar\u0131yla](https://developer.chrome.com/blog/font-fallbacks) d\u00fczen kaymalar\u0131n\u0131 azaltmak i\u00e7in daha fazla optimize edilebilir."
+  },
+  "models/trace/insights/FontDisplay.ts | fontColumn": {
+    "message": "Yaz\u0131 tipi"
+  },
+  "models/trace/insights/FontDisplay.ts | title": {
+    "message": "Yaz\u0131 tipi g\u00f6r\u00fcnt\u00fcleme"
+  },
+  "models/trace/insights/FontDisplay.ts | wastedTimeColumn": {
+    "message": "Bo\u015fa harcanan s\u00fcre"
+  },
+  "models/trace/insights/ForcedReflow.ts | anonymous": {
+    "message": "(anonim)"
+  },
+  "models/trace/insights/ForcedReflow.ts | description": {
+    "message": "Genellikle d\u00fczen geometrisini okuyan pek \u00e7ok API, stil ve d\u00fczeni hesaplamak i\u00e7in olu\u015fturma motorunu komut dosyas\u0131n\u0131n y\u00fcr\u00fct\u00fclmesini duraklatmaya zorlar. [Zorunlu yeniden d\u00fczenleme](https://developers.google.com/web/fundamentals/performance/rendering/avoid-large-complex-layouts-and-layout-thrashing#avoid-forced-synchronous-layouts) ve \u00e7\u00f6z\u00fcmleri hakk\u0131nda daha fazla bilgi edinin."
+  },
+  "models/trace/insights/ForcedReflow.ts | relatedStackTrace": {
+    "message": "Y\u0131\u011f\u0131n izleme (stack trace)"
+  },
+  "models/trace/insights/ForcedReflow.ts | title": {
+    "message": "Zorunlu yeniden d\u00fczenleme"
+  },
+  "models/trace/insights/ForcedReflow.ts | topTimeConsumingFunctionCall": {
+    "message": "En \u00e7ok zaman alan i\u015flev \u00e7a\u011fr\u0131s\u0131"
+  },
+  "models/trace/insights/ForcedReflow.ts | totalReflowTime": {
+    "message": "Toplam yeniden d\u00fczenleme s\u00fcresi"
+  },
+  "models/trace/insights/ForcedReflow.ts | unattributed": {
+    "message": "[ili\u015fkilendirilmemi\u015f]"
+  },
+  "models/trace/insights/ImageDelivery.ts | description": {
+    "message": "Resimlerin indirme s\u00fcresini k\u0131saltmak, sayfan\u0131n alg\u0131lanan y\u00fckleme s\u00fcresini ve LCP'yi daha iyi hale getirebilir. [Resim boyutunu optimize etme hakk\u0131nda daha fazla bilgi edinin](https://developer.chrome.com/docs/lighthouse/performance/uses-optimized-images/)."
+  },
+  "models/trace/insights/ImageDelivery.ts | estimatedSavings": {
+    "message": "{PH1} (Tahmini {PH2})"
+  },
+  "models/trace/insights/ImageDelivery.ts | noOptimizableImages": {
+    "message": "Optimize edilebilir resim yok"
+  },
+  "models/trace/insights/ImageDelivery.ts | optimizeFile": {
+    "message": "Dosya boyutunu optimize edin"
+  },
+  "models/trace/insights/ImageDelivery.ts | others": {
+    "message": "{PH1} tane daha"
+  },
+  "models/trace/insights/ImageDelivery.ts | title": {
+    "message": "Resim yay\u0131nlamay\u0131 kolayla\u015ft\u0131r\u0131n"
+  },
+  "models/trace/insights/ImageDelivery.ts | useCompression": {
+    "message": "Resim s\u0131k\u0131\u015ft\u0131rma fakt\u00f6r\u00fcn\u00fc art\u0131rarak bu resmin indirme boyutunu k\u00fc\u00e7\u00fcltebilirsiniz."
+  },
+  "models/trace/insights/ImageDelivery.ts | useModernFormat": {
+    "message": "Modern bir resim bi\u00e7imi (WebP, AVIF) kullanmak veya resim s\u0131k\u0131\u015ft\u0131rmas\u0131n\u0131 art\u0131rmak bu resmin indirme boyutunu k\u00fc\u00e7\u00fcltebilir."
+  },
+  "models/trace/insights/ImageDelivery.ts | useResponsiveSize": {
+    "message": "Bu resim dosyas\u0131, g\u00f6r\u00fcnt\u00fclenen boyutlar\u0131na ({PH2}) g\u00f6re olmas\u0131 gerekenden ({PH1}) daha b\u00fcy\u00fck. Resim indirme boyutunu k\u00fc\u00e7\u00fcltmek i\u00e7in duyarl\u0131 resimler kullan\u0131n."
+  },
+  "models/trace/insights/ImageDelivery.ts | useVideoFormat": {
+    "message": "GIF yerine video bi\u00e7imleri kullanmak, animasyonlu i\u00e7eri\u011fin indirme boyutunu k\u00fc\u00e7\u00fcltebilir."
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | description": {
+    "message": "En uzun a\u015famayla incelemeye ba\u015flay\u0131n. [Gecikmeler en aza indirilebilir](https://web.dev/articles/optimize-inp#optimize_interactions). \u0130\u015fleme s\u00fcresini k\u0131saltmak i\u00e7in genellikle JS'den olu\u015fan [ana i\u015f par\u00e7ac\u0131\u011f\u0131 maliyetlerini optimize edin](https://web.dev/articles/optimize-long-tasks)."
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | duration": {
+    "message": "S\u00fcre"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | inputDelay": {
+    "message": "Giri\u015f gecikmesi"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | noInteractions": {
+    "message": "Etkile\u015fim alg\u0131lanmad\u0131"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | phase": {
+    "message": "A\u015fama"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | presentationDelay": {
+    "message": "Yan\u0131t sunumu gecikmesi"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | processingDuration": {
+    "message": "\u0130\u015fleme s\u00fcresi"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | title": {
+    "message": "A\u015fama baz\u0131nda INP"
+  },
+  "models/trace/insights/LCPDiscovery.ts | description": {
+    "message": "LCP resmini HTML'den an\u0131nda [bulunabilir](https://web.dev/articles/optimize-lcp#1_eliminate_resource_load_delay) hale getirerek ve [ge\u00e7 y\u00fcklemeden](https://web.dev/articles/lcp-lazy-loading) ka\u00e7\u0131narak LCP'yi optimize edin"
+  },
+  "models/trace/insights/LCPDiscovery.ts | fetchPriorityApplied": {
+    "message": "fetchpriority=high uyguland\u0131"
+  },
+  "models/trace/insights/LCPDiscovery.ts | fetchPriorityShouldBeApplied": {
+    "message": "fetchpriority=high uygulanmal\u0131d\u0131r"
+  },
+  "models/trace/insights/LCPDiscovery.ts | lazyLoadNotApplied": {
+    "message": "ge\u00e7 y\u00fckleme uygulanmad\u0131"
+  },
+  "models/trace/insights/LCPDiscovery.ts | lcpLoadDelay": {
+    "message": "LCP resmi, en erken ba\u015flang\u0131\u00e7 noktas\u0131ndan {PH1} sonra y\u00fcklendi."
+  },
+  "models/trace/insights/LCPDiscovery.ts | noLcp": {
+    "message": "LCP alg\u0131lanmad\u0131"
+  },
+  "models/trace/insights/LCPDiscovery.ts | noLcpResource": {
+    "message": "LCP bir resim olmad\u0131\u011f\u0131 i\u00e7in LCP kayna\u011f\u0131 alg\u0131lanmad\u0131"
+  },
+  "models/trace/insights/LCPDiscovery.ts | requestDiscoverable": {
+    "message": "\u0130stek, ilk dok\u00fcmanda bulunabilir"
+  },
+  "models/trace/insights/LCPDiscovery.ts | title": {
+    "message": "LCP istek ke\u015ffi"
+  },
+  "models/trace/insights/LCPPhases.ts | description": {
+    "message": "Her [a\u015fama i\u00e7in belirli iyile\u015ftirme stratejileri vard\u0131r](https://web.dev/articles/optimize-lcp#lcp-breakdown). \u0130deal olarak LCP s\u00fcresinin \u00e7o\u011fu gecikmeler i\u00e7in de\u011fil, kaynaklar\u0131 y\u00fcklemek i\u00e7in harcanmal\u0131d\u0131r."
+  },
+  "models/trace/insights/LCPPhases.ts | duration": {
+    "message": "S\u00fcre"
+  },
+  "models/trace/insights/LCPPhases.ts | elementRenderDelay": {
+    "message": "\u00d6\u011fe olu\u015fturma gecikmesi"
+  },
+  "models/trace/insights/LCPPhases.ts | fieldDuration": {
+    "message": "Alan\u0131n 75. y\u00fczdelik dilimi"
+  },
+  "models/trace/insights/LCPPhases.ts | noLcp": {
+    "message": "LCP alg\u0131lanmad\u0131"
+  },
+  "models/trace/insights/LCPPhases.ts | phase": {
+    "message": "A\u015fama"
+  },
+  "models/trace/insights/LCPPhases.ts | resourceLoadDelay": {
+    "message": "Kaynak y\u00fckleme gecikmesi"
+  },
+  "models/trace/insights/LCPPhases.ts | resourceLoadDuration": {
+    "message": "Kaynak y\u00fckleme s\u00fcresi"
+  },
+  "models/trace/insights/LCPPhases.ts | timeToFirstByte": {
+    "message": "Time to first byte"
+  },
+  "models/trace/insights/LCPPhases.ts | title": {
+    "message": "A\u015fama baz\u0131nda LCP"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | columnScript": {
+    "message": "Komut dosyas\u0131"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | columnWastedBytes": {
+    "message": "Bo\u015fa harcanan bayt miktar\u0131"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | description": {
+    "message": "\u00c7oklu dolgular ve d\u00f6n\u00fc\u015f\u00fcmler, eski taray\u0131c\u0131lar\u0131n yeni JavaScript \u00f6zelliklerini kullanmas\u0131n\u0131 sa\u011flar. Ancak, \u00e7o\u011fu modern taray\u0131c\u0131lar i\u00e7in gerekli de\u011fildir. Eski taray\u0131c\u0131lar\u0131 desteklemeniz gerekmedi\u011finden eminseniz JavaScript derleme i\u015fleminizi [Baseline](https://web.dev/articles/baseline-and-polyfills) \u00f6zelliklerini \u00e7evirecek \u015fekilde de\u011fi\u015ftirmeyi d\u00fc\u015f\u00fcn\u00fcn. [\u00c7o\u011fu sitenin neden ES6+ kodunu \u00e7evirmeden da\u011f\u0131tabildi\u011fini \u00f6\u011frenin](https://philipwalton.com/articles/the-state-of-es5-on-the-web/)"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | title": {
+    "message": "Eski JavaScript"
+  },
+  "models/trace/insights/ModernHTTP.ts | description": {
+    "message": "HTTP/2 ve HTTP/3, HTTP/1.1'e k\u0131yasla multiplex gibi bir\u00e7ok avantaj sunar. [Modern HTTP'yi kullanma hakk\u0131nda daha fazla bilgi edinin](https://developer.chrome.com/docs/lighthouse/best-practices/uses-http2/)."
+  },
+  "models/trace/insights/ModernHTTP.ts | noOldProtocolRequests": {
+    "message": "Hi\u00e7bir istekte HTTP/1.1 kullan\u0131lmad\u0131"
+  },
+  "models/trace/insights/ModernHTTP.ts | protocol": {
+    "message": "Protokol"
+  },
+  "models/trace/insights/ModernHTTP.ts | request": {
+    "message": "\u0130stek"
+  },
+  "models/trace/insights/ModernHTTP.ts | title": {
+    "message": "Modern HTTP"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | description": {
+    "message": "Sayfalar\u0131n daha kolay y\u00fcklenmesi i\u00e7in zincir uzunlu\u011funu azaltarak, kaynaklar\u0131n indirme boyutunu k\u00fc\u00e7\u00fclterek veya gereksiz kaynaklar\u0131n indirilmesini erteleyerek [kritik istek zinciri olu\u015fturmaktan ka\u00e7\u0131n\u0131n](https://developer.chrome.com/docs/lighthouse/performance/critical-request-chains)."
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | maxCriticalPathLatency": {
+    "message": "Maksimum kritik yol gecikmesi:"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | noNetworkDependencyTree": {
+    "message": "A\u011f ba\u011f\u0131ml\u0131l\u0131klar\u0131ndan etkilenen olu\u015fturma g\u00f6revi yok"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | title": {
+    "message": "A\u011f ba\u011f\u0131ml\u0131l\u0131k a\u011fac\u0131"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | warningDescription": {
+    "message": "Sayfalar\u0131n daha kolay y\u00fcklenmesi i\u00e7in zincir uzunlu\u011funu azaltarak, kaynaklar\u0131n indirme boyutunu k\u00fc\u00e7\u00fclterek veya gereksiz kaynaklar\u0131n indirilmesini erteleyerek kritik istek zinciri olu\u015fturmaktan ka\u00e7\u0131n\u0131n."
+  },
+  "models/trace/insights/RenderBlocking.ts | description": {
+    "message": "\u0130stekler sayfan\u0131n ilk olu\u015fturma i\u015flemini engelliyor. Bu durum, LCP'yi geciktirebilir. [Erteleme veya sat\u0131r i\u00e7ine yerle\u015ftirme](https://web.dev/learn/performance/understanding-the-critical-path#render-blocking_resources/), bu a\u011f isteklerini kritik yoldan uzakla\u015ft\u0131rabilir."
+  },
+  "models/trace/insights/RenderBlocking.ts | duration": {
+    "message": "S\u00fcre"
+  },
+  "models/trace/insights/RenderBlocking.ts | noRenderBlocking": {
+    "message": "Bu gezinme i\u00e7in olu\u015fturma engelleme iste\u011fi yok"
+  },
+  "models/trace/insights/RenderBlocking.ts | renderBlockingRequest": {
+    "message": "\u0130stek"
+  },
+  "models/trace/insights/RenderBlocking.ts | title": {
+    "message": "Olu\u015fturma engelleme istekleri"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | description": {
+    "message": "\"Stili yeniden hesapla\" maliyetleri y\u00fcksekse se\u00e7icinin optimize edilmesi bu maliyetleri azaltabilir. Hem ge\u00e7en s\u00fcresi hem de yava\u015f yol y\u00fczdesi y\u00fcksek olan [se\u00e7icileri optimize edin](https://developer.chrome.com/docs/devtools/performance/selector-stats). Daha basit se\u00e7ici, daha az say\u0131da se\u00e7ici, daha k\u00fc\u00e7\u00fck DOM ve daha s\u0131\u011f DOM, e\u015fle\u015fme maliyetlerini azalt\u0131r."
+  },
+  "models/trace/insights/SlowCSSSelector.ts | elapsed": {
+    "message": "Ge\u00e7en s\u00fcre"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | enableSelectorData": {
+    "message": "CSS se\u00e7ici verisi bulunamad\u0131. Performans paneli ayarlar\u0131nda CSS se\u00e7ici istatistiklerinin etkinle\u015ftirilmesi gerekir."
+  },
+  "models/trace/insights/SlowCSSSelector.ts | matchAttempts": {
+    "message": "E\u015fle\u015fme denemeleri"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | matchCount": {
+    "message": "E\u015fle\u015fme say\u0131s\u0131"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | title": {
+    "message": "CSS se\u00e7ici maliyetleri"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | topSelectors": {
+    "message": "En iyi se\u00e7iciler"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | total": {
+    "message": "Toplam"
+  },
+  "models/trace/insights/ThirdParties.ts | columnMainThreadTime": {
+    "message": "Ana ileti dizesi s\u00fcresi"
+  },
+  "models/trace/insights/ThirdParties.ts | columnThirdParty": {
+    "message": "3. taraf"
+  },
+  "models/trace/insights/ThirdParties.ts | columnTransferSize": {
+    "message": "Aktar\u0131m boyutu"
+  },
+  "models/trace/insights/ThirdParties.ts | description": {
+    "message": "\u00dc\u00e7\u00fcnc\u00fc taraf kodu, y\u00fckleme performans\u0131n\u0131 \u00f6nemli \u00f6l\u00e7\u00fcde etkileyebilir. Sayfan\u0131zdaki i\u00e7eriklere \u00f6ncelik vermek i\u00e7in [\u00fc\u00e7\u00fcnc\u00fc taraf kodlar\u0131n\u0131n y\u00fcklenmesini azalt\u0131n ve geciktirin](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/loading-third-party-javascript/)."
+  },
+  "models/trace/insights/ThirdParties.ts | noThirdParties": {
+    "message": "\u00dc\u00e7\u00fcnc\u00fc taraf i\u00e7eri\u011fi bulunamad\u0131"
+  },
+  "models/trace/insights/ThirdParties.ts | title": {
+    "message": "3. taraflar"
+  },
+  "models/trace/insights/Viewport.ts | description": {
+    "message": "G\u00f6r\u00fcnt\u00fc alan\u0131, mobil cihazlar i\u00e7in optimize edilmezse dokunma etkile\u015fimleri [300 ms.ye kadar gecikebilir](https://developer.chrome.com/blog/300ms-tap-delay-gone-away/)."
+  },
+  "models/trace/insights/Viewport.ts | title": {
+    "message": "G\u00f6r\u00fcnt\u00fc alan\u0131n\u0131 mobil cihazlar i\u00e7in optimize edin"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | HTTPMethodNotGET": {
+    "message": "Yaln\u0131zca GET iste\u011fi arac\u0131l\u0131\u011f\u0131yla y\u00fcklenen sayfalar geri-ileri \u00f6nbelle\u011fe al\u0131nmaya uygundur."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | HTTPStatusNotOK": {
+    "message": "Yaln\u0131zca 2XX durum koduna sahip sayfalar \u00f6nbelle\u011fe al\u0131nabilir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | JavaScriptExecution": {
+    "message": "Chrome, \u00f6nbellekteyken JavaScript'i y\u00fcr\u00fctme giri\u015fimi tespit etti."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | appBanner": {
+    "message": "AppBanner iste\u011finde bulunan sayfalar \u015fu an i\u00e7in geri-ileri \u00f6nbelle\u011fe al\u0131nmaya uygun de\u011fildir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabled": {
+    "message": "Geri-ileri \u00f6nbellek, flag'lerle devre d\u0131\u015f\u0131 b\u0131rak\u0131lm\u0131\u015f. \u00d6zelli\u011fi yerel olarak bu cihazda etkinle\u015ftirmek i\u00e7in chrome://flags/#back-forward-cache adresine gidin."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledByCommandLine": {
+    "message": "Geri-ileri \u00f6nbellek, komut sat\u0131r\u0131yla devre d\u0131\u015f\u0131 b\u0131rak\u0131lm\u0131\u015f."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledByLowMemory": {
+    "message": "Geri-ileri \u00f6nbellek, yetersiz bellek nedeniyle devre d\u0131\u015f\u0131 b\u0131rak\u0131lm\u0131\u015f."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledForDelegate": {
+    "message": "Geri-ileri \u00f6nbellek, yetki verilmi\u015f kullan\u0131c\u0131 taraf\u0131ndan desteklenmiyor."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledForPrerender": {
+    "message": "Geri-ileri \u00f6nbellek, \u00f6nceden olu\u015fturucu i\u00e7in devre d\u0131\u015f\u0131 b\u0131rak\u0131lm\u0131\u015f."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | broadcastChannel": {
+    "message": "Sayfa, kay\u0131tl\u0131 dinleyicileri olan bir BroadcastChannel \u00f6rne\u011fi i\u00e7erdi\u011finden \u00f6nbelle\u011fe al\u0131nam\u0131yor."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheControlNoStore": {
+    "message": "cache-control:no-store ba\u015fl\u0131\u011f\u0131 i\u00e7eren sayfalar geri-ileri \u00f6nbelle\u011fe giremez."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheFlushed": {
+    "message": "\u00d6nbellek kas\u0131tl\u0131 olarak temizlenmi\u015f."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheLimit": {
+    "message": "Sayfa, ba\u015fka bir sayfan\u0131n \u00f6nbelle\u011fe al\u0131nabilmesi i\u00e7in \u00f6nbellekten \u00e7\u0131kar\u0131lm\u0131\u015f."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | containsPlugins": {
+    "message": "Eklenti i\u00e7eren sayfalar \u015fu an i\u00e7in geri-ileri \u00f6nbelle\u011fe al\u0131nmaya uygun de\u011fildir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentDiscarded": {
+    "message": "Tan\u0131ms\u0131z"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentFileChooser": {
+    "message": "FileChooser API kullanan sayfalar geri-ileri \u00f6nbelle\u011fe al\u0131nmaya uygun de\u011fildir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentFileSystemAccess": {
+    "message": "File System Access API kullanan sayfalar geri-ileri \u00f6nbelle\u011fe al\u0131nmaya uygun de\u011fildir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaDevicesDispatcherHost": {
+    "message": "Media Device Dispatcher kullanan sayfalar geri-ileri \u00f6nbelle\u011fe al\u0131nmaya uygun de\u011fildir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaPlay": {
+    "message": "Sayfadan \u00e7\u0131k\u0131l\u0131rken medya i\u00e7eri\u011fi oynat\u0131l\u0131yormu\u015f."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaSession": {
+    "message": "MediaSession API kullanan ve oynatma durumu tan\u0131mlam\u0131\u015f olan sayfalar geri-ileri \u00f6nbelle\u011fe al\u0131nmaya uygun de\u011fildir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaSessionService": {
+    "message": "MediaSession API kullanan ve i\u015flem i\u015fleyicileri tan\u0131mlam\u0131\u015f olan sayfalar geri-ileri \u00f6nbelle\u011fe al\u0131nmaya uygun de\u011fildir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentScreenReader": {
+    "message": "Geri-ileri \u00f6nbellek, ekran okuyucu nedeniyle devre d\u0131\u015f\u0131 b\u0131rak\u0131lm\u0131\u015f."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentSecurityHandler": {
+    "message": "SecurityHandler kullanan sayfalar geri-ileri \u00f6nbelle\u011fe al\u0131nmaya uygun de\u011fildir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentSerial": {
+    "message": "Serial API kullanan sayfalar geri-ileri \u00f6nbelle\u011fe al\u0131nmaya uygun de\u011fildir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebAuthenticationAPI": {
+    "message": "WebAuthetication API kullanan sayfalar geri-ileri \u00f6nbelle\u011fe al\u0131nmaya uygun de\u011fildir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebBluetooth": {
+    "message": "WebBluetooth API kullanan sayfalar geri-ileri \u00f6nbelle\u011fe al\u0131nmaya uygun de\u011fildir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebUSB": {
+    "message": "WebUSB API kullanan sayfalar geri-ileri \u00f6nbelle\u011fe al\u0131nmaya uygun de\u011fildir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cookieDisabled": {
+    "message": "Cache-Control: no-store kullanan bir sayfada \u00e7erezler devre d\u0131\u015f\u0131 b\u0131rak\u0131ld\u0131\u011f\u0131 i\u00e7in geri-ileri \u00f6nbellek devre d\u0131\u015f\u0131 b\u0131rak\u0131ld\u0131."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | dedicatedWorkerOrWorklet": {
+    "message": "\u00d6zel bir \u00e7al\u0131\u015fan veya i\u015f ak\u0131\u015f\u0131 kullanan sayfalar \u015fu an i\u00e7in geri-ileri \u00f6nbelle\u011fe al\u0131nmaya uygun de\u011fildir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | documentLoaded": {
+    "message": "Y\u00fcklenmesi tamamlanmadan dok\u00fcmandan \u00e7\u0131k\u0131lm\u0131\u015f."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderAppBannerManager": {
+    "message": "Sayfadan \u00e7\u0131kt\u0131ktan sonra uygulama banner'\u0131 g\u00f6r\u00fcnt\u00fclendi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderChromePasswordManagerClientBindCredentialManager": {
+    "message": "Sayfadan \u00e7\u0131kt\u0131ktan sonra Chrome \u015eifre Y\u00f6neticisi g\u00f6r\u00fcnt\u00fclendi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderDomDistillerSelfDeletingRequestDelegate": {
+    "message": "Sayfadan \u00e7\u0131kt\u0131ktan sonra DOM ayr\u0131\u015ft\u0131rma s\u00fcreci devam etti."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderDomDistillerViewerSource": {
+    "message": "Sayfadan \u00e7\u0131kt\u0131ktan sonra DOM Ayr\u0131\u015ft\u0131r\u0131c\u0131 G\u00f6r\u00fcn\u00fcm\u00fc g\u00f6r\u00fcnt\u00fclendi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionMessaging": {
+    "message": "Messaging API'yi kullanan uzant\u0131lar nedeniyle geri-ileri \u00f6nbellek devre d\u0131\u015f\u0131 b\u0131rak\u0131ld\u0131."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionMessagingForOpenPort": {
+    "message": "Uzun s\u00fcreli ba\u011flant\u0131s\u0131 olan uzant\u0131lar geri-ileri \u00f6nbelle\u011fe girmeden \u00f6nce ba\u011flant\u0131y\u0131 kapatmal\u0131d\u0131r."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionSentMessageToCachedFrame": {
+    "message": "Uzun s\u00fcreli ba\u011flant\u0131s\u0131 olan uzant\u0131lar geri-ileri \u00f6nbellekteki \u00e7er\u00e7evelere mesaj g\u00f6ndermeyi denedi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensions": {
+    "message": "Geri-ileri \u00f6nbellek uzant\u0131lar nedeniyle devre d\u0131\u015f\u0131 b\u0131rak\u0131ld\u0131."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderModalDialog": {
+    "message": "Sayfadan \u00e7\u0131kt\u0131ktan sonra yeniden form g\u00f6nderme veya http \u015fifre ileti\u015fimi gibi bir modal ileti\u015fim g\u00f6sterildi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderOfflinePage": {
+    "message": "Sayfadan \u00e7\u0131kt\u0131ktan sonra \u00e7evrimd\u0131\u015f\u0131 sayfa g\u00f6sterildi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderOomInterventionTabHelper": {
+    "message": "Sayfadan \u00e7\u0131kt\u0131ktan sonra Yetersiz Bellek M\u00fcdahalesi \u00e7ubu\u011fu g\u00f6r\u00fcnt\u00fclendi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderPermissionRequestManager": {
+    "message": "Sayfadan \u00e7\u0131kt\u0131ktan sonra izin istekleri al\u0131nd\u0131."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderPopupBlockerTabHelper": {
+    "message": "Sayfadan \u00e7\u0131kt\u0131ktan sonra pop-up engelleyici g\u00f6r\u00fcnt\u00fclendi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderSafeBrowsingThreatDetails": {
+    "message": "Sayfadan \u00e7\u0131kt\u0131ktan sonra G\u00fcvenli Tarama ayr\u0131nt\u0131lar\u0131 g\u00f6sterildi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderSafeBrowsingTriggeredPopupBlocker": {
+    "message": "G\u00fcvenli Tarama bu sayfay\u0131 k\u00f6t\u00fcye kullan\u0131m ama\u00e7l\u0131 olarak de\u011ferlendirdi ve pop-up'\u0131 engelledi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | enteredBackForwardCacheBeforeServiceWorkerHostAdded": {
+    "message": "Sayfa geri-ileri \u00f6nbellekteyken bir hizmet \u00e7al\u0131\u015fan\u0131 etkinle\u015ftirilmi\u015f."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | errorDocument": {
+    "message": "Dok\u00fcman hatas\u0131 nedeniyle geri-ileri \u00f6nbellek devre d\u0131\u015f\u0131 b\u0131rak\u0131ld\u0131."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | fencedFramesEmbedder": {
+    "message": "FencedFrames kullanan sayfalar bfcache'te saklanamaz."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | foregroundCacheLimit": {
+    "message": "Sayfa, ba\u015fka bir sayfan\u0131n \u00f6nbelle\u011fe al\u0131nabilmesi i\u00e7in \u00f6nbellekten \u00e7\u0131kar\u0131lm\u0131\u015f."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | grantedMediaStreamAccess": {
+    "message": "Medya yay\u0131n\u0131na eri\u015fim izni veren sayfalar \u015fu an i\u00e7in geri-ileri \u00f6nbelle\u011fe al\u0131nmaya uygun de\u011fildir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | haveInnerContents": {
+    "message": "Belirli yerle\u015ftirilmi\u015f i\u00e7erik t\u00fcrleri (\u00f6r. PDF'ler) bar\u0131nd\u0131ran sayfalar \u015fu an i\u00e7in geri-ileri \u00f6nbelle\u011fe al\u0131nmaya uygun de\u011fildir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | idleManager": {
+    "message": "IdleManager kullanan sayfalar \u015fu an i\u00e7in geri-ileri \u00f6nbelle\u011fe al\u0131nmaya uygun de\u011fildir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | indexedDBConnection": {
+    "message": "A\u00e7\u0131k bir IndexedDB ba\u011flant\u0131s\u0131na sahip olan sayfalar \u015fu an i\u00e7in geri-ileri \u00f6nbelle\u011fe al\u0131nmaya uygun de\u011fildir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | indexedDBEvent": {
+    "message": "Geri-ileri \u00f6nbellek, IndexedDB etkinli\u011fi nedeniyle devre d\u0131\u015f\u0131 b\u0131rak\u0131lm\u0131\u015f."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | ineligibleAPI": {
+    "message": "Uygun olmayan API'ler kullan\u0131lm\u0131\u015f."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | injectedJavascript": {
+    "message": "Uzant\u0131lar arac\u0131l\u0131\u011f\u0131yla JavaScript yerle\u015ftirilen sayfalar \u015fu an i\u00e7in geri-ileri \u00f6nbelle\u011fe al\u0131nmaya uygun de\u011fildir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | injectedStyleSheet": {
+    "message": "Uzant\u0131lar arac\u0131l\u0131\u011f\u0131yla StyleSheet yerle\u015ftirilen sayfalar \u015fu an i\u00e7in geri-ileri \u00f6nbelle\u011fe al\u0131nmaya uygun de\u011fildir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | internalError": {
+    "message": "Dahili hata."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | jsNetworkRequestReceivedCacheControlNoStoreResource": {
+    "message": "Baz\u0131 JavaScript a\u011f istekleri Cache-Control: no-store ba\u015fl\u0131\u011f\u0131na sahip kaynak ald\u0131\u011f\u0131 i\u00e7in geri-ileri \u00f6nbellek devre d\u0131\u015f\u0131 b\u0131rak\u0131ld\u0131."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | keepaliveRequest": {
+    "message": "Geri-ileri \u00f6nbellek, keepalive iste\u011fi nedeniyle devre d\u0131\u015f\u0131 b\u0131rak\u0131ld\u0131."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | keyboardLock": {
+    "message": "Klavye kilidi kullanan sayfalar \u015fu an i\u00e7in geri-ileri \u00f6nbelle\u011fe al\u0131nmaya uygun de\u011fildir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | loading": {
+    "message": "Y\u00fcklenmesi tamamlanmadan sayfadan \u00e7\u0131k\u0131lm\u0131\u015f."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | mainResourceHasCacheControlNoCache": {
+    "message": "Ana kayna\u011f\u0131nda cache-control:no-cache bulunan sayfalar geri-ileri \u00f6nbelle\u011fe giremez."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | mainResourceHasCacheControlNoStore": {
+    "message": "Ana kayna\u011f\u0131nda cache-control:no-store bulunan sayfalar geri-ileri \u00f6nbelle\u011fe giremez."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | navigationCancelledWhileRestoring": {
+    "message": "Sayfa geri-ileri \u00f6nbellekten geri y\u00fcklenemeden \u00f6nce gezinme iptal edilmi\u015f."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkExceedsBufferLimit": {
+    "message": "Etkin bir a\u011f ba\u011flant\u0131s\u0131 \u00e7ok fazla veri ald\u0131\u011f\u0131ndan sayfa \u00f6nbellekten \u00e7\u0131kar\u0131lm\u0131\u015f. Chrome, \u00f6nbellekteki bir sayfan\u0131n alabilece\u011fi veri miktar\u0131n\u0131 s\u0131n\u0131rlar."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestDatapipeDrainedAsBytesConsumer": {
+    "message": "\u0130letim a\u015famas\u0131nda fetch() veya XHR i\u00e7eren sayfalar \u015fu an i\u00e7in geri-ileri \u00f6nbelle\u011fe al\u0131nmaya uygun de\u011fildir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestRedirected": {
+    "message": "Sayfa, y\u00f6nlendirmeyle ilgili etkin bir a\u011f iste\u011fi nedeniyle geri-ileri \u00f6nbellekten \u00e7\u0131kar\u0131lm\u0131\u015f."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestTimeout": {
+    "message": "Sayfa, \u00e7ok uzun s\u00fcre a\u00e7\u0131k kalan bir a\u011f ba\u011flant\u0131s\u0131 nedeniyle \u00f6nbellekten \u00e7\u0131kar\u0131lm\u0131\u015f. Chrome, \u00f6nbellekteki bir sayfan\u0131n veri alabilece\u011fi s\u00fcreyi s\u0131n\u0131rlar."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | noResponseHead": {
+    "message": "Ge\u00e7erli yan\u0131t ba\u015fl\u0131\u011f\u0131 i\u00e7ermeyen sayfalar geri-ileri \u00f6nbelle\u011fe giremez."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | notMainFrame": {
+    "message": "Gezinme, ana \u00e7er\u00e7eve d\u0131\u015f\u0131nda bir \u00e7er\u00e7evede ger\u00e7ekle\u015fmi\u015f."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingIndexedDBTransaction": {
+    "message": "Devam etmekte olan dizine eklenmi\u015f DB i\u015flemleri i\u00e7eren sayfalar \u015fu an i\u00e7in geri-ileri \u00f6nbelle\u011fe al\u0131nmaya uygun de\u011fildir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestDirectSocket": {
+    "message": "\u0130letim a\u015famas\u0131nda bir a\u011f iste\u011fi i\u00e7eren sayfalar \u015fu an i\u00e7in geri-ileri \u00f6nbelle\u011fe al\u0131nmaya uygun de\u011fildir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestFetch": {
+    "message": "\u0130letim a\u015famas\u0131nda bir getirme a\u011f\u0131 iste\u011fi i\u00e7eren sayfalar \u015fu an i\u00e7in geri-ileri \u00f6nbelle\u011fe al\u0131nmaya uygun de\u011fildir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestOthers": {
+    "message": "\u0130letim a\u015famas\u0131nda bir a\u011f iste\u011fi i\u00e7eren sayfalar \u015fu an i\u00e7in geri-ileri \u00f6nbelle\u011fe al\u0131nmaya uygun de\u011fildir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestXHR": {
+    "message": "\u0130letim a\u015famas\u0131nda bir XHR a\u011f iste\u011fi i\u00e7eren sayfalar \u015fu an i\u00e7in geri-ileri \u00f6nbelle\u011fe al\u0131nmaya uygun de\u011fildir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | paymentManager": {
+    "message": "PaymentManager kullanan sayfalar \u015fu an i\u00e7in geri-ileri \u00f6nbelle\u011fe al\u0131nmaya uygun de\u011fildir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | pictureInPicture": {
+    "message": "Pencere i\u00e7inde pencere \u00f6zelli\u011fini kullanan sayfalar \u015fu an i\u00e7in geri-ileri \u00f6nbelle\u011fe al\u0131nmaya uygun de\u011fildir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | printing": {
+    "message": "Yazd\u0131rma kullan\u0131c\u0131 aray\u00fcz\u00fc g\u00f6r\u00fcnt\u00fcleyen sayfalar \u015fu an i\u00e7in geri-ileri \u00f6nbelle\u011fe al\u0131nmaya uygun de\u011fildir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | relatedActiveContentsExist": {
+    "message": "Sayfa, \"window.open()\" kullan\u0131larak a\u00e7\u0131lm\u0131\u015f ve ba\u015fka bir sekmede buna at\u0131fta bulunuluyor ya da sayfa bir pencere a\u00e7m\u0131\u015f."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | rendererProcessCrashed": {
+    "message": "Geri-ileri \u00f6nbellekteki sayfa i\u00e7in olu\u015fturucu s\u00fcreci kilitlenmi\u015f."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | rendererProcessKilled": {
+    "message": "Geri-ileri \u00f6nbellekteki sayfa i\u00e7in olu\u015fturucu s\u00fcreci sonland\u0131r\u0131lm\u0131\u015f."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedAudioCapturePermission": {
+    "message": "Ses kaydetme izni isteyen sayfalar \u015fu an i\u00e7in geri-ileri \u00f6nbelle\u011fe al\u0131nmaya uygun de\u011fildir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedBackForwardCacheBlockedSensors": {
+    "message": "Sens\u00f6r izinleri isteyen sayfalar \u015fu an i\u00e7in geri-ileri \u00f6nbelle\u011fe al\u0131nmaya uygun de\u011fildir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedBackgroundWorkPermission": {
+    "message": "Arka plan senkronizasyonu veya getirme izinleri isteyen sayfalar \u015fu an i\u00e7in geri-ileri \u00f6nbelle\u011fe al\u0131nmaya uygun de\u011fildir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedMIDIPermission": {
+    "message": "MIDI izinleri isteyen sayfalar \u015fu an i\u00e7in geri-ileri \u00f6nbelle\u011fe al\u0131nmaya uygun de\u011fildir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedNotificationsPermission": {
+    "message": "Bildirim izinleri isteyen sayfalar \u015fu an i\u00e7in geri-ileri \u00f6nbelle\u011fe al\u0131nmaya uygun de\u011fildir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedStorageAccessGrant": {
+    "message": "Depolama alan\u0131na eri\u015fim iste\u011finde bulunan sayfalar \u015fu an i\u00e7in geri-ileri \u00f6nbelle\u011fe al\u0131nmaya uygun de\u011fildir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedVideoCapturePermission": {
+    "message": "Video kaydetme izni isteyen sayfalar \u015fu an i\u00e7in geri-ileri \u00f6nbelle\u011fe al\u0131nmaya uygun de\u011fildir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | schemeNotHTTPOrHTTPS": {
+    "message": "Yaln\u0131zca URL \u015femas\u0131 HTTP/HTTPS olan sayfalar \u00f6nbelle\u011fe al\u0131nabilir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerClaim": {
+    "message": "Bir hizmet \u00e7al\u0131\u015fan\u0131, geri-ileri \u00f6nbellekteyken sayfa \u00fczerinde hak talebinde bulunmu\u015f."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerPostMessage": {
+    "message": "Bir hizmet \u00e7al\u0131\u015fan\u0131, geri-ileri \u00f6nbellekteki sayfaya MessageEvent g\u00f6nderme giri\u015fiminde bulunmu\u015f."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerUnregistration": {
+    "message": "Bir sayfa geri-ileri \u00f6nbellekteyken ServiceWorker kayd\u0131 iptal edilmi\u015f."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerVersionActivation": {
+    "message": "Sayfa, bir hizmet \u00e7al\u0131\u015fan\u0131n\u0131n etkinle\u015ftirilmesi nedeniyle geri-ileri \u00f6nbellekten \u00e7\u0131kar\u0131lm\u0131\u015f."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | sessionRestored": {
+    "message": "Chrome yeniden ba\u015flat\u0131lm\u0131\u015f ve geri-ileri \u00f6nbellek giri\u015flerini temizlemi\u015f."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | sharedWorker": {
+    "message": "SharedWorker kullanan sayfalar \u015fu an i\u00e7in geri-ileri \u00f6nbelle\u011fe al\u0131nmaya uygun de\u011fildir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | speechRecognizer": {
+    "message": "SpeechRecognizer kullanan sayfalar \u015fu an i\u00e7in geri-ileri \u00f6nbelle\u011fe al\u0131nmaya uygun de\u011fildir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | speechSynthesis": {
+    "message": "SpeechSynthesis kullanan sayfalar \u015fu an i\u00e7in geri-ileri \u00f6nbelle\u011fe al\u0131nmaya uygun de\u011fildir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subframeIsNavigating": {
+    "message": "Sayfadaki bir iframe'in ba\u015flatt\u0131\u011f\u0131 gezinme i\u015flemi tamamlanmam\u0131\u015f."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subresourceHasCacheControlNoCache": {
+    "message": "Alt kayna\u011f\u0131nda cache-control:no-cache bulunan sayfalar geri-ileri \u00f6nbelle\u011fe giremez."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subresourceHasCacheControlNoStore": {
+    "message": "Alt kayna\u011f\u0131nda cache-control:no-store bulunan sayfalar geri-ileri \u00f6nbelle\u011fe giremez."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | timeout": {
+    "message": "Sayfa, geri-ileri \u00f6nbellekte azami s\u00fcreyi a\u015fm\u0131\u015f ve ge\u00e7erlili\u011fini kaybetmi\u015f."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | timeoutPuttingInCache": {
+    "message": "Sayfa, muhtemelen uzun s\u00fcre \u00e7al\u0131\u015fan sayfa gizleme i\u015fleyicileri nedeniyle, geri-ileri \u00f6nbelle\u011fe girerken zaman a\u015f\u0131m\u0131na u\u011fram\u0131\u015f."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | unloadHandlerExistsInMainFrame": {
+    "message": "Sayfan\u0131n ana \u00e7er\u00e7evesinde kald\u0131rma i\u015fleyicisi var."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | unloadHandlerExistsInSubFrame": {
+    "message": "Sayfan\u0131n alt \u00e7er\u00e7evelerinden birinde kald\u0131rma i\u015fleyicisi var."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | userAgentOverrideDiffers": {
+    "message": "Taray\u0131c\u0131, kullan\u0131c\u0131 arac\u0131s\u0131n\u0131 ge\u00e7ersiz k\u0131lma ba\u015fl\u0131\u011f\u0131n\u0131 de\u011fi\u015ftirmi\u015f."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | wasGrantedMediaAccess": {
+    "message": "Video veya ses kayd\u0131 eri\u015fimine izin veren sayfalar \u015fu an i\u00e7in geri-ileri \u00f6nbelle\u011fe al\u0131nmaya uygun de\u011fildir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webDatabase": {
+    "message": "WebDatabase kullanan sayfalar \u015fu an i\u00e7in geri-ileri \u00f6nbelle\u011fe al\u0131nmaya uygun de\u011fildir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webHID": {
+    "message": "WebHID kullanan sayfalar \u015fu an i\u00e7in geri-ileri \u00f6nbelle\u011fe al\u0131nmaya uygun de\u011fildir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webLocks": {
+    "message": "WebLocks kullanan sayfalar \u015fu an i\u00e7in geri-ileri \u00f6nbelle\u011fe al\u0131nmaya uygun de\u011fildir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webNfc": {
+    "message": "WebNfc kullanan sayfalar \u015fu an i\u00e7in geri-ileri \u00f6nbelle\u011fe al\u0131nmaya uygun de\u011fildir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webOTPService": {
+    "message": "WebOTPService kullanan sayfalar \u015fu an i\u00e7in geri-ileri \u00f6nbelle\u011fe al\u0131nmaya uygun de\u011fildir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webRTC": {
+    "message": "WebRTC i\u00e7eren sayfalar geri-ileri \u00f6nbelle\u011fe giremez."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webRTCSticky": {
+    "message": "WebRTC kullan\u0131ld\u0131\u011f\u0131 i\u00e7in geri-ileri \u00f6nbellek devre d\u0131\u015f\u0131 b\u0131rak\u0131ld\u0131."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webShare": {
+    "message": "WebShare kullanan sayfalar \u015fu an i\u00e7in geri-ileri \u00f6nbelle\u011fe al\u0131nmaya uygun de\u011fildir."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webSocket": {
+    "message": "WebSocket i\u00e7eren sayfalar geri-ileri \u00f6nbelle\u011fe giremez."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webSocketSticky": {
+    "message": "WebSocket kullan\u0131ld\u0131\u011f\u0131 i\u00e7in geri-ileri \u00f6nbellek devre d\u0131\u015f\u0131 b\u0131rak\u0131ld\u0131."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webTransport": {
+    "message": "WebTransport i\u00e7eren sayfalar geri-ileri \u00f6nbelle\u011fe giremez."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webTransportSticky": {
+    "message": "WebTransport kullan\u0131ld\u0131\u011f\u0131 i\u00e7in geri-ileri \u00f6nbellek devre d\u0131\u015f\u0131 b\u0131rak\u0131ld\u0131."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webXR": {
+    "message": "WebXR kullanan sayfalar \u015fu an i\u00e7in geri-ileri \u00f6nbelle\u011fe al\u0131nmaya uygun de\u011fildir."
+  }
+}

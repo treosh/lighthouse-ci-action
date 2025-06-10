@@ -1,0 +1,908 @@
+{
+  "generated/Deprecation.ts | AuthorizationCoveredByWildcard": {
+    "message": "Z\u00e1stupn\u00fd symbol (*) se p\u0159i zpracov\u00e1n\u00ed z\u00e1hlav\u00ed Access-Control-Allow-Headers pro CORS nevztahuje na z\u00e1hlav\u00ed Authorization."
+  },
+  "generated/Deprecation.ts | CSSSelectorInternalMediaControlsOverlayCastButton": {
+    "message": "Nam\u00edsto selektoru -internal-media-controls-overlay-cast-button byste k\u00a0vypnut\u00ed v\u00fdchoz\u00ed integrace funkce Cast m\u011bli pou\u017e\u00edt atribut disableRemotePlayback."
+  },
+  "generated/Deprecation.ts | CSSValueAppearanceSliderVertical": {
+    "message": "Hodnota vzhledu CSS slider-vertical nen\u00ed standardizovan\u00e1 a\u00a0bude odstran\u011bna."
+  },
+  "generated/Deprecation.ts | CanRequestURLHTTPContainingNewline": {
+    "message": "Po\u017eadavky na zdroje, jejich\u017e adresy URL obsahovaly jak odstran\u011bn\u00e9 pr\u00e1zdn\u00e9 znaky \\(n|r|t), tak znaky men\u0161\u00ed ne\u017e (<), jsou blokov\u00e1ny. Aby se tyto zdroje na\u010detly, je na m\u00edstech, jako jsou hodnoty atribut\u016f, pot\u0159eba odstranit zalomen\u00ed \u0159\u00e1dk\u016f a\u00a0zak\u00f3dovat znaky men\u0161\u00ed ne\u017e."
+  },
+  "generated/Deprecation.ts | CharsetAutoDetectionISO2022JP": {
+    "message": "Automatick\u00e1 detekce znakov\u00e9 sady ISO-2022-JP je zastaral\u00e1 a\u00a0brzy bude deaktivov\u00e1na. Uve\u010fte znakovou sadu v\u00a0z\u00e1hlav\u00ed Content Type nebo pomoc\u00ed metazna\u010dky (https://developer.mozilla.org/en-US/docs/Glossary/Character_encoding)."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesConnectionInfo": {
+    "message": "Metoda chrome.loadTimes() je zastaral\u00e1, pou\u017eijte m\u00edsto n\u00ed standardizovan\u00e9 API: Navigation Timing\u00a02."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesFirstPaintAfterLoadTime": {
+    "message": "API chrome.loadTimes() je zastaral\u00e9. Pou\u017eijte m\u00edsto n\u011bj standardizovan\u00e9 API: Paint Timing."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesWasAlternateProtocolAvailable": {
+    "message": "Metoda chrome.loadTimes() je zastaral\u00e1. Pou\u017eijte m\u00edsto n\u00ed standardizovan\u00e9 API: nextHopProtocol v\u00a0Navigation Timing\u00a02."
+  },
+  "generated/Deprecation.ts | CookieWithTruncatingChar": {
+    "message": "Soubory cookie obsahuj\u00edc\u00ed znak \\(0|r|n) budou nam\u00edsto zkr\u00e1cen\u00ed odm\u00edtnuty."
+  },
+  "generated/Deprecation.ts | CrossOriginAccessBasedOnDocumentDomain": {
+    "message": "Uvoln\u011bn\u00ed z\u00e1sad stejn\u00e9ho p\u016fvodu nastaven\u00edm atributu document.domain je zastaral\u00e9 a\u00a0bude ve v\u00fdchoz\u00edm nastaven\u00ed zak\u00e1z\u00e1no. Toto upozorn\u011bn\u00ed na ukon\u010den\u00ed podpory se t\u00fdk\u00e1 p\u0159\u00edstupu mezi r\u016fzn\u00fdmi zdroji, kter\u00fd byl povolen nastaven\u00edm document.domain."
+  },
+  "generated/Deprecation.ts | CrossOriginWindowAlert": {
+    "message": "Podpora vol\u00e1n\u00ed funkce window.alert z\u00a0prvk\u016f iframe jin\u00fdch dom\u00e9n byla ukon\u010dena a\u00a0v\u00a0budoucnu bude odstran\u011bno."
+  },
+  "generated/Deprecation.ts | CrossOriginWindowConfirm": {
+    "message": "Podpora vol\u00e1n\u00ed funkce window.confirm z\u00a0prvk\u016f iframe jin\u00fdch dom\u00e9n byla ukon\u010dena a\u00a0v\u00a0budoucnu bude odstran\u011bno."
+  },
+  "generated/Deprecation.ts | DOMMutationEvents": {
+    "message": "Ud\u00e1losti zm\u011bny DOM, v\u010detn\u011b DOMSubtreeModified, DOMNodeInserted, DOMNodeRemoved, DOMNodeRemovedFromDocument, DOMNodeInsertedIntoDocument a\u00a0DOMCharacterDataModified jsou zastaral\u00e9 (https://w3c.github.io/uievents/ #legacy-event-types) a\u00a0budou odstran\u011bny. Pou\u017eijte m\u00edsto nich rozhran\u00ed MutationObserver."
+  },
+  "generated/Deprecation.ts | DataUrlInSvgUse": {
+    "message": "Podpora adres URL se sch\u00e9matem data: v\u00a0rozhran\u00ed SVGUseElement je zastaral\u00e1 a\u00a0v\u00a0budoucnu bude odstran\u011bna."
+  },
+  "generated/Deprecation.ts | GeolocationInsecureOrigin": {
+    "message": "getCurrentPosition() a\u00a0watchPosition() ji\u017e nefunguj\u00ed u\u00a0nezabezpe\u010den\u00fdch zdroj\u016f. Pokud tuto funkci chcete pou\u017e\u00edt, m\u011bli byste zv\u00e1\u017eit p\u0159eveden\u00ed aplikace na zabezpe\u010den\u00fd zdroj, jako je HTTPS. Dal\u0161\u00ed podrobnosti najdete na str\u00e1nce https://goo.gle/chrome-insecure-origins."
+  },
+  "generated/Deprecation.ts | GeolocationInsecureOriginDeprecatedNotRemoved": {
+    "message": "Metody getCurrentPosition() a\u00a0watchPosition() ji\u017e v\u00a0nezabezpe\u010den\u00fdch zdroj\u00edch nejsou podporov\u00e1ny. Pokud tuto funkci chcete pou\u017e\u00edt, m\u011bli byste zv\u00e1\u017eit p\u0159eveden\u00ed aplikace na zabezpe\u010den\u00fd zdroj, jako je HTTPS. Dal\u0161\u00ed podrobnosti najdete na str\u00e1nce https://goo.gle/chrome-insecure-origins."
+  },
+  "generated/Deprecation.ts | GetUserMediaInsecureOrigin": {
+    "message": "getUserMedia() ji\u017e nefunguje u\u00a0nezabezpe\u010den\u00fdch zdroj\u016f. Pokud tuto funkci chcete pou\u017e\u00edt, m\u011bli byste zv\u00e1\u017eit p\u0159eveden\u00ed aplikace na zabezpe\u010den\u00fd zdroj, jako je HTTPS. Dal\u0161\u00ed podrobnosti najdete na str\u00e1nce https://goo.gle/chrome-insecure-origins."
+  },
+  "generated/Deprecation.ts | H1UserAgentFontSizeInSection": {
+    "message": "Byla nalezena zna\u010dka <h1> v\u00a0r\u00e1mci zna\u010dky <article>, <aside>, <nav> nebo <section> bez zadan\u00e9 velikosti p\u00edsma. Velikost textu tohoto nadpisu se bude v\u00a0tomto prohl\u00ed\u017ee\u010di brzy m\u011bnit. Dal\u0161\u00ed informace najdete na str\u00e1nce https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#specifying_a_uniform_font_size_for_h1."
+  },
+  "generated/Deprecation.ts | HostCandidateAttributeGetter": {
+    "message": "Pole RTCPeerConnectionIceErrorEvent.hostCandidate je zastaral\u00e9. Pou\u017eijte m\u00edsto n\u011bj pole RTCPeerConnectionIceErrorEvent.address nebo RTCPeerConnectionIceErrorEvent.port."
+  },
+  "generated/Deprecation.ts | IdentityDigitalCredentials": {
+    "message": "Tento form\u00e1t po\u017eadavku navigator.credentials.get() pro digit\u00e1ln\u00ed identifika\u010dn\u00ed \u00fadaje je zastaral\u00fd, aktualizujte vol\u00e1n\u00ed a\u00a0pou\u017eijte nov\u00fd form\u00e1t."
+  },
+  "generated/Deprecation.ts | IdentityInCanMakePaymentEvent": {
+    "message": "Zdroj obchodn\u00edka a\u00a0libovoln\u00e1 data z\u00a0ud\u00e1losti canmakepayment procesu pracovn\u00ed proces slu\u017eby jsou zastaral\u00e9 a\u00a0budou odstran\u011bny: topOrigin, paymentRequestOrigin, methodData, modifiers."
+  },
+  "generated/Deprecation.ts | InsecurePrivateNetworkSubresourceRequest": {
+    "message": "Web si vy\u017e\u00e1dal d\u00edl\u010d\u00ed zdroj ze s\u00edt\u011b, ke kter\u00e9 m\u011bl p\u0159\u00edstup pouze d\u00edky privilegovan\u00e9 pozici sv\u00fdch u\u017eivatel\u016f v\u00a0s\u00edti. Tyto po\u017eadavky umo\u017e\u0148uj\u00ed z\u00edskat z\u00a0internetu p\u0159\u00edstup k\u00a0neve\u0159ejn\u00fdm za\u0159\u00edzen\u00edm a\u00a0server\u016fm, \u010d\u00edm\u017e se zvy\u0161uje riziko \u00fatoku CSRF (cross-site request forgery) a/nebo \u00faniku informac\u00ed. Aby Chrome tato rizika zm\u00edrnil, p\u0159est\u00e1v\u00e1 podporovat po\u017eadavky na neve\u0159ejn\u00e9 d\u00edl\u010d\u00ed zdroje iniciovan\u00e9 z\u00a0nezabezpe\u010den\u00fdch kontext\u016f a\u00a0za\u010dne je blokovat."
+  },
+  "generated/Deprecation.ts | InterestGroupDailyUpdateUrl": {
+    "message": "Pole dailyUpdateUrl struktury InterestGroups p\u0159ed\u00e1van\u00e9 do joinAdInterestGroup() bylo p\u0159ejmenov\u00e1no na updateUrl, aby jeho n\u00e1zev p\u0159esn\u011bji odpov\u00eddal chov\u00e1n\u00ed."
+  },
+  "generated/Deprecation.ts | IntlV8BreakIterator": {
+    "message": "Objekt Intl.v8BreakIterator je zastaral\u00fd. Pou\u017eijte m\u00edsto n\u011bj objekt Intl.Segmenter."
+  },
+  "generated/Deprecation.ts | LocalCSSFileExtensionRejected": {
+    "message": "Styly CSS lze z\u00a0adres URL file: na\u010d\u00edst pouze v\u00a0p\u0159\u00edpad\u011b, \u017ee kon\u010d\u00ed p\u0159\u00edponou souboru .css."
+  },
+  "generated/Deprecation.ts | MediaSourceAbortRemove": {
+    "message": "Pou\u017eit\u00ed SourceBuffer.abort() ke zru\u0161en\u00ed asynchronn\u00edho odstran\u011bn\u00ed rozsahu pomoc\u00ed metody remove() je vzhledem ke zm\u011bn\u011b specifikace zastaral\u00e9. Podpora bude v\u00a0budoucnu odstran\u011bna. Doporu\u010dujeme m\u00edsto toho naslouchat ud\u00e1losti updateend. Metoda abort() je ur\u010dena pouze ke zru\u0161en\u00ed asynchronn\u00edho p\u0159ipojen\u00ed m\u00e9dia nebo resetov\u00e1n\u00ed stavu analyz\u00e1toru."
+  },
+  "generated/Deprecation.ts | MediaSourceDurationTruncatingBuffered": {
+    "message": "Nastaven\u00ed hodnoty MediaSource.duration ni\u017e\u0161\u00ed, ne\u017e je nejvy\u0161\u0161\u00ed prezenta\u010dn\u00ed \u010dasov\u00e9 raz\u00edtko kter\u00fdchkoliv k\u00f3dovan\u00fdch sn\u00edmk\u016f ve vyrovn\u00e1vac\u00ed pam\u011bti, je z\u00a0d\u016fvodu zm\u011bny specifikace zastaral\u00e9. Podpora implicitn\u00edho odstran\u011bn\u00ed zkr\u00e1cen\u00fdch m\u00e9di\u00ed ve vyrovn\u00e1vac\u00ed pam\u011bt\u00ed bude v\u00a0budoucnu odstran\u011bna. M\u00edsto toho byste u\u00a0v\u0161ech objekt\u016f sourceBuffers, u\u00a0kter\u00fdch je newDuration < oldDuration, m\u011bli explicitn\u011b prov\u00e9st remove(newDuration, oldDuration)."
+  },
+  "generated/Deprecation.ts | NoSysexWebMIDIWithoutPermission": {
+    "message": "Rozhran\u00ed Web MIDI po\u017e\u00e1d\u00e1 o\u00a0opr\u00e1vn\u011bn\u00ed k\u00a0pou\u017eit\u00ed i\u00a0v\u00a0p\u0159\u00edpad\u011b, \u017ee v\u00a0MIDIOptions nen\u00ed zad\u00e1n sysex."
+  },
+  "generated/Deprecation.ts | NotificationInsecureOrigin": {
+    "message": "Notification API ji\u017e nelze pou\u017e\u00edvat z\u00a0nezabezpe\u010den\u00fdch zdroj\u016f. Zva\u017ete p\u0159eveden\u00ed aplikace na zabezpe\u010den\u00fd zdroj, jako je HTTPS. Dal\u0161\u00ed podrobnosti najdete na str\u00e1nce https://goo.gle/chrome-insecure-origins."
+  },
+  "generated/Deprecation.ts | NotificationPermissionRequestedIframe": {
+    "message": "Opr\u00e1vn\u011bn\u00ed pro rozhran\u00ed Notification API ji\u017e nelze po\u017eadovat z\u00a0prvku iframe z\u00a0jin\u00e9ho zdroje. M\u011bli byste zv\u00e1\u017eit vy\u017e\u00e1d\u00e1n\u00ed opr\u00e1vn\u011bn\u00ed z\u00a0r\u00e1mce nejvy\u0161\u0161\u00ed \u00farovn\u011b nebo otev\u0159en\u00ed nov\u00e9ho okna."
+  },
+  "generated/Deprecation.ts | ObsoleteCreateImageBitmapImageOrientationNone": {
+    "message": "Mo\u017enost imageOrientation: 'none' v\u00a0metod\u011b createImageBitmap je zastaral\u00e1. Pou\u017eijte m\u00edsto n\u00ed metodu createImageBitmap s\u00a0mo\u017enost\u00ed {imageOrientation: 'from-image'}."
+  },
+  "generated/Deprecation.ts | ObsoleteWebRtcCipherSuite": {
+    "message": "V\u00e1\u0161 partner vyjedn\u00e1v\u00e1 zastaralou verzi (D)TLS. Po\u017e\u00e1dejte ho o\u00a0n\u00e1pravu."
+  },
+  "generated/Deprecation.ts | OverflowVisibleOnReplacedElement": {
+    "message": "Pokud u\u00a0zna\u010dek img, video \u010di canvas zad\u00e1te vlastnost overflow: visible, m\u016f\u017ee se vizu\u00e1ln\u00ed obsah zobrazit mimo hranice prvku. Viz https://github.com/WICG/shared-element-transitions/blob/main/debugging_overflow_on_images.md."
+  },
+  "generated/Deprecation.ts | PaymentInstruments": {
+    "message": "API paymentManager.instruments je zastaral\u00e9. Obslu\u017en\u00e9 n\u00e1stroje pro platby m\u00edsto toho instalujte bezprost\u0159edn\u011b p\u0159ed pou\u017eit\u00edm."
+  },
+  "generated/Deprecation.ts | PaymentRequestCSPViolation": {
+    "message": "Va\u0161e vol\u00e1n\u00ed rozhran\u00ed PaymentRequest obch\u00e1z\u00ed direktivu connect-src z\u00e1sad zabezpe\u010den\u00ed obsahu (CSP). Toto obch\u00e1zen\u00ed ji\u017e nen\u00ed podporov\u00e1no. P\u0159idejte do direktivy CSP connect-src identifik\u00e1tor platebn\u00ed metody z\u00a0rozhran\u00ed API PaymentRequest (v\u00a0poli supportedMethods)."
+  },
+  "generated/Deprecation.ts | PersistentQuotaType": {
+    "message": "Rozhran\u00ed StorageType.persistent je zastaral\u00e9. Pou\u017eijte m\u00edsto n\u011bj standardizovan\u00e9 rozhran\u00ed navigator.storage."
+  },
+  "generated/Deprecation.ts | PictureSourceSrc": {
+    "message": "Prvek <source src> s\u00a0nad\u0159azen\u00fdm prvkem <picture> je neplatn\u00fd, a\u00a0proto je ignorov\u00e1n. Pou\u017eijte m\u00edsto n\u011bj prvek <source srcset>."
+  },
+  "generated/Deprecation.ts | PrefixedCancelAnimationFrame": {
+    "message": "Metoda webkitCancelAnimationFrame je specifick\u00e1 pro dodavatele. Pou\u017eijte m\u00edsto n\u00ed standardn\u00ed metodu cancelAnimationFrame."
+  },
+  "generated/Deprecation.ts | PrefixedRequestAnimationFrame": {
+    "message": "Metoda webkitRequestAnimationFrame je specifick\u00e1 pro dodavatele. M\u00edsto n\u00ed pou\u017eijte standardn\u00ed metodu requestAnimationFrame."
+  },
+  "generated/Deprecation.ts | PrefixedVideoDisplayingFullscreen": {
+    "message": "Vlastnost HTMLVideoElement.webkitDisplayingFullscreen je zastaral\u00e1. Pou\u017eijte m\u00edsto n\u00ed vlastnost Document.fullscreenElement."
+  },
+  "generated/Deprecation.ts | PrefixedVideoEnterFullScreen": {
+    "message": "Metoda HTMLVideoElement.webkitEnterFullScreen() je zastaral\u00e1. Pou\u017eijte m\u00edsto n\u00ed metodu Element.requestFullscreen()."
+  },
+  "generated/Deprecation.ts | PrefixedVideoEnterFullscreen": {
+    "message": "Metoda HTMLVideoElement.webkitEnterFullscreen() je zastaral\u00e1. Pou\u017eijte m\u00edsto n\u00ed metodu Element.requestFullscreen()."
+  },
+  "generated/Deprecation.ts | PrefixedVideoExitFullScreen": {
+    "message": "Metoda HTMLVideoElement.webkitExitFullScreen() je zastaral\u00e1. Pou\u017eijte m\u00edsto n\u00ed metodu Document.exitFullscreen()."
+  },
+  "generated/Deprecation.ts | PrefixedVideoExitFullscreen": {
+    "message": "Metoda HTMLVideoElement.webkitExitFullscreen() je zastaral\u00e1. Pou\u017eijte m\u00edsto n\u00ed metodu Document.exitFullscreen()."
+  },
+  "generated/Deprecation.ts | PrefixedVideoSupportsFullscreen": {
+    "message": "Vlastnost HTMLVideoElement.webkitSupportsFullscreen je zastaral\u00e1. Pou\u017eijte m\u00edsto n\u00ed vlastnost Document.fullscreenEnabled."
+  },
+  "generated/Deprecation.ts | PrivacySandboxExtensionsAPI": {
+    "message": "Ukon\u010dujeme podporu rozhran\u00ed API chrome.privacy.websites.privacySandboxEnabled. Z\u00a0d\u016fvodu zp\u011btn\u00e9 kompatibility v\u0161ak z\u016fstane aktivn\u00ed a\u017e do vyd\u00e1n\u00ed M113. Nam\u00edsto toho pou\u017eijte vlastnosti chrome.privacy.websites.topicsEnabled, chrome.privacy.websites.fledgeEnabled a\u00a0chrome.privacy.websites.adMeasurementEnabled. Viz https://developer.chrome.com/docs/extensions/reference/privacy/#property-websites-privacySandboxEnabled."
+  },
+  "generated/Deprecation.ts | RTCConstraintEnableDtlsSrtpFalse": {
+    "message": "Omezen\u00ed DtlsSrtpKeyAgreement je odstran\u011bno. Pro toto omezen\u00ed jste zadali hodnotu false, kter\u00e1 je interpretov\u00e1na jako pokus o\u00a0pou\u017eit\u00ed odstran\u011bn\u00e9 metody SDES key negotiation. Tato funkce je odstran\u011bna. Pou\u017eijte m\u00edsto toho slu\u017ebu, kter\u00e1 podporuje metodu DTLS key negotiation."
+  },
+  "generated/Deprecation.ts | RTCConstraintEnableDtlsSrtpTrue": {
+    "message": "Omezen\u00ed DtlsSrtpKeyAgreement je odstran\u011bno. Pro toto omezen\u00ed jste zadali hodnotu true, co\u017e nem\u011blo \u017e\u00e1dn\u00fd \u00fa\u010dinek, ale pro po\u0159\u00e1dek m\u016f\u017eete toto omezen\u00ed odstranit."
+  },
+  "generated/Deprecation.ts | RTCPeerConnectionGetStatsLegacyNonCompliant": {
+    "message": "Metoda getStats() zalo\u017een\u00e1 na zp\u011btn\u00e9m vol\u00e1n\u00ed je zastaral\u00e1 a\u00a0bude odstran\u011bna. M\u00edsto toho pou\u017eijte metodu getStats() odpov\u00eddaj\u00edc\u00ed specifikac\u00edm."
+  },
+  "generated/Deprecation.ts | RangeExpand": {
+    "message": "Metoda Range.expand() je zastaral\u00e1. Pou\u017eijte m\u00edsto n\u00ed metodu Selection.modify()."
+  },
+  "generated/Deprecation.ts | RequestedSubresourceWithEmbeddedCredentials": {
+    "message": "Po\u017eadavky na d\u00edl\u010d\u00ed zdroje, jejich\u017e adresy URL obsahuj\u00ed vlo\u017een\u00e9 p\u0159ihla\u0161ovac\u00ed \u00fadaje (nap\u0159.\u00a0https://user:pass@host/), jsou blokov\u00e1ny."
+  },
+  "generated/Deprecation.ts | RtcpMuxPolicyNegotiate": {
+    "message": "Mo\u017enost rtcpMuxPolicy je zastaral\u00e1 a\u00a0bude odstran\u011bna."
+  },
+  "generated/Deprecation.ts | SharedArrayBufferConstructedWithoutIsolation": {
+    "message": "SharedArrayBuffer bude vy\u017eadovat izolaci od jin\u00fdch zdroj\u016f. Dal\u0161\u00ed podrobnosti naleznete na str\u00e1nce https://developer.chrome.com/blog/enabling-shared-array-buffer/."
+  },
+  "generated/Deprecation.ts | TextToSpeech_DisallowedByAutoplay": {
+    "message": "Vol\u00e1n\u00ed metody speechSynthesis.speak() bez aktivace ze strany u\u017eivatele je zastaral\u00e9 a\u00a0bude odstran\u011bno."
+  },
+  "generated/Deprecation.ts | UnloadHandler": {
+    "message": "Poslucha\u010de ud\u00e1losti \u201eunload\u201c jsou zastaral\u00e9 a\u00a0budou odstran\u011bny."
+  },
+  "generated/Deprecation.ts | V8SharedArrayBufferConstructedInExtensionWithoutIsolation": {
+    "message": "Pokud v\u00a0roz\u0161\u00ed\u0159en\u00edch chcete pou\u017e\u00edvat technologii SharedArrayBuffer, je u\u00a0nich pot\u0159eba aktivovat izolaci od jin\u00fdch zdroj\u016f. Viz https://developer.chrome.com/docs/extensions/mv3/cross-origin-isolation/."
+  },
+  "generated/Deprecation.ts | XHRJSONEncodingDetection": {
+    "message": "K\u00f3dov\u00e1n\u00ed UTF-16 nen\u00ed v\u00a0objektech JSON odpov\u011bd\u00ed rozhran\u00ed XMLHttpRequest podporov\u00e1no."
+  },
+  "generated/Deprecation.ts | XMLHttpRequestSynchronousInNonWorkerOutsideBeforeUnload": {
+    "message": "Synchronn\u00ed po\u017eadavky XMLHttpRequest v\u00a0hlavn\u00edm vl\u00e1knu jsou zastaral\u00e9, proto\u017ee maj\u00ed nep\u0159\u00edzniv\u00fd vliv na dojem koncov\u00e9ho u\u017eivatele. Dal\u0161\u00ed informace najdete na str\u00e1nce https://xhr.spec.whatwg.org/."
+  },
+  "models/trace/insights/CLSCulprits.ts | animation": {
+    "message": "Animace"
+  },
+  "models/trace/insights/CLSCulprits.ts | description": {
+    "message": "Ke zm\u011bn\u00e1m rozvr\u017een\u00ed doch\u00e1z\u00ed, kdy\u017e se prvky p\u0159esouvaj\u00ed bez interakce u\u017eivatele. [Prozkoumejte p\u0159\u00ed\u010diny zm\u011bn rozvr\u017een\u00ed](https://web.dev/articles/optimize-cls), jako jsou p\u0159id\u00e1v\u00e1n\u00ed a\u00a0odeb\u00edr\u00e1n\u00ed prvk\u016f nebo zm\u011bny p\u00edsem b\u011bhem na\u010d\u00edt\u00e1n\u00ed str\u00e1nky."
+  },
+  "models/trace/insights/CLSCulprits.ts | fontRequest": {
+    "message": "\u017d\u00e1dost o\u00a0p\u00edsmo"
+  },
+  "models/trace/insights/CLSCulprits.ts | injectedIframe": {
+    "message": "Byl vlo\u017een prvek iframe"
+  },
+  "models/trace/insights/CLSCulprits.ts | layoutShiftCluster": {
+    "message": "Klastr zm\u011bn rozvr\u017een\u00ed @ {PH1}"
+  },
+  "models/trace/insights/CLSCulprits.ts | noCulprits": {
+    "message": "Nepoda\u0159ilo se zjistit \u017e\u00e1dn\u00e9 vin\u00edky zm\u011bny rozvr\u017een\u00ed"
+  },
+  "models/trace/insights/CLSCulprits.ts | noLayoutShifts": {
+    "message": "\u017d\u00e1dn\u00e9 zm\u011bny rozvr\u017een\u00ed"
+  },
+  "models/trace/insights/CLSCulprits.ts | title": {
+    "message": "Vin\u00edci zm\u011bny rozvr\u017een\u00ed"
+  },
+  "models/trace/insights/CLSCulprits.ts | topCulprits": {
+    "message": "Hlavn\u00ed vin\u00edci zm\u011bn rozvr\u017een\u00ed"
+  },
+  "models/trace/insights/CLSCulprits.ts | unsizedImages": {
+    "message": "Obr\u00e1zky bez velikosti"
+  },
+  "models/trace/insights/CLSCulprits.ts | worstCluster": {
+    "message": "Nejhor\u0161\u00ed klastr"
+  },
+  "models/trace/insights/CLSCulprits.ts | worstLayoutShiftCluster": {
+    "message": "Nejhor\u0161\u00ed klastr zm\u011bn rozvr\u017een\u00ed"
+  },
+  "models/trace/insights/Cache.ts | cacheTTL": {
+    "message": "Hodnota TTL (Time to Live) mezipam\u011bti"
+  },
+  "models/trace/insights/Cache.ts | description": {
+    "message": "Dlouh\u00e1 platnost mezipam\u011bti m\u016f\u017ee zrychlit opakovan\u00e9 n\u00e1v\u0161t\u011bvy str\u00e1nky. [Dal\u0161\u00ed informace](https://web.dev/uses-long-cache-ttl/)"
+  },
+  "models/trace/insights/Cache.ts | noRequestsToCache": {
+    "message": "\u017d\u00e1dn\u00e9 po\u017eadavky s\u00a0neefektivn\u00edmi z\u00e1sadami pro mezipam\u011b\u0165"
+  },
+  "models/trace/insights/Cache.ts | others": {
+    "message": "Je\u0161t\u011b {PH1}"
+  },
+  "models/trace/insights/Cache.ts | requestColumn": {
+    "message": "Po\u017eadavek"
+  },
+  "models/trace/insights/Cache.ts | title": {
+    "message": "Pou\u017e\u00edvejte efektivn\u00ed dobu platnosti mezipam\u011bti"
+  },
+  "models/trace/insights/DOMSize.ts | description": {
+    "message": "Velk\u00fd model DOM m\u016f\u017ee prodlou\u017eit dobu v\u00fdpo\u010dtu styl\u016f a\u00a0p\u0159eform\u00e1tov\u00e1v\u00e1n\u00ed rozvr\u017een\u00ed, co\u017e m\u016f\u017ee m\u00edt dopad na rychlost odezvy str\u00e1nky. Velk\u00fd model DOM tak\u00e9 povede k\u00a0v\u011bt\u0161\u00edmu vyu\u017eit\u00ed pam\u011bti. [Jak p\u0159edej\u00edt nadm\u011brn\u00e9 velikosti modelu DOM](https://developer.chrome.com/docs/lighthouse/performance/dom-size/)"
+  },
+  "models/trace/insights/DOMSize.ts | element": {
+    "message": "Prvek"
+  },
+  "models/trace/insights/DOMSize.ts | maxChildren": {
+    "message": "V\u011bt\u0161ina pod\u0159\u00edzen\u00fdch prvk\u016f"
+  },
+  "models/trace/insights/DOMSize.ts | maxDOMDepth": {
+    "message": "Hloubka DOM"
+  },
+  "models/trace/insights/DOMSize.ts | statistic": {
+    "message": "Statistika"
+  },
+  "models/trace/insights/DOMSize.ts | title": {
+    "message": "Optimalizujte velikost modelu DOM"
+  },
+  "models/trace/insights/DOMSize.ts | totalElements": {
+    "message": "Celkov\u00fd po\u010det prvk\u016f"
+  },
+  "models/trace/insights/DOMSize.ts | value": {
+    "message": "Hodnota"
+  },
+  "models/trace/insights/DocumentLatency.ts | description": {
+    "message": "Prvn\u00ed s\u00ed\u0165ov\u00fd po\u017eadavek je nejd\u016fle\u017eit\u011bj\u0161\u00ed.  Sni\u017ete jeho latenci t\u00edm, \u017ee nebudete pou\u017e\u00edvat p\u0159esm\u011brov\u00e1n\u00ed, zajist\u00edte rychlou odezvu serveru a\u00a0zapnete kompresi textu."
+  },
+  "models/trace/insights/DocumentLatency.ts | failedRedirects": {
+    "message": "Zahrnuje p\u0159esm\u011brov\u00e1n\u00ed"
+  },
+  "models/trace/insights/DocumentLatency.ts | failedServerResponseTime": {
+    "message": "Server odpov\u011bd\u011bl pomalu"
+  },
+  "models/trace/insights/DocumentLatency.ts | failedTextCompression": {
+    "message": "Nen\u00ed pou\u017eita \u017e\u00e1dn\u00e1 komprese"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingRedirects": {
+    "message": "Nepou\u017e\u00edv\u00e1 p\u0159esm\u011brov\u00e1n\u00ed"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingServerResponseTime": {
+    "message": "Server odpov\u00edd\u00e1 rychle"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingTextCompression": {
+    "message": "Pou\u017e\u00edv\u00e1 kompresi textu"
+  },
+  "models/trace/insights/DocumentLatency.ts | redirectsLabel": {
+    "message": "P\u0159esm\u011brov\u00e1n\u00ed"
+  },
+  "models/trace/insights/DocumentLatency.ts | serverResponseTimeLabel": {
+    "message": "Doba odezvy serveru"
+  },
+  "models/trace/insights/DocumentLatency.ts | title": {
+    "message": "Latence \u017e\u00e1dosti o\u00a0dokument"
+  },
+  "models/trace/insights/DocumentLatency.ts | uncompressedDownload": {
+    "message": "Stahov\u00e1n\u00ed nekomprimovan\u00e9ho obsahu"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | columnDuplicatedBytes": {
+    "message": "Duplicitn\u00ed bajty"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | columnSource": {
+    "message": "Zdroj"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | description": {
+    "message": "Odstra\u0148te z\u00a0bal\u00ed\u010dk\u016f velk\u00e9 duplicitn\u00ed moduly JavaScriptu, abyste omezili zbyte\u010dn\u00e9 zat\u00ed\u017een\u00ed s\u00edt\u011b."
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | title": {
+    "message": "Duplicitn\u00ed JavaScript"
+  },
+  "models/trace/insights/FontDisplay.ts | description": {
+    "message": "Zva\u017ete nastaven\u00ed [font-display](https://developer.chrome.com/blog/font-display) na swap nebo optional, aby byl text konzistentn\u011b viditeln\u00fd. Deskriptor swap lze k\u00a0omezen\u00ed zm\u011bn rozvr\u017een\u00ed d\u00e1le optimalizovat [pomoc\u00ed p\u0159epis\u016f metrik p\u00edsem](https://developer.chrome.com/blog/font-fallbacks)."
+  },
+  "models/trace/insights/FontDisplay.ts | fontColumn": {
+    "message": "P\u00edsmo"
+  },
+  "models/trace/insights/FontDisplay.ts | title": {
+    "message": "Zobrazen\u00ed p\u00edsma"
+  },
+  "models/trace/insights/FontDisplay.ts | wastedTimeColumn": {
+    "message": "Ztracen\u00fd \u010das"
+  },
+  "models/trace/insights/ForcedReflow.ts | anonymous": {
+    "message": "(anonymn\u00ed)"
+  },
+  "models/trace/insights/ForcedReflow.ts | description": {
+    "message": "Mnoho rozhran\u00ed API, obvykle \u010dten\u00ed geometrie rozvr\u017een\u00ed, nut\u00ed vykreslovac\u00ed modul pozastavit prov\u00e1d\u011bn\u00ed skriptu, aby mohla vypo\u010d\u00edtat styl a\u00a0rozvr\u017een\u00ed. P\u0159e\u010dt\u011bte si dal\u0161\u00ed informace o\u00a0[nucen\u00e9m p\u0159eform\u00e1tov\u00e1n\u00ed](https://developers.google.com/web/fundamentals/performance/rendering/avoid-large-complex-layouts-and-layout-thrashing#avoid-forced-synchronous-layouts) a\u00a0jeho zm\u00edrn\u011bn\u00ed."
+  },
+  "models/trace/insights/ForcedReflow.ts | relatedStackTrace": {
+    "message": "Trasov\u00e1n\u00ed z\u00e1sobn\u00edku"
+  },
+  "models/trace/insights/ForcedReflow.ts | title": {
+    "message": "Vynucen\u00e9 p\u0159eform\u00e1tov\u00e1n\u00ed"
+  },
+  "models/trace/insights/ForcedReflow.ts | topTimeConsumingFunctionCall": {
+    "message": "Nejn\u00e1ro\u010dn\u011bj\u0161\u00ed vol\u00e1n\u00ed funkce"
+  },
+  "models/trace/insights/ForcedReflow.ts | totalReflowTime": {
+    "message": "Celkov\u00e1 doba p\u0159eform\u00e1tov\u00e1n\u00ed"
+  },
+  "models/trace/insights/ForcedReflow.ts | unattributed": {
+    "message": "[nep\u0159i\u0159azeno]"
+  },
+  "models/trace/insights/ImageDelivery.ts | description": {
+    "message": "Sn\u00ed\u017een\u00ed doby stahov\u00e1n\u00ed obr\u00e1zk\u016f m\u016f\u017ee zlep\u0161it vn\u00edmanou dobu na\u010d\u00edt\u00e1n\u00ed str\u00e1nky a\u00a0LCP. [Dal\u0161\u00ed informace o\u00a0optimalizaci velikosti obr\u00e1zku](https://developer.chrome.com/docs/lighthouse/performance/uses-optimized-images/)"
+  },
+  "models/trace/insights/ImageDelivery.ts | estimatedSavings": {
+    "message": "{PH1} (Odh.\u00a0{PH2})"
+  },
+  "models/trace/insights/ImageDelivery.ts | noOptimizableImages": {
+    "message": "\u017d\u00e1dn\u00e9 optimalizovateln\u00e9 obr\u00e1zky"
+  },
+  "models/trace/insights/ImageDelivery.ts | optimizeFile": {
+    "message": "Optimalizujte velikost souboru"
+  },
+  "models/trace/insights/ImageDelivery.ts | others": {
+    "message": "Je\u0161t\u011b {PH1}"
+  },
+  "models/trace/insights/ImageDelivery.ts | title": {
+    "message": "Zlep\u0161ete zobrazov\u00e1n\u00ed obr\u00e1zk\u016f"
+  },
+  "models/trace/insights/ImageDelivery.ts | useCompression": {
+    "message": "Zv\u00fd\u0161en\u00ed faktoru komprese obr\u00e1zku by mohlo sn\u00ed\u017eit jeho stahovanou velikost."
+  },
+  "models/trace/insights/ImageDelivery.ts | useModernFormat": {
+    "message": "Stahovanou velikost tohoto obr\u00e1zku by mohlo sn\u00ed\u017eit pou\u017eit\u00ed modern\u00edho form\u00e1tu (WebP, AVIF) nebo zv\u00fd\u0161en\u00ed komprese."
+  },
+  "models/trace/insights/ImageDelivery.ts | useResponsiveSize": {
+    "message": "Tento obr\u00e1zkov\u00fd soubor je v\u011bt\u0161\u00ed ({PH1}), ne\u017e je pro zobrazovan\u00e9 rozm\u011bry ({PH2}) pot\u0159eba. Pou\u017eijte responzivn\u00ed obr\u00e1zky, abyste sn\u00ed\u017eili stahovanou velikost obr\u00e1zk\u016f."
+  },
+  "models/trace/insights/ImageDelivery.ts | useVideoFormat": {
+    "message": "Pou\u017eit\u00ed video form\u00e1t\u016f m\u00edsto GIF m\u016f\u017ee sn\u00ed\u017eit stahovanou velikost animovan\u00e9ho obsahu."
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | description": {
+    "message": "Za\u010dn\u011bte zkoumat nejdel\u0161\u00ed f\u00e1z\u00ed. [Zpo\u017ed\u011bn\u00ed lze minimalizovat](https://web.dev/articles/optimize-inp#optimize_interactions). Dobu zpracov\u00e1n\u00ed m\u016f\u017eete zkr\u00e1tit [optimalizac\u00ed n\u00e1klad\u016f na hlavn\u00ed vl\u00e1kno](https://web.dev/articles/optimize-long-tasks) (\u010dasto j\u00edm b\u00fdv\u00e1 JavaScript)."
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | duration": {
+    "message": "Trv\u00e1n\u00ed"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | inputDelay": {
+    "message": "Zpo\u017ed\u011bn\u00ed vstupu"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | noInteractions": {
+    "message": "Nebyly zji\u0161t\u011bny \u017e\u00e1dn\u00e9 interakce"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | phase": {
+    "message": "F\u00e1ze"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | presentationDelay": {
+    "message": "Prodleva prezentace"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | processingDuration": {
+    "message": "Doba zpracov\u00e1n\u00ed"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | title": {
+    "message": "INP podle f\u00e1ze"
+  },
+  "models/trace/insights/LCPDiscovery.ts | description": {
+    "message": "Optimalizujte LCP t\u00edm, \u017ee zajist\u00edte, aby byl obr\u00e1zek s\u00a0LCP okam\u017eit\u011b [objeviteln\u00fd](https://web.dev/articles/optimize-lcp#1_eliminate_resource_load_delay) z\u00a0HTML, a\u00a0[nebudete pou\u017e\u00edvat l\u00edn\u00e9 na\u010d\u00edt\u00e1n\u00ed](https://web.dev/articles/lcp-lazy-loading)"
+  },
+  "models/trace/insights/LCPDiscovery.ts | fetchPriorityApplied": {
+    "message": "Pou\u017eit atribut fetchpriority=high"
+  },
+  "models/trace/insights/LCPDiscovery.ts | fetchPriorityShouldBeApplied": {
+    "message": "Je pot\u0159eba pou\u017e\u00edt fetchpriority=high"
+  },
+  "models/trace/insights/LCPDiscovery.ts | lazyLoadNotApplied": {
+    "message": "nen\u00ed pou\u017eito l\u00edn\u00e9 na\u010d\u00edt\u00e1n\u00ed"
+  },
+  "models/trace/insights/LCPDiscovery.ts | lcpLoadDelay": {
+    "message": "Obr\u00e1zek spojen\u00fd s\u00a0LCP se na\u010detl {PH1} po prvn\u00edm po\u010d\u00e1te\u010dn\u00edm bodu."
+  },
+  "models/trace/insights/LCPDiscovery.ts | noLcp": {
+    "message": "Metrika LCP nebyla zji\u0161t\u011bna"
+  },
+  "models/trace/insights/LCPDiscovery.ts | noLcpResource": {
+    "message": "Zdroj spojen\u00fd s\u00a0LCP nebyl zji\u0161t\u011bn, proto\u017ee LCP nen\u00ed spojeno s\u00a0obr\u00e1zkem"
+  },
+  "models/trace/insights/LCPDiscovery.ts | requestDiscoverable": {
+    "message": "Po\u017eadavek lze zjistit v\u00a0p\u016fvodn\u00edm dokumentu"
+  },
+  "models/trace/insights/LCPDiscovery.ts | title": {
+    "message": "Zji\u0161t\u011bn\u00ed po\u017eadavku LCP"
+  },
+  "models/trace/insights/LCPPhases.ts | description": {
+    "message": "Ka\u017ed\u00e1 [f\u00e1ze m\u00e1 specifick\u00e9 strategie zlep\u0161en\u00ed](https://web.dev/articles/optimize-lcp#lcp-breakdown). V\u00a0ide\u00e1ln\u00edm p\u0159\u00edpad\u011b by v\u011bt\u0161ina \u010dasu LCP m\u011bla b\u00fdt vynalo\u017eena na na\u010d\u00edt\u00e1n\u00ed zdroj\u016f, nikoli na prodlevy."
+  },
+  "models/trace/insights/LCPPhases.ts | duration": {
+    "message": "Trv\u00e1n\u00ed"
+  },
+  "models/trace/insights/LCPPhases.ts | elementRenderDelay": {
+    "message": "Zpo\u017ed\u011bn\u00ed vykreslen\u00ed prvku"
+  },
+  "models/trace/insights/LCPPhases.ts | fieldDuration": {
+    "message": "75.\u00a0percentil dat z\u00a0ter\u00e9nu"
+  },
+  "models/trace/insights/LCPPhases.ts | noLcp": {
+    "message": "Metrika LCP nebyla zji\u0161t\u011bna"
+  },
+  "models/trace/insights/LCPPhases.ts | phase": {
+    "message": "F\u00e1ze"
+  },
+  "models/trace/insights/LCPPhases.ts | resourceLoadDelay": {
+    "message": "Zpo\u017ed\u011bn\u00ed na\u010dten\u00ed zdroje"
+  },
+  "models/trace/insights/LCPPhases.ts | resourceLoadDuration": {
+    "message": "Doba na\u010d\u00edt\u00e1n\u00ed zdroj\u016f"
+  },
+  "models/trace/insights/LCPPhases.ts | timeToFirstByte": {
+    "message": "Time to First Byte"
+  },
+  "models/trace/insights/LCPPhases.ts | title": {
+    "message": "LCP podle f\u00e1ze"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | columnScript": {
+    "message": "Skript"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | columnWastedBytes": {
+    "message": "Vypl\u00fdtvan\u00e9 bajty"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | description": {
+    "message": "Dopl\u0148uj\u00edc\u00ed k\u00f3dy polyfill a\u00a0transformace umo\u017e\u0148uj\u00ed star\u0161\u00edm prohl\u00ed\u017ee\u010d\u016fm pou\u017e\u00edvat nov\u00e9 funkce JavaScriptu. Modern\u00ed prohl\u00ed\u017ee\u010de ale \u0159adu z\u00a0nich nepot\u0159ebuj\u00ed. Pokud nutn\u011b nepot\u0159ebujete podporovat zastaral\u00e9 prohl\u00ed\u017ee\u010de, zva\u017ete \u00fapravu procesu sestavov\u00e1n\u00ed JavaScriptu tak, aby se netranspilovaly z\u00e1kladn\u00ed ([Baseline](https://web.dev/articles/baseline-and-polyfills)) funkce. [Pro\u010d v\u011bt\u0161ina web\u016f m\u016f\u017ee implementovat k\u00f3d ES6+ bez transpilace](https://philipwalton.com/articles/the-state-of-es5-on-the-web/)"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | title": {
+    "message": "Star\u0161\u00ed JavaScript"
+  },
+  "models/trace/insights/ModernHTTP.ts | description": {
+    "message": "HTTP/2 a\u00a0HTTP/3 nab\u00edzej\u00ed oproti HTTP/1.1 mnoho v\u00fdhod, jako je multiplexov\u00e1n\u00ed. [Dal\u0161\u00ed informace o\u00a0pou\u017e\u00edv\u00e1n\u00ed modern\u00edho protokolu HTTP](https://developer.chrome.com/docs/lighthouse/best-practices/uses-http2/)"
+  },
+  "models/trace/insights/ModernHTTP.ts | noOldProtocolRequests": {
+    "message": "\u017d\u00e1dn\u00e9 po\u017eadavky nepou\u017eily protokol HTTP/1.1"
+  },
+  "models/trace/insights/ModernHTTP.ts | protocol": {
+    "message": "Protokol"
+  },
+  "models/trace/insights/ModernHTTP.ts | request": {
+    "message": "Po\u017eadavek"
+  },
+  "models/trace/insights/ModernHTTP.ts | title": {
+    "message": "Modern\u00ed HTTP"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | description": {
+    "message": "[Vyhn\u011bte se \u0159et\u011bzen\u00ed kritick\u00fdch po\u017eadavk\u016f](https://developer.chrome.com/docs/lighthouse/performance/critical-request-chains) t\u00edm, \u017ee zkr\u00e1t\u00edte d\u00e9lku \u0159et\u011bzc\u016f, sn\u00ed\u017e\u00edte velikost stahovan\u00fdch zdroj\u016f nebo odlo\u017e\u00edte stahov\u00e1n\u00ed nepot\u0159ebn\u00fdch zdroj\u016f, abyste zlep\u0161ili na\u010d\u00edt\u00e1n\u00ed str\u00e1nky."
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | maxCriticalPathLatency": {
+    "message": "Maxim\u00e1ln\u00ed latence kritick\u00e9 cesty:"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | noNetworkDependencyTree": {
+    "message": "S\u00ed\u0165ov\u00e9 z\u00e1vislosti nemaj\u00ed dopad na \u017e\u00e1dn\u00e9 \u00falohy vykreslov\u00e1n\u00ed"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | title": {
+    "message": "Strom s\u00ed\u0165ov\u00fdch z\u00e1vislost\u00ed"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | warningDescription": {
+    "message": "Vyhn\u011bte se \u0159et\u011bzen\u00ed kritick\u00fdch po\u017eadavk\u016f t\u00edm, \u017ee zkr\u00e1t\u00edte d\u00e9lku \u0159et\u011bzc\u016f, sn\u00ed\u017e\u00edte velikost stahovan\u00fdch zdroj\u016f nebo odlo\u017e\u00edte stahov\u00e1n\u00ed nepot\u0159ebn\u00fdch zdroj\u016f, abyste zlep\u0161ili na\u010d\u00edt\u00e1n\u00ed str\u00e1nky."
+  },
+  "models/trace/insights/RenderBlocking.ts | description": {
+    "message": "Po\u010d\u00e1te\u010dn\u00ed vykreslen\u00ed str\u00e1nky blokuj\u00ed po\u017eadavky, co\u017e m\u016f\u017ee zpozdit LCP. [Odlo\u017een\u00edm nebo vlo\u017een\u00edm](https://web.dev/learn/performance/understanding-the-critical-path#render-blocking_resources/) lze tyto s\u00ed\u0165ov\u00e9 po\u017eadavky p\u0159esunout mimo kritickou cestu."
+  },
+  "models/trace/insights/RenderBlocking.ts | duration": {
+    "message": "Trv\u00e1n\u00ed"
+  },
+  "models/trace/insights/RenderBlocking.ts | noRenderBlocking": {
+    "message": "U\u00a0t\u00e9to navigace nebyly zji\u0161t\u011bny \u017e\u00e1dn\u00e9 po\u017eadavky blokuj\u00edc\u00ed vykreslov\u00e1n\u00ed"
+  },
+  "models/trace/insights/RenderBlocking.ts | renderBlockingRequest": {
+    "message": "Po\u017eadavek"
+  },
+  "models/trace/insights/RenderBlocking.ts | title": {
+    "message": "Po\u017eadavky blokuj\u00edc\u00ed vykreslov\u00e1n\u00ed"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | description": {
+    "message": "Pokud n\u00e1klady na p\u0159epo\u010d\u00edt\u00e1n\u00ed stylu z\u016fstanou vysok\u00e9, m\u016f\u017ee je sn\u00ed\u017eit optimalizace selektor\u016f. [Optimalizujte selektory](https://developer.chrome.com/docs/devtools/performance/selector-stats) s\u00a0vysok\u00fdm uplynul\u00fdm \u010dasem a\u00a0vysok\u00fdm procentem pomal\u00e9 cesty. N\u00e1klady na nalezen\u00ed shod lze sn\u00ed\u017eit pou\u017eit\u00edm jednodu\u0161\u0161\u00edch selektor\u016f, m\u00e9n\u011b selektor\u016f, men\u0161\u00edho modelu DOM a\u00a0m\u011bl\u010d\u00edho modelu DOM."
+  },
+  "models/trace/insights/SlowCSSSelector.ts | elapsed": {
+    "message": "Uplynul\u00fd \u010das"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | enableSelectorData": {
+    "message": "Nebyla nalezena \u017e\u00e1dn\u00e1 data selektor\u016f CSS. Statistiky selektor\u016f CSS je pot\u0159eba zapnout v\u00a0nastaven\u00ed panelu v\u00fdkonu."
+  },
+  "models/trace/insights/SlowCSSSelector.ts | matchAttempts": {
+    "message": "Pokusy o\u00a0nalezen\u00ed shody"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | matchCount": {
+    "message": "Po\u010det shod"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | title": {
+    "message": "N\u00e1klady selektor\u016f CSS"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | topSelectors": {
+    "message": "Hlavn\u00ed selektory"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | total": {
+    "message": "Celkem"
+  },
+  "models/trace/insights/ThirdParties.ts | columnMainThreadTime": {
+    "message": "Doba hlavn\u00edho podprocesu"
+  },
+  "models/trace/insights/ThirdParties.ts | columnThirdParty": {
+    "message": "T\u0159et\u00ed strana"
+  },
+  "models/trace/insights/ThirdParties.ts | columnTransferSize": {
+    "message": "Velikost p\u0159enosu"
+  },
+  "models/trace/insights/ThirdParties.ts | description": {
+    "message": "K\u00f3d t\u0159et\u00edch stran m\u016f\u017ee m\u00edt v\u00fdznamn\u00fd dopad na rychlost na\u010d\u00edt\u00e1n\u00ed. [Omezte a\u00a0odlo\u017ete na\u010d\u00edt\u00e1n\u00ed k\u00f3du t\u0159et\u00edch stran](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/loading-third-party-javascript/), aby se mohl p\u0159ednostn\u011b na\u010d\u00edst obsah str\u00e1nky."
+  },
+  "models/trace/insights/ThirdParties.ts | noThirdParties": {
+    "message": "Nebyly nalezeny \u017e\u00e1dn\u00e9 t\u0159et\u00ed strany"
+  },
+  "models/trace/insights/ThirdParties.ts | title": {
+    "message": "T\u0159et\u00ed strany"
+  },
+  "models/trace/insights/Viewport.ts | description": {
+    "message": "Pokud zobrazovan\u00e1 oblast nen\u00ed optimalizovan\u00e1 pro mobily, mohou b\u00fdt interakce klepnut\u00edm [a\u017e o\u00a0300\u00a0ms zpo\u017ed\u011bny](https://developer.chrome.com/blog/300ms-tap-delay-gone-away/)."
+  },
+  "models/trace/insights/Viewport.ts | title": {
+    "message": "Optimalizujte zobrazovanou oblast pro mobily"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | HTTPMethodNotGET": {
+    "message": "Mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed mohou vyu\u017e\u00edvat pouze str\u00e1nky na\u010dten\u00e9 pomoc\u00ed po\u017eadavk\u016f GET."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | HTTPStatusNotOK": {
+    "message": "Do mezipam\u011bti lze ulo\u017eit pouze str\u00e1nky se stavov\u00fdm k\u00f3dem 2XX."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | JavaScriptExecution": {
+    "message": "Chrome b\u011bhem ulo\u017een\u00ed v\u00a0mezipam\u011bti zjistil pokus o\u00a0spu\u0161t\u011bn\u00ed JavaScriptu."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | appBanner": {
+    "message": "Str\u00e1nky, kter\u00e9 po\u017e\u00e1daly o\u00a0AppBanner, v\u00a0sou\u010dasn\u00e9 dob\u011b nemohou vyu\u017e\u00edvat mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabled": {
+    "message": "Mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed je deaktivov\u00e1na pomoc\u00ed p\u0159\u00edznak\u016f. Pokud ji na tomto za\u0159\u00edzen\u00ed chcete m\u00edstn\u011b povolit, p\u0159ejd\u011bte na adresu chrome://flags/#back-forward-cache."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledByCommandLine": {
+    "message": "Mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed je deaktivov\u00e1na pomoc\u00ed p\u0159\u00edkazov\u00e9ho \u0159\u00e1dku."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledByLowMemory": {
+    "message": "Mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed je zak\u00e1z\u00e1na, proto\u017ee nen\u00ed k\u00a0dispozici dostatek pam\u011bti."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledForDelegate": {
+    "message": "Deleg\u00e1t mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed nepodporuje."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledForPrerender": {
+    "message": "Mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed je pro p\u0159edb\u011b\u017en\u00e9 vykreslov\u00e1n\u00ed deaktivov\u00e1na."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | broadcastChannel": {
+    "message": "Str\u00e1nku nelze ulo\u017eit do mezipam\u011bti, proto\u017ee m\u00e1 instanci rozhran\u00ed BroadcastChannel se zaregistrovan\u00fdmi poslucha\u010di."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheControlNoStore": {
+    "message": "Str\u00e1nky se z\u00e1hlav\u00edm cache-control:no-store nemohou vyu\u017e\u00edvat mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheFlushed": {
+    "message": "Mezipam\u011b\u0165 byla \u00famysln\u011b vymaz\u00e1na."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheLimit": {
+    "message": "Str\u00e1nka byla z\u00a0mezipam\u011bti odstran\u011bna, aby do n\u00ed bylo mo\u017en\u00e9 ulo\u017eit jinou str\u00e1nku."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | containsPlugins": {
+    "message": "Str\u00e1nky s\u00a0pluginy v\u00a0sou\u010dasn\u00e9 dob\u011b nemohou vyu\u017e\u00edvat mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentDiscarded": {
+    "message": "Nedefinov\u00e1no"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentFileChooser": {
+    "message": "Str\u00e1nky, kter\u00e9 pou\u017e\u00edvaj\u00ed rozhran\u00ed FileChooser API, nemohou vyu\u017e\u00edvat mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentFileSystemAccess": {
+    "message": "Str\u00e1nky, kter\u00e9 pou\u017e\u00edvaj\u00ed File System Access API, nemohou vyu\u017e\u00edvat mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaDevicesDispatcherHost": {
+    "message": "Str\u00e1nky, kter\u00e9 pou\u017e\u00edvaj\u00ed n\u00e1stroj Media Device Dispatcher, nemohou vyu\u017e\u00edvat mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaPlay": {
+    "message": "P\u0159i opu\u0161t\u011bn\u00ed str\u00e1nky hr\u00e1l p\u0159ehr\u00e1va\u010d m\u00e9di\u00ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaSession": {
+    "message": "Str\u00e1nky, kter\u00e9 pou\u017e\u00edvaj\u00ed rozhran\u00ed MediaSession API a\u00a0nastavuj\u00ed stav p\u0159ehr\u00e1v\u00e1n\u00ed, nemohou vyu\u017e\u00edvat mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaSessionService": {
+    "message": "Str\u00e1nky, kter\u00e9 pou\u017e\u00edvaj\u00ed rozhran\u00ed MediaSession API a\u00a0nastavuj\u00ed obslu\u017en\u00e9 n\u00e1stroje akc\u00ed, nemohou vyu\u017e\u00edvat mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentScreenReader": {
+    "message": "Mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed je kv\u016fli \u010dte\u010dce obrazovky deaktivov\u00e1na."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentSecurityHandler": {
+    "message": "Str\u00e1nky, kter\u00e9 pou\u017e\u00edvaj\u00ed SecurityHandler, nemohou vyu\u017e\u00edvat mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentSerial": {
+    "message": "Str\u00e1nky, kter\u00e9 pou\u017e\u00edvaj\u00ed rozhran\u00ed Serial API, nemohou vyu\u017e\u00edvat mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebAuthenticationAPI": {
+    "message": "Str\u00e1nky, kter\u00e9 pou\u017e\u00edvaj\u00ed rozhran\u00ed WebAuthetication API, nemohou vyu\u017e\u00edvat mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebBluetooth": {
+    "message": "Str\u00e1nky, kter\u00e9 pou\u017e\u00edvaj\u00ed rozhran\u00ed WebBluetooth API, nemohou vyu\u017e\u00edvat mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebUSB": {
+    "message": "Str\u00e1nky, kter\u00e9 pou\u017e\u00edvaj\u00ed rozhran\u00ed WebUSB API, nemohou vyu\u017e\u00edvat mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cookieDisabled": {
+    "message": "Mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed je zak\u00e1z\u00e1na, proto\u017ee na str\u00e1nce, kter\u00e1 pou\u017e\u00edv\u00e1 Cache-Control: no-store, jsou zak\u00e1z\u00e1ny soubory cookie."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | dedicatedWorkerOrWorklet": {
+    "message": "Str\u00e1nky, kter\u00e9 pou\u017e\u00edvaj\u00ed vlastn\u00ed skript worker nebo worklet, v\u00a0sou\u010dasn\u00e9 dob\u011b nemohou vyu\u017e\u00edvat mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | documentLoaded": {
+    "message": "Dokument byl opu\u0161t\u011bn d\u0159\u00edve, ne\u017e bylo dokon\u010deno na\u010d\u00edt\u00e1n\u00ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderAppBannerManager": {
+    "message": "P\u0159i opu\u0161t\u011bn\u00ed str\u00e1nky byl zobrazen banner aplikace."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderChromePasswordManagerClientBindCredentialManager": {
+    "message": "P\u0159i opu\u0161t\u011bn\u00ed str\u00e1nky byl pou\u017e\u00edv\u00e1n Spr\u00e1vce hesel Chrome"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderDomDistillerSelfDeletingRequestDelegate": {
+    "message": "P\u0159i opu\u0161t\u011bn\u00ed str\u00e1nky prob\u00edhal v\u00fdtah modelu DOM."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderDomDistillerViewerSource": {
+    "message": "P\u0159i opu\u0161t\u011bn\u00ed str\u00e1nky byl pou\u017e\u00edv\u00e1n n\u00e1stroj DOM Distiller Viewer."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionMessaging": {
+    "message": "Mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed je zak\u00e1z\u00e1na, proto\u017ee roz\u0161\u00ed\u0159en\u00ed pou\u017e\u00edvaj\u00ed rozhran\u00ed API pro odes\u00edl\u00e1n\u00ed zpr\u00e1v."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionMessagingForOpenPort": {
+    "message": "Roz\u0161\u00ed\u0159en\u00ed s\u00a0dlouhodob\u00fdm p\u0159ipojen\u00edm mus\u00ed toto p\u0159ipojen\u00ed nejd\u0159\u00edv zav\u0159\u00edt, a\u017e pak mohou pou\u017e\u00edt mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionSentMessageToCachedFrame": {
+    "message": "Roz\u0161\u00ed\u0159en\u00ed s\u00a0dlouhodob\u00fdm p\u0159ipojen\u00edm se pokou\u0161ela odes\u00edlat zpr\u00e1vy do r\u00e1mc\u016f v\u00a0mezipam\u011bti pro p\u0159echod zp\u011bt nebo vp\u0159ed"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensions": {
+    "message": "Mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed je kv\u016fli roz\u0161\u00ed\u0159en\u00edm deaktivov\u00e1na."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderModalDialog": {
+    "message": "P\u0159i opu\u0161t\u011bn\u00ed str\u00e1nky bylo zobrazeno mod\u00e1ln\u00ed dialogov\u00e9 okno, nap\u0159\u00edklad okno s\u00a0op\u011btovn\u00fdm odesl\u00e1n\u00edm formul\u00e1\u0159e nebo s\u00a0ov\u011b\u0159en\u00edm p\u0159es HTTP."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderOfflinePage": {
+    "message": "P\u0159i opu\u0161t\u011bn\u00ed str\u00e1nky byla zobrazena offline str\u00e1nka."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderOomInterventionTabHelper": {
+    "message": "P\u0159i opu\u0161t\u011bn\u00ed str\u00e1nky byl zobrazen interven\u010dn\u00ed panel o\u00a0nedostatku pam\u011bti."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderPermissionRequestManager": {
+    "message": "P\u0159i opu\u0161t\u011bn\u00ed str\u00e1nky prob\u00edhaly \u017e\u00e1dosti o\u00a0opr\u00e1vn\u011bn\u00ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderPopupBlockerTabHelper": {
+    "message": "P\u0159i opu\u0161t\u011bn\u00ed str\u00e1nky bylo aktivn\u00ed blokov\u00e1n\u00ed vyskakovac\u00edch oken."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderSafeBrowsingThreatDetails": {
+    "message": "P\u0159i opu\u0161t\u011bn\u00ed str\u00e1nky byly zobrazeny podrobnosti Bezpe\u010dn\u00e9ho prohl\u00ed\u017een\u00ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderSafeBrowsingTriggeredPopupBlocker": {
+    "message": "Bezpe\u010dn\u00e9 prohl\u00ed\u017een\u00ed tuto str\u00e1nku vyhodnotilo jako nebezpe\u010dnou a\u00a0zablokovalo vyskakovac\u00ed okno."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | enteredBackForwardCacheBeforeServiceWorkerHostAdded": {
+    "message": "V\u00a0dob\u011b, kdy str\u00e1nka byla v\u00a0mezipam\u011bti pro p\u0159echod zp\u011bt nebo vp\u0159ed, byl aktivov\u00e1n skript pracovn\u00ed proces slu\u017eby."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | errorDocument": {
+    "message": "Mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed je deaktivov\u00e1na kv\u016fli chyb\u011b dokumentu."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | fencedFramesEmbedder": {
+    "message": "Str\u00e1nky se sn\u00edmky FencedFrames nelze ukl\u00e1dat do mezipam\u011bti bfcache."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | foregroundCacheLimit": {
+    "message": "Str\u00e1nka byla z\u00a0mezipam\u011bti odstran\u011bna, aby do n\u00ed bylo mo\u017en\u00e9 ulo\u017eit jinou str\u00e1nku."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | grantedMediaStreamAccess": {
+    "message": "Str\u00e1nky, kter\u00fdm byl ud\u011blen p\u0159\u00edstup ke streamu m\u00e9di\u00ed, v\u00a0sou\u010dasn\u00e9 dob\u011b nemohou vyu\u017e\u00edvat mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | haveInnerContents": {
+    "message": "U\u00a0str\u00e1nek s\u00a0ur\u010dit\u00fdmi druhy vlo\u017een\u00e9ho obsahu (nap\u0159\u00edklad se soubory PDF), nen\u00ed v\u00a0sou\u010dasn\u00e9 dob\u011b mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed podporov\u00e1na."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | idleManager": {
+    "message": "Str\u00e1nky, kter\u00e9 pou\u017e\u00edvaj\u00ed funkci IdleManager, v\u00a0sou\u010dasn\u00e9 dob\u011b nemohou vyu\u017e\u00edvat mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | indexedDBConnection": {
+    "message": "Str\u00e1nky, kter\u00e9 maj\u00ed otev\u0159en\u00e9 p\u0159ipojen\u00ed k\u00a0datab\u00e1zi IndexedDB, v\u00a0sou\u010dasn\u00e9 dob\u011b nemohou vyu\u017e\u00edvat mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | indexedDBEvent": {
+    "message": "Mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed je zak\u00e1z\u00e1na kv\u016fli ud\u00e1losti IndexedDB."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | ineligibleAPI": {
+    "message": "Byla pou\u017eita nepodporovan\u00e1 rozhran\u00ed API."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | injectedJavascript": {
+    "message": "Str\u00e1nky, na kter\u00e9 roz\u0161\u00ed\u0159en\u00ed vkl\u00e1daj\u00ed polo\u017eky JavaScript, v\u00a0sou\u010dasn\u00e9 dob\u011b nemohou vyu\u017e\u00edvat mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | injectedStyleSheet": {
+    "message": "Str\u00e1nky, na kter\u00e9 roz\u0161\u00ed\u0159en\u00ed vkl\u00e1daj\u00ed polo\u017eky StyleSheet, v\u00a0sou\u010dasn\u00e9 dob\u011b nemohou vyu\u017e\u00edvat mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | internalError": {
+    "message": "Intern\u00ed chyba."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | jsNetworkRequestReceivedCacheControlNoStoreResource": {
+    "message": "Mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed je zak\u00e1z\u00e1na, proto\u017ee n\u011bkter\u00fd s\u00ed\u0165ov\u00fd po\u017eadavek JavaScriptu obdr\u017eel zdroj se z\u00e1hlav\u00edm Cache-Control: no-store."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | keepaliveRequest": {
+    "message": "Mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed je kv\u016fli po\u017eadavku keepalive zak\u00e1z\u00e1na."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | keyboardLock": {
+    "message": "Str\u00e1nky, kter\u00e9 pou\u017e\u00edvaj\u00ed z\u00e1mek kl\u00e1vesnice, v\u00a0sou\u010dasn\u00e9 dob\u011b nemohou vyu\u017e\u00edvat mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | loading": {
+    "message": "Str\u00e1nka byla opu\u0161t\u011bna d\u0159\u00edve, ne\u017e bylo dokon\u010deno na\u010d\u00edt\u00e1n\u00ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | mainResourceHasCacheControlNoCache": {
+    "message": "Str\u00e1nky, jejich\u017e hlavn\u00ed zdroj m\u00e1 z\u00e1hlav\u00ed cache-control:no-cache, nemohou vyu\u017e\u00edvat mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | mainResourceHasCacheControlNoStore": {
+    "message": "Str\u00e1nky, jejich\u017e hlavn\u00ed zdroj m\u00e1 z\u00e1hlav\u00ed cache-control:no-store, nemohou vyu\u017e\u00edvat mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | navigationCancelledWhileRestoring": {
+    "message": "Navigace byla zru\u0161ena d\u0159\u00edve, ne\u017e bylo mo\u017en\u00e9 str\u00e1nku obnovit z\u00a0mezipam\u011bti pro p\u0159echod zp\u011bt nebo vp\u0159ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkExceedsBufferLimit": {
+    "message": "Str\u00e1nka byla z\u00a0mezipam\u011bti odstran\u011bna, proto\u017ee aktivn\u00ed p\u0159ipojen\u00ed k\u00a0s\u00edti obdr\u017eelo p\u0159\u00edli\u0161 mnoho dat. Chrome omezuje mno\u017estv\u00ed dat, kter\u00e9 str\u00e1nka b\u011bhem ulo\u017een\u00ed v\u00a0mezipam\u011bti m\u016f\u017ee obdr\u017eet."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestDatapipeDrainedAsBytesConsumer": {
+    "message": "Str\u00e1nky s\u00a0prob\u00edhaj\u00edc\u00edmi po\u017eadavky fetch nebo XHR v\u00a0sou\u010dasn\u00e9 dob\u011b nemohou vyu\u017e\u00edvat mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestRedirected": {
+    "message": "Str\u00e1nka byla z\u00a0mezipam\u011bti odstran\u011bna, proto\u017ee u\u00a0aktivn\u00edho p\u0159ipojen\u00ed k\u00a0s\u00edti do\u0161lo k\u00a0p\u0159esm\u011brov\u00e1n\u00ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestTimeout": {
+    "message": "Str\u00e1nka byla z\u00a0mezipam\u011bti odstran\u011bna, proto\u017ee bylo p\u0159\u00edli\u0161 dlouho otev\u0159en\u00e9 p\u0159ipojen\u00ed k\u00a0s\u00edti. Chrome omezuje dobu, po kterou str\u00e1nka b\u011bhem ulo\u017een\u00ed v\u00a0mezipam\u011bti m\u016f\u017ee p\u0159ij\u00edmat data."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | noResponseHead": {
+    "message": "Str\u00e1nky bez platn\u00e9ho z\u00e1hlav\u00ed odpov\u011bdi nemohou vyu\u017e\u00edvat mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | notMainFrame": {
+    "message": "K\u00a0navigaci do\u0161lo v\u00a0jin\u00e9m ne\u017e hlavn\u00edm r\u00e1mci."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingIndexedDBTransaction": {
+    "message": "Str\u00e1nky s\u00a0prob\u00edhaj\u00edc\u00edmi transakcemi s\u00a0indexovanou datab\u00e1z\u00ed, v\u00a0sou\u010dasn\u00e9 dob\u011b nemohou vyu\u017e\u00edvat mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestDirectSocket": {
+    "message": "Str\u00e1nky s\u00a0prob\u00edhaj\u00edc\u00edm s\u00ed\u0165ov\u00fdm po\u017eadavkem v\u00a0sou\u010dasn\u00e9 dob\u011b nemohou vyu\u017e\u00edvat mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestFetch": {
+    "message": "Str\u00e1nky s\u00a0prob\u00edhaj\u00edc\u00edm s\u00ed\u0165ov\u00fdm po\u017eadavkem fetch v\u00a0sou\u010dasn\u00e9 dob\u011b nemohou vyu\u017e\u00edvat mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestOthers": {
+    "message": "Str\u00e1nky s\u00a0prob\u00edhaj\u00edc\u00edm s\u00ed\u0165ov\u00fdm po\u017eadavkem v\u00a0sou\u010dasn\u00e9 dob\u011b nemohou vyu\u017e\u00edvat mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestXHR": {
+    "message": "Str\u00e1nky s\u00a0prob\u00edhaj\u00edc\u00edm s\u00ed\u0165ov\u00fdm po\u017eadavkem XHR v\u00a0sou\u010dasn\u00e9 dob\u011b nemohou vyu\u017e\u00edvat mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | paymentManager": {
+    "message": "Str\u00e1nky, kter\u00e9 pou\u017e\u00edvaj\u00ed funkci PaymentManager, v\u00a0sou\u010dasn\u00e9 dob\u011b nemohou vyu\u017e\u00edvat mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | pictureInPicture": {
+    "message": "Pro str\u00e1nky s\u00a0funkc\u00ed obrazu v\u00a0obraze v\u00a0sou\u010dasn\u00e9 dob\u011b nelze pou\u017e\u00edvat mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | printing": {
+    "message": "Str\u00e1nky, kter\u00e9 zobrazuj\u00ed u\u017eivatelsk\u00e9 rozhran\u00ed k\u00a0tisku, v\u00a0sou\u010dasn\u00e9 dob\u011b nemohou vyu\u017e\u00edvat mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | relatedActiveContentsExist": {
+    "message": "Str\u00e1nka byla otev\u0159ena metodou window.open() a\u00a0jin\u00e1 karta na ni m\u00e1 referenci, nebo str\u00e1nka otev\u0159ela okno."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | rendererProcessCrashed": {
+    "message": "Vykreslovac\u00ed proces pro str\u00e1nku v\u00a0mezipam\u011bti pro p\u0159echod zp\u011bt nebo vp\u0159ed spadl."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | rendererProcessKilled": {
+    "message": "Vykreslovac\u00ed proces pro str\u00e1nku v\u00a0mezipam\u011bti pro p\u0159echod zp\u011bt nebo vp\u0159ed byl ukon\u010den."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedAudioCapturePermission": {
+    "message": "Str\u00e1nky, kter\u00e9 po\u017e\u00e1daly o\u00a0opr\u00e1vn\u011bn\u00ed zaznamen\u00e1vat zvuk, v\u00a0sou\u010dasn\u00e9 dob\u011b nemohou vyu\u017e\u00edvat mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedBackForwardCacheBlockedSensors": {
+    "message": "Str\u00e1nky, kter\u00e9 po\u017e\u00e1daly o\u00a0opr\u00e1vn\u011bn\u00ed k\u00a0pou\u017eit\u00ed senzor\u016f, v\u00a0sou\u010dasn\u00e9 dob\u011b nemohou vyu\u017e\u00edvat mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedBackgroundWorkPermission": {
+    "message": "Str\u00e1nky, kter\u00e9 po\u017e\u00e1daly o\u00a0opr\u00e1vn\u011bn\u00ed k\u00a0synchronizaci nebo na\u010d\u00edt\u00e1n\u00ed dat na pozad\u00ed, v\u00a0sou\u010dasn\u00e9 dob\u011b nemohou vyu\u017e\u00edvat mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedMIDIPermission": {
+    "message": "Str\u00e1nky, kter\u00e9 po\u017e\u00e1daly o\u00a0opr\u00e1vn\u011bn\u00ed k\u00a0pou\u017e\u00edv\u00e1n\u00ed MIDI, v\u00a0sou\u010dasn\u00e9 dob\u011b nemohou vyu\u017e\u00edvat mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedNotificationsPermission": {
+    "message": "Str\u00e1nky, kter\u00e9 po\u017e\u00e1daly o\u00a0opr\u00e1vn\u011bn\u00ed k\u00a0zobrazov\u00e1n\u00ed ozn\u00e1men\u00ed, v\u00a0sou\u010dasn\u00e9 dob\u011b nemohou vyu\u017e\u00edvat mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedStorageAccessGrant": {
+    "message": "Str\u00e1nky, kter\u00e9 po\u017e\u00e1daly o\u00a0p\u0159\u00edstup k\u00a0\u00falo\u017ei\u0161ti, v\u00a0sou\u010dasn\u00e9 dob\u011b nemohou vyu\u017e\u00edvat mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedVideoCapturePermission": {
+    "message": "Str\u00e1nky, kter\u00e9 po\u017e\u00e1daly o\u00a0opr\u00e1vn\u011bn\u00ed zaznamen\u00e1vat video, v\u00a0sou\u010dasn\u00e9 dob\u011b nemohou vyu\u017e\u00edvat mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | schemeNotHTTPOrHTTPS": {
+    "message": "Do mezipam\u011bti lze ukl\u00e1dat pouze str\u00e1nky, jejich\u017e adresy URL maj\u00ed sch\u00e9ma HTTP nebo HTTPS."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerClaim": {
+    "message": "Str\u00e1nka byla b\u011bhem ulo\u017een\u00ed v\u00a0mezipam\u011bti pro p\u0159echod zp\u011bt nebo vp\u0159ed n\u00e1rokov\u00e1na skriptem pracovn\u00ed proces slu\u017eby."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerPostMessage": {
+    "message": "Skript pracovn\u00ed proces slu\u017eby se str\u00e1nce v\u00a0mezipam\u011bti pro p\u0159echod zp\u011bt nebo vp\u0159ed pokusil odeslat zpr\u00e1vu MessageEvent."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerUnregistration": {
+    "message": "V\u00a0dob\u011b, kdy str\u00e1nka byla v\u00a0mezipam\u011bti pro p\u0159echod zp\u011bt nebo vp\u0159ed, byla zru\u0161ena registrace skriptu ServiceWorker."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerVersionActivation": {
+    "message": "Str\u00e1nka byla z\u00a0mezipam\u011bti pro p\u0159echod zp\u011bt nebo vp\u0159ed\u00a0odstran\u011bna kv\u016fli aktivaci skriptu pracovn\u00ed proces slu\u017eby."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | sessionRestored": {
+    "message": "Chrome byl restartov\u00e1n a\u00a0z\u00e1znamy v\u00a0mezipam\u011bti pro p\u0159echod zp\u011bt nebo vp\u0159ed vymazal."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | sharedWorker": {
+    "message": "Str\u00e1nky, kter\u00e9 pou\u017e\u00edvaj\u00ed SharedWorker, v\u00a0sou\u010dasn\u00e9 dob\u011b nemohou vyu\u017e\u00edvat mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | speechRecognizer": {
+    "message": "Str\u00e1nky, kter\u00e9 pou\u017e\u00edvaj\u00ed funkci SpeechRecognizer, v\u00a0sou\u010dasn\u00e9 dob\u011b nemohou vyu\u017e\u00edvat mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | speechSynthesis": {
+    "message": "Str\u00e1nky, kter\u00e9 pou\u017e\u00edvaj\u00ed rozhran\u00ed SpeechSynthesis, v\u00a0sou\u010dasn\u00e9 dob\u011b nemohou vyu\u017e\u00edvat mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subframeIsNavigating": {
+    "message": "Prvek iframe na str\u00e1nce zah\u00e1jil navigaci, kter\u00e1 nebyla dokon\u010dena."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subresourceHasCacheControlNoCache": {
+    "message": "Str\u00e1nky, jejich\u017e n\u011bkter\u00e9 zdroje maj\u00ed z\u00e1hlav\u00ed cache-control:no-cache, nemohou vyu\u017e\u00edvat mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subresourceHasCacheControlNoStore": {
+    "message": "Str\u00e1nky, kter\u00e9 zahrnuj\u00ed d\u00edl\u010d\u00ed zdroje se z\u00e1hlav\u00edm cache-control:no-store, nemohou vyu\u017e\u00edvat mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | timeout": {
+    "message": "Str\u00e1nka p\u0159ekro\u010dila maxim\u00e1ln\u00ed dobu v\u00a0mezipam\u011bti pro p\u0159echod zp\u011bt nebo vp\u0159ed a\u00a0jej\u00ed platnost vypr\u0161ela."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | timeoutPuttingInCache": {
+    "message": "P\u0159i ukl\u00e1d\u00e1n\u00ed str\u00e1nky do mezipam\u011bti pro p\u0159echod zp\u011bt nebo vp\u0159ed vypr\u0161el \u010dasov\u00fd limit (pravd\u011bpodobn\u011b kv\u016fli dlouho b\u011b\u017e\u00edc\u00edm obslu\u017en\u00fdm n\u00e1stroj\u016fm pagehide)."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | unloadHandlerExistsInMainFrame": {
+    "message": "Str\u00e1nka m\u00e1 v\u00a0hlavn\u00edm r\u00e1mci obslu\u017en\u00fd n\u00e1stroj unload."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | unloadHandlerExistsInSubFrame": {
+    "message": "Str\u00e1nka m\u00e1 obslu\u017en\u00fd n\u00e1stroj unload v\u00a0d\u00edl\u010d\u00edm r\u00e1mci."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | userAgentOverrideDiffers": {
+    "message": "Prohl\u00ed\u017ee\u010d zm\u011bnil z\u00e1hlav\u00ed k\u00a0p\u0159eps\u00e1n\u00ed user-agenta."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | wasGrantedMediaAccess": {
+    "message": "Str\u00e1nky, kter\u00e9 obdr\u017eely p\u0159\u00edstup k\u00a0z\u00e1znamu vide\u00ed nebo zvuku, v\u00a0sou\u010dasn\u00e9 dob\u011b nemohou vyu\u017e\u00edvat mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webDatabase": {
+    "message": "Str\u00e1nky, kter\u00e9 pou\u017e\u00edvaj\u00ed funkci WebDatabase, v\u00a0sou\u010dasn\u00e9 dob\u011b nemohou vyu\u017e\u00edvat mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webHID": {
+    "message": "Str\u00e1nky, kter\u00e9 pou\u017e\u00edvaj\u00ed WebHID, v\u00a0sou\u010dasn\u00e9 dob\u011b nemohou vyu\u017e\u00edvat mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webLocks": {
+    "message": "Str\u00e1nky, kter\u00e9 pou\u017e\u00edvaj\u00ed funkci WebLocks, v\u00a0sou\u010dasn\u00e9 dob\u011b nemohou vyu\u017e\u00edvat mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webNfc": {
+    "message": "Str\u00e1nky, kter\u00e9 pou\u017e\u00edvaj\u00ed WebNfc, v\u00a0sou\u010dasn\u00e9 dob\u011b nemohou vyu\u017e\u00edvat mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webOTPService": {
+    "message": "Str\u00e1nky, kter\u00e9 pou\u017e\u00edvaj\u00ed slu\u017ebu WebOTPService, v\u00a0sou\u010dasn\u00e9 dob\u011b nemohou vyu\u017e\u00edvat mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webRTC": {
+    "message": "Str\u00e1nky s\u00a0WebRTC nemohou vyu\u017e\u00edvat mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webRTCSticky": {
+    "message": "Mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed je zak\u00e1z\u00e1na, proto\u017ee bylo pou\u017eito rozhran\u00ed WebRTC."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webShare": {
+    "message": "Str\u00e1nky, kter\u00e9 pou\u017e\u00edvaj\u00ed rozhran\u00ed WebShare, v\u00a0sou\u010dasn\u00e9 dob\u011b nemohou vyu\u017e\u00edvat mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webSocket": {
+    "message": "Str\u00e1nky s\u00a0funkc\u00ed WebSocket nemohou vyu\u017e\u00edvat mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webSocketSticky": {
+    "message": "Mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed je zak\u00e1z\u00e1na, proto\u017ee bylo pou\u017eito rozhran\u00ed WebSocket."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webTransport": {
+    "message": "Str\u00e1nky, kter\u00e9 vyu\u017e\u00edvaj\u00ed rozhran\u00ed WebTransport, nemohou vyu\u017e\u00edvat mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webTransportSticky": {
+    "message": "Mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed je zak\u00e1z\u00e1na, proto\u017ee bylo pou\u017eito rozhran\u00ed WebTransport."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webXR": {
+    "message": "Str\u00e1nky, kter\u00e9 pou\u017e\u00edvaj\u00ed WebXR, v\u00a0sou\u010dasn\u00e9 dob\u011b nemohou vyu\u017e\u00edvat mezipam\u011b\u0165 pro p\u0159echod zp\u011bt nebo vp\u0159ed."
+  }
+}

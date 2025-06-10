@@ -1,0 +1,908 @@
+{
+  "generated/Deprecation.ts | AuthorizationCoveredByWildcard": {
+    "message": "W przypadku obs\u0142ugi nag\u0142\u00f3wka CORS Access-Control-Allow-Headers autoryzacja nie b\u0119dzie przeprowadzana przy u\u017cyciu symboli wieloznacznych\u00a0(*)."
+  },
+  "generated/Deprecation.ts | CSSSelectorInternalMediaControlsOverlayCastButton": {
+    "message": "Aby wy\u0142\u0105czy\u0107 domy\u015bln\u0105 integracj\u0119 przesy\u0142ania, nie u\u017cywaj selektora -internal-media-controls-overlay-cast-button. Zamiast tego u\u017cyj atrybutu disableRemotePlayback."
+  },
+  "generated/Deprecation.ts | CSSValueAppearanceSliderVertical": {
+    "message": "Warto\u015b\u0107 wygl\u0105du CSS slider-vertical nie jest ustandaryzowana i\u00a0zostanie usuni\u0119ta."
+  },
+  "generated/Deprecation.ts | CanRequestURLHTTPContainingNewline": {
+    "message": "\u017b\u0105dania zasob\u00f3w, kt\u00f3rych adresy URL zawieraj\u0105 znaki \\(n|r|t) z\u00a0usuni\u0119tymi odst\u0119pami i\u00a0znaki mniejszo\u015bci (<), s\u0105 blokowane. Usu\u0144 nowe wiersze i\u00a0zakoduj znaki mniejszo\u015bci z\u00a0miejsc takich jak warto\u015bci atrybut\u00f3w element\u00f3w, aby umo\u017cliwi\u0107 wczytywanie tych zasob\u00f3w."
+  },
+  "generated/Deprecation.ts | CharsetAutoDetectionISO2022JP": {
+    "message": "Automatyczne wykrywanie zestawu znak\u00f3w ISO-2022-JP zosta\u0142o wycofane i\u00a0w\u00a0najbli\u017cszej przysz\u0142o\u015bci zostanie wy\u0142\u0105czone. Okre\u015bl zestaw znak\u00f3w w\u00a0nag\u0142\u00f3wku Content Type lub za pomoc\u0105 metatagu (https://developer.mozilla.org/en-US/docs/Glossary/Character_encoding)."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesConnectionInfo": {
+    "message": "Wycofano interfejs chrome.loadTimes(). U\u017cyj standaryzowanego interfejsu API: Navigation Timing\u00a02."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesFirstPaintAfterLoadTime": {
+    "message": "Wycofano chrome.loadTimes(). U\u017cyj standaryzowanego interfejsu API: Paint Timing."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesWasAlternateProtocolAvailable": {
+    "message": "Interfejs chrome.loadTimes() zosta\u0142 wycofany. U\u017cyj standaryzowanego interfejsu API: nextHopProtocol w\u00a0Navigation Timing\u00a02."
+  },
+  "generated/Deprecation.ts | CookieWithTruncatingChar": {
+    "message": "Pliki cookie zawieraj\u0105ce znak \\(0|r|n) b\u0119d\u0105 odrzucane (nie b\u0119d\u0105 skracane)."
+  },
+  "generated/Deprecation.ts | CrossOriginAccessBasedOnDocumentDomain": {
+    "message": "Z\u0142agodzenie zasady dotycz\u0105cej tej samej domeny przez ustawienie document.domain zosta\u0142o wycofane i\u00a0b\u0119dzie domy\u015blnie wy\u0142\u0105czone. To ostrze\u017cenie o\u00a0wycofaniu dotyczy dost\u0119pu z\u00a0tej samej domeny, kt\u00f3ry by\u0142 w\u0142\u0105czony przez ustawienie document.domain."
+  },
+  "generated/Deprecation.ts | CrossOriginWindowAlert": {
+    "message": "Mo\u017cliwo\u015b\u0107 aktywowania funkcji window.alert z\u00a0element\u00f3w iframe z\u00a0innych domen zosta\u0142a wycofana i\u00a0w\u00a0przysz\u0142o\u015bci zostanie usuni\u0119ta."
+  },
+  "generated/Deprecation.ts | CrossOriginWindowConfirm": {
+    "message": "Mo\u017cliwo\u015b\u0107 aktywowania funkcji window.confirm z\u00a0element\u00f3w iframe z\u00a0innych domen zosta\u0142a wycofana i\u00a0w\u00a0przysz\u0142o\u015bci zostanie usuni\u0119ta."
+  },
+  "generated/Deprecation.ts | DOMMutationEvents": {
+    "message": "Zdarzenia mutacji DOM, w\u00a0tym DOMSubtreeModified, DOMNodeInserted, DOMNodeRemoved, DOMNodeRemovedFromDocument, DOMNodeInsertedIntoDocument i\u00a0DOMCharacterDataModified, s\u0105 wycofane (https://w3c.github.io/uievents/#legacy-event-types) i\u00a0zostan\u0105 usuni\u0119te. Zamiast nich u\u017cywaj elementu MutationObserver."
+  },
+  "generated/Deprecation.ts | DataUrlInSvgUse": {
+    "message": "Obs\u0142uga danych: adresy URL w\u00a0funkcji SVGUseElement zosta\u0142y wycofane i\u00a0w\u00a0przysz\u0142o\u015bci zostan\u0105 usuni\u0119te."
+  },
+  "generated/Deprecation.ts | GeolocationInsecureOrigin": {
+    "message": "Metody getCurrentPosition() i\u00a0watchPosition() nie dzia\u0142aj\u0105 ju\u017c w\u00a0przypadku niezabezpieczonych \u017ar\u00f3de\u0142. Aby u\u017cywa\u0107 tej funkcji, rozwa\u017c prze\u0142\u0105czenie aplikacji na zabezpieczone \u017ar\u00f3d\u0142o, np. HTTPS. Wi\u0119cej informacji znajdziesz na stronie https://goo.gle/chrome-insecure-origins."
+  },
+  "generated/Deprecation.ts | GeolocationInsecureOriginDeprecatedNotRemoved": {
+    "message": "Wycofano metody getCurrentPosition() i\u00a0watchPosition() w\u00a0niezabezpieczonych \u017ar\u00f3d\u0142ach. Aby u\u017cywa\u0107 tej funkcji, rozwa\u017c prze\u0142\u0105czenie aplikacji na zabezpieczone \u017ar\u00f3d\u0142o, np. HTTPS. Wi\u0119cej informacji znajdziesz na stronie https://goo.gle/chrome-insecure-origins."
+  },
+  "generated/Deprecation.ts | GetUserMediaInsecureOrigin": {
+    "message": "Metoda getUserMedia() nie dzia\u0142a ju\u017c w\u00a0przypadku niezabezpieczonych \u017ar\u00f3de\u0142. Aby u\u017cywa\u0107 tej funkcji, rozwa\u017c prze\u0142\u0105czenie aplikacji na zabezpieczone \u017ar\u00f3d\u0142o, np. HTTPS. Wi\u0119cej informacji znajdziesz na stronie https://goo.gle/chrome-insecure-origins."
+  },
+  "generated/Deprecation.ts | H1UserAgentFontSizeInSection": {
+    "message": "Znaleziono tag <h1> w\u00a0elementach <article>, <aside>, <nav> lub <section>, kt\u00f3ry nie ma okre\u015blonego rozmiaru czcionki. W\u00a0najbli\u017cszym czasie rozmiar tego nag\u0142\u00f3wka w\u00a0tej przegl\u0105darce ulegnie zmianie. Wi\u0119cej informacji znajdziesz na stronie https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#specifying_a_uniform_font_size_for_h1."
+  },
+  "generated/Deprecation.ts | HostCandidateAttributeGetter": {
+    "message": "Pole RTCPeerConnectionIceErrorEvent.hostCandidate zosta\u0142o wycofane. Zamiast niego u\u017cyj pola RTCPeerConnectionIceErrorEvent.address lub RTCPeerConnectionIceErrorEvent.port."
+  },
+  "generated/Deprecation.ts | IdentityDigitalCredentials": {
+    "message": "Ten format pro\u015bby navigator.credentials.get() o\u00a0cyfrowe dane uwierzytelniaj\u0105ce zosta\u0142 wycofany. Zaktualizuj wywo\u0142anie, aby u\u017cy\u0107 nowego formatu."
+  },
+  "generated/Deprecation.ts | IdentityInCanMakePaymentEvent": {
+    "message": "Dane pochodzenia sprzedawcy i\u00a0arbitralne dane ze zdarzenia skryptu service worker canmakepayment nie s\u0105 ju\u017c u\u017cywane i\u00a0zostan\u0105 usuni\u0119te: topOrigin, paymentRequestOrigin, methodData, modifiers."
+  },
+  "generated/Deprecation.ts | InsecurePrivateNetworkSubresourceRequest": {
+    "message": "Witryna za\u017c\u0105da\u0142a zasobu podrz\u0119dnego z\u00a0sieci, do kt\u00f3rej mia\u0142a dost\u0119p wy\u0142\u0105cznie z\u00a0powodu uprawnie\u0144 sieci u\u017cytkownika. Takie \u017c\u0105dania ujawniaj\u0105 w\u00a0internecie niepubliczne urz\u0105dzenia i\u00a0serwery, zwi\u0119kszaj\u0105c ryzyko ataku polegaj\u0105cego na sfa\u0142szowaniu \u017c\u0105dania z\u00a0innej witryny (CSRF) lub wycieku informacji. Aby zapobiega\u0107 temu ryzyku, wycofujemy z\u00a0Chrome mo\u017cliwo\u015b\u0107 przesy\u0142ania \u017c\u0105da\u0144 do niepublicznych zasob\u00f3w podrz\u0119dnych, gdy s\u0105 wysy\u0142ane z\u00a0niezabezpieczonych kontekst\u00f3w. Chrome b\u0119dzie je blokowa\u0107."
+  },
+  "generated/Deprecation.ts | InterestGroupDailyUpdateUrl": {
+    "message": "Nazwa pola dailyUpdateUrl dla elementu InterestGroups przekazanego do joinAdInterestGroup() zosta\u0142a zmieniona na updateUrl, aby trafniej odzwierciedla\u0142a jego dzia\u0142anie."
+  },
+  "generated/Deprecation.ts | IntlV8BreakIterator": {
+    "message": "Interfejs Intl.v8BreakIterator zosta\u0142 wycofany. Zamiast niego u\u017cyj interfejsu Intl.Segmenter."
+  },
+  "generated/Deprecation.ts | LocalCSSFileExtensionRejected": {
+    "message": "CSS nie mo\u017cna \u0142adowa\u0107 z\u00a0adres\u00f3w URL file:, chyba \u017ce s\u0105 zako\u0144czone rozszerzeniem pliku .css."
+  },
+  "generated/Deprecation.ts | MediaSourceAbortRemove": {
+    "message": "U\u017cywanie metody SourceBuffer.abort() w\u00a0celu przerwania procesu usuwania zakresu asynchronicznego przez metod\u0119 remove() zosta\u0142o wycofane z\u00a0powodu zmiany specyfikacji. Obs\u0142uga zostanie wycofana w\u00a0przysz\u0142o\u015bci. Zamiast tego zacznij nas\u0142uchiwa\u0107 zdarzenia updateend. Metoda abort() s\u0142u\u017cy tylko do przerywania procesu do\u0142\u0105czania asynchronicznych multimedi\u00f3w lub resetowania stanu parsera."
+  },
+  "generated/Deprecation.ts | MediaSourceDurationTruncatingBuffered": {
+    "message": "Ustawianie MediaSource.duration poni\u017cej najwy\u017cszej sygnatury czasowej prezentacji dowolnych buforowanych ramek kodu zosta\u0142o wycofane z\u00a0powodu zmiany specyfikacji. W\u00a0przysz\u0142o\u015bci wycofamy mo\u017cliwo\u015b\u0107 usuwania przyci\u0119tych multimedi\u00f3w buforowanych. Zamiast tego u\u017cyj bezpo\u015brednio metod remove(newDuration, oldDuration) w\u00a0przypadku wszystkich element\u00f3w sourceBuffers, gdzie newDuration < oldDuration."
+  },
+  "generated/Deprecation.ts | NoSysexWebMIDIWithoutPermission": {
+    "message": "Web MIDI poprosi o\u00a0uprawnienia do u\u017cycia, nawet je\u015bli w\u00a0interfejsie MIDIOptions nie okre\u015blono komunikat\u00f3w SysEx."
+  },
+  "generated/Deprecation.ts | NotificationInsecureOrigin": {
+    "message": "Nie mo\u017cna ju\u017c u\u017cywa\u0107 interfejsu Notification API z\u00a0niezabezpieczonych \u017ar\u00f3de\u0142. Prze\u0142\u0105cz aplikacj\u0119 na zabezpieczone \u017ar\u00f3d\u0142o, np. HTTPS. Wi\u0119cej informacji znajdziesz na stronie https://goo.gle/chrome-insecure-origins."
+  },
+  "generated/Deprecation.ts | NotificationPermissionRequestedIframe": {
+    "message": "\u017b\u0105danie uprawnienia dla interfejsu Notification API nie mo\u017ce ju\u017c by\u0107 wysy\u0142ane z\u00a0element\u00f3w iframe z\u00a0innych domen. Rozwa\u017c wys\u0142anie \u017c\u0105dania o\u00a0przyznanie uprawnienia z\u00a0ramki najwy\u017cszego poziomu lub otwarcie nowego okna."
+  },
+  "generated/Deprecation.ts | ObsoleteCreateImageBitmapImageOrientationNone": {
+    "message": "Opcja imageOrientation: 'none' w\u00a0metodzie createImageBitmap zosta\u0142a wycofana. U\u017cyj tej metody z\u00a0opcj\u0105 \u201e{imageOrientation: 'from-image'}\u201d."
+  },
+  "generated/Deprecation.ts | ObsoleteWebRtcCipherSuite": {
+    "message": "Partner negocjuje przestarza\u0142\u0105 wersj\u0119 (D)TLS. Popro\u015b go o\u00a0rozwi\u0105zanie problemu."
+  },
+  "generated/Deprecation.ts | OverflowVisibleOnReplacedElement": {
+    "message": "Je\u015bli okre\u015blisz w\u0142a\u015bciwo\u015b\u0107 overflow: visible w\u00a0tagach img, video i\u00a0canvas, mog\u0105 one wy\u015bwietla\u0107 tre\u015bci wizualne poza granicami elementu. Wi\u0119cej informacji znajdziesz na https://github.com/WICG/shared-element-transitions/blob/main/debugging_overflow_on_images.md."
+  },
+  "generated/Deprecation.ts | PaymentInstruments": {
+    "message": "Interfejs paymentManager.instruments zosta\u0142 wycofany. Zamiast niego w\u00a0przypadku modu\u0142\u00f3w obs\u0142ugi p\u0142atno\u015bci u\u017cywaj instalacji \u201ejust-in-time\u201d."
+  },
+  "generated/Deprecation.ts | PaymentRequestCSPViolation": {
+    "message": "Twoje wywo\u0142anie PaymentRequest pomija\u0142o dyrektyw\u0119 Content Security Policy (CSP) connect-src. To omini\u0119cie zosta\u0142o wycofane. Dodaj identyfikator formy p\u0142atno\u015bci z\u00a0interfejsu API PaymentRequest (w\u00a0polu supportedMethods) do dyrektywy CSP connect-src."
+  },
+  "generated/Deprecation.ts | PersistentQuotaType": {
+    "message": "Interfejs StorageType.persistent zosta\u0142 wycofany. Zamiast niego u\u017cyj standaryzowanego interfejsu navigator.storage."
+  },
+  "generated/Deprecation.ts | PictureSourceSrc": {
+    "message": "Element <source src> z\u00a0elementem nadrz\u0119dnym <picture> jest nieprawid\u0142owy i\u00a0dlatego jest ignorowany. Zamiast niego u\u017cyj elementu <source srcset>."
+  },
+  "generated/Deprecation.ts | PrefixedCancelAnimationFrame": {
+    "message": "Metoda webkitRequestAnimationFrame jest specyficzna dla dostawcy. U\u017cyj standardowej metody cancelAnimationFrame."
+  },
+  "generated/Deprecation.ts | PrefixedRequestAnimationFrame": {
+    "message": "Metoda webkitRequestAnimationFrame jest specyficzna dla dostawcy. U\u017cyj standardowej metody requestAnimationFrame."
+  },
+  "generated/Deprecation.ts | PrefixedVideoDisplayingFullscreen": {
+    "message": "Interfejs HTMLVideoElement.webkitDisplayingFullscreen zosta\u0142 wycofany. U\u017cyj interfejsu Document.fullscreenElement."
+  },
+  "generated/Deprecation.ts | PrefixedVideoEnterFullScreen": {
+    "message": "Interfejs HTMLVideoElement.webkitEnterFullScreen() zosta\u0142 wycofany. U\u017cyj interfejsu Element.requestFullscreen()."
+  },
+  "generated/Deprecation.ts | PrefixedVideoEnterFullscreen": {
+    "message": "Interfejs HTMLVideoElement.webkitEnterFullscreen() zosta\u0142 wycofany. U\u017cyj interfejsu Element.requestFullscreen()."
+  },
+  "generated/Deprecation.ts | PrefixedVideoExitFullScreen": {
+    "message": "Interfejs HTMLVideoElement.webkitExitFullScreen() zosta\u0142 wycofany. U\u017cyj interfejsu Document.exitFullscreen()."
+  },
+  "generated/Deprecation.ts | PrefixedVideoExitFullscreen": {
+    "message": "Interfejs HTMLVideoElement.webkitExitFullscreen() zosta\u0142 wycofany. U\u017cyj interfejsu Document.exitFullscreen()."
+  },
+  "generated/Deprecation.ts | PrefixedVideoSupportsFullscreen": {
+    "message": "Interfejs HTMLVideoElement.webkitSupportsFullscreen zosta\u0142 wycofany. U\u017cyj interfejsu Document.fullscreenEnabled."
+  },
+  "generated/Deprecation.ts | PrivacySandboxExtensionsAPI": {
+    "message": "Wycofujemy interfejs API chrome.privacy.websites.privacySandboxEnabled, ale pozostanie on aktywny, aby zapewnia\u0142 zgodno\u015b\u0107 wsteczn\u0105 do czasu opublikowania wersji\u00a0M113. Zamiast niego u\u017cywaj interfejs\u00f3w chrome.privacy.websites.topicsEnabled, chrome.privacy.websites.fledgeEnabled i\u00a0chrome.privacy.websites.adMeasurementEnabled. Wi\u0119cej informacji znajdziesz na stronie https://developer.chrome.com/docs/extensions/reference/privacy/#property-websites-privacySandboxEnabled."
+  },
+  "generated/Deprecation.ts | RTCConstraintEnableDtlsSrtpFalse": {
+    "message": "Ograniczenie DtlsSrtpKeyAgreement zosta\u0142o usuni\u0119te. W\u00a0przypadku tego ograniczenia okre\u015blono warto\u015b\u0107 false, co jest interpretowane jako pr\u00f3ba u\u017cycia usuni\u0119tej metody SDES key negotiation. Ta funkcja zosta\u0142a usuni\u0119ta. U\u017cyj us\u0142ugi, kt\u00f3ra obs\u0142uguje DTLS key negotiation."
+  },
+  "generated/Deprecation.ts | RTCConstraintEnableDtlsSrtpTrue": {
+    "message": "Ograniczenie DtlsSrtpKeyAgreement zosta\u0142o usuni\u0119te. W\u00a0przypadku tego ograniczenia okre\u015blono warto\u015b\u0107 true, kt\u00f3ra nie ma zastosowania. W\u00a0razie potrzeby mo\u017cesz usun\u0105\u0107 to ograniczenie."
+  },
+  "generated/Deprecation.ts | RTCPeerConnectionGetStatsLegacyNonCompliant": {
+    "message": "Metoda getStats() z\u00a0wywo\u0142aniem zwrotnym nie jest ju\u017c u\u017cywana i\u00a0zostanie usuni\u0119ta. U\u017cyj metody getStats() zgodnej ze specyfikacj\u0105."
+  },
+  "generated/Deprecation.ts | RangeExpand": {
+    "message": "Interfejs Range.expand() zosta\u0142 wycofany. U\u017cyj interfejsu Selection.modify()."
+  },
+  "generated/Deprecation.ts | RequestedSubresourceWithEmbeddedCredentials": {
+    "message": "\u017b\u0105dania zasob\u00f3w podrz\u0119dnych, kt\u00f3rych adresy URL zawieraj\u0105 umieszczone dane logowania (np. https://user:pass@host/), s\u0105 blokowane."
+  },
+  "generated/Deprecation.ts | RtcpMuxPolicyNegotiate": {
+    "message": "Opcja rtcpMuxPolicy jest wycofana i\u00a0zostanie usuni\u0119ta."
+  },
+  "generated/Deprecation.ts | SharedArrayBufferConstructedWithoutIsolation": {
+    "message": "SharedArrayBuffer b\u0119dzie wymaga\u0107 witryny izolowanej od zasob\u00f3w z\u00a0innych domen. Wi\u0119cej informacji znajdziesz na stronie https://developer.chrome.com/blog/enabling-shared-array-buffer/."
+  },
+  "generated/Deprecation.ts | TextToSpeech_DisallowedByAutoplay": {
+    "message": "Mo\u017cliwo\u015b\u0107 wywo\u0142ania interfejsu speechSynthesis.speak() bez aktywacji u\u017cytkownika jest wycofana i\u00a0zostanie usuni\u0119ta."
+  },
+  "generated/Deprecation.ts | UnloadHandler": {
+    "message": "Nieza\u0142adowane detektory zdarze\u0144 zosta\u0142y wycofane i\u00a0zostan\u0105 usuni\u0119te"
+  },
+  "generated/Deprecation.ts | V8SharedArrayBufferConstructedInExtensionWithoutIsolation": {
+    "message": "Aby nadal u\u017cywa\u0107 obiektu SharedArrayBuffer, rozszerzenia powinny korzysta\u0107 z\u00a0witryn izolowanych od zasob\u00f3w z\u00a0innych domen. Wi\u0119cej informacji znajdziesz na stronie https://developer.chrome.com/docs/extensions/mv3/cross-origin-isolation/."
+  },
+  "generated/Deprecation.ts | XHRJSONEncodingDetection": {
+    "message": "Kodowanie UTF-16 nie jest obs\u0142ugiwane w\u00a0kodzie JSON odpowiedzi na \u017c\u0105danie XMLHttpRequest"
+  },
+  "generated/Deprecation.ts | XMLHttpRequestSynchronousInNonWorkerOutsideBeforeUnload": {
+    "message": "Synchroniczny interfejs XMLHttpRequest w\u00a0g\u0142\u00f3wnym w\u0105tku zosta\u0142 wycofany z\u00a0powodu negatywnego wp\u0142ywu na spos\u00f3b obs\u0142ugi. Wi\u0119cej informacji znajdziesz na stronie https://xhr.spec.whatwg.org/."
+  },
+  "models/trace/insights/CLSCulprits.ts | animation": {
+    "message": "Animacja"
+  },
+  "models/trace/insights/CLSCulprits.ts | description": {
+    "message": "Przesuni\u0119cia uk\u0142adu wyst\u0119puj\u0105, gdy elementy poruszaj\u0105 si\u0119 bez interakcji ze strony u\u017cytkownika. [Zbadaj przyczyny przesuni\u0119\u0107 uk\u0142adu](https://web.dev/articles/optimize-cls) takie jak dodanie lub usuni\u0119cie element\u00f3w lub zmiana czcionek podczas wczytywania strony."
+  },
+  "models/trace/insights/CLSCulprits.ts | fontRequest": {
+    "message": "Pro\u015bba o\u00a0czcionk\u0119"
+  },
+  "models/trace/insights/CLSCulprits.ts | injectedIframe": {
+    "message": "Wstrzykni\u0119ty element iframe"
+  },
+  "models/trace/insights/CLSCulprits.ts | layoutShiftCluster": {
+    "message": "Klaster przesuni\u0119\u0107 uk\u0142adu dla {PH1}"
+  },
+  "models/trace/insights/CLSCulprits.ts | noCulprits": {
+    "message": "Nie uda\u0142o si\u0119 wykry\u0107 przyczyn problem\u00f3w zwi\u0105zanych z\u00a0przesuni\u0119ciem uk\u0142adu"
+  },
+  "models/trace/insights/CLSCulprits.ts | noLayoutShifts": {
+    "message": "Brak przesuni\u0119\u0107 uk\u0142adu"
+  },
+  "models/trace/insights/CLSCulprits.ts | title": {
+    "message": "Przyczyny problem\u00f3w zwi\u0105zanych z\u00a0przesuni\u0119ciem uk\u0142adu"
+  },
+  "models/trace/insights/CLSCulprits.ts | topCulprits": {
+    "message": "Najcz\u0119stsze przyczyny problem\u00f3w zwi\u0105zanych z\u00a0przesuni\u0119ciem uk\u0142adu"
+  },
+  "models/trace/insights/CLSCulprits.ts | unsizedImages": {
+    "message": "Obrazy bez okre\u015blonego rozmiaru"
+  },
+  "models/trace/insights/CLSCulprits.ts | worstCluster": {
+    "message": "Najgorszy klaster"
+  },
+  "models/trace/insights/CLSCulprits.ts | worstLayoutShiftCluster": {
+    "message": "Najgorszy klaster przesuni\u0119\u0107 uk\u0142adu"
+  },
+  "models/trace/insights/Cache.ts | cacheTTL": {
+    "message": "Czas przechowywania danych w\u00a0pami\u0119ci podr\u0119cznej"
+  },
+  "models/trace/insights/Cache.ts | description": {
+    "message": "D\u0142ugi czas przechowywania w\u00a0pami\u0119ci podr\u0119cznej mo\u017ce przyspieszy\u0107 ponowne otwarcie strony. [Wi\u0119cej informacji](https://web.dev/uses-long-cache-ttl/)"
+  },
+  "models/trace/insights/Cache.ts | noRequestsToCache": {
+    "message": "Brak \u017c\u0105da\u0144 z\u00a0zasadami nieefektywnej pami\u0119ci podr\u0119cznej"
+  },
+  "models/trace/insights/Cache.ts | others": {
+    "message": "Inne elementy: {PH1}"
+  },
+  "models/trace/insights/Cache.ts | requestColumn": {
+    "message": "\u017b\u0105danie"
+  },
+  "models/trace/insights/Cache.ts | title": {
+    "message": "U\u017cywaj efektywnego czasu przechowywania w\u00a0pami\u0119ci podr\u0119cznej"
+  },
+  "models/trace/insights/DOMSize.ts | description": {
+    "message": "Du\u017cy DOM mo\u017ce wyd\u0142u\u017ca\u0107 obliczenia styl\u00f3w i\u00a0przeformatowania uk\u0142adu, co wp\u0142ywa na responsywno\u015b\u0107 strony. Du\u017cy DOM zwi\u0119kszy te\u017c wykorzystanie pami\u0119ci. [Jak unika\u0107 nadmiernego rozmiaru DOM](https://developer.chrome.com/docs/lighthouse/performance/dom-size/)"
+  },
+  "models/trace/insights/DOMSize.ts | element": {
+    "message": "Element"
+  },
+  "models/trace/insights/DOMSize.ts | maxChildren": {
+    "message": "Maksymalna liczba element\u00f3w podrz\u0119dnych"
+  },
+  "models/trace/insights/DOMSize.ts | maxDOMDepth": {
+    "message": "G\u0142\u0119boko\u015b\u0107 DOM"
+  },
+  "models/trace/insights/DOMSize.ts | statistic": {
+    "message": "Statystyki"
+  },
+  "models/trace/insights/DOMSize.ts | title": {
+    "message": "Optymalizuj rozmiar DOM"
+  },
+  "models/trace/insights/DOMSize.ts | totalElements": {
+    "message": "\u0141\u0105czna liczba element\u00f3w"
+  },
+  "models/trace/insights/DOMSize.ts | value": {
+    "message": "Warto\u015b\u0107"
+  },
+  "models/trace/insights/DocumentLatency.ts | description": {
+    "message": "Pierwsze \u017c\u0105danie sieciowe jest najwa\u017cniejsze.  Zmniejsz jego op\u00f3\u017anienie, unikaj\u0105c przekierowa\u0144, zapewniaj\u0105c szybk\u0105 reakcj\u0119 serwera i\u00a0w\u0142\u0105czaj\u0105c kompresj\u0119 tekstu."
+  },
+  "models/trace/insights/DocumentLatency.ts | failedRedirects": {
+    "message": "Zawiera\u0142o przekierowania"
+  },
+  "models/trace/insights/DocumentLatency.ts | failedServerResponseTime": {
+    "message": "Serwer zareagowa\u0142 z\u00a0op\u00f3\u017anieniem"
+  },
+  "models/trace/insights/DocumentLatency.ts | failedTextCompression": {
+    "message": "Nie zastosowano kompresji"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingRedirects": {
+    "message": "Nie u\u017cywa przekierowa\u0144"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingServerResponseTime": {
+    "message": "Serwer odpowiada szybko"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingTextCompression": {
+    "message": "Stosuje kompresj\u0119 tekstu"
+  },
+  "models/trace/insights/DocumentLatency.ts | redirectsLabel": {
+    "message": "Przekierowania"
+  },
+  "models/trace/insights/DocumentLatency.ts | serverResponseTimeLabel": {
+    "message": "Czas reakcji serwera"
+  },
+  "models/trace/insights/DocumentLatency.ts | title": {
+    "message": "Czas oczekiwania w\u00a0przypadku \u017c\u0105dania dokumentu"
+  },
+  "models/trace/insights/DocumentLatency.ts | uncompressedDownload": {
+    "message": "Pobieranie nieskompresowanych plik\u00f3w"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | columnDuplicatedBytes": {
+    "message": "Zduplikowane bajty"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | columnSource": {
+    "message": "\u0179r\u00f3d\u0142o"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | description": {
+    "message": "Usu\u0144 z\u00a0pakiet\u00f3w duplikaty du\u017cych modu\u0142\u00f3w JavaScript, aby zmniejszy\u0107 ilo\u015b\u0107 danych niepotrzebnie przesy\u0142anych w\u00a0sieci."
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | title": {
+    "message": "Duplikat kodu JavaScript"
+  },
+  "models/trace/insights/FontDisplay.ts | description": {
+    "message": "Sugerujemy ustawienie w\u0142a\u015bciwo\u015bci [font-display](https://developer.chrome.com/blog/font-display) na swap lub optional, aby tekst by\u0142 zawsze widoczny. Element swap mo\u017cna dodatkowo zoptymalizowa\u0107 za pomoc\u0105 [zast\u0105pie\u0144 danych o\u00a0czcionkach](https://developer.chrome.com/blog/font-fallbacks) \u2013 pozwoli to zmniejszy\u0107 przesuni\u0119cia uk\u0142adu."
+  },
+  "models/trace/insights/FontDisplay.ts | fontColumn": {
+    "message": "Czcionka"
+  },
+  "models/trace/insights/FontDisplay.ts | title": {
+    "message": "Wy\u015bwietlanie czcionki"
+  },
+  "models/trace/insights/FontDisplay.ts | wastedTimeColumn": {
+    "message": "Stracony czas"
+  },
+  "models/trace/insights/ForcedReflow.ts | anonymous": {
+    "message": "(anonimowa)"
+  },
+  "models/trace/insights/ForcedReflow.ts | description": {
+    "message": "W\u00a0celu obliczenia stylu i\u00a0uk\u0142adu wiele interfejs\u00f3w API zwykle odczytuj\u0105cych geometri\u0119 uk\u0142adu wymusza na mechanizmie renderowania wstrzymanie wykonywania skryptu. Dowiedz si\u0119 wi\u0119cej o\u00a0[wymuszonym przeformatowaniu](https://developers.google.com/web/fundamentals/performance/rendering/avoid-large-complex-layouts-and-layout-thrashing#avoid-forced-synchronous-layouts) i\u00a0sposobach jego ograniczenia."
+  },
+  "models/trace/insights/ForcedReflow.ts | relatedStackTrace": {
+    "message": "Zrzut stosu"
+  },
+  "models/trace/insights/ForcedReflow.ts | title": {
+    "message": "Wymuszone przeformatowanie"
+  },
+  "models/trace/insights/ForcedReflow.ts | topTimeConsumingFunctionCall": {
+    "message": "Najcz\u0119stsze wywo\u0142anie funkcji"
+  },
+  "models/trace/insights/ForcedReflow.ts | totalReflowTime": {
+    "message": "\u0141\u0105czny czas przeformatowania"
+  },
+  "models/trace/insights/ForcedReflow.ts | unattributed": {
+    "message": "[nieprzypisane]"
+  },
+  "models/trace/insights/ImageDelivery.ts | description": {
+    "message": "Skr\u00f3cenie czasu pobierania obraz\u00f3w mo\u017ce poprawi\u0107 postrzegany czas wczytywania strony i\u00a0LCP. [Dowiedz si\u0119 wi\u0119cej o\u00a0optymalizowaniu rozmiaru obrazu](https://developer.chrome.com/docs/lighthouse/performance/uses-optimized-images/)"
+  },
+  "models/trace/insights/ImageDelivery.ts | estimatedSavings": {
+    "message": "{PH1} (szac. {PH2})"
+  },
+  "models/trace/insights/ImageDelivery.ts | noOptimizableImages": {
+    "message": "Brak obraz\u00f3w do zoptymalizowania"
+  },
+  "models/trace/insights/ImageDelivery.ts | optimizeFile": {
+    "message": "Zoptymalizuj rozmiar pliku"
+  },
+  "models/trace/insights/ImageDelivery.ts | others": {
+    "message": "Inne elementy: {PH1}"
+  },
+  "models/trace/insights/ImageDelivery.ts | title": {
+    "message": "Ulepsz dostarczanie obraz\u00f3w"
+  },
+  "models/trace/insights/ImageDelivery.ts | useCompression": {
+    "message": "Zwi\u0119kszenie wsp\u00f3\u0142czynnika kompresji obrazu mo\u017ce zmniejszy\u0107 rozmiar pobierania."
+  },
+  "models/trace/insights/ImageDelivery.ts | useModernFormat": {
+    "message": "Pobieranie tego obrazu mo\u017ce by\u0107 szybsze, je\u015bli u\u017cyjesz nowoczesnego formatu (WebP, AVIF) lub zwi\u0119kszysz kompresj\u0119 obrazu."
+  },
+  "models/trace/insights/ImageDelivery.ts | useResponsiveSize": {
+    "message": "Ten plik obrazu jest wi\u0119kszy ni\u017c powinien ({PH1}) przy wy\u015bwietlanych wymiarach ({PH2}). Aby zmniejszy\u0107 rozmiar pobierania obrazu, u\u017cyj obraz\u00f3w elastycznych."
+  },
+  "models/trace/insights/ImageDelivery.ts | useVideoFormat": {
+    "message": "U\u017cywanie format\u00f3w wideo zamiast GIF-\u00f3w mo\u017ce zmniejszy\u0107 rozmiar pobieranych tre\u015bci animowanych."
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | description": {
+    "message": "Zacznij analiz\u0119 od najd\u0142u\u017cszego etapu. [Mo\u017cna zminimalizowa\u0107 op\u00f3\u017anienia](https://web.dev/articles/optimize-inp#optimize_interactions). Aby skr\u00f3ci\u0107 czas przetwarzania, [zoptymalizuj koszty w\u0105tku g\u0142\u00f3wnego](https://web.dev/articles/optimize-long-tasks), cz\u0119sto JS."
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | duration": {
+    "message": "Czas trwania"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | inputDelay": {
+    "message": "Op\u00f3\u017anienie wej\u015bciowe"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | noInteractions": {
+    "message": "Nie wykryto interakcji"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | phase": {
+    "message": "Faza"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | presentationDelay": {
+    "message": "Op\u00f3\u017anienie prezentacji"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | processingDuration": {
+    "message": "Czas przetwarzania"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | title": {
+    "message": "INP wed\u0142ug etapu"
+  },
+  "models/trace/insights/LCPDiscovery.ts | description": {
+    "message": "Zoptymalizuj LCP, zapewniaj\u0105c natychmiastow\u0105 [wykrywalno\u015b\u0107](https://web.dev/articles/optimize-lcp#1_eliminate_resource_load_delay) obrazu LCP w\u00a0kodzie HTML i\u00a0[unikaj\u0105c leniwego \u0142adowania](https://web.dev/articles/lcp-lazy-loading)"
+  },
+  "models/trace/insights/LCPDiscovery.ts | fetchPriorityApplied": {
+    "message": "Zastosowano fetchpriority=high"
+  },
+  "models/trace/insights/LCPDiscovery.ts | fetchPriorityShouldBeApplied": {
+    "message": "Nale\u017cy zastosowa\u0107 fetchpriority=high"
+  },
+  "models/trace/insights/LCPDiscovery.ts | lazyLoadNotApplied": {
+    "message": "nie zastosowano leniwego \u0142adowania"
+  },
+  "models/trace/insights/LCPDiscovery.ts | lcpLoadDelay": {
+    "message": "Obraz LCP zosta\u0142 wczytany {PH1} po najstarszym punkcie pocz\u0105tkowym."
+  },
+  "models/trace/insights/LCPDiscovery.ts | noLcp": {
+    "message": "Nie wykryto LCP"
+  },
+  "models/trace/insights/LCPDiscovery.ts | noLcpResource": {
+    "message": "Nie wykryto zasobu LCP, poniewa\u017c LCP nie jest obrazem"
+  },
+  "models/trace/insights/LCPDiscovery.ts | requestDiscoverable": {
+    "message": "Pro\u015bb\u0119 mo\u017cna znale\u017a\u0107 w\u00a0dokumencie pocz\u0105tkowym"
+  },
+  "models/trace/insights/LCPDiscovery.ts | title": {
+    "message": "Wykrywanie \u017c\u0105da\u0144 LCP"
+  },
+  "models/trace/insights/LCPPhases.ts | description": {
+    "message": "Ka\u017cdy [etap ma okre\u015blone strategie poprawy](https://web.dev/articles/optimize-lcp#lcp-breakdown). W\u00a0idealnym przypadku wi\u0119kszo\u015b\u0107 czasu LCP powinna by\u0107 po\u015bwi\u0119cona na \u0142adowanie zasob\u00f3w, a\u00a0nie na op\u00f3\u017anienia."
+  },
+  "models/trace/insights/LCPPhases.ts | duration": {
+    "message": "Czas trwania"
+  },
+  "models/trace/insights/LCPPhases.ts | elementRenderDelay": {
+    "message": "Op\u00f3\u017anienie renderowania elementu"
+  },
+  "models/trace/insights/LCPPhases.ts | fieldDuration": {
+    "message": "75\u00a0percentyl zgromadzonych danych"
+  },
+  "models/trace/insights/LCPPhases.ts | noLcp": {
+    "message": "Nie wykryto LCP"
+  },
+  "models/trace/insights/LCPPhases.ts | phase": {
+    "message": "Faza"
+  },
+  "models/trace/insights/LCPPhases.ts | resourceLoadDelay": {
+    "message": "Op\u00f3\u017anienie \u0142adowania zasob\u00f3w"
+  },
+  "models/trace/insights/LCPPhases.ts | resourceLoadDuration": {
+    "message": "Czas wczytywania zasobu"
+  },
+  "models/trace/insights/LCPPhases.ts | timeToFirstByte": {
+    "message": "Czas do pierwszego bajtu"
+  },
+  "models/trace/insights/LCPPhases.ts | title": {
+    "message": "LCP wed\u0142ug etapu"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | columnScript": {
+    "message": "Skrypt"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | columnWastedBytes": {
+    "message": "Zmarnowane bajty"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | description": {
+    "message": "Elementy polyfill i\u00a0przekszta\u0142cenia umo\u017cliwiaj\u0105 obs\u0142ug\u0119 nowych funkcji JavaScript przez starsze przegl\u0105darki. Jednak nowoczesne przegl\u0105darki nie potrzebuj\u0105 wielu takich element\u00f3w. Rozwa\u017c zmian\u0119 procesu kompilacji JavaScriptu, aby nie transpilowa\u0107 funkcji [podstawowych](https://web.dev/articles/baseline-and-polyfills), chyba \u017ce potrzebna jest obs\u0142uga starszych przegl\u0105darek. [Dlaczego wi\u0119kszo\u015b\u0107 witryn mo\u017ce wdra\u017ca\u0107 kod ES6+ bez transpilacji](https://philipwalton.com/articles/the-state-of-es5-on-the-web/)"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | title": {
+    "message": "Starszy kod JavaScript"
+  },
+  "models/trace/insights/ModernHTTP.ts | description": {
+    "message": "Protoko\u0142y HTTP/2 i\u00a0HTTP/3 maj\u0105 wiele zalet w\u00a0por\u00f3wnaniu z\u00a0HTTP/1.1, np. multipleksowanie. [Wi\u0119cej informacji o\u00a0korzystaniu z\u00a0nowoczesnego protoko\u0142u HTTP](https://developer.chrome.com/docs/lighthouse/best-practices/uses-http2/)"
+  },
+  "models/trace/insights/ModernHTTP.ts | noOldProtocolRequests": {
+    "message": "\u017badne \u017c\u0105danie nie u\u017cywa\u0142o protoko\u0142u HTTP/1.1"
+  },
+  "models/trace/insights/ModernHTTP.ts | protocol": {
+    "message": "Protok\u00f3\u0142"
+  },
+  "models/trace/insights/ModernHTTP.ts | request": {
+    "message": "\u017b\u0105danie"
+  },
+  "models/trace/insights/ModernHTTP.ts | title": {
+    "message": "Nowoczesny protok\u00f3\u0142 HTTP"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | description": {
+    "message": "Aby przyspieszy\u0107 \u0142adowanie strony, [unikaj tworzenia \u0142a\u0144cuch\u00f3w \u017c\u0105da\u0144 krytycznych](https://developer.chrome.com/docs/lighthouse/performance/critical-request-chains): skr\u00f3\u0107 \u0142a\u0144cuchy, zmniejsz rozmiar pobieranych zasob\u00f3w lub op\u00f3\u017anij pobieranie zasob\u00f3w, kt\u00f3re nie s\u0105 niezb\u0119dne."
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | maxCriticalPathLatency": {
+    "message": "Maksymalne op\u00f3\u017anienie \u015bcie\u017cki krytycznej:"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | noNetworkDependencyTree": {
+    "message": "Zale\u017cno\u015bci sieciowe nie maj\u0105 wp\u0142ywu na \u017cadne zadania renderowania"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | title": {
+    "message": "Drzewo zale\u017cno\u015bci sieciowych"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | warningDescription": {
+    "message": "Aby przyspieszy\u0107 \u0142adowanie strony, unikaj tworzenia \u0142a\u0144cuch\u00f3w \u017c\u0105da\u0144 krytycznych: skr\u00f3\u0107 \u0142a\u0144cuchy, zmniejsz rozmiar pobieranych zasob\u00f3w lub op\u00f3\u017anij pobieranie zasob\u00f3w, kt\u00f3re nie s\u0105 niezb\u0119dne."
+  },
+  "models/trace/insights/RenderBlocking.ts | description": {
+    "message": "\u017b\u0105dania blokuj\u0105 pocz\u0105tkowe renderowanie strony, co mo\u017ce op\u00f3\u017ania\u0107 LCP. [Op\u00f3\u017anianie lub wstawianie](https://web.dev/learn/performance/understanding-the-critical-path#render-blocking_resources/) mo\u017ce skierowa\u0107 te \u017c\u0105dania sieciowe poza \u015bcie\u017ck\u0119 krytyczn\u0105."
+  },
+  "models/trace/insights/RenderBlocking.ts | duration": {
+    "message": "Czas trwania"
+  },
+  "models/trace/insights/RenderBlocking.ts | noRenderBlocking": {
+    "message": "Brak \u017c\u0105da\u0144 blokuj\u0105cych renderowanie dla tej nawigacji"
+  },
+  "models/trace/insights/RenderBlocking.ts | renderBlockingRequest": {
+    "message": "\u017b\u0105danie"
+  },
+  "models/trace/insights/RenderBlocking.ts | title": {
+    "message": "Pro\u015bby o\u00a0zablokowanie renderowania"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | description": {
+    "message": "Je\u015bli koszty ponownego obliczania stylu s\u0105 wysokie, optymalizacja selektora mo\u017ce je obni\u017cy\u0107. [Zoptymalizuj selektory](https://developer.chrome.com/docs/devtools/performance/selector-stats), kt\u00f3re maj\u0105 zar\u00f3wno d\u0142ugi czas dzia\u0142ania, jak i\u00a0wysoki odsetek \u015bcie\u017cek powolnych. Prostsze selektory, mniejsza ich liczba oraz mniejszy i\u00a0p\u0142ytszy DOM pozwol\u0105 zmniejszy\u0107 koszty dopasowywania."
+  },
+  "models/trace/insights/SlowCSSSelector.ts | elapsed": {
+    "message": "Up\u0142yn\u0119\u0142o"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | enableSelectorData": {
+    "message": "Nie znaleziono danych selektora CSS. Statystyki selektora CSS musz\u0105 by\u0107 w\u0142\u0105czone w\u00a0ustawieniach panelu wydajno\u015bci."
+  },
+  "models/trace/insights/SlowCSSSelector.ts | matchAttempts": {
+    "message": "Pr\u00f3by dopasowania"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | matchCount": {
+    "message": "Liczba zgodnych element\u00f3w"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | title": {
+    "message": "Koszty selektora CSS"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | topSelectors": {
+    "message": "Najpopularniejsze selektory"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | total": {
+    "message": "\u0141\u0105cznie"
+  },
+  "models/trace/insights/ThirdParties.ts | columnMainThreadTime": {
+    "message": "Czas w\u00a0w\u0105tku g\u0142\u00f3wnym"
+  },
+  "models/trace/insights/ThirdParties.ts | columnThirdParty": {
+    "message": "Spoza witryny"
+  },
+  "models/trace/insights/ThirdParties.ts | columnTransferSize": {
+    "message": "Rozmiar przes\u0142anych danych"
+  },
+  "models/trace/insights/ThirdParties.ts | description": {
+    "message": "Kod spoza witryny mo\u017ce znacznie spowalnia\u0107 wczytywanie stron. [Ogranicz i\u00a0op\u00f3\u017anij wczytywanie takiego kodu](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/loading-third-party-javascript/), aby nada\u0107 priorytet tre\u015bciom ze swojej strony."
+  },
+  "models/trace/insights/ThirdParties.ts | noThirdParties": {
+    "message": "Nie znaleziono tre\u015bci zewn\u0119trznych"
+  },
+  "models/trace/insights/ThirdParties.ts | title": {
+    "message": "Spoza witryny"
+  },
+  "models/trace/insights/Viewport.ts | description": {
+    "message": "Interakcje dotykowe mog\u0105 by\u0107 [op\u00f3\u017anione nawet o\u00a0300\u00a0ms](https://developer.chrome.com/blog/300ms-tap-delay-gone-away/), je\u015bli widoczny obszar nie jest zoptymalizowany dla telefon\u00f3w."
+  },
+  "models/trace/insights/Viewport.ts | title": {
+    "message": "Zoptymalizuj widoczny obszar dla telefon\u00f3w"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | HTTPMethodNotGET": {
+    "message": "Tylko strony wczytane za pomoc\u0105 \u017c\u0105dania GET kwalifikuj\u0105 si\u0119 do korzystania z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | HTTPStatusNotOK": {
+    "message": "W\u00a0pami\u0119ci mog\u0105 by\u0107 przechowywane tylko strony z\u00a0kodem stanu 2XX."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | JavaScriptExecution": {
+    "message": "Przegl\u0105darka Chrome wykry\u0142a pr\u00f3b\u0119 wykonania JavaScriptu podczas przechowywania strony w\u00a0pami\u0119ci podr\u0119cznej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | appBanner": {
+    "message": "Strony, kt\u00f3re poprosi\u0142y o\u00a0AppBanner, nie kwalifikuj\u0105 si\u0119 obecnie do korzystania z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabled": {
+    "message": "Pami\u0119\u0107 podr\u0119czna stanu strony internetowej jest wy\u0142\u0105czona przez flagi. Wejd\u017a na chrome://flags/#back-forward-cache, aby w\u0142\u0105czy\u0107 j\u0105 lokalnie na tym urz\u0105dzeniu."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledByCommandLine": {
+    "message": "Pami\u0119\u0107 podr\u0119czna stanu strony internetowej jest wy\u0142\u0105czona przez wiersz polece\u0144."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledByLowMemory": {
+    "message": "Pami\u0119\u0107 podr\u0119czna stanu strony internetowej jest wy\u0142\u0105czona z\u00a0powodu niewystarczaj\u0105cej ilo\u015bci pami\u0119ci."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledForDelegate": {
+    "message": "Pami\u0119\u0107 podr\u0119czna stanu strony internetowej nie jest obs\u0142ugiwana w\u00a0ramach przekazywania."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledForPrerender": {
+    "message": "Pami\u0119\u0107 podr\u0119czna stanu strony internetowej jest wy\u0142\u0105czona w\u00a0przypadku wst\u0119pnego renderowania."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | broadcastChannel": {
+    "message": "Strona nie mo\u017ce by\u0107 przechowywana w\u00a0pami\u0119ci podr\u0119cznej, bo zawiera wyst\u0105pienie BroadcastChannel z\u00a0zarejestrowanymi detektorami."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheControlNoStore": {
+    "message": "Strony z\u00a0nag\u0142\u00f3wkiem cache-control:no-store nie mog\u0105 korzysta\u0107 z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheFlushed": {
+    "message": "Pami\u0119\u0107 podr\u0119czna zosta\u0142a celowo wyczyszczona."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheLimit": {
+    "message": "Strona zosta\u0142a usuni\u0119ta z\u00a0pami\u0119ci podr\u0119cznej, aby umo\u017cliwi\u0107 przechowywanie w\u00a0niej innej strony."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | containsPlugins": {
+    "message": "Strony, kt\u00f3re zawieraj\u0105 wtyczki, nie kwalifikuj\u0105 si\u0119 obecnie do korzystania z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentDiscarded": {
+    "message": "Nieokre\u015blony"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentFileChooser": {
+    "message": "Strony, kt\u00f3re u\u017cywaj\u0105 interfejsu FileChooser API, nie kwalifikuj\u0105 si\u0119 do korzystania z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentFileSystemAccess": {
+    "message": "Strony, kt\u00f3re u\u017cywaj\u0105 interfejsu File System Access API, nie kwalifikuj\u0105 si\u0119 do korzystania z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaDevicesDispatcherHost": {
+    "message": "Strony, kt\u00f3re u\u017cywaj\u0105 dyspozytora no\u015bnika danych, nie kwalifikuj\u0105 si\u0119 do korzystania z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaPlay": {
+    "message": "Odtwarzacz by\u0142 w\u0142\u0105czony, gdy u\u017cytkownik zamkn\u0105\u0142 stron\u0119."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaSession": {
+    "message": "Strony, kt\u00f3re u\u017cywaj\u0105 interfejsu MediaSession API i\u00a0okre\u015blaj\u0105 stan odtwarzania, nie kwalifikuj\u0105 si\u0119 do korzystania z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaSessionService": {
+    "message": "Strony, kt\u00f3re u\u017cywaj\u0105 interfejsu MediaSession API i\u00a0okre\u015blaj\u0105 elementy dzia\u0142ania, nie kwalifikuj\u0105 si\u0119 do korzystania z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentScreenReader": {
+    "message": "Pami\u0119\u0107 podr\u0119czna stanu strony internetowej jest wy\u0142\u0105czona z\u00a0powodu czytnika ekranu."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentSecurityHandler": {
+    "message": "Strony, kt\u00f3re u\u017cywaj\u0105 SecurityHandler, nie kwalifikuj\u0105 si\u0119 do korzystania z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentSerial": {
+    "message": "Strony, kt\u00f3re u\u017cywaj\u0105 interfejsu Serial API, nie kwalifikuj\u0105 si\u0119 do korzystania z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebAuthenticationAPI": {
+    "message": "Strony, kt\u00f3re u\u017cywaj\u0105 interfejsu WebAuthetication API, nie kwalifikuj\u0105 si\u0119 do korzystania z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebBluetooth": {
+    "message": "Strony, kt\u00f3re u\u017cywaj\u0105 interfejsu WebBluetooth API, nie kwalifikuj\u0105 si\u0119 do korzystania z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebUSB": {
+    "message": "Strony, kt\u00f3re u\u017cywaj\u0105 interfejsu WebUSB API, nie kwalifikuj\u0105 si\u0119 do korzystania z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cookieDisabled": {
+    "message": "Pami\u0119\u0107 podr\u0119czna stanu strony internetowej jest wy\u0142\u0105czona, bo na stronie, kt\u00f3ra korzysta z\u00a0elementu Cache-Control: no-store, wy\u0142\u0105czone s\u0105 pliki cookie."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | dedicatedWorkerOrWorklet": {
+    "message": "Strony, kt\u00f3re u\u017cywaj\u0105 dedykowanej instancji roboczej lub workletu, nie kwalifikuj\u0105 si\u0119 obecnie do korzystania z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | documentLoaded": {
+    "message": "Dokument nie zosta\u0142 w\u00a0pe\u0142ni wczytany, zanim u\u017cytkownik go zamkn\u0105\u0142."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderAppBannerManager": {
+    "message": "Podczas zamykania strony widoczny by\u0142 baner aplikacji."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderChromePasswordManagerClientBindCredentialManager": {
+    "message": "Podczas zamykania strony widoczny by\u0142 mened\u017cer hase\u0142 Chrome."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderDomDistillerSelfDeletingRequestDelegate": {
+    "message": "Podczas zamykania strony aktywny by\u0142 proces destylacji DOM."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderDomDistillerViewerSource": {
+    "message": "Podczas zamykania strony widoczna by\u0142a przegl\u0105darka narz\u0119dzia DOM Distiller."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionMessaging": {
+    "message": "Pami\u0119\u0107 podr\u0119czna stanu strony internetowej jest wy\u0142\u0105czona, bo rozszerzenia u\u017cywaj\u0105 interfejsu Messaging API."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionMessagingForOpenPort": {
+    "message": "Rozszerzenia od d\u0142u\u017cszego czasu po\u0142\u0105czone powinny zako\u0144czy\u0107 po\u0142\u0105czenie przed uzyskaniem dost\u0119pu do pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionSentMessageToCachedFrame": {
+    "message": "Rozszerzenia od d\u0142u\u017cszego czasu po\u0142\u0105czone pr\u00f3bowa\u0142y wys\u0142a\u0107 wiadomo\u015bci do ramek w\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensions": {
+    "message": "Pami\u0119\u0107 podr\u0119czna stanu strony internetowej jest wy\u0142\u0105czona z\u00a0powodu rozszerze\u0144."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderModalDialog": {
+    "message": "Podczas zamykania strony wy\u015bwietli\u0142o si\u0119 okno modalne takie jak ponowne przes\u0142anie formularza lub okno has\u0142a http."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderOfflinePage": {
+    "message": "Podczas zamykania strony pokazywana by\u0142a strona offline."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderOomInterventionTabHelper": {
+    "message": "Podczas zamykania strony widoczny by\u0142 pasek interwencji zwi\u0105zanej z\u00a0brakiem miejsca w\u00a0pami\u0119ci."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderPermissionRequestManager": {
+    "message": "Podczas zamykania strony pojawi\u0142y si\u0119 pro\u015bby o\u00a0uprawnienia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderPopupBlockerTabHelper": {
+    "message": "Podczas zamykania strony widoczne by\u0142o blokowanie wyskakuj\u0105cych okienek."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderSafeBrowsingThreatDetails": {
+    "message": "Podczas zamykania strony wy\u015bwietli\u0142y si\u0119 szczeg\u00f3\u0142y Bezpiecznego przegl\u0105dania."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderSafeBrowsingTriggeredPopupBlocker": {
+    "message": "Bezpieczne przegl\u0105danie wykry\u0142o na tej stronie nadu\u017cycie i\u00a0zablokowa\u0142o wyskakuj\u0105ce okienko."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | enteredBackForwardCacheBeforeServiceWorkerHostAdded": {
+    "message": "Skrypt service worker zosta\u0142 aktywowany, gdy strona znajdowa\u0142a si\u0119 w\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | errorDocument": {
+    "message": "Pami\u0119\u0107 podr\u0119czna stanu strony internetowej jest wy\u0142\u0105czona z\u00a0powodu b\u0142\u0119du w\u00a0dokumencie."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | fencedFramesEmbedder": {
+    "message": "Stron u\u017cywaj\u0105cych FencedFrames nie mo\u017cna przechowywa\u0107 w\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | foregroundCacheLimit": {
+    "message": "Strona zosta\u0142a usuni\u0119ta z\u00a0pami\u0119ci podr\u0119cznej, aby umo\u017cliwi\u0107 przechowywanie w\u00a0niej innej strony."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | grantedMediaStreamAccess": {
+    "message": "Strony, kt\u00f3re maj\u0105 przyznany dost\u0119p do strumienia multimedi\u00f3w, nie kwalifikuj\u0105 si\u0119 obecnie do korzystania z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | haveInnerContents": {
+    "message": "Strony zawieraj\u0105ce niekt\u00f3re rodzaje umieszczonych tre\u015bci (np. pliki PDF) nie kwalifikuj\u0105 si\u0119 obecnie do korzystania z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | idleManager": {
+    "message": "Strony, kt\u00f3re u\u017cywaj\u0105 IdleManagera, nie kwalifikuj\u0105 si\u0119 obecnie do korzystania z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | indexedDBConnection": {
+    "message": "Strony, kt\u00f3re maj\u0105 otwarte po\u0142\u0105czenie IndexedDB, nie kwalifikuj\u0105 si\u0119 obecnie do korzystania z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | indexedDBEvent": {
+    "message": "Pami\u0119\u0107 podr\u0119czna stanu strony internetowej jest wy\u0142\u0105czona z\u00a0powodu zdarzenia IndexedDB."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | ineligibleAPI": {
+    "message": "U\u017cyto nieodpowiednich interfejs\u00f3w API."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | injectedJavascript": {
+    "message": "Strony z\u00a0interfejsem JavaScript wstrzykiwanym przez rozszerzenia nie kwalifikuj\u0105 si\u0119 obecnie do korzystania z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | injectedStyleSheet": {
+    "message": "Strony z\u00a0interfejsem StyleSheet wstrzykiwanym przez rozszerzenia nie kwalifikuj\u0105 si\u0119 obecnie do korzystania z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | internalError": {
+    "message": "B\u0142\u0105d wewn\u0119trzny."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | jsNetworkRequestReceivedCacheControlNoStoreResource": {
+    "message": "Pami\u0119\u0107 podr\u0119czna stanu strony internetowej jest wy\u0142\u0105czona, poniewa\u017c niekt\u00f3re \u017c\u0105dania sieciowe JavaScript otrzyma\u0142y zas\u00f3b z\u00a0nag\u0142\u00f3wkiem Cache-Control: no-store."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | keepaliveRequest": {
+    "message": "Pami\u0119\u0107 podr\u0119czna stanu strony internetowej jest wy\u0142\u0105czona z\u00a0powodu \u017c\u0105dania utrzymywania aktywno\u015bci."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | keyboardLock": {
+    "message": "Strony, kt\u00f3re u\u017cywaj\u0105 blokady klawiatury, nie kwalifikuj\u0105 si\u0119 obecnie do korzystania z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | loading": {
+    "message": "Strona nie zosta\u0142a w\u00a0pe\u0142ni wczytana, zanim u\u017cytkownik j\u0105 opu\u015bci\u0142."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | mainResourceHasCacheControlNoCache": {
+    "message": "Strony, kt\u00f3rych zasoby g\u0142\u00f3wne maj\u0105 nag\u0142\u00f3wek cache-control:no-cache, nie mog\u0105 korzysta\u0107 z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | mainResourceHasCacheControlNoStore": {
+    "message": "Strony, kt\u00f3rych zasoby g\u0142\u00f3wne maj\u0105 nag\u0142\u00f3wek cache-control:no-store, nie mog\u0105 korzysta\u0107 z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | navigationCancelledWhileRestoring": {
+    "message": "Nawigacja zosta\u0142a anulowana przed przywr\u00f3ceniem strony z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkExceedsBufferLimit": {
+    "message": "Strona zosta\u0142a usuni\u0119ta z\u00a0pami\u0119ci podr\u0119cznej, poniewa\u017c aktywne po\u0142\u0105czenie sieciowe otrzyma\u0142o za du\u017co danych. Chrome ogranicza ilo\u015b\u0107 danych, kt\u00f3re strona mo\u017ce otrzyma\u0107, gdy jest przechowywana w\u00a0pami\u0119ci podr\u0119cznej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestDatapipeDrainedAsBytesConsumer": {
+    "message": "Strony, kt\u00f3re maj\u0105 przesy\u0142ane \u017c\u0105danie fetch() lub XHR, nie kwalifikuj\u0105 si\u0119 obecnie do korzystania z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestRedirected": {
+    "message": "Strona zosta\u0142a usuni\u0119ta z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej, poniewa\u017c aktywne \u017c\u0105danie sieciowe wi\u0105za\u0142o si\u0119 z\u00a0przekierowaniem."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestTimeout": {
+    "message": "Strona zosta\u0142a usuni\u0119ta z\u00a0pami\u0119ci podr\u0119cznej, poniewa\u017c po\u0142\u0105czenie sieciowe by\u0142o zbyt d\u0142ugo otwarte. Chrome ogranicza ilo\u015b\u0107 czasu, przez kt\u00f3ry strona mo\u017ce otrzymywa\u0107 dane podczas przechowywania w\u00a0pami\u0119ci podr\u0119cznej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | noResponseHead": {
+    "message": "Strony, kt\u00f3re nie maj\u0105 prawid\u0142owego nag\u0142\u00f3wka odpowiedzi, nie mog\u0105 korzysta\u0107 z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | notMainFrame": {
+    "message": "Nawigacja odbywa\u0142a si\u0119 w\u00a0ramce innej ni\u017c ramka g\u0142\u00f3wna."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingIndexedDBTransaction": {
+    "message": "Strony z\u00a0trwaj\u0105cymi transakcjami indeksowanej bazy danych nie kwalifikuj\u0105 si\u0119 obecnie do korzystania z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestDirectSocket": {
+    "message": "Strony z\u00a0przesy\u0142anym \u017c\u0105daniem sieciowym nie kwalifikuj\u0105 si\u0119 obecnie do korzystania z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestFetch": {
+    "message": "Strony z\u00a0przesy\u0142anym \u017c\u0105daniem sieciowym fetch() nie kwalifikuj\u0105 si\u0119 obecnie do korzystania z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestOthers": {
+    "message": "Strony z\u00a0przesy\u0142anym \u017c\u0105daniem sieciowym nie kwalifikuj\u0105 si\u0119 obecnie do korzystania z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestXHR": {
+    "message": "Strony z\u00a0przesy\u0142anym \u017c\u0105daniem sieciowym XHR nie kwalifikuj\u0105 si\u0119 obecnie do korzystania z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | paymentManager": {
+    "message": "Strony, kt\u00f3re u\u017cywaj\u0105 PaymentManagera, nie kwalifikuj\u0105 si\u0119 obecnie do korzystania z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | pictureInPicture": {
+    "message": "Strony, kt\u00f3re u\u017cywaj\u0105 obrazu w\u00a0obrazie, nie kwalifikuj\u0105 si\u0119 obecnie do korzystania z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | printing": {
+    "message": "Strony, kt\u00f3re wy\u015bwietlaj\u0105 interfejs drukowania, nie kwalifikuj\u0105 si\u0119 obecnie do korzystania z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | relatedActiveContentsExist": {
+    "message": "Strona zosta\u0142a otwarta za pomoc\u0105 \u201ewindow.open()\u201d i\u00a0inna karta si\u0119 do niej odnosi lub strona otworzy\u0142a okno."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | rendererProcessCrashed": {
+    "message": "W\u00a0trakcie renderowania strony w\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej wyst\u0105pi\u0142 b\u0142\u0105d."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | rendererProcessKilled": {
+    "message": "Proces renderowania strony w\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej zosta\u0142 przerwany."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedAudioCapturePermission": {
+    "message": "Strony, kt\u00f3re poprosi\u0142y o\u00a0przyznanie uprawnie\u0144 do nagrywania d\u017awi\u0119ku, nie kwalifikuj\u0105 si\u0119 obecnie do korzystania z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedBackForwardCacheBlockedSensors": {
+    "message": "Strony, kt\u00f3re poprosi\u0142y o\u00a0przyznanie uprawnie\u0144 dotycz\u0105cych czujnik\u00f3w, nie kwalifikuj\u0105 si\u0119 obecnie do korzystania z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedBackgroundWorkPermission": {
+    "message": "Strony, kt\u00f3re poprosi\u0142y o\u00a0przyznanie uprawnie\u0144 do pobierania lub synchronizacji w\u00a0tle, nie kwalifikuj\u0105 si\u0119 obecnie do korzystania z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedMIDIPermission": {
+    "message": "Strony, kt\u00f3re poprosi\u0142y o\u00a0przyznanie uprawnie\u0144 dotycz\u0105cych MIDI, nie kwalifikuj\u0105 si\u0119 obecnie do korzystania z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedNotificationsPermission": {
+    "message": "Strony, kt\u00f3re poprosi\u0142y o\u00a0przyznanie uprawnie\u0144 do powiadomie\u0144, nie kwalifikuj\u0105 si\u0119 obecnie do korzystania z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedStorageAccessGrant": {
+    "message": "Strony, kt\u00f3re poprosi\u0142y o\u00a0przyznanie dost\u0119pu do pami\u0119ci, nie kwalifikuj\u0105 si\u0119 obecnie do korzystania z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedVideoCapturePermission": {
+    "message": "Strony, kt\u00f3re poprosi\u0142y o\u00a0przyznanie uprawnie\u0144 do nagrywania film\u00f3w, nie kwalifikuj\u0105 si\u0119 obecnie do korzystania z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | schemeNotHTTPOrHTTPS": {
+    "message": "W\u00a0pami\u0119ci mog\u0105 by\u0107 przechowywane tylko strony, kt\u00f3rych schemat URL to HTTP/HTTPS."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerClaim": {
+    "message": "Strona zosta\u0142a wywo\u0142ana przez skrypt service worker podczas korzystania z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerPostMessage": {
+    "message": "Skrypt service worker pr\u00f3bowa\u0142 wys\u0142a\u0107 w\u0142a\u015bciwo\u015b\u0107 MessageEvent stronie w\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerUnregistration": {
+    "message": "Skrypt service worker by\u0142 niezarejestrowany, gdy strona znajdowa\u0142a si\u0119 w\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerVersionActivation": {
+    "message": "Strona zosta\u0142a usuni\u0119ta z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej z\u00a0powodu aktywacji skryptu service worker."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | sessionRestored": {
+    "message": "Przegl\u0105darka Chrome uruchomi\u0142a si\u0119 ponownie i\u00a0wyczy\u015bci\u0142a wpisy w\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | sharedWorker": {
+    "message": "Strony, kt\u00f3re u\u017cywaj\u0105 SharedWorker, nie kwalifikuj\u0105 si\u0119 obecnie do korzystania z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | speechRecognizer": {
+    "message": "Strony, kt\u00f3re u\u017cywaj\u0105 SpeechRecognizer, nie kwalifikuj\u0105 si\u0119 obecnie do korzystania z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | speechSynthesis": {
+    "message": "Strony, kt\u00f3re u\u017cywaj\u0105 SpeechSynthesis, nie kwalifikuj\u0105 si\u0119 obecnie do korzystania z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subframeIsNavigating": {
+    "message": "Element iframe na stronie rozpocz\u0105\u0142 nawigacj\u0119, kt\u00f3ra si\u0119 nie zako\u0144czy\u0142a."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subresourceHasCacheControlNoCache": {
+    "message": "Strony, kt\u00f3rych zasoby podrz\u0119dne maj\u0105 nag\u0142\u00f3wek cache-control:no-cache, nie mog\u0105 korzysta\u0107 z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subresourceHasCacheControlNoStore": {
+    "message": "Strony, kt\u00f3rych zasoby podrz\u0119dne maj\u0105 nag\u0142\u00f3wek cache-control:no-store, nie mog\u0105 korzysta\u0107 z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | timeout": {
+    "message": "Strona przekroczy\u0142a limit czasu w\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej i\u00a0wygas\u0142a."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | timeoutPuttingInCache": {
+    "message": "Strona przekroczy\u0142a limit czasu w\u00a0trakcie zapisywania w\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej (prawdopodobnie z\u00a0powodu d\u0142ugotrwa\u0142ych wyra\u017ce\u0144 pagehide)."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | unloadHandlerExistsInMainFrame": {
+    "message": "Strona ma wyra\u017cenie unload w\u00a0ramce g\u0142\u00f3wnej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | unloadHandlerExistsInSubFrame": {
+    "message": "Strona ma wyra\u017cenie unload w\u00a0ramce podrz\u0119dnej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | userAgentOverrideDiffers": {
+    "message": "Przegl\u0105darka zmieni\u0142a nag\u0142\u00f3wek zast\u0119powania klienta u\u017cytkownika."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | wasGrantedMediaAccess": {
+    "message": "Strony, kt\u00f3re maj\u0105 przyznany dost\u0119p do nagrywania filmu lub d\u017awi\u0119ku, nie kwalifikuj\u0105 si\u0119 obecnie do korzystania z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webDatabase": {
+    "message": "Strony, kt\u00f3re u\u017cywaj\u0105 WebDatabase, nie kwalifikuj\u0105 si\u0119 obecnie do korzystania z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webHID": {
+    "message": "Strony, kt\u00f3re u\u017cywaj\u0105 WebHID, nie kwalifikuj\u0105 si\u0119 obecnie do korzystania z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webLocks": {
+    "message": "Strony, kt\u00f3re u\u017cywaj\u0105 WebLocks, nie kwalifikuj\u0105 si\u0119 obecnie do korzystania z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webNfc": {
+    "message": "Strony, kt\u00f3re u\u017cywaj\u0105 WebNfc, nie kwalifikuj\u0105 si\u0119 obecnie do korzystania z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webOTPService": {
+    "message": "Strony, kt\u00f3re u\u017cywaj\u0105 WebOTPService, nie kwalifikuj\u0105 si\u0119 obecnie do korzystania z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webRTC": {
+    "message": "Strony z\u00a0WebRTC nie mog\u0105 korzysta\u0107 z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webRTCSticky": {
+    "message": "Pami\u0119\u0107 podr\u0119czna stanu strony internetowej jest wy\u0142\u0105czona, poniewa\u017c u\u017cyto WebRTC."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webShare": {
+    "message": "Strony, kt\u00f3re u\u017cywaj\u0105 WebShare, nie kwalifikuj\u0105 si\u0119 obecnie do korzystania z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webSocket": {
+    "message": "Strony z\u00a0WebSocket nie mog\u0105 korzysta\u0107 z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webSocketSticky": {
+    "message": "Pami\u0119\u0107 podr\u0119czna stanu strony internetowej jest wy\u0142\u0105czona, poniewa\u017c korzystasz z\u00a0WebSocket."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webTransport": {
+    "message": "Strony z\u00a0WebTransport nie mog\u0105 korzysta\u0107 z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webTransportSticky": {
+    "message": "Pami\u0119\u0107 podr\u0119czna stanu strony internetowej jest wy\u0142\u0105czona, poniewa\u017c korzystasz z\u00a0WebTransport."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webXR": {
+    "message": "Strony, kt\u00f3re u\u017cywaj\u0105 WebXR, nie kwalifikuj\u0105 si\u0119 obecnie do korzystania z\u00a0pami\u0119ci podr\u0119cznej stanu strony internetowej."
+  }
+}

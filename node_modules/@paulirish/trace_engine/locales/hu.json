@@ -1,0 +1,908 @@
+{
+  "generated/Deprecation.ts | AuthorizationCoveredByWildcard": {
+    "message": "A CORS Access-Control-Allow-Headers kezel\u00e9s\u00e9ben a hiteles\u00edt\u00e9st nem fogja fedni a helyettes\u00edt\u0151 karakter (*)."
+  },
+  "generated/Deprecation.ts | CSSSelectorInternalMediaControlsOverlayCastButton": {
+    "message": "Az -internal-media-controls-overlay-cast-button v\u00e1laszt\u00f3 helyett a disableRemotePlayback attrib\u00fatumot kell haszn\u00e1lni az alap\u00e9rtelmezett Cast-integr\u00e1ci\u00f3 letilt\u00e1s\u00e1hoz."
+  },
+  "generated/Deprecation.ts | CSSValueAppearanceSliderVertical": {
+    "message": "A(z) slider-vertical CSS-megjelen\u00edt\u00e9si \u00e9rt\u00e9k nem szabv\u00e1nyos\u00edtott, ez\u00e9rt el fogjuk t\u00e1vol\u00edtani."
+  },
+  "generated/Deprecation.ts | CanRequestURLHTTPContainingNewline": {
+    "message": "Le vannak tiltva azok az er\u0151forr\u00e1sk\u00e9r\u00e9sek, amelyek eset\u00e9ben az URL-ek elt\u00e1vol\u00edtott \\(n|r|t) t\u00e9rk\u00f6zkaraktereket \u00e9s kisebb mint karaktereket (<) is tartalmaznak. Az ilyen er\u0151forr\u00e1sok bet\u00f6lt\u00e9se \u00e9rdek\u00e9ben t\u00e1vol\u00edtsa el az \u201e\u00faj sor\u201d jel\u00f6l\u00e9seket, \u00e9s k\u00f3dolja a kisebb mint karaktereket az olyan helyeken, mint az elemek attrib\u00fatum\u00e9rt\u00e9kei."
+  },
+  "generated/Deprecation.ts | CharsetAutoDetectionISO2022JP": {
+    "message": "Az ISO-2022-JP karakterk\u00e9szlet automatikus \u00e9szlel\u00e9se elavult, \u00e9s a k\u00f6zelj\u00f6v\u0151ben letilt\u00e1sra ker\u00fcl. Adja meg a karakterk\u00e9szletet a Tartalomt\u00edpus fejl\u00e9cben vagy egy metac\u00edmke haszn\u00e1lat\u00e1val (https://developer.mozilla.org/en-US/docs/Glossary/Character_encoding)."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesConnectionInfo": {
+    "message": "Az chrome.loadTimes() f\u00fcggv\u00e9nyt megsz\u00fcntett\u00fck. Haszn\u00e1lja helyette a szabv\u00e1nyos\u00edtott Navigation Timing 2 API-t."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesFirstPaintAfterLoadTime": {
+    "message": "A chrome.loadTimes() f\u00fcggv\u00e9nyt megsz\u00fcntett\u00fck, haszn\u00e1lja helyette a k\u00f6vetkez\u0151 szabv\u00e1nyos\u00edtott API-t: Paint Timing."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesWasAlternateProtocolAvailable": {
+    "message": "A chrome.loadTimes() f\u00fcggv\u00e9nyt megsz\u00fcntett\u00fck, haszn\u00e1lja helyette a k\u00f6vetkez\u0151t a szabv\u00e1nyos\u00edtott Navigation Timing 2 API keretein bel\u00fcl: nextHopProtocol."
+  },
+  "generated/Deprecation.ts | CookieWithTruncatingChar": {
+    "message": "A \\(0|r|n) karaktert tartalmaz\u00f3 cookie-kat a b\u00f6ng\u00e9sz\u0151 csonkol\u00e1s helyett el fogja utas\u00edtani."
+  },
+  "generated/Deprecation.ts | CrossOriginAccessBasedOnDocumentDomain": {
+    "message": "Az ugyanarra az eredetre vonatkoz\u00f3 h\u00e1zirendnek a document.domain be\u00e1ll\u00edt\u00e1s\u00e1val t\u00f6rt\u00e9n\u0151 enyh\u00edt\u00e9s\u00e9re szolg\u00e1l\u00f3 lehet\u0151s\u00e9get megsz\u00fcntett\u00fck, \u00e9s alap\u00e9rtelmez\u00e9s szerint le lesz tiltva. Ez a megsz\u00fcntet\u00e9si figyelmeztet\u00e9s azokra az eredeteken \u00e1t\u00edvel\u0151 hozz\u00e1f\u00e9r\u00e9sekre \u00e9rv\u00e9nyes, amelyek a document.domain be\u00e1ll\u00edt\u00e1s\u00e1val lettek enged\u00e9lyezve."
+  },
+  "generated/Deprecation.ts | CrossOriginWindowAlert": {
+    "message": "A window.alert eredeteken \u00e1t\u00edvel\u0151 iframe-ekb\u0151l val\u00f3 aktiv\u00e1l\u00e1s\u00e1nak lehet\u0151s\u00e9g\u00e9t megsz\u00fcntett\u00fck, \u00e9s a j\u00f6v\u0151ben el fogjuk t\u00e1vol\u00edtani."
+  },
+  "generated/Deprecation.ts | CrossOriginWindowConfirm": {
+    "message": "A window.confirm eredeteken \u00e1t\u00edvel\u0151 iframe-ekb\u0151l val\u00f3 aktiv\u00e1l\u00e1s\u00e1nak lehet\u0151s\u00e9g\u00e9t megsz\u00fcntett\u00fck, \u00e9s a j\u00f6v\u0151ben el fogjuk t\u00e1vol\u00edtani."
+  },
+  "generated/Deprecation.ts | DOMMutationEvents": {
+    "message": "A DOM-mut\u00e1ci\u00f3s esem\u00e9nyek, k\u00f6zt\u00fck a DOMSubtreeModified, a DOMNodeInserted, a DOMNodeRemoved, a DOMNodeRemovedFromDocument, a DOMNodeInsertedIntoDocument \u00e9s a DOMCharacterDataModified elavultak (https://w3c.github.io/uievents/#legacy-event-types), \u00e9s el lesznek t\u00e1vol\u00edtva. Haszn\u00e1lja helyett\u00fck a k\u00f6vetkez\u0151t: MutationObserver."
+  },
+  "generated/Deprecation.ts | DataUrlInSvgUse": {
+    "message": "Adatok t\u00e1mogat\u00e1sa: az SVGUseElement elemben l\u00e9v\u0151 URL-ek elavultak, \u00e9s a j\u00f6v\u0151ben el fogjuk t\u00e1vol\u00edtani \u0151ket."
+  },
+  "generated/Deprecation.ts | GeolocationInsecureOrigin": {
+    "message": "A getCurrentPosition() \u00e9s watchPosition() f\u00fcggv\u00e9nyek t\u00f6bb\u00e9 nem m\u0171k\u00f6dnek nem biztons\u00e1gos eredetek eset\u00e9ben. A funkci\u00f3 haszn\u00e1lat\u00e1hoz fontolja meg az alkalmaz\u00e1s biztons\u00e1gos eredetre (pl. HTTPS-re) val\u00f3 m\u00f3dos\u00edt\u00e1s\u00e1t. Tov\u00e1bbi r\u00e9szletek: https://goo.gle/chrome-insecure-origins."
+  },
+  "generated/Deprecation.ts | GeolocationInsecureOriginDeprecatedNotRemoved": {
+    "message": "A k\u00f6vetkez\u0151 f\u00fcggv\u00e9nyeket megsz\u00fcntett\u00fck a nem biztons\u00e1gos eredetek eset\u00e9ben: getCurrentPosition() \u00e9s watchPosition(). A funkci\u00f3 haszn\u00e1lat\u00e1hoz fontolja meg az alkalmaz\u00e1s biztons\u00e1gos eredetre (pl. HTTPS-re) val\u00f3 m\u00f3dos\u00edt\u00e1s\u00e1t. Tov\u00e1bbi r\u00e9szletek: https://goo.gle/chrome-insecure-origins."
+  },
+  "generated/Deprecation.ts | GetUserMediaInsecureOrigin": {
+    "message": "A getUserMedia() f\u00fcggv\u00e9ny t\u00f6bb\u00e9 nem m\u0171k\u00f6dik nem biztons\u00e1gos eredetek eset\u00e9ben. A funkci\u00f3 haszn\u00e1lat\u00e1hoz fontolja meg az alkalmaz\u00e1s biztons\u00e1gos eredetre (pl. HTTPS-re) val\u00f3 m\u00f3dos\u00edt\u00e1s\u00e1t. Tov\u00e1bbi r\u00e9szletek: https://goo.gle/chrome-insecure-origins."
+  },
+  "generated/Deprecation.ts | H1UserAgentFontSizeInSection": {
+    "message": "Tal\u00e1ltunk egy <h1> c\u00edmk\u00e9t egy <article>, <aside>, <nav> vagy <section> c\u00edmke k\u00f6z\u00f6tt, amelyn\u00e9l nincs megadva a bet\u0171m\u00e9ret. A c\u00edmsor sz\u00f6veg\u00e9nek m\u00e9rete nemsok\u00e1ra megv\u00e1ltozik ebben a b\u00f6ng\u00e9sz\u0151ben. Tov\u00e1bbi inform\u00e1ci\u00f3: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#specifying_a_uniform_font_size_for_h1."
+  },
+  "generated/Deprecation.ts | HostCandidateAttributeGetter": {
+    "message": "A(z) RTCPeerConnectionIceErrorEvent.hostCandidate elemet megsz\u00fcntett\u00fck. Haszn\u00e1lja helyette a k\u00f6vetkez\u0151k valamelyik\u00e9t: RTCPeerConnectionIceErrorEvent.address vagy RTCPeerConnectionIceErrorEvent.port."
+  },
+  "generated/Deprecation.ts | IdentityDigitalCredentials": {
+    "message": "A digit\u00e1lis hiteles\u00edt\u00e9si adatokra vonatkoz\u00f3 navigator.credentials.get()-k\u00e9r\u00e9s ezen form\u00e1tuma elavult. M\u00f3dos\u00edtsa a h\u00edv\u00e1st az \u00faj form\u00e1tum haszn\u00e1lat\u00e1hoz."
+  },
+  "generated/Deprecation.ts | IdentityInCanMakePaymentEvent": {
+    "message": "A keresked\u0151i eredetet \u00e9s a(z) canmakepayment service worker-esem\u00e9nyb\u0151l sz\u00e1rmaz\u00f3 tetsz\u0151leges adatokat megsz\u00fcntett\u00fck, \u00e9s elt\u00e1vol\u00edtjuk \u0151ket: topOrigin, paymentRequestOrigin, methodData, modifiers."
+  },
+  "generated/Deprecation.ts | InsecurePrivateNetworkSubresourceRequest": {
+    "message": "A webhely olyan h\u00e1l\u00f3zatb\u00f3l ig\u00e9nyelt aler\u0151forr\u00e1st, amelyhez csak a felhaszn\u00e1l\u00f3i kiemelt h\u00e1l\u00f3zati poz\u00edci\u00f3ja miatt tudott hozz\u00e1f\u00e9rni. Az ilyen k\u00e9relmek l\u00e1that\u00f3v\u00e1 teszik a nem nyilv\u00e1nos eszk\u00f6z\u00f6ket \u00e9s szervereket az interneten, \u00e9s \u00edgy n\u00f6velik a webhelyk\u00f6zi k\u00e9r\u00e9sek hamis\u00edt\u00e1s\u00e1val (CSRF) elk\u00f6vetett t\u00e1mad\u00e1sok \u00e9s az inform\u00e1ci\u00f3sziv\u00e1rg\u00e1s kock\u00e1zat\u00e1t. A kock\u00e1zatok cs\u00f6kkent\u00e9se \u00e9rdek\u00e9ben a Chrome megsz\u00fcnteti a nem nyilv\u00e1nos r\u00e9szer\u0151forr\u00e1sokhoz ir\u00e1nyul\u00f3 olyan k\u00e9relmeket, amelyeket nem biztons\u00e1gos k\u00f6rnyezetb\u0151l ind\u00edtanak, \u00e9s elkezdi blokkolni \u0151ket."
+  },
+  "generated/Deprecation.ts | InterestGroupDailyUpdateUrl": {
+    "message": "A(z) InterestGroups joinAdInterestGroup() strukt\u00far\u00e1nak \u00e1tadott dailyUpdateUrl mez\u0151j\u00e9t \u00e1tnevezte a rendszer a k\u00f6vetkez\u0151re, hogy pontosabban kifejezze a viselked\u00e9s\u00e9t: updateUrl."
+  },
+  "generated/Deprecation.ts | IntlV8BreakIterator": {
+    "message": "A(z) Intl.v8BreakIterator param\u00e9tert megsz\u00fcntett\u00fck. Haszn\u00e1lja helyette a k\u00f6vetkez\u0151t: Intl.Segmenter."
+  },
+  "generated/Deprecation.ts | LocalCSSFileExtensionRejected": {
+    "message": "file: URL-ekb\u0151l csak akkor lehet CSS-t bet\u00f6lteni, ha az URL-ek .css f\u00e1jlkiterjeszt\u00e9sre v\u00e9gz\u0151dnek."
+  },
+  "generated/Deprecation.ts | MediaSourceAbortRemove": {
+    "message": "Megsz\u00fcntett\u00fck a SourceBuffer.abort() haszn\u00e1lat\u00e1nak lehet\u0151s\u00e9g\u00e9t a remove() f\u00fcggv\u00e9ny aszinkron tartom\u00e1nyelt\u00e1vol\u00edt\u00e1s\u00e1nak megszak\u00edt\u00e1s\u00e1ra a specifik\u00e1ci\u00f3k v\u00e1ltoz\u00e1sa miatt. A funkci\u00f3 t\u00e1mogat\u00e1s\u00e1t is megsz\u00fcntetj\u00fck a j\u00f6v\u0151ben. Ebben az esetben \u00e9rdemes meghallgatnia a k\u00f6vetkez\u0151 esem\u00e9nyt:updateend. Az abort() csak arra szolg\u00e1l, hogy megszak\u00edtson egy aszinkron m\u00e9diatartalom-hozz\u00e1f\u0171z\u00e9st, vagy hogy vissza\u00e1ll\u00edtsa az elemz\u0151 \u00e1llapot\u00e1t."
+  },
+  "generated/Deprecation.ts | MediaSourceDurationTruncatingBuffered": {
+    "message": "A specifik\u00e1ci\u00f3k v\u00e1ltoz\u00e1sa miatt megsz\u00fcntett\u00fck annak lehet\u0151s\u00e9g\u00e9t, hogy a MediaSource.duration \u00e9rt\u00e9k\u00e9t a pufferelt \u00e9s k\u00f3dolt keretek legmagasabb prezent\u00e1ci\u00f3s id\u0151b\u00e9lyege al\u00e1 lehessen be\u00e1ll\u00edtani. A csonkolt \u00e9s pufferelt m\u00e9diatartalmak implicit elt\u00e1vol\u00edt\u00e1s\u00e1nak t\u00e1mogat\u00e1s\u00e1t meg fogjuk sz\u00fcntetni a j\u00f6v\u0151ben. Helyette explicit remove(newDuration, oldDuration) m\u0171veletet hajtson v\u00e9gre az \u00f6sszes olyan sourceBuffers eset\u00e9ben, amelyn\u00e9l: newDuration < oldDuration."
+  },
+  "generated/Deprecation.ts | NoSysexWebMIDIWithoutPermission": {
+    "message": "A webes MIDI m\u00e9g akkor is enged\u00e9lyt k\u00e9r a haszn\u00e1latra, ha a SysEx nincs megadva itt: MIDIOptions."
+  },
+  "generated/Deprecation.ts | NotificationInsecureOrigin": {
+    "message": "A Notification API t\u00f6bb\u00e9 nem haszn\u00e1lhat\u00f3 nem biztons\u00e1gos helyek eset\u00e9ben. Fontolja meg az alkalmaz\u00e1s biztons\u00e1gos eredetre (pl. HTTPS-re) val\u00f3 m\u00f3dos\u00edt\u00e1s\u00e1t. Tov\u00e1bbi r\u00e9szletek: https://goo.gle/chrome-insecure-origins."
+  },
+  "generated/Deprecation.ts | NotificationPermissionRequestedIframe": {
+    "message": "A Notification API-ra vonatkoz\u00f3 enged\u00e9lyt t\u00f6bb\u00e9 nem lehet eredeteken \u00e1t\u00edvel\u0151 iframe-b\u0151l k\u00e9relmezni. Helyette ink\u00e1bb egy legfels\u0151 szint\u0171 kerett\u0151l k\u00e9rjen enged\u00e9lyt, vagy nyisson meg egy \u00faj ablakot."
+  },
+  "generated/Deprecation.ts | ObsoleteCreateImageBitmapImageOrientationNone": {
+    "message": "A createImageBitmap imageOrientation: 'none' lehet\u0151s\u00e9ge megsz\u0171nt. A createImageBitmap met\u00f3dust ehelyett az '{imageOrientation: 'from-image'}' lehet\u0151s\u00e9ggel haszn\u00e1lja."
+  },
+  "generated/Deprecation.ts | ObsoleteWebRtcCipherSuite": {
+    "message": "Partnere egy elavult (D)TLS-verzi\u00f3r\u00f3l t\u00e1rgyal. K\u00e9rje meg partner\u00e9t, hogy jav\u00edtsa ki ezt a probl\u00e9m\u00e1t."
+  },
+  "generated/Deprecation.ts | OverflowVisibleOnReplacedElement": {
+    "message": "Ha a(z) overflow: visible \u00e9rt\u00e9ket adja meg az img, video \u00e9s canvas c\u00edmk\u00e9ken, el\u0151fordulhat, hogy az elem hat\u00e1rain k\u00edv\u00fcl hoznak l\u00e9tre vizu\u00e1lis tartalmat. L\u00e1sd: https://github.com/WICG/shared-element-transitions/blob/main/debugging_overflow_on_images.md."
+  },
+  "generated/Deprecation.ts | PaymentInstruments": {
+    "message": "Megsz\u00fcntett\u00fck a k\u00f6vetkez\u0151t: paymentManager.instruments. Haszn\u00e1lja helyette az ig\u00e9ny szerinti telep\u00edt\u00e9st a fizet\u00e9skezel\u0151kh\u00f6z."
+  },
+  "generated/Deprecation.ts | PaymentRequestCSPViolation": {
+    "message": "A(z) PaymentRequest h\u00edv\u00e1s megker\u00fclte a Tartalombiztons\u00e1gi ir\u00e1nyelvek (CSP) connect-src utas\u00edt\u00e1s\u00e1t. Ez a megker\u00fcl\u00e9s elavult. Adja hozz\u00e1 a(z) PaymentRequest API-ban szerepl\u0151 fizet\u00e9si m\u00f3d azonos\u00edt\u00f3j\u00e1t (a[z] supportedMethods mez\u0151ben) a(z) connect-src CSP-utas\u00edt\u00e1shoz."
+  },
+  "generated/Deprecation.ts | PersistentQuotaType": {
+    "message": "A(z) StorageType.persistent elemet megsz\u00fcntett\u00fck. Haszn\u00e1lja helyette a szabv\u00e1nyos\u00edtott navigator.storage param\u00e9tert."
+  },
+  "generated/Deprecation.ts | PictureSourceSrc": {
+    "message": "A <picture> f\u00f6l\u00e9rendelt elemmel rendelkez\u0151 <source src> elem \u00e9rv\u00e9nytelen, ez\u00e9rt a rendszer figyelmen k\u00edv\u00fcl hagyja. Haszn\u00e1lja helyette a k\u00f6vetkez\u0151t: <source srcset>."
+  },
+  "generated/Deprecation.ts | PrefixedCancelAnimationFrame": {
+    "message": "A webkitCancelAnimationFrame szolg\u00e1ltat\u00f3specifikus. A szabv\u00e1nyos cancelAnimationFrame elemet haszn\u00e1lja helyette."
+  },
+  "generated/Deprecation.ts | PrefixedRequestAnimationFrame": {
+    "message": "A webkitRequestAnimationFrame szolg\u00e1ltat\u00f3specifikus. A szabv\u00e1nyos requestAnimationFrame elemet haszn\u00e1lja helyette."
+  },
+  "generated/Deprecation.ts | PrefixedVideoDisplayingFullscreen": {
+    "message": "A HTMLVideoElement.webkitDisplayingFullscreen elavult. Haszn\u00e1lja helyette a k\u00f6vetkez\u0151t: Document.fullscreenElement."
+  },
+  "generated/Deprecation.ts | PrefixedVideoEnterFullScreen": {
+    "message": "A HTMLVideoElement.webkitEnterFullScreen() elavult. Az Element.requestFullscreen() elemet haszn\u00e1lja helyette."
+  },
+  "generated/Deprecation.ts | PrefixedVideoEnterFullscreen": {
+    "message": "A HTMLVideoElement.webkitEnterFullscreen() elavult. Az Element.requestFullscreen() elemet haszn\u00e1lja helyette."
+  },
+  "generated/Deprecation.ts | PrefixedVideoExitFullScreen": {
+    "message": "A HTMLVideoElement.webkitExitFullScreen() elavult. A Document.exitFullscreen() elemet haszn\u00e1lja helyette."
+  },
+  "generated/Deprecation.ts | PrefixedVideoExitFullscreen": {
+    "message": "A HTMLVideoElement.webkitExitFullscreen() elavult. A Document.exitFullscreen() elemet haszn\u00e1lja helyette."
+  },
+  "generated/Deprecation.ts | PrefixedVideoSupportsFullscreen": {
+    "message": "A HTMLVideoElement.webkitSupportsFullscreen elavult. A Document.fullscreenEnabled elemet haszn\u00e1lja helyette."
+  },
+  "generated/Deprecation.ts | PrivacySandboxExtensionsAPI": {
+    "message": "Megsz\u00fcntetj\u00fck a(z) chrome.privacy.websites.privacySandboxEnabled API-t, de a visszamen\u0151leges kompatibilit\u00e1s \u00e9rdek\u00e9ben az M113-as kiad\u00e1sig akt\u00edv marad. Haszn\u00e1lja helyette a k\u00f6vetkez\u0151k valamelyik\u00e9t: chrome.privacy.websites.topicsEnabled, chrome.privacy.websites.fledgeEnabled vagy chrome.privacy.websites.adMeasurementEnabled. L\u00e1sd: https://developer.chrome.com/docs/extensions/reference/privacy/#property-websites-privacySandboxEnabled."
+  },
+  "generated/Deprecation.ts | RTCConstraintEnableDtlsSrtpFalse": {
+    "message": "A DtlsSrtpKeyAgreement korl\u00e1toz\u00e1st elt\u00e1vol\u00edtottuk. Olyan false \u00e9rt\u00e9ket adott meg enn\u00e9l a korl\u00e1toz\u00e1sn\u00e1l, amelyet a rendszer \u00fagy \u00e9rtelmez, hogy az elt\u00e1vol\u00edtott SDES key negotiation met\u00f3dust szeretn\u00e9 haszn\u00e1lni. Ezt a funkci\u00f3t elt\u00e1vol\u00edtottuk. Haszn\u00e1ljon helyette egy olyan szolg\u00e1ltat\u00e1st, amely t\u00e1mogatja a DTLS key negotiation m\u0171veletet."
+  },
+  "generated/Deprecation.ts | RTCConstraintEnableDtlsSrtpTrue": {
+    "message": "A DtlsSrtpKeyAgreement korl\u00e1toz\u00e1st elt\u00e1vol\u00edtottuk. Olyan true \u00e9rt\u00e9ket adott meg enn\u00e9l a korl\u00e1toz\u00e1sn\u00e1l, amely nem j\u00e1rt semmilyen hat\u00e1ssal, de a k\u00f3d rendben tart\u00e1sa \u00e9rdek\u00e9ben elt\u00e1vol\u00edthatja."
+  },
+  "generated/Deprecation.ts | RTCPeerConnectionGetStatsLegacyNonCompliant": {
+    "message": "A visszah\u00edv\u00e1son alapul\u00f3 getStats() f\u00fcggv\u00e9nyt megsz\u00fcntett\u00fck, \u00e9s el fogjuk t\u00e1vol\u00edtani. Helyette a specifik\u00e1ci\u00f3knak megfelel\u0151 getStats() f\u00fcggv\u00e9nyt haszn\u00e1lja."
+  },
+  "generated/Deprecation.ts | RangeExpand": {
+    "message": "A Range.expand() elavult. A Select.modify() elemet haszn\u00e1lja helyette."
+  },
+  "generated/Deprecation.ts | RequestedSubresourceWithEmbeddedCredentials": {
+    "message": "Le vannak tiltva azok az aler\u0151forr\u00e1s-k\u00e9r\u00e9sek, amelyek URL-jei be\u00e1gyazott hiteles\u00edt\u00e9si adatokat tartalmaznak (pl. https://user:pass@host/)."
+  },
+  "generated/Deprecation.ts | RtcpMuxPolicyNegotiate": {
+    "message": "Az rtcpMuxPolicy lehet\u0151s\u00e9get megsz\u00fcntett\u00fck, \u00e9s el fogjuk t\u00e1vol\u00edtani."
+  },
+  "generated/Deprecation.ts | SharedArrayBufferConstructedWithoutIsolation": {
+    "message": "A SharedArrayBuffer objektum megk\u00f6veteli az elt\u00e9r\u0151 eredetek elk\u00fcl\u00f6n\u00edt\u00e9s\u00e9t. Tov\u00e1bbi r\u00e9szletek: https://developer.chrome.com/blog/enabling-shared-array-buffer/."
+  },
+  "generated/Deprecation.ts | TextToSpeech_DisallowedByAutoplay": {
+    "message": "A felhaszn\u00e1l\u00f3i aktiv\u00e1l\u00e1si n\u00e9lk\u00fcli speechSynthesis.speak() f\u00fcggv\u00e9nyt megsz\u00fcntett\u00fck, \u00e9s el fogjuk t\u00e1vol\u00edtani."
+  },
+  "generated/Deprecation.ts | UnloadHandler": {
+    "message": "A ki\u00fcr\u00edt\u00e9si esem\u00e9nyfigyel\u0151k elavultak, \u00e9s el lesznek t\u00e1vol\u00edtva."
+  },
+  "generated/Deprecation.ts | V8SharedArrayBufferConstructedInExtensionWithoutIsolation": {
+    "message": "A SharedArrayBuffer haszn\u00e1lat\u00e1nak folytat\u00e1s\u00e1hoz a b\u0151v\u00edtm\u00e9nyekn\u00e9l enged\u00e9lyezni kell az elt\u00e9r\u0151 eredetek elk\u00fcl\u00f6n\u00edt\u00e9s\u00e9t. Tov\u00e1bbi inform\u00e1ci\u00f3: https://developer.chrome.com/docs/extensions/mv3/cross-origin-isolation/."
+  },
+  "generated/Deprecation.ts | XHRJSONEncodingDetection": {
+    "message": "Az XMLHttpRequest eset\u00e9ben az UTF-16 k\u00f3dol\u00e1st nem t\u00e1mogatja a v\u00e1lasz-JSON."
+  },
+  "generated/Deprecation.ts | XMLHttpRequestSynchronousInNonWorkerOutsideBeforeUnload": {
+    "message": "A f\u0151 sz\u00e1lon fut\u00f3 szinkron XMLHttpRequest f\u00fcggv\u00e9nyt megsz\u00fcntett\u00fck, mert h\u00e1tr\u00e1nyos hat\u00e1ssal van a v\u00e9gfelhaszn\u00e1l\u00f3i \u00e9lm\u00e9nyre. Tov\u00e1bbi inform\u00e1ci\u00f3: https://xhr.spec.whatwg.org/."
+  },
+  "models/trace/insights/CLSCulprits.ts | animation": {
+    "message": "Anim\u00e1ci\u00f3"
+  },
+  "models/trace/insights/CLSCulprits.ts | description": {
+    "message": "Az elrendez\u00e9smozg\u00e1sok akkor fordulnak el\u0151, amikor az elemek b\u00e1rminem\u0171 felhaszn\u00e1l\u00f3i interakci\u00f3 n\u00e9lk\u00fcl mozognak. [Vizsg\u00e1lja meg a elrendez\u00e9smozg\u00e1s okait](https://web.dev/articles/optimize-cls), p\u00e9ld\u00e1ul az elemeket hozz\u00e1ad\u00e1s\u00e1t, elt\u00e1vol\u00edt\u00e1s\u00e1t vagy az elrendez\u00e9s bet\u0171t\u00edpus\u00e1nak v\u00e1ltoz\u00e1s\u00e1t az oldal bet\u00f6lt\u0151d\u00e9sekor."
+  },
+  "models/trace/insights/CLSCulprits.ts | fontRequest": {
+    "message": "Bet\u0171t\u00edpus-k\u00e9relem"
+  },
+  "models/trace/insights/CLSCulprits.ts | injectedIframe": {
+    "message": "Iframe ker\u00fclt besz\u00far\u00e1sra"
+  },
+  "models/trace/insights/CLSCulprits.ts | layoutShiftCluster": {
+    "message": "Elrendez\u00e9smozg\u00e1s klasztere ekkor: {PH1}"
+  },
+  "models/trace/insights/CLSCulprits.ts | noCulprits": {
+    "message": "Nem siker\u00fclt \u00e9szlelni az elrendez\u00e9smozg\u00e1s okoz\u00f3it"
+  },
+  "models/trace/insights/CLSCulprits.ts | noLayoutShifts": {
+    "message": "Nincs elrendez\u00e9smozg\u00e1s"
+  },
+  "models/trace/insights/CLSCulprits.ts | title": {
+    "message": "Az elrendez\u00e9smozg\u00e1s okoz\u00f3i"
+  },
+  "models/trace/insights/CLSCulprits.ts | topCulprits": {
+    "message": "Az elrendez\u00e9smozg\u00e1s legfontosabb okai"
+  },
+  "models/trace/insights/CLSCulprits.ts | unsizedImages": {
+    "message": "Nem m\u00e9retezett k\u00e9pek"
+  },
+  "models/trace/insights/CLSCulprits.ts | worstCluster": {
+    "message": "Legrosszabb klaszter"
+  },
+  "models/trace/insights/CLSCulprits.ts | worstLayoutShiftCluster": {
+    "message": "Legrosszabb elrendez\u00e9smozg\u00e1s klasztere"
+  },
+  "models/trace/insights/Cache.ts | cacheTTL": {
+    "message": "Gyors\u00edt\u00f3t\u00e1r-TTL"
+  },
+  "models/trace/insights/Cache.ts | description": {
+    "message": "Ha a gyors\u00edt\u00f3t\u00e1rak \u00e9lettartama hossz\u00fa, gyorsabb\u00e1 v\u00e1lnak az oldal k\u00e9s\u0151bbi ism\u00e9telt megnyit\u00e1sai. [Tov\u00e1bbi inform\u00e1ci\u00f3](https://web.dev/uses-long-cache-ttl/)."
+  },
+  "models/trace/insights/Cache.ts | noRequestsToCache": {
+    "message": "Nincsenek nem hat\u00e9kony gyors\u00edt\u00f3t\u00e1r-h\u00e1zirenddel rendelkez\u0151 k\u00e9relmek"
+  },
+  "models/trace/insights/Cache.ts | others": {
+    "message": "Tov\u00e1bbi {PH1} felhaszn\u00e1l\u00f3"
+  },
+  "models/trace/insights/Cache.ts | requestColumn": {
+    "message": "K\u00e9r\u00e9s"
+  },
+  "models/trace/insights/Cache.ts | title": {
+    "message": "Hat\u00e9kony gyors\u00edt\u00f3t\u00e1r-\u00e9lettartam haszn\u00e1lata"
+  },
+  "models/trace/insights/DOMSize.ts | description": {
+    "message": "A nagy m\u00e9ret\u0171 DOM megn\u00f6velheti a st\u00edlussz\u00e1m\u00edt\u00e1sok \u00e9s az elrendez\u00e9s-\u00fajrasz\u00e1m\u00edt\u00e1sok id\u0151tartam\u00e1t, ami befoly\u00e1solja az oldal reag\u00e1l\u00f3k\u00e9pess\u00e9g\u00e9t. A nagy m\u00e9ret\u0171 DOM megn\u00f6veli a mem\u00f3riahaszn\u00e1latot is. [Tov\u00e1bbi inform\u00e1ci\u00f3 a t\u00fal nagy m\u00e9ret\u0171 DOM elker\u00fcl\u00e9s\u00e9r\u0151l](https://developer.chrome.com/docs/lighthouse/performance/dom-size/)."
+  },
+  "models/trace/insights/DOMSize.ts | element": {
+    "message": "Elemek"
+  },
+  "models/trace/insights/DOMSize.ts | maxChildren": {
+    "message": "A legt\u00f6bb al\u00e1rendelt elem"
+  },
+  "models/trace/insights/DOMSize.ts | maxDOMDepth": {
+    "message": "DOM-m\u00e9lys\u00e9g"
+  },
+  "models/trace/insights/DOMSize.ts | statistic": {
+    "message": "Jellemz\u0151"
+  },
+  "models/trace/insights/DOMSize.ts | title": {
+    "message": "DOM-m\u00e9ret optimaliz\u00e1l\u00e1sa"
+  },
+  "models/trace/insights/DOMSize.ts | totalElements": {
+    "message": "Elemek sz\u00e1ma"
+  },
+  "models/trace/insights/DOMSize.ts | value": {
+    "message": "\u00c9rt\u00e9k"
+  },
+  "models/trace/insights/DocumentLatency.ts | description": {
+    "message": "Az els\u0151 h\u00e1l\u00f3zati k\u00e9relem a legfontosabb.  Cs\u00f6kkentse a v\u00e1rakoz\u00e1si idej\u00e9t az \u00e1tir\u00e1ny\u00edt\u00e1sok elker\u00fcl\u00e9s\u00e9vel, gyors szerverv\u00e1lasz biztos\u00edt\u00e1s\u00e1val \u00e9s a sz\u00f6vegt\u00f6m\u00f6r\u00edt\u00e9s enged\u00e9lyez\u00e9s\u00e9vel."
+  },
+  "models/trace/insights/DocumentLatency.ts | failedRedirects": {
+    "message": "Voltak \u00e1tir\u00e1ny\u00edt\u00e1sok"
+  },
+  "models/trace/insights/DocumentLatency.ts | failedServerResponseTime": {
+    "message": "A szerver lassan v\u00e1laszolt"
+  },
+  "models/trace/insights/DocumentLatency.ts | failedTextCompression": {
+    "message": "Nincs alkalmazva t\u00f6m\u00f6r\u00edt\u00e9s"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingRedirects": {
+    "message": "Elker\u00fcli az \u00e1tir\u00e1ny\u00edt\u00e1sokat"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingServerResponseTime": {
+    "message": "A szerver gyorsan v\u00e1laszol"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingTextCompression": {
+    "message": "Sz\u00f6vegt\u00f6m\u00f6r\u00edt\u00e9s alkalmazva"
+  },
+  "models/trace/insights/DocumentLatency.ts | redirectsLabel": {
+    "message": "\u00c1tir\u00e1ny\u00edt\u00e1sok"
+  },
+  "models/trace/insights/DocumentLatency.ts | serverResponseTimeLabel": {
+    "message": "Szerver v\u00e1laszideje"
+  },
+  "models/trace/insights/DocumentLatency.ts | title": {
+    "message": "Dokumentumk\u00e9r\u00e9s v\u00e1rakoz\u00e1si ideje"
+  },
+  "models/trace/insights/DocumentLatency.ts | uncompressedDownload": {
+    "message": "Nem t\u00f6m\u00f6r\u00edtett let\u00f6lt\u00e9s"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | columnDuplicatedBytes": {
+    "message": "Ism\u00e9tl\u0151d\u0151 b\u00e1jtok"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | columnSource": {
+    "message": "Forr\u00e1s"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | description": {
+    "message": "T\u00e1vol\u00edtsa el a csomagjaib\u00f3l a nagy m\u00e9ret\u0171, ism\u00e9tl\u0151d\u0151en el\u0151fordul\u00f3 JavaScript-modulokat, hogy kevesebb h\u00e1l\u00f3zati forgalmat okozzanak."
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | title": {
+    "message": "Ism\u00e9tl\u0151d\u0151 JavaScript"
+  },
+  "models/trace/insights/FontDisplay.ts | description": {
+    "message": "A sz\u00f6veg k\u00f6vetkezetes l\u00e1that\u00f3s\u00e1g\u00e1nak biztos\u00edt\u00e1sa \u00e9rdek\u00e9ben fontolja meg a [font-display](https://developer.chrome.com/blog/font-display) be\u00e1ll\u00edt\u00e1s\u00e1t a k\u00f6vetkez\u0151k egyik\u00e9re: swap vagy optional. A swap tov\u00e1bb optimaliz\u00e1lhat\u00f3 az elrendez\u00e9smozg\u00e1sok m\u00e9rs\u00e9kl\u00e9se \u00e9rdek\u00e9ben a [bet\u0171m\u00e9retmutat\u00f3-fel\u00fclb\u00edr\u00e1l\u00e1sokkal](https://developer.chrome.com/blog/font-fallbacks)."
+  },
+  "models/trace/insights/FontDisplay.ts | fontColumn": {
+    "message": "Bet\u0171t\u00edpus"
+  },
+  "models/trace/insights/FontDisplay.ts | title": {
+    "message": "Bet\u0171t\u00edpus megjelen\u00edt\u00e9se"
+  },
+  "models/trace/insights/FontDisplay.ts | wastedTimeColumn": {
+    "message": "Elvesztegetett id\u0151"
+  },
+  "models/trace/insights/ForcedReflow.ts | anonymous": {
+    "message": "(n\u00e9vtelen)"
+  },
+  "models/trace/insights/ForcedReflow.ts | description": {
+    "message": "Sok API \u2013 jellemz\u0151en az elrendez\u00e9s geometri\u00e1j\u00e1t olvas\u00f3 API \u2013 a szkriptv\u00e9grehajt\u00e1s sz\u00fcneteltet\u00e9s\u00e9re k\u00e9nyszer\u00edti a renderel\u0151motort a st\u00edlus \u00e9s az elrendez\u00e9s kisz\u00e1m\u00edt\u00e1sa \u00e9rdek\u00e9ben. Tov\u00e1bbi inform\u00e1ci\u00f3 az [\u00fajrasz\u00e1m\u00edt\u00e1s k\u00e9nyszer\u00edt\u00e9s\u00e9r\u0151l](https://developers.google.com/web/fundamentals/performance/rendering/avoid-large-complex-layouts-and-layout-thrashing#avoid-forced-synchronous-layouts) \u00e9s a lehets\u00e9ges megold\u00e1sokr\u00f3l."
+  },
+  "models/trace/insights/ForcedReflow.ts | relatedStackTrace": {
+    "message": "Veremkivonat"
+  },
+  "models/trace/insights/ForcedReflow.ts | title": {
+    "message": "K\u00e9nyszer\u00edtett \u00fajrasz\u00e1m\u00edt\u00e1s"
+  },
+  "models/trace/insights/ForcedReflow.ts | topTimeConsumingFunctionCall": {
+    "message": "Legid\u0151ig\u00e9nyesebb f\u00fcggv\u00e9nyh\u00edv\u00e1s"
+  },
+  "models/trace/insights/ForcedReflow.ts | totalReflowTime": {
+    "message": "Teljes \u00fajrasz\u00e1m\u00edt\u00e1si id\u0151"
+  },
+  "models/trace/insights/ForcedReflow.ts | unattributed": {
+    "message": "[nem oszt\u00e1lyozott]"
+  },
+  "models/trace/insights/ImageDelivery.ts | description": {
+    "message": "A k\u00e9pek let\u00f6lt\u00e9si idej\u00e9nek cs\u00f6kkent\u00e9s\u00e9vel jav\u00edthatja az oldal \u00e9s az LCP \u00e9szlelt bet\u00f6lt\u00e9si idej\u00e9t. [Tov\u00e1bbi inform\u00e1ci\u00f3 a k\u00e9pm\u00e9ret optimaliz\u00e1l\u00e1s\u00e1r\u00f3l](https://developer.chrome.com/docs/lighthouse/performance/uses-optimized-images/)"
+  },
+  "models/trace/insights/ImageDelivery.ts | estimatedSavings": {
+    "message": "{PH1} (becs\u00fclt \u2013 {PH2})"
+  },
+  "models/trace/insights/ImageDelivery.ts | noOptimizableImages": {
+    "message": "Nincs optimaliz\u00e1lhat\u00f3 k\u00e9p"
+  },
+  "models/trace/insights/ImageDelivery.ts | optimizeFile": {
+    "message": "F\u00e1jlm\u00e9ret optimaliz\u00e1l\u00e1sa"
+  },
+  "models/trace/insights/ImageDelivery.ts | others": {
+    "message": "Tov\u00e1bbi {PH1} felhaszn\u00e1l\u00f3"
+  },
+  "models/trace/insights/ImageDelivery.ts | title": {
+    "message": "K\u00e9ptov\u00e1bb\u00edt\u00e1s jav\u00edt\u00e1sa"
+  },
+  "models/trace/insights/ImageDelivery.ts | useCompression": {
+    "message": "A k\u00e9p t\u00f6m\u00f6r\u00edt\u00e9si t\u00e9nyez\u0151j\u00e9nek n\u00f6vel\u00e9s\u00e9vel jav\u00edthatja a k\u00e9p let\u00f6lt\u00e9si m\u00e9ret\u00e9t."
+  },
+  "models/trace/insights/ImageDelivery.ts | useModernFormat": {
+    "message": "Modern k\u00e9pform\u00e1tum (WebP, AVIF) haszn\u00e1lat\u00e1val vagy k\u00e9pek t\u00f6m\u00f6r\u00edt\u00e9s\u00e9nek n\u00f6vel\u00e9s\u00e9vel jav\u00edthat\u00f3 a k\u00e9p let\u00f6lt\u00e9si m\u00e9rete."
+  },
+  "models/trace/insights/ImageDelivery.ts | useResponsiveSize": {
+    "message": "Ez a k\u00e9pf\u00e1jl nagyobb, mint amennyire a megjelen\u00edtett m\u00e9ret\u00e9hez ({PH2}) sz\u00fcks\u00e9g van ({PH1}). A k\u00e9p let\u00f6lt\u00e9si m\u00e9ret\u00e9nek cs\u00f6kkent\u00e9s\u00e9hez haszn\u00e1ljon reszponz\u00edv k\u00e9peket."
+  },
+  "models/trace/insights/ImageDelivery.ts | useVideoFormat": {
+    "message": "Ha GIF-ek helyett vide\u00f3form\u00e1tumokat haszn\u00e1l, azzal jav\u00edthatja az anim\u00e1lt tartalom let\u00f6lt\u00e9si m\u00e9ret\u00e9t."
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | description": {
+    "message": "A leghosszabb f\u00e1zissal kezdje a vizsg\u00e1latot. [A k\u00e9s\u00e9sek minimaliz\u00e1lhat\u00f3k](https://web.dev/articles/optimize-inp#optimize_interactions). A feldolgoz\u00e1si id\u0151 cs\u00f6kkent\u00e9se \u00e9rdek\u00e9ben [optimaliz\u00e1lja a f\u0151 sz\u00e1l k\u00f6lts\u00e9geit](https://web.dev/articles/optimize-long-tasks), gyakran a JS-t."
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | duration": {
+    "message": "Id\u0151tartam"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | inputDelay": {
+    "message": "Bemeneti k\u00e9s\u00e9s"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | noInteractions": {
+    "message": "Nincs \u00e9szlelt interakci\u00f3"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | phase": {
+    "message": "Szakasz"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | presentationDelay": {
+    "message": "Prezent\u00e1ci\u00f3 k\u00e9s\u00e9se"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | processingDuration": {
+    "message": "Feldolgoz\u00e1s id\u0151tartama"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | title": {
+    "message": "INP szakaszonk\u00e9nt"
+  },
+  "models/trace/insights/LCPDiscovery.ts | description": {
+    "message": "Optimaliz\u00e1lja az LCP-t \u00fagy, hogy az LCP-k\u00e9pet azonnal [felfedezhet\u0151v\u00e9](https://web.dev/articles/optimize-lcp#1_eliminate_resource_load_delay) teszi a HTML-ben, \u00e9s [elker\u00fcli a k\u00e9sleltetett bet\u00f6lt\u00e9st](https://web.dev/articles/lcp-lazy-loading)."
+  },
+  "models/trace/insights/LCPDiscovery.ts | fetchPriorityApplied": {
+    "message": "fetchpriority=high alkalmazva"
+  },
+  "models/trace/insights/LCPDiscovery.ts | fetchPriorityShouldBeApplied": {
+    "message": "A fetchpriority=high attrib\u00fatumot kell alkalmazni"
+  },
+  "models/trace/insights/LCPDiscovery.ts | lazyLoadNotApplied": {
+    "message": "k\u00e9sleltetett bet\u00f6lt\u00e9s nincs alkalmazva"
+  },
+  "models/trace/insights/LCPDiscovery.ts | lcpLoadDelay": {
+    "message": "Az LCP-k\u00e9p a legkor\u00e1bbi kezd\u0151pont ut\u00e1n {PH1} eltelt\u00e9vel t\u00f6lt\u0151d\u00f6tt be."
+  },
+  "models/trace/insights/LCPDiscovery.ts | noLcp": {
+    "message": "Nem \u00e9szlelhet\u0151 LCP"
+  },
+  "models/trace/insights/LCPDiscovery.ts | noLcpResource": {
+    "message": "Nem \u00e9szlelt\u00fcnk LCP-er\u0151forr\u00e1st, mert az LCP nem k\u00e9p"
+  },
+  "models/trace/insights/LCPDiscovery.ts | requestDiscoverable": {
+    "message": "A k\u00e9relem a kezdeti dokumentumban tal\u00e1lhat\u00f3"
+  },
+  "models/trace/insights/LCPDiscovery.ts | title": {
+    "message": "LCP-k\u00e9relem felfedez\u00e9se"
+  },
+  "models/trace/insights/LCPPhases.ts | description": {
+    "message": "Minden [f\u00e1zisnak megvannak a maga specifikus jav\u00edt\u00e1si strat\u00e9gi\u00e1i](https://web.dev/articles/optimize-lcp#lcp-breakdown). Ide\u00e1lis esetben az LCP-id\u0151 nagy r\u00e9sz\u00e9t az er\u0151forr\u00e1sok bet\u00f6lt\u00e9s\u00e9re kell ford\u00edtani, nem pedig k\u00e9s\u00e9sekre."
+  },
+  "models/trace/insights/LCPPhases.ts | duration": {
+    "message": "Id\u0151tartam"
+  },
+  "models/trace/insights/LCPPhases.ts | elementRenderDelay": {
+    "message": "Elem renderel\u00e9si k\u00e9s\u00e9se"
+  },
+  "models/trace/insights/LCPPhases.ts | fieldDuration": {
+    "message": "Mez\u0151 75. percentilise"
+  },
+  "models/trace/insights/LCPPhases.ts | noLcp": {
+    "message": "Nem \u00e9szlelhet\u0151 LCP"
+  },
+  "models/trace/insights/LCPPhases.ts | phase": {
+    "message": "Szakasz"
+  },
+  "models/trace/insights/LCPPhases.ts | resourceLoadDelay": {
+    "message": "Er\u0151forr\u00e1s bet\u00f6lt\u00e9s\u00e9nek k\u00e9s\u00e9se"
+  },
+  "models/trace/insights/LCPPhases.ts | resourceLoadDuration": {
+    "message": "Er\u0151forr\u00e1s bet\u00f6lt\u00e9si ideje"
+  },
+  "models/trace/insights/LCPPhases.ts | timeToFirstByte": {
+    "message": "Time to First Byte"
+  },
+  "models/trace/insights/LCPPhases.ts | title": {
+    "message": "LCP szakaszonk\u00e9nt"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | columnScript": {
+    "message": "Szkript"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | columnWastedBytes": {
+    "message": "Elvesztegetett b\u00e1jtok"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | description": {
+    "message": "A polyfillek \u00e9s az \u00e1talak\u00edt\u00e1sok lehet\u0151v\u00e9 teszik, hogy a r\u00e9gi b\u00f6ng\u00e9sz\u0151k is haszn\u00e1lhass\u00e1k az \u00fajabb JavaScript-funkci\u00f3kat. A modern b\u00f6ng\u00e9sz\u0151k eset\u00e9ben azonban sok polyfill \u00e9s \u00e1talak\u00edt\u00e1s sz\u00fcks\u00e9gtelen. Fontolja meg a JavaScript-buildk\u00e9sz\u00edt\u00e9si folyamat m\u00f3dos\u00edt\u00e1s\u00e1t, hogy az ne alak\u00edtsa \u00e1t a [Baseline](https://web.dev/articles/baseline-and-polyfills) funkci\u00f3kat, kiv\u00e9ve, ha tudja, hogy t\u00e1mogatnia kell a r\u00e9gi b\u00f6ng\u00e9sz\u0151ket. [Tov\u00e1bbi inform\u00e1ci\u00f3 arr\u00f3l, hogy a legt\u00f6bb webhely mi\u00e9rt tud \u00e1talak\u00edt\u00e1s n\u00e9lk\u00fcl ES6+ k\u00f3dot telep\u00edteni](https://philipwalton.com/articles/the-state-of-es5-on-the-web/)"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | title": {
+    "message": "R\u00e9gi JavaScript"
+  },
+  "models/trace/insights/ModernHTTP.ts | description": {
+    "message": "A HTTP/2 \u00e9s a HTTP/3 sz\u00e1mos el\u0151nyt ny\u00fajt a HTTP/1.1-hez k\u00e9pest (ilyen p\u00e9ld\u00e1ul a multiplex\u00e1l\u00e1s). [Tov\u00e1bbi inform\u00e1ci\u00f3 a modern HTTP haszn\u00e1lat\u00e1r\u00f3l](https://developer.chrome.com/docs/lighthouse/best-practices/uses-http2/)."
+  },
+  "models/trace/insights/ModernHTTP.ts | noOldProtocolRequests": {
+    "message": "Egy k\u00e9relem sem haszn\u00e1lta a HTTP/1.1 protokollt"
+  },
+  "models/trace/insights/ModernHTTP.ts | protocol": {
+    "message": "Protokoll"
+  },
+  "models/trace/insights/ModernHTTP.ts | request": {
+    "message": "K\u00e9r\u00e9s"
+  },
+  "models/trace/insights/ModernHTTP.ts | title": {
+    "message": "Modern HTTP"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | description": {
+    "message": "[Ker\u00fclje a kritikus k\u00e9r\u00e9sek l\u00e1ncba f\u0171z\u00e9s\u00e9t](https://developer.chrome.com/docs/lighthouse/performance/critical-request-chains) a l\u00e1ncok hossz\u00e1nak cs\u00f6kkent\u00e9s\u00e9vel, a let\u00f6lt\u00f6tt forr\u00e1sok m\u00e9ret\u00e9nek cs\u00f6kkent\u00e9s\u00e9vel, vagy a felesleges forr\u00e1sok let\u00f6lt\u00e9s\u00e9nek k\u00e9sleltet\u00e9s\u00e9vel, hogy javuljon az oldalbet\u00f6lt\u00e9s."
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | maxCriticalPathLatency": {
+    "message": "Kritikus el\u00e9r\u00e9si \u00fat maxim\u00e1lis v\u00e1rakoz\u00e1si ideje:"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | noNetworkDependencyTree": {
+    "message": "Nincs olyan megjelen\u00edt\u00e9si feladat, amelyet befoly\u00e1solnak a h\u00e1l\u00f3zati f\u00fcgg\u0151s\u00e9gek"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | title": {
+    "message": "H\u00e1l\u00f3zati f\u00fcgg\u0151s\u00e9gi fa"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | warningDescription": {
+    "message": "Ker\u00fclje a kritikus k\u00e9r\u00e9sek l\u00e1ncba f\u0171z\u00e9s\u00e9t a l\u00e1ncok hossz\u00e1nak cs\u00f6kkent\u00e9s\u00e9vel, a let\u00f6lt\u00f6tt forr\u00e1sok m\u00e9ret\u00e9nek cs\u00f6kkent\u00e9s\u00e9vel, vagy a felesleges forr\u00e1sok let\u00f6lt\u00e9s\u00e9nek k\u00e9sleltet\u00e9s\u00e9vel, hogy javuljon az oldalbet\u00f6lt\u00e9s."
+  },
+  "models/trace/insights/RenderBlocking.ts | description": {
+    "message": "K\u00e9relmek blokkolj\u00e1k az oldal kezdeti megjelen\u00edt\u00e9s\u00e9t, ami k\u00e9sleltetheti az LCP-t. [Elhalaszt\u00e1s vagy a be\u00e1gyaz\u00e1s](https://web.dev/learn/performance/understanding-the-critical-path#render-blocking_resources/) seg\u00edts\u00e9g\u00e9vel ezeket a h\u00e1l\u00f3zati k\u00e9relmeket el lehet t\u00e1vol\u00edtani a kritikus \u00fatvonalr\u00f3l."
+  },
+  "models/trace/insights/RenderBlocking.ts | duration": {
+    "message": "Id\u0151tartam"
+  },
+  "models/trace/insights/RenderBlocking.ts | noRenderBlocking": {
+    "message": "Nincsenek renderel\u00e9stilt\u00e1si k\u00e9relmek ehhez a navig\u00e1ci\u00f3hoz"
+  },
+  "models/trace/insights/RenderBlocking.ts | renderBlockingRequest": {
+    "message": "K\u00e9relem"
+  },
+  "models/trace/insights/RenderBlocking.ts | title": {
+    "message": "Renderel\u00e9st blokkol\u00f3 k\u00e9relmek megjelen\u00edt\u00e9se"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | description": {
+    "message": "Ha a st\u00edlus-\u00fajrasz\u00e1m\u00edt\u00e1si k\u00f6lts\u00e9gek magasak maradnak, a v\u00e1laszt\u00f3 optimaliz\u00e1l\u00e1sa cs\u00f6kkentheti \u0151ket. [Optimaliz\u00e1lja azokat a v\u00e1laszt\u00f3kat](https://developer.chrome.com/docs/devtools/performance/selector-stats), amelyek magas eltelt id\u0151vel \u00e9s magas lass\u00fa \u00fatvonali sz\u00e1zal\u00e9kkal rendelkeznek. Az egyszer\u0171bb v\u00e1laszt\u00f3k, a kevesebb v\u00e1laszt\u00f3, a kisebb DOM \u00e9s a sek\u00e9lyebb DOM haszn\u00e1lata egyar\u00e1nt cs\u00f6kkenti az egyez\u00e9si k\u00f6lts\u00e9geket."
+  },
+  "models/trace/insights/SlowCSSSelector.ts | elapsed": {
+    "message": "Eltelt id\u0151"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | enableSelectorData": {
+    "message": "Nem tal\u00e1lhat\u00f3 CSS-v\u00e1laszt\u00f3hoz tartoz\u00f3 adat. A CSS-v\u00e1laszt\u00f3 statisztik\u00e1it enged\u00e9lyezni kell a teljes\u00edtm\u00e9nypanel be\u00e1ll\u00edt\u00e1saiban."
+  },
+  "models/trace/insights/SlowCSSSelector.ts | matchAttempts": {
+    "message": "Egyeztet\u00e9si k\u00eds\u00e9rletek"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | matchCount": {
+    "message": "Egyez\u00e9sek sz\u00e1ma"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | title": {
+    "message": "CSS-v\u00e1laszt\u00f3 k\u00f6lts\u00e9gei"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | topSelectors": {
+    "message": "Legn\u00e9pszer\u0171bb v\u00e1laszt\u00f3k"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | total": {
+    "message": "\u00d6sszesen"
+  },
+  "models/trace/insights/ThirdParties.ts | columnMainThreadTime": {
+    "message": "F\u0151sz\u00e1lon t\u00f6lt\u00f6tt id\u0151"
+  },
+  "models/trace/insights/ThirdParties.ts | columnThirdParty": {
+    "message": "Harmadik f\u00e9l"
+  },
+  "models/trace/insights/ThirdParties.ts | columnTransferSize": {
+    "message": "\u00c1tviteli m\u00e9ret"
+  },
+  "models/trace/insights/ThirdParties.ts | description": {
+    "message": "A harmadik felekt\u0151l sz\u00e1rmaz\u00f3 k\u00f3dok jelent\u0151s hat\u00e1ssal lehetnek a bet\u00f6lt\u00e9s teljes\u00edtm\u00e9ny\u00e9re. [Cs\u00f6kkentse \u00e9s k\u00e9sleltesse a harmadik f\u00e9lt\u0151l sz\u00e1rmaz\u00f3 k\u00f3d bet\u00f6lt\u00e9s\u00e9t](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/loading-third-party-javascript/) az oldal tartalm\u00e1nak el\u0151r\u00e9bb sorol\u00e1sa \u00e9rdek\u00e9ben."
+  },
+  "models/trace/insights/ThirdParties.ts | noThirdParties": {
+    "message": "Nem tal\u00e1lhat\u00f3 harmadik f\u00e9l"
+  },
+  "models/trace/insights/ThirdParties.ts | title": {
+    "message": "Harmadik felek"
+  },
+  "models/trace/insights/Viewport.ts | description": {
+    "message": "Ha a megjelen\u00edt\u00e9si ter\u00fclet nincs optimaliz\u00e1lva mobilra, akkor a koppint\u00e1si m\u0171veletekn\u00e9l [ak\u00e1r 300\u00a0ms k\u00e9s\u00e9s is jelentkezhet](https://developer.chrome.com/blog/300ms-tap-delay-gone-away/)"
+  },
+  "models/trace/insights/Viewport.ts | title": {
+    "message": "A megjelen\u00edt\u00e9si ter\u00fclet mobilra val\u00f3 optimaliz\u00e1l\u00e1sa"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | HTTPMethodNotGET": {
+    "message": "Kiz\u00e1r\u00f3lag a GET met\u00f3dussal bet\u00f6lt\u00f6tt oldalak alkalmasak az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1sra."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | HTTPStatusNotOK": {
+    "message": "Kiz\u00e1r\u00f3lag a 2XX \u00e1llapotk\u00f3d\u00fa oldalak gyors\u00edt\u00f3t\u00e1razhat\u00f3k."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | JavaScriptExecution": {
+    "message": "A Chrome JavaScript v\u00e9grehajt\u00e1s\u00e1ra tett k\u00eds\u00e9rletet \u00e9szlelt, am\u00edg az oldal a gyors\u00edt\u00f3t\u00e1rban volt."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | appBanner": {
+    "message": "Az AppBannert k\u00e9relmez\u0151 oldalak jelenleg nem alkalmasak az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1sra."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabled": {
+    "message": "Az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1st jelz\u0151k tiltj\u00e1k le. Keresse fel a chrome://flags/#back-forward-cache oldalt, ahol helyileg tudja erre az eszk\u00f6zre vonatkoz\u00f3an enged\u00e9lyezni."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledByCommandLine": {
+    "message": "Az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1s le van tiltva a parancssorban."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledByLowMemory": {
+    "message": "A rendszer letiltotta az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1st, mert nem \u00e1ll rendelkez\u00e9sre elegend\u0151 mem\u00f3ria."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledForDelegate": {
+    "message": "Az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1s meghatalmaz\u00f3 \u00e1ltal nem t\u00e1mogatott."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledForPrerender": {
+    "message": "Az el\u0151zetes megjelen\u00edt\u0151 sz\u00e1m\u00e1ra le van tiltva az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1s."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | broadcastChannel": {
+    "message": "Az oldal gyors\u00edt\u00f3t\u00e1raz\u00e1sa nem lehets\u00e9ges, mert regisztr\u00e1lt figyel\u0151kkel rendelkez\u0151 BroadcastChannel-p\u00e9ld\u00e1nya van."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheControlNoStore": {
+    "message": "Azok az oldalak, amelyek fejl\u00e9ce tartalmazza a cache-control:no-store param\u00e9tert, nem ker\u00fclhetnek az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1rba."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheFlushed": {
+    "message": "A gyors\u00edt\u00f3t\u00e1r ki\u00fcr\u00edt\u00e9se sz\u00e1nd\u00e9kosan t\u00f6rt\u00e9nt."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheLimit": {
+    "message": "Az oldalt a rendszer kiz\u00e1rta a gyors\u00edt\u00f3t\u00e1rb\u00f3l, hogy lehet\u0151v\u00e9 tegye egy m\u00e1sik oldal gyors\u00edt\u00f3t\u00e1raz\u00e1s\u00e1t."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | containsPlugins": {
+    "message": "A be\u00e9p\u00fcl\u0151 modult tartalmaz\u00f3 oldalak jelenleg nem alkalmasak az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1sra."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentDiscarded": {
+    "message": "Nincs megadva"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentFileChooser": {
+    "message": "A FileChooser API-t haszn\u00e1l\u00f3 oldalak nem alkalmasak az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1sra."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentFileSystemAccess": {
+    "message": "A File System Access API-t haszn\u00e1l\u00f3 oldalak jelenleg nem alkalmasak az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1sra."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaDevicesDispatcherHost": {
+    "message": "A Media Device Dispatchert haszn\u00e1l\u00f3 oldalak jelenleg nem alkalmasak az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1sra."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaPlay": {
+    "message": "Az oldal elhagy\u00e1sa k\u00f6zben m\u00e9dialej\u00e1tsz\u00f3 j\u00e1tszott le tartalmat."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaSession": {
+    "message": "A MediaSession API-t haszn\u00e1l\u00f3 \u00e9s lej\u00e1tsz\u00e1si \u00e1llapotot be\u00e1ll\u00edt\u00f3 oldalak nem alkalmasak az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1sra."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaSessionService": {
+    "message": "A MediaSession API-t haszn\u00e1l\u00f3 \u00e9s m\u0171veletkezel\u0151ket be\u00e1ll\u00edt\u00f3 oldalak jelenleg nem alkalmasak az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1sra."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentScreenReader": {
+    "message": "Az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1s le van tiltva a k\u00e9perny\u0151olvas\u00f3 miatt."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentSecurityHandler": {
+    "message": "A SecurityHandler kezel\u0151t haszn\u00e1l\u00f3 oldalak jelenleg nem alkalmasak az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1sra."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentSerial": {
+    "message": "A Serial API-t haszn\u00e1l\u00f3 oldalak nem alkalmasak az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1sra."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebAuthenticationAPI": {
+    "message": "A WebAuthentication API-t haszn\u00e1l\u00f3 oldalak nem alkalmasak az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1sra."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebBluetooth": {
+    "message": "A WebBluetooth API-t haszn\u00e1l\u00f3 oldalak nem alkalmasak az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1sra."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebUSB": {
+    "message": "A WebUSB API-t haszn\u00e1l\u00f3 oldalak jelenleg nem alkalmasak az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1sra."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cookieDisabled": {
+    "message": "Az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1s le van tiltva, mert a cookie-k le vannak tiltva egy Cache-Control: no-store param\u00e9tert haszn\u00e1l\u00f3 oldalon."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | dedicatedWorkerOrWorklet": {
+    "message": "A dedik\u00e1lt feldolgoz\u00f3t vagy workletet haszn\u00e1l\u00f3 oldalak jelenleg nem alkalmasak az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1sra."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | documentLoaded": {
+    "message": "Nem fejez\u0151d\u00f6tt be a dokumentum bet\u00f6lt\u00e9se az oldal elhagy\u00e1sa el\u0151tt."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderAppBannerManager": {
+    "message": "Alkalmaz\u00e1sszalag volt jelen az oldal elhagy\u00e1sakor."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderChromePasswordManagerClientBindCredentialManager": {
+    "message": "Jelen volt a Chrome Jelsz\u00f3kezel\u0151 az oldal elhagy\u00e1sakor."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderDomDistillerSelfDeletingRequestDelegate": {
+    "message": "A DOM Distiller m\u0171k\u00f6d\u00e9sben volt az oldal elhagy\u00e1sakor."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderDomDistillerViewerSource": {
+    "message": "A DOM Distiller Viewer jelen volt az oldal elhagy\u00e1sakor."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionMessaging": {
+    "message": "Az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1s le van tiltva \u00fczenetkezel\u00e9si API-t haszn\u00e1l\u00f3 b\u0151v\u00edtm\u00e9nyek miatt."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionMessagingForOpenPort": {
+    "message": "A hossz\u00fa \u00e9lettartam\u00fa kapcsolattal rendelkez\u0151 b\u0151v\u00edtm\u00e9nyeknek be kell z\u00e1rniuk a kapcsolatot az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1s megkezd\u00e9se el\u0151tt."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionSentMessageToCachedFrame": {
+    "message": "Hossz\u00fa \u00e9lettartam\u00fa kapcsolattal rendelkez\u0151 b\u0151v\u00edtm\u00e9nyeknek pr\u00f3b\u00e1ltak \u00fczeneteket k\u00fcldeni az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1rban tal\u00e1lhat\u00f3 keretekhez."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensions": {
+    "message": "Az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1s le van tiltva a b\u0151v\u00edtm\u00e9nyek miatt."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderModalDialog": {
+    "message": "Mod\u00e1lis p\u00e1rbesz\u00e9dpanel (pl. \u0171rlap \u00fajrak\u00fcld\u00e9s\u00e9vel vagy http-jelsz\u00f3val kapcsolatos p\u00e1rbesz\u00e9dpanel) volt l\u00e1that\u00f3 az oldalhoz az oldal elhagy\u00e1sakor."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderOfflinePage": {
+    "message": "Az offline oldal volt l\u00e1that\u00f3 az oldal elhagy\u00e1sakor."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderOomInterventionTabHelper": {
+    "message": "Az elfogy\u00f3 mem\u00f3ria miatti beavatkoz\u00e1s s\u00e1vja jelen volt az oldal elhagy\u00e1sakor."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderPermissionRequestManager": {
+    "message": "Enged\u00e9lyk\u00e9r\u00e9sek jelentek meg az oldal elhagy\u00e1sakor."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderPopupBlockerTabHelper": {
+    "message": "Jelen volt el\u0151ugr\u00f3 ablakokat blokkol\u00f3 szoftver az oldal elhagy\u00e1sakor."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderSafeBrowsingThreatDetails": {
+    "message": "A Biztons\u00e1gos B\u00f6ng\u00e9sz\u00e9s r\u00e9szletei l\u00e1that\u00f3k voltak az oldal elhagy\u00e1sakor."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderSafeBrowsingTriggeredPopupBlocker": {
+    "message": "A Biztons\u00e1gos B\u00f6ng\u00e9sz\u00e9s vissza\u00e9l\u00e9sszer\u0171nek \u00edt\u00e9lte ezt az oldalt, \u00e9s letiltotta az el\u0151ugr\u00f3 ablakokat."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | enteredBackForwardCacheBeforeServiceWorkerHostAdded": {
+    "message": "Egy service worker f\u00e1jl aktiv\u00e1l\u00f3dott, am\u00edg az oldal az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1rban volt."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | errorDocument": {
+    "message": "Az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1s le van tiltva dokumentumhiba miatt."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | fencedFramesEmbedder": {
+    "message": "A FencedFrame elemeket haszn\u00e1l\u00f3 oldalak nem t\u00e1rolhat\u00f3k el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1sban."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | foregroundCacheLimit": {
+    "message": "Az oldalt a rendszer kiz\u00e1rta a gyors\u00edt\u00f3t\u00e1rb\u00f3l, hogy lehet\u0151v\u00e9 tegye egy m\u00e1sik oldal gyors\u00edt\u00f3t\u00e1raz\u00e1s\u00e1t."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | grantedMediaStreamAccess": {
+    "message": "A m\u00e9diastreamhez hozz\u00e1f\u00e9r\u00e9st biztos\u00edt\u00f3 oldalak jelenleg nem alkalmasak az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1sra."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | haveInnerContents": {
+    "message": "A bizonyos t\u00edpus\u00fa be\u00e1gyazott tartalmakat (p\u00e9ld\u00e1ul PDF-eket) tartalmaz\u00f3 oldalak jelenleg nem alkalmasak az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1sra."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | idleManager": {
+    "message": "Az IdleManager jelenleg nem alkalmas az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1sra."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | indexedDBConnection": {
+    "message": "A ny\u00edlt IndexedDB-kapcsolattal rendelkez\u0151 oldalak jelenleg nem alkalmasak az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1sra."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | indexedDBEvent": {
+    "message": "Az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1s le van tiltva IndexedDB-esem\u00e9ny miatt."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | ineligibleAPI": {
+    "message": "Nem megfelel\u0151 API-k haszn\u00e1lata."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | injectedJavascript": {
+    "message": "Azok az oldalak, amelyekbe JavaScript van b\u0151v\u00edtm\u00e9nnyel besz\u00farva, jelenleg nem alkalmasak az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1sra."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | injectedStyleSheet": {
+    "message": "Azok az oldalak, amelyekbe StyleSheet van b\u0151v\u00edtm\u00e9nnyel besz\u00farva, jelenleg nem alkalmasak az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1sra."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | internalError": {
+    "message": "Bels\u0151 hiba."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | jsNetworkRequestReceivedCacheControlNoStoreResource": {
+    "message": "Az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1s le van tiltva, mert egyes JavaScript-h\u00e1l\u00f3zati k\u00e9relmek Cache-Control: no-store fejl\u00e9ccel rendelkez\u0151 er\u0151forr\u00e1st eredm\u00e9nyeztek."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | keepaliveRequest": {
+    "message": "Az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1s keepalive k\u00e9relem miatt le van tiltva."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | keyboardLock": {
+    "message": "A Billennty\u0171z\u00e1r funkci\u00f3t haszn\u00e1l\u00f3 oldalak jelenleg nem alkalmasak az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1sra."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | loading": {
+    "message": "Nem fejez\u0151d\u00f6tt be az oldal bet\u00f6lt\u00e9se az oldal elhagy\u00e1sa el\u0151tt."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | mainResourceHasCacheControlNoCache": {
+    "message": "Azok az oldalak, amelyek f\u0151 er\u0151forr\u00e1sa tartalmazza a cache-control:no-cache param\u00e9tert, nem ker\u00fclhetnek az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1rba."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | mainResourceHasCacheControlNoStore": {
+    "message": "Azok az oldalak, amelyek f\u0151 er\u0151forr\u00e1sa tartalmazza a cache-control:no-store param\u00e9tert, nem ker\u00fclhetnek az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1rba."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | navigationCancelledWhileRestoring": {
+    "message": "A navig\u00e1ci\u00f3t visszavont\u00e1k, miel\u0151tt az oldal vissza\u00e1ll\u00edthat\u00f3 lett volna az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1sb\u00f3l."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkExceedsBufferLimit": {
+    "message": "Az oldalt a rendszer kiz\u00e1rta a gyors\u00edt\u00f3t\u00e1rb\u00f3l, mivel egy akt\u00edv h\u00e1l\u00f3zati kapcsolat t\u00fal sok adatot fogadott. A Chrome korl\u00e1tozza az egyes oldalak \u00e1ltal gyors\u00edt\u00f3t\u00e1raz\u00e1suk k\u00f6zben fogadhat\u00f3 adatok mennyis\u00e9g\u00e9t."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestDatapipeDrainedAsBytesConsumer": {
+    "message": "A menet k\u00f6zbeni fetch() lek\u00e9r\u00e9ssel vagy XHR-rel rendelkez\u0151 oldalak jelenleg nem alkalmasak az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1sra."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestRedirected": {
+    "message": "Az oldalt a rendszer kiz\u00e1rta az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1rb\u00f3l, mert egy akt\u00edv h\u00e1l\u00f3zati k\u00e9r\u00e9s \u00e1tir\u00e1ny\u00edt\u00e1st tartalmazott."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestTimeout": {
+    "message": "Az oldalt a rendszer kiz\u00e1rta a gyors\u00edt\u00f3t\u00e1rb\u00f3l, mert t\u00fal sok\u00e1ig volt nyitva egy h\u00e1l\u00f3zati kapcsolat. A Chrome korl\u00e1tozza azt az id\u0151t, ameddig az egyes oldalak gyors\u00edt\u00f3t\u00e1raz\u00e1suk k\u00f6zben adatokat fogadhat."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | noResponseHead": {
+    "message": "Azok az oldalak, amelyek nem rendelkeznek \u00e9rv\u00e9nyes v\u00e1lasszal, nem ker\u00fclhetnek az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1rba."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | notMainFrame": {
+    "message": "Navig\u00e1ci\u00f3 t\u00f6rt\u00e9nt a f\u0151 kerett\u0151l elt\u00e9r\u0151 keretben."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingIndexedDBTransaction": {
+    "message": "A folyamatban l\u00e9v\u0151 indexelt DB-tranzakci\u00f3kat tartalmaz\u00f3 oldalak jelenleg nem alkalmasak az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1sra."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestDirectSocket": {
+    "message": "A menet k\u00f6zbeni h\u00e1l\u00f3zati k\u00e9r\u00e9ssel rendelkez\u0151 oldalak jelenleg nem alkalmasak az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1sra."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestFetch": {
+    "message": "A menet k\u00f6zbeni lek\u00e9r\u00e9si h\u00e1l\u00f3zati k\u00e9r\u00e9st tartalmaz\u00f3 oldalak jelenleg nem alkalmasak az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1sra."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestOthers": {
+    "message": "A menet k\u00f6zbeni h\u00e1l\u00f3zati k\u00e9r\u00e9ssel rendelkez\u0151 oldalak jelenleg nem alkalmasak az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1sra."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestXHR": {
+    "message": "A menet k\u00f6zbeni XHR-h\u00e1l\u00f3zati k\u00e9r\u00e9st tartalmaz\u00f3 oldalak jelenleg nem alkalmasak az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1sra."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | paymentManager": {
+    "message": "A PaymentManagert haszn\u00e1l\u00f3 oldalak jelenleg nem alkalmasak az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1sra."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | pictureInPicture": {
+    "message": "A K\u00e9p a k\u00e9pben funkci\u00f3t haszn\u00e1l\u00f3 oldalak jelenleg nem alkalmasak az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1sra."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | printing": {
+    "message": "A Nyomtat\u00e1s felhaszn\u00e1l\u00f3i fel\u00fcletet megjelen\u00edt\u0151 oldalak jelenleg nem alkalmasak az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1sra."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | relatedActiveContentsExist": {
+    "message": "Az oldal megnyit\u00e1sa a \u201ewindow.open()\u201d met\u00f3dussal t\u00f6rt\u00e9nt, \u00e9s egy m\u00e1sik lap r\u00e1 mutat\u00f3 hivatkoz\u00e1st tartalmaz, vagy az oldal ablakot nyitott meg."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | rendererProcessCrashed": {
+    "message": "\u00d6sszeomlott az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1rban l\u00e9v\u0151 oldal megjelen\u00edt\u00e9si folyamata."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | rendererProcessKilled": {
+    "message": "Az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1rban l\u00e9v\u0151 oldallal kapcsolatos megjelen\u00edt\u00e9si folyamatot le\u00e1ll\u00edtotta a rendszer."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedAudioCapturePermission": {
+    "message": "A hangr\u00f6gz\u00edt\u00e9sre enged\u00e9lyt k\u00e9r\u0151 oldalak jelenleg nem alkalmasak az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1sra."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedBackForwardCacheBlockedSensors": {
+    "message": "Azok az oldalak, amelyek \u00e9rz\u00e9kel\u0151khoz val\u00f3 hozz\u00e1f\u00e9r\u00e9si jogosults\u00e1got k\u00e9rtek, jelenleg nem alkalmasak az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1sra."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedBackgroundWorkPermission": {
+    "message": "A h\u00e1tt\u00e9rszinkroniz\u00e1l\u00e1st k\u00e9r\u0151 vagy lek\u00e9r\u00e9si jogosults\u00e1got k\u00e9r\u0151 oldalak jelenleg nem alkalmasak az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1sra."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedMIDIPermission": {
+    "message": "Azok az oldalak, amelyek MIDI-eszk\u00f6z\u00f6kh\u00f6z val\u00f3 hozz\u00e1f\u00e9r\u00e9si jogosults\u00e1got k\u00e9rtek, jelenleg nem alkalmasak az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1sra."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedNotificationsPermission": {
+    "message": "Az \u00e9rtes\u00edt\u00e9si enged\u00e9lyt k\u00e9relmez\u0151 oldalak jelenleg nem alkalmasak az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1sra."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedStorageAccessGrant": {
+    "message": "A t\u00e1rhelyhozz\u00e1f\u00e9r\u00e9st k\u00e9r\u0151 oldalak jelenleg nem alkalmasak az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1sra."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedVideoCapturePermission": {
+    "message": "A vide\u00f3r\u00f6gz\u00edt\u00e9si enged\u00e9lyt k\u00e9relmez\u0151 oldalak jelenleg nem alkalmasak az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1sra."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | schemeNotHTTPOrHTTPS": {
+    "message": "Csak azok az oldalak gyors\u00edt\u00f3t\u00e1razhat\u00f3k, amelyek URL-s\u00e9m\u00e1ja HTTP vagy HTTPS."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerClaim": {
+    "message": "Az oldalt service worker ig\u00e9nyelte, am\u00edg az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1sa folyamatban volt."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerPostMessage": {
+    "message": "Service worker f\u00e1jl k\u00eds\u00e9relte meg elk\u00fcldeni az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1rban l\u00e9v\u0151 oldal sz\u00e1m\u00e1ra a k\u00f6vetkez\u0151t: MessageEvent."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerUnregistration": {
+    "message": "A rendszer t\u00f6r\u00f6lte a ServiceWorker regisztr\u00e1ci\u00f3j\u00e1t, am\u00edg az oldal az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1rban volt."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerVersionActivation": {
+    "message": "Az oldalt egy service worker f\u00e1jl aktiv\u00e1l\u00e1sa miatt z\u00e1rta ki a rendszer az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1sb\u00f3l."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | sessionRestored": {
+    "message": "A Chrome \u00fajraindult, \u00e9s ki\u00fcr\u00edtette az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1razott bejegyz\u00e9seket."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | sharedWorker": {
+    "message": "A SharedWorkert haszn\u00e1l\u00f3 oldalak jelenleg nem alkalmasak az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1sra."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | speechRecognizer": {
+    "message": "A SpeechRecognizer API-t haszn\u00e1l\u00f3 oldalak jelenleg nem alkalmasak az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1sra."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | speechSynthesis": {
+    "message": "A SpeechSynthesist haszn\u00e1l\u00f3 oldalak jelenleg nem alkalmasak az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1sra."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subframeIsNavigating": {
+    "message": "Az oldalon l\u00e9v\u0151 iframe navig\u00e1ci\u00f3t ind\u00edtott, amely nem fejez\u0151d\u00f6tt be."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subresourceHasCacheControlNoCache": {
+    "message": "Azok az oldalak, amelyek aler\u0151forr\u00e1sa tartalmazza a cache-control:no-cache param\u00e9tert, nem ker\u00fclhetnek az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1rba."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subresourceHasCacheControlNoStore": {
+    "message": "Azok az oldalak, amelyek aler\u0151forr\u00e1sa tartalmazza a cache-control:no-store param\u00e9tert, nem ker\u00fclhetnek az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1rba."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | timeout": {
+    "message": "Az oldal t\u00fall\u00e9pte a el\u0151re-vissza gyors\u00edt\u00f3t\u00e1rban elt\u00f6lthet\u0151 id\u0151t, \u00e9s lej\u00e1rt."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | timeoutPuttingInCache": {
+    "message": "Az oldal id\u0151t\u00fall\u00e9p\u00e9st okozott az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1sakor (val\u00f3sz\u00edn\u0171leg a sok\u00e1ig fut\u00f3 pagehide kezel\u0151k miatt)."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | unloadHandlerExistsInMainFrame": {
+    "message": "Az oldal f\u0151 keret\u00e9ben ki\u00fcr\u00edt\u00e9skezel\u0151 tal\u00e1lhat\u00f3."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | unloadHandlerExistsInSubFrame": {
+    "message": "Az oldal valamelyik alkeret\u00e9ben ki\u00fcr\u00edt\u00e9skezel\u0151 tal\u00e1lhat\u00f3."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | userAgentOverrideDiffers": {
+    "message": "A b\u00f6ng\u00e9sz\u0151 megv\u00e1ltoztatta a felhaszn\u00e1l\u00f3i \u00fcgyn\u00f6k fel\u00fclb\u00edr\u00e1l\u00e1si fejl\u00e9c\u00e9t."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | wasGrantedMediaAccess": {
+    "message": "Azok az oldalak, amelyek hozz\u00e1f\u00e9r\u00e9st adtak a vide\u00f3 vagy a hang r\u00f6gz\u00edt\u00e9s\u00e9hez, jelenleg nem alkalmasak az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1sra."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webDatabase": {
+    "message": "A WebDatabase-t haszn\u00e1l\u00f3 oldalak jelenleg nem alkalmasak az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1sra."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webHID": {
+    "message": "A WebHID-t haszn\u00e1l\u00f3 oldalak jelenleg nem alkalmasak az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1sra."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webLocks": {
+    "message": "A WebLocksot haszn\u00e1l\u00f3 oldalak jelenleg nem alkalmasak az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1sra."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webNfc": {
+    "message": "A WebNfc-t haszn\u00e1l\u00f3 oldalak jelenleg nem alkalmasak az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1sra."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webOTPService": {
+    "message": "A WebOTPService API-t haszn\u00e1l\u00f3 oldalak jelenleg nem alkalmasak az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1sra."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webRTC": {
+    "message": "A WebRTC-vel k\u00e9sz\u00edtett oldalak nem ker\u00fclhetnek az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1rba."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webRTCSticky": {
+    "message": "Az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1s le van tiltva a WebRTC haszn\u00e1lata miatt."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webShare": {
+    "message": "A WebShare-t haszn\u00e1l\u00f3 oldalak jelenleg nem alkalmasak az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1sra."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webSocket": {
+    "message": "A WebSocket haszn\u00e1lat\u00e1val k\u00e9sz\u00edtett oldalak nem ker\u00fclhetnek az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1rba."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webSocketSticky": {
+    "message": "Az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1s le van tiltva a WebSocket haszn\u00e1lata miatt."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webTransport": {
+    "message": "A WebTransport API-t tartalmaz\u00f3 oldalak nem ker\u00fclhetnek el\u0151re-vissza gyors\u00edt\u00f3t\u00e1rba."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webTransportSticky": {
+    "message": "Az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1s le van tiltva a WebTransport haszn\u00e1lata miatt."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webXR": {
+    "message": "A WebXR-t haszn\u00e1l\u00f3 oldalak jelenleg nem alkalmasak az el\u0151re-vissza gyors\u00edt\u00f3t\u00e1raz\u00e1sra."
+  }
+}

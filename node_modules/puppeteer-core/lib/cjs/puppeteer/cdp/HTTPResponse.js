@@ -5,26 +5,24 @@ const HTTPResponse_js_1 = require("../api/HTTPResponse.js");
 const Errors_js_1 = require("../common/Errors.js");
 const SecurityDetails_js_1 = require("../common/SecurityDetails.js");
 const Deferred_js_1 = require("../util/Deferred.js");
+const encoding_js_1 = require("../util/encoding.js");
 /**
  * @internal
  */
 class CdpHTTPResponse extends HTTPResponse_js_1.HTTPResponse {
-    #client;
     #request;
     #contentPromise = null;
     #bodyLoadedDeferred = Deferred_js_1.Deferred.create();
     #remoteAddress;
     #status;
     #statusText;
-    #url;
     #fromDiskCache;
     #fromServiceWorker;
     #headers = {};
     #securityDetails;
     #timing;
-    constructor(client, request, responsePayload, extraInfo) {
+    constructor(request, responsePayload, extraInfo) {
         super();
-        this.#client = client;
         this.#request = request;
         this.#remoteAddress = {
             ip: responsePayload.remoteIPAddress,
@@ -33,7 +31,6 @@ class CdpHTTPResponse extends HTTPResponse_js_1.HTTPResponse {
         this.#statusText =
             this.#parseStatusTextFromExtraInfo(extraInfo) ||
                 responsePayload.statusText;
-        this.#url = request.url();
         this.#fromDiskCache = !!responsePayload.fromDiskCache;
         this.#fromServiceWorker = !!responsePayload.fromServiceWorker;
         this.#status = extraInfo ? extraInfo.statusCode : responsePayload.status;
@@ -51,7 +48,7 @@ class CdpHTTPResponse extends HTTPResponse_js_1.HTTPResponse {
             return;
         }
         const firstLine = extraInfo.headersText.split('\r', 1)[0];
-        if (!firstLine) {
+        if (!firstLine || firstLine.length > 1_000) {
             return;
         }
         const match = firstLine.match(/[^ ]* [^ ]* (.*)/);
@@ -74,7 +71,7 @@ class CdpHTTPResponse extends HTTPResponse_js_1.HTTPResponse {
         return this.#remoteAddress;
     }
     url() {
-        return this.#url;
+        return this.#request.url();
     }
     status() {
         return this.#status;
@@ -91,16 +88,18 @@ class CdpHTTPResponse extends HTTPResponse_js_1.HTTPResponse {
     timing() {
         return this.#timing;
     }
-    buffer() {
+    content() {
         if (!this.#contentPromise) {
             this.#contentPromise = this.#bodyLoadedDeferred
                 .valueOrThrow()
                 .then(async () => {
                 try {
-                    const response = await this.#client.send('Network.getResponseBody', {
+                    // Use CDPSession from corresponding request to retrieve body, as it's client
+                    // might have been updated (e.g. for an adopted OOPIF).
+                    const response = await this.#request.client.send('Network.getResponseBody', {
                         requestId: this.#request.id,
                     });
-                    return Buffer.from(response.body, response.base64Encoded ? 'base64' : 'utf8');
+                    return (0, encoding_js_1.stringToTypedArray)(response.body, response.base64Encoded);
                 }
                 catch (error) {
                     if (error instanceof Errors_js_1.ProtocolError &&

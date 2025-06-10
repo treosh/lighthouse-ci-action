@@ -4,22 +4,6 @@
  * Copyright 2019 Google Inc.
  * SPDX-License-Identifier: Apache-2.0
  */
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
 var __runInitializers = (this && this.__runInitializers) || function (thisArg, initializers, value) {
     var useValue = arguments.length > 2;
     for (var i = 0; i < initializers.length; i++) {
@@ -54,17 +38,11 @@ var __esDecorate = (this && this.__esDecorate) || function (ctor, descriptorIn, 
     if (target) Object.defineProperty(target, contextIn.name, descriptor);
     done = true;
 };
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CdpElementHandle = void 0;
 const ElementHandle_js_1 = require("../api/ElementHandle.js");
 const util_js_1 = require("../common/util.js");
+const environment_js_1 = require("../environment.js");
 const assert_js_1 = require("../util/assert.js");
 const AsyncIterableUtil_js_1 = require("../util/AsyncIterableUtil.js");
 const decorators_js_1 = require("../util/decorators.js");
@@ -78,7 +56,6 @@ const NON_ELEMENT_NODE_ROLES = new Set(['StaticText', 'InlineTextBox']);
  * @internal
  */
 let CdpElementHandle = (() => {
-    var _a, _b;
     let _classSuper = ElementHandle_js_1.ElementHandle;
     let _instanceExtraInitializers = [];
     let _contentFrame_decorators;
@@ -89,8 +66,8 @@ let CdpElementHandle = (() => {
         static {
             const _metadata = typeof Symbol === "function" && Symbol.metadata ? Object.create(_classSuper[Symbol.metadata] ?? null) : void 0;
             _contentFrame_decorators = [(0, decorators_js_1.throwIfDisposed)()];
-            _scrollIntoView_decorators = [(0, decorators_js_1.throwIfDisposed)(), (_a = ElementHandle_js_1.ElementHandle).bindIsolatedHandle.bind(_a)];
-            _uploadFile_decorators = [(0, decorators_js_1.throwIfDisposed)(), (_b = ElementHandle_js_1.ElementHandle).bindIsolatedHandle.bind(_b)];
+            _scrollIntoView_decorators = [(0, decorators_js_1.throwIfDisposed)(), ElementHandle_js_1.bindIsolatedHandle];
+            _uploadFile_decorators = [(0, decorators_js_1.throwIfDisposed)(), ElementHandle_js_1.bindIsolatedHandle];
             _autofill_decorators = [(0, decorators_js_1.throwIfDisposed)()];
             __esDecorate(this, null, _contentFrame_decorators, { kind: "method", name: "contentFrame", static: false, private: false, access: { has: obj => "contentFrame" in obj, get: obj => obj.contentFrame }, metadata: _metadata }, null, _instanceExtraInitializers);
             __esDecorate(this, null, _scrollIntoView_decorators, { kind: "method", name: "scrollIntoView", static: false, private: false, access: { has: obj => "scrollIntoView" in obj, get: obj => obj.scrollIntoView }, metadata: _metadata }, null, _instanceExtraInitializers);
@@ -98,9 +75,9 @@ let CdpElementHandle = (() => {
             __esDecorate(this, null, _autofill_decorators, { kind: "method", name: "autofill", static: false, private: false, access: { has: obj => "autofill" in obj, get: obj => obj.autofill }, metadata: _metadata }, null, _instanceExtraInitializers);
             if (_metadata) Object.defineProperty(this, Symbol.metadata, { enumerable: true, configurable: true, writable: true, value: _metadata });
         }
+        #backendNodeId = __runInitializers(this, _instanceExtraInitializers);
         constructor(world, remoteObject) {
             super(new JSHandle_js_1.CdpJSHandle(world, remoteObject));
-            __runInitializers(this, _instanceExtraInitializers);
         }
         get realm() {
             return this.handle.realm;
@@ -139,30 +116,24 @@ let CdpElementHandle = (() => {
                 await super.scrollIntoView();
             }
         }
-        async uploadFile(...filePaths) {
+        async uploadFile(...files) {
             const isMultiple = await this.evaluate(element => {
                 return element.multiple;
             });
-            (0, assert_js_1.assert)(filePaths.length <= 1 || isMultiple, 'Multiple file uploads only work with <input type=file multiple>');
+            (0, assert_js_1.assert)(files.length <= 1 || isMultiple, 'Multiple file uploads only work with <input type=file multiple>');
             // Locate all files and confirm that they exist.
-            let path;
-            try {
-                path = await Promise.resolve().then(() => __importStar(require('path')));
+            const path = environment_js_1.environment.value.path;
+            if (path) {
+                files = files.map(filePath => {
+                    if (path.win32.isAbsolute(filePath) ||
+                        path.posix.isAbsolute(filePath)) {
+                        return filePath;
+                    }
+                    else {
+                        return path.resolve(filePath);
+                    }
+                });
             }
-            catch (error) {
-                if (error instanceof TypeError) {
-                    throw new Error(`JSHandle#uploadFile can only be used in Node-like environments.`);
-                }
-                throw error;
-            }
-            const files = filePaths.map(filePath => {
-                if (path.win32.isAbsolute(filePath) || path.posix.isAbsolute(filePath)) {
-                    return filePath;
-                }
-                else {
-                    return path.resolve(filePath);
-                }
-            });
             /**
              * The zero-length array is a special case, it seems that
              * DOM.setFileInputFiles does not actually update the files in that case, so
@@ -221,6 +192,16 @@ let CdpElementHandle = (() => {
             return yield* AsyncIterableUtil_js_1.AsyncIterableUtil.map(results, node => {
                 return this.realm.adoptBackendNode(node.backendDOMNodeId);
             });
+        }
+        async backendNodeId() {
+            if (this.#backendNodeId) {
+                return this.#backendNodeId;
+            }
+            const { node } = await this.client.send('DOM.describeNode', {
+                objectId: this.handle.id,
+            });
+            this.#backendNodeId = node.backendNodeId;
+            return this.#backendNodeId;
         }
     };
 })();

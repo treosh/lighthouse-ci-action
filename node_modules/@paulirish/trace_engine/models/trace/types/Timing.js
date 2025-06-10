@@ -1,12 +1,15 @@
 // Copyright 2022 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
-export function MicroSeconds(value) {
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export function Micro(value) {
     return value;
 }
-export function MilliSeconds(value) {
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export function Milli(value) {
     return value;
 }
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function Seconds(value) {
     return value;
 }

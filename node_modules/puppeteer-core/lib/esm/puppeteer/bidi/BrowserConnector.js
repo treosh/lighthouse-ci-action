@@ -15,15 +15,17 @@ import { debugError, DEFAULT_VIEWPORT } from '../common/util.js';
  * @internal
  */
 export async function _connectToBiDiBrowser(connectionTransport, url, options) {
-    const { ignoreHTTPSErrors = false, defaultViewport = DEFAULT_VIEWPORT } = options;
-    const { bidiConnection, closeCallback } = await getBiDiConnection(connectionTransport, url, options);
+    const { acceptInsecureCerts = false, defaultViewport = DEFAULT_VIEWPORT } = options;
+    const { bidiConnection, cdpConnection, closeCallback } = await getBiDiConnection(connectionTransport, url, options);
     const BiDi = await import(/* webpackIgnore: true */ './bidi.js');
     const bidiBrowser = await BiDi.BidiBrowser.create({
         connection: bidiConnection,
+        cdpConnection,
         closeCallback,
         process: undefined,
         defaultViewport: defaultViewport,
-        ignoreHTTPSErrors: ignoreHTTPSErrors,
+        acceptInsecureCerts: acceptInsecureCerts,
+        capabilities: options.capabilities,
     });
     return bidiBrowser;
 }
@@ -36,7 +38,7 @@ export async function _connectToBiDiBrowser(connectionTransport, url, options) {
  */
 async function getBiDiConnection(connectionTransport, url, options) {
     const BiDi = await import(/* webpackIgnore: true */ './bidi.js');
-    const { ignoreHTTPSErrors = false, slowMo = 0, protocolTimeout } = options;
+    const { slowMo = 0, protocolTimeout } = options;
     // Try pure BiDi first.
     const pureBidiConnection = new BiDi.BidiConnection(url, connectionTransport, slowMo, protocolTimeout);
     try {
@@ -60,16 +62,15 @@ async function getBiDiConnection(connectionTransport, url, options) {
     // Unbind the connection to avoid memory leaks.
     pureBidiConnection.unbind();
     // Fall back to CDP over BiDi reusing the WS connection.
-    const cdpConnection = new Connection(url, connectionTransport, slowMo, protocolTimeout);
+    const cdpConnection = new Connection(url, connectionTransport, slowMo, protocolTimeout, 
+    /* rawErrors= */ true);
     const version = await cdpConnection.send('Browser.getVersion');
     if (version.product.toLowerCase().includes('firefox')) {
         throw new UnsupportedOperation('Firefox is not supported in BiDi over CDP mode.');
     }
-    // TODO: use other options too.
-    const bidiOverCdpConnection = await BiDi.connectBidiOverCdp(cdpConnection, {
-        acceptInsecureCerts: ignoreHTTPSErrors,
-    });
+    const bidiOverCdpConnection = await BiDi.connectBidiOverCdp(cdpConnection);
     return {
+        cdpConnection,
         bidiConnection: bidiOverCdpConnection,
         closeCallback: async () => {
             // In case of BiDi over CDP, we need to close browser via CDP.

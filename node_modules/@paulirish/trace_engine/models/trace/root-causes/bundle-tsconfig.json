@@ -1,1 +1,0 @@
-{"compilerOptions":{"composite":true,"outDir":".","baseUrl":".","rootDir":"../../../../../../../front_end/models/trace/root-causes"},"files":["../../../../../../../front_end/models/trace/root-causes/root-causes.ts"],"references":[{"path":"./root-causes-tsconfig.json"}]}

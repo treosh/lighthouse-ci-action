@@ -30,7 +30,6 @@ function isReadableNodeStream(obj, strict = false) {
     ) // Writable has .pipe.
   )
 }
-
 function isWritableNodeStream(obj) {
   var _obj$_writableState
   return !!(
@@ -45,7 +44,6 @@ function isWritableNodeStream(obj) {
     ) // Duplex
   )
 }
-
 function isDuplexNodeStream(obj) {
   return !!(
     obj &&

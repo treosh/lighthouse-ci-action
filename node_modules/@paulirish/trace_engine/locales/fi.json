@@ -1,0 +1,908 @@
+{
+  "generated/Deprecation.ts | AuthorizationCoveredByWildcard": {
+    "message": "Jokerimerkki (*) CORS Access-Control-Allow-Headers \u2011k\u00e4sittelyss\u00e4 ei kata valtuutusta."
+  },
+  "generated/Deprecation.ts | CSSSelectorInternalMediaControlsOverlayCastButton": {
+    "message": "disableRemotePlayback \u2011attribuuttia pit\u00e4isi k\u00e4ytt\u00e4\u00e4 oletusarvoisen Cast-integraation k\u00e4yt\u00f6st\u00e4 poistamiseen -internal-media-controls-overlay-cast-button \u2011valitsimen sijaan."
+  },
+  "generated/Deprecation.ts | CSSValueAppearanceSliderVertical": {
+    "message": "CSS-ulkoasun arvoa slider-vertical ei ole standardoitu, ja se poistetaan."
+  },
+  "generated/Deprecation.ts | CanRequestURLHTTPContainingNewline": {
+    "message": "Resurssipyynn\u00f6t, joiden URL-osoitteet sis\u00e4lsiv\u00e4t sek\u00e4 poistettuja tyhj\u00e4tilamerkkej\u00e4 (\\(n|r|t)) ett\u00e4 pienempi kuin \u2011merkkej\u00e4 (<) on estetty. Poista newline-koodit ja koodaa pienempi kuin \u2011merkkej\u00e4 esimerkiksi elementin attribuuttiarvoista, jos haluat ladata n\u00e4it\u00e4 resursseja."
+  },
+  "generated/Deprecation.ts | CharsetAutoDetectionISO2022JP": {
+    "message": "ISO-2022-JP-merkist\u00f6n automaattinen tunnistus on poistettu k\u00e4yt\u00f6st\u00e4, ja se poistetaan l\u00e4hiaikoina. M\u00e4\u00e4rit\u00e4 merkist\u00f6 \"Content Type\" \u2010otsikossa tai metatagilla (https://developer.mozilla.org/en-US/docs/Glossary/Character_encoding)."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesConnectionInfo": {
+    "message": "chrome.loadTimes() on poistettu k\u00e4yt\u00f6st\u00e4, k\u00e4yt\u00e4 sen sijaan standardoitua APIa: Navigation Timing 2."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesFirstPaintAfterLoadTime": {
+    "message": "chrome.loadTimes() on poistettu k\u00e4yt\u00f6st\u00e4, k\u00e4yt\u00e4 sen sijaan standardoitua APIa: Paint Timing."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesWasAlternateProtocolAvailable": {
+    "message": "chrome.loadTimes() on poistettu k\u00e4yt\u00f6st\u00e4, k\u00e4yt\u00e4 sen sijaan standardoitua APIa: nextHopProtocol Navigation Timing 2:ssa."
+  },
+  "generated/Deprecation.ts | CookieWithTruncatingChar": {
+    "message": "\\(0|r|n) \u2011merkin sis\u00e4lt\u00e4v\u00e4t ev\u00e4steet hyl\u00e4t\u00e4\u00e4n lyhent\u00e4misen sijaan."
+  },
+  "generated/Deprecation.ts | CrossOriginAccessBasedOnDocumentDomain": {
+    "message": "Saman alkuper\u00e4n k\u00e4yt\u00e4nn\u00f6n lievent\u00e4minen m\u00e4\u00e4ritt\u00e4m\u00e4ll\u00e4 document.domain on poistettu k\u00e4yt\u00f6st\u00e4 eik\u00e4 n\u00e4in ollen ole k\u00e4yt\u00f6ss\u00e4 oletuksena. T\u00e4m\u00e4 k\u00e4yt\u00f6st\u00e4poistovaroitus koskee eri l\u00e4hteist\u00e4 per\u00e4isin olevaa p\u00e4\u00e4syoikeutta, joka on otettu k\u00e4ytt\u00f6\u00f6n asetuksella document.domain."
+  },
+  "generated/Deprecation.ts | CrossOriginWindowAlert": {
+    "message": "window.alertin k\u00e4ynnist\u00e4minen eri l\u00e4hteist\u00e4 per\u00e4isin olevista iframeista on poistettu k\u00e4yt\u00f6st\u00e4 ja poistetaan kokonaan tulevaisuudessa."
+  },
+  "generated/Deprecation.ts | CrossOriginWindowConfirm": {
+    "message": "window.confirmin k\u00e4ynnist\u00e4minen eri l\u00e4hteist\u00e4 per\u00e4isin olevista iframeista on poistettu k\u00e4yt\u00f6st\u00e4 ja poistetaan kokonaan tulevaisuudessa."
+  },
+  "generated/Deprecation.ts | DOMMutationEvents": {
+    "message": "DOM-muutostapahtumat, kuten DOMSubtreeModified, DOMNodeInserted, DOMNodeRemoved, DOMNodeRemovedFromDocument, DOMNodeInsertedIntoDocument ja DOMCharacterDataModified, on poistettu k\u00e4yt\u00f6st\u00e4 (https://w3c.github.io/uievents/#legacy-event-types) ja poistetaan. K\u00e4yt\u00e4 sen sijaan t\u00e4t\u00e4: MutationObserver."
+  },
+  "generated/Deprecation.ts | DataUrlInSvgUse": {
+    "message": "Datatuki: URL-osoitteet SVGUseElement-elementiss\u00e4 on poistettu k\u00e4yt\u00f6st\u00e4, ja se poistetaan tulevaisuudessa."
+  },
+  "generated/Deprecation.ts | GeolocationInsecureOrigin": {
+    "message": "getCurrentPosition() ja watchPosition() eiv\u00e4t en\u00e4\u00e4 toimi suojaamattomien alkuperien kohdalla. Jos haluat k\u00e4ytt\u00e4\u00e4 t\u00e4t\u00e4 ominaisuutta, suosittelemme vaihtamaan sovelluksen turvalliseen alkuper\u00e4\u00e4n, esim. HTTPS:\u00e4\u00e4n. Lue lis\u00e4\u00e4 osoitteesta https://goo.gle/chrome-insecure-origins."
+  },
+  "generated/Deprecation.ts | GeolocationInsecureOriginDeprecatedNotRemoved": {
+    "message": "getCurrentPosition() ja watchPosition() on poistettu k\u00e4yt\u00f6st\u00e4 suojaamattomien alkuperien kohdalla. Jos haluat k\u00e4ytt\u00e4\u00e4 t\u00e4t\u00e4 ominaisuutta, suosittelemme vaihtamaan sovelluksen turvalliseen alkuper\u00e4\u00e4n, esim. HTTPS:\u00e4\u00e4n. Lue lis\u00e4\u00e4 osoitteesta https://goo.gle/chrome-insecure-origins."
+  },
+  "generated/Deprecation.ts | GetUserMediaInsecureOrigin": {
+    "message": "getUserMedia() ei en\u00e4\u00e4 toimi suojaamattomien alkuperien kohdalla. Jos haluat k\u00e4ytt\u00e4\u00e4 t\u00e4t\u00e4 ominaisuutta, suosittelemme vaihtamaan sovelluksen turvalliseen alkuper\u00e4\u00e4n, esim. HTTPS:\u00e4\u00e4n. Lue lis\u00e4\u00e4 osoitteesta https://goo.gle/chrome-insecure-origins."
+  },
+  "generated/Deprecation.ts | H1UserAgentFontSizeInSection": {
+    "message": "<article>-, <aside>-, <nav>- tai <section>-elementist\u00e4 l\u00f6ytyi <h1>-tagi, jolle ei ole m\u00e4\u00e4ritetty fonttikokoa. Otsikon tekstin koko muuttuu t\u00e4ss\u00e4 selaimessa l\u00e4hitulevaisuudessa. Lue lis\u00e4\u00e4 osoitteesta https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#specifying_a_uniform_font_size_for_h1."
+  },
+  "generated/Deprecation.ts | HostCandidateAttributeGetter": {
+    "message": "RTCPeerConnectionIceErrorEvent.hostCandidate on poistettu k\u00e4yt\u00f6st\u00e4. Valitse sen sijaan RTCPeerConnectionIceErrorEvent.address tai RTCPeerConnectionIceErrorEvent.port."
+  },
+  "generated/Deprecation.ts | IdentityDigitalCredentials": {
+    "message": "T\u00e4m\u00e4 digitaalisten kirjautumistietojen navigator.credentials.get()-pyynn\u00f6n muoto on poistunut k\u00e4yt\u00f6st\u00e4. P\u00e4ivit\u00e4 pyynt\u00f6 k\u00e4ytt\u00e4m\u00e4\u00e4n uutta muotoa."
+  },
+  "generated/Deprecation.ts | IdentityInCanMakePaymentEvent": {
+    "message": "Kauppiaan alkuper\u00e4n ja satunnaisen datan m\u00e4\u00e4r\u00e4 service worker \u2011tapahtumasta (canmakepayment) on poistettu k\u00e4yt\u00f6st\u00e4, ja se poistetaan seuraavista: topOrigin, paymentRequestOrigin, methodData, modifiers."
+  },
+  "generated/Deprecation.ts | InsecurePrivateNetworkSubresourceRequest": {
+    "message": "Verkkosivusto pyysi aliresurssia verkosta, johon sill\u00e4 oli p\u00e4\u00e4sy vain k\u00e4ytt\u00e4jiens\u00e4 oikeutetun verkkoaseman vuoksi. N\u00e4m\u00e4 pyynn\u00f6t altistavat ei-julkisia laitteita ja palvelimia n\u00e4kyville internetiin, mik\u00e4 lis\u00e4\u00e4 sivustojen v\u00e4listen pyynt\u00f6jen v\u00e4\u00e4rennykseen (CSRF) liittyv\u00e4n hy\u00f6kk\u00e4yksen ja/tai tietovuodon riski\u00e4. Pienent\u00e4\u00e4kseen riski\u00e4 Chrome poistaa k\u00e4yt\u00f6st\u00e4 ei-julkisille aliresursseille osoitetut pyynn\u00f6t, jos ne ovat per\u00e4isin suojaamattomista konteksteista, ja alkaa est\u00e4\u00e4 niit\u00e4."
+  },
+  "generated/Deprecation.ts | InterestGroupDailyUpdateUrl": {
+    "message": "Rakenteen InterestGroups kentt\u00e4 dailyUpdateUrl on siirretty kentt\u00e4\u00e4n joinAdInterestGroup(), jonka uusi nimi on updateUrl, jotta se vastaa paremmin sen toimintaa."
+  },
+  "generated/Deprecation.ts | IntlV8BreakIterator": {
+    "message": "Intl.v8BreakIterator on poistettu k\u00e4yt\u00f6st\u00e4. K\u00e4yt\u00e4 sen sijaan t\u00e4t\u00e4: Intl.Segmenter."
+  },
+  "generated/Deprecation.ts | LocalCSSFileExtensionRejected": {
+    "message": "CSS:\u00e4\u00e4 ei voi ladata file: \u2011URL-osoitteista, elleiv\u00e4t ne p\u00e4\u00e4ty .css \u2011tiedostotunnisteeseen."
+  },
+  "generated/Deprecation.ts | MediaSourceAbortRemove": {
+    "message": "Kohteen SourceBuffer.abort() k\u00e4ytt\u00f6 kohteen remove() asynkronisen v\u00e4lin poistamiseen on poistettu k\u00e4yt\u00f6st\u00e4 m\u00e4\u00e4ritysmuutoksen vuoksi. Tuki poistetaan tulevaisuudessa. Kuuntele sen sijaan tapahtuma updateend. abort() on tarkoitettu ainoastaan asynkronisen medialiitteen tai nollausj\u00e4sent\u00e4j\u00e4n tilan keskeytykseen."
+  },
+  "generated/Deprecation.ts | MediaSourceDurationTruncatingBuffered": {
+    "message": "Kohteen MediaSource.duration asettaminen puskuroidun koodatun kehyksen korkeinta esitysaikaleimaa alemmas on poistettu k\u00e4yt\u00f6st\u00e4 m\u00e4\u00e4ritysmuutoksen vuoksi. Lyhennetyn puskuroidun median implisiittisen poiston tuki poistetaan tulevaisuudessa. Tee sen sijaan eksplisiittinen remove(newDuration, oldDuration) kaikkien sourceBuffers \u2011kohteiden kohdalla, joissa newDuration < oldDuration."
+  },
+  "generated/Deprecation.ts | NoSysexWebMIDIWithoutPermission": {
+    "message": "Web MIDI pyyt\u00e4\u00e4 k\u00e4ytt\u00f6lupaa, vaikka MIDIOptions ei ole m\u00e4\u00e4ritt\u00e4nyt sysexi\u00e4."
+  },
+  "generated/Deprecation.ts | NotificationInsecureOrigin": {
+    "message": "Notification APIa ei saa en\u00e4\u00e4 k\u00e4ytt\u00e4\u00e4 suojaamattomista alkuperist\u00e4. Suosittelemme vaihtamaan sovelluksen turvalliseen alkuper\u00e4\u00e4n, esim. HTTPS:\u00e4\u00e4n. Lue lis\u00e4\u00e4 osoitteesta https://goo.gle/chrome-insecure-origins."
+  },
+  "generated/Deprecation.ts | NotificationPermissionRequestedIframe": {
+    "message": "Notification APIn lupaa ei v\u00e4ltt\u00e4m\u00e4tt\u00e4 en\u00e4\u00e4 pyydet\u00e4 eri l\u00e4hteist\u00e4 per\u00e4isin olevalta iframelta. Suosittelemme sen sijaan pyyt\u00e4m\u00e4\u00e4n lupaa yl\u00e4tason kehykselt\u00e4 tai avaamaan uuden ikkunan."
+  },
+  "generated/Deprecation.ts | ObsoleteCreateImageBitmapImageOrientationNone": {
+    "message": "Vaihtoehto imageOrientation: 'none' on poistettu k\u00e4yt\u00f6st\u00e4 createImageBitmapissa. K\u00e4yt\u00e4 sen sijaan createImageBitmapia, jossa on vaihtoehto \"{imageOrientation: 'from-image'}\"."
+  },
+  "generated/Deprecation.ts | ObsoleteWebRtcCipherSuite": {
+    "message": "Yhteisty\u00f6kumppanisi neuvottelee vanhentuneesta (D)TLS-versiosta. Pyyd\u00e4 yhteisty\u00f6kumppaniasi korjaamaan t\u00e4m\u00e4."
+  },
+  "generated/Deprecation.ts | OverflowVisibleOnReplacedElement": {
+    "message": "Jos overflow: visible m\u00e4\u00e4ritet\u00e4\u00e4n img-, video- ja canvas-tageissa, ne voivat tuottaa visuaalista sis\u00e4lt\u00f6\u00e4 elementtirajojen ulkopuolella. Lue lis\u00e4\u00e4 osoitteesta https://github.com/WICG/shared-element-transitions/blob/main/debugging_overflow_on_images.md."
+  },
+  "generated/Deprecation.ts | PaymentInstruments": {
+    "message": "paymentManager.instruments on poistettu k\u00e4yt\u00f6st\u00e4. K\u00e4yt\u00e4 maksujen k\u00e4sittelij\u00f6ille sen sijaan heti asennettavaa (JIT) APIa."
+  },
+  "generated/Deprecation.ts | PaymentRequestCSPViolation": {
+    "message": "PaymentRequest-kutsu ohitti Content-Security-Policy (CSP) \u2011k\u00e4yt\u00e4nn\u00f6n connect-src-s\u00e4\u00e4nn\u00f6n. T\u00e4m\u00e4 ohitus on poistettu k\u00e4yt\u00f6st\u00e4. Lis\u00e4\u00e4 maksutavan tunniste PaymentRequest APIsta (supportedMethods-kent\u00e4ss\u00e4) CSP-k\u00e4yt\u00e4nn\u00f6n connect-src-s\u00e4\u00e4nt\u00f6\u00f6n."
+  },
+  "generated/Deprecation.ts | PersistentQuotaType": {
+    "message": "StorageType.persistent on poistettu k\u00e4yt\u00f6st\u00e4. Valitse sen sijaan standardoitu navigator.storage."
+  },
+  "generated/Deprecation.ts | PictureSourceSrc": {
+    "message": "<source src>, jolla on <picture>-yl\u00e4taso, on virheellinen ja j\u00e4tet\u00e4\u00e4n n\u00e4in ollen huomiotta. K\u00e4yt\u00e4 sen sijaan t\u00e4t\u00e4: <source srcset>."
+  },
+  "generated/Deprecation.ts | PrefixedCancelAnimationFrame": {
+    "message": "webkitCancelAnimationFrame on myyj\u00e4kohtainen. K\u00e4yt\u00e4 sen sijaan normaalia cancelAnimationFrame-menetelm\u00e4\u00e4."
+  },
+  "generated/Deprecation.ts | PrefixedRequestAnimationFrame": {
+    "message": "webkitRequestAnimationFrame on myyj\u00e4kohtainen. K\u00e4yt\u00e4 sen sijaan normaalia requestAnimationFrame-menetelm\u00e4\u00e4."
+  },
+  "generated/Deprecation.ts | PrefixedVideoDisplayingFullscreen": {
+    "message": "HTMLVideoElement.webkitDisplayingFullscreen on poistettu k\u00e4yt\u00f6st\u00e4. K\u00e4yt\u00e4 sen sijaan Document.fullscreenElement-APIa."
+  },
+  "generated/Deprecation.ts | PrefixedVideoEnterFullScreen": {
+    "message": "HTMLVideoElement.webkitEnterFullScreen() on poistettu k\u00e4yt\u00f6st\u00e4. K\u00e4yt\u00e4 sen sijaan Element.requestFullscreen()-APIa."
+  },
+  "generated/Deprecation.ts | PrefixedVideoEnterFullscreen": {
+    "message": "HTMLVideoElement.webkitEnterFullscreen() on poistettu k\u00e4yt\u00f6st\u00e4. K\u00e4yt\u00e4 sen sijaan Element.requestFullscreen()-APIa."
+  },
+  "generated/Deprecation.ts | PrefixedVideoExitFullScreen": {
+    "message": "HTMLVideoElement.webkitExitFullScreen() on poistettu k\u00e4yt\u00f6st\u00e4. K\u00e4yt\u00e4 sen sijaan Document.exitFullscreen()-APIa."
+  },
+  "generated/Deprecation.ts | PrefixedVideoExitFullscreen": {
+    "message": "HTMLVideoElement.webkitExitFullscreen() on poistettu k\u00e4yt\u00f6st\u00e4. K\u00e4yt\u00e4 sen sijaan Document.exitFullscreen()-APIa."
+  },
+  "generated/Deprecation.ts | PrefixedVideoSupportsFullscreen": {
+    "message": "HTMLVideoElement.webkitSupportsFullscreen on poistettu k\u00e4yt\u00f6st\u00e4. K\u00e4yt\u00e4 sen sijaan Document.fullscreenEnabled-APIa."
+  },
+  "generated/Deprecation.ts | PrivacySandboxExtensionsAPI": {
+    "message": "Poistamme APIn chrome.privacy.websites.privacySandboxEnabled k\u00e4yt\u00f6st\u00e4, mutta se pysyy taaksep\u00e4inyhteensopivana M113-versioon asti. Ota sen sijaan k\u00e4ytt\u00f6\u00f6n chrome.privacy.websites.topicsEnabled, chrome.privacy.websites.fledgeEnabled ja chrome.privacy.websites.adMeasurementEnabled. Lue lis\u00e4\u00e4 osoitteesta https://developer.chrome.com/docs/extensions/reference/privacy/#property-websites-privacySandboxEnabled."
+  },
+  "generated/Deprecation.ts | RTCConstraintEnableDtlsSrtpFalse": {
+    "message": "Rajoitus DtlsSrtpKeyAgreement on poistettu. Olet m\u00e4\u00e4ritt\u00e4nyt false \u2011arvon t\u00e4lle rajoitukselle, mik\u00e4 tulkitaan yrityksen\u00e4 k\u00e4ytt\u00e4\u00e4 poistettua SDES key negotiation \u2011metodia. T\u00e4m\u00e4 toiminto on poistettu. K\u00e4yt\u00e4 sen sijaan palvelua, joka tukee t\u00e4t\u00e4: DTLS key negotiation."
+  },
+  "generated/Deprecation.ts | RTCConstraintEnableDtlsSrtpTrue": {
+    "message": "Rajoitus DtlsSrtpKeyAgreement on poistettu. Olet m\u00e4\u00e4ritt\u00e4nyt true \u2011arvon t\u00e4lle rajoitukselle, jolla ei ollut mit\u00e4\u00e4n vaikutusta, mutta voit poistaa rajoituksen siisteyden vuoksi."
+  },
+  "generated/Deprecation.ts | RTCPeerConnectionGetStatsLegacyNonCompliant": {
+    "message": "Takaisinsoittopohjainen getStats() on poistettu k\u00e4yt\u00f6st\u00e4 ja poistetaan kokonaan. K\u00e4yt\u00e4 sen sijaan vaatimusten mukaisia getStats()-s\u00e4\u00e4nt\u00f6j\u00e4."
+  },
+  "generated/Deprecation.ts | RangeExpand": {
+    "message": "Range.expand() on poistettu k\u00e4yt\u00f6st\u00e4. K\u00e4yt\u00e4 sen sijaan Selection.modify()-APIa."
+  },
+  "generated/Deprecation.ts | RequestedSubresourceWithEmbeddedCredentials": {
+    "message": "Aliresurssipyynn\u00f6t, joiden URL-osoitteet sis\u00e4lt\u00e4v\u00e4t upotettuja kirjautumistietoja (esim. https://user:pass@host/), on estetty."
+  },
+  "generated/Deprecation.ts | RtcpMuxPolicyNegotiate": {
+    "message": "rtcpMuxPolicy \u2011vaihtoehto on poistettu k\u00e4yt\u00f6st\u00e4 ja poistetaan kokonaan."
+  },
+  "generated/Deprecation.ts | SharedArrayBufferConstructedWithoutIsolation": {
+    "message": "SharedArrayBuffer edellytt\u00e4\u00e4 muista l\u00e4hteist\u00e4 erist\u00e4mist\u00e4. Lue lis\u00e4\u00e4 osoitteesta https://developer.chrome.com/blog/enabling-shared-array-buffer/."
+  },
+  "generated/Deprecation.ts | TextToSpeech_DisallowedByAutoplay": {
+    "message": "speechSynthesis.speak() ilman k\u00e4ytt\u00e4j\u00e4n aktivointia on poistettu k\u00e4yt\u00f6st\u00e4 ja poistetaan kokonaan."
+  },
+  "generated/Deprecation.ts | UnloadHandler": {
+    "message": "Unload-tapahtumaseuraimet on poistettu k\u00e4yt\u00f6st\u00e4 ja ne poistetaan selaimesta"
+  },
+  "generated/Deprecation.ts | V8SharedArrayBufferConstructedInExtensionWithoutIsolation": {
+    "message": "Laajennusten pit\u00e4isi ottaa muista l\u00e4hteist\u00e4 erist\u00e4minen k\u00e4ytt\u00f6\u00f6n, jotta ne voivat jatkaa t\u00e4m\u00e4n k\u00e4ytt\u00f6\u00e4: SharedArrayBuffer. Lue lis\u00e4\u00e4 osoitteesta https://developer.chrome.com/docs/extensions/mv3/cross-origin-isolation/."
+  },
+  "generated/Deprecation.ts | XHRJSONEncodingDetection": {
+    "message": "Vastaus-JSON ei tue UTF-16:ta kohteessa XMLHttpRequest"
+  },
+  "generated/Deprecation.ts | XMLHttpRequestSynchronousInNonWorkerOutsideBeforeUnload": {
+    "message": "P\u00e4\u00e4s\u00e4ikeen samanaikainen XMLHttpRequest on poistettu k\u00e4yt\u00f6st\u00e4, koska sill\u00e4 oli haitallisia vaikutuksia loppuk\u00e4ytt\u00e4j\u00e4n kokemukseen. Lue lis\u00e4ohjeita osoitteesta https://xhr.spec.whatwg.org/."
+  },
+  "models/trace/insights/CLSCulprits.ts | animation": {
+    "message": "Animaatio"
+  },
+  "models/trace/insights/CLSCulprits.ts | description": {
+    "message": "Asettelun muutoksia tapahtuu, kun elementit liikkuvat ilman k\u00e4ytt\u00e4j\u00e4n interaktioita. [Tutki asettelun muutosten syit\u00e4](https://web.dev/articles/optimize-cls), kuten elementtien lis\u00e4\u00e4mist\u00e4, poistamista tai fonttien vaihtumista sivun latauksen aikana."
+  },
+  "models/trace/insights/CLSCulprits.ts | fontRequest": {
+    "message": "Fonttipyynt\u00f6"
+  },
+  "models/trace/insights/CLSCulprits.ts | injectedIframe": {
+    "message": "Lis\u00e4tty iframe"
+  },
+  "models/trace/insights/CLSCulprits.ts | layoutShiftCluster": {
+    "message": "Asettelun muutosklusteri: {PH1}"
+  },
+  "models/trace/insights/CLSCulprits.ts | noCulprits": {
+    "message": "Asettelun muutoksen aiheuttajia ei havaittu"
+  },
+  "models/trace/insights/CLSCulprits.ts | noLayoutShifts": {
+    "message": "Ei asettelun muutoksia"
+  },
+  "models/trace/insights/CLSCulprits.ts | title": {
+    "message": "Asettelun muutoksen aiheuttajat"
+  },
+  "models/trace/insights/CLSCulprits.ts | topCulprits": {
+    "message": "Asettelun muutoksen yleisimm\u00e4t aiheuttajat"
+  },
+  "models/trace/insights/CLSCulprits.ts | unsizedImages": {
+    "message": "Kuvien kokoa ei ole asetettu"
+  },
+  "models/trace/insights/CLSCulprits.ts | worstCluster": {
+    "message": "Huonoin klusteri"
+  },
+  "models/trace/insights/CLSCulprits.ts | worstLayoutShiftCluster": {
+    "message": "Huonoin asettelun muutosklusteri"
+  },
+  "models/trace/insights/Cache.ts | cacheTTL": {
+    "message": "V\u00e4limuistin k\u00e4ytt\u00f6ik\u00e4"
+  },
+  "models/trace/insights/Cache.ts | description": {
+    "message": "Pitk\u00e4 v\u00e4limuistin k\u00e4ytt\u00f6ik\u00e4 voi nopeuttaa sivun lataamista, kun k\u00e4ytt\u00e4j\u00e4 avaa sen uudelleen. [Lue lis\u00e4\u00e4](https://web.dev/uses-long-cache-ttl/)."
+  },
+  "models/trace/insights/Cache.ts | noRequestsToCache": {
+    "message": "Ei pyynt\u00f6j\u00e4, joissa on tehottomat v\u00e4limuistik\u00e4yt\u00e4nn\u00f6t"
+  },
+  "models/trace/insights/Cache.ts | others": {
+    "message": "{PH1} muuta"
+  },
+  "models/trace/insights/Cache.ts | requestColumn": {
+    "message": "Pyynt\u00f6"
+  },
+  "models/trace/insights/Cache.ts | title": {
+    "message": "K\u00e4yt\u00e4 tehokasta v\u00e4limuistin k\u00e4ytt\u00f6ik\u00e4\u00e4"
+  },
+  "models/trace/insights/DOMSize.ts | description": {
+    "message": "Suuri DOM voi pident\u00e4\u00e4 tyylilaskelmien ja asettelun uudelleenjuoksutusten kestoa, mik\u00e4 vaikuttaa sivun responsiivisuuteen. Suuri DOM lis\u00e4\u00e4 my\u00f6s muistin k\u00e4ytt\u00f6\u00e4. [Katso, miten voit v\u00e4ltt\u00e4\u00e4 liian suuren DOM:n](https://developer.chrome.com/docs/lighthouse/performance/dom-size/)."
+  },
+  "models/trace/insights/DOMSize.ts | element": {
+    "message": "Elementti"
+  },
+  "models/trace/insights/DOMSize.ts | maxChildren": {
+    "message": "Useimmat alatasot"
+  },
+  "models/trace/insights/DOMSize.ts | maxDOMDepth": {
+    "message": "DOM-syvyys"
+  },
+  "models/trace/insights/DOMSize.ts | statistic": {
+    "message": "Tilastotieto"
+  },
+  "models/trace/insights/DOMSize.ts | title": {
+    "message": "Optimoi DOM-koko"
+  },
+  "models/trace/insights/DOMSize.ts | totalElements": {
+    "message": "Elementit yhteens\u00e4"
+  },
+  "models/trace/insights/DOMSize.ts | value": {
+    "message": "Arvo"
+  },
+  "models/trace/insights/DocumentLatency.ts | description": {
+    "message": "Ensimm\u00e4inen verkkopyynt\u00f6 on t\u00e4rkein.  V\u00e4henn\u00e4 viivett\u00e4 v\u00e4ltt\u00e4m\u00e4ll\u00e4 uudelleenohjauksia, varmistamalla nopea palvelimen vaste ja ottamalla tekstin pakkaus k\u00e4ytt\u00f6\u00f6n."
+  },
+  "models/trace/insights/DocumentLatency.ts | failedRedirects": {
+    "message": "Uudelleenohjauksia"
+  },
+  "models/trace/insights/DocumentLatency.ts | failedServerResponseTime": {
+    "message": "Palvelin vastasi hitaasti"
+  },
+  "models/trace/insights/DocumentLatency.ts | failedTextCompression": {
+    "message": "Ei pakattu"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingRedirects": {
+    "message": "V\u00e4ltt\u00e4\u00e4 uudelleenohjaukset"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingServerResponseTime": {
+    "message": "Palvelin vastaa nopeasti"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingTextCompression": {
+    "message": "Pakkaa tekstin"
+  },
+  "models/trace/insights/DocumentLatency.ts | redirectsLabel": {
+    "message": "Uudelleenohjaukset"
+  },
+  "models/trace/insights/DocumentLatency.ts | serverResponseTimeLabel": {
+    "message": "Palvelimen vastausaika"
+  },
+  "models/trace/insights/DocumentLatency.ts | title": {
+    "message": "Dokumentin pyynn\u00f6n viive"
+  },
+  "models/trace/insights/DocumentLatency.ts | uncompressedDownload": {
+    "message": "Purkamaton lataus"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | columnDuplicatedBytes": {
+    "message": "P\u00e4\u00e4llekk\u00e4iset tavut"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | columnSource": {
+    "message": "L\u00e4hde"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | description": {
+    "message": "Poista suuret, kopioidut JavaScript-moduulit paketeista pienent\u00e4\u00e4ksesi verkkotoiminnan tarpeetonta tavunkulutusta."
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | title": {
+    "message": "P\u00e4\u00e4llekk\u00e4inen JavaScript"
+  },
+  "models/trace/insights/FontDisplay.ts | description": {
+    "message": "Harkitse asettavasi [font-display](https://developer.chrome.com/blog/font-display) arvoon swap tai optional, niin varmistat, ett\u00e4 teksti on aina n\u00e4kyviss\u00e4. Optimointia (swap) voidaan lis\u00e4t\u00e4, jotta asettelumuutoksia voidaan v\u00e4hent\u00e4\u00e4 [fonttimittarin ohitusarvojen](https://developer.chrome.com/blog/font-fallbacks) avulla."
+  },
+  "models/trace/insights/FontDisplay.ts | fontColumn": {
+    "message": "Fontti"
+  },
+  "models/trace/insights/FontDisplay.ts | title": {
+    "message": "Fontin n\u00e4ytt\u00f6"
+  },
+  "models/trace/insights/FontDisplay.ts | wastedTimeColumn": {
+    "message": "Hukattu aika"
+  },
+  "models/trace/insights/ForcedReflow.ts | anonymous": {
+    "message": "(nimett\u00f6m\u00e4t)"
+  },
+  "models/trace/insights/ForcedReflow.ts | description": {
+    "message": "Monet APIt, jotka yleens\u00e4 lukevat asettelun geometriaa, pakottavat render\u00f6intimoottorin keskeytt\u00e4m\u00e4\u00e4n skriptin suorittamisen, jotta tyyli ja asettelu voidaan laskea. Lue lis\u00e4\u00e4 [pakotetusta uudelleenlaskemisesta](https://developers.google.com/web/fundamentals/performance/rendering/avoid-large-complex-layouts-and-layout-thrashing#avoid-forced-synchronous-layouts) ja sen torjunnasta."
+  },
+  "models/trace/insights/ForcedReflow.ts | relatedStackTrace": {
+    "message": "J\u00e4ljityslista"
+  },
+  "models/trace/insights/ForcedReflow.ts | title": {
+    "message": "Pakotettu uudelleenlaskeminen"
+  },
+  "models/trace/insights/ForcedReflow.ts | topTimeConsumingFunctionCall": {
+    "message": "Pisimp\u00e4\u00e4n kest\u00e4v\u00e4 toimintokutsu"
+  },
+  "models/trace/insights/ForcedReflow.ts | totalReflowTime": {
+    "message": "Uudelleenlaskemisaika yhteens\u00e4"
+  },
+  "models/trace/insights/ForcedReflow.ts | unattributed": {
+    "message": "[m\u00e4\u00e4ritt\u00e4m\u00e4t\u00f6n]"
+  },
+  "models/trace/insights/ImageDelivery.ts | description": {
+    "message": "Kuvien latausajan lyhent\u00e4minen voi parantaa sivun havaittua latausaikaa ja LCP:t\u00e4. [Lue lis\u00e4\u00e4 kuvakoon optimoinnista](https://developer.chrome.com/docs/lighthouse/performance/uses-optimized-images/)"
+  },
+  "models/trace/insights/ImageDelivery.ts | estimatedSavings": {
+    "message": "{PH1} (arvio: {PH2})"
+  },
+  "models/trace/insights/ImageDelivery.ts | noOptimizableImages": {
+    "message": "Ei optimoitavia kuvia"
+  },
+  "models/trace/insights/ImageDelivery.ts | optimizeFile": {
+    "message": "Optimoi tiedoston koko"
+  },
+  "models/trace/insights/ImageDelivery.ts | others": {
+    "message": "{PH1} muuta"
+  },
+  "models/trace/insights/ImageDelivery.ts | title": {
+    "message": "Paranna kuvien toimitusta"
+  },
+  "models/trace/insights/ImageDelivery.ts | useCompression": {
+    "message": "Kuvan pakkauskertoimen lis\u00e4\u00e4minen voi pienent\u00e4\u00e4 t\u00e4m\u00e4n kuvan latauskokoa."
+  },
+  "models/trace/insights/ImageDelivery.ts | useModernFormat": {
+    "message": "Modernin kuvamuodon (WebP, AVIF) k\u00e4ytt\u00f6 tai kuvan pakkauksen lis\u00e4\u00e4minen voi pienent\u00e4\u00e4 t\u00e4m\u00e4n kuvan latauskokoa."
+  },
+  "models/trace/insights/ImageDelivery.ts | useResponsiveSize": {
+    "message": "T\u00e4m\u00e4 kuvatiedosto on suurempi kuin sen n\u00e4ytett\u00e4vien mittojen ({PH2}) perusteella tarvittava koko ({PH1}). Pienenn\u00e4 kuvan latauskokoa k\u00e4ytt\u00e4m\u00e4ll\u00e4 responsiivisia kuvia."
+  },
+  "models/trace/insights/ImageDelivery.ts | useVideoFormat": {
+    "message": "Videomuotojen k\u00e4ytt\u00f6 GIF-tiedostojen sijaan voi parantaa animoidun sis\u00e4ll\u00f6n latauskokoa."
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | description": {
+    "message": "Aloita tutkinta pisimm\u00e4st\u00e4 vaiheesta. [Viiveet voidaan minimoida](https://web.dev/articles/optimize-inp#optimize_interactions). Voit lyhent\u00e4\u00e4 k\u00e4sittelyaikaa [optimoimalla p\u00e4\u00e4s\u00e4ikeen kustannukset](https://web.dev/articles/optimize-long-tasks), usein JS:n."
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | duration": {
+    "message": "Kesto"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | inputDelay": {
+    "message": "Sy\u00f6tteen viive"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | noInteractions": {
+    "message": "Interaktioita ei havaittu"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | phase": {
+    "message": "Vaihe"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | presentationDelay": {
+    "message": "Esityksen viive"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | processingDuration": {
+    "message": "K\u00e4sittelyn kesto"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | title": {
+    "message": "INP vaiheittain"
+  },
+  "models/trace/insights/LCPDiscovery.ts | description": {
+    "message": "Optimoi LCP tekem\u00e4ll\u00e4 LCP-kuvasta [l\u00f6ydett\u00e4v\u00e4](https://web.dev/articles/optimize-lcp#1_eliminate_resource_load_delay) HTML:st\u00e4 heti ja [v\u00e4ltt\u00e4m\u00e4ll\u00e4 laiskaa latautumista](https://web.dev/articles/lcp-lazy-loading)"
+  },
+  "models/trace/insights/LCPDiscovery.ts | fetchPriorityApplied": {
+    "message": "fetchpriority=high applied"
+  },
+  "models/trace/insights/LCPDiscovery.ts | fetchPriorityShouldBeApplied": {
+    "message": "\"fetchpriority=high\" tulisi k\u00e4ytt\u00e4\u00e4"
+  },
+  "models/trace/insights/LCPDiscovery.ts | lazyLoadNotApplied": {
+    "message": "laiska latautuminen ei k\u00e4yt\u00f6ss\u00e4"
+  },
+  "models/trace/insights/LCPDiscovery.ts | lcpLoadDelay": {
+    "message": "LCP-kuva ladattu ({PH1}) aikaisimman aloituspisteen j\u00e4lkeen."
+  },
+  "models/trace/insights/LCPDiscovery.ts | noLcp": {
+    "message": "LCP:t\u00e4 ei havaittu"
+  },
+  "models/trace/insights/LCPDiscovery.ts | noLcpResource": {
+    "message": "LCP-resurssia ei havaittu, koska LCP ei ole kuva"
+  },
+  "models/trace/insights/LCPDiscovery.ts | requestDiscoverable": {
+    "message": "Pyynt\u00f6 on l\u00f6ydett\u00e4viss\u00e4 alkuper\u00e4isest\u00e4 dokumentista"
+  },
+  "models/trace/insights/LCPDiscovery.ts | title": {
+    "message": "LCP-pyynn\u00f6n l\u00f6yt\u00e4minen"
+  },
+  "models/trace/insights/LCPPhases.ts | description": {
+    "message": "Kullakin [vaiheella on omat parantamisen strategiat](https://web.dev/articles/optimize-lcp#lcp-breakdown). Ihanteellisesti suurin osa LCP-ajasta pit\u00e4isi k\u00e4ytt\u00e4\u00e4 resurssien lataamiseen, ei viiv\u00e4styksiin."
+  },
+  "models/trace/insights/LCPPhases.ts | duration": {
+    "message": "Kesto"
+  },
+  "models/trace/insights/LCPPhases.ts | elementRenderDelay": {
+    "message": "Elementin render\u00f6intiviive"
+  },
+  "models/trace/insights/LCPPhases.ts | fieldDuration": {
+    "message": "Kent\u00e4n 75. prosenttipiste"
+  },
+  "models/trace/insights/LCPPhases.ts | noLcp": {
+    "message": "LCP:t\u00e4 ei havaittu"
+  },
+  "models/trace/insights/LCPPhases.ts | phase": {
+    "message": "Vaihe"
+  },
+  "models/trace/insights/LCPPhases.ts | resourceLoadDelay": {
+    "message": "Resurssin latausviive"
+  },
+  "models/trace/insights/LCPPhases.ts | resourceLoadDuration": {
+    "message": "Resurssin latauksen kesto"
+  },
+  "models/trace/insights/LCPPhases.ts | timeToFirstByte": {
+    "message": "Ensimm\u00e4ist\u00e4 tavua edelt\u00e4v\u00e4 aika"
+  },
+  "models/trace/insights/LCPPhases.ts | title": {
+    "message": "LCP vaiheittain"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | columnScript": {
+    "message": "Skripti"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | columnWastedBytes": {
+    "message": "Hukatut tavut"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | description": {
+    "message": "Polyfill- ja transform-merkint\u00f6jen avulla vanhat selaimet voivat k\u00e4ytt\u00e4\u00e4 uusia JavaScript-ominaisuuksia. Monia ei kuitenkaan tarvita nykyaikaisissa selaimissa. Harkitse JavaScript-k\u00e4\u00e4nn\u00f6sprosessin muuttamista niin, ett\u00e4 [Baseline](https://web.dev/articles/baseline-and-polyfills)-ominaisuuksien ohjelmkointikoodin kielt\u00e4 ei k\u00e4\u00e4nnet\u00e4, ellet tied\u00e4, ett\u00e4 sinun on tuettava vanhoja selaimia. [Lue lis\u00e4\u00e4 siit\u00e4, miksi useimmat sivustot voivat ottaa k\u00e4ytt\u00f6\u00f6n ES6+-koodin ilman ohjelmointikoodin kielen k\u00e4\u00e4nt\u00e4mist\u00e4](https://philipwalton.com/articles/the-state-of-es5-on-the-web/)"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | title": {
+    "message": "Vanha JavaScript"
+  },
+  "models/trace/insights/ModernHTTP.ts | description": {
+    "message": "HTTP/2 ja HTTP/3 tarjoavat monia etuja HTTP/1.1:een verrattuna, esimerkiksi kanavoinnin. [Lue lis\u00e4\u00e4 modernin HTTP:n k\u00e4yt\u00f6st\u00e4](https://developer.chrome.com/docs/lighthouse/best-practices/uses-http2/)."
+  },
+  "models/trace/insights/ModernHTTP.ts | noOldProtocolRequests": {
+    "message": "HTTP/1.1 ei ollut k\u00e4yt\u00f6ss\u00e4 mill\u00e4\u00e4n pyynn\u00f6ll\u00e4"
+  },
+  "models/trace/insights/ModernHTTP.ts | protocol": {
+    "message": "Protokolla"
+  },
+  "models/trace/insights/ModernHTTP.ts | request": {
+    "message": "Pyynt\u00f6"
+  },
+  "models/trace/insights/ModernHTTP.ts | title": {
+    "message": "Moderni HTTP"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | description": {
+    "message": "[V\u00e4lt\u00e4 kriittisten pyynt\u00f6jen ketjuttamista](https://developer.chrome.com/docs/lighthouse/performance/critical-request-chains) lyhent\u00e4m\u00e4ll\u00e4 ketjuja, pienent\u00e4m\u00e4ll\u00e4 resurssien latauskokoa ja lykk\u00e4\u00e4m\u00e4ll\u00e4 tarpeettomien resurssien lataamista."
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | maxCriticalPathLatency": {
+    "message": "Kriittisen polun enimm\u00e4isviive:"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | noNetworkDependencyTree": {
+    "message": "Verkko-ohjelmat eiv\u00e4t vaikuta mihink\u00e4\u00e4n render\u00f6intiteht\u00e4v\u00e4\u00e4n"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | title": {
+    "message": "Verkon riippuvuuspuu"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | warningDescription": {
+    "message": "V\u00e4lt\u00e4 kriittisten pyynt\u00f6jen ketjuttamista lyhent\u00e4m\u00e4ll\u00e4 ketjuja, pienent\u00e4m\u00e4ll\u00e4 resurssien latauskokoa ja lykk\u00e4\u00e4m\u00e4ll\u00e4 tarpeettomien resurssien lataamista sivun latausajan parantamiseksi."
+  },
+  "models/trace/insights/RenderBlocking.ts | description": {
+    "message": "Pyynn\u00f6t est\u00e4v\u00e4t sivun ensimm\u00e4isen render\u00f6innin, joten LCP:ss\u00e4 voi olla viiveit\u00e4. [Siirt\u00e4minen my\u00f6hemm\u00e4ksi tai sis\u00e4llytt\u00e4minen](https://web.dev/learn/performance/understanding-the-critical-path#render-blocking_resources/) voi poistaa n\u00e4m\u00e4 verkkopyynn\u00f6t kriittiselt\u00e4 polulta."
+  },
+  "models/trace/insights/RenderBlocking.ts | duration": {
+    "message": "Kesto"
+  },
+  "models/trace/insights/RenderBlocking.ts | noRenderBlocking": {
+    "message": "T\u00e4lle navigoinnille ei ole render\u00f6innin estopyynt\u00f6j\u00e4"
+  },
+  "models/trace/insights/RenderBlocking.ts | renderBlockingRequest": {
+    "message": "Pyynt\u00f6"
+  },
+  "models/trace/insights/RenderBlocking.ts | title": {
+    "message": "Render\u00f6innin estopyynt\u00f6"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | description": {
+    "message": "Jos \"Laske tyyli uudelleen\" \u2011kustannukset ovat edelleen korkeita, valitsimen optimointi voi alentaa niit\u00e4. [Optimoi valitsimet](https://developer.chrome.com/docs/devtools/performance/selector-stats), kun sek\u00e4 kulunut aika ett\u00e4 hidas polku ovat korkeita. Yksinkertaiset valitsimet, v\u00e4hemm\u00e4n valitsimia, pienempi DOM ja matalampi DOM v\u00e4hent\u00e4v\u00e4t vastaavuuskustannuksia."
+  },
+  "models/trace/insights/SlowCSSSelector.ts | elapsed": {
+    "message": "Kulunut aika"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | enableSelectorData": {
+    "message": "CSS-valitsindataa ei l\u00f6ytynyt. CSS-valitsimen tilastot on otettava k\u00e4ytt\u00f6\u00f6n tulospaneelin asetuksista."
+  },
+  "models/trace/insights/SlowCSSSelector.ts | matchAttempts": {
+    "message": "Vastaavuuksien hakuyritykset"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | matchCount": {
+    "message": "Vastaavuuksien m\u00e4\u00e4r\u00e4"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | title": {
+    "message": "CSS-valitsimen kustannukset"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | topSelectors": {
+    "message": "Suosituimmat valitsimet"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | total": {
+    "message": "Yhteens\u00e4"
+  },
+  "models/trace/insights/ThirdParties.ts | columnMainThreadTime": {
+    "message": "P\u00e4\u00e4s\u00e4ikeen aika"
+  },
+  "models/trace/insights/ThirdParties.ts | columnThirdParty": {
+    "message": "Kolmas osapuoli"
+  },
+  "models/trace/insights/ThirdParties.ts | columnTransferSize": {
+    "message": "Siirron koko"
+  },
+  "models/trace/insights/ThirdParties.ts | description": {
+    "message": "Kolmannen osapuolen koodi voi vaikuttaa lataustehokkuuteen merkitt\u00e4v\u00e4sti. [V\u00e4henn\u00e4 ja lykk\u00e4\u00e4 kolmannen osapuolen koodin lataamista](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/loading-third-party-javascript/) sivun sis\u00e4ll\u00f6n priorisoimiseksi."
+  },
+  "models/trace/insights/ThirdParties.ts | noThirdParties": {
+    "message": "Kolmansia osapuolia ei l\u00f6ytynyt"
+  },
+  "models/trace/insights/ThirdParties.ts | title": {
+    "message": "Kolmannet osapuolet"
+  },
+  "models/trace/insights/Viewport.ts | description": {
+    "message": "Napautusinteraktiot voivat [viiv\u00e4sty\u00e4 jopa 300\u00a0ms:lla](https://developer.chrome.com/blog/300ms-tap-delay-gone-away/), jos n\u00e4kym\u00e4\u00e4 ei ole optimoitu mobiililaitteille."
+  },
+  "models/trace/insights/Viewport.ts | title": {
+    "message": "Optimoi n\u00e4kym\u00e4 mobiililaitteille"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | HTTPMethodNotGET": {
+    "message": "Vain GET-pyynn\u00f6n kautta ladattavat sivut voivat k\u00e4ytt\u00e4\u00e4 siirtymisv\u00e4limuistia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | HTTPStatusNotOK": {
+    "message": "V\u00e4limuistiin voi tallentaa vain sivuja, joilla on tilakoodi 2XX."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | JavaScriptExecution": {
+    "message": "Chrome havaitsi v\u00e4limuistissa yrityksen suorittaa JavaScript."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | appBanner": {
+    "message": "AppBanneria pyyt\u00e4neet sivut eiv\u00e4t voi t\u00e4ll\u00e4 hetkell\u00e4 k\u00e4ytt\u00e4\u00e4 siirtymisv\u00e4limuistia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabled": {
+    "message": "Merkinn\u00e4t est\u00e4v\u00e4t siirtymisv\u00e4limuistin k\u00e4yt\u00f6n. Ota se k\u00e4ytt\u00f6\u00f6n paikallisesti t\u00e4ll\u00e4 laitteella osoitteessa chrome://flags/#back-forward-cache."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledByCommandLine": {
+    "message": "Komentorivi est\u00e4\u00e4 siirtymisv\u00e4limuistin k\u00e4yt\u00f6n."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledByLowMemory": {
+    "message": "Riitt\u00e4m\u00e4t\u00f6n muisti est\u00e4\u00e4 siirtymisv\u00e4limuistin k\u00e4yt\u00f6n."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledForDelegate": {
+    "message": "Delegaatti ei tue siirtymisv\u00e4limuistia"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledForPrerender": {
+    "message": "Esirender\u00f6ij\u00e4 est\u00e4\u00e4 siirtymisv\u00e4limuistin k\u00e4yt\u00f6n."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | broadcastChannel": {
+    "message": "Sivua ei voi tallentaa v\u00e4limuistiin, koska sill\u00e4 on BroadcastChannel-esiintym\u00e4, jolla on rekister\u00f6ityj\u00e4 kuuntelijoita."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheControlNoStore": {
+    "message": "Sivut, joilla on cache-control:no-store-otsikko, eiv\u00e4t voi k\u00e4ytt\u00e4\u00e4 siirtymisv\u00e4limuistia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheFlushed": {
+    "message": "V\u00e4limuisti tyhjennettiin tarkoituksella."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheLimit": {
+    "message": "Sivu poistettiin v\u00e4limuistista, jotta toinen sivu voitiin tallentaa v\u00e4limuistiin."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | containsPlugins": {
+    "message": "Liit\u00e4nn\u00e4isi\u00e4 sis\u00e4lt\u00e4v\u00e4t sivut eiv\u00e4t voi t\u00e4ll\u00e4 hetkell\u00e4 k\u00e4ytt\u00e4\u00e4 siirtymisv\u00e4limuistia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentDiscarded": {
+    "message": "M\u00e4\u00e4rittelem\u00e4t\u00f6n"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentFileChooser": {
+    "message": "FileChooser APIa k\u00e4ytt\u00e4v\u00e4t sivut eiv\u00e4t voi k\u00e4ytt\u00e4\u00e4 siirtymisv\u00e4limuistia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentFileSystemAccess": {
+    "message": "File System Access APIa k\u00e4ytt\u00e4v\u00e4t sivut eiv\u00e4t voi k\u00e4ytt\u00e4\u00e4 siirtymisv\u00e4limuistia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaDevicesDispatcherHost": {
+    "message": "Medialaitteen v\u00e4litt\u00e4j\u00e4\u00e4 k\u00e4ytt\u00e4v\u00e4t sivut eiv\u00e4t voi k\u00e4ytt\u00e4\u00e4 siirtymisv\u00e4limuistia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaPlay": {
+    "message": "Mediasoitin oli k\u00e4ynniss\u00e4 siirrytt\u00e4ess\u00e4 pois."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaSession": {
+    "message": "MediaSession APIa k\u00e4ytt\u00e4v\u00e4t ja toiston tilan asettavat sivut eiv\u00e4t voi k\u00e4ytt\u00e4\u00e4 siirtymisv\u00e4limuistia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaSessionService": {
+    "message": "MediaSession APIa k\u00e4ytt\u00e4v\u00e4t ja toimintok\u00e4sittelij\u00f6it\u00e4 asettavat sivut eiv\u00e4t voi k\u00e4ytt\u00e4\u00e4 siirtymisv\u00e4limuistia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentScreenReader": {
+    "message": "N\u00e4yt\u00f6nlukuohjelma est\u00e4\u00e4 siirtymisv\u00e4limuistin k\u00e4yt\u00f6n."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentSecurityHandler": {
+    "message": "SecurityHandleria k\u00e4ytt\u00e4v\u00e4t sivut eiv\u00e4t voi k\u00e4ytt\u00e4\u00e4 siirtymisv\u00e4limuistia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentSerial": {
+    "message": "Serial APIa k\u00e4ytt\u00e4v\u00e4t sivut eiv\u00e4t voi k\u00e4ytt\u00e4\u00e4 siirtymisv\u00e4limuistia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebAuthenticationAPI": {
+    "message": "WebAuthetication APIa k\u00e4ytt\u00e4v\u00e4t sivut eiv\u00e4t voi k\u00e4ytt\u00e4\u00e4 siirtymisv\u00e4limuistia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebBluetooth": {
+    "message": "WebBluetooth APIa k\u00e4ytt\u00e4v\u00e4t sivut eiv\u00e4t voi k\u00e4ytt\u00e4\u00e4 siirtymisv\u00e4limuistia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebUSB": {
+    "message": "WebUSB APIa k\u00e4ytt\u00e4v\u00e4t sivut eiv\u00e4t voi k\u00e4ytt\u00e4\u00e4 siirtymisv\u00e4limuistia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cookieDisabled": {
+    "message": "Siirtymisv\u00e4limuisti on poistettu k\u00e4yt\u00f6st\u00e4, koska ev\u00e4steet on poistettu k\u00e4yt\u00f6st\u00e4 sivulla, jolla on k\u00e4yt\u00f6ss\u00e4 Cache-Control: no-store."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | dedicatedWorkerOrWorklet": {
+    "message": "Dedicated workeria tai workletia k\u00e4ytt\u00e4v\u00e4t sivut eiv\u00e4t voi t\u00e4ll\u00e4 hetkell\u00e4 k\u00e4ytt\u00e4\u00e4 siirtymisv\u00e4limuistia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | documentLoaded": {
+    "message": "Dokumentti ei latautunut kokonaan ennen pois siirtymist\u00e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderAppBannerManager": {
+    "message": "Sovellusbanneri oli p\u00e4\u00e4ll\u00e4 pois siirrytt\u00e4ess\u00e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderChromePasswordManagerClientBindCredentialManager": {
+    "message": "Chromen Salasanojen yll\u00e4pito oli p\u00e4\u00e4ll\u00e4 pois siirrytt\u00e4ess\u00e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderDomDistillerSelfDeletingRequestDelegate": {
+    "message": "DOM-tislaus oli kesken pois siirrytt\u00e4ess\u00e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderDomDistillerViewerSource": {
+    "message": "DOM Distiller Viewer oli n\u00e4kyviss\u00e4 pois siirrytt\u00e4ess\u00e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionMessaging": {
+    "message": "Messaging APIa k\u00e4ytt\u00e4v\u00e4t laajennukset est\u00e4v\u00e4t siirtymisv\u00e4limuistin k\u00e4yt\u00f6n."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionMessagingForOpenPort": {
+    "message": "Pitk\u00e4\u00e4n yhdistettyin\u00e4 olleiden laajennusten pit\u00e4isi katkaista yhteys ennen siirtymisv\u00e4limuistiin siirtymist\u00e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionSentMessageToCachedFrame": {
+    "message": "Pitk\u00e4\u00e4n yhdistettyn\u00e4 ollut laajennus yritti l\u00e4hett\u00e4\u00e4 viestej\u00e4 siirtymisv\u00e4limuistissa oleville kehyksille."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensions": {
+    "message": "Laajennukset est\u00e4v\u00e4t siirtymisv\u00e4limuistin k\u00e4yt\u00f6n."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderModalDialog": {
+    "message": "Sivun modaalivalintaikkuna (esim. lomakkeen uudelleenl\u00e4hetys tai http-salasanavalintaikkuna) oli n\u00e4kyviss\u00e4 pois siirrytt\u00e4ess\u00e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderOfflinePage": {
+    "message": "Offline-sivu oli n\u00e4kyviss\u00e4 pois siirrytt\u00e4ess\u00e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderOomInterventionTabHelper": {
+    "message": "Muistin loppumisen muistutuspalkki oli n\u00e4kyviss\u00e4 pois siirrytt\u00e4ess\u00e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderPermissionRequestManager": {
+    "message": "Lupapyynt\u00f6j\u00e4 oli aktiivisena pois siirrytt\u00e4ess\u00e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderPopupBlockerTabHelper": {
+    "message": "Ponnahdusikkunoiden estotoiminto oli p\u00e4\u00e4ll\u00e4 pois siirrytt\u00e4ess\u00e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderSafeBrowsingThreatDetails": {
+    "message": "Selaussuojan tiedot olivat n\u00e4kyviss\u00e4 pois siirrytt\u00e4ess\u00e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderSafeBrowsingTriggeredPopupBlocker": {
+    "message": "Selaussuoja katsoi sivun haitalliseksi ja esti ponnahdusikkunan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | enteredBackForwardCacheBeforeServiceWorkerHostAdded": {
+    "message": "Service worker aktivoitiin, kun sivu oli siirtymisv\u00e4limuistissa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | errorDocument": {
+    "message": "Dokumenttivirhe est\u00e4\u00e4 siirtymisv\u00e4limuistin k\u00e4yt\u00f6n."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | fencedFramesEmbedder": {
+    "message": "bfcache ei voi tallentaa FencedFramesia k\u00e4ytt\u00e4vi\u00e4 sivuja."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | foregroundCacheLimit": {
+    "message": "Sivu poistettiin v\u00e4limuistista, jotta toinen sivu voitiin tallentaa v\u00e4limuistiin."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | grantedMediaStreamAccess": {
+    "message": "Sivut, joille on my\u00f6nnetty p\u00e4\u00e4sy median striimaukseen, eiv\u00e4t voi t\u00e4ll\u00e4 hetkell\u00e4 k\u00e4ytt\u00e4\u00e4 siirtymisv\u00e4limuistia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | haveInnerContents": {
+    "message": "Sivut, joilla on tietynlaista upotettua sis\u00e4lt\u00f6\u00e4 (esim. PDF-tiedostoja), eiv\u00e4t voi t\u00e4ll\u00e4 hetkell\u00e4 k\u00e4ytt\u00e4\u00e4 siirtymisv\u00e4limuistia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | idleManager": {
+    "message": "IdleManageria k\u00e4ytt\u00e4v\u00e4t sivut eiv\u00e4t voi t\u00e4ll\u00e4 hetkell\u00e4 k\u00e4ytt\u00e4\u00e4 siirtymisv\u00e4limuistia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | indexedDBConnection": {
+    "message": "Sivut, joilla on avoin IndexedDB-yhteys, eiv\u00e4t voi t\u00e4ll\u00e4 hetkell\u00e4 k\u00e4ytt\u00e4\u00e4 siirtymisv\u00e4limuistia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | indexedDBEvent": {
+    "message": "Siirtymisv\u00e4limuisti on poistettu k\u00e4yt\u00f6st\u00e4 IndexedDB-tapahtuman vuoksi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | ineligibleAPI": {
+    "message": "K\u00e4ytetyt APIt eiv\u00e4t olleet soveltuvia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | injectedJavascript": {
+    "message": "Sivut, joihin JavaScript lis\u00e4t\u00e4\u00e4n laajennuksen avulla, eiv\u00e4t voi t\u00e4ll\u00e4 hetkell\u00e4 k\u00e4ytt\u00e4\u00e4 siirtymisv\u00e4limuistia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | injectedStyleSheet": {
+    "message": "Sivut, joihin StyleSheet lis\u00e4t\u00e4\u00e4n laajennusten avulla, eiv\u00e4t voi t\u00e4ll\u00e4 hetkell\u00e4 k\u00e4ytt\u00e4\u00e4 siirtymisv\u00e4limuistia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | internalError": {
+    "message": "Sis\u00e4inen virhe."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | jsNetworkRequestReceivedCacheControlNoStoreResource": {
+    "message": "Siirtymisv\u00e4limuisti on poistettu k\u00e4yt\u00f6st\u00e4, koska jokin JavaScript-verkkopyynt\u00f6 vastaanotti resurssin, jonka otsikko on Cache-Control: no-store."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | keepaliveRequest": {
+    "message": "Keepalive-pyynt\u00f6 est\u00e4\u00e4 siirtymisv\u00e4limuistin k\u00e4yt\u00f6n."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | keyboardLock": {
+    "message": "N\u00e4pp\u00e4imist\u00f6n lukitusta k\u00e4ytt\u00e4v\u00e4t sivut eiv\u00e4t voi t\u00e4ll\u00e4 hetkell\u00e4 k\u00e4ytt\u00e4\u00e4 siirtymisv\u00e4limuistia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | loading": {
+    "message": "Sivu ei latautunut kokonaan ennen pois siirtymist\u00e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | mainResourceHasCacheControlNoCache": {
+    "message": "Sivut, joiden p\u00e4\u00e4resurssilla on cache-control:no-cache, eiv\u00e4t voi k\u00e4ytt\u00e4\u00e4 siirtymisv\u00e4limuistia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | mainResourceHasCacheControlNoStore": {
+    "message": "Sivut, joiden p\u00e4\u00e4resurssilla on cache-control:no-store, eiv\u00e4t voi k\u00e4ytt\u00e4\u00e4 siirtymisv\u00e4limuistia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | navigationCancelledWhileRestoring": {
+    "message": "Siirtyminen peruttiin ennen kuin sivu voitiin palauttaa siirtymisv\u00e4limuistista."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkExceedsBufferLimit": {
+    "message": "Sivu poistettiin v\u00e4limuistista, koska aktiivinen verkkoyhteys vastaanotti liikaa dataa. Chrome rajoittaa v\u00e4limuistissa olevien sivujen vastaanottaman datan m\u00e4\u00e4r\u00e4\u00e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestDatapipeDrainedAsBytesConsumer": {
+    "message": "Sivut, joiden fetch()- tai XHR-pyynt\u00f6 on kesken, eiv\u00e4t voi t\u00e4ll\u00e4 hetkell\u00e4 k\u00e4ytt\u00e4\u00e4 siirtymisv\u00e4limuistia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestRedirected": {
+    "message": "Sivu poistettiin siirtymisv\u00e4limuistista, koska aktiiviseen verkkopyynt\u00f6\u00f6n liittyi uudelleenohjaus."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestTimeout": {
+    "message": "Sivu poistettiin v\u00e4limuistista, koska verkkoyhteys oli auki liian pitk\u00e4\u00e4n. Chrome rajoittaa aikaa, jonka v\u00e4limuistissa oleva sivu voi vastaanottaa dataa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | noResponseHead": {
+    "message": "Sivut, joilla ei ole hyv\u00e4ksytt\u00e4v\u00e4\u00e4 vastausotsikkoa, eiv\u00e4t voi k\u00e4ytt\u00e4\u00e4 siirtymisv\u00e4limuistia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | notMainFrame": {
+    "message": "Siirtyminen tapahtui muussa kuin p\u00e4\u00e4kehyksess\u00e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingIndexedDBTransaction": {
+    "message": "Sivut, joilla on keskener\u00e4isi\u00e4 indeksoituja DB-tapahtumia, eiv\u00e4t voi t\u00e4ll\u00e4 hetkell\u00e4 k\u00e4ytt\u00e4\u00e4 siirtymisv\u00e4limuistia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestDirectSocket": {
+    "message": "Sivut, joiden verkkopyynt\u00f6 on kesken, eiv\u00e4t voi t\u00e4ll\u00e4 hetkell\u00e4 k\u00e4ytt\u00e4\u00e4 siirtymisv\u00e4limuistia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestFetch": {
+    "message": "Sivut, joiden verkonhakupyynt\u00f6 on kesken, eiv\u00e4t voi t\u00e4ll\u00e4 hetkell\u00e4 k\u00e4ytt\u00e4\u00e4 siirtymisv\u00e4limuistia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestOthers": {
+    "message": "Sivut, joiden verkkopyynt\u00f6 on kesken, eiv\u00e4t voi t\u00e4ll\u00e4 hetkell\u00e4 k\u00e4ytt\u00e4\u00e4 siirtymisv\u00e4limuistia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestXHR": {
+    "message": "Sivut, joiden XHR-verkkopyynt\u00f6 on kesken, eiv\u00e4t voi t\u00e4ll\u00e4 hetkell\u00e4 k\u00e4ytt\u00e4\u00e4 siirtymisv\u00e4limuistia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | paymentManager": {
+    "message": "PaymentManageria k\u00e4ytt\u00e4v\u00e4t sivut eiv\u00e4t voi t\u00e4ll\u00e4 hetkell\u00e4 k\u00e4ytt\u00e4\u00e4 siirtymisv\u00e4limuistia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | pictureInPicture": {
+    "message": "Pikkuruutua k\u00e4ytt\u00e4v\u00e4t sivut eiv\u00e4t voi t\u00e4ll\u00e4 hetkell\u00e4 k\u00e4ytt\u00e4\u00e4 siirtymisv\u00e4limuistia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | printing": {
+    "message": "Tulostus UI:n n\u00e4ytt\u00e4v\u00e4t sivut eiv\u00e4t voi t\u00e4ll\u00e4 hetkell\u00e4 k\u00e4ytt\u00e4\u00e4 siirtymisv\u00e4limuistia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | relatedActiveContentsExist": {
+    "message": "window.open() avasi sivun, ja toisella v\u00e4lilehdell\u00e4 on viittaus siihen, tai sivu avasi ikkunan."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | rendererProcessCrashed": {
+    "message": "Siirtymisv\u00e4limuistissa olevan sivun render\u00f6intiprosessi kaatui."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | rendererProcessKilled": {
+    "message": "Siirtymisv\u00e4limuistissa olevan sivun render\u00f6intiprosessi lopetettiin."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedAudioCapturePermission": {
+    "message": "\u00c4\u00e4nentallennuslupia pyyt\u00e4neet sivut eiv\u00e4t voi t\u00e4ll\u00e4 hetkell\u00e4 k\u00e4ytt\u00e4\u00e4 siirtymisv\u00e4limuistia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedBackForwardCacheBlockedSensors": {
+    "message": "Anturilupia pyyt\u00e4neet sivut eiv\u00e4t voi t\u00e4ll\u00e4 hetkell\u00e4 k\u00e4ytt\u00e4\u00e4 siirtymisv\u00e4limuistia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedBackgroundWorkPermission": {
+    "message": "Taustasynkronointia tai hakulupia pyyt\u00e4neet sivut eiv\u00e4t voi t\u00e4ll\u00e4 hetkell\u00e4 k\u00e4ytt\u00e4\u00e4 siirtymisv\u00e4limuistia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedMIDIPermission": {
+    "message": "MIDI-lupia pyyt\u00e4neet sivut eiv\u00e4t voi t\u00e4ll\u00e4 hetkell\u00e4 k\u00e4ytt\u00e4\u00e4 siirtymisv\u00e4limuistia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedNotificationsPermission": {
+    "message": "Ilmoituslupia pyyt\u00e4neet sivut eiv\u00e4t voi t\u00e4ll\u00e4 hetkell\u00e4 k\u00e4ytt\u00e4\u00e4 siirtymisv\u00e4limuistia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedStorageAccessGrant": {
+    "message": "Sivut, jotka ovat pyyt\u00e4neet p\u00e4\u00e4sy\u00e4 tallennustilaan, eiv\u00e4t voi t\u00e4ll\u00e4 hetkell\u00e4 k\u00e4ytt\u00e4\u00e4 siirtymisv\u00e4limuistia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedVideoCapturePermission": {
+    "message": "Videontallennuslupia pyyt\u00e4neet sivut eiv\u00e4t voi t\u00e4ll\u00e4 hetkell\u00e4 k\u00e4ytt\u00e4\u00e4 siirtymisv\u00e4limuistia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | schemeNotHTTPOrHTTPS": {
+    "message": "V\u00e4limuistiin voi tallentaa vain sivuja, joiden URL-malli on HTTP/HTTPS."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerClaim": {
+    "message": "Service worker pyysi sivun, kun se oli siirtymisv\u00e4limuistissa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerPostMessage": {
+    "message": "Service worker yritti l\u00e4hett\u00e4\u00e4 siirtymisv\u00e4limuistissa olevalle sivulle omaisuuden: MessageEvent."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerUnregistration": {
+    "message": "ServiceWorkerin rekister\u00f6inti peruttiin, kun sivu oli siirtymisv\u00e4limuistissa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerVersionActivation": {
+    "message": "Sivu poistettiin siirtymisv\u00e4limuistista service workerin aktivoitumisen takia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | sessionRestored": {
+    "message": "Chrome k\u00e4ynnistyi uudelleen ja tyhjensi siirtymisv\u00e4limuistin."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | sharedWorker": {
+    "message": "SharedWorkeria k\u00e4ytt\u00e4v\u00e4t sivut eiv\u00e4t voi t\u00e4ll\u00e4 hetkell\u00e4 k\u00e4ytt\u00e4\u00e4 siirtymisv\u00e4limuistia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | speechRecognizer": {
+    "message": "SpeechRecognizeria k\u00e4ytt\u00e4v\u00e4t sivut eiv\u00e4t voi t\u00e4ll\u00e4 hetkell\u00e4 k\u00e4ytt\u00e4\u00e4 siirtymisv\u00e4limuistia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | speechSynthesis": {
+    "message": "SpeechSynthesisia k\u00e4ytt\u00e4v\u00e4t sivut eiv\u00e4t voi t\u00e4ll\u00e4 hetkell\u00e4 k\u00e4ytt\u00e4\u00e4 siirtymisv\u00e4limuistia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subframeIsNavigating": {
+    "message": "Sivulla oleva iframe aloitti siirtymisen, joka ei onnistunut."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subresourceHasCacheControlNoCache": {
+    "message": "Sivut, joiden alaresurssilla on cache-control:no-cache, eiv\u00e4t voi k\u00e4ytt\u00e4\u00e4 siirtymisv\u00e4limuistia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subresourceHasCacheControlNoStore": {
+    "message": "Sivut, joiden alaresurssilla on cache-control:no-store, eiv\u00e4t voi k\u00e4ytt\u00e4\u00e4 siirtymisv\u00e4limuistia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | timeout": {
+    "message": "Sivu ylitti enimm\u00e4isajan siirtymisv\u00e4limuistissa ja vanheni."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | timeoutPuttingInCache": {
+    "message": "Sivu aikakatkaistiin, kun se oli siirtym\u00e4ss\u00e4 siirtymisv\u00e4limuistiin (t\u00e4m\u00e4 johtuu luultavasti pitk\u00e4kestoisista sivun piilotuksen k\u00e4sittelij\u00f6ist\u00e4)."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | unloadHandlerExistsInMainFrame": {
+    "message": "Sivun p\u00e4\u00e4kehyksess\u00e4 on tyhjennyksen k\u00e4sittelij\u00e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | unloadHandlerExistsInSubFrame": {
+    "message": "Sivun alakehyksess\u00e4 on tyhjennyksen k\u00e4sittelij\u00e4."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | userAgentOverrideDiffers": {
+    "message": "Selain on muuttanut k\u00e4ytt\u00e4j\u00e4agentin ohitusotsikkoa."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | wasGrantedMediaAccess": {
+    "message": "Sivut, joille on annettu lupa tallentaa videota tai \u00e4\u00e4nt\u00e4, eiv\u00e4t voi t\u00e4ll\u00e4 hetkell\u00e4 k\u00e4ytt\u00e4\u00e4 siirtymisv\u00e4limuistia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webDatabase": {
+    "message": "WebDatabasea k\u00e4ytt\u00e4v\u00e4t sivut eiv\u00e4t voi t\u00e4ll\u00e4 hetkell\u00e4 k\u00e4ytt\u00e4\u00e4 siirtymisv\u00e4limuistia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webHID": {
+    "message": "WebHID:i\u00e4 k\u00e4ytt\u00e4v\u00e4t sivut eiv\u00e4t voi t\u00e4ll\u00e4 hetkell\u00e4 k\u00e4ytt\u00e4\u00e4 siirtymisv\u00e4limuistia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webLocks": {
+    "message": "WebLocksia k\u00e4ytt\u00e4v\u00e4t sivut eiv\u00e4t voi t\u00e4ll\u00e4 hetkell\u00e4 k\u00e4ytt\u00e4\u00e4 siirtymisv\u00e4limuistia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webNfc": {
+    "message": "WebNfc:t\u00e4 k\u00e4ytt\u00e4v\u00e4t sivut eiv\u00e4t voi t\u00e4ll\u00e4 hetkell\u00e4 k\u00e4ytt\u00e4\u00e4 siirtymisv\u00e4limuistia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webOTPService": {
+    "message": "WebOTPService\u00e4 k\u00e4ytt\u00e4v\u00e4t sivut eiv\u00e4t voi t\u00e4ll\u00e4 hetkell\u00e4 k\u00e4ytt\u00e4\u00e4 siirtymisv\u00e4limuistia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webRTC": {
+    "message": "WebRTC:t\u00e4 k\u00e4ytt\u00e4v\u00e4t sivut eiv\u00e4t voi k\u00e4ytt\u00e4\u00e4 siirtymisv\u00e4limuistia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webRTCSticky": {
+    "message": "Siirtymisv\u00e4limuisti on poistettu k\u00e4yt\u00f6st\u00e4, koska WebRTC:t\u00e4 on k\u00e4ytetty."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webShare": {
+    "message": "WebSharea k\u00e4ytt\u00e4v\u00e4t sivut eiv\u00e4t voi t\u00e4ll\u00e4 hetkell\u00e4 k\u00e4ytt\u00e4\u00e4 siirtymisv\u00e4limuistia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webSocket": {
+    "message": "WebSocketia k\u00e4ytt\u00e4v\u00e4t sivut eiv\u00e4t voi k\u00e4ytt\u00e4\u00e4 siirtymisv\u00e4limuistia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webSocketSticky": {
+    "message": "Siirtymisv\u00e4limuisti on poistettu k\u00e4yt\u00f6st\u00e4, koska WebSocketia on k\u00e4ytetty."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webTransport": {
+    "message": "WebTransportia k\u00e4ytt\u00e4v\u00e4t sivut eiv\u00e4t voi k\u00e4ytt\u00e4\u00e4 siirtymisv\u00e4limuistia."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webTransportSticky": {
+    "message": "Siirtymisv\u00e4limuisti on poistettu k\u00e4yt\u00f6st\u00e4, koska WebTransportia on k\u00e4ytetty."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webXR": {
+    "message": "WebXR:\u00e4\u00e4 k\u00e4ytt\u00e4v\u00e4t sivut eiv\u00e4t voi t\u00e4ll\u00e4 hetkell\u00e4 k\u00e4ytt\u00e4\u00e4 siirtymisv\u00e4limuistia."
+  }
+}

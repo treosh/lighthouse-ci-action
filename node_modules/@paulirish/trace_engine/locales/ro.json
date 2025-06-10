@@ -1,0 +1,908 @@
+{
+  "generated/Deprecation.ts | AuthorizationCoveredByWildcard": {
+    "message": "Autorizarea nu va fi acoperit\u0103 de simbolul pentru metacaracter (*) \u00een cadrul gestion\u0103rii Access-Control-Allow-Headers prin CORS."
+  },
+  "generated/Deprecation.ts | CSSSelectorInternalMediaControlsOverlayCastButton": {
+    "message": "Pentru a dezactiva integrarea Cast prestabilit\u0103, trebuie folosit atributul disableRemotePlayback \u00een locul selectorului -internal-media-controls-overlay-cast-button."
+  },
+  "generated/Deprecation.ts | CSSValueAppearanceSliderVertical": {
+    "message": "Valoarea slider-vertical a aspectului CSS nu este standardizat\u0103 \u0219i se va elimina."
+  },
+  "generated/Deprecation.ts | CanRequestURLHTTPContainingNewline": {
+    "message": "Solicit\u0103rile de resurse ale c\u0103ror adrese URL con\u021bineau at\u00e2t caractere pentru spa\u021bii \\(n|r|t), c\u00e2t \u0219i semnul mai mic dec\u00e2t (<) sunt blocate. Pentru a \u00eenc\u0103rca resursele, elimin\u0103 caracterele de r\u00e2nd nou \u0219i codific\u0103 semnul mai mic dec\u00e2t \u00een locuri cum ar fi valorile atributelor elementelor."
+  },
+  "generated/Deprecation.ts | CharsetAutoDetectionISO2022JP": {
+    "message": "Detectarea automat\u0103 a setului de caractere ISO-2022-JP este \u00eenvechit\u0103 \u0219i va fi dezactivat\u0103 \u00een viitorul apropiat. Specific\u0103 setul de caractere \u00een antetul Tipul de con\u021binut sau folosind o metaetichet\u0103 (https://developer.mozilla.org/en-US/docs/Glossary/Character_encoding)."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesConnectionInfo": {
+    "message": "chrome.loadTimes() s-a \u00eenvechit. Folose\u0219te API-ul standardizat Navigation Timing 2."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesFirstPaintAfterLoadTime": {
+    "message": "chrome.loadTimes() s-a \u00eenvechit. Folose\u0219te API-ul standardizat Paint Timing."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesWasAlternateProtocolAvailable": {
+    "message": "chrome.loadTimes() s-a \u00eenvechit. Folose\u0219te API-ul standardizat nextHopProtocol din Navigation Timing 2."
+  },
+  "generated/Deprecation.ts | CookieWithTruncatingChar": {
+    "message": "Cookie-urile care con\u021bin un caracter \\(0|r|n) vor fi respinse \u00een loc de a fi trunchiate."
+  },
+  "generated/Deprecation.ts | CrossOriginAccessBasedOnDocumentDomain": {
+    "message": "Relaxarea politicii pentru aceea\u0219i origine prin setarea document.domain este \u00eenvechit\u0103 \u0219i va fi dezactivat\u0103 \u00een mod prestabilit. Acest avertisment privind renun\u021barea la dezvoltare este asociat unei acces\u0103ri cu origini diferite, care a fost activat\u0103 din setarea document.domain."
+  },
+  "generated/Deprecation.ts | CrossOriginWindowAlert": {
+    "message": "Declan\u0219area window.alert din cadre iframe cu origini diferite s-a \u00eenvechit \u0219i va fi eliminat\u0103 pe viitor."
+  },
+  "generated/Deprecation.ts | CrossOriginWindowConfirm": {
+    "message": "Declan\u0219area window.confirm din cadre iframe cu origini diferite s-a \u00eenvechit \u0219i va fi eliminat\u0103 pe viitor."
+  },
+  "generated/Deprecation.ts | DOMMutationEvents": {
+    "message": "Evenimentele de mutare DOM, inclusiv DOMSubtreeModified, DOMNodeInserted, DOMNodeRemoved, DOMNodeRemovedFromDocument, DOMNodeInsertedIntoDocument \u0219i DOMCharacterDataModified, sunt \u00eenvechite (https://w3c.github.io/uievents/#legacy-event-types) \u0219i vor fi eliminate. Folose\u0219te MutationObserver."
+  },
+  "generated/Deprecation.ts | DataUrlInSvgUse": {
+    "message": "Compatibilitate cu datele: adresele URL din SVGUseElement sunt \u00eenvechite \u0219i vor fi eliminate pe viitor."
+  },
+  "generated/Deprecation.ts | GeolocationInsecureOrigin": {
+    "message": "getCurrentPosition() \u0219i watchPosition() nu mai func\u021bioneaz\u0103 cu origini nesigure. Pentru a folosi aceast\u0103 func\u021bie, \u00ee\u021bi recomand\u0103m s\u0103 treci aplica\u021bia la o origine sigur\u0103, cum ar fi HTTPS. Consult\u0103 https://goo.gle/chrome-insecure-origins pentru detalii suplimentare."
+  },
+  "generated/Deprecation.ts | GeolocationInsecureOriginDeprecatedNotRemoved": {
+    "message": "getCurrentPosition() \u0219i watchPosition() sunt \u00eenvechite, av\u00e2nd origini nesigure. Pentru a folosi aceast\u0103 func\u021bie, \u00ee\u021bi recomand\u0103m s\u0103 treci aplica\u021bia la o origine sigur\u0103, cum ar fi HTTPS. Consult\u0103 https://goo.gle/chrome-insecure-origins pentru detalii suplimentare."
+  },
+  "generated/Deprecation.ts | GetUserMediaInsecureOrigin": {
+    "message": "getUserMedia() nu mai func\u021bioneaz\u0103 cu origini nesigure. Pentru a folosi aceast\u0103 func\u021bie, \u00ee\u021bi recomand\u0103m s\u0103 treci aplica\u021bia la o origine sigur\u0103, cum ar fi HTTPS. Consult\u0103 https://goo.gle/chrome-insecure-origins pentru detalii suplimentare."
+  },
+  "generated/Deprecation.ts | H1UserAgentFontSizeInSection": {
+    "message": "S-a g\u0103sit o etichet\u0103 <h1> \u00eentr-un element <article>, <aside>, <nav> sau <section> care nu are o dimensiune a fontului specificat\u0103. \u00cen viitorul apropiat, dimensiunea textului acestui titlu se va modifica \u00een acest browser. Acceseaz\u0103 https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#specifying_a_uniform_font_size_for_h1 pentru mai multe informa\u021bii."
+  },
+  "generated/Deprecation.ts | HostCandidateAttributeGetter": {
+    "message": "RTCPeerConnectionIceErrorEvent.hostCandidate s-a \u00eenvechit. Folose\u0219te RTCPeerConnectionIceErrorEvent.address sau RTCPeerConnectionIceErrorEvent.port."
+  },
+  "generated/Deprecation.ts | IdentityDigitalCredentials": {
+    "message": "Acest format pentru solicitarea navigator.credentials.get() pentru datele de conectare digitale este \u00eenvechit. Actualizeaz\u0103 apelul pentru a folosi noul format."
+  },
+  "generated/Deprecation.ts | IdentityInCanMakePaymentEvent": {
+    "message": "Originea comerciantului \u0219i datele arbitrare din evenimentul service worker canmakepayment sunt \u00eenvechite \u0219i vor fi eliminate: topOrigin, paymentRequestOrigin, methodData, modifiers."
+  },
+  "generated/Deprecation.ts | InsecurePrivateNetworkSubresourceRequest": {
+    "message": "Site-ul a solicitat o subresurs\u0103 de la o re\u021bea pe care a putut s\u0103 o acceseze numai datorit\u0103 pozi\u021biei privilegiate \u00een re\u021bea a utilizatorilor s\u0103i. Aceste solicit\u0103ri expun pe internet dispozitive \u0219i servere care nu sunt publice, cresc\u00e2nd riscul de atacuri prin falsificarea solicit\u0103rilor de pe alt site (CSRF) \u0219i de scurgeri de informa\u021bii. Pentru a reduce aceste riscuri, Chrome marcheaz\u0103 drept \u00eenvechite solicit\u0103rile de la subresurse care nu sunt publice atunci c\u00e2nd sunt ini\u021biate din contexte nesigure \u0219i va \u00eencepe s\u0103 le blocheze."
+  },
+  "generated/Deprecation.ts | InterestGroupDailyUpdateUrl": {
+    "message": "C\u00e2mpul dailyUpdateUrl din InterestGroups transmis c\u0103tre joinAdInterestGroup() a fost redenumit updateUrl, astfel \u00eenc\u00e2t s\u0103 reflecte mai exact comportamentul asociat."
+  },
+  "generated/Deprecation.ts | IntlV8BreakIterator": {
+    "message": "Intl.v8BreakIterator s-a \u00eenvechit. Folose\u0219te Intl.Segmenter."
+  },
+  "generated/Deprecation.ts | LocalCSSFileExtensionRejected": {
+    "message": "Fi\u0219ierul CSS nu se poate \u00eenc\u0103rca din adrese URL file: dac\u0103 acestea nu se termin\u0103 cu extensia de fi\u0219ier .css."
+  },
+  "generated/Deprecation.ts | MediaSourceAbortRemove": {
+    "message": "Folosirea SourceBuffer.abort() pentru a abandona eliminarea intervalului asincron pentru remove() este \u00eenvechit\u0103 din cauza modific\u0103rii specifica\u021biilor. Pe viitor, aceasta nu va mai fi acceptat\u0103. Ar trebui s\u0103 ascul\u021bi evenimentul updateend. abort() are numai rolul de a abandona ata\u0219\u0103ri media asincrone sau de a reseta starea parserului."
+  },
+  "generated/Deprecation.ts | MediaSourceDurationTruncatingBuffered": {
+    "message": "Setarea MediaSource.duration sub cel mai mare marcaj temporal de prezentare al oric\u0103ror cadre codificate din memoria temporar\u0103 este \u00eenvechit\u0103 din cauza modific\u0103rii specifica\u021biilor. Eliminarea implicit\u0103 a elementelor media trunchiate din memoria temporar\u0103 va fi eliminat\u0103 pe viitor. \u00cen locul acesteia, trebuie s\u0103 rulezi remove(newDuration, oldDuration) pentru toate obiectele sourceBuffers, unde newDuration < oldDuration."
+  },
+  "generated/Deprecation.ts | NoSysexWebMIDIWithoutPermission": {
+    "message": "Web MIDI va solicita o permisiune de folosit chiar dac\u0103 sysex nu este specificat \u00een MIDIOptions."
+  },
+  "generated/Deprecation.ts | NotificationInsecureOrigin": {
+    "message": "API-ul Notification nu mai poate fi folosit din origini nesigure. \u00ce\u021bi recomand\u0103m s\u0103 treci aplica\u021bia la o origine sigur\u0103, cum ar fi HTTPS. Consult\u0103 https://goo.gle/chrome-insecure-origins pentru detalii suplimentare."
+  },
+  "generated/Deprecation.ts | NotificationPermissionRequestedIframe": {
+    "message": "Este posibil ca permisiunea pentru API-ul Notification s\u0103 nu mai fie solicitat\u0103 dintr-un iframe cu origini diferite. \u00ce\u021bi recomand\u0103m s\u0103 solici\u021bi permisiunea dintr-un cadru de nivel superior sau s\u0103 deschizi o fereastr\u0103 nou\u0103."
+  },
+  "generated/Deprecation.ts | ObsoleteCreateImageBitmapImageOrientationNone": {
+    "message": "Op\u021biunea imageOrientation: 'none' din createImageBitmap este \u00eenvechit\u0103. Folose\u0219te createImageBitmap cu op\u021biunea {imageOrientation: 'from-image'}."
+  },
+  "generated/Deprecation.ts | ObsoleteWebRtcCipherSuite": {
+    "message": "Partenerul t\u0103u negociaz\u0103 o versiune (D)TLS \u00eenvechit\u0103. Consult\u0103-te cu partenerul pentru a remedia problema."
+  },
+  "generated/Deprecation.ts | OverflowVisibleOnReplacedElement": {
+    "message": "Dac\u0103 specifici overflow: visible pe etichetele imagine, video \u0219i p\u00e2nz\u0103, este posibil s\u0103 se produc\u0103 con\u021binut vizual \u00een afara limitelor elementului. Acceseaz\u0103 https://github.com/WICG/shared-element-transitions/blob/main/debugging_overflow_on_images.md."
+  },
+  "generated/Deprecation.ts | PaymentInstruments": {
+    "message": "paymentManager.instruments s-a \u00eenvechit. Folose\u0219te instalarea la timp pentru handlerele pentru pl\u0103\u021bi."
+  },
+  "generated/Deprecation.ts | PaymentRequestCSPViolation": {
+    "message": "Apelul PaymentRequest a omis directiva Content-Security-Policy (CSP) connect-src. Aceast\u0103 op\u021biune de ocolire este \u00eenvechit\u0103. Adaug\u0103 identificatorul metodei de plat\u0103 din API-ul PaymentRequest (\u00een c\u00e2mpul supportedMethods) la directiva CSP connect-src."
+  },
+  "generated/Deprecation.ts | PersistentQuotaType": {
+    "message": "StorageType.persistent s-a \u00eenvechit. Folose\u0219te navigator.storage standardizat."
+  },
+  "generated/Deprecation.ts | PictureSourceSrc": {
+    "message": "<source src> cu un element p\u0103rinte <picture> nu este valid, deci va fi ignorat. Folose\u0219te <source srcset>."
+  },
+  "generated/Deprecation.ts | PrefixedCancelAnimationFrame": {
+    "message": "Metoda webkitCancelAnimationFrame este specific\u0103 furnizorului. Folose\u0219te metoda standard cancelAnimationFrame."
+  },
+  "generated/Deprecation.ts | PrefixedRequestAnimationFrame": {
+    "message": "Metoda webkitRequestAnimationFrame este specific\u0103 furnizorului. Folose\u0219te metoda standard requestAnimationFrame."
+  },
+  "generated/Deprecation.ts | PrefixedVideoDisplayingFullscreen": {
+    "message": "HTMLVideoElement.webkitDisplayingFullscreen este \u00eenvechit. Folose\u0219te Document.fullscreenElement."
+  },
+  "generated/Deprecation.ts | PrefixedVideoEnterFullScreen": {
+    "message": "HTMLVideoElement.webkitEnterFullScreen() este \u00eenvechit. Folose\u0219te Element.requestFullscreen()."
+  },
+  "generated/Deprecation.ts | PrefixedVideoEnterFullscreen": {
+    "message": "HTMLVideoElement.webkitEnterFullscreen() este \u00eenvechit. Folose\u0219te Element.requestFullscreen()."
+  },
+  "generated/Deprecation.ts | PrefixedVideoExitFullScreen": {
+    "message": "HTMLVideoElement.webkitExitFullScreen() este \u00eenvechit. Folose\u0219te Document.exitFullscreen()."
+  },
+  "generated/Deprecation.ts | PrefixedVideoExitFullscreen": {
+    "message": "HTMLVideoElement.webkitExitFullscreen() este \u00eenvechit. Folose\u0219te Document.exitFullscreen()."
+  },
+  "generated/Deprecation.ts | PrefixedVideoSupportsFullscreen": {
+    "message": "HTMLVideoElement.webkitSupportsFullscreen este \u00eenvechit. Folose\u0219te Document.fullscreenEnabled."
+  },
+  "generated/Deprecation.ts | PrivacySandboxExtensionsAPI": {
+    "message": "Urmeaz\u0103 s\u0103 retragem API-ul chrome.privacy.websites.privacySandboxEnabled, dar acesta va r\u0103m\u00e2ne activ pentru retrocompatibilitate p\u00e2n\u0103 la lansarea M113. Folose\u0219te chrome.privacy.websites.topicsEnabled, chrome.privacy.websites.fledgeEnabled \u0219i chrome.privacy.websites.adMeasurementEnabled. Consult\u0103 https://developer.chrome.com/docs/extensions/reference/privacy/#property-websites-privacySandboxEnabled."
+  },
+  "generated/Deprecation.ts | RTCConstraintEnableDtlsSrtpFalse": {
+    "message": "Restric\u021bia DtlsSrtpKeyAgreement a fost eliminat\u0103. Ai specificat o valoare false pentru aceast\u0103 restric\u021bie, care este interpretat\u0103 ca o \u00eencercare de a folosi metoda SDES key negotiation eliminat\u0103. Aceast\u0103 func\u021bie a fost eliminat\u0103. Folose\u0219te un serviciu care accept\u0103 DTLS key negotiation."
+  },
+  "generated/Deprecation.ts | RTCConstraintEnableDtlsSrtpTrue": {
+    "message": "Restric\u021bia DtlsSrtpKeyAgreement a fost eliminat\u0103. Ai specificat o valoare true pentru aceast\u0103 restric\u021bie, care nu a avut niciun efect, dar po\u021bi elimina restric\u021bia pentru un aspect ordonat."
+  },
+  "generated/Deprecation.ts | RTCPeerConnectionGetStatsLegacyNonCompliant": {
+    "message": "Metoda callback-based getStats() este \u00eenvechit\u0103 \u0219i va fi eliminat\u0103. Folose\u0219te spec-compliant getStats()."
+  },
+  "generated/Deprecation.ts | RangeExpand": {
+    "message": "Range.expand() este \u00eenvechit. Folose\u0219te Selection.modify()."
+  },
+  "generated/Deprecation.ts | RequestedSubresourceWithEmbeddedCredentials": {
+    "message": "Solicit\u0103rile de subresurse ale c\u0103ror adrese URL con\u021bin date de conectare \u00eencorporate (de ex., https://user:pass@host/) sunt blocate."
+  },
+  "generated/Deprecation.ts | RtcpMuxPolicyNegotiate": {
+    "message": "Op\u021biunea rtcpMuxPolicy este \u00eenvechit\u0103 \u0219i va fi eliminat\u0103."
+  },
+  "generated/Deprecation.ts | SharedArrayBufferConstructedWithoutIsolation": {
+    "message": "SharedArrayBuffer va necesita blocarea accesului de la mai multe surse. Consult\u0103 https://developer.chrome.com/blog/enabling-shared-array-buffer/ pentru mai multe detalii."
+  },
+  "generated/Deprecation.ts | TextToSpeech_DisallowedByAutoplay": {
+    "message": "Apelarea speechSynthesis.speak() f\u0103r\u0103 activarea utilizatorului este \u00eenvechit\u0103 \u0219i va fi eliminat\u0103."
+  },
+  "generated/Deprecation.ts | UnloadHandler": {
+    "message": "Func\u021biile de procesare a evenimentelor unload sunt \u00eenvechite \u0219i vor fi eliminate."
+  },
+  "generated/Deprecation.ts | V8SharedArrayBufferConstructedInExtensionWithoutIsolation": {
+    "message": "Extensiile trebuie s\u0103 aib\u0103 blocarea accesului de la mai multe surse activat\u0103 pentru a folosi \u00een continuare SharedArrayBuffer. Consult\u0103 https://developer.chrome.com/docs/extensions/mv3/cross-origin-isolation/."
+  },
+  "generated/Deprecation.ts | XHRJSONEncodingDetection": {
+    "message": "Fi\u0219ierul JSON de r\u0103spuns din XMLHttpRequest nu accept\u0103 UTF-16"
+  },
+  "generated/Deprecation.ts | XMLHttpRequestSynchronousInNonWorkerOutsideBeforeUnload": {
+    "message": "Obiectul sincron XMLHttpRequest din firul principal este \u00eenvechit din cauza efectelor sale negative asupra experien\u021bei utilizatorului final. Pentru mai mult ajutor, consult\u0103 https://xhr.spec.whatwg.org/."
+  },
+  "models/trace/insights/CLSCulprits.ts | animation": {
+    "message": "Anima\u021bie"
+  },
+  "models/trace/insights/CLSCulprits.ts | description": {
+    "message": "Schimb\u0103rile de aspect apar atunci c\u00e2nd elementele se mi\u0219c\u0103 f\u0103r\u0103 nicio interac\u021biune a utilizatorului. [Investigheaz\u0103 cauzele schimb\u0103rilor de aspect](https://web.dev/articles/optimize-cls), cum ar fi ad\u0103ugarea, eliminarea elementelor sau schimbarea fonturilor pe m\u0103sur\u0103 ce se \u00eencarc\u0103 pagina."
+  },
+  "models/trace/insights/CLSCulprits.ts | fontRequest": {
+    "message": "Solicitare de font"
+  },
+  "models/trace/insights/CLSCulprits.ts | injectedIframe": {
+    "message": "S-a injectat un iframe"
+  },
+  "models/trace/insights/CLSCulprits.ts | layoutShiftCluster": {
+    "message": "Grup de schimb\u0103ri ale aspectului @ {PH1}"
+  },
+  "models/trace/insights/CLSCulprits.ts | noCulprits": {
+    "message": "Nu s-au detectat factori care au cauzat schimbarea aspectului"
+  },
+  "models/trace/insights/CLSCulprits.ts | noLayoutShifts": {
+    "message": "F\u0103r\u0103 schimb\u0103ri ale aspectului"
+  },
+  "models/trace/insights/CLSCulprits.ts | title": {
+    "message": "Principalii factori care au cauzat schimbarea aspectului"
+  },
+  "models/trace/insights/CLSCulprits.ts | topCulprits": {
+    "message": "Principalii factori care au cauzat schimbarea aspectului"
+  },
+  "models/trace/insights/CLSCulprits.ts | unsizedImages": {
+    "message": "Imagini f\u0103r\u0103 dimensiuni"
+  },
+  "models/trace/insights/CLSCulprits.ts | worstCluster": {
+    "message": "Cel mai slab grup"
+  },
+  "models/trace/insights/CLSCulprits.ts | worstLayoutShiftCluster": {
+    "message": "Cel mai slab grup de schimb\u0103ri ale aspectului"
+  },
+  "models/trace/insights/Cache.ts | cacheTTL": {
+    "message": "TTL cache"
+  },
+  "models/trace/insights/Cache.ts | description": {
+    "message": "O durat\u0103 lung\u0103 a memoriei cache poate gr\u0103bi acces\u0103rile repetate ale paginii. [Afl\u0103 mai multe](https://web.dev/uses-long-cache-ttl/)."
+  },
+  "models/trace/insights/Cache.ts | noRequestsToCache": {
+    "message": "Nu exist\u0103 solicit\u0103ri cu politici privind memoria cache ineficient\u0103"
+  },
+  "models/trace/insights/Cache.ts | others": {
+    "message": "\u00cenc\u0103 {PH1}"
+  },
+  "models/trace/insights/Cache.ts | requestColumn": {
+    "message": "Solicitare"
+  },
+  "models/trace/insights/Cache.ts | title": {
+    "message": "Folose\u0219te perioade eficiente ale memoriei cache"
+  },
+  "models/trace/insights/DOMSize.ts | description": {
+    "message": "Un DOM mare poate cre\u0219te durata calculelor de stil \u0219i a rearanj\u0103rilor aspectului, afect\u00e2nd receptivitatea paginii. Un DOM mare va cre\u0219te \u0219i folosirea memoriei. [Afl\u0103 cum s\u0103 evi\u021bi o dimensiune DOM excesiv\u0103](https://developer.chrome.com/docs/lighthouse/performance/dom-size/)."
+  },
+  "models/trace/insights/DOMSize.ts | element": {
+    "message": "Element"
+  },
+  "models/trace/insights/DOMSize.ts | maxChildren": {
+    "message": "Majoritatea copiilor"
+  },
+  "models/trace/insights/DOMSize.ts | maxDOMDepth": {
+    "message": "Ad\u00e2ncimea DOM"
+  },
+  "models/trace/insights/DOMSize.ts | statistic": {
+    "message": "Statistic\u0103"
+  },
+  "models/trace/insights/DOMSize.ts | title": {
+    "message": "Optimizeaz\u0103 dimensiunea DOM"
+  },
+  "models/trace/insights/DOMSize.ts | totalElements": {
+    "message": "Num\u0103rul total de elemente"
+  },
+  "models/trace/insights/DOMSize.ts | value": {
+    "message": "Valoare"
+  },
+  "models/trace/insights/DocumentLatency.ts | description": {
+    "message": "Prima solicitare din re\u021bea este cea mai important\u0103.  Redu laten\u021ba acesteia evit\u00e2nd redirec\u021bion\u0103rile, asigur\u00e2nd un r\u0103spuns rapid al serverului \u0219i activ\u00e2nd comprimarea textului."
+  },
+  "models/trace/insights/DocumentLatency.ts | failedRedirects": {
+    "message": "A avut redirec\u021bion\u0103ri"
+  },
+  "models/trace/insights/DocumentLatency.ts | failedServerResponseTime": {
+    "message": "Serverul a r\u0103spuns lent"
+  },
+  "models/trace/insights/DocumentLatency.ts | failedTextCompression": {
+    "message": "Nu s-a aplicat nicio compresie"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingRedirects": {
+    "message": "Evit\u0103 redirec\u021bion\u0103rile"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingServerResponseTime": {
+    "message": "Serverul r\u0103spunde rapid"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingTextCompression": {
+    "message": "Se aplic\u0103 comprimarea textului"
+  },
+  "models/trace/insights/DocumentLatency.ts | redirectsLabel": {
+    "message": "Redirec\u021bion\u0103ri"
+  },
+  "models/trace/insights/DocumentLatency.ts | serverResponseTimeLabel": {
+    "message": "Durata de r\u0103spuns de la server"
+  },
+  "models/trace/insights/DocumentLatency.ts | title": {
+    "message": "Laten\u021ba solicit\u0103rii documentului"
+  },
+  "models/trace/insights/DocumentLatency.ts | uncompressedDownload": {
+    "message": "Desc\u0103rcare f\u0103r\u0103 compresie"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | columnDuplicatedBytes": {
+    "message": "By\u021bi dublur\u0103"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | columnSource": {
+    "message": "Surs\u0103"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | description": {
+    "message": "Elimin\u0103 modulele JavaScript dublate \u0219i mari din grupuri pentru a reduce consumul inutil de by\u021bi prin activitatea din re\u021bea."
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | title": {
+    "message": "JavaScript dublur\u0103"
+  },
+  "models/trace/insights/FontDisplay.ts | description": {
+    "message": "\u00ce\u021bi recomand\u0103m s\u0103 setezi [font-display](https://developer.chrome.com/blog/font-display) la swap sau optional pentru a te asigura c\u0103 textul este vizibil \u00een mod constant. swap poate fi optimizat \u00een continuare pentru a reduce schimb\u0103rile de aspect prin [modific\u0103ri ale valorii fontului](https://developer.chrome.com/blog/font-fallbacks)."
+  },
+  "models/trace/insights/FontDisplay.ts | fontColumn": {
+    "message": "Font"
+  },
+  "models/trace/insights/FontDisplay.ts | title": {
+    "message": "Afi\u0219area fontului"
+  },
+  "models/trace/insights/FontDisplay.ts | wastedTimeColumn": {
+    "message": "Timp pierdut"
+  },
+  "models/trace/insights/ForcedReflow.ts | anonymous": {
+    "message": "(anonim)"
+  },
+  "models/trace/insights/ForcedReflow.ts | description": {
+    "message": "Multe API-uri, care citesc de obicei geometria aspectului, for\u021beaz\u0103 motorul de redare s\u0103 \u00eentrerup\u0103 executarea scriptului pentru a calcula stilul \u0219i aspectul. Afl\u0103 mai multe despre [rearanjarea for\u021bat\u0103](https://developers.google.com/web/fundamentals/performance/rendering/avoid-large-complex-layouts-and-layout-thrashing#avoid-forced-synchronous-layouts) \u0219i despre m\u0103surile sale de atenuare."
+  },
+  "models/trace/insights/ForcedReflow.ts | relatedStackTrace": {
+    "message": "Urm\u0103rirea stivei"
+  },
+  "models/trace/insights/ForcedReflow.ts | title": {
+    "message": "Rearanjare for\u021bat\u0103"
+  },
+  "models/trace/insights/ForcedReflow.ts | topTimeConsumingFunctionCall": {
+    "message": "Apelul func\u021biei de top"
+  },
+  "models/trace/insights/ForcedReflow.ts | totalReflowTime": {
+    "message": "Durata total\u0103 de rearanjare"
+  },
+  "models/trace/insights/ForcedReflow.ts | unattributed": {
+    "message": "[neatribuit]"
+  },
+  "models/trace/insights/ImageDelivery.ts | description": {
+    "message": "Reducerea duratei de desc\u0103rcare a imaginilor poate \u00eembun\u0103t\u0103\u021bi durata de \u00eenc\u0103rcare perceput\u0103 a paginii \u0219i LCP. [Afl\u0103 mai multe despre optimizarea dimensiunii imaginii](https://developer.chrome.com/docs/lighthouse/performance/uses-optimized-images/)"
+  },
+  "models/trace/insights/ImageDelivery.ts | estimatedSavings": {
+    "message": "{PH1} (est. {PH2})"
+  },
+  "models/trace/insights/ImageDelivery.ts | noOptimizableImages": {
+    "message": "Nu exist\u0103 imagini care pot fi optimizate"
+  },
+  "models/trace/insights/ImageDelivery.ts | optimizeFile": {
+    "message": "Optimizeaz\u0103 dimensiunea fi\u0219ierului"
+  },
+  "models/trace/insights/ImageDelivery.ts | others": {
+    "message": "\u00cenc\u0103 {PH1}"
+  },
+  "models/trace/insights/ImageDelivery.ts | title": {
+    "message": "\u00cembun\u0103t\u0103\u021be\u0219te livrarea imaginilor"
+  },
+  "models/trace/insights/ImageDelivery.ts | useCompression": {
+    "message": "Dac\u0103 m\u0103re\u0219ti factorul de comprimare a imaginii, s-ar putea \u00eembun\u0103t\u0103\u021bi dimensiunea de desc\u0103rcare a imaginii."
+  },
+  "models/trace/insights/ImageDelivery.ts | useModernFormat": {
+    "message": "Folosirea unui format de imagine modern (WebP, AVIF) sau cre\u0219terea comprim\u0103rii imaginii ar putea \u00eembun\u0103t\u0103\u021bi dimensiunea desc\u0103rc\u0103rii acestei imagini."
+  },
+  "models/trace/insights/ImageDelivery.ts | useResponsiveSize": {
+    "message": "Fi\u0219ierul imagine este mai mare dec\u00e2t trebuie ({PH1}) pentru dimensiunile afi\u0219ate ({PH2}). Folose\u0219te imagini adaptabile pentru a reduce dimensiunea de desc\u0103rcare a imaginii."
+  },
+  "models/trace/insights/ImageDelivery.ts | useVideoFormat": {
+    "message": "Folosirea formatelor video \u00een locul GIF-urilor poate \u00eembun\u0103t\u0103\u021bi dimensiunea desc\u0103rc\u0103rii con\u021binutului animat."
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | description": {
+    "message": "\u00cencepe investiga\u021bia cu cea mai lung\u0103 etap\u0103. [Po\u021bi s\u0103 minimizezi \u00eent\u00e2rzierile](https://web.dev/articles/optimize-inp#optimize_interactions). Pentru a reduce durata proces\u0103rii, [optimizeaz\u0103 costurile asociate cu firul principal](https://web.dev/articles/optimize-long-tasks), de obicei JS."
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | duration": {
+    "message": "Durat\u0103"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | inputDelay": {
+    "message": "\u00cent\u00e2rziere la introducere"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | noInteractions": {
+    "message": "Nu s-au detectat interac\u021biuni"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | phase": {
+    "message": "Faz\u0103"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | presentationDelay": {
+    "message": "\u00cent\u00e2rzierea prezent\u0103rii"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | processingDuration": {
+    "message": "Durata proces\u0103rii"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | title": {
+    "message": "INP \u00een func\u021bie de faz\u0103"
+  },
+  "models/trace/insights/LCPDiscovery.ts | description": {
+    "message": "Optimizeaz\u0103 LCP f\u0103c\u00e2nd imediat imaginea LCP [vizibil\u0103](https://web.dev/articles/optimize-lcp#1_eliminate_resource_load_delay) din HTML \u0219i [evit\u00e2nd \u00eenc\u0103rcarea asincron\u0103](https://web.dev/articles/lcp-lazy-loading)"
+  },
+  "models/trace/insights/LCPDiscovery.ts | fetchPriorityApplied": {
+    "message": "Valoarea fetchpriority=high a fost aplicat\u0103"
+  },
+  "models/trace/insights/LCPDiscovery.ts | fetchPriorityShouldBeApplied": {
+    "message": "Valoarea fetchpriority=high trebuie aplicat\u0103"
+  },
+  "models/trace/insights/LCPDiscovery.ts | lazyLoadNotApplied": {
+    "message": "\u00eenc\u0103rcarea asincron\u0103 nu este aplicat\u0103"
+  },
+  "models/trace/insights/LCPDiscovery.ts | lcpLoadDelay": {
+    "message": "Imaginea LCP s-a \u00eenc\u0103rcat la {PH1} dup\u0103 primul punct de pornire."
+  },
+  "models/trace/insights/LCPDiscovery.ts | noLcp": {
+    "message": "Nu s-a detectat nicio valoare LCP"
+  },
+  "models/trace/insights/LCPDiscovery.ts | noLcpResource": {
+    "message": "Nu s-au detectat resurse LCP deoarece LCP nu este o imagine"
+  },
+  "models/trace/insights/LCPDiscovery.ts | requestDiscoverable": {
+    "message": "Solicitarea poate fi g\u0103sit\u0103 \u00een documentul ini\u021bial"
+  },
+  "models/trace/insights/LCPDiscovery.ts | title": {
+    "message": "Descoperirea solicit\u0103rii LCP"
+  },
+  "models/trace/insights/LCPPhases.ts | description": {
+    "message": "Fiecare [etap\u0103 are strategii de \u00eembun\u0103t\u0103\u021bire specifice](https://web.dev/articles/optimize-lcp#lcp-breakdown). \u00cen mod ideal, majoritatea timpului LCP ar trebui s\u0103 fie petrecut cu \u00eenc\u0103rcarea resurselor, nu cu \u00eent\u00e2rzieri."
+  },
+  "models/trace/insights/LCPPhases.ts | duration": {
+    "message": "Durat\u0103"
+  },
+  "models/trace/insights/LCPPhases.ts | elementRenderDelay": {
+    "message": "\u00cent\u00e2rzierea la redarea elementului"
+  },
+  "models/trace/insights/LCPPhases.ts | fieldDuration": {
+    "message": "C\u00e2mpul Percentila 75"
+  },
+  "models/trace/insights/LCPPhases.ts | noLcp": {
+    "message": "Nu s-a detectat nicio valoare LCP"
+  },
+  "models/trace/insights/LCPPhases.ts | phase": {
+    "message": "Faz\u0103"
+  },
+  "models/trace/insights/LCPPhases.ts | resourceLoadDelay": {
+    "message": "\u00cent\u00e2rzierea la \u00eenc\u0103rcarea resursei"
+  },
+  "models/trace/insights/LCPPhases.ts | resourceLoadDuration": {
+    "message": "Durata de \u00eenc\u0103rcare a resursei"
+  },
+  "models/trace/insights/LCPPhases.ts | timeToFirstByte": {
+    "message": "Time to first byte"
+  },
+  "models/trace/insights/LCPPhases.ts | title": {
+    "message": "LCP \u00een func\u021bie de faz\u0103"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | columnScript": {
+    "message": "Script"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | columnWastedBytes": {
+    "message": "By\u021bi inutili"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | description": {
+    "message": "Codurile polyfill \u0219i transform\u0103rile fac posibil\u0103 folosirea noilor func\u021bii JavaScript \u00een browserele vechi. \u00cens\u0103 pentru browserele moderne, majoritatea nu sunt necesare. Po\u021bi s\u0103 modifici procesul versiunii JavaScript astfel \u00eenc\u00e2t s\u0103 nu transpileze func\u021biile [Baseline](https://web.dev/articles/baseline-and-polyfills), cu excep\u021bia cazului \u00een care \u0219tii c\u0103 trebuie s\u0103 accepti browserele vechi. [Afl\u0103 de ce majoritatea site-urilor pot implementa cod ES6+ f\u0103r\u0103 transpilare](https://philipwalton.com/articles/the-state-of-es5-on-the-web/)"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | title": {
+    "message": "JavaScript vechi"
+  },
+  "models/trace/insights/ModernHTTP.ts | description": {
+    "message": "HTTP/2 \u0219i HTTP/3 ofer\u0103 multe beneficii fa\u021b\u0103 de HTTP/1.1, cum ar fi multiplexingul. [Afl\u0103 mai multe despre folosirea protocolului HTTP modern](https://developer.chrome.com/docs/lighthouse/best-practices/uses-http2/)."
+  },
+  "models/trace/insights/ModernHTTP.ts | noOldProtocolRequests": {
+    "message": "Nicio solicitare nu a folosit HTTP/1.1"
+  },
+  "models/trace/insights/ModernHTTP.ts | protocol": {
+    "message": "Protocol"
+  },
+  "models/trace/insights/ModernHTTP.ts | request": {
+    "message": "Solicitare"
+  },
+  "models/trace/insights/ModernHTTP.ts | title": {
+    "message": "HTTP modern"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | description": {
+    "message": "[Evit\u0103 s\u0103 legi solicit\u0103ri critice](https://developer.chrome.com/docs/lighthouse/performance/critical-request-chains) reduc\u00e2nd lungimea lan\u021burilor, reduc\u00e2nd dimensiunea de desc\u0103rcare a resurselor sau am\u00e2n\u00e2nd desc\u0103rcarea de resurse inutile pentru a \u00eembun\u0103t\u0103\u021bi \u00eenc\u0103rcarea paginilor."
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | maxCriticalPathLatency": {
+    "message": "Laten\u021ba maxim\u0103 a c\u0103ii critice:"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | noNetworkDependencyTree": {
+    "message": "Nicio activitate de redare nu a fost afectat\u0103 de dependen\u021bele de re\u021bea"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | title": {
+    "message": "Arborele de dependen\u021be al re\u021belei"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | warningDescription": {
+    "message": "Evit\u0103 s\u0103 legi solicit\u0103ri critice reduc\u00e2nd lungimea lan\u021burilor, reduc\u00e2nd dimensiunea de desc\u0103rcare a resurselor sau am\u00e2n\u00e2nd desc\u0103rcarea de resurse inutile pentru a \u00eembun\u0103t\u0103\u021bi \u00eenc\u0103rcarea paginilor."
+  },
+  "models/trace/insights/RenderBlocking.ts | description": {
+    "message": "Solicit\u0103rile blocheaz\u0103 redarea ini\u021bial\u0103 a paginii, ceea ce poate \u00eent\u00e2rzia LCP. [Am\u00e2narea sau \u00eencorporarea](https://web.dev/learn/performance/understanding-the-critical-path#render-blocking_resources/) poate s\u0103 mute aceste solicit\u0103ri de re\u021bea \u00een afara c\u0103ii critice."
+  },
+  "models/trace/insights/RenderBlocking.ts | duration": {
+    "message": "Durat\u0103"
+  },
+  "models/trace/insights/RenderBlocking.ts | noRenderBlocking": {
+    "message": "Nu exist\u0103 solicit\u0103ri de blocare a red\u0103rii pentru aceast\u0103 navigare"
+  },
+  "models/trace/insights/RenderBlocking.ts | renderBlockingRequest": {
+    "message": "Solicitare"
+  },
+  "models/trace/insights/RenderBlocking.ts | title": {
+    "message": "Solicit\u0103ri de blocare a red\u0103rii"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | description": {
+    "message": "\u00cen cazul \u00een care costurile pentru recalcularea stilului r\u0103m\u00e2n ridicate, optimizarea selectorilor le poate sc\u0103dea. [Optimizeaz\u0103 selectorii](https://developer.chrome.com/docs/devtools/performance/selector-stats) cu un interval mare de timp scurs \u0219i un procentaj mare al c\u0103ii lente. Selectorii mai simpli, num\u0103rul mai mic de selectori, un DOM mai mic \u0219i un DOM mai simplu vor sc\u0103dea costurile de potrivire."
+  },
+  "models/trace/insights/SlowCSSSelector.ts | elapsed": {
+    "message": "Timp scurs"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | enableSelectorData": {
+    "message": "Nu s-au g\u0103sit date despre selectorul CSS. Statisticile selectorului CSS trebuie activate \u00een set\u0103rile panoului de performan\u021b\u0103."
+  },
+  "models/trace/insights/SlowCSSSelector.ts | matchAttempts": {
+    "message": "\u00cencerc\u0103ri de potrivire"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | matchCount": {
+    "message": "Num\u0103rul de potriviri"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | title": {
+    "message": "Costurile selectorului CSS"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | topSelectors": {
+    "message": "Selectori de top"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | total": {
+    "message": "Total"
+  },
+  "models/trace/insights/ThirdParties.ts | columnMainThreadTime": {
+    "message": "Durata pentru firul principal"
+  },
+  "models/trace/insights/ThirdParties.ts | columnThirdParty": {
+    "message": "Ter\u021b\u0103 parte"
+  },
+  "models/trace/insights/ThirdParties.ts | columnTransferSize": {
+    "message": "Dimensiunea transferului"
+  },
+  "models/trace/insights/ThirdParties.ts | description": {
+    "message": "Codul ter\u021b\u0103 parte poate influen\u021ba semnificativ performan\u021ba de \u00eenc\u0103rcare. [Redu \u0219i am\u00e2n\u0103 \u00eenc\u0103rcarea codului ter\u021b\u0103 parte](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/loading-third-party-javascript/) pentru a acorda prioritate con\u021binutului din pagin\u0103."
+  },
+  "models/trace/insights/ThirdParties.ts | noThirdParties": {
+    "message": "Nu s-au g\u0103sit ter\u021be p\u0103r\u021bi"
+  },
+  "models/trace/insights/ThirdParties.ts | title": {
+    "message": "Ter\u021be p\u0103r\u021bi"
+  },
+  "models/trace/insights/Viewport.ts | description": {
+    "message": "Interac\u021biunile prin atingere pot fi [\u00eent\u00e2rziate cu p\u00e2n\u0103 la 300 ms](https://developer.chrome.com/blog/300ms-tap-delay-gone-away/) dac\u0103 aria vizibil\u0103 nu este optimizat\u0103 pentru mobil."
+  },
+  "models/trace/insights/Viewport.ts | title": {
+    "message": "Optimizeaz\u0103 aria vizibil\u0103 pentru mobil"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | HTTPMethodNotGET": {
+    "message": "Doar paginile \u00eenc\u0103rcate prin intermediul unei solicit\u0103ri GET sunt eligibile pentru memoria cache \u00eenainte/\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | HTTPStatusNotOK": {
+    "message": "Doar paginile cu codul de stare 2XX pot fi stocate \u00een memoria cache."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | JavaScriptExecution": {
+    "message": "Chrome a detectat o \u00eencercare de executare JavaScript \u00een cache."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | appBanner": {
+    "message": "Paginile care au solicitat un AppBanner nu sunt eligibile momentan pentru memoria cache \u00eenainte/\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabled": {
+    "message": "Memoria cache \u00eenainte/\u00eenapoi este dezactivat\u0103 de func\u021biile experimentale. Acceseaz\u0103 chrome://flags/#back-forward-cache ca s\u0103 o activezi local pe acest dispozitiv."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledByCommandLine": {
+    "message": "Memoria cache \u00eenainte/\u00eenapoi este dezactivat\u0103 de linia de comand\u0103."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledByLowMemory": {
+    "message": "Memoria cache \u00eenainte/\u00eenapoi este dezactivat\u0103 din cauza memoriei insuficiente."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledForDelegate": {
+    "message": "Memoria cache \u00eenainte/\u00eenapoi nu este acceptat\u0103 de delegat."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledForPrerender": {
+    "message": "Memoria cache \u00eenainte/\u00eenapoi este dezactivat\u0103 de programul de redare \u00een avans."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | broadcastChannel": {
+    "message": "Pagina nu poate fi stocat\u0103 \u00een memoria cache deoarece are o instan\u021b\u0103 BroadcastChannel cu ascult\u0103tori \u00eenregistra\u021bi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheControlNoStore": {
+    "message": "Paginile cu antetul cache-control:no-store nu pot intra \u00een memoria cache \u00eenainte/\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheFlushed": {
+    "message": "Memoria cache a fost golit\u0103 inten\u021bionat."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheLimit": {
+    "message": "Pagina a fost eliminat\u0103 din memoria cache pentru a permite memorarea altei pagini."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | containsPlugins": {
+    "message": "Paginile care con\u021bin pluginuri nu sunt eligibile momentan pentru memoria cache \u00eenainte/\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentDiscarded": {
+    "message": "Nedefinit"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentFileChooser": {
+    "message": "Paginile care folosesc API-ul FileChooser nu sunt eligibile pentru memoria cache \u00eenainte/\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentFileSystemAccess": {
+    "message": "Paginile care folosesc API-ul de acces la sistemul de fi\u0219iere nu sunt eligibile momentan pentru memoria cache \u00eenainte/\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaDevicesDispatcherHost": {
+    "message": "Paginile care folosesc dispecerul pentru dispozitive media nu sunt eligibile momentan pentru memoria cache \u00eenainte/\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaPlay": {
+    "message": "Un player media func\u021biona la ie\u0219ire."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaSession": {
+    "message": "Paginile care folosesc API-ul MediaSession \u0219i seteaz\u0103 o stare de redare nu sunt eligibile pentru memoria cache \u00eenainte/\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaSessionService": {
+    "message": "Paginile care folosesc API-ul MediaSession \u0219i seteaz\u0103 handlere de ac\u021biune nu sunt eligibile pentru memoria cache \u00eenainte/\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentScreenReader": {
+    "message": "Memoria cache \u00eenainte-\u00eenapoi este dezactivat\u0103 din cauza cititorului de ecran."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentSecurityHandler": {
+    "message": "Paginile care folosesc SecurityHandler nu sunt eligibile pentru memoria cache \u00eenainte/\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentSerial": {
+    "message": "Paginile care folosesc API-ul Serial nu sunt eligibile pentru memoria cache \u00eenainte/\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebAuthenticationAPI": {
+    "message": "Paginile care folosesc API-ul WebAuthentication nu sunt eligibile pentru memoria cache \u00eenainte/\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebBluetooth": {
+    "message": "Paginile care folosesc API-ul WebBluetooth nu sunt eligibile pentru memoria cache \u00eenainte/\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebUSB": {
+    "message": "Paginile care folosesc API-ul WebUSB nu sunt eligibile pentru memoria cache \u00eenainte/\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cookieDisabled": {
+    "message": "Memoria cache \u00eenainte-\u00eenapoi este dezactivat\u0103 deoarece cookie-urile sunt dezactivate pentru o pagin\u0103 care folose\u0219te Cache-Control: no-store."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | dedicatedWorkerOrWorklet": {
+    "message": "Paginile care folosesc un lucr\u0103tor sau un worklet special nu sunt eligibile momentan pentru memoria cache \u00eenainte/\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | documentLoaded": {
+    "message": "Documentul nu s-a \u00eenc\u0103rcat complet \u00eenainte de a ie\u0219i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderAppBannerManager": {
+    "message": "Bannerul de aplica\u021bie era prezent la ie\u0219ire."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderChromePasswordManagerClientBindCredentialManager": {
+    "message": "Managerul de parole Chrome era prezent la ie\u0219ire."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderDomDistillerSelfDeletingRequestDelegate": {
+    "message": "Distilarea DOM era \u00een curs \u00een momentul ie\u0219irii."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderDomDistillerViewerSource": {
+    "message": "Vizualizatorul de distilare DOM era prezent la ie\u0219ire."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionMessaging": {
+    "message": "Memoria cache \u00eenainte/\u00eenapoi este dezactivat\u0103 din cauza extensiilor care folosesc API de mesagerie."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionMessagingForOpenPort": {
+    "message": "Extensiile cu conexiune pe termen lung ar trebui s\u0103 \u00eenchid\u0103 conexiunea \u00eenainte s\u0103 intre \u00een memoria cache \u00eenainte/\u00eenapoi"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionSentMessageToCachedFrame": {
+    "message": "Extensiile cu conexiune pe termen lung au \u00eencercat s\u0103 trimit\u0103 mesaje c\u0103tre cadre din memoria cache \u00eenainte/\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensions": {
+    "message": "Memoria cache \u00eenainte/\u00eenapoi este dezactivat\u0103 din cauza extensiilor."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderModalDialog": {
+    "message": "Un dialog modal, precum retrimiterea formularelor sau caseta de dialog pentru parola http, s-a afi\u0219at pentru pagin\u0103 la ie\u0219ire."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderOfflinePage": {
+    "message": "Pagina offline s-a afi\u0219at la ie\u0219ire."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderOomInterventionTabHelper": {
+    "message": "Bara de interven\u021bie Memorie insuficient\u0103 era prezent\u0103 la ie\u0219ire."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderPermissionRequestManager": {
+    "message": "Au ap\u0103rut solicit\u0103ri de permisiune la ie\u0219ire."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderPopupBlockerTabHelper": {
+    "message": "Func\u021bia de blocare a ferestrelor pop-up era prezent\u0103 la ie\u0219ire."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderSafeBrowsingThreatDetails": {
+    "message": "Detaliile Navig\u0103rii sigure s-au afi\u0219at la ie\u0219ire."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderSafeBrowsingTriggeredPopupBlocker": {
+    "message": "Navigarea sigur\u0103 a considerat aceast\u0103 pagin\u0103 abuziv\u0103 \u0219i a blocat elementul pop-up."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | enteredBackForwardCacheBeforeServiceWorkerHostAdded": {
+    "message": "Un service worker s-a activat \u00een timp ce pagina era \u00een memoria cache \u00eenainte/\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | errorDocument": {
+    "message": "Memoria cache \u00eenainte/\u00eenapoi este dezactivat\u0103 din cauza unei erori de document."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | fencedFramesEmbedder": {
+    "message": "Paginile care folosesc FencedFrames nu pot fi stocate \u00een bfcache."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | foregroundCacheLimit": {
+    "message": "Pagina a fost eliminat\u0103 din memoria cache pentru a permite memorarea altei pagini."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | grantedMediaStreamAccess": {
+    "message": "Paginile care au acordat acces pentru fluxul media nu sunt eligibile momentan pentru memoria cache \u00eenainte/\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | haveInnerContents": {
+    "message": "Paginile care au anumite tipuri de con\u021binut \u00eencorporat (de ex., PDF-uri) nu sunt eligibile momentan pentru memoria cache \u00eenainte-\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | idleManager": {
+    "message": "Paginile care folosesc IdleManager nu sunt eligibile momentan pentru memoria cache \u00eenainte/\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | indexedDBConnection": {
+    "message": "Paginile care au o conexiune IndexedDB deschis\u0103 nu sunt eligibile momentan pentru memoria cache \u00eenainte/\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | indexedDBEvent": {
+    "message": "Memoria cache \u00eenainte / \u00eenapoi este dezactivat\u0103 din cauza unui eveniment IndexedDB."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | ineligibleAPI": {
+    "message": "S-au folosit API-uri ineligibile."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | injectedJavascript": {
+    "message": "Paginile \u00een care se injecteaz\u0103 JavaScript prin extensii nu sunt eligibile momentan pentru memoria cache \u00eenainte-\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | injectedStyleSheet": {
+    "message": "Paginile \u00een care se injecteaz\u0103 StyleSheet prin extensii nu sunt eligibile momentan pentru memoria cache \u00eenainte-\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | internalError": {
+    "message": "Eroare intern\u0103."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | jsNetworkRequestReceivedCacheControlNoStoreResource": {
+    "message": "Memoria cache \u00eenainte-\u00eenapoi este dezactivat\u0103 deoarece unele solicit\u0103ri din re\u021beaua JavaScript au primit o resurs\u0103 cu antetul Cache-Control: no-store."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | keepaliveRequest": {
+    "message": "Memoria cache \u00eenainte-\u00eenapoi este dezactivat\u0103 din cauza unei solicit\u0103ri keep-alive."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | keyboardLock": {
+    "message": "Paginile care folosesc blocarea tastaturii nu sunt eligibile momentan pentru memoria cache \u00eenainte/\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | loading": {
+    "message": "Pagina nu s-a \u00eenc\u0103rcat complet \u00eenainte de a ie\u0219i."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | mainResourceHasCacheControlNoCache": {
+    "message": "Paginile a c\u0103ror resurs\u0103 principal\u0103 are cache-control:no-cache nu pot intra \u00een memoria cache \u00eenainte/\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | mainResourceHasCacheControlNoStore": {
+    "message": "Paginile a c\u0103ror resurs\u0103 principal\u0103 are cache-control:no-store nu pot intra \u00een memoria cache \u00eenainte/\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | navigationCancelledWhileRestoring": {
+    "message": "Navigarea a fost anulat\u0103 \u00eenainte ca pagina s\u0103 poat\u0103 fi restabilit\u0103 din memoria cache \u00eenainte/\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkExceedsBufferLimit": {
+    "message": "Pagina a fost eliminat\u0103 din cache pentru c\u0103 o conexiune la re\u021bea activ\u0103 primea prea multe date. Chrome limiteaz\u0103 volumul de date pe care \u00eel poate primi o pagin\u0103 \u00een cache."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestDatapipeDrainedAsBytesConsumer": {
+    "message": "Paginile care au fetch() sau XHR \u00een curs nu sunt eligibile momentan pentru memoria cache \u00eenainte/\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestRedirected": {
+    "message": "Pagina a fost eliminat\u0103 din memoria cache \u00eenainte/\u00eenapoi deoarece o solicitare pentru o re\u021bea activ\u0103 implica o redirec\u021bionare."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestTimeout": {
+    "message": "Pagina a fost eliminat\u0103 din cache pentru c\u0103 o conexiune la re\u021bea a fost deschis\u0103 prea mult. Chrome limiteaz\u0103 durata \u00een care o pagin\u0103 poate primi date \u00een cache."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | noResponseHead": {
+    "message": "Paginile care nu au un antet de r\u0103spuns valid nu pot intra \u00een memoria cache \u00eenainte/\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | notMainFrame": {
+    "message": "Navigarea a avut loc \u00eentr-un cadru diferit de principalul."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingIndexedDBTransaction": {
+    "message": "Paginile cu tranzac\u021bii DB indexate \u00een curs nu sunt eligibile momentan pentru memoria cache \u00eenainte/\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestDirectSocket": {
+    "message": "Paginile cu o solicitare de re\u021bea \u00een curs nu sunt eligibile momentan pentru memoria cache \u00eenainte/\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestFetch": {
+    "message": "Paginile cu o solicitare de re\u021bea de preluare \u00een curs nu sunt eligibile momentan pentru memoria cache \u00eenainte/\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestOthers": {
+    "message": "Paginile cu o solicitare de re\u021bea \u00een curs nu sunt eligibile momentan pentru memoria cache \u00eenainte/\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestXHR": {
+    "message": "Paginile cu o solicitare de re\u021bea XHR \u00een curs nu sunt eligibile momentan pentru memoria cache \u00eenainte/\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | paymentManager": {
+    "message": "Paginile care folosesc PaymentManager nu sunt eligibile momentan pentru memoria cache \u00eenainte/\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | pictureInPicture": {
+    "message": "Paginile care folosesc modul picture-in-picture nu sunt eligibile momentan pentru memoria cache \u00eenainte/\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | printing": {
+    "message": "Paginile care afi\u0219eaz\u0103 interfa\u021ba de printare nu sunt eligibile momentan pentru memoria cache \u00eenainte/\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | relatedActiveContentsExist": {
+    "message": "Pagina s-a deschis folosind \u201ewindow.open()\u201d \u0219i alt\u0103 fil\u0103 are o referin\u021b\u0103 la aceasta sau pagina a deschis o fereastr\u0103."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | rendererProcessCrashed": {
+    "message": "Procesul dispozitivului de redare pentru pagina din memoria cache \u00eenainte/\u00eenapoi s-a blocat."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | rendererProcessKilled": {
+    "message": "Procesul dispozitivului de redare pentru pagina din memoria cache \u00eenainte/\u00eenapoi a fost oprit."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedAudioCapturePermission": {
+    "message": "Paginile care au solicitat permisiuni de \u00eenregistrare audio nu sunt eligibile momentan pentru memoria cache \u00eenainte/\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedBackForwardCacheBlockedSensors": {
+    "message": "Paginile care au permisiunile solicitate pentru senzori nu sunt eligibile momentan pentru memoria cache \u00eenainte/\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedBackgroundWorkPermission": {
+    "message": "Paginile care au solicitat sincronizarea \u00een fundal sau permisiuni de preluare nu sunt eligibile momentan pentru memoria cache \u00eenainte/\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedMIDIPermission": {
+    "message": "Paginile care au solicitat permisiuni MIDI nu sunt eligibile momentan pentru memoria cache \u00eenainte/\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedNotificationsPermission": {
+    "message": "Paginile care au solicitat permisiuni de notificare nu sunt eligibile momentan pentru memoria cache \u00eenainte/\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedStorageAccessGrant": {
+    "message": "Paginile care au solicitat acces la spa\u021biul de stocare nu sunt eligibile momentan pentru memoria cache \u00eenainte/\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedVideoCapturePermission": {
+    "message": "Paginile care au solicitat permisiuni de \u00eenregistrare video nu sunt eligibile momentan pentru memoria cache \u00eenainte/\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | schemeNotHTTPOrHTTPS": {
+    "message": "Doar paginile a c\u0103ror schem\u0103 URL este HTTP / HTTPS pot fi stocate \u00een memoria cache."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerClaim": {
+    "message": "Pagina a fost revendicat\u0103 de un service worker \u00een memoria cache \u00eenainte/\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerPostMessage": {
+    "message": "Un service worker a \u00eencercat s\u0103 trimit\u0103 paginii din memoria cache \u00eenainte/\u00eenapoi o proprietate MessageEvent."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerUnregistration": {
+    "message": "S-a anulat \u00eenregistrarea ServiceWorker c\u00e2t timp o pagin\u0103 era \u00een memoria cache \u00eenainte/\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerVersionActivation": {
+    "message": "Pagina a fost eliminat\u0103 din memoria cache \u00eenainte/\u00eenapoi din cauza activ\u0103rii unui service worker."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | sessionRestored": {
+    "message": "Chrome a repornit \u0219i a \u0219ters intr\u0103rile din memoria cache \u00eenainte/\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | sharedWorker": {
+    "message": "Paginile care folosesc SharedWorker nu sunt eligibile momentan pentru memoria cache \u00eenainte/\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | speechRecognizer": {
+    "message": "Paginile care folosesc SpeechRecognizer nu sunt eligibile momentan pentru memoria cache \u00eenainte/\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | speechSynthesis": {
+    "message": "Paginile care folosesc SpeechSynthesis nu sunt eligibile momentan pentru memoria cache \u00eenainte/\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subframeIsNavigating": {
+    "message": "Un iframe de pe pagin\u0103 a \u00eenceput o navigare care nu s-a terminat."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subresourceHasCacheControlNoCache": {
+    "message": "Paginile a c\u0103ror subresurs\u0103 are cache-control:no-cache nu pot intra \u00een memoria cache \u00eenainte/\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subresourceHasCacheControlNoStore": {
+    "message": "Paginile a c\u0103ror subresurs\u0103 are cache-control:no-store nu pot intra \u00een memoria cache \u00eenainte/\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | timeout": {
+    "message": "Pagina a dep\u0103\u0219it timpul maxim \u00een memoria cache \u00eenainte/\u00eenapoi \u0219i a expirat."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | timeoutPuttingInCache": {
+    "message": "A expirat intrarea paginii \u00een memoria cache \u00eenainte/\u00eenapoi (probabil din cauza handlerelor pagehide pe termen lung)."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | unloadHandlerExistsInMainFrame": {
+    "message": "Pagina are un handler de desc\u0103rcare \u00een cadrul principal."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | unloadHandlerExistsInSubFrame": {
+    "message": "Pagina are un handler de desc\u0103rcare \u00eentr-un subcadru."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | userAgentOverrideDiffers": {
+    "message": "Browserul a schimbat antetul de modificare user agent."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | wasGrantedMediaAccess": {
+    "message": "Paginile care au acordat acces pentru a \u00eenregistra con\u021binut video sau audio nu sunt eligibile momentan pentru memoria cache \u00eenainte/\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webDatabase": {
+    "message": "Paginile care folosesc WebDatabase nu sunt eligibile momentan pentru memoria cache \u00eenainte/\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webHID": {
+    "message": "Paginile care folosesc WebHID nu sunt eligibile momentan pentru memoria cache \u00eenainte/\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webLocks": {
+    "message": "Paginile care folosesc WebLocks nu sunt eligibile momentan pentru memoria cache \u00eenainte/\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webNfc": {
+    "message": "Paginile care folosesc WebNfc nu sunt eligibile momentan pentru memoria cache \u00eenainte/\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webOTPService": {
+    "message": "Paginile care folosesc WebOTPService nu sunt eligibile momentan pentru bfcache."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webRTC": {
+    "message": "Paginile cu WebRTC nu pot intra \u00een memoria cache \u00eenainte/\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webRTCSticky": {
+    "message": "Memoria cache \u00eenainte-\u00eenapoi este dezactivat\u0103 deoarece s-a folosit WebRTC."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webShare": {
+    "message": "Paginile care folosesc WebShare nu sunt eligibile momentan pentru memoria cache \u00eenainte/\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webSocket": {
+    "message": "Paginile cu WebSocket nu pot intra \u00een memoria cache \u00eenainte/\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webSocketSticky": {
+    "message": "Memoria cache \u00eenainte-\u00eenapoi este dezactivat\u0103 deoarece s-a folosit WebSocket."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webTransport": {
+    "message": "Paginile cu WebTransport nu pot intra \u00een memoria cache \u00eenainte/\u00eenapoi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webTransportSticky": {
+    "message": "Memoria cache \u00eenainte-\u00eenapoi este dezactivat\u0103 deoarece s-a folosit WebTransport."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webXR": {
+    "message": "Paginile care folosesc WebXR nu sunt eligibile momentan pentru memoria cache \u00eenainte/\u00eenapoi."
+  }
+}

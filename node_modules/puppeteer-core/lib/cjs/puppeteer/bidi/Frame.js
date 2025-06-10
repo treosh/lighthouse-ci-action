@@ -4,22 +4,6 @@
  * Copyright 2023 Google Inc.
  * SPDX-License-Identifier: Apache-2.0
  */
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
 var __runInitializers = (this && this.__runInitializers) || function (thisArg, initializers, value) {
     var useValue = arguments.length > 2;
     for (var i = 0; i < initializers.length; i++) {
@@ -54,20 +38,12 @@ var __esDecorate = (this && this.__esDecorate) || function (ctor, descriptorIn, 
     if (target) Object.defineProperty(target, contextIn.name, descriptor);
     done = true;
 };
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
 var __setFunctionName = (this && this.__setFunctionName) || function (f, name, prefix) {
     if (typeof name === "symbol") name = name.description ? "[".concat(name.description, "]") : "";
     return Object.defineProperty(f, "name", { configurable: true, value: prefix ? "".concat(prefix, " ", name) : name });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BidiFrame = void 0;
-const Bidi = __importStar(require("chromium-bidi/lib/cjs/protocol/protocol.js"));
 const rxjs_js_1 = require("../../third_party/rxjs/rxjs.js");
 const Frame_js_1 = require("../api/Frame.js");
 const Accessibility_js_1 = require("../cdp/Accessibility.js");
@@ -84,6 +60,20 @@ const JSHandle_js_1 = require("./JSHandle.js");
 const Realm_js_1 = require("./Realm.js");
 const util_js_2 = require("./util.js");
 const WebWorker_js_1 = require("./WebWorker.js");
+// TODO: Remove this and map CDP the correct method.
+// Requires breaking change.
+function convertConsoleMessageLevel(method) {
+    switch (method) {
+        case 'group':
+            return 'startGroup';
+        case 'groupCollapsed':
+            return 'startGroupCollapsed';
+        case 'groupEnd':
+            return 'endGroup';
+        default:
+            return method;
+    }
+}
 let BidiFrame = (() => {
     var _a;
     let _classSuper = Frame_js_1.Frame;
@@ -191,7 +181,7 @@ let BidiFrame = (() => {
                 default: Realm_js_1.BidiFrameRealm.from(this.browsingContext.defaultRealm, this),
                 internal: Realm_js_1.BidiFrameRealm.from(this.browsingContext.createWindowRealm(`__puppeteer_internal_${Math.ceil(Math.random() * 10000)}`), this),
             };
-            this.accessibility = new Accessibility_js_1.Accessibility(this.realms.default);
+            this.accessibility = new Accessibility_js_1.Accessibility(this.realms.default, this._id);
         }
         #initialize() {
             for (const browsingContext of this.browsingContext.children) {
@@ -250,7 +240,7 @@ let BidiFrame = (() => {
                         return `${value} ${parsedValue}`;
                     }, '')
                         .slice(1);
-                    this.page().trustedEmitter.emit("console" /* PageEvent.Console */, new ConsoleMessage_js_1.ConsoleMessage(entry.method, text, args, getStackTraceLocations(entry.stackTrace)));
+                    this.page().trustedEmitter.emit("console" /* PageEvent.Console */, new ConsoleMessage_js_1.ConsoleMessage(convertConsoleMessageLevel(entry.method), text, args, getStackTraceLocations(entry.stackTrace), this));
                 }
                 else if (isJavaScriptLogEntry(entry)) {
                     const error = new Error(entry.text ?? '');
@@ -314,9 +304,6 @@ let BidiFrame = (() => {
             }
             return parent;
         }
-        isOOPFrame() {
-            throw new Errors_js_1.UnsupportedOperation();
-        }
         url() {
             return this.browsingContext.url;
         }
@@ -355,6 +342,12 @@ let BidiFrame = (() => {
                         error.message.includes('net::ERR_HTTP_RESPONSE_CODE_FAILURE')) {
                         return;
                     }
+                    if (error.message.includes('navigation canceled')) {
+                        return;
+                    }
+                    if (error.message.includes('Navigation was aborted by another navigation')) {
+                        return;
+                    }
                     throw error;
                 }),
             ]).catch((0, util_js_2.rewriteNavigationError)(url, options.timeout ?? this.timeoutSettings.navigationTimeout()));
@@ -370,22 +363,30 @@ let BidiFrame = (() => {
             ]);
         }
         async waitForNavigation(options = {}) {
-            const { timeout: ms = this.timeoutSettings.navigationTimeout() } = options;
+            const { timeout: ms = this.timeoutSettings.navigationTimeout(), signal } = options;
             const frames = this.childFrames().map(frame => {
                 return frame.#detached$();
             });
             return await (0, rxjs_js_1.firstValueFrom)((0, rxjs_js_1.combineLatest)([
-                (0, util_js_1.fromEmitterEvent)(this.browsingContext, 'navigation').pipe((0, rxjs_js_1.switchMap)(({ navigation }) => {
+                (0, rxjs_js_1.race)((0, util_js_1.fromEmitterEvent)(this.browsingContext, 'navigation'), (0, util_js_1.fromEmitterEvent)(this.browsingContext, 'historyUpdated').pipe((0, rxjs_js_1.map)(() => {
+                    return { navigation: null };
+                })))
+                    .pipe((0, rxjs_js_1.first)())
+                    .pipe((0, rxjs_js_1.switchMap)(({ navigation }) => {
+                    if (navigation === null) {
+                        return (0, rxjs_js_1.of)(null);
+                    }
                     return this.#waitForLoad$(options).pipe((0, rxjs_js_1.delayWhen)(() => {
                         if (frames.length === 0) {
                             return (0, rxjs_js_1.of)(undefined);
                         }
                         return (0, rxjs_js_1.combineLatest)(frames);
-                    }), (0, rxjs_js_1.raceWith)((0, util_js_1.fromEmitterEvent)(navigation, 'fragment'), (0, util_js_1.fromEmitterEvent)(navigation, 'failed'), (0, util_js_1.fromEmitterEvent)(navigation, 'aborted').pipe((0, rxjs_js_1.map)(({ url }) => {
-                        throw new Error(`Navigation aborted: ${url}`);
-                    }))), (0, rxjs_js_1.switchMap)(() => {
+                    }), (0, rxjs_js_1.raceWith)((0, util_js_1.fromEmitterEvent)(navigation, 'fragment'), (0, util_js_1.fromEmitterEvent)(navigation, 'failed'), (0, util_js_1.fromEmitterEvent)(navigation, 'aborted')), (0, rxjs_js_1.switchMap)(() => {
                         if (navigation.request) {
                             function requestFinished$(request) {
+                                if (navigation === null) {
+                                    return (0, rxjs_js_1.of)(null);
+                                }
                                 // Reduces flakiness if the response events arrive after
                                 // the load event.
                                 // Usually, the response or error is already there at this point.
@@ -408,6 +409,9 @@ let BidiFrame = (() => {
                 })),
                 this.#waitForNetworkIdle$(options),
             ]).pipe((0, rxjs_js_1.map)(([navigation]) => {
+                if (!navigation) {
+                    return null;
+                }
                 const request = navigation.request;
                 if (!request) {
                     return null;
@@ -415,7 +419,7 @@ let BidiFrame = (() => {
                 const lastRequest = request.lastRedirect ?? request;
                 const httpRequest = HTTPRequest_js_1.requests.get(lastRequest);
                 return httpRequest.response();
-            }), (0, rxjs_js_1.raceWith)((0, util_js_1.timeout)(ms), this.#detached$().pipe((0, rxjs_js_1.map)(() => {
+            }), (0, rxjs_js_1.raceWith)((0, util_js_1.timeout)(ms), (0, util_js_1.fromAbortSignal)(signal), this.#detached$().pipe((0, rxjs_js_1.map)(() => {
                 throw new Errors_js_1.TargetCloseError('Frame detached.');
             })))));
         }
@@ -430,8 +434,8 @@ let BidiFrame = (() => {
             if (this.#exposedFunctions.has(name)) {
                 throw new Error(`Failed to add page binding with name ${name}: globalThis['${name}'] already exists!`);
             }
-            const exposeable = await ExposedFunction_js_1.ExposeableFunction.from(this, name, apply);
-            this.#exposedFunctions.set(name, exposeable);
+            const exposable = await ExposedFunction_js_1.ExposableFunction.from(this, name, apply);
+            this.#exposedFunctions.set(name, exposable);
         }
         async removeExposedFunction(name) {
             const exposedFunction = this.#exposedFunctions.get(name);
@@ -442,12 +446,11 @@ let BidiFrame = (() => {
             await exposedFunction[Symbol.asyncDispose]();
         }
         async createCDPSession() {
-            const { sessionId } = await this.client.send('Target.attachToTarget', {
-                targetId: this._id,
-                flatten: true,
-            });
-            await this.browsingContext.subscribe([Bidi.ChromiumBidi.BiDiModule.Cdp]);
-            return new CDPSession_js_1.BidiCdpSession(this, sessionId);
+            if (!this.page().browser().cdpSupported) {
+                throw new Errors_js_1.UnsupportedOperation();
+            }
+            const cdpConnection = this.page().browser().cdpConnection;
+            return await cdpConnection._createSession({ targetId: this._id });
         }
         get #waitForLoad$() { return _private_waitForLoad$_descriptor.value; }
         get #waitForNetworkIdle$() { return _private_waitForNetworkIdle$_descriptor.value; }

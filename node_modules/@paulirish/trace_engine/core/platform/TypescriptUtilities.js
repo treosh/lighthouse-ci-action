@@ -11,7 +11,7 @@ export function assertNotNullOrUndefined(val, message) {
         throw new Error(`Expected given value to not be null/undefined but it was: ${val}${message ? `\n${message}` : ''}`);
     }
 }
-export function assertNever(type, message) {
+export function assertNever(_type, message) {
     throw new Error(message);
 }
 /**

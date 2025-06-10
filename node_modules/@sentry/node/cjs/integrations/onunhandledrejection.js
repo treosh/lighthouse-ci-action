@@ -1,0 +1,104 @@
+Object.defineProperty(exports, '__esModule', { value: true });
+
+const core = require('@sentry/core');
+const utils = require('@sentry/utils');
+const errorhandling = require('./utils/errorhandling.js');
+
+const INTEGRATION_NAME = 'OnUnhandledRejection';
+
+const _onUnhandledRejectionIntegration = ((options = {}) => {
+  const mode = options.mode || 'warn';
+
+  return {
+    name: INTEGRATION_NAME,
+    // TODO v8: Remove this
+    setupOnce() {}, // eslint-disable-line @typescript-eslint/no-empty-function
+    setup(client) {
+      global.process.on('unhandledRejection', makeUnhandledPromiseHandler(client, { mode }));
+    },
+  };
+}) ;
+
+const onUnhandledRejectionIntegration = core.defineIntegration(_onUnhandledRejectionIntegration);
+
+/**
+ * Global Promise Rejection handler.
+ * @deprecated Use `onUnhandledRejectionIntegration()` instead.
+ */
+// eslint-disable-next-line deprecation/deprecation
+const OnUnhandledRejection = core.convertIntegrationFnToClass(
+  INTEGRATION_NAME,
+  onUnhandledRejectionIntegration,
+)
+
+;
+
+// eslint-disable-next-line deprecation/deprecation
+
+/**
+ * Send an exception with reason
+ * @param reason string
+ * @param promise promise
+ *
+ * Exported only for tests.
+ */
+function makeUnhandledPromiseHandler(
+  client,
+  options,
+) {
+  return function sendUnhandledPromise(reason, promise) {
+    if (core.getClient() !== client) {
+      return;
+    }
+
+    core.captureException(reason, {
+      originalException: promise,
+      captureContext: {
+        extra: { unhandledPromiseRejection: true },
+      },
+      mechanism: {
+        handled: false,
+        type: 'onunhandledrejection',
+      },
+    });
+
+    handleRejection(reason, options);
+  };
+}
+
+/**
+ * Handler for `mode` option
+
+ */
+function handleRejection(
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  reason,
+  options,
+) {
+  // https://github.com/nodejs/node/blob/7cf6f9e964aa00772965391c23acda6d71972a9a/lib/internal/process/promises.js#L234-L240
+  const rejectionWarning =
+    'This error originated either by ' +
+    'throwing inside of an async function without a catch block, ' +
+    'or by rejecting a promise which was not handled with .catch().' +
+    ' The promise rejected with the reason:';
+
+  /* eslint-disable no-console */
+  if (options.mode === 'warn') {
+    utils.consoleSandbox(() => {
+      console.warn(rejectionWarning);
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+      console.error(reason && reason.stack ? reason.stack : reason);
+    });
+  } else if (options.mode === 'strict') {
+    utils.consoleSandbox(() => {
+      console.warn(rejectionWarning);
+    });
+    errorhandling.logAndExitProcess(reason);
+  }
+  /* eslint-enable no-console */
+}
+
+exports.OnUnhandledRejection = OnUnhandledRejection;
+exports.makeUnhandledPromiseHandler = makeUnhandledPromiseHandler;
+exports.onUnhandledRejectionIntegration = onUnhandledRejectionIntegration;
+//# sourceMappingURL=onunhandledrejection.js.map

@@ -1,8 +1,3 @@
-/* replacement start */
-
-const process = require('process/')
-
-/* replacement end */
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -28,7 +23,14 @@ const process = require('process/')
 // Implement an async ._write(chunk, encoding, cb), and it'll handle all
 // the drain event emission and buffering.
 
-;('use strict')
+'use strict'
+
+/* replacement start */
+
+const process = require('process/')
+
+/* replacement end */
+
 const {
   ArrayPrototypeSlice,
   Error,

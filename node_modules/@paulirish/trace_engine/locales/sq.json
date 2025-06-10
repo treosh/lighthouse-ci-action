@@ -1,0 +1,908 @@
+{
+  "generated/Deprecation.ts | AuthorizationCoveredByWildcard": {
+    "message": "Autorizimi nuk do t\u00eb mbulohet nga simboli gjith\u00ebp\u00ebrfshir\u00ebs (*) n\u00eb trajtimin e CORS Access-Control-Allow-Headers."
+  },
+  "generated/Deprecation.ts | CSSSelectorInternalMediaControlsOverlayCastButton": {
+    "message": "Duhet t\u00eb p\u00ebrdoret atributi disableRemotePlayback p\u00ebr t\u00eb \u00e7aktivizuar integrimin e parazgjedhur t\u00eb Cast n\u00eb vend t\u00eb p\u00ebrdorimit t\u00eb p\u00ebrzgjedh\u00ebsit -internal-media-controls-overlay-cast-button."
+  },
+  "generated/Deprecation.ts | CSSValueAppearanceSliderVertical": {
+    "message": "Vlera e paraqitjes s\u00eb CSS slider-vertical nuk \u00ebsht\u00eb e standardizuar dhe do t\u00eb hiqet."
+  },
+  "generated/Deprecation.ts | CanRequestURLHTTPContainingNewline": {
+    "message": "K\u00ebrkesat e burimit, URL-t\u00eb e t\u00eb cilave p\u00ebrfshinin karakteret e hequra t\u00eb hap\u00ebsir\u00ebs s\u00eb bardh\u00eb \\(n|r|t) dhe karakteret \"m\u00eb pak se\" (<), jan\u00eb bllokuar. Hiq rreshtat e rinj dhe kodo karakteret \"m\u00eb pak se\" nga vende t\u00eb tilla, si p.sh. vlerat e atributeve t\u00eb elementeve, p\u00ebr t\u00eb ngarkuar k\u00ebto burime."
+  },
+  "generated/Deprecation.ts | CharsetAutoDetectionISO2022JP": {
+    "message": "Zbulimi automatik i paket\u00ebs s\u00eb karaktereve ISO-2022-JP \u00ebsht\u00eb zhvler\u00ebsuar dhe do t\u00eb \u00e7aktivizohet n\u00eb t\u00eb ardhmen e af\u00ebrt. Specifiko paket\u00ebn e karaktereve n\u00eb kok\u00ebn e \"Llojit t\u00eb p\u00ebrmbajtjes\" ose duke p\u00ebrdorur nj\u00eb etiket\u00eb meta (https://developer.mozilla.org/en-US/docs/Glossary/Character_encoding)."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesConnectionInfo": {
+    "message": "chrome.loadTimes() \u00ebsht\u00eb zhvler\u00ebsuar, k\u00ebshtu q\u00eb p\u00ebrdor m\u00eb mir\u00eb API-n\u00eb e standardizuar: Navigation Timing 2."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesFirstPaintAfterLoadTime": {
+    "message": "chrome.loadTimes() \u00ebsht\u00eb zhvler\u00ebsuar, k\u00ebshtu q\u00eb p\u00ebrdor m\u00eb mir\u00eb API-n\u00eb e standardizuar: Paint Timing."
+  },
+  "generated/Deprecation.ts | ChromeLoadTimesWasAlternateProtocolAvailable": {
+    "message": "chrome.loadTimes() \u00ebsht\u00eb zhvler\u00ebsuar, k\u00ebshtu q\u00eb p\u00ebrdor m\u00eb mir\u00eb API-n\u00eb e standardizuar: nextHopProtocol te Navigation Timing 2."
+  },
+  "generated/Deprecation.ts | CookieWithTruncatingChar": {
+    "message": "Kukit q\u00eb p\u00ebrfshijn\u00eb nj\u00eb karakter \\(0|r|n) do t\u00eb refuzohen n\u00eb vend q\u00eb t\u00eb shkurtohen."
+  },
+  "generated/Deprecation.ts | CrossOriginAccessBasedOnDocumentDomain": {
+    "message": "Zbutja e politik\u00ebs p\u00ebr origjin\u00ebn e nj\u00ebjt\u00eb me an\u00eb t\u00eb cil\u00ebsimit document.domain \u00ebsht\u00eb zhvler\u00ebsuar dhe do t\u00eb \u00e7aktivizohet si parazgjedhje. Ky paralajm\u00ebrim zhvler\u00ebsimi \u00ebsht\u00eb p\u00ebr nj\u00eb qasje me origjin\u00eb t\u00eb kryq\u00ebzuar q\u00eb \u00ebsht\u00eb aktivizuar me an\u00eb t\u00eb cil\u00ebsimit document.domain."
+  },
+  "generated/Deprecation.ts | CrossOriginWindowAlert": {
+    "message": "Aktivizimi i window.alert nga kuadrot iframe me origjina t\u00eb kryq\u00ebzuara \u00ebsht\u00eb zhvler\u00ebsuar dhe do t\u00eb hiqet n\u00eb t\u00eb ardhmen."
+  },
+  "generated/Deprecation.ts | CrossOriginWindowConfirm": {
+    "message": "Aktivizimi i window.confirm nga kuadrot iframe me origjina t\u00eb kryq\u00ebzuara \u00ebsht\u00eb zhvler\u00ebsuar dhe do t\u00eb hiqet n\u00eb t\u00eb ardhmen."
+  },
+  "generated/Deprecation.ts | DOMMutationEvents": {
+    "message": "Ngjarjet e shnd\u00ebrrimit t\u00eb DOM-it, duke p\u00ebrfshir\u00eb DOMSubtreeModified, DOMNodeInserted, DOMNodeRemoved, DOMNodeRemovedFromDocument, DOMNodeInsertedIntoDocument dhe DOMCharacterDataModified, jan\u00eb zhvler\u00ebsuar (https://w3c.github.io/uievents/#legacy-event-types) dhe do t\u00eb hiqen. P\u00ebrdor MutationObserver m\u00eb mir\u00eb."
+  },
+  "generated/Deprecation.ts | DataUrlInSvgUse": {
+    "message": "Mb\u00ebshtetja \u00ebsht\u00eb zhvler\u00ebsuar dhe do t\u00eb hiqet n\u00eb t\u00eb ardhmen p\u00ebr t\u00eb dh\u00ebnat: URL-t\u00eb n\u00eb SVGUseElement."
+  },
+  "generated/Deprecation.ts | GeolocationInsecureOrigin": {
+    "message": "getCurrentPosition() dhe watchPosition() nuk funksionojn\u00eb m\u00eb n\u00eb origjina t\u00eb pasigurta. P\u00ebr t\u00eb p\u00ebrdorur k\u00ebt\u00eb ve\u00e7ori, duhet t\u00eb marr\u00ebsh n\u00eb konsiderat\u00eb ta kalosh aplikacionin t\u00ebnd te nj\u00eb origjin\u00eb m\u00eb e sigurt, si p,.sh. HTTPS. Shiko https://goo.gle/chrome-insecure-origins p\u00ebr m\u00eb shum\u00eb detaje."
+  },
+  "generated/Deprecation.ts | GeolocationInsecureOriginDeprecatedNotRemoved": {
+    "message": "getCurrentPosition() dhe watchPosition() jan\u00eb zhvler\u00ebsuar n\u00eb origjina t\u00eb pasigurta. P\u00ebr t\u00eb p\u00ebrdorur k\u00ebt\u00eb ve\u00e7ori, duhet t\u00eb marr\u00ebsh n\u00eb konsiderat\u00eb ta kalosh aplikacionin t\u00ebnd te nj\u00eb origjin\u00eb m\u00eb e sigurt, si p,.sh. HTTPS. Shiko https://goo.gle/chrome-insecure-origins p\u00ebr m\u00eb shum\u00eb detaje."
+  },
+  "generated/Deprecation.ts | GetUserMediaInsecureOrigin": {
+    "message": "getUserMedia() nuk funksionon m\u00eb n\u00eb origjina t\u00eb pasigurta. P\u00ebr t\u00eb p\u00ebrdorur k\u00ebt\u00eb ve\u00e7ori, duhet t\u00eb marr\u00ebsh n\u00eb konsiderat\u00eb ta kalosh aplikacionin t\u00ebnd te nj\u00eb origjin\u00eb m\u00eb e sigurt, si p,.sh. HTTPS. Shiko https://goo.gle/chrome-insecure-origins p\u00ebr m\u00eb shum\u00eb detaje."
+  },
+  "generated/Deprecation.ts | H1UserAgentFontSizeInSection": {
+    "message": "U gjet nj\u00eb etiket\u00eb <h1> brenda nj\u00eb etikete <article>, <aside>, <nav> ose <section> q\u00eb nuk ka nj\u00eb madh\u00ebsi t\u00eb specifikuar t\u00eb fontit. Madh\u00ebsia e tekstit t\u00eb k\u00ebtij titulli do t\u00eb ndryshohet n\u00eb k\u00ebt\u00eb shfletues n\u00eb t\u00eb ardhmen e af\u00ebrt. Shiko https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#specifying_a_uniform_font_size_for_h1 p\u00ebr m\u00eb shum\u00eb informacione."
+  },
+  "generated/Deprecation.ts | HostCandidateAttributeGetter": {
+    "message": "RTCPeerConnectionIceErrorEvent.hostCandidate \u00ebsht\u00eb zhvler\u00ebsuar. P\u00ebrdor RTCPeerConnectionIceErrorEvent.address ose RTCPeerConnectionIceErrorEvent.port m\u00eb mir\u00eb."
+  },
+  "generated/Deprecation.ts | IdentityDigitalCredentials": {
+    "message": "Ky format p\u00ebr k\u00ebrkes\u00ebn navigator.credentials.get() p\u00ebr kredencialet dixhitale \u00ebsht\u00eb i zhvler\u00ebsuar. P\u00ebrdit\u00ebso thirrjen p\u00ebr t\u00eb p\u00ebrdorur formatin e ri."
+  },
+  "generated/Deprecation.ts | IdentityInCanMakePaymentEvent": {
+    "message": "Origjina e tregtarit dhe t\u00eb dh\u00ebnat arbitrare nga ngjarja canmakepayment e punonj\u00ebsit t\u00eb sh\u00ebrbimit jan\u00eb zhvler\u00ebsuar dhe do t\u00eb hiqen: topOrigin, paymentRequestOrigin, methodData, modifiers."
+  },
+  "generated/Deprecation.ts | InsecurePrivateNetworkSubresourceRequest": {
+    "message": "Uebsajti k\u00ebrkonte nj\u00eb n\u00ebnburim nga nj\u00eb rrjet ku mund t\u00eb kishte qasje vet\u00ebm p\u00ebr shkak t\u00eb pozicionit t\u00eb privilegjuar t\u00eb rrjet t\u00eb p\u00ebrdoruesve t\u00eb tij. K\u00ebto k\u00ebrkesa i ekspozojn\u00eb pajisjet dhe server\u00ebt jopublik\u00eb n\u00eb internet, duke rritur rrezikun p\u00ebr nj\u00eb sulm me falsifikimin e nj\u00eb k\u00ebrkese nga nj\u00eb sajt i jasht\u00ebm (CSRF) dhe/ose rrjedhjen e informacioneve. P\u00ebr t'i minimizuar k\u00ebto rreziqe, Chrome i zhvler\u00ebson k\u00ebrkesat p\u00ebr n\u00ebnburimet jopublike kur nisen nga kontekste jo t\u00eb sigurta dhe do t\u00eb filloj\u00eb t'i bllokoj\u00eb ato."
+  },
+  "generated/Deprecation.ts | InterestGroupDailyUpdateUrl": {
+    "message": "Fusha dailyUpdateUrl e InterestGroups e kaluar te joinAdInterestGroup() \u00ebsht\u00eb riem\u00ebrtuar si updateUrl p\u00ebr t\u00eb pasqyruar n\u00eb m\u00ebnyr\u00eb m\u00eb t\u00eb sakt\u00eb sjelljen e saj."
+  },
+  "generated/Deprecation.ts | IntlV8BreakIterator": {
+    "message": "Intl.v8BreakIterator \u00ebsht\u00eb zhvler\u00ebsuar. P\u00ebrdor Intl.Segmenter m\u00eb mir\u00eb."
+  },
+  "generated/Deprecation.ts | LocalCSSFileExtensionRejected": {
+    "message": "CSS nuk mund t\u00eb ngarkohet nga URL-t\u00eb e file: p\u00ebrve\u00e7se n\u00ebse p\u00ebrfundojn\u00eb me nj\u00eb shtes\u00eb skedari .css."
+  },
+  "generated/Deprecation.ts | MediaSourceAbortRemove": {
+    "message": "P\u00ebrdorimi i SourceBuffer.abort() p\u00ebr t\u00eb nd\u00ebrprer\u00eb heqjen e intervalit josinkron t\u00eb remove() \u00ebsht\u00eb zhvler\u00ebsuar p\u00ebr shkak t\u00eb ndryshimit t\u00eb specifikimit. Mb\u00ebshtetja do t\u00eb hiqet n\u00eb t\u00eb ardhmen. Duhet t\u00eb d\u00ebgjosh ngjarjen updateend m\u00eb mir\u00eb. abort() \u00ebsht\u00eb planifikuar vet\u00ebm p\u00ebr t\u00eb nd\u00ebrprer\u00eb nj\u00eb shtim josinkron t\u00eb medias ose p\u00ebr t\u00eb rivendosur gjendjen e analizuesit."
+  },
+  "generated/Deprecation.ts | MediaSourceDurationTruncatingBuffered": {
+    "message": "Caktimi i MediaSource.duration n\u00ebn vul\u00ebn kohore m\u00eb t\u00eb lart\u00eb t\u00eb prezantimit p\u00ebr \u00e7do kuad\u00ebr t\u00eb koduar dhe t\u00eb ruajtur n\u00eb nd\u00ebrmemorie \u00ebsht\u00eb zhvler\u00ebsuar p\u00ebr shkak t\u00eb ndryshimit t\u00eb specifikimit. Mb\u00ebshtetja p\u00ebr heqjen e t\u00ebrthort\u00eb t\u00eb medias s\u00eb shkurtuar t\u00eb ruajtur n\u00eb nd\u00ebrmemorie do t\u00eb hiqet n\u00eb t\u00eb ardhmen. Duhet t\u00eb kryesh m\u00eb mir\u00eb heqjen e qart\u00eb t\u00eb remove(newDuration, oldDuration) n\u00eb t\u00eb gjitha elementet me sourceBuffers ku gjendet newDuration < oldDuration."
+  },
+  "generated/Deprecation.ts | NoSysexWebMIDIWithoutPermission": {
+    "message": "MIDI p\u00ebr ueb do t\u00eb k\u00ebrkoj\u00eb leje p\u00ebr p\u00ebrdorimin edhe n\u00ebse mesazhi sysex nuk \u00ebsht\u00eb specifikuar n\u00eb MIDIOptions."
+  },
+  "generated/Deprecation.ts | NotificationInsecureOrigin": {
+    "message": "API-ja e njoftimeve nuk mund t\u00eb p\u00ebrdoret m\u00eb p\u00ebr origjinat e pasigurta. Duhet t\u00eb marr\u00ebsh parasysh ta kalosh aplikacionin t\u00ebnd n\u00eb nj\u00eb origjin\u00eb t\u00eb sigurt, si p.sh. HTTPS. Shiko https://goo.gle/chrome-insecure-origins p\u00ebr m\u00eb shum\u00eb detaje."
+  },
+  "generated/Deprecation.ts | NotificationPermissionRequestedIframe": {
+    "message": "Leja p\u00ebr Notification API nuk mund t\u00eb k\u00ebrkohet m\u00eb nga nj\u00eb kuad\u00ebr iframe me origjin\u00eb t\u00eb kryq\u00ebzuar. Duhet t\u00eb marr\u00ebsh n\u00eb konsiderat\u00eb t\u00eb k\u00ebrkosh leje nga nj\u00eb kuad\u00ebr i nivelit m\u00eb t\u00eb lart\u00eb ose t\u00eb hap\u00ebsh nj\u00eb dritare t\u00eb re m\u00eb mir\u00eb."
+  },
+  "generated/Deprecation.ts | ObsoleteCreateImageBitmapImageOrientationNone": {
+    "message": "Opsioni imageOrientation: 'none' n\u00eb createImageBitmap \u00ebsht\u00eb zhvler\u00ebsuar. P\u00ebrdor m\u00eb mir\u00eb createImageBitmap me opsionin \"{imageOrientation: 'from-image'}\"."
+  },
+  "generated/Deprecation.ts | ObsoleteWebRtcCipherSuite": {
+    "message": "Partneri yt po negocion p\u00ebr nj\u00eb version t\u00eb vjetruar (D)TLS. Kontakto me partnerin p\u00ebr ta rregulluar k\u00ebt\u00eb."
+  },
+  "generated/Deprecation.ts | OverflowVisibleOnReplacedElement": {
+    "message": "Specifikimi i karakteristik\u00ebs overflow: visible n\u00eb etiketat \"img\", \"video\" dhe \"canvas\" mund t\u00eb b\u00ebj\u00eb q\u00eb t\u00eb shfaqen p\u00ebrmbajtje vizuale jasht\u00eb kufijve t\u00eb elementit. Shiko https://github.com/WICG/shared-element-transitions/blob/main/debugging_overflow_on_images.md."
+  },
+  "generated/Deprecation.ts | PaymentInstruments": {
+    "message": "paymentManager.instruments \u00ebsht\u00eb zhvler\u00ebsuar. P\u00ebrdor m\u00eb mir\u00eb instalimin n\u00eb koh\u00eb p\u00ebr p\u00ebrpunuesit e pagesave."
+  },
+  "generated/Deprecation.ts | PaymentRequestCSPViolation": {
+    "message": "Thirrja jote PaymentRequest anashkaloi direktiv\u00ebn Content-Security-Policy (CSP) connect-src. Ky anashkalim \u00ebsht\u00eb zhvler\u00ebsuar. Shto identifikuesin e m\u00ebnyr\u00ebs s\u00eb pages\u00ebs nga PaymentRequest API (n\u00eb fush\u00ebn supportedMethods) te direktiva CSP connect-src."
+  },
+  "generated/Deprecation.ts | PersistentQuotaType": {
+    "message": "StorageType.persistent \u00ebsht\u00eb zhvler\u00ebsuar. P\u00ebrdor m\u00eb mir\u00eb nj\u00eb version t\u00eb standardizuar t\u00eb navigator.storage."
+  },
+  "generated/Deprecation.ts | PictureSourceSrc": {
+    "message": "<source src> me nj\u00eb prind <picture> \u00ebsht\u00eb i pavlefsh\u00ebm dhe, p\u00ebr k\u00ebt\u00eb arsye, \u00ebsht\u00eb shp\u00ebrfillur. P\u00ebrdor <source srcset> m\u00eb mir\u00eb."
+  },
+  "generated/Deprecation.ts | PrefixedCancelAnimationFrame": {
+    "message": "webkitCancelAnimationFrame \u00ebsht\u00eb specifike sipas shit\u00ebsit P\u00ebrdor m\u00eb mir\u00eb metod\u00ebn standarde cancelAnimationFrame."
+  },
+  "generated/Deprecation.ts | PrefixedRequestAnimationFrame": {
+    "message": "webkitRequestAnimationFrame \u00ebsht\u00eb specifike sipas shit\u00ebsit. P\u00ebrdor m\u00eb mir\u00eb metod\u00ebn standarde requestAnimationFrame."
+  },
+  "generated/Deprecation.ts | PrefixedVideoDisplayingFullscreen": {
+    "message": "HTMLVideoElement.webkitDisplayingFullscreen \u00ebsht\u00eb zhvler\u00ebsuar. P\u00ebrdor m\u00eb mir\u00eb Document.fullscreenElement."
+  },
+  "generated/Deprecation.ts | PrefixedVideoEnterFullScreen": {
+    "message": "HTMLVideoElement.webkitEnterFullScreen() \u00ebsht\u00eb zhvler\u00ebsuar. P\u00ebrdor m\u00eb mir\u00eb Element.requestFullscreen()."
+  },
+  "generated/Deprecation.ts | PrefixedVideoEnterFullscreen": {
+    "message": "HTMLVideoElement.webkitEnterFullscreen() \u00ebsht\u00eb zhvler\u00ebsuar. P\u00ebrdor m\u00eb mir\u00eb Element.requestFullscreen()."
+  },
+  "generated/Deprecation.ts | PrefixedVideoExitFullScreen": {
+    "message": "HTMLVideoElement.webkitExitFullScreen() \u00ebsht\u00eb zhvler\u00ebsuar. P\u00ebrdor m\u00eb mir\u00eb Document.exitFullscreen()."
+  },
+  "generated/Deprecation.ts | PrefixedVideoExitFullscreen": {
+    "message": "HTMLVideoElement.webkitExitFullscreen() \u00ebsht\u00eb zhvler\u00ebsuar. P\u00ebrdor m\u00eb mir\u00eb Document.exitFullscreen()."
+  },
+  "generated/Deprecation.ts | PrefixedVideoSupportsFullscreen": {
+    "message": "HTMLVideoElement.webkitSupportsFullscreen \u00ebsht\u00eb zhvler\u00ebsuar P\u00ebrdor m\u00eb mir\u00eb Document.fullscreenEnabled."
+  },
+  "generated/Deprecation.ts | PrivacySandboxExtensionsAPI": {
+    "message": "Ne po e heqim nga p\u00ebrdorimi API-n\u00eb chrome.privacy.websites.privacySandboxEnabled, megjith\u00ebse ajo do t\u00eb q\u00ebndroj\u00eb aktive p\u00ebr p\u00ebrputhshm\u00ebri me versionet e m\u00ebparshme deri n\u00eb publikimin e M113. N\u00eb vend t\u00eb saj, p\u00ebrdor chrome.privacy.websites.topicsEnabled, chrome.privacy.websites.fledgeEnabled dhe chrome.privacy.websites.adMeasurementEnabled. Shiko https://developer.chrome.com/docs/extensions/reference/privacy/#property-websites-privacySandboxEnabled."
+  },
+  "generated/Deprecation.ts | RTCConstraintEnableDtlsSrtpFalse": {
+    "message": "Kufizimi DtlsSrtpKeyAgreement \u00ebsht\u00eb hequr. Ke specifikuar nj\u00eb vler\u00eb false p\u00ebr k\u00ebt\u00eb kufizim, gj\u00eb q\u00eb interpretohet si nj\u00eb p\u00ebrpjekje p\u00ebr t\u00eb p\u00ebrdorur metod\u00ebn e hequr p\u00ebr SDES key negotiation. Ky funksionalitet \u00ebsht\u00eb hequr; p\u00ebrdor nj\u00eb sh\u00ebrbim q\u00eb mb\u00ebshtet DTLS key negotiation m\u00eb mir\u00eb."
+  },
+  "generated/Deprecation.ts | RTCConstraintEnableDtlsSrtpTrue": {
+    "message": "Kufizimi DtlsSrtpKeyAgreement \u00ebsht\u00eb hequr. Ke specifikuar nj\u00eb vler\u00eb true p\u00ebr k\u00ebt\u00eb kufizim, gj\u00eb q\u00eb nuk ka asnj\u00eb efekt, por mund ta heq\u00ebsh k\u00ebt\u00eb kufizim p\u00ebr rregullsi."
+  },
+  "generated/Deprecation.ts | RTCPeerConnectionGetStatsLegacyNonCompliant": {
+    "message": "callback-based getStats() \u00ebsht\u00eb zhvler\u00ebsuar dhe do t\u00eb hiqet. P\u00ebrdor m\u00eb mir\u00eb spec-compliant getStats()."
+  },
+  "generated/Deprecation.ts | RangeExpand": {
+    "message": "Range.expand() \u00ebsht\u00eb zhvler\u00ebsuar. P\u00ebrdor m\u00eb mir\u00eb Selection.modify()."
+  },
+  "generated/Deprecation.ts | RequestedSubresourceWithEmbeddedCredentials": {
+    "message": "K\u00ebrkesat e n\u00ebnburimit, URL-t\u00eb e t\u00eb cilave p\u00ebrfshijn\u00eb kredenciale t\u00eb integruara (p.sh. https://user:pass@host/), jan\u00eb bllokuar."
+  },
+  "generated/Deprecation.ts | RtcpMuxPolicyNegotiate": {
+    "message": "Opsioni rtcpMuxPolicy \u00ebsht\u00eb zhvler\u00ebsuar dhe do t\u00eb hiqet."
+  },
+  "generated/Deprecation.ts | SharedArrayBufferConstructedWithoutIsolation": {
+    "message": "SharedArrayBuffer do t\u00eb k\u00ebrkoj\u00eb izolimin e origjin\u00ebs s\u00eb kryq\u00ebzuar. Shiko https://developer.chrome.com/blog/enabling-shared-array-buffer/ p\u00ebr m\u00eb shum\u00eb detaje."
+  },
+  "generated/Deprecation.ts | TextToSpeech_DisallowedByAutoplay": {
+    "message": "speechSynthesis.speak() pa aktivizimin e p\u00ebrdoruesit \u00ebsht\u00eb zhvler\u00ebsuar dhe do t\u00eb hiqet."
+  },
+  "generated/Deprecation.ts | UnloadHandler": {
+    "message": "D\u00ebgjuesit e ngjarjes s\u00eb shkarkimit jan\u00eb zhvler\u00ebsuar dhe do t\u00eb hiqen."
+  },
+  "generated/Deprecation.ts | V8SharedArrayBufferConstructedInExtensionWithoutIsolation": {
+    "message": "Shtesat duhet t\u00eb zgjedhin izolimin e origjin\u00ebs s\u00eb kryq\u00ebzuar p\u00ebr t\u00eb vazhduar t\u00eb p\u00ebrdoret SharedArrayBuffer. Shiko https://developer.chrome.com/docs/extensions/mv3/cross-origin-isolation/."
+  },
+  "generated/Deprecation.ts | XHRJSONEncodingDetection": {
+    "message": "UTF-16 nuk mb\u00ebshtetet nga skedari json i p\u00ebrgjigjes n\u00eb XMLHttpRequest"
+  },
+  "generated/Deprecation.ts | XMLHttpRequestSynchronousInNonWorkerOutsideBeforeUnload": {
+    "message": "XMLHttpRequest i sinkronizuar n\u00eb bashk\u00ebbisedimin kryesor \u00ebsht\u00eb zhvler\u00ebsuar p\u00ebr shkak t\u00eb efekteve t\u00eb d\u00ebmshme n\u00eb p\u00ebrvoj\u00ebn e p\u00ebrdoruesit fundor. P\u00ebr m\u00eb shum\u00eb ndihm\u00eb, kontrollo https://xhr.spec.whatwg.org/."
+  },
+  "models/trace/insights/CLSCulprits.ts | animation": {
+    "message": "Animacion"
+  },
+  "models/trace/insights/CLSCulprits.ts | description": {
+    "message": "Zhvendosjet e struktur\u00ebs ndodhin kur elementet zhvendosen pa asnj\u00eb nd\u00ebrveprim t\u00eb p\u00ebrdoruesit. [Heto shkaqet e zhvendosjeve t\u00eb struktur\u00ebs](https://web.dev/articles/optimize-cls), si p.sh. shtimi, heqja e elementeve ose ndryshimi i fonteve t\u00eb tyre me ngarkimin e faqes."
+  },
+  "models/trace/insights/CLSCulprits.ts | fontRequest": {
+    "message": "K\u00ebrkesa p\u00ebr fontin"
+  },
+  "models/trace/insights/CLSCulprits.ts | injectedIframe": {
+    "message": "Kuadri iframe i injektuar"
+  },
+  "models/trace/insights/CLSCulprits.ts | layoutShiftCluster": {
+    "message": "Grupimi i zhvendosjeve t\u00eb struktur\u00ebs @ {PH1}"
+  },
+  "models/trace/insights/CLSCulprits.ts | noCulprits": {
+    "message": "P\u00ebrgjegj\u00ebsit p\u00ebr zhvendosjet e struktur\u00ebs nuk mund t\u00eb zbuloheshin"
+  },
+  "models/trace/insights/CLSCulprits.ts | noLayoutShifts": {
+    "message": "Nuk ka zhvendosje t\u00eb struktur\u00ebs"
+  },
+  "models/trace/insights/CLSCulprits.ts | title": {
+    "message": "P\u00ebrgjegj\u00ebsit p\u00ebr zhvendosjet e struktur\u00ebs"
+  },
+  "models/trace/insights/CLSCulprits.ts | topCulprits": {
+    "message": "P\u00ebrgjegj\u00ebsit kryesor\u00eb p\u00ebr zhvendosjet e struktur\u00ebs"
+  },
+  "models/trace/insights/CLSCulprits.ts | unsizedImages": {
+    "message": "Imazhet pa p\u00ebrmasa"
+  },
+  "models/trace/insights/CLSCulprits.ts | worstCluster": {
+    "message": "Grupimi m\u00eb i keq"
+  },
+  "models/trace/insights/CLSCulprits.ts | worstLayoutShiftCluster": {
+    "message": "Grupimi m\u00eb i keq i zhvendosjeve t\u00eb struktur\u00ebs"
+  },
+  "models/trace/insights/Cache.ts | cacheTTL": {
+    "message": "Periudha e jet\u00ebgjat\u00ebsis\u00eb (TTL) e memories specifike"
+  },
+  "models/trace/insights/Cache.ts | description": {
+    "message": "Nj\u00eb periudh\u00eb e gjat\u00eb jet\u00ebgjat\u00ebsie p\u00ebr memorien specifike mund t'i shpejtoj\u00eb vizitat e p\u00ebrs\u00ebritura n\u00eb faqen t\u00ebnde. [M\u00ebso m\u00eb shum\u00eb](https://web.dev/uses-long-cache-ttl/)."
+  },
+  "models/trace/insights/Cache.ts | noRequestsToCache": {
+    "message": "Nuk ka asnj\u00eb k\u00ebrkes\u00eb me politika t\u00eb memories specifike joefikase"
+  },
+  "models/trace/insights/Cache.ts | others": {
+    "message": "{PH1} t\u00eb tjer\u00eb"
+  },
+  "models/trace/insights/Cache.ts | requestColumn": {
+    "message": "K\u00ebrko"
+  },
+  "models/trace/insights/Cache.ts | title": {
+    "message": "P\u00ebrdor periudha efikase t\u00eb jet\u00ebgjat\u00ebsis\u00eb p\u00ebr memorien specifike"
+  },
+  "models/trace/insights/DOMSize.ts | description": {
+    "message": "Nj\u00eb DOM i madh mund t\u00eb rrit\u00eb koh\u00ebzgjatjen e llogaritjeve t\u00eb stilit dhe t\u00eb riparaqitjeve t\u00eb struktur\u00ebs, duke ndikuar n\u00eb reagueshm\u00ebrin\u00eb e faqeve. Nj\u00eb DOM i madh do t\u00eb rrit\u00eb gjithashtu p\u00ebrdorimin e memories. [M\u00ebso se si t\u00eb shmang\u00ebsh nj\u00eb madh\u00ebsi t\u00eb tep\u00ebrt t\u00eb DOM-it](https://developer.chrome.com/docs/lighthouse/performance/dom-size/)."
+  },
+  "models/trace/insights/DOMSize.ts | element": {
+    "message": "Elementi"
+  },
+  "models/trace/insights/DOMSize.ts | maxChildren": {
+    "message": "Shumica elemente dyt\u00ebsore"
+  },
+  "models/trace/insights/DOMSize.ts | maxDOMDepth": {
+    "message": "Thell\u00ebsia e DOM-it"
+  },
+  "models/trace/insights/DOMSize.ts | statistic": {
+    "message": "Statistika"
+  },
+  "models/trace/insights/DOMSize.ts | title": {
+    "message": "Optimizo madh\u00ebsin\u00eb e DOM-it"
+  },
+  "models/trace/insights/DOMSize.ts | totalElements": {
+    "message": "Elementet n\u00eb total"
+  },
+  "models/trace/insights/DOMSize.ts | value": {
+    "message": "Vlera"
+  },
+  "models/trace/insights/DocumentLatency.ts | description": {
+    "message": "K\u00ebrkesa jote e par\u00eb e rrjetit \u00ebsht\u00eb m\u00eb e r\u00ebnd\u00ebsishmja.  Zvog\u00eblo vones\u00ebn duke shmangur ridrejtime, duke siguruar nj\u00eb p\u00ebrgjigje t\u00eb shpejt\u00eb t\u00eb serverit, si dhe duke aktivizuar ngjeshjen e tekstit."
+  },
+  "models/trace/insights/DocumentLatency.ts | failedRedirects": {
+    "message": "Kishte ridrejtime"
+  },
+  "models/trace/insights/DocumentLatency.ts | failedServerResponseTime": {
+    "message": "Serveri u p\u00ebrgjigj ngadal\u00eb"
+  },
+  "models/trace/insights/DocumentLatency.ts | failedTextCompression": {
+    "message": "Nuk \u00ebsht\u00eb zbatuar ngjeshja"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingRedirects": {
+    "message": "Shmang ridrejtimet"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingServerResponseTime": {
+    "message": "Serveri p\u00ebrgjigjet shpejt"
+  },
+  "models/trace/insights/DocumentLatency.ts | passingTextCompression": {
+    "message": "Zbaton ngjeshjen e tekstit"
+  },
+  "models/trace/insights/DocumentLatency.ts | redirectsLabel": {
+    "message": "Ridrejtimet"
+  },
+  "models/trace/insights/DocumentLatency.ts | serverResponseTimeLabel": {
+    "message": "Koha e p\u00ebrgjigjes e serverit"
+  },
+  "models/trace/insights/DocumentLatency.ts | title": {
+    "message": "Vonesa e k\u00ebrkes\u00ebs p\u00ebr dokumentin"
+  },
+  "models/trace/insights/DocumentLatency.ts | uncompressedDownload": {
+    "message": "Shkarkim i pangjeshur"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | columnDuplicatedBytes": {
+    "message": "Bajtet e dublikuara"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | columnSource": {
+    "message": "Burimi"
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | description": {
+    "message": "Hiq modulet e m\u00ebdha dublikat\u00eb t\u00eb JavaScript nga paketat p\u00ebr t\u00eb reduktuar bajtet e konsumuara nga aktiviteti i rrjetit."
+  },
+  "models/trace/insights/DuplicatedJavaScript.ts | title": {
+    "message": "JavaScript i dublikuar"
+  },
+  "models/trace/insights/FontDisplay.ts | description": {
+    "message": "Ki parasysh q\u00eb t\u00eb caktosh [font-display](https://developer.chrome.com/blog/font-display) n\u00eb swap ose optional p\u00ebr t'u siguruar q\u00eb teksti t\u00eb jet\u00eb vazhdimisht i duksh\u00ebm. swap mund t\u00eb optimizohet m\u00eb tej p\u00ebr t\u00eb minimizuar zhvendosjet e struktur\u00ebs me [anulimet e metrik\u00ebs s\u00eb fonteve](https://developer.chrome.com/blog/font-fallbacks)."
+  },
+  "models/trace/insights/FontDisplay.ts | fontColumn": {
+    "message": "Fonti"
+  },
+  "models/trace/insights/FontDisplay.ts | title": {
+    "message": "Shfaqja e fontit"
+  },
+  "models/trace/insights/FontDisplay.ts | wastedTimeColumn": {
+    "message": "Koha e shp\u00ebrdoruar"
+  },
+  "models/trace/insights/ForcedReflow.ts | anonymous": {
+    "message": "(anonim)"
+  },
+  "models/trace/insights/ForcedReflow.ts | description": {
+    "message": "Shum\u00eb API, q\u00eb zakonisht lexojn\u00eb gjeometrin\u00eb e struktur\u00ebs, e detyrojn\u00eb motorin e paraqitjes q\u00eb t\u00eb vendos\u00eb n\u00eb pauz\u00eb ekzekutimin e skriptit p\u00ebr t\u00eb llogaritur stilin dhe struktur\u00ebn. M\u00ebso m\u00eb shum\u00eb rreth [riparaqitjes s\u00eb detyruar](https://developers.google.com/web/fundamentals/performance/rendering/avoid-large-complex-layouts-and-layout-thrashing#avoid-forced-synchronous-layouts) dhe masave parandaluese p\u00ebr t\u00eb."
+  },
+  "models/trace/insights/ForcedReflow.ts | relatedStackTrace": {
+    "message": "Gjurmimi i stiv\u00ebs"
+  },
+  "models/trace/insights/ForcedReflow.ts | title": {
+    "message": "Riparaqitje e detyruar"
+  },
+  "models/trace/insights/ForcedReflow.ts | topTimeConsumingFunctionCall": {
+    "message": "Thirrja e funksionit kryesor"
+  },
+  "models/trace/insights/ForcedReflow.ts | totalReflowTime": {
+    "message": "Koha e riparaqitjes n\u00eb total"
+  },
+  "models/trace/insights/ForcedReflow.ts | unattributed": {
+    "message": "[pa atribut]"
+  },
+  "models/trace/insights/ImageDelivery.ts | description": {
+    "message": "Zvog\u00eblimi i koh\u00ebs s\u00eb shkarkimit t\u00eb imazheve mund t\u00eb p\u00ebrmir\u00ebsoj\u00eb koh\u00ebn e perceptuar t\u00eb ngarkimit p\u00ebr faqen dhe LCP-n\u00eb. [M\u00ebso m\u00eb shum\u00eb p\u00ebr optimizimin e madh\u00ebsis\u00eb s\u00eb imazheve](https://developer.chrome.com/docs/lighthouse/performance/uses-optimized-images/)"
+  },
+  "models/trace/insights/ImageDelivery.ts | estimatedSavings": {
+    "message": "{PH1} (p\u00ebraf\u00ebrsisht {PH2})"
+  },
+  "models/trace/insights/ImageDelivery.ts | noOptimizableImages": {
+    "message": "Nuk ka imazhe t\u00eb optimizueshme"
+  },
+  "models/trace/insights/ImageDelivery.ts | optimizeFile": {
+    "message": "Optimizo madh\u00ebsin\u00eb e skedarit"
+  },
+  "models/trace/insights/ImageDelivery.ts | others": {
+    "message": "{PH1} t\u00eb tjer\u00eb"
+  },
+  "models/trace/insights/ImageDelivery.ts | title": {
+    "message": "P\u00ebrmir\u00ebsoi dor\u00ebzimin e imazheve"
+  },
+  "models/trace/insights/ImageDelivery.ts | useCompression": {
+    "message": "Rritja e faktorit t\u00eb ngjeshjes s\u00eb imazhit mund t\u00eb p\u00ebrmir\u00ebsoj\u00eb madh\u00ebsin\u00eb e shkarkimit t\u00eb k\u00ebtij imazhi."
+  },
+  "models/trace/insights/ImageDelivery.ts | useModernFormat": {
+    "message": "P\u00ebrdorimi i nj\u00eb formati modern t\u00eb imazheve (WebP, AVIF) ose rritja e ngjeshjes s\u00eb imazheve mund t\u00eb p\u00ebrmir\u00ebsoj\u00eb madh\u00ebsin\u00eb e shkarkimit t\u00eb k\u00ebtij imazhi."
+  },
+  "models/trace/insights/ImageDelivery.ts | useResponsiveSize": {
+    "message": "Ky skedar imazhi \u00ebsht\u00eb m\u00eb i madh se \u00e7'duhet t\u00eb jet\u00eb ({PH1}) p\u00ebr p\u00ebrmasat e tij t\u00eb shfaqura ({PH2}). P\u00ebrdor imazhet reaguese p\u00ebr t\u00eb zvog\u00ebluar madh\u00ebsin\u00eb e shkarkimit t\u00eb imazhit."
+  },
+  "models/trace/insights/ImageDelivery.ts | useVideoFormat": {
+    "message": "P\u00ebrdorimi i formateve t\u00eb videove n\u00eb vend t\u00eb imazheve GIF mund t\u00eb p\u00ebrmir\u00ebsoj\u00eb madh\u00ebsin\u00eb e shkarkimit t\u00eb p\u00ebrmbajtjes s\u00eb animuar."
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | description": {
+    "message": "Fillo t\u00eb hetosh me faz\u00ebn m\u00eb t\u00eb gjat\u00eb. [Vonesat mund t\u00eb minizohen](https://web.dev/articles/optimize-inp#optimize_interactions). P\u00ebr t\u00eb zvog\u00ebluar koh\u00ebzgjatjen e p\u00ebrpunimit, [optimizo kostot e procesit kryesor](https://web.dev/articles/optimize-long-tasks), shpesh n\u00eb JS."
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | duration": {
+    "message": "Koh\u00ebzgjatja"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | inputDelay": {
+    "message": "Vonesa e hyrjes"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | noInteractions": {
+    "message": "Nuk u zbulua asnj\u00eb nd\u00ebrveprim"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | phase": {
+    "message": "Faza"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | presentationDelay": {
+    "message": "Vonesa e prezantimit"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | processingDuration": {
+    "message": "Koh\u00ebzgjatja e p\u00ebrpunimit"
+  },
+  "models/trace/insights/InteractionToNextPaint.ts | title": {
+    "message": "INP-ja sipas faz\u00ebs"
+  },
+  "models/trace/insights/LCPDiscovery.ts | description": {
+    "message": "Optimizo LCP-n\u00eb duke e b\u00ebr\u00eb imazhin e LCP-s\u00eb menj\u00ebher\u00eb [t\u00eb zbuluesh\u00ebm](https://web.dev/articles/optimize-lcp#1_eliminate_resource_load_delay) nga protokolli HTML dhe [duke shmangur ngarkimin e kursyer](https://web.dev/articles/lcp-lazy-loading)"
+  },
+  "models/trace/insights/LCPDiscovery.ts | fetchPriorityApplied": {
+    "message": "fetchpriority=zbatuar n\u00eb nivel t\u00eb lart\u00eb"
+  },
+  "models/trace/insights/LCPDiscovery.ts | fetchPriorityShouldBeApplied": {
+    "message": "Duhet t\u00eb zbatohet fetchpriority=high"
+  },
+  "models/trace/insights/LCPDiscovery.ts | lazyLoadNotApplied": {
+    "message": "Ngarkimi i kursyer nuk \u00ebsht\u00eb zbatuar"
+  },
+  "models/trace/insights/LCPDiscovery.ts | lcpLoadDelay": {
+    "message": "Imazhi i LCP-s\u00eb u ngarkua {PH1} pas pik\u00ebs m\u00eb t\u00eb hershme t\u00eb nisjes."
+  },
+  "models/trace/insights/LCPDiscovery.ts | noLcp": {
+    "message": "Nuk u zbulua LCP-ja"
+  },
+  "models/trace/insights/LCPDiscovery.ts | noLcpResource": {
+    "message": "Nuk u zbulua asnj\u00eb burim i LCP-s\u00eb pasi LCP-ja nuk \u00ebsht\u00eb nj\u00eb imazh"
+  },
+  "models/trace/insights/LCPDiscovery.ts | requestDiscoverable": {
+    "message": "K\u00ebrkesa mund t\u00eb zbulohet n\u00eb dokumentin origjinal"
+  },
+  "models/trace/insights/LCPDiscovery.ts | title": {
+    "message": "Zbulimi i k\u00ebrkes\u00ebs s\u00eb LCP-s\u00eb"
+  },
+  "models/trace/insights/LCPPhases.ts | description": {
+    "message": "\u00c7do [faz\u00eb ka strategji specifike p\u00ebr p\u00ebrmir\u00ebsimin](https://web.dev/articles/optimize-lcp#lcp-breakdown). N\u00eb m\u00ebnyr\u00eb ideale, pjesa m\u00eb e madhe e koh\u00ebs s\u00eb LCP-s\u00eb duhet t\u00eb harxhohet p\u00ebr ngarkimin e burimeve, jo te vonesat."
+  },
+  "models/trace/insights/LCPPhases.ts | duration": {
+    "message": "Koh\u00ebzgjatja"
+  },
+  "models/trace/insights/LCPPhases.ts | elementRenderDelay": {
+    "message": "Vonesa e paraqitjes s\u00eb elementit"
+  },
+  "models/trace/insights/LCPPhases.ts | fieldDuration": {
+    "message": "Percentilja e 75-t\u00eb e fush\u00ebs"
+  },
+  "models/trace/insights/LCPPhases.ts | noLcp": {
+    "message": "Nuk u zbulua LCP-ja"
+  },
+  "models/trace/insights/LCPPhases.ts | phase": {
+    "message": "Faza"
+  },
+  "models/trace/insights/LCPPhases.ts | resourceLoadDelay": {
+    "message": "Vonesa e ngarkimit t\u00eb burimit"
+  },
+  "models/trace/insights/LCPPhases.ts | resourceLoadDuration": {
+    "message": "Koh\u00ebzgjatja e ngarkimit t\u00eb burimit"
+  },
+  "models/trace/insights/LCPPhases.ts | timeToFirstByte": {
+    "message": "Koha p\u00ebr n\u00eb bajtin e par\u00eb"
+  },
+  "models/trace/insights/LCPPhases.ts | title": {
+    "message": "LCP-ja sipas faz\u00ebs"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | columnScript": {
+    "message": "Skripti"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | columnWastedBytes": {
+    "message": "Bajtet e shp\u00ebrdoruara"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | description": {
+    "message": "Kodet polifil dhe transformimet b\u00ebjn\u00eb t\u00eb mundur q\u00eb shfletuesit e vjet\u00ebr t\u00eb p\u00ebrdorin ve\u00e7orit\u00eb e reja t\u00eb JavaScript. Sidoqoft\u00eb, shum\u00eb prej tyre nuk jan\u00eb t\u00eb nevojsh\u00ebm p\u00ebr shfletuesit modern\u00eb. Ki parasysh ta modifikosh procesin e nd\u00ebrtimit t\u00eb JavaScript q\u00eb t\u00eb mos transformohen ve\u00e7orit\u00eb [baz\u00eb](https://web.dev/articles/baseline-and-polyfills), p\u00ebrve\u00e7se n\u00ebse e di q\u00eb duhet t\u00eb mb\u00ebshteten shfletuesit e vjet\u00ebr. [M\u00ebso se pse shumica e sajteve mund t\u00eb p\u00ebrdorin kodin ES6+ pa kryer transformimin e gjuh\u00ebs s\u00eb programimit](https://philipwalton.com/articles/the-state-of-es5-on-the-web/)"
+  },
+  "models/trace/insights/LegacyJavaScript.ts | title": {
+    "message": "Versioni i vjet\u00ebr i JavaScript"
+  },
+  "models/trace/insights/ModernHTTP.ts | description": {
+    "message": "HTTP/2 dhe HTTP/3 ofrojn\u00eb shum\u00eb p\u00ebrfitime n\u00eb HTTP/1.1, si p.sh. transmetimi i shumansh\u00ebm. [M\u00ebso m\u00eb shum\u00eb rreth p\u00ebrdorimit t\u00eb protokollit modern HTTP](https://developer.chrome.com/docs/lighthouse/best-practices/uses-http2/)."
+  },
+  "models/trace/insights/ModernHTTP.ts | noOldProtocolRequests": {
+    "message": "Asnj\u00eb k\u00ebrkes\u00eb nuk ka p\u00ebrdorur HTTP/1.1"
+  },
+  "models/trace/insights/ModernHTTP.ts | protocol": {
+    "message": "Protokolli"
+  },
+  "models/trace/insights/ModernHTTP.ts | request": {
+    "message": "K\u00ebrko"
+  },
+  "models/trace/insights/ModernHTTP.ts | title": {
+    "message": "Versioni modern i HTTP-s\u00eb"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | description": {
+    "message": "[Shmang k\u00ebrkesat kritike n\u00eb form\u00eb zinxhiri](https://developer.chrome.com/docs/lighthouse/performance/critical-request-chains) duke zvog\u00ebluar gjat\u00ebsin\u00eb e zinxhir\u00ebve, duke zvog\u00ebluar madh\u00ebsin\u00eb e burimeve ose duke vonuar shkarkimin e burimeve t\u00eb panevojshme p\u00ebr t\u00eb p\u00ebrmir\u00ebsuar ngarkimin e faqeve."
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | maxCriticalPathLatency": {
+    "message": "Vonesa maksimale e shtegut kritik:"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | noNetworkDependencyTree": {
+    "message": "Nuk \u00ebsht\u00eb ndikuar asnj\u00eb detyr\u00eb e paraqitjes nga var\u00ebsit\u00eb e rrjetit"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | title": {
+    "message": "Pema e var\u00ebsis\u00eb s\u00eb rrjetit"
+  },
+  "models/trace/insights/NetworkDependencyTree.ts | warningDescription": {
+    "message": "Shmang k\u00ebrkesat kritike n\u00eb form\u00eb zinxhiri duke zvog\u00ebluar gjat\u00ebsin\u00eb e zinxhir\u00ebve, duke zvog\u00ebluar madh\u00ebsin\u00eb e burimeve ose duke vonuar shkarkimin e burimeve t\u00eb panevojshme p\u00ebr t\u00eb p\u00ebrmir\u00ebsuar ngarkimin e faqeve."
+  },
+  "models/trace/insights/RenderBlocking.ts | description": {
+    "message": "K\u00ebrkesat po bllokojn\u00eb paraqitjen fillestare t\u00eb faqes, gj\u00eb q\u00eb mund t\u00eb vonoj\u00eb LCP-n\u00eb. [Shtyrja ose nd\u00ebrfutja](https://web.dev/learn/performance/understanding-the-critical-path#render-blocking_resources/) mund t'i zhvendos\u00eb k\u00ebto k\u00ebrkesa t\u00eb rrjetit jasht\u00eb shtegut kritik."
+  },
+  "models/trace/insights/RenderBlocking.ts | duration": {
+    "message": "Koh\u00ebzgjatja"
+  },
+  "models/trace/insights/RenderBlocking.ts | noRenderBlocking": {
+    "message": "Nuk ka asnj\u00eb k\u00ebrkes\u00eb p\u00ebr bllokimin e paraqitjes p\u00ebr k\u00ebt\u00eb navigim"
+  },
+  "models/trace/insights/RenderBlocking.ts | renderBlockingRequest": {
+    "message": "K\u00ebrkes\u00eb"
+  },
+  "models/trace/insights/RenderBlocking.ts | title": {
+    "message": "K\u00ebrkesat q\u00eb bllokojn\u00eb paraqitjen"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | description": {
+    "message": "N\u00ebse kostot e rillogaritjes s\u00eb stilit mbeten t\u00eb larta, optimizimi i p\u00ebrzgjedh\u00ebsit mund t'i zvog\u00ebloj\u00eb ato. [Optimizo p\u00ebrzgjedh\u00ebsit](https://developer.chrome.com/docs/devtools/performance/selector-stats) me koh\u00eb t\u00eb kaluar t\u00eb lart\u00eb dhe p\u00ebrqindje t\u00eb lart\u00eb t\u00eb shtegut t\u00eb ngadalt\u00eb. P\u00ebrzgjedh\u00ebsit m\u00eb t\u00eb thjesht\u00eb, numri m\u00eb i vog\u00ebl i p\u00ebrzgjedh\u00ebsve, nj\u00eb model m\u00eb i vog\u00ebl DOM dhe nj\u00eb model m\u00eb pak i thell\u00eb DOM do t\u00eb zvog\u00eblojn\u00eb kostot e p\u00ebrputhjes."
+  },
+  "models/trace/insights/SlowCSSSelector.ts | elapsed": {
+    "message": "Koha e kaluar"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | enableSelectorData": {
+    "message": "Nuk u gjet\u00ebn t\u00eb dh\u00ebna t\u00eb p\u00ebrzgjedh\u00ebsit t\u00eb CSS-s\u00eb. Statistikat e p\u00ebrzgjedh\u00ebsit t\u00eb CSS-s\u00eb duhet t\u00eb aktivizohen te cil\u00ebsimet e panelit t\u00eb performanc\u00ebs."
+  },
+  "models/trace/insights/SlowCSSSelector.ts | matchAttempts": {
+    "message": "P\u00ebrpjekjet p\u00ebr p\u00ebrputhje"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | matchCount": {
+    "message": "Numri i p\u00ebrputhjeve"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | title": {
+    "message": "Kostot e p\u00ebrzgjedh\u00ebsit t\u00eb CSS-s\u00eb"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | topSelectors": {
+    "message": "P\u00ebrzgjedh\u00ebsit kryesor\u00eb"
+  },
+  "models/trace/insights/SlowCSSSelector.ts | total": {
+    "message": "Totali"
+  },
+  "models/trace/insights/ThirdParties.ts | columnMainThreadTime": {
+    "message": "Koha e n\u00ebnprocesit kryesor"
+  },
+  "models/trace/insights/ThirdParties.ts | columnThirdParty": {
+    "message": "Pala e tret\u00eb"
+  },
+  "models/trace/insights/ThirdParties.ts | columnTransferSize": {
+    "message": "Madh\u00ebsia e transferimit"
+  },
+  "models/trace/insights/ThirdParties.ts | description": {
+    "message": "Kodi i pal\u00ebs s\u00eb tret\u00eb mund t\u00eb ndikoj\u00eb ndjesh\u00ebm n\u00eb performanc\u00ebn e ngarkes\u00ebs. [Zvog\u00eblo dhe shtyje ngarkimin e kodit t\u00eb pal\u00ebve t\u00eb treta](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/loading-third-party-javascript/) p\u00ebr t'i dh\u00ebn\u00eb p\u00ebrpar\u00ebsi p\u00ebrmbajtjes s\u00eb faqes sate."
+  },
+  "models/trace/insights/ThirdParties.ts | noThirdParties": {
+    "message": "Nuk u gjet\u00ebn pal\u00eb t\u00eb treta"
+  },
+  "models/trace/insights/ThirdParties.ts | title": {
+    "message": "Pal\u00ebt e treta"
+  },
+  "models/trace/insights/Viewport.ts | description": {
+    "message": "Nd\u00ebrveprimet me trokitje mund [t\u00eb vonohen me deri n\u00eb 300\u00a0ms](https://developer.chrome.com/blog/300ms-tap-delay-gone-away/) n\u00ebse porta e shikimit nuk optimizohet p\u00ebr celular."
+  },
+  "models/trace/insights/Viewport.ts | title": {
+    "message": "Optimizo port\u00ebn e shikimit p\u00ebr celular"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | HTTPMethodNotGET": {
+    "message": "Vet\u00ebm faqet e ngarkuara n\u00ebp\u00ebrmjet nj\u00eb k\u00ebrkese me metod\u00ebn GET jan\u00eb t\u00eb p\u00ebrshtatshme p\u00ebr memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | HTTPStatusNotOK": {
+    "message": "N\u00eb memorien specifike mund t\u00eb ruhen vet\u00ebm faqet me nj\u00eb kod statusi 2XX."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | JavaScriptExecution": {
+    "message": "Chrome zbuloi nj\u00eb p\u00ebrpjekje p\u00ebr t\u00eb ekzekutuar JavaScript brenda memories specifike."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | appBanner": {
+    "message": "Faqet q\u00eb kan\u00eb k\u00ebrkuar nj\u00eb AppBanner nuk jan\u00eb aktualisht t\u00eb p\u00ebrshtatshme p\u00ebr memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabled": {
+    "message": "Memoria specifike e faqes s\u00eb plot\u00eb \u00ebsht\u00eb \u00e7aktivizuar nga flamur\u00ebt. Vizito chrome://flags/#back-forward-cache p\u00ebr ta aktivizuar lokalisht n\u00eb k\u00ebt\u00eb pajisje."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledByCommandLine": {
+    "message": "Memoria specifike e faqes s\u00eb plot\u00eb \u00ebsht\u00eb \u00e7aktivizuar nga rreshti i komand\u00ebs."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledByLowMemory": {
+    "message": "Memoria specifike e faqes s\u00eb plot\u00eb u \u00e7aktivizua p\u00ebr shkak t\u00eb memories s\u00eb pamjaftueshme."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledForDelegate": {
+    "message": "Memoria specifike e faqes s\u00eb plot\u00eb nuk mb\u00ebshtetet nga delegati."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | backForwardCacheDisabledForPrerender": {
+    "message": "Memoria specifike e faqes s\u00eb plot\u00eb \u00ebsht\u00eb \u00e7aktivizuar p\u00ebr paraqit\u00ebsin paraprak."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | broadcastChannel": {
+    "message": "Faqja nuk mund t\u00eb ruhet n\u00eb memorien specifike pasi ka nj\u00eb shembull t\u00eb BroadcastChannel me d\u00ebgjues t\u00eb regjistruar."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheControlNoStore": {
+    "message": "Faqet me kok\u00eb cache-control:no-store nuk mund t\u00eb vendosen n\u00eb memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheFlushed": {
+    "message": "Memoria specifike u pastrua me q\u00ebllim."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cacheLimit": {
+    "message": "Faqja u nxor jasht\u00eb memories specifike p\u00ebr t\u00eb lejuar ruajtjen e nj\u00eb faqeje tjet\u00ebr n\u00eb memorien specifike."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | containsPlugins": {
+    "message": "Faqet q\u00eb p\u00ebrmbajn\u00eb p\u00ebrb\u00ebr\u00ebs shtes\u00eb nuk jan\u00eb aktualisht t\u00eb p\u00ebrshtatshme p\u00ebr memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentDiscarded": {
+    "message": "E pap\u00ebrcaktuar"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentFileChooser": {
+    "message": "Faqet q\u00eb p\u00ebrdorin FileChooser API nuk jan\u00eb t\u00eb p\u00ebrshtatshme p\u00ebr memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentFileSystemAccess": {
+    "message": "Faqet q\u00eb p\u00ebrdorin File System Access API nuk jan\u00eb t\u00eb p\u00ebrshtatshme p\u00ebr memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaDevicesDispatcherHost": {
+    "message": "Faqet q\u00eb p\u00ebrdorin Media Device Dispatcher nuk jan\u00eb t\u00eb p\u00ebrshtatshme p\u00ebr memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaPlay": {
+    "message": "Nj\u00eb luajt\u00ebs mediash po luante gjat\u00eb daljes."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaSession": {
+    "message": "Faqet q\u00eb p\u00ebrdorin MediaSession API dhe caktojn\u00eb nj\u00eb gjendje luajtjeje nuk jan\u00eb t\u00eb p\u00ebrshtatshme p\u00ebr memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentMediaSessionService": {
+    "message": "Faqet q\u00eb p\u00ebrdorin MediaSession API dhe caktojn\u00eb p\u00ebrpunues veprimesh nuk jan\u00eb t\u00eb p\u00ebrshtatshme p\u00ebr memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentScreenReader": {
+    "message": "Memoria specifike e faqes s\u00eb plot\u00eb \u00ebsht\u00eb \u00e7aktivizuar p\u00ebr shkak t\u00eb lexuesit t\u00eb ekranit."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentSecurityHandler": {
+    "message": "Faqet q\u00eb p\u00ebrdorin SecurityHandler nuk jan\u00eb t\u00eb p\u00ebrshtatshme p\u00ebr memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentSerial": {
+    "message": "Faqet q\u00eb p\u00ebrdorin Serial API nuk jan\u00eb t\u00eb p\u00ebrshtatshme p\u00ebr memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebAuthenticationAPI": {
+    "message": "Faqet q\u00eb p\u00ebrdorin WebAuthetication API nuk jan\u00eb t\u00eb p\u00ebrshtatshme p\u00ebr memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebBluetooth": {
+    "message": "Faqet q\u00eb p\u00ebrdorin WebBluetooth API nuk jan\u00eb t\u00eb p\u00ebrshtatshme p\u00ebr memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | contentWebUSB": {
+    "message": "Faqet q\u00eb p\u00ebrdorin WebUSB API nuk jan\u00eb t\u00eb p\u00ebrshtatshme p\u00ebr memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | cookieDisabled": {
+    "message": "Memoria specifike e faqes s\u00eb plot\u00eb \u00ebsht\u00eb \u00e7aktivizuar sepse kukit jan\u00eb \u00e7aktivizuar n\u00eb nj\u00eb faqe q\u00eb p\u00ebrdor Cache-Control: no-store."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | dedicatedWorkerOrWorklet": {
+    "message": "Faqet q\u00eb p\u00ebrdorin nj\u00eb punonj\u00ebs t\u00eb dedikuar ose worklet nuk jan\u00eb aktualisht t\u00eb p\u00ebrshtatshme p\u00ebr memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | documentLoaded": {
+    "message": "Dokumenti nuk e p\u00ebrfundoi ngarkimin p\u00ebrpara daljes prej tij."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderAppBannerManager": {
+    "message": "Banderola e aplikacioneve ishte e pranishme gjat\u00eb daljes."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderChromePasswordManagerClientBindCredentialManager": {
+    "message": "\"Menaxheri i fjal\u00ebkalimeve\" i Chrome ishte i pranish\u00ebm gjat\u00eb daljes."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderDomDistillerSelfDeletingRequestDelegate": {
+    "message": "Distilimi i DOM ishte n\u00eb vazhdim gjat\u00eb daljes."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderDomDistillerViewerSource": {
+    "message": "Shikuesi i distiluesit t\u00eb DOM ishte i pranish\u00ebm gjat\u00eb daljes."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionMessaging": {
+    "message": "Memoria specifike e faqes s\u00eb plot\u00eb u \u00e7aktivizua p\u00ebr shkak t\u00eb shtesave q\u00eb p\u00ebrdorin API t\u00eb mesazheve."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionMessagingForOpenPort": {
+    "message": "Shtesat me lidhje afatgjat\u00eb duhet ta mbyllin lidhjen p\u00ebrpara se t\u00eb futen n\u00eb memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensionSentMessageToCachedFrame": {
+    "message": "Shtesat me lidhje afatgjat\u00eb u p\u00ebrpoq\u00ebn t'i d\u00ebrgonin mesazhe kuadrove n\u00eb memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderExtensions": {
+    "message": "Memoria specifike e faqes s\u00eb plot\u00eb u \u00e7aktivizua p\u00ebr shkak t\u00eb shtesave."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderModalDialog": {
+    "message": "Dialogu modal, si p.sh. rid\u00ebrgimi i formularit ose dialogu i fjal\u00ebkalimit http u shfaq p\u00ebr faqen gjat\u00eb daljes."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderOfflinePage": {
+    "message": "Faqja offline u shfaq gjat\u00eb daljes."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderOomInterventionTabHelper": {
+    "message": "Shiriti i nd\u00ebrhyrjes p\u00ebr mbarimin e memories ishte i pranish\u00ebm gjat\u00eb daljes."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderPermissionRequestManager": {
+    "message": "Kishte k\u00ebrkesa p\u00ebr autorizim gjat\u00eb daljes."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderPopupBlockerTabHelper": {
+    "message": "Bllokuesi i dritareve k\u00ebrcyese ishte i pranish\u00ebm gjat\u00eb daljes."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderSafeBrowsingThreatDetails": {
+    "message": "Detajet e shfletimit t\u00eb sigurt u shfaq\u00ebn gjat\u00eb daljes."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | embedderSafeBrowsingTriggeredPopupBlocker": {
+    "message": "Shfletimi i sigurt e konsideroi k\u00ebt\u00eb faqe abuzive dhe bllokoi dritaren k\u00ebrcyese."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | enteredBackForwardCacheBeforeServiceWorkerHostAdded": {
+    "message": "Nj\u00eb p\u00ebrpunues sh\u00ebrbimi u aktivizua kur faqja ishte n\u00eb memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | errorDocument": {
+    "message": "Memoria specifike e faqes s\u00eb plot\u00eb \u00ebsht\u00eb \u00e7aktivizuar p\u00ebr shkak t\u00eb nj\u00eb gabimi n\u00eb dokument."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | fencedFramesEmbedder": {
+    "message": "Faqet q\u00eb p\u00ebrdorin FencedFrames nuk mund t\u00eb ruhen n\u00eb memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | foregroundCacheLimit": {
+    "message": "Faqja u nxor jasht\u00eb memories specifike p\u00ebr t\u00eb lejuar ruajtjen e nj\u00eb faqeje tjet\u00ebr n\u00eb memorien specifike."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | grantedMediaStreamAccess": {
+    "message": "Faqet q\u00eb kan\u00eb dh\u00ebn\u00eb qasje n\u00eb transmetimin e mediave nuk jan\u00eb aktualisht t\u00eb p\u00ebrshtatshme p\u00ebr memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | haveInnerContents": {
+    "message": "Faqet q\u00eb kan\u00eb lloje t\u00eb caktuara p\u00ebrmbajtjesh t\u00eb integruara (p.sh. PDF-t\u00eb) nuk kualifikohen aktualisht p\u00ebr memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | idleManager": {
+    "message": "Faqet q\u00eb p\u00ebrdorin IdleManager nuk jan\u00eb aktualisht t\u00eb p\u00ebrshtatshme p\u00ebr memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | indexedDBConnection": {
+    "message": "Faqet q\u00eb kan\u00eb nj\u00eb lidhje t\u00eb hapur IndexedDB nuk jan\u00eb aktualisht t\u00eb p\u00ebrshtatshme p\u00ebr memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | indexedDBEvent": {
+    "message": "Memoria specifike e faqes s\u00eb plot\u00eb \u00ebsht\u00eb \u00e7aktivizuar p\u00ebr shkak t\u00eb nj\u00eb ngjarjeje IndexedDB."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | ineligibleAPI": {
+    "message": "Jan\u00eb p\u00ebrdorur API t\u00eb pap\u00ebrshtatshme."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | injectedJavascript": {
+    "message": "Faqet ku JavaScript injektohet nga shtesat nuk jan\u00eb aktualisht t\u00eb p\u00ebrshtatshme p\u00ebr memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | injectedStyleSheet": {
+    "message": "Faqet ku StyleSheet injektohet nga shtesat nuk jan\u00eb aktualisht t\u00eb p\u00ebrshtatshme p\u00ebr memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | internalError": {
+    "message": "Gabim i brendsh\u00ebm."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | jsNetworkRequestReceivedCacheControlNoStoreResource": {
+    "message": "Memoria specifike e faqes s\u00eb plot\u00eb \u00ebsht\u00eb \u00e7aktivizuar sepse nj\u00eb k\u00ebrkes\u00eb e rrjetit JavaScript mori nj\u00eb burim me kok\u00ebn Cache-Control: no-store"
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | keepaliveRequest": {
+    "message": "Memoria specifike e faqes s\u00eb plot\u00eb \u00ebsht\u00eb \u00e7aktivizuar p\u00ebr shkak t\u00eb nj\u00eb k\u00ebrkese p\u00ebr procesin e mbajtjes aktive."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | keyboardLock": {
+    "message": "Faqet q\u00eb p\u00ebrdorin \"Ky\u00e7jen e tastier\u00ebs\" nuk jan\u00eb aktualisht t\u00eb p\u00ebrshtatshme p\u00ebr memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | loading": {
+    "message": "Faqja nuk e p\u00ebrfundoi ngarkimin p\u00ebrpara se t\u00eb dilej jasht\u00eb saj."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | mainResourceHasCacheControlNoCache": {
+    "message": "Faqet, burimi kryesor i t\u00eb cilave ka cache-control:no-cache, nuk mund t\u00eb vendosen n\u00eb memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | mainResourceHasCacheControlNoStore": {
+    "message": "Faqet, burimi kryesor i t\u00eb cilave ka cache-control:no-store, nuk mund t\u00eb vendosen n\u00eb memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | navigationCancelledWhileRestoring": {
+    "message": "Navigimi u anulua p\u00ebrpara se faqja t\u00eb mund t\u00eb restaurohej nga memoria specifike e faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkExceedsBufferLimit": {
+    "message": "Faqja \u00ebsht\u00eb nxjerr\u00eb jasht\u00eb memories specifike pasi nj\u00eb lidhje aktive rrjeti mori shum\u00eb t\u00eb dh\u00ebna. Chrome e kufizon sasin\u00eb e t\u00eb dh\u00ebnave q\u00eb mund t\u00eb marr\u00eb nj\u00eb faqe kur \u00ebsht\u00eb e ruajtur n\u00eb memorien specifike."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestDatapipeDrainedAsBytesConsumer": {
+    "message": "Faqet q\u00eb kan\u00eb nj\u00eb k\u00ebrkes\u00eb fetch() ose XHR n\u00eb proces nuk jan\u00eb aktualisht t\u00eb p\u00ebrshtatshme p\u00ebr memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestRedirected": {
+    "message": "Faqja u nxor jasht\u00eb memories specifike t\u00eb faqes s\u00eb plot\u00eb pasi nj\u00eb k\u00ebrkes\u00eb aktive rrjeti p\u00ebrmbante nj\u00eb ridrejtim."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | networkRequestTimeout": {
+    "message": "Faqja u nxor jasht\u00eb memories specifike pasi nj\u00eb lidhje rrjeti ishte e hapur p\u00ebr nj\u00eb koh\u00eb shum\u00eb t\u00eb gjat\u00eb. Chrome e kufizon sasin\u00eb e koh\u00ebs gjat\u00eb s\u00eb cil\u00ebs mund t\u00eb marr\u00eb t\u00eb dh\u00ebna nj\u00eb faqe kur \u00ebsht\u00eb e ruajtur n\u00eb memorien specifike."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | noResponseHead": {
+    "message": "Faqet q\u00eb nuk kan\u00eb nj\u00eb kok\u00eb p\u00ebrgjigjeje t\u00eb vlefshme nuk mund t\u00eb vendosen n\u00eb memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | notMainFrame": {
+    "message": "Navigimi u krye n\u00eb nj\u00eb korniz\u00eb t\u00eb ndryshme nga korniza kryesore."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingIndexedDBTransaction": {
+    "message": "Faqet me transaksione t\u00eb indeksuara DB n\u00eb proces nuk jan\u00eb aktualisht t\u00eb p\u00ebrshtatshme p\u00ebr memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestDirectSocket": {
+    "message": "Faqet me nj\u00eb k\u00ebrkes\u00eb rrjeti n\u00eb proces nuk jan\u00eb aktualisht t\u00eb p\u00ebrshtatshme p\u00ebr memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestFetch": {
+    "message": "Faqet me nj\u00eb k\u00ebrkes\u00eb rrjeti fetch() n\u00eb proces nuk jan\u00eb aktualisht t\u00eb p\u00ebrshtatshme p\u00ebr memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestOthers": {
+    "message": "Faqet me nj\u00eb k\u00ebrkes\u00eb rrjeti n\u00eb proces nuk jan\u00eb aktualisht t\u00eb p\u00ebrshtatshme p\u00ebr memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | outstandingNetworkRequestXHR": {
+    "message": "Faqet me nj\u00eb k\u00ebrkes\u00eb rrjeti XHR n\u00eb proces nuk jan\u00eb aktualisht t\u00eb p\u00ebrshtatshme p\u00ebr memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | paymentManager": {
+    "message": "Faqet q\u00eb p\u00ebrdorin PaymentManager nuk jan\u00eb aktualisht t\u00eb p\u00ebrshtatshme p\u00ebr memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | pictureInPicture": {
+    "message": "Faqet q\u00eb p\u00ebrdorin \"Figur\u00eb brenda figur\u00ebs\" nuk jan\u00eb aktualisht t\u00eb p\u00ebrshtatshme p\u00ebr memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | printing": {
+    "message": "Faqet q\u00eb tregojn\u00eb Printing UI nuk jan\u00eb aktualisht t\u00eb p\u00ebrshtatshme p\u00ebr memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | relatedActiveContentsExist": {
+    "message": "Faqja \u00ebsht\u00eb hapur duke p\u00ebrdorur \"window.open()\" dhe nj\u00eb sked\u00eb tjet\u00ebr ka nj\u00eb referenc\u00eb tek ajo ose faqja \u00ebsht\u00eb hapur n\u00eb nj\u00eb dritare."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | rendererProcessCrashed": {
+    "message": "Procesi i paraqit\u00ebsit p\u00ebr faqen n\u00eb memorien specifike t\u00eb faqes s\u00eb plot\u00eb p\u00ebsoi nj\u00eb nd\u00ebrprerje aksidentale."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | rendererProcessKilled": {
+    "message": "Procesi i paraqit\u00ebsit p\u00ebr faqen n\u00eb memorien specifike t\u00eb faqes s\u00eb plot\u00eb u mbyll me forc\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedAudioCapturePermission": {
+    "message": "Faqet q\u00eb kan\u00eb k\u00ebrkuar leje p\u00ebr regjistrimin e audios nuk jan\u00eb aktualisht t\u00eb p\u00ebrshtatshme p\u00ebr memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedBackForwardCacheBlockedSensors": {
+    "message": "Faqet q\u00eb kan\u00eb k\u00ebrkuar leje p\u00ebr sensorin nuk jan\u00eb aktualisht t\u00eb p\u00ebrshtatshme p\u00ebr memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedBackgroundWorkPermission": {
+    "message": "Faqet q\u00eb kan\u00eb k\u00ebrkuar sinkronizimin n\u00eb sfond ose lejet e marrjes nuk jan\u00eb aktualisht t\u00eb p\u00ebrshtatshme p\u00ebr memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedMIDIPermission": {
+    "message": "Faqet q\u00eb kan\u00eb k\u00ebrkuar leje p\u00ebr MIDI nuk jan\u00eb aktualisht t\u00eb p\u00ebrshtatshme p\u00ebr memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedNotificationsPermission": {
+    "message": "Faqet q\u00eb kan\u00eb k\u00ebrkuar leje p\u00ebr njoftime nuk jan\u00eb aktualisht t\u00eb p\u00ebrshtatshme p\u00ebr memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedStorageAccessGrant": {
+    "message": "Faqet q\u00eb kan\u00eb k\u00ebrkuar qasje n\u00eb hap\u00ebsir\u00ebn ruajt\u00ebse nuk jan\u00eb aktualisht t\u00eb p\u00ebrshtatshme p\u00ebr memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | requestedVideoCapturePermission": {
+    "message": "Faqet q\u00eb kan\u00eb k\u00ebrkuar leje p\u00ebr regjistrim videoje nuk jan\u00eb aktualisht t\u00eb p\u00ebrshtatshme p\u00ebr memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | schemeNotHTTPOrHTTPS": {
+    "message": "N\u00eb memorien specifike mund t\u00eb ruhen vet\u00ebm faqet, skema e URL-s\u00eb e t\u00eb cilave \u00ebsht\u00eb HTTP/HTTPS."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerClaim": {
+    "message": "Faqja \u00ebsht\u00eb pretenduar nga nj\u00eb punonj\u00ebs sh\u00ebrbimi nd\u00ebrsa ndodhet n\u00eb memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerPostMessage": {
+    "message": "Nj\u00eb punonj\u00ebs sh\u00ebrbimi u p\u00ebrpoq t'i d\u00ebrgonte nj\u00eb MessageEvent faqes n\u00eb memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerUnregistration": {
+    "message": "ServiceWorker ishte \u00e7regjistruar nd\u00ebrsa nj\u00eb faqe ishte n\u00eb memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | serviceWorkerVersionActivation": {
+    "message": "Faqja u nxor jasht\u00eb memories specifike t\u00eb faqes s\u00eb plot\u00eb p\u00ebr shkak t\u00eb aktivizimit t\u00eb nj\u00eb punonj\u00ebsi sh\u00ebrbimi."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | sessionRestored": {
+    "message": "Chrome u rinis dhe i pastroi hyrjet e memories specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | sharedWorker": {
+    "message": "Faqet q\u00eb p\u00ebrdorin SharedWorker nuk jan\u00eb aktualisht t\u00eb p\u00ebrshtatshme p\u00ebr memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | speechRecognizer": {
+    "message": "Faqet q\u00eb p\u00ebrdorin SpeechRecognizer nuk jan\u00eb aktualisht t\u00eb p\u00ebrshtatshme p\u00ebr memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | speechSynthesis": {
+    "message": "Faqet q\u00eb p\u00ebrdorin SpeechSynthesis nuk jan\u00eb aktualisht t\u00eb p\u00ebrshtatshme p\u00ebr memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subframeIsNavigating": {
+    "message": "Nj\u00eb iframe n\u00eb faqe filloi nj\u00eb navigim q\u00eb nuk u p\u00ebrfundua."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subresourceHasCacheControlNoCache": {
+    "message": "Faqet, n\u00ebnburimi i t\u00eb cilave ka cache-control:no-cache, nuk mund t\u00eb hyjn\u00eb n\u00eb memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | subresourceHasCacheControlNoStore": {
+    "message": "Faqet n\u00ebnburimi i t\u00eb cilave ka cache-control:no-store nuk mund t\u00eb vendosen n\u00eb memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | timeout": {
+    "message": "Faqja kishte tejkaluar koh\u00ebn maksimale n\u00eb memorien specifike t\u00eb faqes s\u00eb plot\u00eb dhe kishte skaduar."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | timeoutPuttingInCache": {
+    "message": "Faqes i mbaroi koha gjat\u00eb vendosjes n\u00eb memorien specifike t\u00eb faqes s\u00eb plot\u00eb (ndoshta p\u00ebr shkak t\u00eb p\u00ebrpunuesve pagehide t\u00eb ekzekutuar p\u00ebr nj\u00eb koh\u00eb t\u00eb gjat\u00eb)."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | unloadHandlerExistsInMainFrame": {
+    "message": "Faqja ka nj\u00eb p\u00ebrpunues shkarkimi n\u00eb korniz\u00ebn kryesore."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | unloadHandlerExistsInSubFrame": {
+    "message": "Faqja ka nj\u00eb p\u00ebrpunues shkarkimi n\u00eb nj\u00eb n\u00ebnkorniz\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | userAgentOverrideDiffers": {
+    "message": "Shfletuesi ka ndryshuar kok\u00ebn e anulimit t\u00eb agjentit t\u00eb p\u00ebrdoruesit."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | wasGrantedMediaAccess": {
+    "message": "Faqet q\u00eb kan\u00eb dh\u00ebn\u00eb qasje p\u00ebr regjistrimin e videos ose audios nuk jan\u00eb aktualisht t\u00eb p\u00ebrshtatshme p\u00ebr memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webDatabase": {
+    "message": "Faqet q\u00eb p\u00ebrdorin WebDatabase nuk jan\u00eb aktualisht t\u00eb p\u00ebrshtatshme p\u00ebr memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webHID": {
+    "message": "Faqet q\u00eb p\u00ebrdorin WebHID nuk jan\u00eb aktualisht t\u00eb p\u00ebrshtatshme p\u00ebr memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webLocks": {
+    "message": "Faqet q\u00eb p\u00ebrdorin WebLocks nuk jan\u00eb aktualisht t\u00eb p\u00ebrshtatshme p\u00ebr memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webNfc": {
+    "message": "Faqet q\u00eb p\u00ebrdorin WebNfc nuk jan\u00eb aktualisht t\u00eb p\u00ebrshtatshme p\u00ebr memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webOTPService": {
+    "message": "Faqet q\u00eb p\u00ebrdorin WebOTPService nuk jan\u00eb aktualisht t\u00eb p\u00ebrshtatshme p\u00ebr memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webRTC": {
+    "message": "Faqet me WebRTC nuk mund t\u00eb vendosen n\u00eb memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webRTCSticky": {
+    "message": "Memoria specifike e faqes s\u00eb plot\u00eb \u00ebsht\u00eb \u00e7aktivizuar sepse \u00ebsht\u00eb p\u00ebrdorur WebRTC."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webShare": {
+    "message": "Faqet q\u00eb p\u00ebrdorin WebShare nuk jan\u00eb aktualisht t\u00eb p\u00ebrshtatshme p\u00ebr memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webSocket": {
+    "message": "Faqet me WebSocket nuk mund t\u00eb vendosen n\u00eb memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webSocketSticky": {
+    "message": "Memoria specifike e faqes s\u00eb plot\u00eb \u00ebsht\u00eb \u00e7aktivizuar sepse \u00ebsht\u00eb p\u00ebrdorur WebSocket."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webTransport": {
+    "message": "Faqet me WebTransport nuk mund t\u00eb vendosen n\u00eb memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webTransportSticky": {
+    "message": "Memoria specifike e faqes s\u00eb plot\u00eb \u00ebsht\u00eb \u00e7aktivizuar sepse \u00ebsht\u00eb p\u00ebrdorur WebTransport ."
+  },
+  "panels/application/components/BackForwardCacheStrings.ts | webXR": {
+    "message": "Faqet q\u00eb p\u00ebrdorin WebXR nuk jan\u00eb aktualisht t\u00eb p\u00ebrshtatshme p\u00ebr memorien specifike t\u00eb faqes s\u00eb plot\u00eb."
+  }
+}

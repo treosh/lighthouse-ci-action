@@ -1,12 +1,14 @@
+// Ported from https://github.com/mafintosh/end-of-stream with
+// permission from the author, Mathias Buus (@mafintosh).
+
+'use strict'
+
 /* replacement start */
 
 const process = require('process/')
 
 /* replacement end */
-// Ported from https://github.com/mafintosh/end-of-stream with
-// permission from the author, Mathias Buus (@mafintosh).
 
-;('use strict')
 const { AbortError, codes } = require('../../ours/errors')
 const { ERR_INVALID_ARG_TYPE, ERR_STREAM_PREMATURE_CLOSE } = codes
 const { kEmptyObject, once } = require('../../ours/util')

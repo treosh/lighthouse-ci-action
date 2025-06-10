@@ -10,7 +10,7 @@ It is built in collaboration between Lighthouse Team, Treo (web performance moni
 
 **Features**:
 
-- ✅ Audit URLs using Lighthouse v12
+- ✅ Audit URLs using Lighthouse v12.6
 - 🎯 Test performance with Lighthouse CI assertions or performance budgets
 - 😻 See failed results in the action interface
 - 💾 Upload results to a private LHCI server, Temporary Public Storage, or as artifacts
@@ -51,14 +51,8 @@ Describe your performance budget using a [`budget.json`](https://web.dev/use-lig
   {
     "path": "/*",
     "resourceSizes": [
-      {
-        "resourceType": "document",
-        "budget": 18
-      },
-      {
-        "resourceType": "total",
-        "budget": 200
-      }
+      { "resourceType": "document", "budget": 18 },
+      { "resourceType": "total", "budget": 200 }
     ]
   }
 ]
@@ -96,15 +90,7 @@ Make a `lighthouserc.json` file with [LHCI assertion syntax](https://github.com/
 #### lighthouserc.json
 
 ```json
-{
-  "ci": {
-    "assert": {
-      "assertions": {
-        "first-contentful-paint": ["error", { "minScore": 0.6 }]
-      }
-    }
-  }
-}
+{ "ci": { "assert": { "assertions": { "first-contentful-paint": ["error", { "minScore": 0.6 }] } } } }
 ```
 
 <img align="center" width="925" alt="Lighthouse CI Action: test Lighthouse assertions" src="https://user-images.githubusercontent.com/158189/77118526-a8bca380-6a34-11ea-876e-2004bc7984a7.png">
@@ -173,16 +159,7 @@ Chrome flags can be set directly in the `lighthouserc`'s `collect` section.
 #### lighthouserc.json
 
 ```json
-{
-  "ci": {
-    "collect": {
-      "numberOfRuns": 1,
-      "settings": {
-        "chromeFlags": "--disable-gpu --no-sandbox --no-zygote"
-      }
-    }
-  }
-}
+{ "ci": { "collect": { "numberOfRuns": 1, "settings": { "chromeFlags": "--disable-gpu --no-sandbox --no-zygote" } } } }
 ```
 
 Custom Lighthouse config can be defined in a seperate Lighthouse config using
@@ -192,16 +169,7 @@ This is then referenced by the `lighthouserc` file in the `configPath`.
 #### lighthouserc.json
 
 ```json
-{
-  "ci": {
-    "collect": {
-      "numberOfRuns": 1,
-      "settings": {
-        "configPath": "./lighthouse-config.js"
-      }
-    }
-  }
-}
+{ "ci": { "collect": { "numberOfRuns": 1, "settings": { "configPath": "./lighthouse-config.js" } } } }
 ```
 
 Then put all the custom Lighthouse config in the file referenced in the `lighthouserc`.
@@ -248,13 +216,7 @@ jobs:
 #### lighthouserc.json
 
 ```json
-{
-  "ci": {
-    "collect": {
-      "staticDistDir": "./dist"
-    }
-  }
-}
+{ "ci": { "collect": { "staticDistDir": "./dist" } } }
 ```
 
 Inside your `staticDistDir` there should be html files that make up your site.
@@ -359,15 +321,7 @@ jobs:
 #### lighthouserc.json
 
 ```json
-{
-  "ci": {
-    "collect": {
-      "settings": {
-        "plugins": ["lighthouse-plugin-field-performance"]
-      }
-    }
-  }
-}
+{ "ci": { "collect": { "settings": { "plugins": ["lighthouse-plugin-field-performance"] } } } }
 ```
 
 Add a plugin as a dependency, so it's installed locally:
@@ -375,11 +329,7 @@ Add a plugin as a dependency, so it's installed locally:
 #### package.json
 
 ```json
-{
-  "devDependencies": {
-    "lighthouse-plugin-field-performance": "^2.0.1"
-  }
-}
+{ "devDependencies": { "lighthouse-plugin-field-performance": "^2.0.1" } }
 ```
 
 [⚙️ See this workflow in use](https://github.com/treosh/lighthouse-ci-action/actions?workflow=LHCI-lighthouse-plugin)

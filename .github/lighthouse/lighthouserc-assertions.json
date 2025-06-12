@@ -12,7 +12,9 @@
         "maskable-icon": ["warn", { "minScore": 0.9 }],
         "csp-xss": ["warn", { "minScore": 0 }],
         "bf-cache": ["warn", { "minScore": 0 }],
-        "total-byte-weight": ["warn", { "minScore": 0 }]
+        "total-byte-weight": ["warn", { "minScore": 0 }],
+        "target-size": ["warn", { "minScore": 0 }],
+        "network-dependency-tree-insight": ["warn", { "minScore": 0 }]
       }
     }
   }

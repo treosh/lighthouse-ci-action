@@ -32,7 +32,7 @@ jobs:
   lighthouse:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Audit URLs using Lighthouse
         uses: treosh/lighthouse-ci-action@v12
         with:
@@ -77,7 +77,7 @@ jobs:
   lighthouse:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Run Lighthouse on urls and validate with lighthouserc
         uses: treosh/lighthouse-ci-action@v12
         with:
@@ -116,7 +116,7 @@ jobs:
   lighthouse:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Run Lighthouse on urls and upload data to private lhci server
         uses: treosh/lighthouse-ci-action@v12
         with:
@@ -146,7 +146,7 @@ jobs:
   lighthouse:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Run Lighthouse on urls with lighthouserc
         uses: treosh/lighthouse-ci-action@v12
         with:
@@ -162,7 +162,7 @@ Chrome flags can be set directly in the `lighthouserc`'s `collect` section.
 { "ci": { "collect": { "numberOfRuns": 1, "settings": { "chromeFlags": "--disable-gpu --no-sandbox --no-zygote" } } } }
 ```
 
-Custom Lighthouse config can be defined in a seperate Lighthouse config using
+Custom Lighthouse config can be defined in a separate Lighthouse config using
 the [custom Lighthouse config syntax](https://github.com/GoogleChrome/lighthouse/blob/master/docs/configuration.md).
 This is then referenced by the `lighthouserc` file in the `configPath`.
 
@@ -205,7 +205,7 @@ jobs:
   static-dist-dir:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Run Lighthouse against a static dist dir
         uses: treosh/lighthouse-ci-action@v12
         with:
@@ -244,7 +244,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Wait for the Netlify Preview
         uses: jakepartusch/wait-for-netlify-action@v1.4
         id: netlify
@@ -276,7 +276,7 @@ jobs:
   lighthouse:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Run Lighthouse and test budgets
         uses: treosh/lighthouse-ci-action@v12
         with:
@@ -307,7 +307,7 @@ jobs:
   lighthouse:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - run: npm install # install dependencies, that includes Lighthouse plugins
       - name: Audit URLs with Field Performance Plugin
         uses: treosh/lighthouse-ci-action@v12
@@ -349,7 +349,7 @@ jobs:
   output-webhook:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Use output for sending data to API.
         id: LHCIAction
         uses: ./
@@ -379,13 +379,13 @@ jobs:
   lighthouse:
     runs-on: [self-hosted, your-custom-label]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: install Node.js
 
       - uses: browser-actions/setup-chrome@latest
 
       - run: chrome --version
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v5
         with:
           node-version: ${{YOUR_REQUIRED_NODE_JS_VERSION}}
 
@@ -415,11 +415,11 @@ jobs:
   lighthouse:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Generate URLs
         id: urls
-        uses: actions/github-script@v6
+        uses: actions/github-script@v8
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
@@ -433,7 +433,7 @@ jobs:
 
       - name: Lighthouse CI Action
         id: lighthouse
-        uses: treosh/lighthouse-ci-action@v8
+        uses: treosh/lighthouse-ci-action@v12
         with:
           urls: |
             ${{ steps.urls.outputs.urls }}

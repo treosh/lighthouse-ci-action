@@ -385,7 +385,7 @@ jobs:
       - uses: browser-actions/setup-chrome@latest
 
       - run: chrome --version
-        uses: actions/setup-node@v5
+      - uses: actions/setup-node@v5
         with:
           node-version: ${{YOUR_REQUIRED_NODE_JS_VERSION}}
 

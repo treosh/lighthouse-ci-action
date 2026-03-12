@@ -1,4 +1,4 @@
-import core from '@actions/core'
+import * as core from '@actions/core'
 import { getLinks, getAssertionResults, getManifest } from './lhci-helpers.js'
 
 /**

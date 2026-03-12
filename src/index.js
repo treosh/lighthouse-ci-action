@@ -2,7 +2,7 @@ import './utils/support-lh-plugins.js' // add automatic support for LH Plugins e
 import { join } from 'node:path'
 import childProcess from 'node:child_process'
 import { createRequire } from 'node:module'
-import core from '@actions/core'
+import * as core from '@actions/core'
 import { getInput, hasAssertConfig } from './config.js'
 import { uploadArtifacts } from './utils/artifacts.js'
 import { setAnnotations } from './utils/annotations.js'

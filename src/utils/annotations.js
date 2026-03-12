@@ -1,5 +1,5 @@
 import { groupBy, mapValues, orderBy } from 'lodash-es'
-import core from '@actions/core'
+import * as core from '@actions/core'
 import { getLinks, getAssertionResults } from './lhci-helpers.js'
 
 /**

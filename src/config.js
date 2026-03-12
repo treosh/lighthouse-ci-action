@@ -1,5 +1,5 @@
 import { resolve } from 'node:path'
-import core from '@actions/core'
+import * as core from '@actions/core'
 import { loadRcFile } from '@lhci/utils/src/lighthouserc.js'
 import { get } from 'lodash-es'
 

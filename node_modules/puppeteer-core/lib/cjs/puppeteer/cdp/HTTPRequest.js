@@ -35,13 +35,28 @@ class CdpHTTPRequest extends HTTPRequest_js_1.HTTPRequest {
         this.#url = data.request.url + (data.request.urlFragment ?? '');
         this.#resourceType = (data.type || 'other').toLowerCase();
         this.#method = data.request.method;
-        this.#postData = data.request.postData;
+        if (data.request.postDataEntries &&
+            data.request.postDataEntries.length > 0) {
+            this.#postData = new TextDecoder().decode((0, encoding_js_1.mergeUint8Arrays)(data.request.postDataEntries
+                .map(entry => {
+                return entry.bytes ? (0, encoding_js_1.stringToTypedArray)(entry.bytes, true) : null;
+            })
+                .filter((entry) => {
+                return entry !== null;
+            })));
+        }
+        else {
+            this.#postData = data.request.postData;
+        }
         this.#hasPostData = data.request.hasPostData ?? false;
         this.#frame = frame;
         this._redirectChain = redirectChain;
         this.#initiator = data.initiator;
         this.interception.enabled = allowInterception;
-        for (const [key, value] of Object.entries(data.request.headers)) {
+        this.updateHeaders(data.request.headers);
+    }
+    updateHeaders(headers) {
+        for (const [key, value] of Object.entries(headers)) {
             this.#headers[key.toLowerCase()] = value;
         }
     }
@@ -73,7 +88,8 @@ class CdpHTTPRequest extends HTTPRequest_js_1.HTTPRequest {
         }
     }
     headers() {
-        return this.#headers;
+        // Callers should not be allowed to mutate internal structure.
+        return structuredClone(this.#headers);
     }
     response() {
         return this._response;
@@ -97,6 +113,9 @@ class CdpHTTPRequest extends HTTPRequest_js_1.HTTPRequest {
         return {
             errorText: this._failureText,
         };
+    }
+    canBeIntercepted() {
+        return !this.url().startsWith('data:') && !this._fromMemoryCache;
     }
     /**
      * @internal

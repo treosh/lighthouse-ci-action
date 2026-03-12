@@ -5,7 +5,7 @@
  */
 import { _connectToBiDiBrowser } from '../bidi/BrowserConnector.js';
 import { _connectToCdpBrowser } from '../cdp/BrowserConnector.js';
-import { isNode } from '../environment.js';
+import { environment, isNode } from '../environment.js';
 import { assert } from '../util/assert.js';
 import { isErrorLike } from '../util/ErrorLike.js';
 const getWebSocketTransportClass = async () => {
@@ -36,9 +36,12 @@ export async function _connectToBrowser(options) {
  * endpoint url the transport is connected to.
  */
 async function getConnectionTransport(options) {
-    const { browserWSEndpoint, browserURL, transport, headers = {} } = options;
-    assert(Number(!!browserWSEndpoint) + Number(!!browserURL) + Number(!!transport) ===
-        1, 'Exactly one of browserWSEndpoint, browserURL or transport must be passed to puppeteer.connect');
+    const { browserWSEndpoint, browserURL, channel, transport, headers = {}, } = options;
+    assert(Number(!!browserWSEndpoint) +
+        Number(!!browserURL) +
+        Number(!!transport) +
+        Number(!!channel) ===
+        1, 'Exactly one of browserWSEndpoint, browserURL, transport or channel must be passed to puppeteer.connect');
     if (transport) {
         return { connectionTransport: transport, endpointUrl: '' };
     }
@@ -58,6 +61,47 @@ async function getConnectionTransport(options) {
             connectionTransport: connectionTransport,
             endpointUrl: connectionURL,
         };
+    }
+    else if (options.channel && isNode) {
+        const { detectBrowserPlatform, resolveDefaultUserDataDir, Browser } = await import('@puppeteer/browsers');
+        const platform = detectBrowserPlatform();
+        if (!platform) {
+            throw new Error('Could not detect required browser platform');
+        }
+        const { convertPuppeteerChannelToBrowsersChannel } = await import('../node/LaunchOptions.js');
+        const { join } = await import('node:path');
+        const userDataDir = resolveDefaultUserDataDir(Browser.CHROME, platform, convertPuppeteerChannelToBrowsersChannel(options.channel));
+        const portPath = join(userDataDir, 'DevToolsActivePort');
+        try {
+            const fileContent = await environment.value.fs.promises.readFile(portPath, 'ascii');
+            const [rawPort, rawPath] = fileContent
+                .split('\n')
+                .map(line => {
+                return line.trim();
+            })
+                .filter(line => {
+                return !!line;
+            });
+            if (!rawPort || !rawPath) {
+                throw new Error(`Invalid DevToolsActivePort '${fileContent}' found`);
+            }
+            const port = parseInt(rawPort, 10);
+            if (isNaN(port) || port <= 0 || port > 65535) {
+                throw new Error(`Invalid port '${rawPort}' found`);
+            }
+            const browserWSEndpoint = `ws://localhost:${port}${rawPath}`;
+            const WebSocketClass = await getWebSocketTransportClass();
+            const connectionTransport = await WebSocketClass.create(browserWSEndpoint, headers);
+            return {
+                connectionTransport: connectionTransport,
+                endpointUrl: browserWSEndpoint,
+            };
+        }
+        catch (error) {
+            throw new Error(`Could not find DevToolsActivePort for ${options.channel} at ${portPath}`, {
+                cause: error,
+            });
+        }
     }
     throw new Error('Invalid connection options');
 }

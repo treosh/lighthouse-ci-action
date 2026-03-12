@@ -5,7 +5,6 @@ import { TimeoutSettings } from '../common/TimeoutSettings.js';
 import { debugError } from '../common/util.js';
 import { ExecutionContext } from './ExecutionContext.js';
 import { IsolatedWorld } from './IsolatedWorld.js';
-import { CdpJSHandle } from './JSHandle.js';
 /**
  * @internal
  */
@@ -25,9 +24,7 @@ export class CdpWebWorker extends WebWorker {
         });
         this.#world.emitter.on('consoleapicalled', async (event) => {
             try {
-                return consoleAPICalled(event.type, event.args.map((object) => {
-                    return new CdpJSHandle(this.#world, object);
-                }), event.stackTrace);
+                return consoleAPICalled(this.#world, event);
             }
             catch (err) {
                 debugError(err);
@@ -49,15 +46,20 @@ export class CdpWebWorker extends WebWorker {
     }
     async close() {
         switch (this.#targetType) {
-            case TargetType.SERVICE_WORKER:
-            case TargetType.SHARED_WORKER: {
-                // For service and shared workers we need to close the target and detach to allow
+            case TargetType.SERVICE_WORKER: {
+                // For service workers we need to close the target and detach to allow
                 // the worker to stop.
                 await this.client.connection()?.send('Target.closeTarget', {
                     targetId: this.#id,
                 });
                 await this.client.connection()?.send('Target.detachFromTarget', {
                     sessionId: this.client.id(),
+                });
+                break;
+            }
+            case TargetType.SHARED_WORKER: {
+                await this.client.connection()?.send('Target.closeTarget', {
+                    targetId: this.#id,
                 });
                 break;
             }

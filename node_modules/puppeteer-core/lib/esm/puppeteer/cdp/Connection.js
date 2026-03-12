@@ -6,9 +6,10 @@
 import { CDPSessionEvent, } from '../api/CDPSession.js';
 import { CallbackRegistry } from '../common/CallbackRegistry.js';
 import { debug } from '../common/Debug.js';
-import { TargetCloseError } from '../common/Errors.js';
+import { ConnectionClosedError, TargetCloseError } from '../common/Errors.js';
 import { EventEmitter } from '../common/EventEmitter.js';
 import { createProtocolErrorMessage } from '../util/ErrorLike.js';
+import { createIncrementalIdGenerator, } from '../util/incremental-id-generator.js';
 import { CdpCDPSession } from './CdpSession.js';
 const debugProtocolSend = debug('puppeteer:protocol:SEND ►');
 const debugProtocolReceive = debug('puppeteer:protocol:RECV ◀');
@@ -25,10 +26,12 @@ export class Connection extends EventEmitter {
     #manuallyAttached = new Set();
     #callbacks;
     #rawErrors = false;
-    constructor(url, transport, delay = 0, timeout, rawErrors = false) {
+    #idGenerator;
+    constructor(url, transport, delay = 0, timeout, rawErrors = false, idGenerator = createIncrementalIdGenerator()) {
         super();
         this.#rawErrors = rawErrors;
-        this.#callbacks = new CallbackRegistry();
+        this.#idGenerator = idGenerator;
+        this.#callbacks = new CallbackRegistry(idGenerator);
         this.#url = url;
         this.#delay = delay;
         this.#timeout = timeout ?? 180_000;
@@ -53,6 +56,12 @@ export class Connection extends EventEmitter {
      */
     get _closed() {
         return this.#closed;
+    }
+    /**
+     * @internal
+     */
+    get _idGenerator() {
+        return this.#idGenerator;
     }
     /**
      * @internal
@@ -90,7 +99,7 @@ export class Connection extends EventEmitter {
      */
     _rawSend(callbacks, method, params, sessionId, options) {
         if (this.#closed) {
-            return Promise.reject(new Error('Protocol error: Connection closed.'));
+            return Promise.reject(new ConnectionClosedError('Connection closed.'));
         }
         return callbacks.create(method, options?.timeout ?? this.#timeout, id => {
             const stringifiedMessage = JSON.stringify({

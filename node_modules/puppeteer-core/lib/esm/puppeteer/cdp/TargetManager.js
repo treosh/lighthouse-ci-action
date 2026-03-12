@@ -3,13 +3,13 @@
  * Copyright 2022 Google Inc.
  * SPDX-License-Identifier: Apache-2.0
  */
-import { CDPSession, CDPSessionEvent } from '../api/CDPSession.js';
+import { CDPSessionEvent } from '../api/CDPSession.js';
 import { EventEmitter } from '../common/EventEmitter.js';
 import { debugError } from '../common/util.js';
 import { assert } from '../util/assert.js';
 import { Deferred } from '../util/Deferred.js';
 import { CdpCDPSession } from './CdpSession.js';
-import { CdpTarget, InitializationStatus } from './Target.js';
+import { InitializationStatus } from './Target.js';
 function isPageTargetBecomingPrimary(target, newTargetInfo) {
     return Boolean(target._subtype()) && !newTargetInfo.subtype;
 }
@@ -57,9 +57,19 @@ export class TargetManager extends EventEmitter {
     #attachedToTargetListenersBySession = new WeakMap();
     #detachedFromTargetListenersBySession = new WeakMap();
     #initializeDeferred = Deferred.create();
-    #targetsIdsForInit = new Set();
     #waitForInitiallyDiscoveredTargets = true;
     #discoveryFilter = [{}];
+    // IDs of tab targets detected while running the initial Target.setAutoAttach
+    // request. These are the targets whose initialization we want to await for
+    // before resolving puppeteer.connect() or launch() to avoid flakiness.
+    // Whenever a sub-target whose parent is a tab target is attached, we remove
+    // the tab target from this list. Once the list is empty, we resolve the
+    // initializeDeferred.
+    #targetsIdsForInit = new Set();
+    // This is false until the connection-level Target.setAutoAttach request is
+    // done. It indicates whethere we are running the initial auto-attach step or
+    // if we are handling targets after that.
+    #initialAttachDone = false;
     constructor(connection, targetFactory, targetFilterCallback, waitForInitiallyDiscoveredTargets = true) {
         super();
         this.#connection = connection;
@@ -72,30 +82,11 @@ export class TargetManager extends EventEmitter {
         this.#connection.on(CDPSessionEvent.SessionDetached, this.#onSessionDetached);
         this.#setupAttachmentListeners(this.#connection);
     }
-    #storeExistingTargetsForInit = () => {
-        if (!this.#waitForInitiallyDiscoveredTargets) {
-            return;
-        }
-        for (const [targetId, targetInfo,] of this.#discoveredTargetsByTargetId.entries()) {
-            const targetForFilter = new CdpTarget(targetInfo, undefined, undefined, this, undefined);
-            // Only wait for pages and frames (except those from extensions)
-            // to auto-attach.
-            const isPageOrFrame = targetInfo.type === 'page' || targetInfo.type === 'iframe';
-            const isExtension = targetInfo.url.startsWith('chrome-extension://');
-            if ((!this.#targetFilterCallback ||
-                this.#targetFilterCallback(targetForFilter)) &&
-                isPageOrFrame &&
-                !isExtension) {
-                this.#targetsIdsForInit.add(targetId);
-            }
-        }
-    };
     async initialize() {
         await this.#connection.send('Target.setDiscoverTargets', {
             discover: true,
             filter: this.#discoveryFilter,
         });
-        this.#storeExistingTargetsForInit();
         await this.#connection.send('Target.setAutoAttach', {
             waitForDebuggerOnStart: true,
             flatten: true,
@@ -108,6 +99,7 @@ export class TargetManager extends EventEmitter {
                 ...this.#discoveryFilter,
             ],
         });
+        this.#initialAttachDone = true;
         this.#finishInitializationIfReady();
         await this.#initializeDeferred.valueOrThrow();
     }
@@ -144,11 +136,27 @@ export class TargetManager extends EventEmitter {
             session.off('Target.attachedToTarget', listener);
             this.#attachedToTargetListenersBySession.delete(session);
         }
-        if (this.#detachedFromTargetListenersBySession.has(session)) {
-            session.off('Target.detachedFromTarget', this.#detachedFromTargetListenersBySession.get(session));
+        const detachedListener = this.#detachedFromTargetListenersBySession.get(session);
+        if (detachedListener) {
+            session.off('Target.detachedFromTarget', detachedListener);
             this.#detachedFromTargetListenersBySession.delete(session);
         }
     }
+    #silentDetach = async (session, parentSession) => {
+        await session.send('Runtime.runIfWaitingForDebugger').catch(debugError);
+        // We don't use `session.detach()` because that dispatches all commands on
+        // the connection instead of the parent session.
+        await parentSession
+            .send('Target.detachFromTarget', {
+            sessionId: session.id(),
+        })
+            .catch(debugError);
+    };
+    #getParentTarget = (parentSession) => {
+        return parentSession instanceof CdpCDPSession
+            ? parentSession.target()
+            : null;
+    };
     #onSessionDetached = (session) => {
         this.#removeAttachmentListeners(session);
     };
@@ -171,8 +179,7 @@ export class TargetManager extends EventEmitter {
         const targetInfo = this.#discoveredTargetsByTargetId.get(event.targetId);
         this.#discoveredTargetsByTargetId.delete(event.targetId);
         this.#finishInitializationIfReady(event.targetId);
-        if (targetInfo?.type === 'service_worker' &&
-            this.#attachedTargetsByTargetId.has(event.targetId)) {
+        if (targetInfo?.type === 'service_worker') {
             // Special case for service workers: report TargetGone event when
             // the worker is destroyed.
             const target = this.#attachedTargetsByTargetId.get(event.targetId);
@@ -185,7 +192,6 @@ export class TargetManager extends EventEmitter {
     #onTargetInfoChanged = (event) => {
         this.#discoveredTargetsByTargetId.set(event.targetInfo.targetId, event.targetInfo);
         if (this.#ignoredTargets.has(event.targetInfo.targetId) ||
-            !this.#attachedTargetsByTargetId.has(event.targetInfo.targetId) ||
             !event.targetInfo.attached) {
             return;
         }
@@ -196,7 +202,7 @@ export class TargetManager extends EventEmitter {
         const previousURL = target.url();
         const wasInitialized = target._initializedDeferred.value() === InitializationStatus.SUCCESS;
         if (isPageTargetBecomingPrimary(target, event.targetInfo)) {
-            const session = target?._session();
+            const session = target._session();
             assert(session, 'Target that is being activated is missing a CDPSession.');
             session.parentSession()?.emit(CDPSessionEvent.Swapped, session);
         }
@@ -215,16 +221,6 @@ export class TargetManager extends EventEmitter {
         if (!session) {
             throw new Error(`Session ${event.sessionId} was not created.`);
         }
-        const silentDetach = async () => {
-            await session.send('Runtime.runIfWaitingForDebugger').catch(debugError);
-            // We don't use `session.detach()` because that dispatches all commands on
-            // the connection instead of the parent session.
-            await parentSession
-                .send('Target.detachFromTarget', {
-                sessionId: session.id(),
-            })
-                .catch(debugError);
-        };
         if (!this.#connection.isAutoAttached(targetInfo.targetId)) {
             return;
         }
@@ -236,8 +232,7 @@ export class TargetManager extends EventEmitter {
         // should determine if a target is auto-attached or not with the help of
         // CDP.
         if (targetInfo.type === 'service_worker') {
-            this.#finishInitializationIfReady(targetInfo.targetId);
-            await silentDetach();
+            await this.#silentDetach(session, parentSession);
             if (this.#attachedTargetsByTargetId.has(targetInfo.targetId)) {
                 return;
             }
@@ -247,36 +242,43 @@ export class TargetManager extends EventEmitter {
             this.emit("targetAvailable" /* TargetManagerEvent.TargetAvailable */, target);
             return;
         }
-        const isExistingTarget = this.#attachedTargetsByTargetId.has(targetInfo.targetId);
-        const target = isExistingTarget
-            ? this.#attachedTargetsByTargetId.get(targetInfo.targetId)
-            : this.#targetFactory(targetInfo, session, parentSession instanceof CdpCDPSession ? parentSession : undefined);
+        let target = this.#attachedTargetsByTargetId.get(targetInfo.targetId);
+        const isExistingTarget = target !== undefined;
+        if (!target) {
+            target = this.#targetFactory(targetInfo, session, parentSession instanceof CdpCDPSession ? parentSession : undefined);
+        }
+        const parentTarget = this.#getParentTarget(parentSession);
         if (this.#targetFilterCallback && !this.#targetFilterCallback(target)) {
             this.#ignoredTargets.add(targetInfo.targetId);
-            this.#finishInitializationIfReady(targetInfo.targetId);
-            await silentDetach();
+            if (parentTarget?.type() === 'tab') {
+                this.#finishInitializationIfReady(parentTarget._targetId);
+            }
+            await this.#silentDetach(session, parentSession);
             return;
+        }
+        if (this.#waitForInitiallyDiscoveredTargets &&
+            event.targetInfo.type === 'tab' &&
+            !this.#initialAttachDone) {
+            this.#targetsIdsForInit.add(event.targetInfo.targetId);
         }
         this.#setupAttachmentListeners(session);
         if (isExistingTarget) {
             session.setTarget(target);
-            this.#attachedTargetsBySessionId.set(session.id(), this.#attachedTargetsByTargetId.get(targetInfo.targetId));
+            this.#attachedTargetsBySessionId.set(session.id(), target);
         }
         else {
             target._initialize();
             this.#attachedTargetsByTargetId.set(targetInfo.targetId, target);
             this.#attachedTargetsBySessionId.set(session.id(), target);
         }
-        const parentTarget = parentSession instanceof CDPSession
-            ? parentSession.target()
-            : null;
         parentTarget?._addChildTarget(target);
         parentSession.emit(CDPSessionEvent.Ready, session);
-        this.#targetsIdsForInit.delete(target._targetId);
         if (!isExistingTarget) {
             this.emit("targetAvailable" /* TargetManagerEvent.TargetAvailable */, target);
         }
-        this.#finishInitializationIfReady();
+        if (parentTarget?.type() === 'tab') {
+            this.#finishInitializationIfReady(parentTarget._targetId);
+        }
         // TODO: the browser might be shutting down here. What do we do with the
         // error?
         await Promise.all([
@@ -293,6 +295,11 @@ export class TargetManager extends EventEmitter {
         if (targetId !== undefined) {
             this.#targetsIdsForInit.delete(targetId);
         }
+        // If we are still initializing it might be that we have not learned about
+        // some targets yet.
+        if (!this.#initialAttachDone) {
+            return;
+        }
         if (this.#targetsIdsForInit.size === 0) {
             this.#initializeDeferred.resolve();
         }
@@ -303,7 +310,7 @@ export class TargetManager extends EventEmitter {
         if (!target) {
             return;
         }
-        if (parentSession instanceof CDPSession) {
+        if (parentSession instanceof CdpCDPSession) {
             parentSession.target()._removeChildTarget(target);
         }
         this.#attachedTargetsByTargetId.delete(target._targetId);

@@ -1,6 +1,6 @@
 {
   "name": "cookie-signature",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Sign and unsign cookies",
   "keywords": ["cookie", "sign", "unsign"],
   "author": "TJ Holowaychuk <tj@learnboost.com>",

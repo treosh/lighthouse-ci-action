@@ -91,6 +91,7 @@ var __disposeResources = (this && this.__disposeResources) || (function (Suppres
 });
 import { WEB_PERMISSION_TO_PROTOCOL_PERMISSION } from '../api/Browser.js';
 import { BrowserContext } from '../api/BrowserContext.js';
+import { UnsupportedOperation } from '../common/Errors.js';
 import { EventEmitter } from '../common/EventEmitter.js';
 import { debugError } from '../common/util.js';
 import { assert } from '../util/assert.js';
@@ -222,11 +223,16 @@ let BidiBrowserContext = (() => {
                 return [target, ...frames.values()];
             });
         }
-        async newPage() {
+        async newPage(options) {
             const env_1 = { stack: [], error: void 0, hasError: false };
             try {
                 const _guard = __addDisposableResource(env_1, await this.waitForScreenshotOperations(), false);
-                const context = await this.userContext.createBrowsingContext("tab" /* Bidi.BrowsingContext.CreateType.Tab */);
+                const type = options?.type === 'window'
+                    ? "window" /* Bidi.BrowsingContext.CreateType.Window */
+                    : "tab" /* Bidi.BrowsingContext.CreateType.Tab */;
+                const context = await this.userContext.createBrowsingContext(type, {
+                    background: options?.background,
+                });
                 const page = this.#pages.get(context);
                 if (!page) {
                     throw new Error('Page is not found');
@@ -235,8 +241,18 @@ let BidiBrowserContext = (() => {
                     try {
                         await page.setViewport(this.#defaultViewport);
                     }
-                    catch {
-                        // No support for setViewport in Firefox.
+                    catch (error) {
+                        // Tolerate not supporting `browsingContext.setViewport`. Only log it.
+                        debugError(error);
+                    }
+                }
+                if (options?.type === 'window' && options?.windowBounds !== undefined) {
+                    try {
+                        await this.browser().setWindowBounds(context.windowId, options.windowBounds);
+                    }
+                    catch (error) {
+                        // Tolerate not supporting `browser.setClientWindowState`. Only log it.
+                        debugError(error);
                     }
                 }
                 return page;
@@ -262,7 +278,7 @@ let BidiBrowserContext = (() => {
         browser() {
             return this.#browser;
         }
-        async pages() {
+        async pages(_includeAll = false) {
             return [...this.userContext.browsingContexts].map(context => {
                 return this.#pages.get(context);
             });
@@ -288,6 +304,25 @@ let BidiBrowserContext = (() => {
                     return result.catch(debugError);
                 }
                 return result;
+            }));
+        }
+        async setPermission(origin, ...permissions) {
+            if (origin === '*') {
+                throw new UnsupportedOperation('Origin (*) is not supported by WebDriver BiDi');
+            }
+            await Promise.all(permissions.map(permission => {
+                if (permission.permission.allowWithoutSanitization) {
+                    throw new UnsupportedOperation('allowWithoutSanitization is not supported by WebDriver BiDi');
+                }
+                if (permission.permission.panTiltZoom) {
+                    throw new UnsupportedOperation('panTiltZoom is not supported by WebDriver BiDi');
+                }
+                if (permission.permission.userVisibleOnly) {
+                    throw new UnsupportedOperation('userVisibleOnly is not supported by WebDriver BiDi');
+                }
+                return this.userContext.setPermissions(origin, {
+                    name: permission.permission.name,
+                }, permission.state);
             }));
         }
         async clearPermissionOverrides() {

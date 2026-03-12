@@ -33,7 +33,7 @@ class CdpJSHandle extends JSHandle_js_1.JSHandle {
     }
     async jsonValue() {
         if (!this.#remoteObject.objectId) {
-            return (0, utils_js_1.valueFromRemoteObject)(this.#remoteObject);
+            return (0, utils_js_1.valueFromPrimitiveRemoteObject)(this.#remoteObject);
         }
         const value = await this.evaluate(object => {
             return object;
@@ -59,7 +59,7 @@ class CdpJSHandle extends JSHandle_js_1.JSHandle {
     }
     toString() {
         if (!this.#remoteObject.objectId) {
-            return 'JSHandle:' + (0, utils_js_1.valueFromRemoteObject)(this.#remoteObject);
+            return 'JSHandle:' + (0, utils_js_1.valueFromPrimitiveRemoteObject)(this.#remoteObject);
         }
         const type = this.#remoteObject.subtype || this.#remoteObject.type;
         return 'JSHandle@' + type;

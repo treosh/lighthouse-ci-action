@@ -98,7 +98,7 @@ let UserContext = (() => {
                 if (info.userContext !== this.#id) {
                     return;
                 }
-                const browsingContext = BrowsingContext.from(this, undefined, info.context, info.url, info.originalOpener);
+                const browsingContext = BrowsingContext.from(this, undefined, info.context, info.url, info.originalOpener, info.clientWindow);
                 this.#browsingContexts.set(browsingContext.id, browsingContext);
                 const browsingContextEmitter = this.#disposables.use(new EventEmitter(browsingContext));
                 browsingContextEmitter.on('closed', () => {
@@ -132,6 +132,7 @@ let UserContext = (() => {
                 type,
                 ...options,
                 referenceContext: options.referenceContext?.id,
+                background: options.background,
                 userContext: this.#id,
             });
             const browsingContext = this.#browsingContexts.get(contextId);

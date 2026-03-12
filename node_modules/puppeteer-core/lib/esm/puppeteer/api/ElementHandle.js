@@ -101,6 +101,7 @@ import { AsyncIterableUtil } from '../util/AsyncIterableUtil.js';
 import { throwIfDisposed } from '../util/decorators.js';
 import { _isElementHandle } from './ElementHandleSymbol.js';
 import { JSHandle } from './JSHandle.js';
+import { NodeLocator } from './locators/locators.js';
 /**
  * A given method will have it's `this` replaced with an isolated version of
  * `this` when decorated with this decorator.
@@ -162,19 +163,18 @@ export function bindIsolatedHandle(target, _) {
  * ```ts
  * import puppeteer from 'puppeteer';
  *
- * (async () => {
- *   const browser = await puppeteer.launch();
- *   const page = await browser.newPage();
- *   await page.goto('https://example.com');
- *   const hrefElement = await page.$('a');
- *   await hrefElement.click();
- *   // ...
- * })();
+ * const browser = await puppeteer.launch();
+ * const page = await browser.newPage();
+ * await page.goto('https://example.com');
+ * const hrefElement = await page.$('a');
+ * await hrefElement.click();
+ * // ...
  * ```
  *
  * ElementHandle prevents the DOM element from being garbage-collected unless the
  * handle is {@link JSHandle.dispose | disposed}. ElementHandles are auto-disposed
- * when their origin frame gets navigated.
+ * when their associated frame is navigated away or the parent
+ * context gets destroyed.
  *
  * ElementHandle instances can be used as arguments in {@link Page.$eval} and
  * {@link Page.evaluate} methods.
@@ -221,6 +221,7 @@ let ElementHandle = (() => {
     let _screenshot_decorators;
     let _isIntersectingViewport_decorators;
     let _scrollIntoView_decorators;
+    let _asLocator_decorators;
     return class ElementHandle extends _classSuper {
         static {
             const _metadata = typeof Symbol === "function" && Symbol.metadata ? Object.create(_classSuper[Symbol.metadata] ?? null) : void 0;
@@ -255,6 +256,7 @@ let ElementHandle = (() => {
             _screenshot_decorators = [throwIfDisposed(), bindIsolatedHandle];
             _isIntersectingViewport_decorators = [throwIfDisposed(), bindIsolatedHandle];
             _scrollIntoView_decorators = [throwIfDisposed(), bindIsolatedHandle];
+            _asLocator_decorators = [throwIfDisposed()];
             __esDecorate(this, null, _getProperty_decorators, { kind: "method", name: "getProperty", static: false, private: false, access: { has: obj => "getProperty" in obj, get: obj => obj.getProperty }, metadata: _metadata }, null, _instanceExtraInitializers);
             __esDecorate(this, null, _getProperties_decorators, { kind: "method", name: "getProperties", static: false, private: false, access: { has: obj => "getProperties" in obj, get: obj => obj.getProperties }, metadata: _metadata }, null, _instanceExtraInitializers);
             __esDecorate(this, null, _jsonValue_decorators, { kind: "method", name: "jsonValue", static: false, private: false, access: { has: obj => "jsonValue" in obj, get: obj => obj.jsonValue }, metadata: _metadata }, null, _instanceExtraInitializers);
@@ -288,6 +290,7 @@ let ElementHandle = (() => {
             __esDecorate(this, null, _screenshot_decorators, { kind: "method", name: "screenshot", static: false, private: false, access: { has: obj => "screenshot" in obj, get: obj => obj.screenshot }, metadata: _metadata }, null, _instanceExtraInitializers);
             __esDecorate(this, null, _isIntersectingViewport_decorators, { kind: "method", name: "isIntersectingViewport", static: false, private: false, access: { has: obj => "isIntersectingViewport" in obj, get: obj => obj.isIntersectingViewport }, metadata: _metadata }, null, _instanceExtraInitializers);
             __esDecorate(this, null, _scrollIntoView_decorators, { kind: "method", name: "scrollIntoView", static: false, private: false, access: { has: obj => "scrollIntoView" in obj, get: obj => obj.scrollIntoView }, metadata: _metadata }, null, _instanceExtraInitializers);
+            __esDecorate(this, null, _asLocator_decorators, { kind: "method", name: "asLocator", static: false, private: false, access: { has: obj => "asLocator" in obj, get: obj => obj.asLocator }, metadata: _metadata }, null, _instanceExtraInitializers);
             if (_metadata) Object.defineProperty(this, Symbol.metadata, { enumerable: true, configurable: true, writable: true, value: _metadata });
         }
         /**
@@ -522,9 +525,10 @@ let ElementHandle = (() => {
          *
          * ```ts
          * const feedHandle = await page.$('.feed');
-         * expect(
-         *   await feedHandle.$$eval('.tweet', nodes => nodes.map(n => n.innerText)),
-         * ).toEqual(['Hello!', 'Hi!']);
+         *
+         * const listOfTweets = await feedHandle.$$eval('.tweet', nodes =>
+         *   nodes.map(n => n.innerText),
+         * );
          * ```
          *
          * @param selector -
@@ -584,24 +588,22 @@ let ElementHandle = (() => {
          * ```ts
          * import puppeteer from 'puppeteer';
          *
-         * (async () => {
-         *   const browser = await puppeteer.launch();
-         *   const page = await browser.newPage();
-         *   let currentURL;
-         *   page
-         *     .mainFrame()
-         *     .waitForSelector('img')
-         *     .then(() => console.log('First URL with image: ' + currentURL));
+         * const browser = await puppeteer.launch();
+         * const page = await browser.newPage();
+         * let currentURL;
+         * page
+         *   .mainFrame()
+         *   .waitForSelector('img')
+         *   .then(() => console.log('First URL with image: ' + currentURL));
          *
-         *   for (currentURL of [
-         *     'https://example.com',
-         *     'https://google.com',
-         *     'https://bbc.com',
-         *   ]) {
-         *     await page.goto(currentURL);
-         *   }
-         *   await browser.close();
-         * })();
+         * for (currentURL of [
+         *   'https://example.com',
+         *   'https://google.com',
+         *   'https://bbc.com',
+         * ]) {
+         *   await page.goto(currentURL);
+         * }
+         * await browser.close();
          * ```
          *
          * @param selector - The selector to query and wait for.
@@ -718,7 +720,43 @@ let ElementHandle = (() => {
         async click(options = {}) {
             await this.scrollIntoViewIfNeeded();
             const { x, y } = await this.clickablePoint(options.offset);
-            await this.frame.page().mouse.click(x, y, options);
+            try {
+                await this.frame.page().mouse.click(x, y, options);
+            }
+            finally {
+                if (options.debugHighlight) {
+                    await this.frame.page().evaluate((x, y) => {
+                        const highlight = document.createElement('div');
+                        highlight.innerHTML = `<style>
+        @scope {
+          :scope {
+              position: fixed;
+              left: ${x}px;
+              top: ${y}px;
+              width: 10px;
+              height: 10px;
+              border-radius: 50%;
+              animation: colorChange 10s 1 normal;
+              animation-fill-mode: forwards;
+          }
+
+          @keyframes colorChange {
+              from {
+                  background-color: red;
+              }
+              to {
+                  background-color: #FADADD00;
+              }
+          }
+        }
+      </style>`;
+                        highlight.addEventListener('animationend', () => {
+                            highlight.remove();
+                        }, { once: true });
+                        document.body.append(highlight);
+                    }, x, y);
+                }
+            }
         }
         /**
          * Drags an element over the given element or point.
@@ -1285,7 +1323,7 @@ let ElementHandle = (() => {
             const env_5 = { stack: [], error: void 0, hasError: false };
             try {
                 await this.assertConnectedElement();
-                // eslint-disable-next-line rulesdir/use-using -- Returns `this`.
+                // eslint-disable-next-line @puppeteer/use-using -- Returns `this`.
                 const handle = await this.#asSVGElementHandle();
                 const target = __addDisposableResource(env_5, handle && (await handle.#getOwnerSVGElement()), false);
                 return await (target ?? this).evaluate(async (element, threshold) => {
@@ -1322,6 +1360,14 @@ let ElementHandle = (() => {
             });
         }
         /**
+         * Creates a locator based on an ElementHandle. This would not allow
+         * refreshing the element handle if it is stale but it allows re-using other
+         * locator pre-conditions.
+         */
+        asLocator() {
+            return NodeLocator.createFromHandle(this.frame, this);
+        }
+        /**
          * Returns true if an element is an SVGElement (included svg, path, rect
          * etc.).
          */
@@ -1354,5 +1400,7 @@ function intersectBoundingBox(box, width, height) {
     box.height = Math.max(box.y >= 0
         ? Math.min(height - box.y, box.height)
         : Math.min(height, box.height + box.y), 0);
+    box.x = Math.max(box.x, 0);
+    box.y = Math.max(box.y, 0);
 }
 //# sourceMappingURL=ElementHandle.js.map

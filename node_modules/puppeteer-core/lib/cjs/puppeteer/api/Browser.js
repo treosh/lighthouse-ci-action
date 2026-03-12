@@ -102,12 +102,14 @@ class Browser extends EventEmitter_js_1.EventEmitter {
      * returns all {@link Page | pages} in all
      * {@link BrowserContext | browser contexts}.
      *
+     * @param includeAll - experimental, setting to true includes all kinds of pages.
+     *
      * @remarks Non-visible {@link Page | pages}, such as `"background_page"`,
      * will not be listed here. You can find them using {@link Target.page}.
      */
-    async pages() {
+    async pages(includeAll = false) {
         const contextPages = await Promise.all(this.browserContexts().map(context => {
-            return context.pages();
+            return context.pages(includeAll);
         }));
         // Flatten array.
         return contextPages.reduce((acc, x) => {
@@ -146,6 +148,38 @@ class Browser extends EventEmitter_js_1.EventEmitter {
      */
     async deleteCookie(...cookies) {
         return await this.defaultBrowserContext().deleteCookie(...cookies);
+    }
+    /**
+     * Deletes cookies matching the provided filters from the default
+     * {@link BrowserContext}.
+     *
+     * @remarks
+     *
+     * Shortcut for
+     * {@link BrowserContext.deleteMatchingCookies |
+     * browser.defaultBrowserContext().deleteMatchingCookies()}.
+     */
+    async deleteMatchingCookies(...filters) {
+        return await this.defaultBrowserContext().deleteMatchingCookies(...filters);
+    }
+    /**
+     * Sets the permission for a specific origin in the default
+     * {@link BrowserContext}.
+     *
+     * @remarks
+     *
+     * Shortcut for
+     * {@link BrowserContext.setPermission |
+     * browser.defaultBrowserContext().setPermission()}.
+     *
+     * @param origin - The origin to set the permission for.
+     * @param permission - The permission descriptor.
+     * @param state - The state of the permission.
+     *
+     * @public
+     */
+    async setPermission(origin, ...permissions) {
+        return await this.defaultBrowserContext().setPermission(origin, ...permissions);
     }
     /**
      * Whether Puppeteer is connected to this {@link Browser | browser}.

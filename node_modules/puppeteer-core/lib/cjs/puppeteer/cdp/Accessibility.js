@@ -58,6 +58,7 @@ var __disposeResources = (this && this.__disposeResources) || (function (Suppres
 });
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Accessibility = void 0;
+const util_js_1 = require("../common/util.js");
 /**
  * The Accessibility class provides methods for inspecting the browser's
  * accessibility tree. The accessibility tree is used by assistive technology
@@ -157,8 +158,14 @@ class Accessibility {
                     if (!frame) {
                         return;
                     }
-                    const iframeSnapshot = await frame.accessibility.snapshot(options);
-                    root.iframeSnapshot = iframeSnapshot ?? undefined;
+                    try {
+                        const iframeSnapshot = await frame.accessibility.snapshot(options);
+                        root.iframeSnapshot = iframeSnapshot ?? undefined;
+                    }
+                    catch (error) {
+                        // Frames can get detached at any time resulting in errors.
+                        (0, util_js_1.debugError)(error);
+                    }
                 }
                 catch (e_1) {
                     env_1.error = e_1;
@@ -192,9 +199,6 @@ class Accessibility {
         }
         const interestingNodes = new Set();
         this.collectInterestingNodes(interestingNodes, defaultRoot, false);
-        if (!interestingNodes.has(needle)) {
-            return null;
-        }
         return this.serializeTree(needle, interestingNodes)[0] ?? null;
     }
     serializeTree(node, interestingNodes) {
@@ -239,16 +243,26 @@ class AXNode {
     #editable = false;
     #focusable = false;
     #hidden = false;
+    #busy = false;
+    #modal = false;
+    #hasErrormessage = false;
+    #hasDetails = false;
     #name;
     #role;
+    #description;
+    #roledescription;
+    #live;
     #ignored;
     #cachedHasFocusableChild;
     #realm;
     constructor(realm, payload) {
         this.payload = payload;
-        this.#name = this.payload.name ? this.payload.name.value : '';
         this.#role = this.payload.role ? this.payload.role.value : 'Unknown';
         this.#ignored = this.payload.ignored;
+        this.#name = this.payload.name ? this.payload.name.value : '';
+        this.#description = this.payload.description
+            ? this.payload.description.value
+            : undefined;
         this.#realm = realm;
         for (const property of this.payload.properties || []) {
             if (property.name === 'editable') {
@@ -260,6 +274,24 @@ class AXNode {
             }
             if (property.name === 'hidden') {
                 this.#hidden = property.value.value;
+            }
+            if (property.name === 'busy') {
+                this.#busy = property.value.value;
+            }
+            if (property.name === 'live') {
+                this.#live = property.value.value;
+            }
+            if (property.name === 'modal') {
+                this.#modal = property.value.value;
+            }
+            if (property.name === 'roledescription') {
+                this.#roledescription = property.value.value;
+            }
+            if (property.name === 'errormessage') {
+                this.#hasErrormessage = true;
+            }
+            if (property.name === 'details') {
+                this.#hasDetails = true;
             }
         }
     }
@@ -332,12 +364,8 @@ class AXNode {
             default:
                 break;
         }
-        // Here and below: Android heuristics
         if (this.#hasFocusableChild()) {
             return false;
-        }
-        if (this.#focusable && this.#name) {
-            return true;
         }
         if (this.#role === 'heading' && this.#name) {
             return true;
@@ -372,12 +400,37 @@ class AXNode {
                 return false;
         }
     }
+    isLandmark() {
+        switch (this.#role) {
+            case 'banner':
+            case 'complementary':
+            case 'contentinfo':
+            case 'form':
+            case 'main':
+            case 'navigation':
+            case 'region':
+            case 'search':
+                return true;
+            default:
+                return false;
+        }
+    }
     isInteresting(insideControl) {
         const role = this.#role;
         if (role === 'Ignored' || this.#hidden || this.#ignored) {
             return false;
         }
-        if (this.#focusable || this.#richlyEditable) {
+        if (this.isLandmark()) {
+            return true;
+        }
+        if (this.#focusable ||
+            this.#richlyEditable ||
+            this.#busy ||
+            (this.#live && this.#live !== 'off') ||
+            this.#modal ||
+            this.#hasErrormessage ||
+            this.#hasDetails ||
+            this.#roledescription) {
             return true;
         }
         // If it's not focusable but has a control role, then it's interesting.
@@ -388,7 +441,7 @@ class AXNode {
         if (insideControl) {
             return false;
         }
-        return this.isLeafNode() && !!this.#name;
+        return this.isLeafNode() && (!!this.#name || !!this.#description);
     }
     serialize() {
         const properties = new Map();
@@ -407,11 +460,30 @@ class AXNode {
         const node = {
             role: this.#role,
             elementHandle: async () => {
-                if (!this.payload.backendDOMNodeId) {
-                    return null;
+                const env_2 = { stack: [], error: void 0, hasError: false };
+                try {
+                    if (!this.payload.backendDOMNodeId) {
+                        return null;
+                    }
+                    const handle = __addDisposableResource(env_2, await this.#realm.adoptBackendNode(this.payload.backendDOMNodeId), false);
+                    // Since Text nodes are not elements, we want to
+                    // return a handle to the parent element for them.
+                    return (await handle.evaluateHandle(node => {
+                        return node.nodeType === Node.TEXT_NODE ? node.parentElement : node;
+                    }));
                 }
-                return (await this.#realm.adoptBackendNode(this.payload.backendDOMNodeId));
+                catch (e_2) {
+                    env_2.error = e_2;
+                    env_2.hasError = true;
+                }
+                finally {
+                    __disposeResources(env_2);
+                }
             },
+            backendNodeId: this.payload.backendDOMNodeId,
+            // LoaderId is an experimental mechanism to establish unique IDs across
+            // navigations.
+            loaderId: this.#realm.environment._loaderId,
         };
         const userStringProperties = [
             'name',
@@ -420,6 +492,7 @@ class AXNode {
             'keyshortcuts',
             'roledescription',
             'valuetext',
+            'url',
         ];
         const getUserStringPropertyValue = (key) => {
             return properties.get(key);
@@ -440,19 +513,20 @@ class AXNode {
             'readonly',
             'required',
             'selected',
+            'busy',
+            'atomic',
         ];
         const getBooleanPropertyValue = (key) => {
-            return properties.get(key);
+            return !!properties.get(key);
         };
         for (const booleanProperty of booleanProperties) {
             // RootWebArea's treat focus differently than other nodes. They report whether
-            // their frame  has focus, not whether focus is specifically on the root
+            // their frame has focus, not whether focus is specifically on the root
             // node.
             if (booleanProperty === 'focused' && this.#role === 'RootWebArea') {
                 continue;
             }
-            const value = getBooleanPropertyValue(booleanProperty);
-            if (!value) {
+            if (!properties.has(booleanProperty)) {
                 continue;
             }
             node[booleanProperty] = getBooleanPropertyValue(booleanProperty);
@@ -485,6 +559,10 @@ class AXNode {
             'haspopup',
             'invalid',
             'orientation',
+            'live',
+            'relevant',
+            'errormessage',
+            'details',
         ];
         const getTokenPropertyValue = (key) => {
             return properties.get(key);

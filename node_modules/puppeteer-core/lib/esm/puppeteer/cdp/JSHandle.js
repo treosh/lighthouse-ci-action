@@ -5,7 +5,7 @@
  */
 import { JSHandle } from '../api/JSHandle.js';
 import { debugError } from '../common/util.js';
-import { valueFromRemoteObject } from './utils.js';
+import { valueFromPrimitiveRemoteObject } from './utils.js';
 /**
  * @internal
  */
@@ -29,7 +29,7 @@ export class CdpJSHandle extends JSHandle {
     }
     async jsonValue() {
         if (!this.#remoteObject.objectId) {
-            return valueFromRemoteObject(this.#remoteObject);
+            return valueFromPrimitiveRemoteObject(this.#remoteObject);
         }
         const value = await this.evaluate(object => {
             return object;
@@ -55,7 +55,7 @@ export class CdpJSHandle extends JSHandle {
     }
     toString() {
         if (!this.#remoteObject.objectId) {
-            return 'JSHandle:' + valueFromRemoteObject(this.#remoteObject);
+            return 'JSHandle:' + valueFromPrimitiveRemoteObject(this.#remoteObject);
         }
         const type = this.#remoteObject.subtype || this.#remoteObject.type;
         return 'JSHandle@' + type;

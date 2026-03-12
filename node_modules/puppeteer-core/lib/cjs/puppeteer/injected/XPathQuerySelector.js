@@ -25,7 +25,7 @@ const xpathQuerySelectorAll = function* (root, selector, maxResults = -1) {
     for (let i = 0; i < items.length; i++) {
         item = items[i];
         yield item;
-        delete items[i];
+        items[i] = null;
     }
 };
 exports.xpathQuerySelectorAll = xpathQuerySelectorAll;

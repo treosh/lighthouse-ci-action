@@ -58,7 +58,7 @@ var __disposeResources = (this && this.__disposeResources) || (function (Suppres
 import { WEB_PERMISSION_TO_PROTOCOL_PERMISSION, } from '../api/Browser.js';
 import { BrowserContext } from '../api/BrowserContext.js';
 import { assert } from '../util/assert.js';
-import { convertCookiesPartitionKeyFromPuppeteerToCdp } from './Page.js';
+import { convertCookiesPartitionKeyFromPuppeteerToCdp, convertSameSiteFromPuppeteerToCdp, } from './Page.js';
 /**
  * @internal
  */
@@ -80,11 +80,11 @@ export class CdpBrowserContext extends BrowserContext {
             return target.browserContext() === this;
         });
     }
-    async pages() {
+    async pages(includeAll = false) {
         const pages = await Promise.all(this.targets()
             .filter(target => {
             return (target.type() === 'page' ||
-                (target.type() === 'other' &&
+                ((target.type() === 'other' || includeAll) &&
                     this.#browser._getIsPageTargetCallback()?.(target)));
         })
             .map(target => {
@@ -108,16 +108,33 @@ export class CdpBrowserContext extends BrowserContext {
             permissions: protocolPermissions,
         });
     }
+    async setPermission(origin, ...permissions) {
+        await Promise.all(permissions.map(async (permission) => {
+            const protocolPermission = {
+                name: permission.permission.name,
+                userVisibleOnly: permission.permission.userVisibleOnly,
+                sysex: permission.permission.sysex,
+                allowWithoutSanitization: permission.permission.allowWithoutSanitization,
+                panTiltZoom: permission.permission.panTiltZoom,
+            };
+            await this.#connection.send('Browser.setPermission', {
+                origin: origin === '*' ? undefined : origin,
+                browserContextId: this.#id || undefined,
+                permission: protocolPermission,
+                setting: permission.state,
+            });
+        }));
+    }
     async clearPermissionOverrides() {
         await this.#connection.send('Browser.resetPermissions', {
             browserContextId: this.#id || undefined,
         });
     }
-    async newPage() {
+    async newPage(options) {
         const env_1 = { stack: [], error: void 0, hasError: false };
         try {
             const _guard = __addDisposableResource(env_1, await this.waitForScreenshotOperations(), false);
-            return await this.#browser._createPageInContext(this.#id);
+            return await this.#browser._createPageInContext(this.#id, options);
         }
         catch (e_1) {
             env_1.error = e_1;
@@ -147,6 +164,8 @@ export class CdpBrowserContext extends BrowserContext {
                         hasCrossSiteAncestor: cookie.partitionKey.hasCrossSiteAncestor,
                     }
                     : undefined,
+                // TODO: remove sameParty as it is removed from Chrome.
+                sameParty: false,
             };
         });
     }
@@ -157,6 +176,7 @@ export class CdpBrowserContext extends BrowserContext {
                 return {
                     ...cookie,
                     partitionKey: convertCookiesPartitionKeyFromPuppeteerToCdp(cookie.partitionKey),
+                    sameSite: convertSameSiteFromPuppeteerToCdp(cookie.sameSite),
                 };
             }),
         });

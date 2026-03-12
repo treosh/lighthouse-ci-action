@@ -13,4 +13,4 @@ jobs:
         with:
           urls: |
             https://$URL_DOMAIN/
-            https://$URL_DOMAIN/demo
+            https://$URL_DOMAIN/sitespeed
